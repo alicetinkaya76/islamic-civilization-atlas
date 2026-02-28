@@ -1,0 +1,31 @@
+﻿diplomacy_id,dynasty_id,partner_tr,partner_en,partner_type,relation_tr,relation_en,period,notes_tr,notes_en
+1,1,Sâsânî İmparatorluğu,Sassanid Empire,İmparatorluk,Savaş/Fetih,War/Conquest,633-651,Kādisiye ve Nihâvend savaşları; İran'ın fethi,Battles of Qadisiyyah and Nihavand; conquest of Iran
+2,1,Bizans İmparatorluğu,Byzantine Empire,İmparatorluk,Savaş/Fetih,War/Conquest,634-641,"Suriye, Filistin, Mısır'ın fethi","Conquest of Syria, Palestine, Egypt"
+3,2,Bizans İmparatorluğu,Byzantine Empire,İmparatorluk,Savaş/Diplomasi,War/Diplomacy,661-750,"İstanbul kuşatmaları (674-678, 717-718); sınır savaşları",Sieges of Constantinople; border wars
+4,2,Tang Çin Hanedanı,Tang Dynasty China,İmparatorluk,Savaş/Ticaret,War/Trade,700-751,Talas Savaşı (751); İpek Yolu ticareti,Battle of Talas (751); Silk Road trade
+5,3,Bizans İmparatorluğu,Byzantine Empire,İmparatorluk,Savaş/Diplomasi,War/Diplomacy,750-1055,Esir değişimi; sınır garnizonu sistemi (sugūr/thughūr),Prisoner exchanges; frontier garrison system
+6,3,Karolenj İmparatorluğu,Carolingian Empire,İmparatorluk,Diplomasi,Diplomacy,797-809,Hârûnürreşîd-Charlemagne ittifakı; fil hediyesi,Harun-Charlemagne alliance; elephant gift
+7,4,Kastilya Krallığı,Kingdom of Castile,Krallık,Savaş/Diplomasi,War/Diplomacy,756-1031,Reconquista savaşları; dönemsel barış,Reconquista wars; periodic peace
+8,27,Bizans İmparatorluğu,Byzantine Empire,İmparatorluk,Diplomasi/Ticaret,Diplomacy/Trade,969-1171,Sicilya ve Kuzey Afrika meseleleri; ticaret anlaşmaları,Sicily and North Africa issues; trade agreements
+9,27,Haçlı Devletleri,Crusader States,Krallık,Savaş,War,1099-1171,Kudüs Haçlı Krallığı ile sürekli savaş,Continuous war with Crusader Kingdom of Jerusalem
+10,28,Haçlı Devletleri,Crusader States,Krallık,Savaş/Diplomasi,War/Diplomacy,1171-1260,Salâhaddîn'in Kudüs'ü geri alması; Richard ile müzakere,Saladin's reconquest of Jerusalem; negotiation with Richard
+11,30,Moğol İlhanlıları,Mongol Ilkhanate,İmparatorluk,Savaş,War,1260-1323,Ayn Câlût zaferi; Suriye sınır savaşları,Ain Jalut victory; Syrian border wars
+12,30,Haçlı Devletleri,Crusader States,Krallık,Savaş,War,1250-1291,Akka'nın fethi (1291) ile Haçlı varlığının sonu,Fall of Acre (1291) ending Crusader presence
+13,91,Bizans İmparatorluğu,Byzantine Empire,İmparatorluk,Savaş,War,1048-1092,Malazgirt (1071); Anadolu kapılarının açılması,Manzikert (1071); opening of Anatolia
+14,94,Bizans İmparatorluğu,Byzantine Empire,İmparatorluk,Savaş/Diplomasi,War/Diplomacy,1077-1243,I. ve II. Haçlı Seferleri; Myriokephalon; sınır anlaşmaları,First and Second Crusades; Myriokephalon; border treaties
+15,99,Papalık,Papacy,Dini Otorite,Diplomasi,Diplomacy,1245-1335,Moğol-Papalık ittifak girişimleri; Haçlı koordinasyonu,Mongol-Papal alliance attempts; Crusade coordination
+16,99,Yuan Çin Hanedanı,Yuan Dynasty China,İmparatorluk,Diplomasi/Ticaret,Diplomacy/Trade,1260-1335,Moğol birliği; İpek Yolu ticaretinin altın çağı,Mongol unity; golden age of Silk Road trade
+17,124,Bizans İmparatorluğu,Byzantine Empire,İmparatorluk,Savaş/Fetih,War/Conquest,1299-1453,Anadolu ve Balkan fetihleri; İstanbul'un fethi (1453),Anatolian and Balkan conquests; Fall of Constantinople
+18,124,Habsburg İmparatorluğu,Habsburg Empire,İmparatorluk,Savaş/Diplomasi,War/Diplomacy,1526-1791,Viyana kuşatmaları; Macaristan; Karlofça Antlaşması,Sieges of Vienna; Hungary; Treaty of Karlowitz
+19,124,Venedik Cumhuriyeti,Republic of Venice,Şehir Devleti,Savaş/Ticaret,War/Trade,1416-1718,Deniz savaşları; Girit; Mora; ticaret imtiyazları (kapitülasyonlar),Naval wars; Crete; Morea; trade capitulations
+20,124,Fransa Krallığı,Kingdom of France,Krallık,İttifak/Diplomasi,Alliance/Diplomacy,1536-1798,Kanuni-I. François ittifakı; kapitülasyonlar; Napolyon Mısır seferi,Suleiman-Francis I alliance; capitulations; Napoleon's Egypt campaign
+21,124,Rusya İmparatorluğu,Russian Empire,İmparatorluk,Savaş,War,1568-1918,13 Osmanlı-Rus savaşı; Kırım meselesi; Boğazlar,13 Ottoman-Russian wars; Crimean question; Straits
+22,107,Portekiz Krallığı,Kingdom of Portugal,Krallık,Savaş/Ticaret,War/Trade,1507-1622,Hürmüz Boğazı kontrolü; Hint Okyanusu rekabeti,Control of Strait of Hormuz; Indian Ocean rivalry
+23,107,Osmanlı İmparatorluğu,Ottoman Empire,İmparatorluk,Savaş/Diplomasi,War/Diplomacy,1514-1639,Çaldıran; Irak savaşları; Kasr-ı Şîrîn Antlaşması,Chaldiran; Iraq wars; Treaty of Zuhab
+24,178,Britanya İmparatorluğu,British Empire,İmparatorluk,Savaş/Sömürge,War/Colonization,1757-1858,Plassey'den Hint Ayaklanması'na; Bâbürlü çöküşü,From Plassey to Indian Mutiny; Mughal collapse
+25,178,Portekiz Krallığı,Kingdom of Portugal,Krallık,Savaş/Ticaret,War/Trade,1500-1600,"Goa, Diu; Hint Okyanusu'nda Portekiz yerleşimi","Goa, Diu; Portuguese establishment in Indian Ocean"
+26,184,Portekiz Krallığı,Kingdom of Portugal,Krallık,Savaş,War,1509-1641,Malakka'nın kaybı; Açe direniş; Osmanlı'dan yardım,Loss of Malacca; Aceh resistance; Ottoman aid
+27,55,Britanya İmparatorluğu,British Empire,İmparatorluk,İttifak/Diplomasi,Alliance/Diplomacy,1915-1945,İbn Suûd-İngiliz ittifakı; petrol imtiyazları (ARAMCO),Ibn Saud-British alliance; oil concessions (ARAMCO)
+28,14,Kastilya Krallığı,Kingdom of Castile,Krallık,Savaş,War,1086-1147,Zellâka zaferi; Teyfe beyliklerine müdahale,Sagrajas victory; intervention in Taifa kingdoms
+29,60,Habeş İmparatorluğu,Ethiopian Empire,İmparatorluk,Savaş/Diplomasi,War/Diplomacy,1100-1600,Çad Gölü bölgesinde nüfuz rekabeti,Competition for influence in Lake Chad region
+30,124,İngiltere Krallığı,Kingdom of England,Krallık,Diplomasi/Ticaret,Diplomacy/Trade,1580-1600,I. Elizabeth-III. Murad mektuplaşması; İspanya'ya karşı ortak düşmanlık,Elizabeth I-Murad III correspondence; shared enmity against Spain

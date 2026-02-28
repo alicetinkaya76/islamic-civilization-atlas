@@ -1,0 +1,187 @@
+﻿dynasty_id,dynasty_name_tr,dynasty_name_en,duration_years,ruler_count,avg_reign_years,stability_ratio,violent_death_count,continuity_ratio,battle_count,battle_win_ratio,scholar_count,cultural_productivity,territory_approx_10k_km2,power_index,lifecycle
+1,Râşidûn Halifeleri,The Rightly-Guided or 'Patriarchal' or 'Orthodox' Caliphs,29,4,7.2,0.25,3,0.5,6,0.5,0,0.0,858.6,42.4,Kısa Ömürlü / Short-lived
+2,Emevî Halifeleri,The Umayyad Caliphs,89,14,6.4,0.79,3,0.57,2,0.5,1,1.12,2405.9,48.9,Orta Ömürlü / Medium-lived
+3,Abbâsî Halifeleri,The 'Abbasid Caliphs,767,65,11.8,0,0,0.6,3,0.67,12,1.56,2325.7,86.0,Çok Uzun Ömürlü / Very Long-lived
+4,Endülüs Emevîleri,The Spanish Umayyads,275,23,12.0,0.5,1,0.7,0,0,0,0.0,171.7,56.5,Uzun Ömürlü / Long-lived
+5,Mülûkü't-Tavâif (Teyfe Beylikleri),The Mulūk al-Tawā'if or Reyes de Taifas in Spain,146,33,11.5,0.0,2,0.62,0,0,0,0.0,33.0,36.2,Orta Ömürlü / Medium-lived
+6,Benî Gâniye,The Banū Ghāniya,77,6,12.8,0,0,0.2,0,0,0,0.0,5.0,11.7,Orta Ömürlü / Medium-lived
+7,Nasrîler (Benü'l-Ahmer),The Nasrids or Banū 'l-Ahmar,260,30,8.6,1.0,0,0.67,1,0.0,0,0.0,8.5,38.2,Uzun Ömürlü / Long-lived
+8,İdrîsîler,The Idrīsids,196,14,10.8,0.5,1,0.83,0,0,0,0.0,39.6,34.5,Uzun Ömürlü / Long-lived
+9,Rüstemîler,The Rustamids,131,10,15.4,0,0,0.67,0,0,0,0.0,25.5,23.2,Orta Ömürlü / Medium-lived
+10,Midrârîler,The Midrārids,154,11,14.0,0,0,0.67,0,0,0,0.0,15.1,23.9,Uzun Ömürlü / Long-lived
+11,Ağlebîler,The Aghlabids,109,11,9.9,0,0,0.7,0,0,0,0.0,46.7,25.7,Orta Ömürlü / Medium-lived
+12,Kelbîler,The Kalbids,105,10,10.5,1.0,0,0.57,0,0,1,0.95,11.8,22.9,Orta Ömürlü / Medium-lived
+13,Zîrîler ve Hammâdîler,The Zīrids and Hammādids,180,19,17.8,1.0,0,0.87,0,0,0,0.0,30.2,33.5,Uzun Ömürlü / Long-lived
+14,Murâbıtlar,The Almoravids or al-Murābitūn,85,6,19.5,1.0,0,0.75,1,1.0,1,1.18,415.1,44.5,Orta Ömürlü / Medium-lived
+15,Muvahhidler,The Almohads or al-Muwahhidūn,139,13,11.8,1.0,0,0.67,1,0.0,1,0.72,518.9,51.9,Orta Ömürlü / Medium-lived
+16,Merînîler,The Marīnids,248,11,17.1,0,0,0.67,0,0,1,0.4,72.6,45.0,Uzun Ömürlü / Long-lived
+17,Abdülvâdîler (Zeyyânîler),The 'Abd al-Wādids or Zayyānids or Ziyānids,319,6,22.5,0,0,0.5,0,0,0,0.0,13.2,25.6,Uzun Ömürlü / Long-lived
+18,Hafsîler,The Hafsids,345,9,17.6,0,0,0.8,0,0,0,0.0,34.0,31.3,Uzun Ömürlü / Long-lived
+19,Vattâsîler,The Wattāsids,121,4,18.8,0,0,0.67,0,0,0,0.0,72.6,28.6,Orta Ömürlü / Medium-lived
+20,Sa'dî Şerifler,The Sa'did Sharifs,149,3,24.0,0,0,0.0,1,1.0,0,0.0,317.0,44.4,Orta Ömürlü / Medium-lived
+21,Alevî (Filâlî) Şerifler,The 'Alawid or Filālī Sharīfs,395,8,30.0,1.0,0,0.5,0,0,0,0.0,135.9,49.0,Uzun Ömürlü / Long-lived
+22,Hüseynî Beyler,The Husaynid Beys,252,4,21.2,0.5,1,0.0,0,0,0,0.0,51.9,32.4,Uzun Ömürlü / Long-lived
+23,Karamanlılar,The Qaramānlīs,124,5,24.6,1.0,0,0.6,0,0,0,0.0,63.7,27.6,Orta Ömürlü / Medium-lived
+24,Senûsî Reisleri ve Hükümdarları,The Sanūsī Chiefs and Rulers,132,4,33.0,0.67,0,0.33,0,0,0,0.0,127.4,40.2,Orta Ömürlü / Medium-lived
+25,Tolunoğulları,The Tūlūnids,37,5,7.4,0,0,0.5,0,0,0,0.0,70.8,20.4,Kısa Ömürlü / Short-lived
+26,İhşîdîler,The Ikhshīdids,34,5,6.8,1.0,0,0.33,0,0,0,0.0,114.2,28.7,Kısa Ömürlü / Short-lived
+27,Fâtımîler,The Fātimids,262,14,18.6,0.67,1,0.92,0,0,1,0.38,353.8,57.0,Uzun Ömürlü / Long-lived
+28,Mirdâsîler,The Mirdāsids,56,9,5.4,0,0,0.33,0,0,0,0.0,184.0,35.1,Orta Ömürlü / Medium-lived
+29,Suriye Nizârî İsmâilîleri (Haşhaşîler) Baş Dāʿīleri,The Chief Dā'īs of the Nizārī Ismā'īlīs or Assassins in Syria,173,7,10.1,1.0,0,0.5,0,0,0,0.0,2.8,21.4,Uzun Ömürlü / Long-lived
+30,Eyyûbîler,The Ayyūbids,0,16,15.9,0.67,1,0.8,2,0.5,2,0,124.5,45.9,Kısa Ömürlü / Short-lived
+31,Memlûkler,The Mamlūks,267,14,13.4,0.0,3,0.75,3,1.0,3,1.12,256.6,76.0,Uzun Ömürlü / Long-lived
+32,Lübnan Ma'noğulları,The Ma'nids of Lebanon,0,5,37.3,0.67,1,0.67,0,0,0,0,1.8,2.9,Kısa Ömürlü / Short-lived
+33,Şihâb Emirleri,The Shihāb Amīrs of Lebanon,145,5,21.4,0,0,0.0,0,0,0,0.0,1.8,17.4,Orta Ömürlü / Medium-lived
+34,Kavalalı Mehmed Ali Hanedanı,The House of Muhammad 'Alī,148,10,13.9,0.75,0,0.6,0,0,2,1.35,46.7,39.1,Orta Ömürlü / Medium-lived
+35,Hamdânîler,The Hamdānids,75,7,17.1,0.75,1,0.67,0,0,1,1.33,19.8,20.0,Orta Ömürlü / Medium-lived
+36,Mezyed oğulları,The Mazyadids,189,6,31.5,0.5,1,0.83,0,0,0,0.0,8.5,23.6,Uzun Ömürlü / Long-lived
+37,Mervânîler (Diyâr-ı Bekr),The Marwānids,102,5,17.6,1.0,0,0.75,0,0,0,0.0,9.4,14.6,Orta Ömürlü / Medium-lived
+38,Ukaylîler,The 'Uqaylids,106,6,15.8,0.0,2,0.4,0,0,0,0.0,14.2,21.4,Orta Ömürlü / Medium-lived
+39,Nümeyrîler,The Numayrids,91,4,22.8,0,0,0.75,0,0,0,0.0,3.5,6.8,Orta Ömürlü / Medium-lived
+40,Karmatîler (Ebû Saîdî kolu),The Carmathian or Qarmati Rulers of the line of Abū Sa'īd al-Jannābī,192,4,45.8,0,0,0.0,0,0,0,0.0,8.5,22.9,Uzun Ömürlü / Long-lived
+41,Yemen Zeydî İmamları,The Zaydī Imāms of Yemen,1065,8,22.2,0.67,1,0.67,0,0,0,0.0,18.9,27.8,Çok Uzun Ömürlü / Very Long-lived
+42,Ziyâdîler,The Ziyādids,200,3,39.0,0,0,0.0,0,0,0,0.0,4.7,22.4,Uzun Ömürlü / Long-lived
+43,Yu'firîler (Ya'furîler),The Yu'firids or Ya'furids,150,3,37.7,0,0,0.0,0,0,0,0.0,4.7,17.4,Orta Ömürlü / Medium-lived
+44,Necâhîler,The Najāhids,136,3,22.3,0,0,0.5,0,0,0,0.0,2.8,15.7,Orta Ömürlü / Medium-lived
+45,Süleyhîler,The Sulayhids,91,3,27.7,1.0,0,0.5,0,0,0,0.0,11.3,12.9,Orta Ömürlü / Medium-lived
+46,Zürey'îler (Benü'l-Kerem),The Zuray'ids or Banū 'l-Karam,95,2,7.0,1.0,0,0.0,0,0,0,0.0,0.9,10.7,Orta Ömürlü / Medium-lived
+47,Yemen Hemdânîleri,The Hamdānids (of Yemen),75,3,15.0,0,0,0.5,0,0,0,0.0,3.8,9.8,Orta Ömürlü / Medium-lived
+48,Mehdîler,The Mahdids,14,2,16.5,0.0,1,0.0,0,0,0,0.0,2.8,-2.0,Kısa Ömürlü / Short-lived
+49,Resûlîler,The Rasūlids,226,5,31.0,0,0,0.8,0,0,0,0.0,22.6,32.0,Uzun Ömürlü / Long-lived
+50,Tâhirîler,The Tāhirids,63,3,15.0,0,0,0.5,0,0,0,0.0,8.5,9.5,Orta Ömürlü / Medium-lived
+51,Âl-i Cülandâ,The Āl al-Julandā,0,1,3.0,0.0,1,0.0,0,0,0,0,20.8,4.7,Kısa Ömürlü / Short-lived
+52,Mükremîler,The Mukramids,42,3,13.0,1.0,0,0.33,0,0,0,0.0,11.3,8.0,Kısa Ömürlü / Short-lived
+53,Ya'rubîler,The Ya'rubids,129,3,26.3,1.0,0,0.5,0,0,0,0.0,23.4,14.1,Orta Ömürlü / Medium-lived
+54,Âl Bû Saîd,The Āl Bū Sa'īd,272,4,43.2,1.0,0,0.67,0,0,0,0.0,188.2,47.0,Uzun Ömürlü / Long-lived
+55,Âl Suûd (Suudi Hanedanı),The Āl Su'ūd (Sa'ūd),291,7,24.7,0.33,2,0.4,0,0,0,0.0,311.4,48.5,Uzun Ömürlü / Long-lived
+56,Mekke Hâşimî Şerifleri ('Avn ailesi),The Hāshimite Sharīfs of Mecca from the 'Awn Family,199,5,30.4,0.33,2,0.67,0,0,0,0.0,2.8,23.0,Uzun Ömürlü / Long-lived
+57,Âl Reşîd,The Āl Rashīd,85,5,13.8,0.0,1,0.5,0,0,0,0.0,34.0,17.8,Orta Ömürlü / Medium-lived
+58,Mali Keita Kralları,The Keita Kings of Mali,0,6,18.8,0,0,0.0,0,0,0,0,132.1,28.0,Kısa Ömürlü / Short-lived
+59,Songay Kralları,The Kings of Songhay,0,6,20.0,0.5,1,0.5,0,0,0,0,94.3,21.9,Kısa Ömürlü / Short-lived
+60,Kenem ve Bornu (Borno) Hükümdarları,The Rulers of Kanem and Bornu or Borno,0,7,26.8,1.0,0,0.0,0,0,0,0,90.6,21.6,Kısa Ömürlü / Short-lived
+61,Hausaland Fulani Hükümdarları (Sokoto Sultanları/Halifeleri),"The Fulani Rulers in Hausaland, as Sultans and Caliphs of Sokoto",222,4,34.5,1.0,0,0.67,0,0,0,0.0,37.7,29.5,Uzun Ömürlü / Long-lived
+62,Kilva Sultanları,The Sultans of Kilwa,0,5,26.0,0,0,0.0,0,0,0,0,6.6,3.8,Kısa Ömürlü / Short-lived
+63,Pate Nâbhânî Hükümdarları,The Nabhānī Rulers of Pate,691,5,19.4,0,0,0.0,0,0,0,0.0,3.8,23.3,Çok Uzun Ömürlü / Very Long-lived
+64,Mombasa Mezrûî Valileri,The Mazrū'ī Liwalis or Governors of Mombasa,139,3,18.0,0,0,0.5,0,0,0,0.0,0.7,15.5,Orta Ömürlü / Medium-lived
+65,Doğu Afrika Âl Bû Saîdîleri (Zengibar),The Āl Bū Sa'īd in East Africa,124,4,21.0,1.0,0,0.33,0,0,0,0.0,11.3,16.7,Orta Ömürlü / Medium-lived
+66,Harar Sultanları,The Sultans of Harar,381,6,15.5,0.0,2,0.0,0,0,0,0.0,9.4,24.9,Uzun Ömürlü / Long-lived
+67,Şirvanşahlar,The Sharwān Shāhs,781,5,27.7,0,0,0.5,0,0,0,0.0,5.7,23.6,Çok Uzun Ömürlü / Very Long-lived
+68,Hâşimîler (Derbent),The Hāshimids,206,2,44.5,0,0,0.0,0,0,0,0.0,1.9,21.4,Uzun Ömürlü / Long-lived
+69,Cüstânîler,The Justānids,219,2,49.0,0,0,0.0,0,0,0,0.0,3.8,21.8,Uzun Ömürlü / Long-lived
+70,Sâcîler (Sâcoğulları),The Sajids,51,3,17.0,0.0,1,0.0,0,0,0,0.0,4.2,12.4,Orta Ömürlü / Medium-lived
+71,Müsâfirîler (Sellârîler),The Musāfirids or Sallārids,149,3,27.3,0,0,0.5,0,0,0,0.0,25.9,26.6,Orta Ömürlü / Medium-lived
+72,Ravvâdîler,The Rawwādids,120,3,27.7,0,0,0.5,0,0,0,0.0,8.3,20.2,Orta Ömürlü / Medium-lived
+73,Şeddâdîler,The Shaddādids,224,4,29.0,0,0,0.0,0,0,0,0.0,11.3,24.3,Uzun Ömürlü / Long-lived
+74,Dülafoğulları,The Dulafids,72,2,17.0,0,0,0.0,0,0,0,0.0,5.9,4.4,Orta Ömürlü / Medium-lived
+75,Büveyhîler (Bûyîler),The Būyids or Buwayhids,130,5,16.8,1.0,0,0.5,0,0,0,0.0,9.9,22.5,Orta Ömürlü / Medium-lived
+76,Hasanveyhîler,The Hasanūyids or Hasanawayhids,56,3,18.7,1.0,0,0.5,0,0,0,0.0,8.5,8.8,Orta Ömürlü / Medium-lived
+77,Annâzîler,The 'Annāzids,127,3,35.3,0,0,0.5,0,0,0,0.0,5.7,15.3,Orta Ömürlü / Medium-lived
+78,Kâkûyîler (Kâkaveyhîler),The Kākūyids or Kākawayhids,140,2,66.5,1.0,0,0.0,0,0,0,0.0,6.6,16.3,Orta Ömürlü / Medium-lived
+79,Dâbûyî İspehbedleri,The Dābūyid Ispahbadhs,96,2,16.0,0,0,0.0,0,0,0,0.0,6.6,6.9,Orta Ömürlü / Medium-lived
+80,Bâvendî İspehbedleri,The Bāwandid Ispahbadhs,684,3,35.0,0,0,0.0,0,0,0,0.0,6.6,22.8,Çok Uzun Ömürlü / Very Long-lived
+81,Ziyârîler,The Ziyārids,141,3,20.7,0.0,2,0.67,0,0,0,0.0,3.8,21.4,Orta Ömürlü / Medium-lived
+82,Tâhirîler ve Mus'abîler,The Tāhirids and Mus'abids,52,3,9.7,1.0,0,0.67,0,0,1,1.92,83.0,28.3,Orta Ömürlü / Medium-lived
+83,Sâmânîler,The Sāmānids,130,4,21.7,0.5,1,0.67,0,0,3,2.31,5.7,36.1,Orta Ömürlü / Medium-lived
+84,Saffârîler,The Saffārids,634,3,26.3,1.0,0,0.0,1,0.0,0,0.0,47.2,32.4,Çok Uzun Ömürlü / Very Long-lived
+85,Bânîcûrîler (Ebû Dâvûdîler),The Bānījūrids or Abū Dāwūdids,132,2,27.5,0,0,0.0,0,0,0,0.0,4.7,10.1,Orta Ömürlü / Medium-lived
+86,Simcûrîler,The Simjūrids,70,2,16.0,0,0,0.5,0,0,0,0.0,28.3,8.7,Orta Ömürlü / Medium-lived
+87,İlyâsîler,The Ilyāsids,36,1,29.0,0,0,0.0,0,0,0,0.0,28.3,4.8,Kısa Ömürlü / Short-lived
+88,Muhtâcîler,The Muhtājids,136,1,29.0,0,0,0.0,0,0,0,0.0,3.8,14.9,Orta Ömürlü / Medium-lived
+89,Hârezmşahlar,The Khwārazm Shāhs,0,7,18.3,0.5,2,0.8,0,0,0,0,96.2,27.7,Kısa Ömürlü / Short-lived
+90,Karahanlılar,The Qarakhanids,220,5,15.0,1.0,0,0.0,0,0,0,0.0,90.6,40.6,Uzun Ömürlü / Long-lived
+91,Selçuklular,The Seljuqs,156,6,22.5,0.5,3,0.4,3,0.67,3,1.92,145.3,74.6,Uzun Ömürlü / Long-lived
+92,Börîler (Büridîler),The Börids or Būrids,50,3,14.3,1.0,0,0.0,0,0,0,0.0,15.1,9.5,Kısa Ömürlü / Short-lived
+93,Zengîler,The Zangids,123,4,18.0,0.5,1,0.33,0,0,0,0.0,141.5,39.3,Orta Ömürlü / Medium-lived
+94,Begteginîler,The Begtiginids,89,2,33.5,1.0,0,0.5,2,0.5,2,2.25,84.9,39.9,Orta Ömürlü / Medium-lived
+95,Lu'lu'îler,The Lu'lu'ids,28,1,25.0,1.0,0,0.0,0,0,0,0.0,42.5,11.8,Kısa Ömürlü / Short-lived
+96,Artukîler (Artuklular),The Artuqids,306,4,32.0,1.0,0,0.0,0,0,0,0.0,79.3,37.9,Uzun Ömürlü / Long-lived
+97,Şâh-ı Armenîler (Sökmenliler),The Shāh-i Armanids,107,2,6.5,0,0,0.0,0,0,0,0.0,101.9,32.1,Orta Ömürlü / Medium-lived
+98,Ahmedîlîler,The Ahmadīlīs,94,1,17.0,0,0,0.0,0,0,0,0.0,61.3,17.2,Orta Ömürlü / Medium-lived
+99,İldenizliler (Eldigüzlüler),The Eldigüzids or Ildegizids,88,3,27.7,1.0,0,0.5,0,0,0,0.0,93.4,29.0,Orta Ömürlü / Medium-lived
+100,Bâdûspânîler,The Bādūspānids,902,1,902.0,0,0,0.0,0,0,0,0.0,6.6,21.8,Çok Uzun Ömürlü / Very Long-lived
+101,İran Nizârî İsmâilîleri (Haşşâşîn),The Nizārī Ismā'īlīs or Assassins in Persia,166,3,13.0,0.33,2,0.0,0,0,0,0.0,14.2,20.9,Uzun Ömürlü / Long-lived
+102,Hazâraspîler,The Hazāraspids,269,2,41.5,0,0,0.0,0,0,0,0.0,5.7,22.1,Uzun Ömürlü / Long-lived
+103,Salgurîler (Fars Atabekleri),The Salghurids,122,2,19.5,1.0,0,0.0,0,0,1,0.82,90.6,41.3,Orta Ömürlü / Medium-lived
+104,Yezd Atabekleri,The Atabegs of Yazd,177,1,177.0,0,0,0.0,0,0,0,0.0,7.1,14.6,Uzun Ömürlü / Long-lived
+105,Kutlughanîler,The Qutlughkhānids,81,2,13.5,0,0,0.0,0,0,0,0.0,15.1,12.1,Orta Ömürlü / Medium-lived
+106,Nimrûz Melikleri,The Maliks of Nimrūz,525,2,21.0,0,0,0.0,0,0,0,0.0,66.0,34.2,Çok Uzun Ömürlü / Very Long-lived
+107,Anadolu Selçukluları (Rûm Selçukluları),The Seljuqs of Rūm,230,5,9.2,0.4,3,0.75,0,0,0,0.0,254.7,47.5,Uzun Ömürlü / Long-lived
+108,Dânişmendliler,The Dānishmendids,107,2,31.5,0,0,0.5,1,1.0,0,0.0,196.2,39.7,Orta Ömürlü / Medium-lived
+109,Mengücekliler,The Mengüjekids,181,2,24.0,0,0,0.0,0,0,0,0.0,67.9,32.7,Uzun Ömürlü / Long-lived
+110,Saltuklular,The Saltuqids,131,2,26.0,0,0,0.0,0,0,0,0.0,268.9,39.1,Orta Ömürlü / Medium-lived
+111,Karasi Oğulları,The Qarasi (Karasi) Oghullari,63,1,33.0,0,0,0.0,0,0,0,0.0,268.9,26.8,Orta Ömürlü / Medium-lived
+112,Saruhanoğulları,The Sarukhan Oghullari,100,1,35.0,0,0,0.0,0,0,0,0.0,13.2,13.1,Orta Ömürlü / Medium-lived
+113,Aydınoğulları,The Aydın Oghullari,118,2,20.0,0.0,1,0.5,0,0,0,0.0,15.1,15.8,Orta Ömürlü / Medium-lived
+114,Menteşeoğulları,The Menteshe Oghullari,143,1,0,0,0,0.0,0,0,1,0.7,5.7,20.9,Orta Ömürlü / Medium-lived
+115,İnançoğulları,The Inanj Oghullari,107,1,107.0,0,0,0.0,0,0,0,0.0,2.8,6.8,Orta Ömürlü / Medium-lived
+116,Germiyanoğulları,The Germiyan Oghullari,129,1,41.0,0,0,0.0,0,0,0,0.0,4.7,14.3,Orta Ömürlü / Medium-lived
+117,Sâhib Ataoğulları,The Sāhib Atā Oghullari,64,1,11.0,0,0,0.0,0,0,0,0.0,21.5,6.2,Orta Ömürlü / Medium-lived
+118,Hamidoğulları ve Teke Oğulları,The Hamid Oghullari and the Tekke Oghullari,122,1,23.0,0,0,0.0,0,0,0,0.0,17.0,16.1,Orta Ömürlü / Medium-lived
+119,Alanya Beyleri,The Beys of Alanya,141,1,141.0,0,0,0.0,0,0,0,0.0,11.3,11.9,Orta Ömürlü / Medium-lived
+120,Eşrefoğulları,The Ashraf (Eshref) Oghullari,40,1,40.0,0,0,0.0,0,0,0,0.0,5.7,0.6,Kısa Ömürlü / Short-lived
+121,Candaroğulları (İsfendiyâroğulları),The Jāndār Oghullari or Isfandiyār Oghullari,169,2,36.0,0,0,0.0,0,0,0,0.0,30.2,23.9,Uzun Ömürlü / Long-lived
+122,Pervâneoğulları,The Parwāna Oghullari,46,1,19.0,0,0,0.0,0,0,0,0.0,5.0,1.1,Kısa Ömürlü / Short-lived
+123,Çobanoğulları,The Chobān Oghullari,36,1,18.0,0,0,0.0,0,0,0,0.0,14.2,1.9,Kısa Ömürlü / Short-lived
+124,Karamanoğulları,The Qaramān Oghullari or Qaramānids,227,3,21.7,0.0,1,0.0,0,0,0,0.0,75.5,36.6,Uzun Ömürlü / Long-lived
+125,Eretnaoğulları,The Eretna Oghullari,46,1,17.0,1.0,0,0.0,0,0,0,0.0,14.2,7.9,Kısa Ömürlü / Short-lived
+126,Kadı Burhâneddin Oğulları,The Qādī Burhān al-Dīn Oghullari,17,1,17.0,0.0,1,0.0,0,0,0,0.0,6.6,3.5,Kısa Ömürlü / Short-lived
+127,Tâceddinoğulları,The Tāj al-Dīn Oghullari,79,1,79.0,0,0,0.0,0,0,0,0.0,5.7,4.5,Orta Ömürlü / Medium-lived
+128,Ramazanoğulları,The Ramadān Oghullari,232,2,18.0,0,0,0.0,0,0,0,0.0,3.8,21.8,Uzun Ömürlü / Long-lived
+129,Dulkadiroğulları (Zülkadirîler),The Dulghadir Oghullari or Dhū 'l-Qadrids,183,2,28.5,0.0,1,0.0,0,0,0,0.0,9.4,21.2,Uzun Ömürlü / Long-lived
+130,Osmanlılar,The Ottomans or Osmanlıs,622,8,23.4,0.75,1,0.83,16,0.81,5,0.8,12.7,63.7,Çok Uzun Ömürlü / Very Long-lived
+131,Moğollar (Cengizîler) — Büyük Hanlar,"The Mongol Great Khāns (Ögedey and Toluy descendants, later Yüan Dynasty)",164,4,18.5,1.0,0,0.33,0,0,0,0.0,9.4,20.3,Uzun Ömürlü / Long-lived
+132,Çağataylılar,The Chaghatayids,0,3,10.3,0.0,1,0.0,0,0,0,0,8.5,3.2,Kısa Ömürlü / Short-lived
+133,İlhanlılar,The Il Khānids (descendants of Hülegü),99,4,12.2,1.0,0,0.33,0,0,2,2.02,9.4,23.8,Orta Ömürlü / Medium-lived
+134,Altın Orda Hanları (Cuci oğulları),The Khāns of the Golden Horde (Jochi descendants),278,4,22.0,0.67,1,0.0,0,0,0,0.0,5.7,28.1,Uzun Ömürlü / Long-lived
+135,Kırım Giray Hanları,The Giray Khāns of the Crimea,355,3,29.7,1.0,0,0.5,0,0,0,0.0,8.5,23.2,Uzun Ömürlü / Long-lived
+136,Astrahan (Ejderhan) Hanları,The Khāns of Astrakhan,90,2,0,0,0,0.0,0,0,0,0.0,9.4,6.9,Orta Ömürlü / Medium-lived
+137,Kazan Hanları,The Khāns of Kazan,114,2,7.0,0,0,0.0,0,0,0,0.0,127.4,37.4,Orta Ömürlü / Medium-lived
+138,Kāsımov Hanları,The Khāns of Qāsimov,229,2,35.5,0,0,0.0,0,0,0,0.0,101.9,41.4,Uzun Ömürlü / Long-lived
+139,Kurtlar (Kartlar),The Karts or Kurts,144,2,26.0,0.5,1,0.0,0,0,0,0.0,490.6,40.4,Orta Ömürlü / Medium-lived
+140,Muzafferîler,The Muzaffarids,79,2,35.0,1.0,0,0.5,0,0,0,0.0,169.8,33.9,Orta Ömürlü / Medium-lived
+141,İncûîler,The Inju'ids,32,2,14.0,0.0,2,0.0,0,0,0,0.0,26.4,4.5,Kısa Ömürlü / Short-lived
+142,Celâyirliler,The Jalayirids,96,2,24.0,0.5,1,0.0,0,0,0,0.0,11.3,12.9,Orta Ömürlü / Medium-lived
+143,Serbedârîler,The Sarbadārids,44,1,3.0,0.0,1,0.0,0,0,0,0.0,26.4,10.2,Kısa Ömürlü / Short-lived
+144,Timurlular,The Tīmūrids,137,4,28.8,0.75,1,0.67,0,0,2,1.46,94.3,54.6,Orta Ömürlü / Medium-lived
+145,Karakoyunlular,The Qara Qoyunlu,89,2,30.0,0.5,1,1.0,0,0,0,0.0,112.3,32.4,Orta Ömürlü / Medium-lived
+146,Akkoyunlular,The Āq Qoyunlu,130,2,16.5,1.0,0,0.5,0,0,0,0.0,56.6,25.3,Orta Ömürlü / Medium-lived
+147,Müşa'şa'îler,The Musha'sha'ids,288,1,26.0,0,0,0.0,0,0,0,0.0,56.6,31.8,Uzun Ömürlü / Long-lived
+148,Safevîler,The Safavids,235,3,31.0,0.67,1,0.5,0,0,0,0.0,51.9,41.9,Uzun Ömürlü / Long-lived
+149,Afşarlar,The Afshārids,59,1,11.0,0.0,1,0.0,0,0,0,0.0,51.9,16.8,Orta Ömürlü / Medium-lived
+150,Zendler,The Zands,44,1,29.0,1.0,0,0.0,0,0,0,0.0,28.3,10.6,Kısa Ömürlü / Short-lived
+151,Kaçarlar,The Qājārs,146,3,27.3,0.0,2,0.5,0,0,0,0.0,17.0,19.5,Orta Ömürlü / Medium-lived
+152,Pehlevîler,The Pahlawīs,54,2,27.0,0.0,0,0.5,1,1.0,0,0.0,90.6,27.5,Orta Ömürlü / Medium-lived
+153,Şeybânîler (Ebü'l-Hayrîler),The Shībānids (Shaybanids) or Abū 'l-Khayrids,99,2,12.5,0.5,1,0.0,0,0,0,0.0,90.6,34.0,Orta Ömürlü / Medium-lived
+154,Cânîler (Tokaytimurîler / Aştarhânîler),The Toqay Temūrids or Jānids or Ashtarkhānids,148,3,24.3,0.0,1,0.0,0,0,0,0.0,47.2,25.7,Orta Ömürlü / Medium-lived
+155,Mangıtlar (Buhara Emîrleri),The Mangīts,173,3,17.3,0.0,1,0.5,0,0,0,0.0,28.3,24.5,Uzun Ömürlü / Long-lived
+156,Kongratlar (İnakîler / Hive Hanları),The Qungrats or Inaqids,116,3,16.3,0.0,1,0.0,0,0,0,0.0,23.6,17.8,Orta Ömürlü / Medium-lived
+157,Mingler (Hokand Hanları),The Mings,166,3,18.7,0.0,1,0.0,0,0,0,0.0,11.3,20.4,Uzun Ömürlü / Long-lived
+158,Gazneliler,The Ghaznawids,209,3,26.3,1.0,0,0.5,0,0,2,0.96,176.4,56.5,Uzun Ömürlü / Long-lived
+159,Gurlular (Gûrîler),The Ghūrids,215,2,22.5,0.0,1,0.0,0,0,0,0.0,509.5,46.0,Uzun Ömürlü / Long-lived
+160,Delhi Sultanları,The Delhi Sultans,349,5,17.0,0.8,1,0.33,0,0,0,0.0,226.4,57.5,Uzun Ömürlü / Long-lived
+161,Bengal Sultanları ve Valileri,The Governors and Sultans of Bengal,373,1,16.0,0,0,0.0,0,0,0,0.0,31.1,31.7,Uzun Ömürlü / Long-lived
+162,Keşmir Sultanları,The Sultans of Kashmir,247,1,50.0,0,0,0.0,0,0,0,0.0,5.7,21.6,Uzun Ömürlü / Long-lived
+163,Gücerat Sultanları,The Sultans of Gujarat,192,1,31.0,0,0,0.0,0,0,0,0.0,28.3,25.4,Uzun Ömürlü / Long-lived
+164,Cevnpûr Şarkî Sultanları,The Shargī Sultans of Jawnpur,82,1,38.0,0,0,0.0,0,0,0,0.0,18.9,7.5,Orta Ömürlü / Medium-lived
+165,Mâlva Sultanları,The Sultans and Rulers of Mālwa,172,1,33.0,0,0,0.0,1,1.0,0,0.0,14.9,23.7,Uzun Ömürlü / Long-lived
+166,Ma'bar (Madura) Sultanları,The Sultans of Ma'bar or Madura,43,1,5.0,0,0,0.0,0,0,0,0.0,16.5,8.1,Kısa Ömürlü / Short-lived
+167,Bahmânîler,The Bahmanids,171,2,12.0,1.0,0,0.0,0,0,0,0.0,22.6,22.6,Uzun Ömürlü / Long-lived
+168,Hândeş Fârûkî Hükümdarları,The Fārūqī Rulers of Khāndesh,221,1,19.0,0,0,0.0,0,0,0,0.0,7.1,21.9,Uzun Ömürlü / Long-lived
+169,Berîdşâhîler,The Barīd Shāhīs,131,1,16.0,0,0,0.0,0,0,0,0.0,2.8,14.2,Orta Ömürlü / Medium-lived
+170,Âdilşâhîler,The 'Ādil Shāhīs,196,1,47.0,0,0,0.0,0,0,0,0.0,14.2,22.9,Uzun Ömürlü / Long-lived
+171,Nizâmşâhîler,The Nizām Shāhīs,146,1,44.0,0,0,0.0,0,0,0,0.0,6.6,16.4,Orta Ömürlü / Medium-lived
+172,İmâdşâhîler,The 'Imād Shāhīs,84,1,14.0,0,0,0.0,0,0,0,0.0,3.8,4.7,Orta Ömürlü / Medium-lived
+173,Kutubşâhîler,The Qutb Shāhīs,197,1,32.0,0,0,0.0,0,0,0,0.0,22.6,24.7,Uzun Ömürlü / Long-lived
+174,Argunîler ve Tarhânîler,The Arghūns and Tarkhāns,74,1,5.0,0,0,0.0,0,0,0,0.0,18.9,11.7,Orta Ömürlü / Medium-lived
+175,Bâbürlüler (Moğol İmparatorları),The Mughal Emperors,332,5,30.6,0.6,0,0.75,1,1.0,0,0.0,19.8,39.5,Uzun Ömürlü / Long-lived
+176,Bengal Nevvâb-Vezirleri,The Nawwāb-Viziers and Nawwāb-Nāzims of Bengal,177,1,1.0,0.0,1,0.0,0,0,0,0.0,30.2,24.2,Uzun Ömürlü / Long-lived
+177,Avadh (Oudh) Nevvâb-Vezirleri ve Kralları,The Nawwāb-Viziers and Kings of Oudh (Awadh),134,1,17.0,0,0,0.0,0,0,0,0.0,60.4,26.0,Orta Ömürlü / Medium-lived
+178,Haydarâbâd Nizâmları,The Nāzims of Hyderabad,224,2,30.5,1.0,0,0.0,0,0,0,0.0,585.9,46.0,Uzun Ömürlü / Long-lived
+179,Mysore Müslüman Hükümdarları,The Muslim Rulers in Mysore,38,2,19.0,0.5,1,0.5,0,0,0,0.0,31.1,11.0,Kısa Ömürlü / Short-lived
+180,Afganistan Dürrânî ve Bârekzây Hükümdarları,The Abdālī or Durrānī Rulers and Kings of Afghanistan,226,3,34.3,1.0,0,0.5,0,0,0,0.0,23.6,26.2,Uzun Ömürlü / Long-lived
+181,Malakka (Melaka) Sultanları,The Rulers of Malacca (Melaka),109,3,21.0,0,0,0.0,0,0,0,0.0,49.1,22.2,Orta Ömürlü / Medium-lived
+182,Açe Sultanları,"The Sultans of Acheh (Atjēh, Aceh)",403,3,31.0,0,0,0.0,0,0,0,0.0,52.8,37.1,Çok Uzun Ömürlü / Very Long-lived
+183,Mataram Sultanları,The Rulers of Mataram,169,2,24.0,0,0,0.0,0,0,0,0.0,18.9,26.7,Uzun Ömürlü / Long-lived
+184,Surakarta Susuhunan'ları,The Susuhunans of Surakarta,190,2,46.0,1.0,0,0.0,0,0,0,0.0,17.0,23.4,Uzun Ömürlü / Long-lived
+185,Yogyakarta Sultanları,The Sultans of Jogjakarta,271,2,42.5,1.0,0,0.0,0,0,0,0.0,15.1,24.0,Uzun Ömürlü / Long-lived
+186,Brunei Sultanları,The Sultans of Brunei,663,3,44.7,0,0,0.5,0,0,0,0.0,14.2,29.3,Çok Uzun Ömürlü / Very Long-lived

@@ -1,0 +1,51 @@
+﻿event_id,name_tr,name_en,date_ce,date_hijri,lat,lon,location_tr,dynasty_id,category,significance,description
+1,Hicret,The Hijra,622,1,24.47,39.61,Mekke → Medine,,Dini,Kritik,İslam takviminin başlangıcı; Medine'de ilk İslam devleti
+2,Kur'ân-ı Kerîm'in Mushaf Haline Getirilmesi,Compilation of the Quran,650,30,24.47,39.61,Medine,1,Dini,Kritik,Hz. Osman döneminde Kur'an'ın standart mushaf haline getirilmesi
+3,Kudüs'ün Fethi,Conquest of Jerusalem,637,16,31.77,35.23,Kudüs (al-Quds),1,Siyasi,Kritik,Hz. Ömer Kudüs'ü teslim aldı; Ömeriye Ahidnamesi
+4,Mısır'ın Fethi,Conquest of Egypt,641,20,30.01,31.23,"Fustat, Mısır",1,Siyasi,Kritik,Amr b. el-Âs'ın Mısır'ı fethi; Fustat şehrinin kurulması
+5,Dîvân Sisteminin Kurulması,Establishment of the Diwan,637,15,24.47,39.61,Medine,1,Hukuki,Yüksek,Hz. Ömer'in mali ve idari kayıt sistemi
+6,Emevî Camii İnşası,Construction of Umayyad Mosque,715,96,33.51,36.31,Şam (Damascus),2,Mimari,Yüksek,İslam mimarisinin ilk büyük başyapıtlarından; Velîd I döneminde
+7,Kubbetü's-Sahra İnşası,Dome of the Rock Construction,691,72,31.78,35.24,Kudüs,2,Mimari,Kritik,Abdülmelik b. Mervân; İslam'ın ilk büyük anıtsal yapısı
+8,Arap Dili Resmî Dil Oldu,Arabization of Administration,696,77,33.51,36.31,Şam,2,Hukuki,Yüksek,Abdülmelik döneminde dîvân dili Arapça'ya çevrildi
+9,İslam Sikke Reformu,Islamic Coinage Reform,696,77,33.51,36.31,Şam,2,Ekonomik,Yüksek,İlk tamamen İslamî altın ve gümüş sikkeler basıldı
+10,Endülüs'ün Fethi,Conquest of al-Andalus,711,92,36.13,-5.35,Cebel-i Târık (Gibraltar),2,Siyasi,Kritik,Târık b. Ziyâd; İslam'ın İber Yarımadası'na girişi
+11,Bağdat'ın Kuruluşu,Foundation of Baghdad,762,145,33.31,44.37,Bağdat (Medinetü's-Selam),3,Mimari,Kritik,Mansûr tarafından 'Yuvarlak Şehir' olarak inşa edildi
+12,Beytü'l-Hikme'nin Kurulması,Foundation of the House of Wisdom,830,215,33.31,44.37,Bağdat,3,Bilimsel,Kritik,"Me'mûn döneminde; Yunan, Farsça, Hintçe eserlerin tercümesi"
+13,el-Hârizmî'nin Cebir Kitabı,Al-Khwarizmi's Algebra,830,215,33.31,44.37,Bağdat,3,Bilimsel,Kritik,Cebir biliminin temeli; 'algoritma' kelimesinin kökeni
+14,Sâmarrâ Şehrinin Kuruluşu,Foundation of Samarra,836,221,34.2,43.87,"Sâmarrâ, Irak",3,Mimari,Yüksek,Mu'tasım tarafından yeni başkent; Melviye Minaresi
+15,Mihne (Kur'an'ın Mahlûk Olduğu İnancı Testi),The Mihna,833,218,33.31,44.37,Bağdat,3,Dini,Yüksek,Me'mûn'un Mu'tezile doktrini dayatması; Ahmed b. Hanbel'in direnişi
+16,Abbâsî Hilafetinin Zayıflaması — Büveyhî Kontrolü,Buyid Capture of Baghdad,945,334,33.31,44.37,Bağdat,82,Siyasi,Kritik,Şiî Büveyhîler Bağdat'ı kontrol altına aldı; halife sembolik kaldı
+17,Kahire'nin Kuruluşu,Foundation of Cairo,969,358,30.04,31.24,Kahire (al-Qāhira),27,Mimari,Kritik,Fâtımî komutanı Cevher es-Sıkıllî tarafından kuruldu
+18,el-Ezher Üniversitesi'nin Kuruluşu,Foundation of al-Azhar,970,359,30.05,31.26,Kahire,27,Bilimsel,Kritik,Dünyanın en eski üniversitelerinden biri; hâlâ faal
+19,Dâru'l-Hikme (Kahire),Foundation of Dar al-Hikma,1005,395,30.04,31.24,Kahire,27,Bilimsel,Yüksek,el-Hâkim döneminde kurulan İsmâilî bilim merkezi
+20,Nizâmiye Medreseleri,Foundation of Nizamiyyah Madrasas,1065,457,33.31,44.37,Bağdat (ve diğer şehirler),91,Bilimsel,Kritik,Nizâmülmülk; sistematik medrese eğitiminin başlangıcı
+21,I. Haçlı Seferi — Kudüs'ün Kaybı,First Crusade — Fall of Jerusalem,1099,492,31.77,35.23,Kudüs,27,Siyasi,Kritik,Haçlılar Kudüs'ü ele geçirdi; İslam dünyasında şok
+22,Kudüs'ün Geri Alınması,Reconquest of Jerusalem,1187,583,31.77,35.23,Kudüs,30,Siyasi,Kritik,Salâhaddîn Eyyûbî 88 yıl sonra Kudüs'ü geri aldı
+23,Merâga Rasathanesi,Maragha Observatory,1259,657,37.39,46.22,"Merâga, Azerbaycan",133,Bilimsel,Kritik,Nasîrüddîn Tûsî; İslam astronomisinin zirvesi
+24,Bağdat Kütüphanelerinin Yıkımı,Destruction of Baghdad Libraries,1258,656,33.31,44.37,Bağdat,,Felaket,Kritik,Moğol istilası; yüz binlerce eser Dicle'ye atıldı
+25,Kara Veba (İslam Dünyası),Black Death in Islamic World,1348,749,30.04,31.24,Mısır/Suriye merkez,31,Felaket,Kritik,Nüfusun %30-40'ı öldü; Memlûk gücü zayıfladı
+26,Semerkant Rasathanesi,Ulugh Beg Observatory,1420,823,39.67,66.98,Semerkant,144,Bilimsel,Kritik,Uluğ Bey; yıldız kataloğu 1000+ yıldız; trigonometri tabloları
+27,Herat Edebiyat Meclisi,Herat Literary Circle,1470,875,34.35,62.2,"Herat, Horasan",144,Kültürel,Yüksek,Hüseyin Baykara ve Ali Şîr Nevâî; Çağatay edebiyatının zirvesi
+28,Süleymaniye Camii İnşası,Construction of Suleymaniye Mosque,1557,964,41.02,28.96,İstanbul,130,Mimari,Yüksek,Mimar Sinan'ın başyapıtı; Osmanlı mimarisinin zirvesi
+29,Osmanlı Matbaası (İbrahim Müteferrika),First Ottoman Printing Press,1729,1141,41.01,28.98,İstanbul,130,Bilimsel,Yüksek,Osmanlı'da ilk Arap harfli matbaa; bilgi yayılımı
+30,Tanzimat Fermanı,Tanzimat Edict,1839,1255,41.01,28.98,İstanbul,130,Hukuki,Kritik,Osmanlı modernleşme reformlarının başlangıcı
+31,I. Meşrutiyet,First Ottoman Constitution,1876,1293,41.01,28.98,İstanbul,130,Hukuki,Yüksek,Mithat Paşa; Kanun-i Esasi; ilk anayasa ve parlamento
+32,Osmanlı'nın Yıkılışı / Hilafet'in Kaldırılması,Abolition of the Caliphate,1924,1342,39.93,32.85,"Ankara, Türkiye",130,Siyasi,Kritik,1400 yıllık hilafet kurumunun sonu
+33,İran'da Şiîliğin Resmî Mezhep Olması,Twelver Shiism as State Religion,1501,907,38.08,46.29,Tebriz,148,Dini,Kritik,Şah İsmail; İran'ın kimliğini belirleyen dönüm noktası
+34,İsfahan — Nakş-ı Cihan Meydanı,Naqsh-e Jahan Square,1598,1006,32.66,51.68,İsfahan,148,Mimari,Yüksek,Şah Abbas; UNESCO Dünya Mirası; İsfahan'ın altın çağı
+35,Tâc Mahal İnşası,Construction of Taj Mahal,1643,1053,27.17,78.04,"Agra, Hindistan",175,Mimari,Kritik,Şah Cihan; dünyanın en ünlü yapılarından biri
+36,Ekber'in Dîn-i İlâhî'si,Akbar's Din-i-Ilahi,1582,990,27.18,78.02,Fetihpûr Sikri,175,Dini,Yüksek,Ekber Şah'ın dinler arası diyalog denemesi
+37,Timbuktu — Sankore Medresesi Altın Çağı,Golden Age of Sankore,1450,854,16.77,-3.01,"Timbuktu, Mali",58,Bilimsel,Yüksek,25.000 öğrenci; yüz binlerce el yazması; Batı Afrika'nın entelektüel merkezi
+38,Kurtuba Camii İnşası,Great Mosque of Cordoba,785,169,37.88,-4.78,Kurtuba (Córdoba),4,Mimari,Kritik,İslam İspanyası'nın simgesi; UNESCO Dünya Mirası
+39,Medinetüzzehrâ Sarayı,Madinat al-Zahra Palace City,936,324,37.88,-4.87,Kurtuba yakını,4,Mimari,Yüksek,III. Abdurrahman'ın saray şehri; İslam medeniyetinin ihtişamı
+40,Endülüs'te Tercüme Hareketi,Toledo Translation Movement,1150,545,39.86,-4.02,Tuleytula (Toledo),,Bilimsel,Kritik,Arapça eserlerin Latince'ye çevirisi; Avrupa Rönesansı'nın temeli
+41,Malakka Sultanliği'nın Kuruluşu,Foundation of Malacca Sultanate,1400,802,2.2,102.25,Malakka,181,Siyasi,Yüksek,Güneydoğu Asya'da İslam'ın yayılmasında kritik rol
+42,Portekiz'in Malakka'yı İşgali,Portuguese Conquest of Malacca,1511,917,2.2,102.25,Malakka,181,Siyasi,Kritik,Avrupa sömürgeciliğinin Güneydoğu Asya'ya girişi
+43,Napolyon'un Mısır Seferi,Napoleon's Expedition to Egypt,1798,1213,30.04,31.24,Kahire,,Siyasi,Kritik,İslam dünyasının Batı modernizasyonuyla karşılaşması
+44,Vehhâbî Hareketi,Wahhabi Movement,1744,1157,24.63,46.72,"Dir'iyye, Necd",55,Dini,Yüksek,Muhammed b. Abdülvehhâb ve Suud ittifakı; modern Suudi devletinin temeli
+45,Süveyş Kanalı Açılışı,Opening of Suez Canal,1869,1286,30.46,32.34,"İsmailiye, Mısır",,Ekonomik,Kritik,Dünya ticaretinin dönüşümü; Mısır'ın stratejik öneminin artması
+46,İbn Haldûn'un Mukaddime'si,Ibn Khaldun's Muqaddimah,1377,779,36.8,10.18,Tunus,,Bilimsel,Kritik,Tarih felsefesi ve sosyolojinin temeli
+47,Mekke'nin Fethi,Conquest of Mecca,630,8,21.42,39.83,Mekke,,Siyasi,Kritik,Hz. Peygamber'in Mekke'yi kansız fethederek İslam'ın zaferini ilan etmesi
+48,Kâğıt Üretiminin İslam Dünyasına Girişi,Paper Production in Islamic World,751,134,39.65,66.96,Semerkant,3,Bilimsel,Yüksek,Talas Savaşı sonrası Çin'den gelen kâğıt teknolojisi; bilgi devrimi
+49,İbn Sînâ'nın el-Kānûn fî't-Tıbb'ı,Avicenna's Canon of Medicine,1025,416,32.65,51.68,İsfahan/Hamedan,82,Bilimsel,Kritik,600 yıl boyunca Avrupa ve İslam dünyasında temel tıp kitabı
+50,el-İdrîsî'nin Dünya Haritası,Al-Idrisi's World Map,1154,549,38.12,13.36,"Palermo, Sicilya",12,Bilimsel,Yüksek,Ortaçağın en gelişmiş dünya haritası; Roger II için hazırlandı

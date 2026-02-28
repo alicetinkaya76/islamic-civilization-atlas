@@ -1,0 +1,70 @@
+﻿city_id,name_tr,name_en,lat,lon,year_ce,population_estimate,dynasty_id,role_tr,role_en
+1,Bağdat,Baghdad,33.31,44.37,800,1000000,3,Hilafet başkenti,Caliphate capital
+1,Bağdat,Baghdad,33.31,44.37,1000,500000,82,Büveyhî kontrolünde,Under Buyid control
+1,Bağdat,Baghdad,33.31,44.37,1200,300000,3,Geç Abbâsî,Late Abbasid
+1,Bağdat,Baghdad,33.31,44.37,1258,50000,,Moğol yıkımı sonrası,After Mongol destruction
+1,Bağdat,Baghdad,33.31,44.37,1400,100000,106,Timurlu/Celayirli,Timurid/Jalairid
+1,Bağdat,Baghdad,33.31,44.37,1600,150000,124,Osmanlı vilayeti,Ottoman province
+2,Kahire,Cairo,30.04,31.24,970,200000,27,Fâtımî başkenti,Fatimid capital
+2,Kahire,Cairo,30.04,31.24,1200,400000,28,Eyyûbî başkenti,Ayyubid capital
+2,Kahire,Cairo,30.04,31.24,1340,600000,30,Memlûk zirvesi,Mamluk peak
+2,Kahire,Cairo,30.04,31.24,1400,300000,31,Veba sonrası,After plague
+2,Kahire,Cairo,30.04,31.24,1600,400000,124,Osmanlı vilayeti,Ottoman province
+2,Kahire,Cairo,30.04,31.24,1800,300000,124,Napolyon öncesi,Before Napoleon
+3,Kurtuba,Córdoba,37.88,-4.78,800,200000,4,Emevî başkenti,Umayyad capital
+3,Kurtuba,Córdoba,37.88,-4.78,1000,500000,4,Avrupa'nın en büyük şehri,Largest city in Europe
+3,Kurtuba,Córdoba,37.88,-4.78,1100,100000,14,Murâbıtlar dönemi,Almoravid period
+4,İstanbul (Konstantinopolis),Istanbul (Constantinople),41.01,28.98,1453,50000,124,Fetih sonrası,After conquest
+4,İstanbul (Konstantinopolis),Istanbul (Constantinople),41.01,28.98,1500,200000,124,Osmanlı başkenti,Ottoman capital
+4,İstanbul (Konstantinopolis),Istanbul (Constantinople),41.01,28.98,1600,700000,124,Dünyanın en büyük şehri,World's largest city
+4,İstanbul (Konstantinopolis),Istanbul (Constantinople),41.01,28.98,1800,500000,124,Gerileme dönemi,Period of decline
+5,Semerkant,Samarkand,39.65,66.96,900,200000,89,Sâmânî başkenti,Samanid capital
+5,Semerkant,Samarkand,39.65,66.96,1200,100000,96,Harezmşâh dönemi,Khwarazmshah period
+5,Semerkant,Samarkand,39.65,66.96,1220,20000,,Moğol yıkımı sonrası,After Mongol destruction
+5,Semerkant,Samarkand,39.65,66.96,1400,300000,106,Timurlu başkenti; dünyanın zirvesi,Timurid capital; world's pinnacle
+5,Semerkant,Samarkand,39.65,66.96,1500,150000,147,Şeybânî dönemi,Shaybanid period
+6,İsfahan,Isfahan,32.66,51.68,1050,200000,91,Selçuklu başkenti,Seljuq capital
+6,İsfahan,Isfahan,32.66,51.68,1600,600000,107,Safevî başkenti; Nesf-ı Cihân,Safavid capital; Half the World
+6,İsfahan,Isfahan,32.66,51.68,1722,100000,108,Afgan istilası sonrası,After Afghan invasion
+7,Şam,Damascus,33.51,36.29,700,350000,2,Emevî başkenti,Umayyad capital
+7,Şam,Damascus,33.51,36.29,1000,100000,27,Fâtımî kontrolü,Fatimid control
+7,Şam,Damascus,33.51,36.29,1200,150000,28,Eyyûbî dönemi,Ayyubid period
+7,Şam,Damascus,33.51,36.29,1400,100000,106,Timur yıkımı sonrası,After Timurid destruction
+7,Şam,Damascus,33.51,36.29,1600,120000,124,Osmanlı vilayeti,Ottoman province
+8,Fez,Fez,34.03,-5.0,900,150000,8,İdrîsî başkenti,Idrisid capital
+8,Fez,Fez,34.03,-5.0,1200,200000,15,Muvahhidler dönemi,Almohad period
+8,Fez,Fez,34.03,-5.0,1400,150000,16,Merînî başkenti,Marinid capital
+8,Fez,Fez,34.03,-5.0,1600,100000,20,Sa'dî dönemi,Saadian period
+9,Delhi,Delhi,28.61,77.21,1200,100000,158,Sultanlık başkenti,Sultanate capital
+9,Delhi,Delhi,28.61,77.21,1340,400000,159,Tuğluklu zirvesi,Tughluq peak
+9,Delhi,Delhi,28.61,77.21,1400,100000,106,Timur yıkımı sonrası,After Timurid destruction
+9,Delhi,Delhi,28.61,77.21,1600,500000,178,Bâbürlü başkenti,Mughal capital
+9,Delhi,Delhi,28.61,77.21,1700,600000,178,Şah Cihânâbâd,Shahjahanabad
+10,Timbuktu,Timbuktu,16.77,-3.01,1300,50000,58,Mali dönemi,Mali period
+10,Timbuktu,Timbuktu,16.77,-3.01,1450,100000,59,Songay dönemi; entelektüel zirve,Songhai period; intellectual peak
+10,Timbuktu,Timbuktu,16.77,-3.01,1600,50000,20,Sa'dî işgali sonrası,After Saadian occupation
+11,Merakeş,Marrakesh,31.63,-8.01,1100,200000,14,Murâbıtlar başkenti,Almoravid capital
+11,Merakeş,Marrakesh,31.63,-8.01,1200,250000,15,Muvahhidler başkenti,Almohad capital
+11,Merakeş,Marrakesh,31.63,-8.01,1600,150000,20,Sa'dî başkenti,Saadian capital
+12,Basra,Basra,30.51,47.81,700,200000,2,Emevî garnizonu; ticaret merkezi,Umayyad garrison; trade center
+12,Basra,Basra,30.51,47.81,800,300000,3,Abbâsî dönemi; deniz ticareti,Abbasid period; maritime trade
+12,Basra,Basra,30.51,47.81,1200,50000,3,Gerileme,Decline
+13,Kûfe,Kufa,32.03,44.4,670,200000,1,Râşidûn garnizonu,Rashidun garrison
+13,Kûfe,Kufa,32.03,44.4,700,300000,2,Emevî dönemi,Umayyad period
+13,Kûfe,Kufa,32.03,44.4,900,100000,3,Bağdat'a göç,Migration to Baghdad
+14,Gırnata,Granada,37.18,-3.59,1300,150000,7,Nasrî başkenti; son İslam kalesi,Nasrid capital; last Islamic stronghold
+14,Gırnata,Granada,37.18,-3.59,1400,200000,7,Nasrî zirvesi,Nasrid peak
+15,Agra,Agra,27.18,78.02,1565,500000,178,Ekber dönemi,Akbar period
+15,Agra,Agra,27.18,78.02,1650,700000,178,Şah Cihan dönemi; dünyanın en büyük şehirlerinden,Shah Jahan period; one of world's largest cities
+16,Medine,Medina,24.47,39.61,630,20000,,Hz. Peygamber dönemi,Prophet's era
+16,Medine,Medina,24.47,39.61,700,50000,2,Emevî dönemi,Umayyad period
+16,Medine,Medina,24.47,39.61,1600,30000,124,Osmanlı dönemi,Ottoman period
+17,Halep,Aleppo,36.2,37.15,950,100000,34,Hamdânî başkenti,Hamdanid capital
+17,Halep,Aleppo,36.2,37.15,1200,150000,117,Zengî dönemi,Zangid period
+17,Halep,Aleppo,36.2,37.15,1600,120000,124,Osmanlı; ipek ticareti,Ottoman; silk trade
+18,Tebriz,Tabriz,38.08,46.29,1300,500000,99,İlhanlı başkenti; dünyanın en büyük şehirlerinden,Ilkhanid capital; one of world's largest
+18,Tebriz,Tabriz,38.08,46.29,1500,300000,107,Safevî ilk başkenti,First Safavid capital
+19,Herat,Herat,34.35,62.2,1420,200000,106,Timurlu kültür başkenti,Timurid cultural capital
+19,Herat,Herat,34.35,62.2,1500,150000,106,Hüseyin Baykara dönemi,Husayn Bayqara period
+20,Gao,Gao,16.27,-0.04,1000,40000,59,Songay başkenti,Songhai capital
+20,Gao,Gao,16.27,-0.04,1500,100000,59,Songay zirvesi,Songhai peak

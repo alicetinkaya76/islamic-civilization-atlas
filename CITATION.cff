@@ -1,0 +1,53 @@
+cff-version: 1.2.0
+message: "If you use this dataset or software, please cite it as below."
+title: "Islamic Civilization Atlas Dataset: Bosworth's Islamic Dynasties Database (632–1924 CE)"
+type: dataset
+authors:
+  - family-names: "Gökalp"
+    given-names: "Hüseyin"
+    affiliation: "Selçuk University, Faculty of Theology, Dept. of Islamic History"
+    email: "huseyin.gokalp@selcuk.edu.tr"
+  - family-names: "Çetinkaya"
+    given-names: "Ali"
+    orcid: "https://orcid.org/0000-0002-7747-6854"
+    affiliation: "Selçuk University, Faculty of Technology, Dept. of Computer Engineering"
+    email: "ali.cetinkaya@selcuk.edu.tr"
+doi: "10.5281/zenodo.18818238"
+version: "1.0.0"
+date-released: "2026-02-28"
+url: "https://github.com/alicetinkaya76/islamic-civilization-atlas"
+repository-code: "https://github.com/alicetinkaya76/islamic-civilization-atlas"
+license: "CC-BY-SA-4.0"
+keywords:
+  - islamic-history
+  - digital-humanities
+  - bosworth
+  - islamic-dynasties
+  - interactive-atlas
+  - data-visualization
+  - gis
+  - ottoman
+  - caliphate
+  - historical-atlas
+  - leaflet
+  - d3js
+  - react
+abstract: >-
+  An interactive historical atlas visualizing 186 Islamic dynasties
+  (632–1924 CE) from Bosworth's "The New Islamic Dynasties" reference
+  work. Features a Leaflet-based map with real topographic terrain,
+  D3.js chronological timeline, 7 data layers (dynasties, battles,
+  events, scholars, monuments, cities, trade routes), 5 filters,
+  analytical scores, and full bilingual support (Turkish/English).
+  The dataset includes 11 interlinked CSV tables with 186 dynasties,
+  830 rulers, and 500+ geolocated historical entities.
+references:
+  - type: book
+    authors:
+      - family-names: "Bosworth"
+        given-names: "C. Edmund"
+    title: "The New Islamic Dynasties: A Chronological and Genealogical Manual"
+    year: 2004
+    publisher:
+      name: "Edinburgh University Press"
+    isbn: "0-7486-2137-7"
