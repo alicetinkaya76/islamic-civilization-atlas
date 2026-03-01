@@ -4,6 +4,8 @@ import DB from '../../data/db.json';
 import { REL_C, ZONE_C, LINK_COL } from '../../config/colors';
 import { ERA_BANDS } from '../../config/eras';
 import { n, lf } from '../../hooks/useEntityLookup';
+import EraCard from './EraCard';
+import ERA_INFO from '../../data/era_info';
 
 export default function TimelineView({ lang, t }) {
   const svgRef = useRef(null);
@@ -15,6 +17,7 @@ export default function TimelineView({ lang, t }) {
   const [showCausal, setShowCausal] = useState(true);
   const [zoom, setZoom] = useState(1);
   const [tooltip, setTooltip] = useState(null);
+  const [selectedEra, setSelectedEra] = useState(null);
 
   const impDyns = useMemo(() =>
     DB.dynasties
@@ -67,12 +70,21 @@ export default function TimelineView({ lang, t }) {
 
     // Era bands
     ERA_BANDS.forEach(([s, e, fill, labels]) => {
+      const eraInfo = ERA_INFO.find(ei => ei.start <= s && ei.end >= e) ||
+                      ERA_INFO.find(ei => Math.abs(ei.start - s) < 50 && Math.abs(ei.end - e) < 50);
+      const eraId = eraInfo ? eraInfo.id : null;
+
       svg.append('rect').attr('x', x(s)).attr('y', mt - 10)
         .attr('width', x(e) - x(s)).attr('height', H - mt - mb + 20)
-        .attr('fill', fill).attr('opacity', 0.3);
+        .attr('fill', fill).attr('opacity', 0.3)
+        .attr('cursor', eraId ? 'pointer' : 'default')
+        .on('click', () => { if (eraId) setSelectedEra(eraId); });
+
       svg.append('text').attr('x', x((s + e) / 2)).attr('y', mt - 16)
         .attr('text-anchor', 'middle').attr('fill', '#6b6040').attr('font-size', '10px')
-        .attr('font-family', 'Outfit').text(labels[lang]);
+        .attr('font-family', 'Outfit').text(labels[lang])
+        .attr('cursor', eraId ? 'pointer' : 'default')
+        .on('click', () => { if (eraId) setSelectedEra(eraId); });
     });
 
     // Grid
@@ -303,6 +315,14 @@ export default function TimelineView({ lang, t }) {
       {tooltip && (
         <div className="tt" style={{ left: tooltip.x + 12, top: tooltip.y - 10 }}
           dangerouslySetInnerHTML={{ __html: tooltip.html }} />
+      )}
+      {selectedEra && (
+        <EraCard
+          eraId={selectedEra}
+          lang={lang}
+          onClose={() => setSelectedEra(null)}
+          onFlyTo={() => {}}
+        />
       )}
     </div>
   );

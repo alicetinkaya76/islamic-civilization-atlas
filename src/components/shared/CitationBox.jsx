@@ -1,18 +1,18 @@
 import { useState } from 'react';
 
 const CITATIONS = {
-  apa: `Gökalp, H. & Çetinkaya, A. (2026). Islamic Civilization Atlas Dataset: Bosworth's Islamic Dynasties Database (632–1924 CE) [Data set]. Zenodo. https://doi.org/10.5281/zenodo.18818238`,
+  apa: `Gökalp, H. & Çetinkaya, A. (2026). Islamic Dynasties Atlas Dataset: Bosworth's Islamic Dynasties Database (632–1924 CE) [Data set]. Zenodo. https://doi.org/10.5281/zenodo.18818238`,
 
   bibtex: `@misc{gokalp_cetinkaya_2026,
   author       = {Gökalp, Hüseyin and Çetinkaya, Ali},
-  title        = {Islamic Civilization Atlas Dataset: Bosworth's Islamic Dynasties Database (632--1924 CE)},
+  title        = {Islamic Dynasties Atlas Dataset: Bosworth's Islamic Dynasties Database (632--1924 CE)},
   year         = {2026},
   publisher    = {Zenodo},
   doi          = {10.5281/zenodo.18818238},
   url          = {https://doi.org/10.5281/zenodo.18818238}
 }`,
 
-  chicago: `Gökalp, Hüseyin, and Ali Çetinkaya. "Islamic Civilization Atlas Dataset: Bosworth's Islamic Dynasties Database (632–1924 CE)." Zenodo, 2026. https://doi.org/10.5281/zenodo.18818238.`
+  chicago: `Gökalp, Hüseyin, and Ali Çetinkaya. "Islamic Dynasties Atlas Dataset: Bosworth's Islamic Dynasties Database (632–1924 CE)." Zenodo, 2026. https://doi.org/10.5281/zenodo.18818238.`
 };
 
 export default function CitationBox({ lang }) {

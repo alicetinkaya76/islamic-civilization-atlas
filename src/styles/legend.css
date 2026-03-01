@@ -1,0 +1,133 @@
+/* ─── Map Legend ─── */
+.map-legend {
+  position: absolute;
+  bottom: 120px;
+  right: 12px;
+  z-index: 1000;
+  font-family: var(--font-body);
+  transition: all 0.25s ease;
+}
+
+.legend-closed {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.4);
+}
+
+.legend-open {
+  background: var(--bg2);
+  border: 1px solid var(--gold);
+  border-radius: 10px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.5);
+  max-height: calc(100vh - 200px);
+  overflow-y: auto;
+  width: 200px;
+}
+
+/* Scrollbar styling */
+.legend-open::-webkit-scrollbar { width: 4px; }
+.legend-open::-webkit-scrollbar-track { background: transparent; }
+.legend-open::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+
+.legend-toggle {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 12px;
+  background: none;
+  border: none;
+  color: var(--gold);
+  font-family: var(--font-display);
+  font-size: 13px;
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+  transition: color 0.15s;
+}
+.legend-toggle:hover { color: var(--cream); }
+
+.legend-toggle-label {
+  font-size: 12px;
+  letter-spacing: 0.5px;
+}
+
+.legend-body {
+  padding: 0 12px 12px;
+}
+
+.legend-section {
+  margin-bottom: 10px;
+}
+.legend-section:last-child { margin-bottom: 0; }
+
+.legend-section-title {
+  font-family: var(--font-display);
+  font-size: 10px;
+  color: var(--gold);
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  padding-bottom: 4px;
+  margin-bottom: 5px;
+  border-bottom: 1px solid var(--border);
+}
+
+.legend-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 2.5px 0;
+}
+
+.legend-swatch {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border-radius: 3px;
+  border: 1px solid rgba(255,255,255,0.15);
+  flex-shrink: 0;
+}
+
+.legend-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+.legend-label {
+  font-size: 11px;
+  color: var(--cream);
+  white-space: nowrap;
+}
+
+/* ─── Dynasty glow animation ─── */
+@keyframes dynasty-pulse {
+  0%, 100% { opacity: 0.2; }
+  50% { opacity: 0.45; }
+}
+.dynasty-glow {
+  animation: dynasty-pulse 3s ease-in-out infinite;
+}
+
+/* ─── Trade route dash animation (enhanced) ─── */
+@keyframes trade-dash {
+  to { stroke-dashoffset: -48; }
+}
+.trade-anim {
+  animation: trade-dash 2s linear infinite;
+}
+
+/* ─── Mobile ─── */
+@media (max-width: 768px) {
+  .map-legend {
+    bottom: 130px;
+    right: 8px;
+  }
+  .legend-open {
+    width: 180px;
+    max-height: calc(100vh - 220px);
+  }
+}

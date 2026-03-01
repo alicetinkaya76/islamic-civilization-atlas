@@ -8,8 +8,10 @@ import { useLayers, useMapFilters } from '../../hooks/useFilters';
 import FilterPanel from './FilterPanel';
 import { renderLayers } from './LayerManager';
 import TourMode from '../shared/TourMode';
+import MapLegend from '../shared/MapLegend';
+import YearInfoPanel from './YearInfoPanel';
 
-export default function MapView({ lang, t, sidebarOpen }) {
+export default function MapView({ lang, t, sidebarOpen, mapRef, onPopupOpen }) {
   const mapEl = useRef(null);
   const mapObj = useRef(null);
   const lgRef = useRef({});
@@ -42,9 +44,9 @@ export default function MapView({ lang, t, sidebarOpen }) {
       zoomControl: false, attributionControl: false
     });
     L.control.zoom({ position: 'topright' }).addTo(map);
-    L.tileLayer(MAP_CONFIG.tileUrl, { maxZoom: 13, attribution: 'Esri' }).addTo(map);
-    L.tileLayer(MAP_CONFIG.labelUrl, { maxZoom: 19, opacity: 0.6 }).addTo(map);
+    L.tileLayer(MAP_CONFIG.tileUrl, { maxZoom: 19, attribution: '&copy; CartoDB' }).addTo(map);
     mapObj.current = map;
+    if (mapRef) mapRef.current = map;
     LAYER_KEYS.forEach(k => { lgRef.current[k] = L.layerGroup().addTo(map); });
     return () => { map.remove(); mapObj.current = null; };
   }, []);
@@ -64,10 +66,10 @@ export default function MapView({ lang, t, sidebarOpen }) {
   useEffect(() => {
     if (!mapObj.current) return;
     const cnt = renderLayers({
-      lg: lgRef.current, layers, filters, year, lang, t, analyticsMap, causalIdx
+      lg: lgRef.current, layers, filters, year, lang, t, analyticsMap, causalIdx, onPopupOpen
     });
     setActiveCount(cnt);
-  }, [year, layers, filters, lang, t, analyticsMap, causalIdx]);
+  }, [year, layers, filters, lang, t, analyticsMap, causalIdx, onPopupOpen]);
 
   return (
     <div className="map-layout">
@@ -90,6 +92,12 @@ export default function MapView({ lang, t, sidebarOpen }) {
         {tourActive && (
           <TourMode lang={lang} onNavigate={handleTourNavigate} onClose={() => setTourActive(false)} />
         )}
+        {/* Legend */}
+        <MapLegend lang={lang} />
+        {/* Year Info Panel */}
+        <YearInfoPanel year={year} lang={lang} onFlyTo={({ lat, lon, zoom }) => {
+          if (mapObj.current) mapObj.current.flyTo([lat, lon], zoom || 6, { duration: 1.2 });
+        }} />
         <div className="tbar">
           <div className="tbar-yr">{year}</div>
           <div className="tbar-era">{eraName(year, lang)}</div>

@@ -1,6 +1,6 @@
 {
-  "name": "islamic-civilization-atlas",
-  "version": "1.0.0",
+  "name": "islamic-dynasties-atlas",
+  "version": "4.0.0",
   "description": "Bosworth's Islamic Dynasties — 186 dynasties, 632–1924 CE",
   "private": true,
   "type": "module",

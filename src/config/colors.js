@@ -15,7 +15,7 @@ export const ZONE_C = {
 };
 
 export const IMP_OP = {
-  'Kritik': 0.5, 'Yüksek': 0.35, 'Normal': 0.22, 'Düşük': 0.12
+  'Kritik': 0.50, 'Yüksek': 0.38, 'Normal': 0.25, 'Düşük': 0.15
 };
 
 export const LYR_COL = {

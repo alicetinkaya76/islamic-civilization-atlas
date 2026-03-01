@@ -6,7 +6,7 @@ export default function AboutModal({ lang }) {
   const content = lang === 'tr' ? {
     title: 'Hakkında',
     body: [
-      'İslam Medeniyeti Atlası, C. Edmund Bosworth\'un "The New Islamic Dynasties" başvuru eserinden derlenen kapsamlı bir interaktif tarih atlasıdır.',
+      'İslam Hanedanları Atlası, C. Edmund Bosworth\'un "The New Islamic Dynasties" başvuru eserinden derlenen kapsamlı bir interaktif tarih atlasıdır.',
       'Proje, 632–1924 CE dönemindeki 186 İslam hanedanlığını, 830 hükümdarı, 50 savaşı, 50 olayı, 49 âlimi, 40 mimari eseri, 15 ticaret yolunu, 30 diplomatik ilişkiyi ve 69 önemli şehri kapsamaktadır.',
       'Veri seti, 12 interaktif CSV tablosu ve 200 nedensellik bağlantısı içerir. Tüm veriler iki dilli (Türkçe/İngilizce) olarak sunulmaktadır.',
     ],
@@ -18,7 +18,7 @@ export default function AboutModal({ lang }) {
   } : {
     title: 'About',
     body: [
-      'The Islamic Civilization Atlas is a comprehensive interactive historical atlas compiled from C. Edmund Bosworth\'s "The New Islamic Dynasties" reference work.',
+      'The Islamic Dynasties Atlas is a comprehensive interactive historical atlas compiled from C. Edmund Bosworth\'s "The New Islamic Dynasties" reference work.',
       'The project covers 186 Islamic dynasties (632–1924 CE), 830 rulers, 50 battles, 50 events, 49 scholars, 40 monuments, 15 trade routes, 30 diplomatic relations, and 69 major cities.',
       'The dataset includes 12 interlinked CSV tables and 200 causal links. All data is presented bilingually (Turkish/English).',
     ],

@@ -1,6 +1,6 @@
 const T = {
   tr: {
-    title: 'İslam Medeniyeti Atlası',
+    title: 'İslam Hanedanları Atlası',
     sub: 'Bosworth Veri Tabanı • 186 Hanedan • 632–1924',
     tabs: { map: '🗺 Harita', timeline: '📅 Zaman Çizelgesi', links: '🔗 Nedensellik' },
     layers: {
@@ -80,7 +80,7 @@ const T = {
     },
   },
   en: {
-    title: 'Islamic Civilization Atlas',
+    title: 'Islamic Dynasties Atlas',
     sub: 'Bosworth Database • 186 Dynasties • 632–1924',
     tabs: { map: '🗺 Map', timeline: '📅 Timeline', links: '🔗 Causality' },
     layers: {

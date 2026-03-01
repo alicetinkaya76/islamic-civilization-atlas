@@ -1,6 +1,6 @@
 cff-version: 1.2.0
 message: "If you use this dataset or software, please cite it as below."
-title: "Islamic Civilization Atlas Dataset: Bosworth's Islamic Dynasties Database (632–1924 CE)"
+title: "Islamic Dynasties Atlas Dataset: Bosworth's Islamic Dynasties Database (632–1924 CE)"
 type: dataset
 authors:
   - family-names: "Gökalp"
@@ -15,8 +15,8 @@ authors:
 doi: "10.5281/zenodo.18818238"
 version: "2.0.0"
 date-released: "2026-03-01"
-url: "https://github.com/alicetinkaya76/islamic-civilization-atlas"
-repository-code: "https://github.com/alicetinkaya76/islamic-civilization-atlas"
+url: "https://github.com/alicetinkaya76/islamic-dynasties-atlas"
+repository-code: "https://github.com/alicetinkaya76/islamic-dynasties-atlas"
 license: "CC-BY-SA-4.0"
 keywords:
   - islamic-history
