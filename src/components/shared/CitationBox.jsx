@@ -1,0 +1,50 @@
+import { useState } from 'react';
+
+const CITATIONS = {
+  apa: `Gökalp, H. & Çetinkaya, A. (2026). Islamic Civilization Atlas Dataset: Bosworth's Islamic Dynasties Database (632–1924 CE) [Data set]. Zenodo. https://doi.org/10.5281/zenodo.18818238`,
+
+  bibtex: `@misc{gokalp_cetinkaya_2026,
+  author       = {Gökalp, Hüseyin and Çetinkaya, Ali},
+  title        = {Islamic Civilization Atlas Dataset: Bosworth's Islamic Dynasties Database (632--1924 CE)},
+  year         = {2026},
+  publisher    = {Zenodo},
+  doi          = {10.5281/zenodo.18818238},
+  url          = {https://doi.org/10.5281/zenodo.18818238}
+}`,
+
+  chicago: `Gökalp, Hüseyin, and Ali Çetinkaya. "Islamic Civilization Atlas Dataset: Bosworth's Islamic Dynasties Database (632–1924 CE)." Zenodo, 2026. https://doi.org/10.5281/zenodo.18818238.`
+};
+
+export default function CitationBox({ lang }) {
+  const [tab, setTab] = useState('apa');
+  const [copied, setCopied] = useState(false);
+
+  const copy = () => {
+    navigator.clipboard.writeText(CITATIONS[tab]).then(() => {
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    });
+  };
+
+  const label = {
+    tr: { title: 'Bu projeyi atıf yapın', copy: 'Kopyala', copied: 'Kopyalandı!' },
+    en: { title: 'Cite this project', copy: 'Copy', copied: 'Copied!' }
+  }[lang];
+
+  return (
+    <div className="cite-box">
+      <div className="cite-title">{label.title}</div>
+      <div className="cite-tabs">
+        {['apa', 'bibtex', 'chicago'].map(k => (
+          <button key={k} className={`cite-tab${tab === k ? ' active' : ''}`} onClick={() => setTab(k)}>
+            {k === 'apa' ? 'APA' : k === 'bibtex' ? 'BibTeX' : 'Chicago'}
+          </button>
+        ))}
+      </div>
+      <pre className="cite-text">{CITATIONS[tab]}</pre>
+      <button className="cite-copy" onClick={copy}>
+        {copied ? `✓ ${label.copied}` : `📋 ${label.copy}`}
+      </button>
+    </div>
+  );
+}

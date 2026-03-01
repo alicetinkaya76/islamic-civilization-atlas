@@ -1,0 +1,26 @@
+{
+  "name": "İslam Medeniyeti Atlası — Islamic Civilization Atlas",
+  "short_name": "İslam Atlası",
+  "description": "Bosworth's Islamic Dynasties Database — 186 dynasties, 830 rulers, 632–1924 CE. Interactive historical atlas with map, timeline, and causality network.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#080c18",
+  "theme_color": "#c9a84c",
+  "orientation": "any",
+  "lang": "tr",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["education", "reference"]
+}

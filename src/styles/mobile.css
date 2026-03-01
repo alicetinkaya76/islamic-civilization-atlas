@@ -1,0 +1,258 @@
+/* ═══════════════════════════════════════════
+   MOBILE RESPONSIVE — 5.8
+   Breakpoints: 768px (tablet), 600px (phone)
+   ═══════════════════════════════════════════ */
+
+/* ─── Hamburger Button ─── */
+.hamburger {
+  display: none; /* hidden on desktop */
+  flex-direction: column; justify-content: center; gap: 4px;
+  background: none; border: none;
+  width: 28px; height: 28px; padding: 2px;
+  cursor: pointer; z-index: 1100;
+}
+.hb-line {
+  display: block; width: 20px; height: 2px;
+  background: var(--cream); border-radius: 2px;
+  transition: all .25s ease;
+}
+.hb-line.open:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+.hb-line.open:nth-child(2) { opacity: 0; }
+.hb-line.open:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+
+/* ─── Sidebar toggle (map filters on mobile) ─── */
+.sidebar-toggle {
+  display: none; /* hidden on desktop */
+  background: var(--bg3); border: 1px solid var(--border);
+  color: var(--gold); width: 28px; height: 28px;
+  border-radius: 6px; cursor: pointer;
+  font-size: 14px; line-height: 1;
+  transition: all .2s;
+}
+.sidebar-toggle:hover { border-color: var(--gold); }
+
+/* ─── Mobile backdrop ─── */
+.mobile-backdrop {
+  display: none;
+  position: fixed; inset: 0; z-index: 999;
+  background: rgba(0,0,0,.5);
+  backdrop-filter: blur(2px);
+}
+
+/* ═══ TABLET — max-width: 768px ═══ */
+@media (max-width: 768px) {
+
+  /* Show hamburger */
+  .hamburger { display: flex; }
+  .sidebar-toggle { display: flex; align-items: center; justify-content: center; }
+
+  /* Header compact */
+  .header { padding: 6px 10px; gap: 8px; }
+  .h-title { font-size: 15px; }
+  .h-sub { font-size: 9px; }
+  .logo { font-size: 22px; }
+
+  /* Nav slides in from right */
+  .header-right {
+    position: fixed; top: 0; right: -280px;
+    width: 260px; height: 100vh;
+    background: var(--bg2); border-left: 1px solid var(--gold);
+    flex-direction: column; align-items: stretch;
+    padding: 60px 16px 20px;
+    z-index: 1000; gap: 12px;
+    transition: right .3s ease;
+    box-shadow: -4px 0 20px rgba(0,0,0,.5);
+  }
+  .header-right.mobile-open { right: 0; }
+  .mobile-backdrop { display: block; }
+
+  /* Tabs go vertical in mobile menu */
+  .tabs {
+    flex-direction: column; gap: 4px;
+  }
+  .tab {
+    text-align: left; padding: 10px 14px;
+    border-radius: 8px; font-size: 14px;
+  }
+  .tab.active { background: #c9a84c22; }
+
+  .lang-btn { align-self: flex-start; margin-top: 8px; }
+
+  /* Map panel slides from left */
+  .map-panel {
+    position: fixed; top: 48px; left: -260px;
+    width: 240px; height: calc(100vh - 48px);
+    z-index: 800; background: var(--bg2);
+    border-right: 1px solid var(--gold);
+    transition: left .3s ease;
+    box-shadow: 4px 0 20px rgba(0,0,0,.5);
+    overflow-y: auto;
+  }
+  .map-panel.mobile-visible { left: 0; }
+
+  /* Timebar compact */
+  .tbar { padding: 16px 12px 10px; }
+  .tbar-yr { font-size: 28px; }
+  .tbar-era { font-size: 10px; }
+  .tbar-ticks { font-size: 8px; }
+
+  /* Touch-friendly popups */
+  .leaflet-popup-content-wrapper {
+    max-width: 300px !important;
+    max-height: 50vh !important;
+    overflow-y: auto !important;
+  }
+  .leaflet-popup-content {
+    font-size: 11px !important;
+    line-height: 1.5 !important;
+    margin: 8px 10px !important;
+  }
+
+  /* Popup touch targets */
+  .p-rulers-h { padding: 8px 0; min-height: 36px; }
+  .p-ruler-row { padding: 6px 4px; min-height: 32px; }
+
+  /* Tour panel compact */
+  .tour-panel { width: 90%; bottom: 100px; }
+  .tour-stop-text { font-size: 11px; max-height: 80px; }
+
+  /* Timeline horizontal scroll */
+  .tl-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+
+  /* Causal view compact */
+  .cv-graph { height: 50vh; }
+
+  /* Footer compact */
+  .footer-inner { flex-direction: column; align-items: flex-start; gap: 6px; padding: 8px 12px; }
+}
+
+/* ═══ PHONE — max-width: 600px ═══ */
+@media (max-width: 600px) {
+
+  /* Even more compact header */
+  .header { padding: 4px 8px; min-height: 40px; }
+  .h-title { font-size: 13px; }
+  .h-sub { display: none; }
+  .logo { font-size: 18px; }
+
+  /* Map panel hidden unless toggled */
+  .map-panel { width: 220px; top: 40px; height: calc(100vh - 40px); }
+
+  /* Timebar minimal */
+  .tbar { padding: 12px 10px 8px; }
+  .tbar-yr { font-size: 24px; }
+  .tbar-era { font-size: 9px; }
+  .tbar-ticks span { font-size: 7px; }
+  .tbar-play { width: 32px; height: 32px; font-size: 14px; }
+
+  /* Touch-friendly popup */
+  .leaflet-popup-content-wrapper {
+    max-width: 85vw !important;
+    max-height: 45vh !important;
+  }
+  .leaflet-popup-content {
+    font-size: 10px !important;
+    margin: 6px 8px !important;
+  }
+  .p-title { font-size: 13px !important; }
+  .p-row { font-size: 10px; }
+  .p-k { min-width: 60px; }
+  .p-narr { font-size: 10px; max-height: 60px; }
+
+  /* Popup close button bigger for touch */
+  .leaflet-popup-close-button {
+    width: 28px !important; height: 28px !important;
+    font-size: 20px !important;
+    padding: 4px !important;
+  }
+
+  /* Tour compact */
+  .tour-trigger { top: 8px; left: 8px; padding: 6px 12px; font-size: 11px; }
+  .tour-panel { width: 96%; bottom: 72px; }
+  .tour-panel-header { padding: 8px 10px; }
+  .tour-panel-title { font-size: 12px; }
+  .tour-stop { padding: 8px 12px; }
+  .tour-stop-title { font-size: 14px; }
+  .tour-stop-text { font-size: 10px; max-height: 70px; }
+  .tour-nav { padding: 8px 10px; }
+  .tour-nav-btn { padding: 4px 10px; font-size: 10px; }
+  .tour-play-btn { width: 30px; height: 30px; font-size: 12px; }
+
+  /* Tour selection grid */
+  .tour-select { padding: 14px; }
+  .tour-select-title { font-size: 18px; }
+  .tour-grid { grid-template-columns: 1fr; gap: 8px; }
+  .tour-card { padding: 12px; }
+  .tour-card-icon { font-size: 22px; }
+  .tour-card-title { font-size: 13px; }
+
+  /* Timeline scroll */
+  .tl-toolbar { flex-wrap: wrap; gap: 4px; padding: 6px; }
+  .tl-btn { padding: 3px 6px; font-size: 9px; }
+  .tl-zoom { gap: 4px; }
+  .tl-zoom button { padding: 3px 8px; font-size: 12px; }
+
+  /* Causal view */
+  .cv-wrap { flex-direction: column; }
+  .cv-graph { height: 40vh; min-width: auto; }
+  .cv-list { max-height: 30vh; }
+
+  /* About modal */
+  .modal-box { padding: 16px; max-width: 95vw; }
+  .modal-title { font-size: 18px; }
+
+  /* Footer */
+  .footer-names { font-size: 10px; flex-wrap: wrap; }
+  .footer-affil { font-size: 9px; }
+  .footer-cite-btn { font-size: 10px; padding: 3px 8px; }
+
+  /* Citation panel */
+  .cite-text { font-size: 10px; max-height: 100px; }
+}
+
+/* ═══ SMALL PHONE — max-width: 400px ═══ */
+@media (max-width: 400px) {
+  .header { padding: 3px 6px; }
+  .h-title { font-size: 11px; letter-spacing: 0; }
+  .logo { font-size: 16px; }
+  .hamburger { width: 24px; height: 24px; }
+  .hb-line { width: 16px; }
+
+  .tbar-yr { font-size: 20px; }
+  .tbar-ticks { display: none; }
+  .tbar-range { height: 4px; }
+
+  .leaflet-popup-content-wrapper { max-width: 92vw !important; }
+}
+
+/* ═══ LANDSCAPE PHONE ═══ */
+@media (max-height: 500px) and (orientation: landscape) {
+  .header { min-height: 36px; padding: 2px 8px; }
+  .h-sub { display: none; }
+  .tbar { padding: 8px 10px 6px; }
+  .tbar-yr { font-size: 20px; }
+  .tour-panel { bottom: 50px; }
+  .tour-stop-text { max-height: 50px; }
+}
+
+/* ═══ TOUCH ENHANCEMENTS ═══ */
+@media (hover: none) and (pointer: coarse) {
+  /* Bigger touch targets */
+  .tab { min-height: 38px; }
+  .lang-btn { min-height: 36px; min-width: 52px; }
+  .tbar-play { min-width: 40px; min-height: 40px; }
+  .tbar-range { height: 8px; }
+
+  /* Layer toggle bigger */
+  .lyr-item label { padding: 6px 4px; min-height: 32px; }
+
+  /* Filter selects bigger */
+  .flt-sel { min-height: 32px; font-size: 12px; }
+
+  /* Ruler expand area bigger */
+  .p-rulers-h { padding: 10px 0; }
+
+  /* Tour dots bigger */
+  .tour-dot { width: 14px; height: 14px; }
+  .tour-dot.active { transform: scale(1.2); }
+}

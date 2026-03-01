@@ -6,7 +6,7 @@ const T = {
     layers: {
       dynasties: 'Hanedanlar', battles: 'Savaşlar', events: 'Olaylar',
       scholars: 'Âlimler', monuments: 'Mimari Eserler', cities: 'Şehirler',
-      routes: 'Ticaret Yolları'
+      routes: 'Ticaret Yolları', rulers: 'Hükümdarlar'
     },
     filters: {
       religion: 'Mezhep', ethnic: 'Etnik Köken', government: 'Yönetim',
@@ -38,6 +38,9 @@ const T = {
       arch: 'Mimari Detay', visitor: 'Ziyaretçi Notu',
       funFact: 'İlginç Bilgi', anecdote: 'Anekdot',
       before: 'Öncesi', after: 'Sonrası',
+      ruler: 'Hükümdar', rulers: 'Hükümdarlar', reign: 'Hüküm', successor: 'Halef',
+      predecessor: 'Selef', founder: 'Kurucu', lastRuler: 'Son Hükümdar',
+      deathNatural: 'Doğal ölüm', deathKilled: 'Öldürüldü', successionType: 'Veraset',
     },
     tl: {
       title: 'Kronolojik Zaman Çizelgesi', colorBy: 'Renklendirme',
@@ -66,6 +69,15 @@ const T = {
       }
     },
     play: 'Oynat', pause: 'Durdur',
+    footer: {
+      cite: 'Atıf Yap', citeTitle: 'Bu projeyi atıf yapın',
+      copy: 'Kopyala', copied: 'Kopyalandı!',
+    },
+    about: {
+      btn: 'Hakkında', title: 'Hakkında', close: 'Kapat',
+      authors: 'Yazarlar', data: 'Veri Kaynağı',
+      license: 'Lisans: CC BY-SA 4.0',
+    },
   },
   en: {
     title: 'Islamic Civilization Atlas',
@@ -74,7 +86,7 @@ const T = {
     layers: {
       dynasties: 'Dynasties', battles: 'Battles', events: 'Events',
       scholars: 'Scholars', monuments: 'Monuments', cities: 'Cities',
-      routes: 'Trade Routes'
+      routes: 'Trade Routes', rulers: 'Rulers'
     },
     filters: {
       religion: 'Religion', ethnic: 'Ethnic Origin', government: 'Government',
@@ -106,6 +118,9 @@ const T = {
       arch: 'Architectural Detail', visitor: 'Visitor Note',
       funFact: 'Fun Fact', anecdote: 'Anecdote',
       before: 'Before', after: 'After',
+      ruler: 'Ruler', rulers: 'Rulers', reign: 'Reign', successor: 'Successor',
+      predecessor: 'Predecessor', founder: 'Founder', lastRuler: 'Last Ruler',
+      deathNatural: 'Natural death', deathKilled: 'Killed/Assassinated', successionType: 'Succession',
     },
     tl: {
       title: 'Chronological Timeline', colorBy: 'Color By',
@@ -134,6 +149,15 @@ const T = {
       }
     },
     play: 'Play', pause: 'Pause',
+    footer: {
+      cite: 'Cite', citeTitle: 'Cite this project',
+      copy: 'Copy', copied: 'Copied!',
+    },
+    about: {
+      btn: 'About', title: 'About', close: 'Close',
+      authors: 'Authors', data: 'Data Source',
+      license: 'License: CC BY-SA 4.0',
+    },
   }
 };
 

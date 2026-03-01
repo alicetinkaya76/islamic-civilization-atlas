@@ -1,0 +1,125 @@
+/* ═══════════════════════════════════════════════════
+   İslam Medeniyeti Atlası — Base Theme
+   ═══════════════════════════════════════════════════ */
+
+:root {
+  --bg: #080c18;
+  --bg2: #0f1629;
+  --bg3: #161d33;
+  --gold: #c9a84c;
+  --gold2: #e8c65a;
+  --cream: #e8dcc8;
+  --cream2: #c4b89a;
+  --border: #1e2a44;
+  --font-display: 'Amiri', serif;
+  --font-body: 'Outfit', sans-serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: var(--bg);
+  color: var(--cream);
+  font-family: var(--font-body);
+  overflow: hidden;
+}
+
+/* ─── App Shell ─── */
+.app { display: flex; flex-direction: column; height: 100vh; }
+
+.header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 8px 20px;
+  background: linear-gradient(180deg, var(--bg2), var(--bg));
+  border-bottom: 1px solid var(--border);
+  min-height: 56px;
+}
+.header-left { display: flex; align-items: center; gap: 12px; }
+.header-right { display: flex; align-items: center; gap: 16px; }
+.logo {
+  font-size: 28px; width: 42px; height: 42px;
+  display: flex; align-items: center; justify-content: center;
+  background: radial-gradient(circle, #c9a84c33, transparent);
+  border-radius: 50%; border: 1px solid var(--gold);
+}
+.h-title {
+  font-family: var(--font-display); font-size: 20px;
+  color: var(--gold); font-weight: 700; line-height: 1.2;
+}
+.h-sub { font-size: 11px; color: var(--cream2); letter-spacing: 0.5px; }
+
+.tabs { display: flex; gap: 4px; }
+.tab {
+  background: transparent; border: 1px solid var(--border); color: var(--cream2);
+  padding: 6px 16px; border-radius: 6px; cursor: pointer;
+  font-family: var(--font-body); font-size: 13px; font-weight: 500;
+  transition: all .2s;
+}
+.tab:hover { border-color: var(--gold); color: var(--gold); }
+.tab.active {
+  background: linear-gradient(135deg, #c9a84c22, #c9a84c11);
+  border-color: var(--gold); color: var(--gold);
+}
+
+.lang-btn {
+  background: var(--bg3); border: 1px solid var(--border); color: var(--cream2);
+  padding: 6px 12px; border-radius: 6px; cursor: pointer;
+  font-family: var(--font-body); font-size: 12px;
+  transition: all .2s;
+}
+.lang-btn:hover { border-color: var(--gold); color: var(--gold); }
+
+.about-btn {
+  background: var(--bg3); border: 1px solid var(--border); color: var(--cream2);
+  padding: 6px 12px; border-radius: 6px; cursor: pointer;
+  font-family: var(--font-body); font-size: 12px;
+  transition: all .2s;
+}
+.about-btn:hover { border-color: var(--gold); color: var(--gold); }
+
+.main { flex: 1; overflow: hidden; }
+
+/* ─── Tooltip ─── */
+.tt {
+  position: fixed; z-index: 9999;
+  background: var(--bg3); border: 1px solid var(--gold);
+  border-radius: 8px; padding: 8px 12px;
+  font-size: 11px; color: var(--cream); line-height: 1.5;
+  pointer-events: none; max-width: 320px;
+  box-shadow: 0 4px 20px rgba(0,0,0,.6);
+}
+.tt b { color: var(--gold); font-family: var(--font-display); }
+
+/* ─── Accessibility ─── */
+.skip-link {
+  position: absolute; top: -100%; left: 16px;
+  background: var(--gold); color: var(--bg);
+  padding: 8px 16px; border-radius: 0 0 6px 6px;
+  font-weight: 600; font-size: 13px;
+  z-index: 10000; text-decoration: none;
+  transition: top .2s;
+}
+.skip-link:focus { top: 0; }
+
+*:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+
+button:focus-visible, .tab:focus-visible, select:focus-visible, input:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 4px rgba(201,168,76,.25);
+}
+
+/* ─── Scrollbar ─── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--gold); }
+
+/* ─── Responsive: see mobile.css ─── */
+
+/* ─── Trade Route Animation ─── */
+@keyframes tradeFlow { to { stroke-dashoffset: -30; } }
+.trade-anim { animation: tradeFlow 2s linear infinite; }
