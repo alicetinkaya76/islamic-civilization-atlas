@@ -2,6 +2,7 @@ import { useState } from 'react';
 import T from './data/i18n';
 import MapView from './components/MapView';
 import TimelineView from './components/TimelineView';
+import CausalView from './components/CausalView';
 
 export default function App() {
   const [lang, setLang] = useState('tr');
@@ -22,6 +23,7 @@ export default function App() {
           <div className="tabs">
             <button className={`tab${tab === 'map' ? ' active' : ''}`} onClick={() => setTab('map')}>{t.tabs.map}</button>
             <button className={`tab${tab === 'timeline' ? ' active' : ''}`} onClick={() => setTab('timeline')}>{t.tabs.timeline}</button>
+            <button className={`tab${tab === 'links' ? ' active' : ''}`} onClick={() => setTab('links')}>{t.tabs.links}</button>
           </div>
           <button className="lang-btn" onClick={() => setLang(l => l === 'tr' ? 'en' : 'tr')}>
             {lang === 'tr' ? '🇬🇧 EN' : '🇹🇷 TR'}
@@ -29,7 +31,9 @@ export default function App() {
         </div>
       </header>
       <main className="main">
-        {tab === 'map' ? <MapView lang={lang} t={t} /> : <TimelineView lang={lang} t={t} />}
+        {tab === 'map' ? <MapView lang={lang} t={t} /> :
+         tab === 'timeline' ? <TimelineView lang={lang} t={t} /> :
+         <CausalView lang={lang} t={t} />}
       </main>
     </div>
   );

@@ -2,7 +2,7 @@ const T = {
   tr: {
     title: 'İslam Medeniyeti Atlası',
     sub: 'Bosworth Veri Tabanı • 186 Hanedan • 632–1924',
-    tabs: { map: '🗺 Harita', timeline: '📅 Zaman Çizelgesi' },
+    tabs: { map: '🗺 Harita', timeline: '📅 Zaman Çizelgesi', links: '🔗 Nedensellik' },
     layers: {
       dynasties: 'Hanedanlar', battles: 'Savaşlar', events: 'Olaylar',
       scholars: 'Âlimler', monuments: 'Mimari Eserler', cities: 'Şehirler',
@@ -30,7 +30,14 @@ const T = {
       type: 'Tür', pop: 'Nüfus', role: 'Rol', goods: 'Ticari Mallar',
       period: 'Dönem', route: 'Ticaret Yolu', born: 'Doğum', died: 'Ölüm',
       start: 'Başlangıç', end: 'Bitiş', religion: 'Mezhep', ethnic: 'Etnik',
-      govType: 'Yönetim', active: 'aktif hanedan', zone: 'Bölge'
+      govType: 'Yönetim', active: 'aktif hanedan', zone: 'Bölge',
+      narrative: 'Tarihsel Anlatı', keyContrib: 'Temel Miras',
+      rise: 'Yükseliş', fall: 'Çöküş', context: 'Bağlam',
+      impact: 'Uzun Vadeli Etki', tactic: 'Taktik Not',
+      legacy: 'Miras', chain: 'Etki Zinciri', patron: 'Himaye',
+      arch: 'Mimari Detay', visitor: 'Ziyaretçi Notu',
+      funFact: 'İlginç Bilgi', anecdote: 'Anekdot',
+      before: 'Öncesi', after: 'Sonrası',
     },
     tl: {
       title: 'Kronolojik Zaman Çizelgesi', colorBy: 'Renklendirme',
@@ -38,12 +45,32 @@ const T = {
       events: 'Olaylar', scholars: 'Âlimler',
       zoomIn: 'Yakınlaştır', zoomOut: 'Uzaklaştır'
     },
+    lk: {
+      title: 'Nedensellik Ağı', subtitle: '200 bağlantı ile İslam tarihinin neden-sonuç haritası',
+      source: 'Kaynak', target: 'Hedef', linkType: 'Bağlantı Türü',
+      all: 'Tümü', filterEntity: 'Varlık Tipi',
+      types: {
+        succession: 'Haleflik', conquest: 'Fetih', division: 'Bölünme',
+        patronage: 'Himaye', cultural: 'Kültürel', expansion: 'Genişleme',
+        foundation: 'Kuruluş', influence: 'Etki', rivalry: 'Rekabet',
+        alliance: 'İttifak', decline: 'Gerileme', crisis: 'Kriz',
+        collapse: 'Çöküş', trigger: 'Tetikleme', defeat: 'Yenilgi',
+        reform: 'Reform', creation: 'Yaratım', economic: 'Ekonomik',
+        diplomatic: 'Diplomatik', control: 'Kontrol', context: 'Bağlam',
+        coup: 'Darbe', delegation: 'Yetkilendirme', flight: 'Göç'
+      },
+      entities: {
+        dynasty: 'Hanedan', battle: 'Savaş', event: 'Olay',
+        scholar: 'Âlim', monument: 'Eser', trade_route: 'Ticaret Yolu',
+        diplomacy: 'Diplomasi'
+      }
+    },
     play: 'Oynat', pause: 'Durdur',
   },
   en: {
     title: 'Islamic Civilization Atlas',
     sub: 'Bosworth Database • 186 Dynasties • 632–1924',
-    tabs: { map: '🗺 Map', timeline: '📅 Timeline' },
+    tabs: { map: '🗺 Map', timeline: '📅 Timeline', links: '🔗 Causality' },
     layers: {
       dynasties: 'Dynasties', battles: 'Battles', events: 'Events',
       scholars: 'Scholars', monuments: 'Monuments', cities: 'Cities',
@@ -71,13 +98,40 @@ const T = {
       type: 'Type', pop: 'Population', role: 'Role', goods: 'Trade Goods',
       period: 'Period', route: 'Trade Route', born: 'Born', died: 'Died',
       start: 'Start', end: 'End', religion: 'Religion', ethnic: 'Ethnic',
-      govType: 'Government', active: 'active dynasties', zone: 'Zone'
+      govType: 'Government', active: 'active dynasties', zone: 'Zone',
+      narrative: 'Historical Narrative', keyContrib: 'Key Legacy',
+      rise: 'Rise', fall: 'Fall', context: 'Context',
+      impact: 'Long-term Impact', tactic: 'Tactical Note',
+      legacy: 'Legacy', chain: 'Influence Chain', patron: 'Patronage',
+      arch: 'Architectural Detail', visitor: 'Visitor Note',
+      funFact: 'Fun Fact', anecdote: 'Anecdote',
+      before: 'Before', after: 'After',
     },
     tl: {
       title: 'Chronological Timeline', colorBy: 'Color By',
       byRel: 'Religion', byZone: 'Zone', battles: 'Battles',
       events: 'Events', scholars: 'Scholars',
       zoomIn: 'Zoom In', zoomOut: 'Zoom Out'
+    },
+    lk: {
+      title: 'Causality Network', subtitle: 'Cause-and-effect map of Islamic history with 200 links',
+      source: 'Source', target: 'Target', linkType: 'Link Type',
+      all: 'All', filterEntity: 'Entity Type',
+      types: {
+        succession: 'Succession', conquest: 'Conquest', division: 'Division',
+        patronage: 'Patronage', cultural: 'Cultural', expansion: 'Expansion',
+        foundation: 'Foundation', influence: 'Influence', rivalry: 'Rivalry',
+        alliance: 'Alliance', decline: 'Decline', crisis: 'Crisis',
+        collapse: 'Collapse', trigger: 'Trigger', defeat: 'Defeat',
+        reform: 'Reform', creation: 'Creation', economic: 'Economic',
+        diplomatic: 'Diplomatic', control: 'Control', context: 'Context',
+        coup: 'Coup', delegation: 'Delegation', flight: 'Flight'
+      },
+      entities: {
+        dynasty: 'Dynasty', battle: 'Battle', event: 'Event',
+        scholar: 'Scholar', monument: 'Monument', trade_route: 'Trade Route',
+        diplomacy: 'Diplomacy'
+      }
     },
     play: 'Play', pause: 'Pause',
   }

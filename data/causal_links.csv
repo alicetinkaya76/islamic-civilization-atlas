@@ -1,0 +1,201 @@
+link_id,source_type,source_id,target_type,target_id,link_type,description_tr,description_en
+1,dynasty,1,dynasty,2,succession,Râşidûn hilafetinin sona ermesiyle Emevîler iktidara geldi,The end of the Rashidun caliphate brought the Umayyads to power
+2,dynasty,2,dynasty,3,succession,Emevî iktidarı Abbâsî devrimiyle yıkıldı,Umayyad power was overthrown by the Abbasid revolution
+3,dynasty,3,dynasty,4,succession,Emevî prensi Abdurrahman İspanya'ya kaçarak Endülüs Emevî devletini kurdu,Umayyad prince Abd al-Rahman fled to Spain and founded the Andalusian Umayyad state
+4,dynasty,2,dynasty,4,flight,Emevî prensi Abdurrahman Abbâsî devriminden kaçarak Endülüs'e sığındı,Umayyad prince Abd al-Rahman fled the Abbasid revolution to al-Andalus
+5,dynasty,3,dynasty,82,delegation,Abbâsîler Horasan valiliğini Tâhirîlere bırakarak ilk otonom İran hanedanını yarattı,The Abbasids delegated Khurasan governorship to the Tahirids creating the first autonomous Iranian dynasty
+6,dynasty,82,dynasty,84,conquest,Saffârî Ya'kūb Tâhirî Horasan'ını fethetti,Saffarid Ya'qub conquered Tahirid Khurasan
+7,dynasty,84,dynasty,83,conquest,Sâmânîler Saffârîleri mağlup ederek Horasan'ın hakimi oldu,The Samanids defeated the Saffarids to become masters of Khurasan
+8,dynasty,83,dynasty,158,succession,Gazneliler Sâmânî gulâm valiliğinden bağımsızlaştı,The Ghaznavids gained independence from Samanid ghulam governorship
+9,dynasty,83,dynasty,90,conquest,Karahanlılar Sâmânîlerin Mâverâünnehir topraklarını fethetti,The Qarakhanids conquered Samanid Transoxiana
+10,dynasty,158,dynasty,159,conquest,Gurlular Gazneli Lahor'u alarak hanedanı sona erdirdi,The Ghurids took Ghaznavid Lahore ending the dynasty
+11,dynasty,159,dynasty,160,succession,Delhi Sultanlığı Gurlu gulâm valilerinin bağımsızlaşmasıyla kuruldu,The Delhi Sultanate was established when Ghurid ghulam governors gained independence
+12,dynasty,160,dynasty,175,conquest,Bâbür Pânîpat'ta son Lodî sultanını yenerek Delhi'yi aldı,Babur defeated the last Lodi sultan at Panipat and took Delhi
+13,dynasty,75,dynasty,91,conquest,Selçuklu Tuğrul Bey Büveyhî Bağdat'ını alarak Sünnî İslam'ın yeniden yükselişini başlattı,Seljuq Tughril Beg took Buyid Baghdad initiating the Sunni Islamic resurgence
+14,dynasty,91,dynasty,89,succession,Hârezmşahlar Selçuklu vasallığından bağımsızlaşarak imparatorluk kurdu,The Khwarazm Shahs gained independence from Seljuq vassalage to build an empire
+15,dynasty,89,dynasty,131,conquest,Cengiz Han Hârezmşah İmparatorluğu'nu yıkarak İslam dünyasını istila etti,Genghis Khan destroyed the Khwarazm Shah Empire invading the Islamic world
+16,dynasty,131,dynasty,133,division,Moğol İmparatorluğu bölünerek İlhanlı devleti kuruldu,The Mongol Empire divided and the Il-Khanid state was established
+17,dynasty,131,dynasty,134,division,Moğol İmparatorluğu bölünerek Altın Orda kuruldu,The Mongol Empire divided and the Golden Horde was established
+18,dynasty,131,dynasty,132,division,Moğol İmparatorluğu bölünerek Çağatay Hanlığı kuruldu,The Mongol Empire divided and the Chagatai Khanate was established
+19,dynasty,133,dynasty,142,succession,İlhanlı çöküşüyle Celâyirliler Bağdat ve Tebriz'de yükseldiler,The Jalayirids rose in Baghdad and Tabriz after the Il-Khanid collapse
+20,dynasty,133,dynasty,140,succession,İlhanlı çöküşüyle Muzafferîler Fars'ta yükseldiler,The Muzaffarids rose in Fars after the Il-Khanid collapse
+21,dynasty,132,dynasty,144,succession,Timur Çağatay Hanlığı'nı fiilen devraldı,Timur effectively took over the Chagatai Khanate
+22,dynasty,144,dynasty,148,succession,Safevîler Timurlu İran'ının mirasçısı olarak yükseldiler,The Safavids rose as heirs of Timurid Iran
+23,dynasty,144,dynasty,153,conquest,Şeybânîler Timurlu Mâverâünnehir'i fethetti,The Shaybanids conquered Timurid Transoxiana
+24,dynasty,144,dynasty,175,succession,Bâbür Timurlu mirası üzerinde Hindistan'da imparatorluk kurdu,Babur established an empire in India on the Timurid legacy
+25,dynasty,148,dynasty,149,succession,Nâdir Şah Safevî çöküşünden sonra İran'ı yeniden birleştirdi,Nadir Shah reunited Iran after the Safavid collapse
+26,dynasty,149,dynasty,150,succession,Zendler Afşar çöküşünden sonra güney İran'da hakimiyet kurdu,The Zands established dominance in southern Iran after the Afsharid collapse
+27,dynasty,150,dynasty,151,conquest,Kaçar Ağa Muhammed Han Zendleri yenerek İran'ı birleştirdi,Qajar Agha Muhammad Khan defeated the Zands and unified Iran
+28,dynasty,151,dynasty,152,coup,Rızâ Han askeri darbeyle Kaçar hanedanını devirdi,Riza Khan overthrew the Qajar dynasty in a military coup
+29,dynasty,134,dynasty,135,division,Altın Orda parçalanmasıyla Kırım Hanlığı kuruldu,The Crimean Khanate was established from the Golden Horde's fragmentation
+30,dynasty,134,dynasty,137,division,Altın Orda parçalanmasıyla Kazan Hanlığı kuruldu,The Kazan Khanate was established from the Golden Horde's fragmentation
+31,dynasty,134,dynasty,136,division,Altın Orda parçalanmasıyla Astrahan Hanlığı kuruldu,The Astrakhan Khanate was established from the Golden Horde's fragmentation
+32,dynasty,91,dynasty,107,succession,Anadolu Selçukluları Büyük Selçuklu sınır beyliğinden doğdu,The Seljuqs of Rum emerged from Great Seljuq frontier lordship
+33,dynasty,107,dynasty,130,succession,Osmanlılar Anadolu Selçuklu uç beyliğinden yükseldiler,The Ottomans rose from an Anatolian Seljuq frontier principality
+34,dynasty,107,dynasty,124,succession,Karamanoğulları Selçuklu uç beyliğinden yükseldiler,The Qaramanids rose from a Seljuq frontier principality
+35,dynasty,130,dynasty,124,conquest,Fatih Sultan Mehmed Karamanoğullarını ilhak etti,Mehmed the Conqueror annexed the Qaramanids
+36,dynasty,91,dynasty,93,succession,Zengîler Selçuklu valiliğinden yükselerek cihat hareketinin öncülüğünü yaptı,The Zangids rose from Seljuq governorship to pioneer the jihad movement
+37,dynasty,93,dynasty,30,succession,Selâhaddîn Eyyûbî Zengî emrinde yükselerek Eyyûbî devletini kurdu,Saladin rose through Zangid service to found the Ayyubid state
+38,dynasty,30,dynasty,31,succession,Memlûkler Eyyûbî gulâm sisteminden yükseldiler,The Mamluks rose from the Ayyubid ghulam system
+39,dynasty,146,dynasty,148,succession,Safevîler Akkoyunlu mirasını ve askeri gücünü devraldı,The Safavids inherited the Aq Qoyunlu legacy and military power
+40,dynasty,145,dynasty,146,conquest,Akkoyunlu Uzun Hasan Karakoyunluları yıktı,Aq Qoyunlu Uzun Hasan destroyed the Qara Qoyunlu
+41,dynasty,3,dynasty,27,rivalry,Fâtımîler Abbâsî hilafetine rakip Şiî hilafet kurdu,The Fatimids established a rival Shi'i caliphate to the Abbasids
+42,dynasty,27,dynasty,30,conquest,Selâhaddîn Fâtımî hilafetine son vererek Mısır'ı Sünnîliğe döndürdü,Saladin ended the Fatimid caliphate returning Egypt to Sunnism
+43,dynasty,31,dynasty,130,conquest,Yavuz Sultan Selim Memlûk Devleti'ni yıkarak hilafeti Osmanlılara aktardı,Selim I destroyed the Mamluk state transferring the caliphate to the Ottomans
+44,dynasty,175,dynasty,176,succession,Bengal Nevvâbları Bâbürlü valiliğinden bağımsızlaştı,The Bengal Nawabs gained independence from Mughal governorship
+45,dynasty,175,dynasty,177,succession,Avadh Nevvâbları Bâbürlü valiliğinden bağımsızlaştı,The Awadh Nawabs gained independence from Mughal governorship
+46,dynasty,175,dynasty,178,succession,Haydarâbâd Nizâmları Bâbürlü valiliğinden bağımsızlaştı,The Hyderabad Nizams gained independence from Mughal governorship
+47,dynasty,167,dynasty,170,division,Bahmânîlerin parçalanmasıyla Âdilşâhîler Bîcâpûr'da bağımsızlaştı,The Adil Shahis gained independence in Bijapur from Bahmanid fragmentation
+48,dynasty,167,dynasty,173,division,Bahmânîlerin parçalanmasıyla Kutubşâhîler Golkonda'da bağımsızlaştı,The Qutb Shahis gained independence in Golconda from Bahmanid fragmentation
+49,dynasty,167,dynasty,171,division,Bahmânîlerin parçalanmasıyla Nizâmşâhîler Ahmednagar'da bağımsızlaştı,The Nizam Shahis gained independence in Ahmednagar from Bahmanid fragmentation
+50,dynasty,183,dynasty,184,division,Mataram Giyanti Antlaşmasıyla Surakarta ve Yogyakarta'ya bölündü,Mataram was divided into Surakarta and Yogyakarta by the Treaty of Giyanti
+51,dynasty,183,dynasty,185,division,Mataram Giyanti Antlaşmasıyla Yogyakarta Sultanlığı kuruldu,The Yogyakarta Sultanate was established from Mataram's division
+52,dynasty,153,dynasty,154,succession,Cânîler Şeybânîlerin ardından Buhara'yı yönetti,The Janids governed Bukhara after the Shaybanids
+53,dynasty,154,dynasty,155,succession,Mangıtlar Cânîlerin zayıflamasıyla Buhara emîrliğini devraldı,The Mangits took over the Bukhara emirate as the Janids weakened
+54,dynasty,70,dynasty,71,succession,Müsâfirîler Sâcîlerin çöküşüyle Azerbaycan'da yükseldiler,The Musafirids rose in Azerbaijan after the Sajid collapse
+55,dynasty,71,dynasty,72,succession,Ravvâdîler Müsâfirî hakimiyetinin zayıflamasıyla Tebriz'de güçlendiler,The Rawwadids strengthened in Tabriz as Musafirid power weakened
+56,dynasty,91,dynasty,99,succession,İldenizliler Selçuklu Irak Sultanlığı'nın kontrolünü ele geçirdiler,The Eldiguzids seized control of the Seljuq Iraq Sultanate
+57,dynasty,69,dynasty,75,influence,Büveyhîler Cüstânîlerin Deylem bölgesinden çıktılar,The Buyids emerged from the Justanid Daylam region
+58,battle,4,dynasty,1,expansion,Yermük Zaferi Râşidûn devletini Suriye'ye genişletti,The Battle of Yarmouk expanded the Rashidun state to Syria
+59,battle,5,dynasty,1,expansion,Kādisiye Sâsânî İmparatorluğu'nun çöküşünü başlattı,Al-Qadisiyyah initiated the collapse of the Sasanian Empire
+60,battle,10,dynasty,3,foundation,Zab Savaşı Abbâsî devriminin askeri zaferini sağladı,The Battle of the Zab secured the Abbasid revolution's military victory
+61,battle,9,event,9,trigger,Kerbelâ olayı İslam dünyasında Sünnî-Şiî ayrımını kalıcılaştırdı,The Battle of Karbala permanently established the Sunni-Shi'i divide
+62,battle,14,event,22,trigger,Hıttîn Zaferi Kudüs'ün Müslümanlar tarafından geri alınmasını sağladı,The Battle of Hattin enabled the Muslim reconquest of Jerusalem
+63,battle,22,event,24,trigger,Bağdat'ın düşüşü Abbâsî hilafetini sona erdirdi,The Fall of Baghdad ended the Abbasid caliphate
+64,battle,17,dynasty,31,foundation,Ayn Câlût Zaferi Memlûklerin İslam dünyasının koruyucusu statüsünü pekiştirdi,The Battle of Ain Jalut consolidated the Mamluks' status as protectors of the Islamic world
+65,battle,27,dynasty,148,foundation,Çaldıran Savaşı Safevî-Osmanlı sınırını belirledi,The Battle of Chaldiran determined the Safavid-Ottoman border
+66,battle,29,dynasty,130,expansion,Ridâniye Savaşı Memlûk Devleti'ni yıkarak hilafeti Osmanlılara aktardı,The Battle of Ridaniya destroyed the Mamluk state transferring the caliphate to the Ottomans
+67,battle,33,dynasty,91,foundation,Dandanakan Selçuklu İmparatorluğu'nun kuruluş savaşıdır,Dandanaqan was the founding battle of the Seljuq Empire
+68,battle,34,dynasty,91,expansion,Malazgirt Zaferi Anadolu'yu Türk-İslam dünyasına açtı,The Battle of Manzikert opened Anatolia to the Turco-Islamic world
+69,battle,35,dynasty,107,defeat,Kösedağ yenilgisi Anadolu Selçuklularını Moğol vasallığına düşürdü,The Kosedag defeat reduced the Anatolian Seljuqs to Mongol vassalage
+70,battle,36,dynasty,130,foundation,Kosova Savaşı Osmanlı Balkan hakimiyetini pekiştirdi,The Battle of Kosovo consolidated Ottoman Balkan dominance
+71,battle,37,dynasty,130,expansion,Niğbolu Zaferi Osmanlıları Avrupa'nın önde gelen askeri gücüne dönüştürdü,The Battle of Nicopolis transformed the Ottomans into Europe's foremost military power
+72,battle,38,dynasty,130,crisis,Ankara Savaşı Osmanlı İmparatorluğu'nu fetret dönemine sürükledi,The Battle of Ankara plunged the Ottoman Empire into interregnum
+73,battle,39,dynasty,130,expansion,İstanbul'un Fethi Osmanlıları dünya gücüne dönüştürdü,The Conquest of Constantinople transformed the Ottomans into a world power
+74,battle,42,dynasty,130,decline,Viyana Kuşatması Osmanlı Avrupa yayılmasının sınırını belirledi,The Siege of Vienna determined the limit of Ottoman European expansion
+75,battle,44,dynasty,175,decline,Plassey Savaşı İngiliz sömürgeciliğinin Hindistan'daki başlangıcını işaret etti,The Battle of Plassey marked the beginning of British colonialism in India
+76,battle,40,dynasty,130,expansion,Mohaç Savaşı Macaristan'ı Osmanlı hakimiyetine açtı,The Battle of Mohacs opened Hungary to Ottoman dominance
+77,event,1,dynasty,1,foundation,Hicret İslam devletinin kuruluş tarihidir,The Hijra is the founding date of the Islamic state
+78,event,3,dynasty,1,expansion,Kudüs'ün fethi İslam devletini kutsal topraklara genişletti,The conquest of Jerusalem expanded the Islamic state to the holy lands
+79,event,11,dynasty,3,foundation,Bağdat'ın kuruluşu Abbâsî medeniyetinin merkezini oluşturdu,The foundation of Baghdad created the center of Abbasid civilization
+80,event,12,dynasty,3,cultural,Beytülhikme İslam bilim geleneğinin kurumsallaşmasını sağladı,The House of Wisdom institutionalized the Islamic scientific tradition
+81,event,17,dynasty,27,foundation,Kahire'nin kuruluşu Fâtımî hilafetinin merkezini oluşturdu,The foundation of Cairo created the center of the Fatimid caliphate
+82,event,20,dynasty,91,cultural,Nizâmiye medreseleri Sünnî eğitim sistemini kurumsallaştırdı,The Nizamiyyah madrasas institutionalized the Sunni educational system
+83,event,21,dynasty,91,crisis,Birinci Haçlı Seferi Kudüs'ü Müslümanlardan aldı,The First Crusade took Jerusalem from the Muslims
+84,event,24,dynasty,3,collapse,Bağdat'ın yıkımı Abbâsî hilafetini fiilen sona erdirdi,The destruction of Baghdad effectively ended the Abbasid caliphate
+85,event,33,dynasty,148,foundation,Şiîliğin devlet dini ilanı İran kimliğini kalıcı olarak değiştirdi,The declaration of Shi'ism as state religion permanently changed Iranian identity
+86,event,32,dynasty,130,collapse,Hilafetin ilgası İslam dünyasının sembolik birliğini sona erdirdi,The abolition of the caliphate ended the symbolic unity of the Islamic world
+87,event,30,dynasty,130,reform,Tanzimat Fermanı Osmanlı modernleşmesinin başlangıcıdır,The Tanzimat Edict marked the beginning of Ottoman modernization
+88,event,41,dynasty,181,foundation,Malakka Sultanlığı'nın kuruluşu Güneydoğu Asya İslam'ının yayılış merkezi oldu,The founding of the Malacca Sultanate became the center for Islam's spread in Southeast Asia
+89,event,42,dynasty,181,collapse,Portekiz Malakka'yı fethetti ve Güneydoğu Asya İslam ticaretini sarstı,Portugal conquered Malacca disrupting Southeast Asian Islamic trade
+90,event,12,scholar,1,patronage,Beytülhikme Ebû Hanîfe sonrası fıkıh ve ilim geleneğinin kurumsallaşmasını sağladı,The House of Wisdom enabled institutionalization of the jurisprudence and scientific tradition
+91,event,12,scholar,9,patronage,Beytülhikme Hârizmî'nin cebir ve algoritma çalışmalarına ortam hazırladı,The House of Wisdom prepared the environment for al-Khwarizmi's algebra and algorithm works
+92,event,12,scholar,13,patronage,Beytülhikme Câbir ibn Hayyân'ın kimya çalışmalarının devamına zemin hazırladı,The House of Wisdom prepared the ground for the continuation of Jabir ibn Hayyan's chemistry
+93,scholar,9,event,13,creation,Hârizmî cebir ve algoritmayı sistematik hale getirdi,Al-Khwarizmi systematized algebra and algorithms
+94,scholar,7,event,20,influence,Gazzâlî Nizâmiye medreselerinde ders vererek Sünnî ortodoksiyi güçlendirdi,Al-Ghazali strengthened Sunni orthodoxy by teaching at the Nizamiyyah madrasas
+95,scholar,19,event,46,creation,İbn Haldûn Mukaddime'yi yazarak tarih felsefesini kurdu,Ibn Khaldun wrote the Muqaddimah founding the philosophy of history
+96,scholar,12,dynasty,158,patronage,Bîrûnî Gazneli sarayında çalışarak Hindistan'ı bilimsel olarak belgeledi,Al-Biruni worked at the Ghaznavid court scientifically documenting India
+97,scholar,14,dynasty,133,patronage,Nasîrüddîn Tûsî İlhanlı Merâga Rasathanesi'ni kurdu,Nasir al-Din al-Tusi established the Il-Khanid Maragha Observatory
+98,scholar,10,dynasty,83,patronage,İbn Sînâ Sâmânî kültürel ortamında yetişti,Avicenna was raised in the Samanid cultural environment
+99,scholar,30,dynasty,144,patronage,Uluğ Bey Timurlu Semerkand rasathanesini kurarak astronomiyi ilerlettti,Ulugh Beg advanced astronomy by establishing the Timurid Samarkand observatory
+100,scholar,34,dynasty,130,patronage,Mimar Sinan Osmanlı mimari geleneğinin zirvesini temsil eder,Mimar Sinan represents the pinnacle of Ottoman architectural tradition
+101,scholar,36,dynasty,130,creation,Mimar Sinan Süleymaniye ve Selimiye camilerini inşa etti,Mimar Sinan built the Suleymaniye and Selimiye mosques
+102,monument,1,dynasty,2,cultural,Kubbetüs-Sahra Emevî İslam mimari kimliğinin ilk anıtsal ifadesidir,The Dome of the Rock is the first monumental expression of Umayyad Islamic architectural identity
+103,monument,4,dynasty,3,cultural,Samerra Ulu Camii Abbâsî askeri başkentinin sembolüdür,The Great Mosque of Samarra symbolizes the Abbasid military capital
+104,monument,8,dynasty,14,cultural,Kutubiyye Camii Murâbıt mimari geleneğinin başyapıtıdır,The Koutoubia Mosque is a masterpiece of the Almoravid architectural tradition
+105,monument,10,dynasty,91,cultural,İsfahan Cuma Camii Selçuklu mimari geleneğinin temsilcisidir,The Isfahan Friday Mosque represents the Seljuq architectural tradition
+106,monument,22,dynasty,130,cultural,Selimiye Camii Osmanlı mimari dehasının zirvesidir,The Selimiye Mosque is the pinnacle of Ottoman architectural genius
+107,monument,31,dynasty,175,cultural,Tac Mahal Bâbürlü mimari geleneğinin ve aşkın evrensel sembolüdür,The Taj Mahal is the universal symbol of Mughal architecture and love
+108,monument,28,dynasty,148,cultural,Nakş-ı Cihan Meydanı Safevî İsfahan'ının görkemini simgeler,Naqsh-e Jahan Square symbolizes the magnificence of Safavid Isfahan
+109,monument,26,dynasty,144,cultural,Registan Meydanı Timurlu Semerkand'ının entelektüel ihtişamını yansıtır,Registan Square reflects the intellectual magnificence of Timurid Samarkand
+110,dynasty,14,dynasty,15,succession,Muvahhidler Murâbıtları yıkarak Mağrib'in yeni hakimi oldu,The Almohads destroyed the Almoravids to become the new rulers of the Maghreb
+111,dynasty,15,dynasty,16,succession,Hafsîler Muvahhid çöküşüyle Tunus'ta bağımsızlaştı,The Hafsids gained independence in Tunisia from the Almohad collapse
+112,dynasty,15,dynasty,17,succession,Merînîler Muvahhid çöküşüyle Fas'ta yükseldiler,The Marinids rose in Morocco from the Almohad collapse
+113,dynasty,15,dynasty,18,succession,Zeyyânîler Muvahhid çöküşüyle Tlemsen'de bağımsızlaştı,The Zayyanids gained independence in Tlemcen from the Almohad collapse
+114,dynasty,130,dynasty,135,alliance,Kırım Giray Hanları Osmanlı vassalı ve müttefiki olarak üç asır hüküm sürdü,The Crimean Giray Khans ruled for three centuries as Ottoman vassals and allies
+115,dynasty,91,dynasty,96,succession,Artukîler Büyük Selçuklu sınır beylerinden türedi,The Artuqids derived from Great Seljuq frontier lords
+116,dynasty,91,dynasty,108,succession,Dânişmendliler Büyük Selçuklu sınır beylerinden türedi,The Danishmendids derived from Great Seljuq frontier lords
+117,dynasty,91,dynasty,109,succession,Mengücekliler Büyük Selçuklu sınır beylerinden türedi,The Mengujekids derived from Great Seljuq frontier lords
+118,dynasty,91,dynasty,110,succession,Saltuklular Büyük Selçuklu sınır beylerinden türedi,The Saltuqids derived from Great Seljuq frontier lords
+119,dynasty,91,dynasty,103,succession,Salgurîler Selçuklu Fars valiliğinden yükseldiler,The Salghurids rose from Seljuq Fars governorship
+120,dynasty,30,dynasty,49,succession,Resûlîler Eyyûbî Yemen kolundan bağımsızlaştı,The Rasulids gained independence from the Ayyubid Yemen branch
+121,battle,13,dynasty,14,expansion,Zallaqa Zaferi Murâbıtların Endülüs'teki hakimiyetini pekiştirdi,The Battle of Zallaqa consolidated Almoravid dominance in al-Andalus
+122,battle,16,dynasty,15,expansion,Las Navas de Tolosa Muvahhidlerin Endülüs'teki gücünü kırdı,Las Navas de Tolosa broke Almohad power in al-Andalus
+123,battle,20,dynasty,31,expansion,Mercidâbık Savaşı Suriye'yi Osmanlılara açtı,The Battle of Marj Dabiq opened Syria to the Ottomans
+124,battle,25,dynasty,160,expansion,Tarain Savaşı Kuzey Hindistan'ı İslam dünyasına açtı,The Battle of Tarain opened northern India to the Islamic world
+125,battle,31,dynasty,130,decline,Çanakkale Savaşı Osmanlı İmparatorluğu'nun son büyük savunma zaferidir,The Battle of Gallipoli was the last great defensive victory of the Ottoman Empire
+126,battle,46,dynasty,175,expansion,Pânîpat (I) Bâbürlü İmparatorluğu'nun kuruluş savaşıdır,The First Battle of Panipat was the founding battle of the Mughal Empire
+127,battle,47,dynasty,175,expansion,Pânîpat (II) Bâbürlü hakimiyetini Kuzey Hindistan'da pekiştirdi,The Second Battle of Panipat consolidated Mughal dominance in northern India
+128,scholar,5,dynasty,83,patronage,Buhârî Sâmânî kültürel ortamında hadis külliyatını derledi,Al-Bukhari compiled his hadith collection in the Samanid cultural environment
+129,scholar,6,dynasty,83,patronage,Müslim ibn Haccâc Sâmânî himayesinde hadis külliyatını derledi,Muslim ibn al-Hajjaj compiled his hadith collection under Samanid patronage
+130,scholar,31,dynasty,144,patronage,Alî Şîr Nevâîî Timurlu Herât'ta Çağatay Türk edebiyatını zirveye taşıdı,Ali Shir Nava'i brought Chagatai Turkish literature to its peak in Timurid Herat
+131,scholar,11,dynasty,27,patronage,İbn Heysem Fâtımî Kahire'sinde optik biliminin temellerini attı,Alhazen laid the foundations of optics in Fatimid Cairo
+132,scholar,22,event,40,influence,İbn Rüşd Toledo Tercüme Hareketi aracılığıyla Avrupa düşüncesini etkiledi,Averroes influenced European thought through the Toledo Translation Movement
+133,scholar,23,event,40,influence,İbn Meymûn Toledo Tercüme Hareketi aracılığıyla Yahudi ve Hıristiyan felsefesini etkiledi,Maimonides influenced Jewish and Christian philosophy through the Toledo Translation Movement
+134,trade_route,1,dynasty,3,economic,İpek Yolu Abbâsî ekonomisinin temel ticaret aksıydı,The Silk Road was the fundamental trade axis of the Abbasid economy
+135,trade_route,2,dynasty,27,economic,Trans-Sahra güzergahı Fâtımî ve Kuzey Afrika ekonomilerini Batı Afrika altınına bağladı,The Trans-Saharan route connected Fatimid and North African economies to West African gold
+136,trade_route,3,dynasty,49,economic,Hint Okyanusu Baharat Yolu Resûlîlerin Aden limanından geçerek küresel ticareti şekillendirdi,The Indian Ocean Spice Route shaped global trade passing through the Rasulid port of Aden
+137,trade_route,6,dynasty,130,economic,Akdeniz Ticaret Yolu Osmanlı ekonomisinin temel gelir kaynağıydı,The Mediterranean Trade Route was a fundamental revenue source for the Ottoman economy
+138,trade_route,7,dynasty,175,economic,Bengal-Gücerat Deniz Yolu Bâbürlü Hindistan'ın zenginliğine katkıda bulundu,The Bengal-Gujarat Maritime Route contributed to the wealth of Mughal India
+139,diplomacy,1,dynasty,3,diplomatic,Abbâsî-Frank ittifakı İslam ve Batı dünyası arasındaki ilk büyük diplomatik ilişkidir,The Abbasid-Frankish alliance was the first major diplomatic relation between Islam and the West
+140,diplomacy,5,dynasty,134,diplomatic,Altın Orda-Memlûk ittifakı İlhanlılara karşı stratejik denge oluşturdu,The Golden Horde-Mamluk alliance created a strategic balance against the Il-Khanids
+141,diplomacy,8,dynasty,130,diplomatic,Osmanlı-Fransa Kapitülasyonları uluslararası ticaret hukukunun erken örneğidir,The Ottoman-French Capitulations were an early example of international trade law
+142,diplomacy,14,dynasty,30,diplomatic,Selâhaddîn-Richard müzakeresi Haçlı döneminin en ünlü diplomatik anıdır,The Saladin-Richard negotiation is the most famous diplomatic moment of the Crusader era
+143,event,26,scholar,30,creation,Uluğ Bey Semerkand Rasathanesi'ni kurarak yıldız kataloğu hazırladı,Ulugh Beg established the Samarkand Observatory and prepared a star catalog
+144,event,28,scholar,36,creation,Mimar Sinan Süleymaniye Camii'ni inşa etti,Mimar Sinan built the Suleymaniye Mosque
+145,event,34,dynasty,148,cultural,Nakş-ı Cihan Meydanı Safevî İran'ının kültürel zirvesini temsil eder,Naqsh-e Jahan Square represents the cultural peak of Safavid Iran
+146,event,35,dynasty,175,cultural,Tac Mahal'in inşası Bâbürlü mimari geleneğinin en ikonik eserini yarattı,The construction of the Taj Mahal created the most iconic work of Mughal architecture
+147,dynasty,3,scholar,9,patronage,Abbâsî hilafeti Hârizmî'nin bilimsel çalışmalarını himaye etti,The Abbasid caliphate patronized al-Khwarizmi's scientific works
+148,dynasty,91,scholar,7,patronage,Selçuklu devleti Gazzâlî'yi Nizâmiye medresesine atadı,The Seljuq state appointed al-Ghazali to the Nizamiyyah madrasa
+149,dynasty,31,scholar,19,patronage,Memlûk devleti İbn Haldûn'a kadılık makamı verdi,The Mamluk state gave Ibn Khaldun the office of chief judge
+150,dynasty,4,scholar,22,patronage,Endülüs Emevîleri İslam filozoflarının yetiştiği kültürel ortamı hazırladı,The Andalusian Umayyads prepared the cultural environment that nurtured Islamic philosophers
+151,dynasty,27,scholar,6,patronage,Fâtımî devleti Dâru'l-Hikme'yi kurarak ilim geleneğini sürdürdü,The Fatimid state continued the scholarly tradition by establishing the Dar al-Hikma
+152,battle,48,dynasty,175,decline,Pânîpat (III) Bâbürlü İmparatorluğu'nun geri dönüşü olmayan çöküşünü hızlandırdı,The Third Battle of Panipat accelerated the irreversible decline of the Mughal Empire
+153,dynasty,14,dynasty,4,conquest,Murâbıtlar Endülüs tâifa devletçiklerini ilhak etti,The Almoravids annexed the Andalusian taifa statelets
+154,dynasty,130,dynasty,148,rivalry,Osmanlı-Safevî rekabeti Ortadoğu'nun Sünnî-Şiî eksenini kalıcı olarak belirledi,The Ottoman-Safavid rivalry permanently determined the Sunni-Shi'i axis of the Middle East
+155,dynasty,130,dynasty,175,rivalry,Osmanlı ve Bâbürlü imparatorlukları İslam dünyasının iki büyük gücü olarak birbirini tamamladı,The Ottoman and Mughal empires complemented each other as the two great powers of the Islamic world
+156,dynasty,148,dynasty,153,rivalry,Safevî-Şeybânî rekabeti Orta Asya'nın Sünnî-Şiî sınırını belirledi,The Safavid-Shaybanid rivalry determined Central Asia's Sunni-Shi'i border
+157,battle,43,dynasty,130,decline,Trafalgar Savaşı sonrası İngiliz deniz hakimiyeti Osmanlı Akdeniz gücünü zayıflattı,British naval supremacy after Trafalgar weakened Ottoman Mediterranean power
+158,event,25,dynasty,31,crisis,Kara Veba İslam dünyasının nüfusunu ve ekonomisini derinden sarstı,The Black Death profoundly shook the Islamic world's population and economy
+159,dynasty,160,dynasty,167,succession,Bahmânîler Delhi Tuğluklu valiliğinden bağımsızlaştı,The Bahmanids gained independence from Delhi Tughluq governorship
+160,dynasty,160,dynasty,161,succession,Bengal Sultanları Delhi Sultanlığı'ndan bağımsızlaştı,The Bengal Sultans gained independence from the Delhi Sultanate
+161,dynasty,160,dynasty,163,succession,Gücerat Sultanları Delhi Sultanlığı valiliğinden bağımsızlaştı,The Gujarat Sultans gained independence from Delhi Sultanate governorship
+162,dynasty,91,dynasty,92,succession,Börîler Selçuklu Suriye valiliğinden yükseldiler,The Borids rose from Seljuq Syrian governorship
+163,dynasty,92,dynasty,93,conquest,Zengî Nûreddîn Şam'ı alarak Börî yönetimini sona erdirdi,Zangid Nur al-Din ended Borid rule by taking Damascus
+164,dynasty,3,dynasty,75,control,Büveyhîler Abbâsî halifesini doğrudan kontrol altına aldı,The Buyids placed the Abbasid caliph under direct control
+165,event,49,scholar,10,creation,İbn Sînâ Kanun fi't-Tıbb'ı yazarak tıp bilimini sistematize etti,Avicenna wrote the Canon of Medicine systematizing medical science
+166,scholar,18,event,23,creation,Nasîrüddîn Tûsî Merâga Rasathanesi'ni kurdu,Nasir al-Din al-Tusi established the Maragha Observatory
+167,dynasty,1,event,47,expansion,Mekke'nin fethi İslam'ın Arabistan'daki zaferini simgeledi,The conquest of Mecca symbolized Islam's victory in Arabia
+168,dynasty,130,event,39,expansion,İstanbul'un fethi Osmanlıları Roma'nın mirasçısı yaptı,The conquest of Constantinople made the Ottomans heirs of Rome
+169,event,39,monument,22,influence,İstanbul'un fethi Osmanlı mimari geleneğinin Bizans mirasıyla sentezini başlattı,The conquest of Constantinople initiated the synthesis of Ottoman architecture with Byzantine heritage
+170,dynasty,75,scholar,10,context,Büveyhî Şiî düzeni İbn Sînâ'nın çok-hanedanlı dünyada yetişmesine zemin hazırladı,The Buyid Shi'i order prepared the ground for Avicenna's development in a multi-dynastic world
+171,dynasty,144,scholar,31,patronage,Hüseyin Baykara Alî Şîr Nevâîî'yi himaye ederek Çağatay edebiyatının altın çağını yarattı,Husayn Bayqara created the golden age of Chagatai literature by patronizing Ali Shir Nava'i
+172,dynasty,130,dynasty,107,conquest,Osmanlılar Anadolu beyliklerini ilhak ederek Anadolu'da birliği sağladı,The Ottomans achieved unity in Anatolia by annexing the Anatolian principalities
+173,dynasty,175,dynasty,170,conquest,Bâbürlü Evrengzîb Dekkan sultanlıklarını fethetti,Mughal Aurangzeb conquered the Deccan sultanates
+174,dynasty,175,dynasty,173,conquest,Bâbürlü Evrengzîb Golkonda'yı fethetti,Mughal Aurangzeb conquered Golconda
+175,event,38,dynasty,4,cultural,Kurtuba Ulu Camii Endülüs İslam medeniyetinin mimari simgesi oldu,The Great Mosque of Cordoba became the architectural symbol of Andalusian Islamic civilization
+176,dynasty,17,dynasty,21,succession,Alevî Şerifler Merînî-Vattâsî düzeninin çöküşüyle Fas'ta iktidara geldi,The Alawi Sharifs came to power in Morocco after the Marinid-Wattasid order collapsed
+177,dynasty,180,dynasty,149,succession,Ahmed Şâh Dürrânî Nâdir Şah'ın ölümüyle Afganistan'ı kurdu,Ahmad Shah Durrani founded Afghanistan upon Nadir Shah's death
+178,dynasty,99,dynasty,89,conquest,Hârezmşah Celâleddîn İldenizlileri yıktı,Khwarazm Shah Jalal al-Din destroyed the Eldiguzids
+179,dynasty,73,dynasty,99,succession,İldenizliler Şeddâdîlerin bölgedeki mirasını devraldı,The Eldiguzids inherited the Shaddadid legacy in the region
+180,dynasty,91,dynasty,73,influence,Selçuklu baskısı Şeddâdî gücünü sınırladı,Seljuq pressure limited Shaddadid power
+181,dynasty,27,event,18,foundation,Fâtımîler Ezher'i kurarak İslam'ın en eski süregelen üniversitesini yarattı,The Fatimids created Islam's oldest continuing university by founding al-Azhar
+182,dynasty,91,event,20,foundation,Selçuklu veziri Nizâmülmülk Nizâmiye medreselerini kurdu,Seljuq vizier Nizam al-Mulk founded the Nizamiyyah madrasas
+183,event,10,dynasty,4,foundation,Endülüs'ün fethi Emevî kültürünün İspanya'da kökleşmesini sağladı,The conquest of al-Andalus enabled Umayyad culture to take root in Spain
+184,dynasty,63,dynasty,65,succession,Zengibar Bû Saîdîleri Doğu Afrika'daki Nâbhânî mirasını genişletti,The Zanzibar Bu Saidi expanded the Nabhani legacy in East Africa
+185,dynasty,64,dynasty,65,succession,Bû Saîdîler Mezrûî valiliğini sona erdirerek Zengibar'ı doğrudan yönetti,The Bu Saidi ended Mazrui governorship governing Zanzibar directly
+186,dynasty,181,dynasty,182,influence,Malakka'nın düşüşü Açe'nin Güneydoğu Asya İslam'ının yeni merkezi olmasını sağladı,The fall of Malacca enabled Aceh to become the new center of Southeast Asian Islam
+187,dynasty,3,dynasty,69,influence,Abbâsî otoritesinin zayıflaması Deylem bölgesinde yerel hanedanların yükselişini sağladı,The weakening of Abbasid authority enabled the rise of local dynasties in the Daylam region
+188,dynasty,144,dynasty,139,conquest,Timur Kurtları yıkarak Herât'ı kendi kültürel merkezine dönüştürdü,Timur destroyed the Karts transforming Herat into his own cultural center
+189,dynasty,144,dynasty,140,conquest,Timur Muzafferîleri tasfiye ederek Fars'ı imparatorluğuna dahil etti,Timur liquidated the Muzaffarids incorporating Fars into his empire
+190,dynasty,144,dynasty,134,conquest,Timur'un seferleri Altın Orda'yı kalıcı olarak zayıflattı,Timur's campaigns permanently weakened the Golden Horde
+191,dynasty,31,dynasty,130,rivalry,Memlûk-Osmanlı rekabeti Suriye ve Mısır'ın kontrolü için şekillendi,The Mamluk-Ottoman rivalry was shaped over control of Syria and Egypt
+192,monument,11,dynasty,107,cultural,Konya Alâeddin Camii Anadolu Selçuklu mimari geleneğinin temsilcisidir,The Konya Alaeddin Mosque represents the Anatolian Seljuq architectural tradition
+193,monument,34,dynasty,181,cultural,Demak Ulu Camii Güneydoğu Asya'da İslam mimarisinin erken örneğidir,The Great Mosque of Demak is an early example of Islamic architecture in Southeast Asia
+194,dynasty,3,dynasty,70,delegation,Abbâsîler Azerbaycan valiliğini Sâcîlere bıraktı,The Abbasids delegated Azerbaijan governorship to the Sajids
+195,dynasty,107,dynasty,125,succession,Eretnaoğulları İlhanlı valiliğinden Orta Anadolu'da bağımsızlaştı,The Eretna gained independence from Il-Khanid governorship in central Anatolia
+196,dynasty,125,dynasty,126,coup,Kadı Burhâneddin Eretnaoğullarını devirerek Sivas'ta iktidarı ele geçirdi,Qadi Burhan al-Din overthrew the Eretna seizing power in Sivas
+197,dynasty,91,dynasty,75,conquest,Selçuklular Büveyhîleri yıkarak Sünnî İslam'ın yeniden yükselişini başlattı,The Seljuqs destroyed the Buyids initiating the resurgence of Sunni Islam
+198,dynasty,90,dynasty,83,conquest,Karahanlılar Sâmânîlerin Mâverâünnehir topraklarını fethetti,The Qarakhanids conquered Samanid territories in Transoxiana
+199,dynasty,158,dynasty,91,rivalry,Selçuklu-Gazneli rekabeti Dandanakan'da Selçuklu zaferiyle sonuçlandı,The Seljuq-Ghaznavid rivalry concluded with the Seljuq victory at Dandanaqan
+200,dynasty,182,dynasty,130,diplomatic,Açe Sultanlığı Osmanlı İmparatorluğu ile diplomatik ilişki kurdu,The Aceh Sultanate established diplomatic relations with the Ottoman Empire

@@ -9,6 +9,7 @@ export default function TimelineView({ lang, t }) {
   const [showBattles, setShowBattles] = useState(true);
   const [showEvents, setShowEvents] = useState(true);
   const [showScholars, setShowScholars] = useState(true);
+  const [showCausal, setShowCausal] = useState(true);
   const [zoom, setZoom] = useState(1);
   const [tooltip, setTooltip] = useState(null);
 
@@ -23,6 +24,22 @@ export default function TimelineView({ lang, t }) {
     const m = {}; DB.analytics.forEach(a => { m[a.id] = a; }); return m;
   }, []);
 
+  // Build dynasty index → timeline row position
+  const dynRowMap = useMemo(() => {
+    const m = {};
+    impDyns.forEach((d, i) => { m[d.id] = i; });
+    return m;
+  }, [impDyns]);
+
+  // Filter dynasty-to-dynasty causal links for timeline
+  const dynLinks = useMemo(() => {
+    if (!DB.causal) return [];
+    return DB.causal.filter(c =>
+      c.st === 'dynasty' && c.tt === 'dynasty' &&
+      dynRowMap[c.si] !== undefined && dynRowMap[c.ti] !== undefined
+    ).slice(0, 80); // limit for performance
+  }, [dynRowMap]);
+
   useEffect(() => {
     if (!svgRef.current) return;
     const svg = d3.select(svgRef.current);
@@ -35,6 +52,15 @@ export default function TimelineView({ lang, t }) {
     const H = mt + dyns.length * (barH + gap) + mb + 120;
 
     svg.attr('width', W).attr('height', H);
+
+    // Arrowhead marker for causal links
+    svg.append('defs').append('marker')
+      .attr('id', 'arrowhead').attr('viewBox', '0 0 10 10')
+      .attr('refX', 8).attr('refY', 5)
+      .attr('markerWidth', 5).attr('markerHeight', 5)
+      .attr('orient', 'auto-start-reverse')
+      .append('path').attr('d', 'M 0 0 L 10 5 L 0 10 z')
+      .attr('fill', '#c9a84c');
 
     const x = d3.scaleLinear().domain([600, 1930]).range([ml, W - mr]);
 
@@ -84,9 +110,11 @@ export default function TimelineView({ lang, t }) {
         .attr('cursor', 'pointer')
         .on('mouseenter', (ev) => {
           const an = analyticsMap[d.id];
+          const narr = lang === 'tr' ? (d.narr_tr || '') : (d.narr_en || '');
+          const narrSnip = narr.length > 120 ? narr.slice(0, 120) + '…' : narr;
           setTooltip({
             x: ev.pageX, y: ev.pageY,
-            html: `<b>${n(d, lang)}</b><br/>${d.start}–${d.end} · ${d.zone}<br/>${d.rel || '—'} · ${d.gov || '—'}${an ? '<br/>Power: ' + an.pi : ''}`
+            html: `<b>${n(d, lang)}</b><br/>${d.start}–${d.end} · ${d.zone}<br/>${d.rel || '—'} · ${d.gov || '—'}${an ? '<br/>Power: ' + an.pi : ''}${narrSnip ? '<br/><span style="color:#c4b89a;font-size:10px">' + narrSnip + '</span>' : ''}`
           });
         })
         .on('mouseleave', () => setTooltip(null));
@@ -109,6 +137,53 @@ export default function TimelineView({ lang, t }) {
       }
     });
 
+    // ═══ CAUSAL LINK ARROWS ═══
+    if (showCausal && dynLinks.length > 0) {
+      const LINK_COL = {
+        succession: '#4ade80', conquest: '#f87171', division: '#fb923c',
+        patronage: '#a78bfa', cultural: '#fbbf24', expansion: '#22d3ee',
+        rivalry: '#f472b6', influence: '#60a5fa',
+      };
+
+      const linkGroup = svg.append('g').attr('class', 'causal-arrows');
+
+      dynLinks.forEach(link => {
+        const srcRow = dynRowMap[link.si];
+        const tgtRow = dynRowMap[link.ti];
+        if (srcRow === undefined || tgtRow === undefined) return;
+
+        const srcDyn = impDyns[srcRow];
+        const tgtDyn = impDyns[tgtRow];
+
+        // Connect at the overlap or transition point
+        const connectYear = Math.max(srcDyn.start, tgtDyn.start);
+        const cx = x(Math.min(Math.max(connectYear, 600), 1930));
+        const sy = mt + srcRow * (barH + gap) + barH / 2;
+        const ty = mt + tgtRow * (barH + gap) + barH / 2;
+
+        const col = LINK_COL[link.lt] || '#c9a84c55';
+        const desc = lang === 'tr' ? link.dtr : link.den;
+
+        // Curved path
+        const midX = cx + (ty > sy ? 15 : -15);
+        const path = `M${cx},${sy} C${midX},${sy} ${midX},${ty} ${cx},${ty}`;
+
+        linkGroup.append('path')
+          .attr('d', path)
+          .attr('fill', 'none')
+          .attr('stroke', col)
+          .attr('stroke-width', 1.2)
+          .attr('stroke-opacity', 0.5)
+          .attr('marker-end', 'url(#arrowhead)')
+          .attr('cursor', 'pointer')
+          .on('mouseenter', ev => setTooltip({
+            x: ev.pageX, y: ev.pageY,
+            html: `<b>🔗 ${(t.lk?.types?.[link.lt]) || link.lt}</b><br/>${desc}`
+          }))
+          .on('mouseleave', () => setTooltip(null));
+      });
+    }
+
     const evtY = mt + dyns.length * (barH + gap) + 20;
 
     // Battles
@@ -123,10 +198,14 @@ export default function TimelineView({ lang, t }) {
         svg.append('circle').attr('cx', bx).attr('cy', evtY)
           .attr('r', r).attr('fill', '#dc2626').attr('opacity', 0.8)
           .attr('cursor', 'pointer')
-          .on('mouseenter', ev => setTooltip({
-            x: ev.pageX, y: ev.pageY,
-            html: `<b>⚔ ${n(b, lang)}</b><br/>${b.yr} · ${t.imp[b.sig] || b.sig}${b.res ? '<br/>' + b.res : ''}`
-          }))
+          .on('mouseenter', ev => {
+            const narr = lang === 'tr' ? (b.narr_tr || '') : (b.narr_en || '');
+            const narrSnip = narr.length > 100 ? narr.slice(0, 100) + '…' : narr;
+            setTooltip({
+              x: ev.pageX, y: ev.pageY,
+              html: `<b>⚔ ${n(b, lang)}</b><br/>${b.yr} · ${t.imp[b.sig] || b.sig}${b.res ? '<br/>' + b.res : ''}${narrSnip ? '<br/><span style="color:#c4b89a;font-size:10px">' + narrSnip + '</span>' : ''}`
+            });
+          })
           .on('mouseleave', () => setTooltip(null));
       });
     }
@@ -140,10 +219,14 @@ export default function TimelineView({ lang, t }) {
           .attr('width', 6).attr('height', 6).attr('rx', 1)
           .attr('fill', '#60a5fa').attr('opacity', 0.7)
           .attr('cursor', 'pointer')
-          .on('mouseenter', ev => setTooltip({
-            x: ev.pageX, y: ev.pageY,
-            html: `<b>📜 ${n(e, lang)}</b><br/>${e.yr} · ${t.imp[e.sig] || e.sig}${e.desc ? '<br/>' + e.desc : ''}`
-          }))
+          .on('mouseenter', ev => {
+            const narr = lang === 'tr' ? (e.narr_tr || '') : (e.narr_en || '');
+            const narrSnip = narr.length > 100 ? narr.slice(0, 100) + '…' : narr;
+            setTooltip({
+              x: ev.pageX, y: ev.pageY,
+              html: `<b>📜 ${n(e, lang)}</b><br/>${e.yr} · ${t.imp[e.sig] || e.sig}${narrSnip ? '<br/><span style="color:#c4b89a;font-size:10px">' + narrSnip + '</span>' : ''}`
+            });
+          })
           .on('mouseleave', () => setTooltip(null));
       });
     }
@@ -161,14 +244,18 @@ export default function TimelineView({ lang, t }) {
           .attr('stroke', '#34d399').attr('stroke-width', 3)
           .attr('stroke-linecap', 'round').attr('opacity', 0.6)
           .attr('cursor', 'pointer')
-          .on('mouseenter', ev => setTooltip({
-            x: ev.pageX, y: ev.pageY,
-            html: `<b>📚 ${n(s, lang)}</b><br/>${s.b}–${s.d} · ${s.field}<br/>${lang === 'tr' ? s.work_tr : s.work_en}`
-          }))
+          .on('mouseenter', ev => {
+            const narr = lang === 'tr' ? (s.narr_tr || '') : (s.narr_en || '');
+            const narrSnip = narr.length > 100 ? narr.slice(0, 100) + '…' : narr;
+            setTooltip({
+              x: ev.pageX, y: ev.pageY,
+              html: `<b>📚 ${n(s, lang)}</b><br/>${s.b}–${s.d} · ${s.field}<br/>${lang === 'tr' ? s.work_tr : s.work_en}${narrSnip ? '<br/><span style="color:#c4b89a;font-size:10px">' + narrSnip + '</span>' : ''}`
+            });
+          })
           .on('mouseleave', () => setTooltip(null));
       });
     }
-  }, [impDyns, colorMode, showBattles, showEvents, showScholars, zoom, lang, t, analyticsMap]);
+  }, [impDyns, colorMode, showBattles, showEvents, showScholars, showCausal, dynLinks, dynRowMap, zoom, lang, t, analyticsMap]);
 
   return (
     <div className="tl-wrap">
@@ -182,6 +269,7 @@ export default function TimelineView({ lang, t }) {
           <button className={`tl-btn${showBattles ? ' active' : ''}`} onClick={() => setShowBattles(p => !p)}>⚔ {t.tl.battles}</button>
           <button className={`tl-btn${showEvents ? ' active' : ''}`} onClick={() => setShowEvents(p => !p)}>📜 {t.tl.events}</button>
           <button className={`tl-btn${showScholars ? ' active' : ''}`} onClick={() => setShowScholars(p => !p)}>📚 {t.tl.scholars}</button>
+          <button className={`tl-btn${showCausal ? ' active' : ''}`} onClick={() => setShowCausal(p => !p)}>🔗 {lang === 'tr' ? 'Nedensellik' : 'Causality'}</button>
         </div>
         <div className="tl-grp">
           <button className="tl-btn" onClick={() => setZoom(z => Math.max(0.5, z - 0.25))}>🔍−</button>

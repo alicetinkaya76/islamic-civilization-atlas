@@ -55,17 +55,18 @@ Bosworth'un İslam Hanedanları veri tabanının **kapsamlı dijital dönüşüm
 
 | Tablo | Kayıt | Açıklama |
 |---|---|---|
-| `all_dynasties_enriched.csv` | 186 | Ana hanedan tablosu (44 sütun) |
+| `all_dynasties_enriched.csv` | 186 | Ana hanedan tablosu (52 sütun, v4 pedagojik alanlar) |
 | `all_rulers_merged.csv` | 830 | Hükümdarlar (38 sütun) |
-| `battles.csv` | 50 | Savaşlar (16 sütun) |
-| `events.csv` | 50 | Önemli olaylar (12 sütun) |
-| `scholars.csv` | 49 | Âlimler, şairler, bilginler (17 sütun) |
-| `monuments.csv` | 40 | Mimari eserler, 35'i UNESCO (17 sütun) |
-| `trade_routes.csv` | 15 | Ticaret yolları, waypoint'lerle (18 sütun) |
+| `battles.csv` | 50 | Savaşlar (23 sütun, anlatı+etki+taktik) |
+| `events.csv` | 50 | Önemli olaylar (19 sütun, anlatı+bağlantılar) |
+| `scholars.csv` | 49 | Âlimler, şairler, bilginler (24 sütun, etki zinciri+himaye) |
+| `monuments.csv` | 40 | Mimari eserler, 35'i UNESCO (24 sütun, ziyaretçi notu) |
+| `trade_routes.csv` | 15 | Ticaret yolları, waypoint'lerle (22 sütun, anekdot) |
 | `dynasty_relations.csv` | 101 | Hanedan ilişkileri (6 sütun) |
-| `diplomacy.csv` | 30 | Diplomatik ilişkiler (10 sütun) |
-| `major_cities.csv` | 69 | 20 büyük şehir × dönem (10 sütun) |
+| `diplomacy.csv` | 30 | Diplomatik ilişkiler (14 sütun, anlatı+önem) |
+| `major_cities.csv` | 69 | 20 büyük şehir × dönem (14 sütun, medeniyet katmanları) |
 | `dynasty_analytics.csv` | 186 | Analitik skorlar (16 sütun) |
+| `causal_links.csv` | 200 | Nedensellik ağı (8 sütun, 24 bağlantı tipi) |
 
 ### Kurulum
 
@@ -120,17 +121,18 @@ A **comprehensive digital transformation** of Bosworth's Islamic Dynasties datab
 
 | Table | Records | Description |
 |---|---|---|
-| `all_dynasties_enriched.csv` | 186 | Main dynasty table (44 columns) |
+| `all_dynasties_enriched.csv` | 186 | Main dynasty table (52 columns, v4 pedagogical fields) |
 | `all_rulers_merged.csv` | 830 | Rulers (38 columns) |
-| `battles.csv` | 50 | Battles (16 columns) |
-| `events.csv` | 50 | Major events (12 columns) |
-| `scholars.csv` | 49 | Scholars, poets, scientists (17 columns) |
-| `monuments.csv` | 40 | Monuments, 35 UNESCO sites (17 columns) |
-| `trade_routes.csv` | 15 | Trade routes with waypoints (18 columns) |
+| `battles.csv` | 50 | Battles (23 columns, narrative+impact+tactics) |
+| `events.csv` | 50 | Major events (19 columns, narrative+links) |
+| `scholars.csv` | 49 | Scholars, poets, scientists (24 columns, influence chain+patronage) |
+| `monuments.csv` | 40 | Monuments, 35 UNESCO sites (24 columns, visitor notes) |
+| `trade_routes.csv` | 15 | Trade routes with waypoints (22 columns, anecdotes) |
 | `dynasty_relations.csv` | 101 | Dynasty relations (6 columns) |
-| `diplomacy.csv` | 30 | Diplomatic relations (10 columns) |
-| `major_cities.csv` | 69 | 20 major cities × period (10 columns) |
+| `diplomacy.csv` | 30 | Diplomatic relations (14 columns, narrative+significance) |
+| `major_cities.csv` | 69 | 20 major cities × period (14 columns, civilization layers) |
 | `dynasty_analytics.csv` | 186 | Analytical scores (16 columns) |
+| `causal_links.csv` | 200 | Causality network (8 columns, 24 link types) |
 
 ### Getting Started
 
@@ -164,7 +166,8 @@ Opens `http://localhost:3000` in your browser.
 ```
 islamic-civilization-atlas/
 ├── data/                          # 📊 Kaynak veri setleri / Source datasets
-│   ├── all_dynasties_enriched.csv # 186 hanedan (44 sütun)
+│   ├── all_dynasties_enriched.csv # 186 hanedan (52 sütun)
+│   ├── causal_links.csv          # 200 nedensellik bağlantısı
 │   ├── all_rulers_merged.csv      # 830 hükümdar
 │   ├── battles.csv                # 50 savaş
 │   ├── events.csv                 # 50 olay
