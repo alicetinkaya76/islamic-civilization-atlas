@@ -1,0 +1,27 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+type: software
+title: "Müslüman Hanedanlar Atlası / Islamic Dynasties Atlas"
+version: 4.5.0
+date-released: 2026-03-05
+url: "https://github.com/alicetinkaya76/islamic-civilization-atlas"
+repository-code: "https://github.com/alicetinkaya76/islamic-civilization-atlas"
+doi: "10.5281/zenodo.18824469"
+abstract: >
+  An interactive visualization of C.E. Bosworth's Islamic dynasties database,
+  covering 186 dynasties from 632 to 1924 CE. Features five panels: Map,
+  Timeline, Causality Network, Scholars Network (108 scholars), and
+  Battles Map (50 battles) with multilingual support (Turkish/English).
+keywords:
+  - Islamic history
+  - digital humanities
+  - data visualization
+  - dynasties
+  - Ottoman studies
+  - Arabic manuscripts
+license: CC-BY-SA-4.0
+authors:
+  - family-names: "Çetinkaya"
+    given-names: "Ali"
+    orcid: "https://orcid.org/0000-0002-7747-6854"
+    affiliation: "Selçuk University, Department of Computer Engineering"

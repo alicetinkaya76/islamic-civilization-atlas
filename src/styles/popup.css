@@ -1,0 +1,115 @@
+/* ═══ Rich Popup Enhancements ═══ */
+.p-rich .leaflet-popup-content {
+  max-height: 440px;
+  overflow-y: auto;
+  padding-right: 6px;
+}
+.p-rich .leaflet-popup-content::-webkit-scrollbar { width: 4px; }
+.p-rich .leaflet-popup-content::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 2px; }
+
+.p-title {
+  font-family: var(--font-display); font-size: 15px; font-weight: 700;
+  color: var(--gold); margin-bottom: 6px;
+  border-bottom: 1px solid var(--border); padding-bottom: 4px;
+}
+.p-row { display: flex; justify-content: space-between; gap: 12px; padding: 2px 0; font-size: 11px; }
+.p-k { color: var(--cream2); white-space: nowrap; }
+.p-v { color: var(--cream); text-align: right; }
+.p-desc { margin-top: 6px; font-size: 11px; color: var(--cream2); line-height: 1.5; }
+.p-badge {
+  display: inline-block; padding: 1px 8px; border-radius: 10px;
+  font-size: 10px; font-weight: 600;
+}
+.p-sunni { background: #166534; color: #4ade80; }
+.p-shia { background: #7f1d1d; color: #f87171; }
+.p-khariji { background: #78350f; color: #fb923c; }
+.p-pi { margin-top: 4px; padding-top: 4px; border-top: 1px solid var(--border); }
+.p-pi .p-k { color: var(--gold) !important; }
+.p-pi .p-v { color: var(--gold2) !important; font-weight: 700; }
+.p-unesco-tag {
+  margin-top: 4px; display: inline-block;
+  padding: 2px 8px; border-radius: 10px;
+  background: #854d0e; color: #fbbf24; font-size: 10px; font-weight: 600;
+}
+
+.p-narr {
+  margin: 8px 0 6px; padding: 8px 10px;
+  background: linear-gradient(135deg, #0f162988, #161d3366);
+  border-left: 3px solid var(--gold);
+  border-radius: 0 6px 6px 0;
+  font-size: 11px; line-height: 1.6; color: var(--cream);
+}
+
+.p-key {
+  margin: 6px 0; padding: 6px 10px;
+  background: #c9a84c11; border-radius: 6px;
+  font-size: 11px; line-height: 1.5; color: var(--cream);
+}
+.p-key-l {
+  display: block; font-size: 10px;
+  color: var(--gold); font-weight: 600; margin-bottom: 2px;
+}
+
+.p-ctx {
+  font-size: 10.5px; color: var(--cream2);
+  line-height: 1.5; margin: 3px 0; padding: 3px 0 3px 2px;
+}
+.p-ctx-i { margin-right: 4px; }
+.p-ctx b { color: var(--cream); font-weight: 600; margin-right: 3px; }
+
+.p-vis {
+  margin: 6px 0 2px; padding: 6px 10px;
+  background: linear-gradient(135deg, #22d3ee11, #60a5fa11);
+  border-radius: 6px; font-size: 10.5px;
+  color: #93c5fd; line-height: 1.5;
+}
+.p-vis-i { margin-right: 4px; }
+
+/* Causal links in popup */
+.p-lnks { margin-top: 8px; padding-top: 6px; border-top: 1px solid var(--border); }
+.p-lnks-h { font-size: 10px; color: var(--gold); font-weight: 600; margin-bottom: 4px; }
+.p-lnk { font-size: 10px; color: var(--cream2); line-height: 1.5; margin: 2px 0; }
+.p-lnk-a { display: inline-block; width: 14px; color: var(--gold); font-weight: 700; }
+.p-lnk-t {
+  display: inline-block; padding: 0 5px; margin-right: 4px;
+  background: #c9a84c22; border-radius: 3px;
+  font-size: 9px; color: var(--gold2);
+  text-transform: uppercase; letter-spacing: 0.3px;
+}
+
+/* ── Ruler in Dynasty Popup ── */
+.p-rulers-section {
+  margin-top: 8px; padding-top: 6px;
+  border-top: 1px solid var(--border);
+}
+.p-rulers-h {
+  font-size: 11px; color: var(--gold); font-weight: 600;
+  cursor: pointer; user-select: none;
+  display: flex; align-items: center; gap: 6px;
+}
+.p-expand-arrow {
+  font-size: 9px; transition: transform .2s;
+  color: var(--cream2);
+}
+.p-rulers-section.expanded .p-expand-arrow { transform: rotate(90deg); }
+.p-rulers-list {
+  display: none; margin-top: 4px;
+  max-height: 200px; overflow-y: auto;
+}
+.p-rulers-section.expanded .p-rulers-list { display: block; }
+.p-ruler-row {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 2px 4px; font-size: 10px;
+  border-bottom: 1px solid #ffffff08;
+}
+.p-ruler-row:hover { background: #ffffff08; }
+.p-ruler-name { color: var(--cream); }
+.p-ruler-reign { color: var(--cream2); font-size: 9px; white-space: nowrap; }
+.p-ruler-badges {
+  color: var(--gold); font-size: 9px; margin-right: 4px;
+  letter-spacing: 1px;
+}
+.p-badges { margin: 4px 0; display: flex; gap: 6px; }
+.p-founder { background: #854d0e; color: #fbbf24; }
+.p-last-ruler { background: #7f1d1d; color: #f87171; }
+.p-fn { font-size: 10px; font-style: italic; }

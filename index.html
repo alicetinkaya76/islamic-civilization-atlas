@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="tr" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Primary Meta -->
+  <title>Müslüman Hanedanlar Atlası — Islamic Dynasties Atlas</title>
+  <meta name="description" content="186 İslam hanedanı, 830 hükümdar, 632–1924 CE. Bosworth'un 'The New Islamic Dynasties' eserine dayalı interaktif tarihsel atlas. Harita, zaman çizelgesi ve nedensellik ağı." />
+  <meta name="keywords" content="Islamic history, İslam tarihi, Islamic dynasties, İslam hanedanları, Bosworth, digital humanities, interactive atlas, historical atlas, Ottoman, Abbasid, Umayyad, caliphate" />
+  <meta name="author" content="Dr. Hüseyin Gökalp, Dr. Ali Çetinkaya — Selçuk University" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://islamic-dynasties-atlas.vercel.app/" />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://islamic-dynasties-atlas.vercel.app/" />
+  <meta property="og:title" content="Müslüman Hanedanlar Atlası — Islamic Dynasties Atlas" />
+  <meta property="og:description" content="186 Islamic dynasties, 830 rulers, 632–1924 CE. Interactive historical atlas based on Bosworth's 'The New Islamic Dynasties'." />
+  <meta property="og:image" content="https://islamic-dynasties-atlas.vercel.app/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="tr_TR" />
+  <meta property="og:locale:alternate" content="en_US" />
+  <meta property="og:site_name" content="Islamic Dynasties Atlas" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Müslüman Hanedanlar Atlası — Islamic Dynasties Atlas" />
+  <meta name="twitter:description" content="186 Islamic dynasties, 830 rulers, 632–1924 CE. Interactive historical atlas with map, timeline, and causality network." />
+  <meta name="twitter:image" content="https://islamic-dynasties-atlas.vercel.app/og-image.png" />
+
+  <!-- Schema.org Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Islamic Dynasties Atlas",
+    "alternateName": "Müslüman Hanedanlar Atlası",
+    "url": "https://islamic-dynasties-atlas.vercel.app/",
+    "description": "Interactive historical atlas visualizing 186 Islamic dynasties (632–1924 CE) from Bosworth's The New Islamic Dynasties.",
+    "applicationCategory": "EducationalApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "author": [
+      {
+        "@type": "Person",
+        "name": "Hüseyin Gökalp",
+        "affiliation": { "@type": "Organization", "name": "Selçuk University" }
+      },
+      {
+        "@type": "Person",
+        "name": "Ali Çetinkaya",
+        "affiliation": { "@type": "Organization", "name": "Selçuk University" },
+        "sameAs": "https://orcid.org/0000-0002-7747-6854"
+      }
+    ],
+    "isBasedOn": {
+      "@type": "Book",
+      "name": "The New Islamic Dynasties: A Chronological and Genealogical Manual",
+      "author": { "@type": "Person", "name": "C. Edmund Bosworth" },
+      "isbn": "0-7486-2137-7",
+      "publisher": { "@type": "Organization", "name": "Edinburgh University Press" },
+      "datePublished": "2004"
+    },
+    "license": "https://creativecommons.org/licenses/by-sa/4.0/"
+  }
+  </script>
+
+  <!-- Favicon & Icons -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <meta name="theme-color" content="#c9a84c" />
+
+  <!-- PWA Manifest & Mobile -->
+  <link rel="manifest" href="/manifest.json" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="İslam Atlası" />
+
+  <!-- Google Analytics (GA4) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-GKF44QEQHR"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-GKF44QEQHR');
+  </script>
+
+  <!-- Fonts & Leaflet -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <noscript>
+    <div style="padding:2em;text-align:center;color:#c9a84c;background:#080c18;font-family:sans-serif;">
+      <h1>Müslüman Hanedanlar Atlası</h1>
+      <p>Bu uygulama JavaScript gerektirir. / This application requires JavaScript.</p>
+    </div>
+  </noscript>
+  <div id="root"></div>
+  <script type="module" src="/src/main.jsx"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js').catch(() => {});
+      });
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,102 @@
+﻿relation_id,dynasty_id_1,dynasty_id_2,relation_type,period,notes
+1,1,2,selef,632-661,Râşidûn → Emevî geçişi
+2,2,3,selef,661-750,Emevî → Abbâsî devrimi
+3,2,4,dal/kol,756-1031,Endülüs Emevîleri Şam Emevîlerinin devamı
+4,3,27,rakip,909-1171,Abbâsî-Fâtımî hilafet rekabeti
+5,4,5,selef,1009-1031,Endülüs Emevî çöküşü → Teyfe Beylikleri
+6,5,14,selef,1086-1147,Teyfe → Murâbıtlar fethi
+7,14,15,selef,1147-1269,Murâbıtlar → Muvahhidler
+8,15,7,rakip,1232-1492,Muvahhidler → Nasrîler bağımsızlığı
+9,15,16,selef,1244-1465,Muvahhidler → Merînîler (Fas)
+10,15,17,selef,1236-1556,Muvahhidler → Abdülvâdîler (Tilimsân)
+11,15,18,selef,1229-1574,Muvahhidler → Hafsîler (Tunus)
+12,16,19,selef,1472-1554,Merînîler → Vattâsîler
+13,19,20,selef,1554-1659,Vattâsîler → Sa'dî Şerifler
+14,20,21,selef,1631-devam,Sa'dîler → Alevî Şerifler
+15,8,27,vasal,789-974,İdrîsîler Fâtımî baskısı
+16,25,3,vasal,868-905,Tolunoğulları Abbâsî vasalı
+17,26,3,vasal,935-969,İhşîdîler Abbâsî vasalı
+18,27,26,rakip,969,Fâtımîler Mısır'ı İhşîdîlerden aldı
+19,27,28,selef,1171,Fâtımîler → Eyyûbîler (Salâhaddîn)
+20,28,30,selef,1250,Eyyûbîler → Memlûkler (Bahrî)
+21,30,31,selef,1382,Bahrî Memlûkler → Burcî Memlûkler
+22,31,124,selef,1517,Burcî Memlûkler → Osmanlı fethi
+23,28,117,rakip,1174-1260,Eyyûbîler-Zengîler rekabeti
+24,29,27,vasal,1100-1273,Haşhaşîler İsmâilî bağlantı
+25,34,3,vasal,905-1004,Hamdânîler Abbâsî vasalı
+26,34,27,rakip,10. yy,Hamdânîler-Fâtımî mücadelesi
+27,37,38,rakip,990-1096,Mervânîler-Ukaylîler bölge rekabeti
+28,41,45,rakip,1047-1138,Zeydîler-Süleyhîler rekabeti
+29,42,43,rakip,9-10. yy,Ziyâdîler-Yu'firîler Yemen rekabeti
+30,45,27,vasal,1047-1138,Süleyhîler Fâtımî vasalı
+31,49,50,selef,1454,Resûlîler → Tâhirîler
+32,55,57,rakip,1835-1921,Suudiler-Reşîdîler rekabeti
+33,53,54,selef,1754,Ya'rubîler → Âl Bû Saîd
+34,72,73,rakip,10-12. yy,Şirvânşâhlar-Şeddâdîler bölge rekabeti
+35,37,91,vasal,1085,Mervânîler Selçuklu vasalı
+36,82,81,rakip,10. yy,Büveyhîler-Ziyârîler İran rekabeti
+37,82,3,vasal,934-1062,Büveyhîler nominal Abbâsî vasalı
+38,89,90,selef,999,Sâmânîler → Gazneliler (Horasan)
+39,89,96,selef,995,Sâmânîler → Harezmşâhlar (kuzey)
+40,90,91,rakip,1030-1040,Gazneliler-Selçuklu rekabeti
+41,91,92,dal/kol,1041,Büyük Selçuklular → Kirmân Selçukluları
+42,91,93,dal/kol,1118,Büyük Selçuklular → Irak Selçukluları
+43,91,94,dal/kol,1077,Büyük Selçuklular → Anadolu Selçukluları
+44,96,91,vasal,11-12. yy,Harezmşâhlar başlangıçta Selçuklu vasalı
+45,96,99,selef,1220,Harezmşâhlar → Moğol istilası
+46,99,103,selef,1335,İlhanlılar → Muzafferîler
+47,99,106,selef,1370,Moğol parçalanması → Timurlular
+48,106,107,selef,1501,Timurlular → Safevîler
+49,107,108,selef,1736,Safevîler → Afşarlar
+50,108,109,selef,1750,Afşarlar → Zendler
+51,109,110,selef,1794,Zendler → Kaçarlar
+52,110,111,selef,1925,Kaçarlar → Pehlevîler
+53,94,121,rakip,1071-1178,Rum Selçukluları-Dânişmendliler rekabeti
+54,94,112,vasal,1072-1202,Saltuklular Selçuklu vasalı
+55,94,113,vasal,1100-1207,Şâh-ı Ermenler Selçuklu vasalı
+56,94,114,vasal,1098-1408,Artukoğulları Selçuklu/Eyyûbî vasalı
+57,94,124,selef,1243-1307,Rum Selçukluları → Osmanlı yükselişi
+58,94,125,selef,c. 1300,Rum Selçukluları → Karasioğulları
+59,94,126,selef,c. 1300,Rum Selçukluları → Saruhanoğulları
+60,94,127,selef,c. 1300,Rum Selçukluları → Aydınoğulları
+61,94,128,selef,c. 1300,Rum Selçukluları → Menteşeoğulları
+62,94,129,selef,c. 1300,Rum Selçukluları → Germiyanoğulları
+63,94,130,selef,c. 1300,Rum Selçukluları → Hamidoğulları
+64,94,131,selef,c. 1256,Rum Selçukluları → Karamanoğulları
+65,94,132,selef,c. 1300,Rum Selçukluları → Candaroğulları
+66,124,125,rakip,c. 1345,Osmanlı Karasioğulları ilhakı
+67,124,126,rakip,1410,Osmanlı Saruhanoğulları ilhakı
+68,124,127,rakip,1390,Osmanlı Aydınoğulları ilhakı
+69,124,131,rakip,1474-1487,Osmanlı-Karamanoğulları mücadelesi
+70,124,137,rakip,1473,Osmanlı-Akkoyunlu (Otlukbeli)
+71,137,138,rakip,1467,Akkoyunlu-Karakoyunlu savaşı
+72,137,107,selef,1501-1508,Akkoyunlu → Safevî fethi
+73,138,137,selef,1467-1469,Karakoyunlu → Akkoyunlu
+74,117,118,selef,1222,Zengîler → Lü'lü'îler (Musul)
+75,117,119,dal/kol,1144-1233,Zengîler → Erbil Atabegliği
+76,139,141,dal/kol,1438-1552,Altın Orda → Kazan Hanlığı
+77,139,142,dal/kol,1441-1783,Altın Orda → Kırım Hanlığı
+78,139,143,dal/kol,1466-1556,Altın Orda → Astrahan Hanlığı
+79,139,144,dal/kol,c. 1468-1598,Altın Orda → Sibirya Hanlığı
+80,145,146,selef,1370-1507,Çağataylar → Timurlular
+81,145,147,selef,1500,Çağataylar → Şeybânîler
+82,147,148,selef,1599,Şeybânîler → Cânîler
+83,148,149,selef,1747,Cânîler → Mangıtlar (Buhara)
+84,90,158,selef,1206,Gazneliler → Delhi Sultanları (Muizzî/Kutbî)
+85,158,159,selef,1290-1320,Gıyâsîler → Halcîler/Tuğluklar
+86,159,160,selef,1451,Seyyidler → Lôdîler
+87,160,178,selef,1526,Lôdîler → Bâbürlüler (Panipat)
+88,163,164,dal/kol,1490,Behmenîler → Nizâmşâhîler
+89,163,165,dal/kol,1490,Behmenîler → Âdilşâhîler
+90,163,169,dal/kol,1492,Behmenîler → Berîdşâhîler
+91,163,170,dal/kol,1518,Behmenîler → Kutbşâhîler
+92,163,171,dal/kol,1490,Behmenîler → Ahmednagarşâhîler
+93,163,172,dal/kol,1484,Behmenîler → İmâdşâhîler
+94,178,179,selef,1724,Bâbürlüler → Haydarâbâd Nizamları
+95,152,153,selef,1826,Dürrânîler → Bârekzâyîler
+96,181,182,selef,1511,Malakka → Cohor-Riau
+97,184,124,rakip,16-17. yy,Açe-Osmanlı ittifakı / Portekiz rekabeti
+98,124,142,vasal,1475-1783,Kırım Hanlığı Osmanlı vasalı
+99,124,107,rakip,1514-1639,Osmanlı-Safevî savaşları
+100,30,99,rakip,1260-1303,Memlûkler-İlhanlılar savaşları
+101,28,30,selef,1250,Son Eyyûbî → Memlûk kuruluşu

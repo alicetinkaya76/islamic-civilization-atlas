@@ -1,0 +1,175 @@
+/* ═══════════════════════════════════════════════════
+   Battles Panel — Ottoman Manuscript Theme
+   ═══════════════════════════════════════════════════ */
+
+.battle-view { display: flex; height: 100%; overflow: hidden; }
+#battle-map { flex: 1; min-width: 0; }
+.battle-sidebar {
+  width: 300px; display: flex; flex-direction: column;
+  border-left: 1px solid var(--border);
+  background: var(--bg2);
+  flex-shrink: 0;
+}
+
+/* ─── Filters ─── */
+.battle-filters {
+  padding: 10px; border-bottom: 1px solid var(--border);
+  flex-shrink: 0; display: flex; flex-direction: column; gap: 8px;
+}
+.battle-search {
+  width: 100%; padding: 6px 10px;
+  background: var(--bg); border: 1px solid var(--border);
+  color: var(--cream); font-size: 12px;
+  font-family: var(--font-body); border-radius: 4px;
+}
+.battle-search:focus { outline: none; border-color: var(--gold); }
+.battle-search::placeholder { color: var(--cream2); opacity: 0.6; }
+
+.battle-filter-row { display: flex; flex-wrap: wrap; gap: 4px; }
+
+.type-pill {
+  padding: 3px 8px; border-radius: 10px; font-size: 11px;
+  cursor: pointer; border: 1px solid transparent;
+  background: transparent; color: var(--cream2);
+  font-family: var(--font-body); transition: all .15s;
+  display: flex; align-items: center; gap: 3px;
+}
+.type-pill:hover { opacity: 0.8; }
+.type-pill.active { border-color: currentColor; }
+
+.outcome-pill {
+  padding: 3px 8px; border-radius: 10px; font-size: 11px;
+  cursor: pointer; border: 1px solid transparent;
+  background: transparent; color: var(--cream2);
+  font-family: var(--font-body); transition: all .15s;
+}
+.outcome-pill:hover { opacity: 0.8; }
+.outcome-pill.active { border-color: currentColor; }
+
+.battle-year-filter {
+  display: flex; align-items: center; gap: 6px;
+}
+.battle-year-filter label {
+  font-size: 10px; color: var(--cream2); white-space: nowrap;
+}
+.battle-year-filter input[type="range"] {
+  flex: 1; accent-color: var(--gold);
+}
+.battle-year-val {
+  font-size: 11px; color: var(--gold); font-weight: 600;
+  min-width: 36px; text-align: right;
+}
+
+/* ─── List ─── */
+.battle-list { flex: 1; overflow-y: auto; }
+.battle-list::-webkit-scrollbar { width: 4px; }
+.battle-list::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+
+.battle-item {
+  display: flex; align-items: center; gap: 8px; padding: 8px 10px;
+  cursor: pointer; border-left: 3px solid transparent;
+  transition: background .15s, border-color .15s;
+}
+.battle-item:hover { background: var(--bg3); }
+.battle-item.active { border-left-color: var(--gold); background: var(--bg3); }
+.battle-yr { font-size: 11px; color: var(--cream2); width: 32px; flex-shrink: 0; text-align: right; }
+.battle-icon { font-size: 14px; flex-shrink: 0; }
+.battle-info { flex: 1; min-width: 0; }
+.battle-name {
+  font-size: 13px; white-space: nowrap; overflow: hidden;
+  text-overflow: ellipsis; color: var(--cream);
+}
+.battle-sub {
+  font-size: 11px; color: var(--cream2); white-space: nowrap;
+  overflow: hidden; text-overflow: ellipsis;
+}
+.battle-outcome { font-size: 13px; font-weight: 600; flex-shrink: 0; }
+.battle-outcome.win  { color: #16a34a; }
+.battle-outcome.loss { color: #dc2626; }
+.battle-outcome.draw { color: #ca8a04; }
+
+.battle-count {
+  font-size: 10px; color: var(--cream2); padding: 4px 10px;
+  border-bottom: 1px solid var(--border); text-align: right;
+}
+
+/* ─── Detail Card ─── */
+.battle-card {
+  border-top: 1px solid var(--border); padding: 12px;
+  font-size: 13px; overflow-y: auto; max-height: 45%;
+  flex-shrink: 0;
+}
+.battle-card::-webkit-scrollbar { width: 4px; }
+.battle-card::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+
+.battle-card-empty {
+  padding: 20px 12px; text-align: center;
+  color: var(--cream2); font-size: 12px; font-style: italic;
+}
+
+.bc-header {
+  display: flex; align-items: center; gap: 6px;
+  margin-bottom: 4px;
+}
+.bc-title {
+  font-family: var(--font-display); font-size: 15px;
+  color: var(--gold); font-weight: 700;
+}
+.bc-sub {
+  font-size: 11px; color: var(--cream2); margin-bottom: 8px;
+}
+.bc-divider {
+  border: none; border-top: 1px solid var(--border);
+  margin: 8px 0;
+}
+.bc-section-label {
+  font-size: 10px; color: var(--cream2);
+  text-transform: uppercase; letter-spacing: 0.5px;
+  margin-bottom: 4px;
+}
+.bc-cmd-row {
+  display: flex; align-items: center; gap: 6px;
+  font-size: 12px; margin-bottom: 2px; color: var(--cream);
+}
+.bc-cmd-symbol { font-size: 13px; }
+
+.bc-outcome-badge {
+  display: inline-block; padding: 2px 8px; border-radius: 8px;
+  font-size: 11px; font-weight: 600; margin-right: 6px;
+}
+.bc-outcome-badge.win  { background: #16a34a22; color: #16a34a; border: 1px solid #16a34a44; }
+.bc-outcome-badge.loss { background: #dc262622; color: #dc2626; border: 1px solid #dc262644; }
+.bc-outcome-badge.draw { background: #ca8a0422; color: #ca8a04; border: 1px solid #ca8a0444; }
+
+.bc-tactic {
+  font-size: 12px; color: var(--cream); line-height: 1.5;
+  margin-top: 4px;
+}
+
+.bc-toggle-btn {
+  background: none; border: none; cursor: pointer;
+  color: var(--gold); font-size: 12px; padding: 4px 0;
+  font-family: var(--font-body); display: flex; align-items: center; gap: 4px;
+}
+.bc-toggle-btn:hover { text-decoration: underline; }
+.bc-toggle-content {
+  font-size: 12px; color: var(--cream); line-height: 1.5;
+  margin-top: 4px; padding-left: 4px;
+}
+
+/* ─── Map Markers ─── */
+.battle-pulse {
+  animation: battlePulse 2s infinite;
+}
+@keyframes battlePulse {
+  0%,100% { box-shadow: 0 0 0 0 rgba(239,68,68,0.4); }
+  50%     { box-shadow: 0 0 0 8px rgba(239,68,68,0); }
+}
+
+/* ─── Mobile ─── */
+@media (max-width: 768px) {
+  .battle-view { flex-direction: column-reverse; }
+  .battle-sidebar { width: 100%; max-height: 50vh; border-left: none; border-top: 1px solid var(--border); }
+  #battle-map { min-height: 50vh; }
+  .battle-card { max-height: 35%; }
+}
