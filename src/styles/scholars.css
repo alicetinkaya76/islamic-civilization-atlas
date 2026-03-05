@@ -267,7 +267,7 @@
 
 /* ─── Tooltip ─── */
 .scholar-tt {
-  position: fixed;
+  position: absolute;
   background: var(--bg3);
   border: 1px solid var(--border);
   border-radius: 8px;

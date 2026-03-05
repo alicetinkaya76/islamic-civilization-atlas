@@ -281,10 +281,11 @@ export default function ScholarTimeline({ scholars, links, lang, selected, onSel
       const city = lang === 'tr' ? (s.city_tr || '') : (s.city_en || '');
       const works = (s.works_tr || '').split(',')[0] || '';
       const badge = IMPORTANCE_3.has(s.id) ? '⭐ ' : '';
+      const rect = wrap.getBoundingClientRect();
       tt.html(`<b>${badge}${name}</b><br/>${s.b}–${s.d > 2024 ? '?' : s.d}${city ? ' · ' + city : ''}${works ? '<br/>' + works : ''}`)
         .style('display', 'block')
-        .style('left', (ev.offsetX + 14) + 'px')
-        .style('top', (ev.offsetY - 12) + 'px');
+        .style('left', (ev.clientX - rect.left + 14) + 'px')
+        .style('top', (ev.clientY - rect.top - 12) + 'px');
     }
     function hideTooltip() { tt.style('display', 'none'); }
 
@@ -440,7 +441,7 @@ export default function ScholarTimeline({ scholars, links, lang, selected, onSel
   }, [scholars, links, lang, selected, showLinks, onSelect]);
 
   return (
-    <div className="scholar-graph" ref={wrapRef} style={{ overflowY: 'auto', position: 'relative' }}>
+    <div className="scholar-graph" ref={wrapRef} style={{ position: 'relative' }}>
       <svg ref={svgRef} />
 
       {/* Zoom counter + Reset */}
