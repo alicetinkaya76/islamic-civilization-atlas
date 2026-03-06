@@ -29,22 +29,10 @@ const ERA_COLORS = {
   'Modern': '#6b7280',
 };
 
-/* ═══════════════════════════════════════════════════════════
-   ÖNEM SKORU (0–3)
-   ═══════════════════════════════════════════════════════════ */
-
 const IMPORTANCE_3 = new Set([
-  1, 2, 3, 4, 5, 6,
-  7, 8, 9, 10,
-  18, 19, 20, 21,
-  25, 34, 44,
-  47, 48,
-  109, 110,
-  140, 141,
-  209, 212,
-  214, 226, 228,
-  253, 254, 256,
-  273,
+  1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 18, 19, 20, 21,
+  25, 34, 44, 47, 48, 109, 110, 140, 141, 209, 212,
+  214, 226, 228, 253, 254, 256, 273,
 ]);
 
 const IMPORTANCE_2 = new Set([
@@ -67,10 +55,6 @@ const getImportance = (scholar) => {
   return 1;
 };
 
-/* ═══════════════════════════════════════════════════════════
-   GÖRSEL STİL PARAMETRELERİ
-   ═══════════════════════════════════════════════════════════ */
-
 const VIS_STYLE = {
   3: { lineWidth: 5, r: 7, fontSize: 12, fontWeight: 700,
        labelColor: '#f3f4f6', lineOpacity: 1.0, glow: true },
@@ -82,10 +66,6 @@ const VIS_STYLE = {
        labelColor: '#6b7280', lineOpacity: 0.5, glow: false },
 };
 
-/* ═══════════════════════════════════════════════════════════
-   ÇAKIŞAN ETİKETLERİ GİZLE
-   ═══════════════════════════════════════════════════════════ */
-
 function hideOverlappingLabels(scholars, xScale) {
   const byDisc = {};
   scholars.forEach(s => {
@@ -93,76 +73,56 @@ function hideOverlappingLabels(scholars, xScale) {
     if (!byDisc[disc]) byDisc[disc] = [];
     byDisc[disc].push(s);
   });
-
   const hidden = new Set();
-
   Object.values(byDisc).forEach(group => {
     const sorted = [...group].sort((a, b) => getImportance(b) - getImportance(a));
     const occupied = [];
-
     sorted.forEach(s => {
       const midX = xScale((s.b + s.d) / 2);
       const name = (s.tr || s.en || '').slice(0, 14);
       const labelWidth = name.length * 5.5 + 4;
       const x1 = midX - 2;
       const x2 = midX + labelWidth;
-
       const overlaps = occupied.some(o => x1 < o.x2 + 4 && x2 > o.x1 - 4);
-
-      if (overlaps) {
-        hidden.add(s.id);
-      } else {
-        occupied.push({ x1, x2 });
-      }
+      if (overlaps) { hidden.add(s.id); }
+      else { occupied.push({ x1, x2 }); }
     });
   });
-
   return hidden;
 }
 
 /* ═══════════════════════════════════════════════════════════
-   COMPONENT — RADİKAL YENİDEN YAZIM (v4.8.4)
+   COMPONENT — v4.8.4 ULTRA-RADİKAL YAZIM
 
-   SONSUZ DÖNGÜ KÖK NEDENLERİ VE ÇÖZÜMLER:
+   HOVER SIRASINDA REACT RE-RENDER = SIFIR.
 
-   1. D3 tooltip wrapper'ın içine DOM ekliyordu →
-      Layout shift → mousemove tekrar tetikleniyor →
-      ÇÖZÜM: Tooltip 100% React state, position:fixed
+   Tooltip: useRef DOM node, position:fixed, display toggle.
+   Highlight: native setAttribute.
+   Mousemove: native addEventListener + RAF throttle.
+   Zoom: D3 zoom (standard), ama initial transform event-free.
+   selected/onSelect: useRef, dep array dışı.
 
-   2. D3 .on('mousemove') + d3.pointer() her karede
-      getBoundingClientRect + getScreenCTM çağırıyordu →
-      Forced reflow → layout shift → yeni mouse event →
-      ÇÖZÜM: Native addEventListener + RAF throttle
-
-   3. Hover'da D3 selection .attr() çağrısı SVG reflow →
-      ÇÖZÜM: Native DOM setAttribute (D3 selection yok)
-
-   4. selected useEffect dep → her click'te full SVG rebuild →
-      svg.call(zoom.transform) → zoom event → renderScholars →
-      ÇÖZÜM: selected/onSelect → useRef, ayrı lightweight effect
-
-   5. svg.call(zoom.transform) her useEffect'te event fire ediyor →
-      ÇÖZÜM: __zoom property'yi doğrudan set et, event tetikleme
+   React sadece şunları render eder:
+   - İlk mount
+   - scholars/links/lang/showLinks değiştiğinde (useEffect)
+   - selected değiştiğinde (lightweight effect)
+   - showHint timeout (bir kere)
    ═══════════════════════════════════════════════════════════ */
 
 export default function ScholarTimeline({ scholars, links, lang, selected, onSelect, showLinks }) {
-  const svgRef = useRef(null);
-  const wrapRef = useRef(null);
-  const zoomRef = useRef(null);
+  const svgRef    = useRef(null);
+  const wrapRef   = useRef(null);
+  const zoomRef   = useRef(null);
   const counterRef = useRef(null);
-
-  // Tooltip: 100% React state, position:fixed
-  const [tip, setTip] = useState(null);
+  const tipRef    = useRef(null);   // tooltip DOM node — React state DEĞİL
 
   const [showHint, setShowHint] = useState(true);
 
-  // Stable refs — D3 closures bunları kullanacak
   const onSelectRef = useRef(onSelect);
   onSelectRef.current = onSelect;
   const selectedRef = useRef(selected);
   selectedRef.current = selected;
 
-  // Internal mutable D3 state — React state DEĞİL
   const d3State = useRef({
     hitZones: [],
     currentHoverId: null,
@@ -181,42 +141,36 @@ export default function ScholarTimeline({ scholars, links, lang, selected, onSel
       .call(zoomRef.current.transform, d3.zoomIdentity.scale(0.85).translate(20, 0));
   }, []);
 
-  /* ═══════════════════════════════════════════════════════════
-     MAIN D3 EFFECT
-     Deps: scholars, links, lang, showLinks ONLY.
-     ═══════════════════════════════════════════════════════════ */
+  /* ═══ MAIN D3 EFFECT ═══ */
   useEffect(() => {
     if (!svgRef.current || !wrapRef.current) return;
-    const wrap = wrapRef.current;
-    const W = wrap.clientWidth || 1000;
-    const st = d3State.current;
+    const wrap  = wrapRef.current;
+    const svgEl = svgRef.current;
+    const tipEl = tipRef.current;
+    const W     = wrap.clientWidth || 1000;
+    const st    = d3State.current;
+    const svg   = d3.select(svgEl);
 
     const ml = 180, mr = 30, mt = 52, mb = 30;
     const bandH = 42;
     const usedDiscs = DISC_ORDER.filter(d => scholars.some(s => s.disc_tr === d));
     const H = mt + usedDiscs.length * bandH + mb;
 
-    const svgEl = svgRef.current;
-    const svg = d3.select(svgEl);
-
-    // CLEANUP
-    svg.on('.hover', null).on('.scholar', null);
+    // ── FULL CLEANUP ──
+    svg.on('.zoom', null);          // D3 zoom listener temizle
     svg.selectAll('*').remove();
     svg.attr('width', W).attr('height', H);
-
     if (st.rafId) { cancelAnimationFrame(st.rafId); st.rafId = 0; }
     st.hitZones = [];
     st.currentHoverId = null;
-    setTip(null);
+    if (tipEl) tipEl.style.display = 'none';
 
     const g = svg.append('g');
     st.gNode = g.node();
 
-    /* ── Zoom & Pan ── */
+    /* ── Zoom ── */
     let currentK = 0.85;
-
-    const getMinScore = (k) =>
-      k < 1.5 ? 3 : k < 2.5 ? 2 : k < 4.0 ? 1 : 0;
+    const getMinScore = (k) => k < 1.5 ? 3 : k < 2.5 ? 2 : k < 4.0 ? 1 : 0;
 
     const zoom = d3.zoom()
       .scaleExtent([0.5, 6])
@@ -231,9 +185,7 @@ export default function ScholarTimeline({ scholars, links, lang, selected, onSel
           counterRef.current.textContent = cnt + '/' + scholars.length +
             ' ' + (lang === 'tr' ? 'âlim' : 'scholars');
         }
-        if (oldMin !== newMin) {
-          renderScholars(newMin);
-        }
+        if (oldMin !== newMin) renderScholars(newMin);
       });
 
     svg.call(zoom);
@@ -243,18 +195,15 @@ export default function ScholarTimeline({ scholars, links, lang, selected, onSel
 
     /* ── DEFS ── */
     const defs = svg.append('defs');
-
     defs.append('marker')
       .attr('id', 'teacher-arrow')
       .attr('markerWidth', 6).attr('markerHeight', 6)
-      .attr('refX', 5).attr('refY', 3)
-      .attr('orient', 'auto')
+      .attr('refX', 5).attr('refY', 3).attr('orient', 'auto')
       .append('path').attr('d', 'M0,0 L6,3 L0,6 Z')
       .attr('fill', '#9ca3af').attr('opacity', 0.7);
 
     const glowFilter = defs.append('filter').attr('id', 'glow')
-      .attr('x', '-20%').attr('y', '-20%')
-      .attr('width', '140%').attr('height', '140%');
+      .attr('x', '-20%').attr('y', '-20%').attr('width', '140%').attr('height', '140%');
     glowFilter.append('feGaussianBlur').attr('stdDeviation', '3').attr('result', 'blur');
     const glowMerge = glowFilter.append('feMerge');
     glowMerge.append('feMergeNode').attr('in', 'blur');
@@ -264,24 +213,20 @@ export default function ScholarTimeline({ scholars, links, lang, selected, onSel
     ERA_BANDS.forEach(([s, e, , labels]) => {
       const eraLabel = labels[lang] || labels.en;
       const eraCol = ERA_COLORS[eraLabel] || ERA_COLORS[labels.en] || '#6b7280';
-
       g.append('rect').attr('x', x(s)).attr('y', mt - 5)
         .attr('width', x(e) - x(s)).attr('height', H - mt - mb + 10)
         .attr('fill', eraCol).attr('opacity', 0.08);
-
       g.append('line')
         .attr('x1', x(s)).attr('x2', x(s))
         .attr('y1', mt - 5).attr('y2', H - mb + 5)
         .attr('stroke', eraCol).attr('stroke-width', 1).attr('opacity', 0.3);
-
       g.append('text').attr('x', x((s + e) / 2)).attr('y', mt - 14)
         .attr('text-anchor', 'middle').attr('fill', eraCol)
         .attr('font-size', '11px').attr('font-family', 'Outfit')
-        .attr('font-weight', '600')
-        .text(eraLabel);
+        .attr('font-weight', '600').text(eraLabel);
     });
 
-    /* ── GRID LINES ── */
+    /* ── GRID ── */
     for (let yr = 700; yr <= 2000; yr += 100) {
       g.append('line').attr('x1', x(yr)).attr('x2', x(yr))
         .attr('y1', mt - 5).attr('y2', H - mb + 5)
@@ -291,10 +236,9 @@ export default function ScholarTimeline({ scholars, links, lang, selected, onSel
         .attr('font-size', '10px').attr('font-family', 'Outfit').text(yr);
     }
 
-    /* ── DISCIPLINE ROWS ── */
+    /* ── DISC ROWS ── */
     const discRow = {};
     usedDiscs.forEach((d, i) => { discRow[d] = i; });
-
     usedDiscs.forEach((disc, i) => {
       const y0 = mt + i * bandH;
       if (i % 2 === 0) {
@@ -314,9 +258,9 @@ export default function ScholarTimeline({ scholars, links, lang, selected, onSel
         .text(lang === 'tr' ? disc : (DISC_EN[disc] || disc));
     });
 
-    /* ── Scholar render layers ── */
+    /* ── Layers ── */
     const scholarLayer = g.append('g').attr('class', 'scholar-layer');
-    const linkLayer = g.append('g').attr('class', 'link-layer');
+    const linkLayer    = g.append('g').attr('class', 'link-layer');
 
     const scholarById = {};
     scholars.forEach(s => { scholarById[s.id] = { ...s }; });
@@ -328,20 +272,18 @@ export default function ScholarTimeline({ scholars, links, lang, selected, onSel
       st.hitZones = [];
       st.currentHoverId = null;
 
-      const visibleScholars = scholars.filter(s => getImportance(s) >= minScore);
-      const hiddenLabels = hideOverlappingLabels(visibleScholars, x);
-
+      const vis = scholars.filter(s => getImportance(s) >= minScore);
+      const hiddenLabels = hideOverlappingLabels(vis, x);
       const laneSlots = {};
       usedDiscs.forEach(d => { laneSlots[d] = []; });
-
-      const sorted = [...visibleScholars].sort((a, b) => a.b - b.b);
+      const sorted = [...vis].sort((a, b) => a.b - b.b);
 
       sorted.forEach(s => {
         if (!s.b || !s.d || discRow[s.disc_tr] === undefined) return;
         const row = discRow[s.disc_tr];
         const y0 = mt + row * bandH;
         const xStart = x(Math.max(s.b, 622));
-        const xEnd = x(Math.min(s.d, 2030));
+        const xEnd   = x(Math.min(s.d, 2030));
 
         const slots = laneSlots[s.disc_tr];
         let subLane = 0;
@@ -353,94 +295,78 @@ export default function ScholarTimeline({ scholars, links, lang, selected, onSel
         const yOff = y0 + 10 + (subLane % 4) * 8;
 
         const col = discColor(s.disc_tr);
-        const isSelected = s.id === selectedRef.current;
+        const isSel = s.id === selectedRef.current;
         const score = getImportance(s);
         const style = VIS_STYLE[score];
-        const stillAlive = s.d > 2024;
+        const alive = s.d > 2024;
         const sw = style.lineWidth;
         const dotR = style.r;
 
-        const scholarG = scholarLayer.append('g')
-          .attr('class', 'scholar-group')
-          .attr('data-id', s.id);
+        const sg = scholarLayer.append('g')
+          .attr('class', 'scholar-group').attr('data-id', s.id);
 
-        // Visible lifeline — ALL pointer-events:none
-        const line = scholarG.append('line')
+        const line = sg.append('line')
           .attr('x1', xStart).attr('x2', xEnd)
           .attr('y1', yOff).attr('y2', yOff)
           .attr('stroke', col)
-          .attr('stroke-width', isSelected ? sw + 1 : sw)
-          .attr('stroke-opacity', isSelected ? 1 : style.lineOpacity)
+          .attr('stroke-width', isSel ? sw + 1 : sw)
+          .attr('stroke-opacity', isSel ? 1 : style.lineOpacity)
           .attr('stroke-linecap', 'round')
           .style('pointer-events', 'none');
-
         if (style.glow) line.attr('filter', 'url(#glow)');
 
-        scholarG.append('circle').attr('cx', xStart).attr('cy', yOff)
+        sg.append('circle').attr('cx', xStart).attr('cy', yOff)
           .attr('r', dotR).attr('fill', col)
           .attr('stroke', '#080c18').attr('stroke-width', 1.5)
           .style('pointer-events', 'none');
 
-        if (stillAlive) {
-          scholarG.append('text')
-            .attr('x', xEnd + 2).attr('y', yOff + 4)
+        if (alive) {
+          sg.append('text').attr('x', xEnd + 2).attr('y', yOff + 4)
             .attr('fill', col).attr('font-size', score >= 3 ? '14px' : '11px')
             .attr('font-family', 'Outfit').text('→')
             .style('pointer-events', 'none');
         } else {
-          scholarG.append('circle').attr('cx', xEnd).attr('cy', yOff)
+          sg.append('circle').attr('cx', xEnd).attr('cy', yOff)
             .attr('r', dotR).attr('fill', '#080c18')
             .attr('stroke', col).attr('stroke-width', 2)
             .style('pointer-events', 'none');
         }
 
         if (!hiddenLabels.has(s.id) && (xEnd - xStart > 20 || score >= 3)) {
-          const name = lang === 'tr' ? s.tr : s.en;
-          const label = name.length > 14 ? name.slice(0, 13) + '…' : name;
+          const nm = lang === 'tr' ? s.tr : s.en;
+          const label = nm.length > 14 ? nm.slice(0, 13) + '…' : nm;
           const textW = label.length * (score >= 3 ? 6.5 : score >= 2 ? 5.5 : 5);
-          const tx = xStart + 2;
-          const ty = yOff - 6;
-
-          scholarG.append('rect')
-            .attr('x', tx - 2).attr('y', ty - 10)
+          const tx = xStart + 2, ty = yOff - 6;
+          sg.append('rect').attr('x', tx - 2).attr('y', ty - 10)
             .attr('width', textW + 4).attr('height', 12)
             .attr('fill', '#080c18').attr('opacity', 0.65).attr('rx', 2)
             .style('pointer-events', 'none');
-
-          scholarG.append('text').attr('x', tx).attr('y', ty)
+          sg.append('text').attr('x', tx).attr('y', ty)
             .attr('fill', style.labelColor)
             .attr('font-size', style.fontSize + 'px')
             .attr('font-family', 'Outfit')
             .attr('font-weight', style.fontWeight)
-            .style('pointer-events', 'none')
-            .text(label);
+            .style('pointer-events', 'none').text(label);
         }
 
-        // Hit zone data — lineNode = raw DOM element (D3 selection yok!)
         st.hitZones.push({
-          id: s.id, xStart, xEnd, yOff, s, sw, style, isSelected,
-          lineNode: line.node(), col,
+          id: s.id, xStart, xEnd, yOff, s, sw, style,
+          isSelected: isSel, lineNode: line.node(),
         });
-
         scholarById[s.id] = { ...s, _x: (xStart + xEnd) / 2, _y: yOff };
       });
 
       if (showLinks) {
-        const teacherLinks = links.filter(l => l.type === 'teacher');
-        teacherLinks.forEach(link => {
+        links.filter(l => l.type === 'teacher').forEach(link => {
           const src = scholarById[link.source];
           const tgt = scholarById[link.target];
           if (!src?._x || !tgt?._x) return;
-
-          const cx = (src._x + tgt._x) / 2;
-          const cy = Math.min(src._y, tgt._y) - 30;
-
+          const cx2 = (src._x + tgt._x) / 2;
+          const cy2 = Math.min(src._y, tgt._y) - 30;
           linkLayer.append('path')
-            .attr('d', `M${src._x},${src._y} Q${cx},${cy} ${tgt._x},${tgt._y}`)
-            .attr('fill', 'none')
-            .attr('stroke', '#9ca3af')
-            .attr('stroke-width', 1.5)
-            .attr('stroke-opacity', 0.5)
+            .attr('d', `M${src._x},${src._y} Q${cx2},${cy2} ${tgt._x},${tgt._y}`)
+            .attr('fill', 'none').attr('stroke', '#9ca3af')
+            .attr('stroke-width', 1.5).attr('stroke-opacity', 0.5)
             .attr('stroke-dasharray', '4,3')
             .attr('marker-end', 'url(#teacher-arrow)');
         });
@@ -450,20 +376,23 @@ export default function ScholarTimeline({ scholars, links, lang, selected, onSel
     renderScholars(3);
 
     /* ═══════════════════════════════════════════════════════════
-       EVENT HANDLING — NATIVE addEventListener
-       D3 .on() kullanMIYORUZ → zoom ile çakışma yok.
-       RAF throttle → her karede max 1 hover hesaplaması.
-       Native setAttribute → D3 selection overhead yok.
-       getScreenCTM() → getBoundingClientRect() yerine
-       (daha güvenilir, layout shift tetiklemez).
-       ═══════════════════════════════════════════════════════════ */
+       HOVER — TAMAMEN REACT-FREE, SIFIR setState
 
+       Tüm hover mantığı:
+       1. Native mousemove listener
+       2. RAF throttle (max 1/frame)
+       3. getScreenCTM().inverse() ile koordinat çevirisi
+       4. hitZone testi
+       5. Native setAttribute ile highlight
+       6. tipRef.current (DOM node) ile tooltip güncelle
+       7. React HABERSIZ — re-render YOK
+       ═══════════════════════════════════════════════════════════ */
     const HIT_HALF = 7;
 
-    function clearHoverHighlight() {
+    function clearHover() {
       if (st.currentHoverId === null) return;
       const prev = st.hitZones.find(h => h.id === st.currentHoverId);
-      if (prev && prev.lineNode) {
+      if (prev?.lineNode) {
         prev.lineNode.setAttribute('stroke-width',
           String(prev.isSelected ? prev.sw + 1 : prev.sw));
         prev.lineNode.setAttribute('stroke-opacity',
@@ -472,11 +401,28 @@ export default function ScholarTimeline({ scholars, links, lang, selected, onSel
       st.currentHoverId = null;
     }
 
+    function showTip(clientX, clientY, s) {
+      if (!tipEl) return;
+      const nm   = lang === 'tr' ? s.tr : s.en;
+      const city = lang === 'tr' ? (s.city_tr || '') : (s.city_en || '');
+      const work = (s.works_tr || '').split(',')[0] || '';
+      const badge = IMPORTANCE_3.has(s.id) ? '⭐ ' : '';
+      tipEl.innerHTML =
+        `<b>${badge}${nm}</b><br/>${s.b}–${s.d > 2024 ? '?' : s.d}` +
+        (city ? ' · ' + city : '') +
+        (work ? '<br/>' + work : '');
+      tipEl.style.left = (clientX + 14) + 'px';
+      tipEl.style.top  = (clientY - 12) + 'px';
+      tipEl.style.display = 'block';
+    }
+
+    function hideTip() {
+      if (tipEl) tipEl.style.display = 'none';
+    }
+
     function processHover(clientX, clientY) {
       const gNode = st.gNode;
       if (!gNode) return;
-
-      // Client coords → SVG group coords (zoom/pan-aware)
       const ctm = gNode.getScreenCTM();
       if (!ctm) return;
       const inv = ctm.inverse();
@@ -487,44 +433,29 @@ export default function ScholarTimeline({ scholars, links, lang, selected, onSel
       for (let i = 0; i < st.hitZones.length; i++) {
         const hz = st.hitZones[i];
         if (mx >= hz.xStart && mx <= hz.xEnd && Math.abs(my - hz.yOff) <= HIT_HALF) {
-          found = hz;
-          break;
+          found = hz; break;
         }
       }
 
       if (found) {
         if (st.currentHoverId !== found.id) {
-          clearHoverHighlight();
+          clearHover();
           found.lineNode.setAttribute('stroke-width', String(found.sw + 3));
           found.lineNode.setAttribute('stroke-opacity', '1');
           st.currentHoverId = found.id;
         }
-
-        const s = found.s;
-        const name = lang === 'tr' ? s.tr : s.en;
-        const city = lang === 'tr' ? (s.city_tr || '') : (s.city_en || '');
-        const works = (s.works_tr || '').split(',')[0] || '';
-        const badge = IMPORTANCE_3.has(s.id) ? '⭐ ' : '';
-        setTip({
-          name: badge + name,
-          dates: s.b + '–' + (s.d > 2024 ? '?' : s.d),
-          city, work: works,
-          x: clientX + 14,
-          y: clientY - 12,
-        });
+        showTip(clientX, clientY, found.s);
         svgEl.style.cursor = 'pointer';
       } else {
         if (st.currentHoverId !== null) {
-          clearHoverHighlight();
-          setTip(null);
+          clearHover();
+          hideTip();
         }
         svgEl.style.cursor = '';
       }
     }
 
-    // RAF-throttled mousemove
     function onMouseMove(ev) {
-      // Eğer zaten bekleyen bir RAF varsa, koordinatları güncelle ama yeni RAF kuyruklama
       if (st.rafId) return;
       const cx = ev.clientX, cy = ev.clientY;
       st.rafId = requestAnimationFrame(() => {
@@ -535,8 +466,8 @@ export default function ScholarTimeline({ scholars, links, lang, selected, onSel
 
     function onMouseLeave() {
       if (st.rafId) { cancelAnimationFrame(st.rafId); st.rafId = 0; }
-      clearHoverHighlight();
-      setTip(null);
+      clearHover();
+      hideTip();
       svgEl.style.cursor = '';
     }
 
@@ -548,7 +479,6 @@ export default function ScholarTimeline({ scholars, links, lang, selected, onSel
       const inv = ctm.inverse();
       const mx = inv.a * ev.clientX + inv.c * ev.clientY + inv.e;
       const my = inv.b * ev.clientX + inv.d * ev.clientY + inv.f;
-
       for (let i = 0; i < st.hitZones.length; i++) {
         const hz = st.hitZones[i];
         if (mx >= hz.xStart && mx <= hz.xEnd && Math.abs(my - hz.yOff) <= HIT_HALF) {
@@ -562,11 +492,10 @@ export default function ScholarTimeline({ scholars, links, lang, selected, onSel
     svgEl.addEventListener('mouseleave', onMouseLeave);
     svgEl.addEventListener('click', onClick);
 
-    // Initial zoom — __zoom property'yi doğrudan set et
-    // svg.call(zoom.transform, ...) event fire ediyor → BUNU KULLANMIYORUZ
-    const initTransform = d3.zoomIdentity.scale(0.85).translate(20, 0);
-    svgEl.__zoom = initTransform;
-    g.attr('transform', initTransform);
+    // Initial zoom — event fire etmeden
+    const t0 = d3.zoomIdentity.scale(0.85).translate(20, 0);
+    svgEl.__zoom = t0;
+    g.attr('transform', t0);
 
     return () => {
       svgEl.removeEventListener('mousemove', onMouseMove);
@@ -576,7 +505,7 @@ export default function ScholarTimeline({ scholars, links, lang, selected, onSel
     };
   }, [scholars, links, lang, showLinks]);
 
-  /* ═══ Lightweight selection highlight ═══ */
+  /* ═══ Selection highlight ═══ */
   useEffect(() => {
     const zones = d3State.current.hitZones;
     if (!zones.length) return;
@@ -597,7 +526,11 @@ export default function ScholarTimeline({ scholars, links, lang, selected, onSel
       <svg ref={svgRef} />
 
       {/* Zoom counter + Reset */}
-      <div style={{ position: 'absolute', top: 6, right: 8, display: 'flex', alignItems: 'center', gap: 6, zIndex: 5 }}>
+      <div style={{
+        position: 'absolute', top: 6, right: 8,
+        display: 'flex', alignItems: 'center', gap: 6, zIndex: 5,
+        pointerEvents: 'auto',
+      }}>
         <span ref={counterRef} style={{ fontSize: 11, color: '#6b7280', fontFamily: 'Outfit' }}>
           {scholars.filter(s => getImportance(s) >= 3).length}/{scholars.length} {lang === 'tr' ? 'âlim' : 'scholars'}
         </span>
@@ -613,32 +546,27 @@ export default function ScholarTimeline({ scholars, links, lang, selected, onSel
           transform: 'translateX(-50%)',
           background: '#1f2937', border: '1px solid #374151',
           borderRadius: 8, padding: '8px 16px',
-          fontSize: 12, color: '#9ca3af',
-          fontFamily: 'Outfit',
-          pointerEvents: 'none',
-          whiteSpace: 'nowrap',
-          zIndex: 5,
+          fontSize: 12, color: '#9ca3af', fontFamily: 'Outfit',
+          pointerEvents: 'none', whiteSpace: 'nowrap', zIndex: 5,
         }}>
           🔍 {lang === 'tr' ? 'Yakınlaştır: daha fazla âlim görünür' : 'Zoom in to reveal more scholars'}
         </div>
       )}
 
-      {/* TOOLTIP — position:fixed, wrapper DOM'una HİÇBİR ŞEY eklenmedi
-          Fixed position = normal flow'u ETKİLEMEZ = layout shift OLMAZ
-          pointer-events:none = fare event'i tetiklemez */}
-      {tip && (
-        <div className="scholar-tt" style={{
+      {/* TOOLTIP — position:fixed, React state KULLANMIYOR.
+          useRef ile doğrudan DOM manipulation.
+          Bu div her zaman DOM'da, display:none ile gizli.
+          React bunu ASLA re-render etmez. */}
+      <div
+        ref={tipRef}
+        className="scholar-tt"
+        style={{
           position: 'fixed',
-          left: tip.x,
-          top: tip.y,
+          display: 'none',
           pointerEvents: 'none',
           zIndex: 9999,
-        }}>
-          <b>{tip.name}</b><br/>
-          {tip.dates}{tip.city ? ' · ' + tip.city : ''}
-          {tip.work ? <><br/>{tip.work}</> : null}
-        </div>
-      )}
+        }}
+      />
     </div>
   );
 }
