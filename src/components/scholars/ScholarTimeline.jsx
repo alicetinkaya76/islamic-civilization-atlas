@@ -92,15 +92,11 @@ function hideOverlappingLabels(scholars, xScale) {
 }
 
 /* ═══════════════════════════════════════════════════════════
-   COMPONENT — v4.8.5 STICKY HOVER
+   COMPONENT — v4.8.5 NEDENSELLİK YAKLAŞIMI
 
-   HOVER SIRASINDA REACT RE-RENDER = SIFIR.
-
-   Tooltip: useRef DOM node, position:fixed, display toggle.
-   Highlight: native setAttribute.
-   Mousemove: native addEventListener + RAF throttle.
-   Zoom: D3 zoom (standard), ama initial transform event-free.
-   selected/onSelect: useRef, dep array dışı.
+   HOVER: CausalView'deki gibi — her scholar <g>'sine
+   invisible geniş <rect> + D3 mouseenter/mouseleave.
+   Tarayıcının native hover engine'i → titreme YOK.
 
    React sadece şunları render eder:
    - İlk mount
@@ -150,7 +146,6 @@ export default function ScholarTimeline({ scholars, links, lang, selected, onSel
     currentHoverId: null,
     rafId: 0,
     gNode: null,
-    stickyTarget: null, // { id, cx, cy } — sticky hover anchor point (screen px)
   });
 
   useEffect(() => {
@@ -186,7 +181,6 @@ export default function ScholarTimeline({ scholars, links, lang, selected, onSel
     if (st.rafId) { cancelAnimationFrame(st.rafId); st.rafId = 0; }
     st.hitZones = [];
     st.currentHoverId = null;
-    st.stickyTarget = null;
     if (tipEl) tipEl.style.display = 'none';
 
     const g = svg.append('g');
@@ -373,9 +367,20 @@ export default function ScholarTimeline({ scholars, links, lang, selected, onSel
             .style('pointer-events', 'none').text(label);
         }
 
+        /* ── Invisible hit rect — Nedensellik'teki gibi, tarayıcı native hover ── */
+        const HIT_PAD = 12;
+        sg.append('rect')
+          .attr('x', xStart - 4)
+          .attr('y', yOff - HIT_PAD)
+          .attr('width', Math.max(xEnd - xStart + 8, 20))
+          .attr('height', HIT_PAD * 2)
+          .attr('fill', 'transparent')
+          .attr('cursor', 'pointer')
+          .style('pointer-events', 'all');
+
         st.hitZones.push({
           id: s.id, xStart, xEnd, yOff, s, sw, style,
-          isSelected: isSel, lineNode: line.node(),
+          isSelected: isSel, lineNode: line.node(), groupNode: sg.node(),
         });
         scholarById[s.id] = { ...s, _x: (xStart + xEnd) / 2, _y: yOff };
       });
@@ -395,162 +400,71 @@ export default function ScholarTimeline({ scholars, links, lang, selected, onSel
             .attr('marker-end', 'url(#teacher-arrow)');
         });
       }
+
+      /* ═══ HOVER — Nedensellik yaklaşımı ═══
+         D3 mouseenter/mouseleave doğrudan <g>'ye bağlı.
+         Her <g>'de invisible geniş <rect> var (yukarıda).
+         Tarayıcının native hover → titreme YOK. */
+
+      scholarLayer.selectAll('.scholar-group')
+        .on('mouseenter', function (ev) {
+          const id = +this.getAttribute('data-id');
+          const hz = st.hitZones.find(h => h.id === id);
+          if (!hz) return;
+          if (st.currentHoverId !== id) {
+            // Clear previous highlight
+            if (st.currentHoverId !== null) {
+              const prev = st.hitZones.find(h => h.id === st.currentHoverId);
+              if (prev?.lineNode) {
+                prev.lineNode.setAttribute('stroke-width',
+                  String(prev.isSelected ? prev.sw + 1 : prev.sw));
+                prev.lineNode.setAttribute('stroke-opacity',
+                  String(prev.isSelected ? 1 : prev.style.lineOpacity));
+              }
+            }
+            hz.lineNode.setAttribute('stroke-width', String(hz.sw + 3));
+            hz.lineNode.setAttribute('stroke-opacity', '1');
+            st.currentHoverId = id;
+          }
+          if (tipEl) {
+            const nm   = lang === 'tr' ? hz.s.tr : hz.s.en;
+            const city = lang === 'tr' ? (hz.s.city_tr || '') : (hz.s.city_en || '');
+            const work = (hz.s.works_tr || '').split(',')[0] || '';
+            const badge = IMPORTANCE_3.has(hz.s.id) ? '⭐ ' : '';
+            tipEl._name.textContent = badge + nm;
+            tipEl._info.textContent = '\n' + hz.s.b + '–' + (hz.s.d > 2024 ? '?' : hz.s.d) + (city ? ' · ' + city : '');
+            tipEl._work.textContent = work;
+            tipEl.style.left = (ev.clientX + 14) + 'px';
+            tipEl.style.top  = (ev.clientY - 12) + 'px';
+            tipEl.style.display = 'block';
+          }
+        })
+        .on('mousemove', function (ev) {
+          if (tipEl) {
+            tipEl.style.left = (ev.clientX + 14) + 'px';
+            tipEl.style.top  = (ev.clientY - 12) + 'px';
+          }
+        })
+        .on('mouseleave', function () {
+          if (st.currentHoverId !== null) {
+            const prev = st.hitZones.find(h => h.id === st.currentHoverId);
+            if (prev?.lineNode) {
+              prev.lineNode.setAttribute('stroke-width',
+                String(prev.isSelected ? prev.sw + 1 : prev.sw));
+              prev.lineNode.setAttribute('stroke-opacity',
+                String(prev.isSelected ? 1 : prev.style.lineOpacity));
+            }
+            st.currentHoverId = null;
+          }
+          if (tipEl) tipEl.style.display = 'none';
+        })
+        .on('click', function () {
+          const id = +this.getAttribute('data-id');
+          onSelectRef.current(id);
+        });
     }
 
     renderScholars(3);
-
-    /* ═══════════════════════════════════════════════════════════
-       HOVER — TAMAMEN REACT-FREE, SIFIR setState
-
-       Tüm hover mantığı:
-       1. Native mousemove listener
-       2. RAF throttle (max 1/frame)
-       3. getScreenCTM().inverse() ile koordinat çevirisi
-       4. hitZone testi
-       5. Native setAttribute ile highlight
-       6. tipRef.current (DOM node) ile tooltip güncelle
-       7. React HABERSIZ — re-render YOK
-       ═══════════════════════════════════════════════════════════ */
-    const HIT_HALF = 14;  // Geniş hit zone — titreme önlenir
-    let unhoverTimer = 0; // Debounce timer for unhover
-
-    function clearHover() {
-      if (st.currentHoverId === null) return;
-      const prev = st.hitZones.find(h => h.id === st.currentHoverId);
-      if (prev?.lineNode) {
-        prev.lineNode.setAttribute('stroke-width',
-          String(prev.isSelected ? prev.sw + 1 : prev.sw));
-        prev.lineNode.setAttribute('stroke-opacity',
-          String(prev.isSelected ? 1 : prev.style.lineOpacity));
-      }
-      st.currentHoverId = null;
-    }
-
-    function showTip(clientX, clientY, s) {
-      if (!tipEl) return;
-      const nm   = lang === 'tr' ? s.tr : s.en;
-      const city = lang === 'tr' ? (s.city_tr || '') : (s.city_en || '');
-      const work = (s.works_tr || '').split(',')[0] || '';
-      const badge = IMPORTANCE_3.has(s.id) ? '⭐ ' : '';
-      tipEl._name.textContent = badge + nm;
-      tipEl._info.textContent = '\n' + s.b + '–' + (s.d > 2024 ? '?' : s.d) + (city ? ' · ' + city : '');
-      tipEl._work.textContent = work;
-      tipEl.style.left = (clientX + 14) + 'px';
-      tipEl.style.top  = (clientY - 12) + 'px';
-      tipEl.style.display = 'block';
-    }
-
-    function hideTip() {
-      if (tipEl) tipEl.style.display = 'none';
-    }
-
-    const STICKY_RADIUS = 30; // screen pixels — hover stays active within this radius
-
-    function processHover(clientX, clientY) {
-      const gNode = st.gNode;
-      if (!gNode) return;
-
-      // ── STICKY CHECK: if we have an active sticky target, check distance first ──
-      if (st.stickyTarget) {
-        const dx = clientX - st.stickyTarget.cx;
-        const dy = clientY - st.stickyTarget.cy;
-        const dist = Math.sqrt(dx * dx + dy * dy);
-        if (dist < STICKY_RADIUS) {
-          // Still within sticky radius — just update tooltip position, skip hit testing
-          if (unhoverTimer) { clearTimeout(unhoverTimer); unhoverTimer = 0; }
-          if (tipEl) {
-            tipEl.style.left = (clientX + 14) + 'px';
-            tipEl.style.top  = (clientY - 12) + 'px';
-          }
-          return;
-        }
-        // Moved beyond sticky radius — clear sticky and do fresh hit test
-        st.stickyTarget = null;
-      }
-
-      // ── Normal hit testing ──
-      const ctm = gNode.getScreenCTM();
-      if (!ctm) return;
-      const inv = ctm.inverse();
-      const mx = inv.a * clientX + inv.c * clientY + inv.e;
-      const my = inv.b * clientX + inv.d * clientY + inv.f;
-
-      let found = null;
-      for (let i = 0; i < st.hitZones.length; i++) {
-        const hz = st.hitZones[i];
-        if (mx >= hz.xStart && mx <= hz.xEnd && Math.abs(my - hz.yOff) <= HIT_HALF) {
-          found = hz; break;
-        }
-      }
-
-      if (found) {
-        // Scholar found — cancel any pending unhover, set sticky anchor
-        if (unhoverTimer) { clearTimeout(unhoverTimer); unhoverTimer = 0; }
-        st.stickyTarget = { id: found.id, cx: clientX, cy: clientY };
-
-        if (st.currentHoverId !== found.id) {
-          clearHover();
-          found.lineNode.setAttribute('stroke-width', String(found.sw + 3));
-          found.lineNode.setAttribute('stroke-opacity', '1');
-          st.currentHoverId = found.id;
-          showTip(clientX, clientY, found.s);
-        } else if (tipEl) {
-          tipEl.style.left = (clientX + 14) + 'px';
-          tipEl.style.top  = (clientY - 12) + 'px';
-        }
-        svgEl.style.cursor = 'pointer';
-      } else {
-        // No scholar — debounced unhover
-        if (st.currentHoverId !== null && !unhoverTimer) {
-          unhoverTimer = setTimeout(() => {
-            unhoverTimer = 0;
-            st.stickyTarget = null;
-            clearHover();
-            hideTip();
-            svgEl.style.cursor = '';
-          }, 100);
-        }
-      }
-    }
-
-    function onMouseMove(ev) {
-      if (st.rafId) return;
-      const cx = ev.clientX, cy = ev.clientY;
-      st.rafId = requestAnimationFrame(() => {
-        st.rafId = 0;
-        processHover(cx, cy);
-      });
-    }
-
-    function onMouseLeave() {
-      if (st.rafId) { cancelAnimationFrame(st.rafId); st.rafId = 0; }
-      if (unhoverTimer) { clearTimeout(unhoverTimer); unhoverTimer = 0; }
-      st.stickyTarget = null;
-      clearHover();
-      hideTip();
-      svgEl.style.cursor = '';
-    }
-
-    function onClick(ev) {
-      const gNode = st.gNode;
-      if (!gNode) return;
-      const ctm = gNode.getScreenCTM();
-      if (!ctm) return;
-      const inv = ctm.inverse();
-      const mx = inv.a * ev.clientX + inv.c * ev.clientY + inv.e;
-      const my = inv.b * ev.clientX + inv.d * ev.clientY + inv.f;
-      for (let i = 0; i < st.hitZones.length; i++) {
-        const hz = st.hitZones[i];
-        if (mx >= hz.xStart && mx <= hz.xEnd && Math.abs(my - hz.yOff) <= HIT_HALF) {
-          onSelectRef.current(hz.id);
-          return;
-        }
-      }
-    }
-
-    svgEl.addEventListener('mousemove', onMouseMove);
-    svgEl.addEventListener('mouseleave', onMouseLeave);
-    svgEl.addEventListener('click', onClick);
 
     // Initial zoom — event fire etmeden
     const t0 = d3.zoomIdentity.scale(0.85).translate(20, 0);
@@ -558,11 +472,7 @@ export default function ScholarTimeline({ scholars, links, lang, selected, onSel
     g.attr('transform', t0);
 
     return () => {
-      svgEl.removeEventListener('mousemove', onMouseMove);
-      svgEl.removeEventListener('mouseleave', onMouseLeave);
-      svgEl.removeEventListener('click', onClick);
       if (st.rafId) { cancelAnimationFrame(st.rafId); st.rafId = 0; }
-      if (unhoverTimer) { clearTimeout(unhoverTimer); unhoverTimer = 0; }
     };
   }, [scholars, links, lang, showLinks]);
 
