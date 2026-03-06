@@ -129,6 +129,14 @@ export default function ScholarTimeline({ scholars, links, lang, selected, onSel
   const wrapRef = useRef(null);
   const zoomRef = useRef(null);
   const counterRef = useRef(null);
+  const initializedRef = useRef(false);
+  const hitZonesRef = useRef([]);
+
+  /* ── Stable refs for values used inside D3 but that should NOT trigger full rebuild ── */
+  const onSelectRef = useRef(onSelect);
+  onSelectRef.current = onSelect;
+  const selectedRef = useRef(selected);
+  selectedRef.current = selected;
 
   const [showHint, setShowHint] = useState(true);
 
@@ -147,6 +155,7 @@ export default function ScholarTimeline({ scholars, links, lang, selected, onSel
   /* ═══ Main D3 effect ═══ */
   useEffect(() => {
     if (!svgRef.current || !wrapRef.current) return;
+    initializedRef.current = false;          // reset on full rebuild
     const wrap = wrapRef.current;
     const W = wrap.clientWidth || 1000;
 
@@ -336,7 +345,7 @@ export default function ScholarTimeline({ scholars, links, lang, selected, onSel
         const yOff = y0 + 10 + (subLane % 4) * 8;
 
         const col = discColor(s.disc_tr);
-        const isSelected = s.id === selected;
+        const isSelected = s.id === selectedRef.current;
         const score = getImportance(s);
         const style = VIS_STYLE[score];
         const stillAlive = s.d > 2024;
@@ -429,6 +438,8 @@ export default function ScholarTimeline({ scholars, links, lang, selected, onSel
             .attr('marker-end', 'url(#teacher-arrow)');
         });
       }
+      // Sync ref for selection-highlight effect
+      hitZonesRef.current = hitZones;
     }
 
     // Initial render at 0.85 → minScore = 3
@@ -471,16 +482,32 @@ export default function ScholarTimeline({ scholars, links, lang, selected, onSel
       for (let i = 0; i < hitZones.length; i++) {
         const hz = hitZones[i];
         if (mx >= hz.xStart && mx <= hz.xEnd && Math.abs(my - hz.yOff) <= HIT_HALF) {
-          onSelect(hz.id);
+          onSelectRef.current(hz.id);
           return;
         }
       }
     });
 
-    // Set initial zoom transform
-    svg.call(zoom.transform, d3.zoomIdentity.scale(0.85).translate(20, 0));
+    // Set initial zoom transform only on first mount (avoids re-triggering zoom event loop)
+    if (!initializedRef.current) {
+      svg.call(zoom.transform, d3.zoomIdentity.scale(0.85).translate(20, 0));
+      initializedRef.current = true;
+    }
 
-  }, [scholars, links, lang, selected, showLinks, onSelect]);
+  }, [scholars, links, lang, showLinks]);
+
+  /* ═══ Lightweight selection highlight — no SVG rebuild ═══ */
+  useEffect(() => {
+    const zones = hitZonesRef.current;
+    if (!zones.length) return;
+    zones.forEach(hz => {
+      const isSel = hz.id === selected;
+      hz.isSelected = isSel;
+      hz.line
+        .attr('stroke-width', isSel ? hz.sw + 1 : hz.sw)
+        .attr('stroke-opacity', isSel ? 1 : hz.style.lineOpacity);
+    });
+  }, [selected]);
 
   return (
     <div className="scholar-graph" ref={wrapRef} style={{ position: 'relative' }}>
