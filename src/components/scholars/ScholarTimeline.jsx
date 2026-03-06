@@ -346,11 +346,9 @@ export default function ScholarTimeline({ scholars, links, lang, selected, onSel
           .attr('y', yOff - HIT_PAD)
           .attr('width', Math.max(xEnd - xStart + 12, 24))
           .attr('height', HIT_PAD * 2)
-          .attr('fill', 'transparent')
-          .attr('cursor', 'pointer');
-        /* pointer-events default = 'visiblePainted' for <rect>,
-           transparent fill + no stroke = pointer events on BOUNDING BOX.
-           Diğer tüm elementlerde pointer-events:none var. */
+          .attr('fill', '#000').attr('fill-opacity', 0)
+          .attr('cursor', 'pointer')
+          .style('pointer-events', 'all');
 
         st.hitZones.push({
           id: s.id, xStart, xEnd, yOff, s, sw, style,
