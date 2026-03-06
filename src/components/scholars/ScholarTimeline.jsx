@@ -30,21 +30,21 @@ const ERA_COLORS = {
 };
 
 /* ═══════════════════════════════════════════════════════════
-   ADIM 1 — ÖNEM SKORU (0–3)
+   ÖNEM SKORU (0–3)
    ═══════════════════════════════════════════════════════════ */
 
 const IMPORTANCE_3 = new Set([
-  1, 2, 3, 4, 5, 6,           // Dört mezhep imamı + Buhârî, Müslim
-  7, 8, 9, 10,                 // Gazâlî, İbn Teymiyye, Hârizmî, İbn Sînâ
-  18, 19, 20, 21,              // İbn Haldûn, Kindî, Fârâbî, İbn Rüşd
-  25, 34, 44,                  // Sa'dî, Taberî, İbn Hişâm
-  47, 48,                      // Kâtip Çelebi, Evliyâ Çelebi
-  109, 110,                    // Ebû Hüreyre, Hz. Âişe
-  140, 141,                    // Tirmizî, Ebû Dâvûd
-  209, 212,                    // Ahmed Bâbâ, Osman dan Fodio
-  214, 226, 228,               // el-Battânî, Nizâmî, Attâr
-  253, 254, 256,               // İbn Kayyım, Zehebî, Kurtubî
-  273,                         // Cüveynî (Gazâlî'nin hocası)
+  1, 2, 3, 4, 5, 6,
+  7, 8, 9, 10,
+  18, 19, 20, 21,
+  25, 34, 44,
+  47, 48,
+  109, 110,
+  140, 141,
+  209, 212,
+  214, 226, 228,
+  253, 254, 256,
+  273,
 ]);
 
 const IMPORTANCE_2 = new Set([
@@ -55,10 +55,10 @@ const IMPORTANCE_2 = new Set([
   97, 98, 99, 100, 102, 103, 104, 136, 142, 145, 157, 158,
   164, 175, 192, 198, 199, 201, 205, 206, 219, 220, 225,
   227, 229, 233, 234, 241, 242, 244,
-  255, 257, 258, 259, 260, 261, 262,  // İbn Kudâme, Şâtıbî, İzzüddîn, İbn Receb, İbn Âbidîn, Âlûsî, Ensârî
-  263, 264, 265, 266, 267, 268,       // Serahsî, Şirbînî, İbn Nuceym, İbn Salâh, Münzirî, İbn Hacer el-Heytemî
-  269, 270, 271, 272, 274, 275,       // Beğavî, Şevkânî, İbn Atıyye, Bâkıllânî, Îcî, Nesefî
-  276, 277, 278, 279, 280,            // Kuşeyrî, Muhâsibî, İbn Asâkir, İbn Hallikân, İbn Mâlik
+  255, 257, 258, 259, 260, 261, 262,
+  263, 264, 265, 266, 267, 268,
+  269, 270, 271, 272, 274, 275,
+  276, 277, 278, 279, 280,
 ]);
 
 const getImportance = (scholar) => {
@@ -68,7 +68,7 @@ const getImportance = (scholar) => {
 };
 
 /* ═══════════════════════════════════════════════════════════
-   ADIM 3 — GÖRSEL STİL PARAMETRELERİ
+   GÖRSEL STİL PARAMETRELERİ
    ═══════════════════════════════════════════════════════════ */
 
 const VIS_STYLE = {
@@ -83,7 +83,7 @@ const VIS_STYLE = {
 };
 
 /* ═══════════════════════════════════════════════════════════
-   ADIM 4 — ÇAKIŞAN ETİKETLERİ GİZLE
+   ÇAKIŞAN ETİKETLERİ GİZLE
    ═══════════════════════════════════════════════════════════ */
 
 function hideOverlappingLabels(scholars, xScale) {
@@ -121,7 +121,28 @@ function hideOverlappingLabels(scholars, xScale) {
 }
 
 /* ═══════════════════════════════════════════════════════════
-   COMPONENT
+   COMPONENT — RADİKAL YENİDEN YAZIM (v4.8.4)
+
+   SONSUZ DÖNGÜ KÖK NEDENLERİ VE ÇÖZÜMLER:
+
+   1. D3 tooltip wrapper'ın içine DOM ekliyordu →
+      Layout shift → mousemove tekrar tetikleniyor →
+      ÇÖZÜM: Tooltip 100% React state, position:fixed
+
+   2. D3 .on('mousemove') + d3.pointer() her karede
+      getBoundingClientRect + getScreenCTM çağırıyordu →
+      Forced reflow → layout shift → yeni mouse event →
+      ÇÖZÜM: Native addEventListener + RAF throttle
+
+   3. Hover'da D3 selection .attr() çağrısı SVG reflow →
+      ÇÖZÜM: Native DOM setAttribute (D3 selection yok)
+
+   4. selected useEffect dep → her click'te full SVG rebuild →
+      svg.call(zoom.transform) → zoom event → renderScholars →
+      ÇÖZÜM: selected/onSelect → useRef, ayrı lightweight effect
+
+   5. svg.call(zoom.transform) her useEffect'te event fire ediyor →
+      ÇÖZÜM: __zoom property'yi doğrudan set et, event tetikleme
    ═══════════════════════════════════════════════════════════ */
 
 export default function ScholarTimeline({ scholars, links, lang, selected, onSelect, showLinks }) {
@@ -129,18 +150,26 @@ export default function ScholarTimeline({ scholars, links, lang, selected, onSel
   const wrapRef = useRef(null);
   const zoomRef = useRef(null);
   const counterRef = useRef(null);
-  const initializedRef = useRef(false);
-  const hitZonesRef = useRef([]);
 
-  /* ── Stable refs for values used inside D3 but that should NOT trigger full rebuild ── */
+  // Tooltip: 100% React state, position:fixed
+  const [tip, setTip] = useState(null);
+
+  const [showHint, setShowHint] = useState(true);
+
+  // Stable refs — D3 closures bunları kullanacak
   const onSelectRef = useRef(onSelect);
   onSelectRef.current = onSelect;
   const selectedRef = useRef(selected);
   selectedRef.current = selected;
 
-  const [showHint, setShowHint] = useState(true);
+  // Internal mutable D3 state — React state DEĞİL
+  const d3State = useRef({
+    hitZones: [],
+    currentHoverId: null,
+    rafId: 0,
+    gNode: null,
+  });
 
-  // Hint auto-dismiss
   useEffect(() => {
     const t = setTimeout(() => setShowHint(false), 3000);
     return () => clearTimeout(t);
@@ -152,23 +181,36 @@ export default function ScholarTimeline({ scholars, links, lang, selected, onSel
       .call(zoomRef.current.transform, d3.zoomIdentity.scale(0.85).translate(20, 0));
   }, []);
 
-  /* ═══ Main D3 effect ═══ */
+  /* ═══════════════════════════════════════════════════════════
+     MAIN D3 EFFECT
+     Deps: scholars, links, lang, showLinks ONLY.
+     ═══════════════════════════════════════════════════════════ */
   useEffect(() => {
     if (!svgRef.current || !wrapRef.current) return;
-    initializedRef.current = false;          // reset on full rebuild
     const wrap = wrapRef.current;
     const W = wrap.clientWidth || 1000;
+    const st = d3State.current;
 
     const ml = 180, mr = 30, mt = 52, mb = 30;
     const bandH = 42;
     const usedDiscs = DISC_ORDER.filter(d => scholars.some(s => s.disc_tr === d));
     const H = mt + usedDiscs.length * bandH + mb;
 
-    const svg = d3.select(svgRef.current);
+    const svgEl = svgRef.current;
+    const svg = d3.select(svgEl);
+
+    // CLEANUP
+    svg.on('.hover', null).on('.scholar', null);
     svg.selectAll('*').remove();
     svg.attr('width', W).attr('height', H);
 
+    if (st.rafId) { cancelAnimationFrame(st.rafId); st.rafId = 0; }
+    st.hitZones = [];
+    st.currentHoverId = null;
+    setTip(null);
+
     const g = svg.append('g');
+    st.gNode = g.node();
 
     /* ── Zoom & Pan ── */
     let currentK = 0.85;
@@ -184,7 +226,6 @@ export default function ScholarTimeline({ scholars, links, lang, selected, onSel
         const oldMin = getMinScore(currentK);
         const newMin = getMinScore(newK);
         currentK = newK;
-        // Update counter via DOM — no React state, no re-render
         if (counterRef.current) {
           const cnt = scholars.filter(s => getImportance(s) >= newMin).length;
           counterRef.current.textContent = cnt + '/' + scholars.length +
@@ -273,52 +314,19 @@ export default function ScholarTimeline({ scholars, links, lang, selected, onSel
         .text(lang === 'tr' ? disc : (DISC_EN[disc] || disc));
     });
 
-    /* ── Scholar render group (re-drawn on zoom threshold change) ── */
+    /* ── Scholar render layers ── */
     const scholarLayer = g.append('g').attr('class', 'scholar-layer');
     const linkLayer = g.append('g').attr('class', 'link-layer');
 
     const scholarById = {};
     scholars.forEach(s => { scholarById[s.id] = { ...s }; });
 
-    /* ── TOOLTIP ── */
-    const ttDiv = d3.select(wrap).selectAll('.scholar-tt').data([0]);
-    const tt = ttDiv.enter().append('div').attr('class', 'scholar-tt')
-      .style('display', 'none').style('pointer-events', 'none').merge(ttDiv);
-
-    function showTooltip(ev, s) {
-      const name = lang === 'tr' ? s.tr : s.en;
-      const city = lang === 'tr' ? (s.city_tr || '') : (s.city_en || '');
-      const works = (s.works_tr || '').split(',')[0] || '';
-      const badge = IMPORTANCE_3.has(s.id) ? '⭐ ' : '';
-      const rect = wrap.getBoundingClientRect();
-      tt.html(`<b>${badge}${name}</b><br/>${s.b}–${s.d > 2024 ? '?' : s.d}${city ? ' · ' + city : ''}${works ? '<br/>' + works : ''}`)
-        .style('display', 'block')
-        .style('left', (ev.clientX - rect.left + 14) + 'px')
-        .style('top', (ev.clientY - rect.top - 12) + 'px');
-    }
-    function hideTooltip() { tt.style('display', 'none'); }
-
-    /* ═══ SVG-level hover delegation ═══
-       No per-element mouseenter/mouseleave — eliminates infinite loop.
-       A single mousemove on the SVG does coordinate-based hit testing. */
-    let hitZones = [];
-    let currentHover = null;
-
-    function unhover() {
-      if (!currentHover) return;
-      const h = currentHover;
-      h.line.attr('stroke-width', h.isSelected ? h.sw + 1 : h.sw)
-            .attr('stroke-opacity', h.isSelected ? 1 : h.style.lineOpacity);
-      currentHover = null;
-      hideTooltip();
-    }
-
-    /* ═══ renderScholars — called on zoom threshold change ═══ */
+    /* ═══ renderScholars ═══ */
     function renderScholars(minScore) {
       scholarLayer.selectAll('*').remove();
       linkLayer.selectAll('*').remove();
-      hitZones = [];
-      unhover();
+      st.hitZones = [];
+      st.currentHoverId = null;
 
       const visibleScholars = scholars.filter(s => getImportance(s) >= minScore);
       const hiddenLabels = hideOverlappingLabels(visibleScholars, x);
@@ -356,7 +364,7 @@ export default function ScholarTimeline({ scholars, links, lang, selected, onSel
           .attr('class', 'scholar-group')
           .attr('data-id', s.id);
 
-        // Visible lifeline
+        // Visible lifeline — ALL pointer-events:none
         const line = scholarG.append('line')
           .attr('x1', xStart).attr('x2', xEnd)
           .attr('y1', yOff).attr('y2', yOff)
@@ -368,13 +376,11 @@ export default function ScholarTimeline({ scholars, links, lang, selected, onSel
 
         if (style.glow) line.attr('filter', 'url(#glow)');
 
-        // Birth dot
         scholarG.append('circle').attr('cx', xStart).attr('cy', yOff)
           .attr('r', dotR).attr('fill', col)
           .attr('stroke', '#080c18').attr('stroke-width', 1.5)
           .style('pointer-events', 'none');
 
-        // Death dot or arrow
         if (stillAlive) {
           scholarG.append('text')
             .attr('x', xEnd + 2).attr('y', yOff + 4)
@@ -388,7 +394,6 @@ export default function ScholarTimeline({ scholars, links, lang, selected, onSel
             .style('pointer-events', 'none');
         }
 
-        // Name label
         if (!hiddenLabels.has(s.id) && (xEnd - xStart > 20 || score >= 3)) {
           const name = lang === 'tr' ? s.tr : s.en;
           const label = name.length > 14 ? name.slice(0, 13) + '…' : name;
@@ -411,13 +416,15 @@ export default function ScholarTimeline({ scholars, links, lang, selected, onSel
             .text(label);
         }
 
-        // Store hit zone for SVG-level delegation (no per-element events)
-        hitZones.push({ id: s.id, xStart, xEnd, yOff, s, line, sw, style, isSelected });
+        // Hit zone data — lineNode = raw DOM element (D3 selection yok!)
+        st.hitZones.push({
+          id: s.id, xStart, xEnd, yOff, s, sw, style, isSelected,
+          lineNode: line.node(), col,
+        });
 
         scholarById[s.id] = { ...s, _x: (xStart + xEnd) / 2, _y: yOff };
       });
 
-      // Teacher links
       if (showLinks) {
         const teacherLinks = links.filter(l => l.type === 'teacher');
         teacherLinks.forEach(link => {
@@ -438,24 +445,47 @@ export default function ScholarTimeline({ scholars, links, lang, selected, onSel
             .attr('marker-end', 'url(#teacher-arrow)');
         });
       }
-      // Sync ref for selection-highlight effect
-      hitZonesRef.current = hitZones;
     }
 
-    // Initial render at 0.85 → minScore = 3
     renderScholars(3);
 
-    /* ═══ SVG-level mousemove / click delegation ═══
-       Converts mouse coords → group space via d3.pointer,
-       then tests against stored hitZones. No mouseenter/mouseleave
-       on individual elements → no infinite loop possible. */
-    const HIT_HALF = 7; // half of 14px hit zone
+    /* ═══════════════════════════════════════════════════════════
+       EVENT HANDLING — NATIVE addEventListener
+       D3 .on() kullanMIYORUZ → zoom ile çakışma yok.
+       RAF throttle → her karede max 1 hover hesaplaması.
+       Native setAttribute → D3 selection overhead yok.
+       getScreenCTM() → getBoundingClientRect() yerine
+       (daha güvenilir, layout shift tetiklemez).
+       ═══════════════════════════════════════════════════════════ */
 
-    svg.on('mousemove.hover', function(ev) {
-      const [mx, my] = d3.pointer(ev, g.node());
+    const HIT_HALF = 7;
+
+    function clearHoverHighlight() {
+      if (st.currentHoverId === null) return;
+      const prev = st.hitZones.find(h => h.id === st.currentHoverId);
+      if (prev && prev.lineNode) {
+        prev.lineNode.setAttribute('stroke-width',
+          String(prev.isSelected ? prev.sw + 1 : prev.sw));
+        prev.lineNode.setAttribute('stroke-opacity',
+          String(prev.isSelected ? 1 : prev.style.lineOpacity));
+      }
+      st.currentHoverId = null;
+    }
+
+    function processHover(clientX, clientY) {
+      const gNode = st.gNode;
+      if (!gNode) return;
+
+      // Client coords → SVG group coords (zoom/pan-aware)
+      const ctm = gNode.getScreenCTM();
+      if (!ctm) return;
+      const inv = ctm.inverse();
+      const mx = inv.a * clientX + inv.c * clientY + inv.e;
+      const my = inv.b * clientX + inv.d * clientY + inv.f;
+
       let found = null;
-      for (let i = 0; i < hitZones.length; i++) {
-        const hz = hitZones[i];
+      for (let i = 0; i < st.hitZones.length; i++) {
+        const hz = st.hitZones[i];
         if (mx >= hz.xStart && mx <= hz.xEnd && Math.abs(my - hz.yOff) <= HIT_HALF) {
           found = hz;
           break;
@@ -463,49 +493,102 @@ export default function ScholarTimeline({ scholars, links, lang, selected, onSel
       }
 
       if (found) {
-        if (currentHover && currentHover.id !== found.id) unhover();
-        if (!currentHover || currentHover.id !== found.id) {
-          found.line.attr('stroke-width', found.sw + 3).attr('stroke-opacity', 1);
-          currentHover = found;
+        if (st.currentHoverId !== found.id) {
+          clearHoverHighlight();
+          found.lineNode.setAttribute('stroke-width', String(found.sw + 3));
+          found.lineNode.setAttribute('stroke-opacity', '1');
+          st.currentHoverId = found.id;
         }
-        showTooltip(ev, found.s);
-        svg.node().style.cursor = 'pointer';
+
+        const s = found.s;
+        const name = lang === 'tr' ? s.tr : s.en;
+        const city = lang === 'tr' ? (s.city_tr || '') : (s.city_en || '');
+        const works = (s.works_tr || '').split(',')[0] || '';
+        const badge = IMPORTANCE_3.has(s.id) ? '⭐ ' : '';
+        setTip({
+          name: badge + name,
+          dates: s.b + '–' + (s.d > 2024 ? '?' : s.d),
+          city, work: works,
+          x: clientX + 14,
+          y: clientY - 12,
+        });
+        svgEl.style.cursor = 'pointer';
       } else {
-        if (currentHover) unhover();
-        svg.node().style.cursor = '';
+        if (st.currentHoverId !== null) {
+          clearHoverHighlight();
+          setTip(null);
+        }
+        svgEl.style.cursor = '';
       }
-    }).on('mouseleave.hover', function() {
-      unhover();
-      svg.node().style.cursor = '';
-    }).on('click.scholar', function(ev) {
-      const [mx, my] = d3.pointer(ev, g.node());
-      for (let i = 0; i < hitZones.length; i++) {
-        const hz = hitZones[i];
+    }
+
+    // RAF-throttled mousemove
+    function onMouseMove(ev) {
+      // Eğer zaten bekleyen bir RAF varsa, koordinatları güncelle ama yeni RAF kuyruklama
+      if (st.rafId) return;
+      const cx = ev.clientX, cy = ev.clientY;
+      st.rafId = requestAnimationFrame(() => {
+        st.rafId = 0;
+        processHover(cx, cy);
+      });
+    }
+
+    function onMouseLeave() {
+      if (st.rafId) { cancelAnimationFrame(st.rafId); st.rafId = 0; }
+      clearHoverHighlight();
+      setTip(null);
+      svgEl.style.cursor = '';
+    }
+
+    function onClick(ev) {
+      const gNode = st.gNode;
+      if (!gNode) return;
+      const ctm = gNode.getScreenCTM();
+      if (!ctm) return;
+      const inv = ctm.inverse();
+      const mx = inv.a * ev.clientX + inv.c * ev.clientY + inv.e;
+      const my = inv.b * ev.clientX + inv.d * ev.clientY + inv.f;
+
+      for (let i = 0; i < st.hitZones.length; i++) {
+        const hz = st.hitZones[i];
         if (mx >= hz.xStart && mx <= hz.xEnd && Math.abs(my - hz.yOff) <= HIT_HALF) {
           onSelectRef.current(hz.id);
           return;
         }
       }
-    });
-
-    // Set initial zoom transform only on first mount (avoids re-triggering zoom event loop)
-    if (!initializedRef.current) {
-      svg.call(zoom.transform, d3.zoomIdentity.scale(0.85).translate(20, 0));
-      initializedRef.current = true;
     }
 
+    svgEl.addEventListener('mousemove', onMouseMove);
+    svgEl.addEventListener('mouseleave', onMouseLeave);
+    svgEl.addEventListener('click', onClick);
+
+    // Initial zoom — __zoom property'yi doğrudan set et
+    // svg.call(zoom.transform, ...) event fire ediyor → BUNU KULLANMIYORUZ
+    const initTransform = d3.zoomIdentity.scale(0.85).translate(20, 0);
+    svgEl.__zoom = initTransform;
+    g.attr('transform', initTransform);
+
+    return () => {
+      svgEl.removeEventListener('mousemove', onMouseMove);
+      svgEl.removeEventListener('mouseleave', onMouseLeave);
+      svgEl.removeEventListener('click', onClick);
+      if (st.rafId) { cancelAnimationFrame(st.rafId); st.rafId = 0; }
+    };
   }, [scholars, links, lang, showLinks]);
 
-  /* ═══ Lightweight selection highlight — no SVG rebuild ═══ */
+  /* ═══ Lightweight selection highlight ═══ */
   useEffect(() => {
-    const zones = hitZonesRef.current;
+    const zones = d3State.current.hitZones;
     if (!zones.length) return;
     zones.forEach(hz => {
       const isSel = hz.id === selected;
       hz.isSelected = isSel;
-      hz.line
-        .attr('stroke-width', isSel ? hz.sw + 1 : hz.sw)
-        .attr('stroke-opacity', isSel ? 1 : hz.style.lineOpacity);
+      if (hz.lineNode) {
+        hz.lineNode.setAttribute('stroke-width',
+          String(isSel ? hz.sw + 1 : hz.sw));
+        hz.lineNode.setAttribute('stroke-opacity',
+          String(isSel ? 1 : hz.style.lineOpacity));
+      }
     });
   }, [selected]);
 
@@ -523,7 +606,7 @@ export default function ScholarTimeline({ scholars, links, lang, selected, onSel
         </button>
       </div>
 
-      {/* ADIM 6 — Zoom hint */}
+      {/* Zoom hint */}
       {showHint && (
         <div style={{
           position: 'absolute', bottom: 40, left: '50%',
@@ -540,6 +623,22 @@ export default function ScholarTimeline({ scholars, links, lang, selected, onSel
         </div>
       )}
 
+      {/* TOOLTIP — position:fixed, wrapper DOM'una HİÇBİR ŞEY eklenmedi
+          Fixed position = normal flow'u ETKİLEMEZ = layout shift OLMAZ
+          pointer-events:none = fare event'i tetiklemez */}
+      {tip && (
+        <div className="scholar-tt" style={{
+          position: 'fixed',
+          left: tip.x,
+          top: tip.y,
+          pointerEvents: 'none',
+          zIndex: 9999,
+        }}>
+          <b>{tip.name}</b><br/>
+          {tip.dates}{tip.city ? ' · ' + tip.city : ''}
+          {tip.work ? <><br/>{tip.work}</> : null}
+        </div>
+      )}
     </div>
   );
 }
