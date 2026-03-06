@@ -289,10 +289,27 @@ export default function ScholarTimeline({ scholars, links, lang, selected, onSel
     }
     function hideTooltip() { tt.style('display', 'none'); }
 
+    /* ═══ SVG-level hover delegation ═══
+       No per-element mouseenter/mouseleave — eliminates infinite loop.
+       A single mousemove on the SVG does coordinate-based hit testing. */
+    let hitZones = [];
+    let currentHover = null;
+
+    function unhover() {
+      if (!currentHover) return;
+      const h = currentHover;
+      h.line.attr('stroke-width', h.isSelected ? h.sw + 1 : h.sw)
+            .attr('stroke-opacity', h.isSelected ? 1 : h.style.lineOpacity);
+      currentHover = null;
+      hideTooltip();
+    }
+
     /* ═══ renderScholars — called on zoom threshold change ═══ */
     function renderScholars(minScore) {
       scholarLayer.selectAll('*').remove();
       linkLayer.selectAll('*').remove();
+      hitZones = [];
+      unhover();
 
       const visibleScholars = scholars.filter(s => getImportance(s) >= minScore);
       const hiddenLabels = hideOverlappingLabels(visibleScholars, x);
@@ -330,15 +347,7 @@ export default function ScholarTimeline({ scholars, links, lang, selected, onSel
           .attr('class', 'scholar-group')
           .attr('data-id', s.id);
 
-        // Fat invisible hit-line (14px) — stable hover target, no flicker
-        const hitLine = scholarG.append('line')
-          .attr('x1', xStart).attr('x2', xEnd)
-          .attr('y1', yOff).attr('y2', yOff)
-          .attr('stroke', 'transparent')
-          .attr('stroke-width', 14)
-          .style('cursor', 'pointer');
-
-        // Visible lifeline — no pointer events
+        // Visible lifeline
         const line = scholarG.append('line')
           .attr('x1', xStart).attr('x2', xEnd)
           .attr('y1', yOff).attr('y2', yOff)
@@ -393,18 +402,8 @@ export default function ScholarTimeline({ scholars, links, lang, selected, onSel
             .text(label);
         }
 
-        // Hover on hit-line → updates visible line
-        hitLine
-          .on('click', () => onSelect(s.id))
-          .on('mouseenter', function(ev) {
-            line.attr('stroke-width', sw + 3).attr('stroke-opacity', 1);
-            showTooltip(ev, s);
-          })
-          .on('mouseleave', function() {
-            line.attr('stroke-width', isSelected ? sw + 1 : sw)
-              .attr('stroke-opacity', isSelected ? 1 : style.lineOpacity);
-            hideTooltip();
-          });
+        // Store hit zone for SVG-level delegation (no per-element events)
+        hitZones.push({ id: s.id, xStart, xEnd, yOff, s, line, sw, style, isSelected });
 
         scholarById[s.id] = { ...s, _x: (xStart + xEnd) / 2, _y: yOff };
       });
@@ -434,6 +433,49 @@ export default function ScholarTimeline({ scholars, links, lang, selected, onSel
 
     // Initial render at 0.85 → minScore = 3
     renderScholars(3);
+
+    /* ═══ SVG-level mousemove / click delegation ═══
+       Converts mouse coords → group space via d3.pointer,
+       then tests against stored hitZones. No mouseenter/mouseleave
+       on individual elements → no infinite loop possible. */
+    const HIT_HALF = 7; // half of 14px hit zone
+
+    svg.on('mousemove.hover', function(ev) {
+      const [mx, my] = d3.pointer(ev, g.node());
+      let found = null;
+      for (let i = 0; i < hitZones.length; i++) {
+        const hz = hitZones[i];
+        if (mx >= hz.xStart && mx <= hz.xEnd && Math.abs(my - hz.yOff) <= HIT_HALF) {
+          found = hz;
+          break;
+        }
+      }
+
+      if (found) {
+        if (currentHover && currentHover.id !== found.id) unhover();
+        if (!currentHover || currentHover.id !== found.id) {
+          found.line.attr('stroke-width', found.sw + 3).attr('stroke-opacity', 1);
+          currentHover = found;
+        }
+        showTooltip(ev, found.s);
+        svg.node().style.cursor = 'pointer';
+      } else {
+        if (currentHover) unhover();
+        svg.node().style.cursor = '';
+      }
+    }).on('mouseleave.hover', function() {
+      unhover();
+      svg.node().style.cursor = '';
+    }).on('click.scholar', function(ev) {
+      const [mx, my] = d3.pointer(ev, g.node());
+      for (let i = 0; i < hitZones.length; i++) {
+        const hz = hitZones[i];
+        if (mx >= hz.xStart && mx <= hz.xEnd && Math.abs(my - hz.yOff) <= HIT_HALF) {
+          onSelect(hz.id);
+          return;
+        }
+      }
+    });
 
     // Set initial zoom transform
     svg.call(zoom.transform, d3.zoomIdentity.scale(0.85).translate(20, 0));
