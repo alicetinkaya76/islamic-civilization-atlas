@@ -92,47 +92,21 @@ function hideOverlappingLabels(scholars, xScale) {
 }
 
 /* ═══════════════════════════════════════════════════════════
-   COMPONENT — v4.8.5 NEDENSELLİK YAKLAŞIMI
+   COMPONENT — v4.8.5
 
-   HOVER: CausalView'deki gibi — her scholar <g>'sine
-   invisible geniş <rect> + D3 mouseenter/mouseleave.
-   Tarayıcının native hover engine'i → titreme YOK.
-
-   React sadece şunları render eder:
-   - İlk mount
-   - scholars/links/lang/showLinks değiştiğinde (useEffect)
-   - selected değiştiğinde (lightweight effect)
-   - showHint timeout (bir kere)
+   Tooltip: CausalView ile BİREBİR AYNI pattern.
+   useState(tooltip) + JSX render.
+   Her scholar <g>'sine invisible <rect> + D3 mouseenter/mouseleave.
    ═══════════════════════════════════════════════════════════ */
 
 export default function ScholarTimeline({ scholars, links, lang, selected, onSelect, showLinks }) {
-  const svgRef    = useRef(null);
-  const wrapRef   = useRef(null);
-  const zoomRef   = useRef(null);
+  const svgRef     = useRef(null);
+  const wrapRef    = useRef(null);
+  const zoomRef    = useRef(null);
   const counterRef = useRef(null);
-  const tipRef    = useRef(null);   // tooltip DOM node — document.body'de, wrapper DIŞINDA
 
-  // Tooltip'i document.body'ye ekle — wrapper'ın DIŞINDA olacak
-  // Bu sayede tooltip DOM değişiklikleri wrapper'da layout shift YAPMAZ
-  useEffect(() => {
-    const el = document.createElement('div');
-    el.className = 'scholar-tt';
-    el.style.cssText = 'position:fixed;display:none;pointer-events:none;z-index:9999;';
-    // Pre-create child spans — innerHTML KULLANMIYORUZ, childList mutation YOK
-    const nameSpan = document.createElement('b');
-    const infoSpan = document.createElement('span');
-    const workSpan = document.createElement('span');
-    workSpan.style.display = 'block';
-    el.appendChild(nameSpan);
-    el.appendChild(infoSpan);
-    el.appendChild(workSpan);
-    el._name = nameSpan;
-    el._info = infoSpan;
-    el._work = workSpan;
-    document.body.appendChild(el);
-    tipRef.current = el;
-    return () => { document.body.removeChild(el); };
-  }, []);
+  /* ── Tooltip: CausalView ile aynı — React state ── */
+  const [tooltip, setTooltip] = useState(null);
 
   const [showHint, setShowHint] = useState(true);
 
@@ -144,7 +118,6 @@ export default function ScholarTimeline({ scholars, links, lang, selected, onSel
   const d3State = useRef({
     hitZones: [],
     currentHoverId: null,
-    rafId: 0,
     gNode: null,
   });
 
@@ -164,7 +137,6 @@ export default function ScholarTimeline({ scholars, links, lang, selected, onSel
     if (!svgRef.current || !wrapRef.current) return;
     const wrap  = wrapRef.current;
     const svgEl = svgRef.current;
-    const tipEl = tipRef.current;
     const W     = wrap.clientWidth || 1000;
     const st    = d3State.current;
     const svg   = d3.select(svgEl);
@@ -175,13 +147,12 @@ export default function ScholarTimeline({ scholars, links, lang, selected, onSel
     const H = mt + usedDiscs.length * bandH + mb;
 
     // ── FULL CLEANUP ──
-    svg.on('.zoom', null);          // D3 zoom listener temizle
+    svg.on('.zoom', null);
     svg.selectAll('*').remove();
     svg.attr('width', W).attr('height', H);
-    if (st.rafId) { cancelAnimationFrame(st.rafId); st.rafId = 0; }
     st.hitZones = [];
     st.currentHoverId = null;
-    if (tipEl) tipEl.style.display = 'none';
+    setTooltip(null);
 
     const g = svg.append('g');
     st.gNode = g.node();
@@ -289,6 +260,7 @@ export default function ScholarTimeline({ scholars, links, lang, selected, onSel
       linkLayer.selectAll('*').remove();
       st.hitZones = [];
       st.currentHoverId = null;
+      setTooltip(null);
 
       const vis = scholars.filter(s => getImportance(s) >= minScore);
       const hiddenLabels = hideOverlappingLabels(vis, x);
@@ -367,24 +339,27 @@ export default function ScholarTimeline({ scholars, links, lang, selected, onSel
             .style('pointer-events', 'none').text(label);
         }
 
-        /* ── Invisible hit rect — Nedensellik'teki gibi, tarayıcı native hover ── */
-        const HIT_PAD = 12;
+        /* ── Invisible hit rect — CausalView node'ları gibi geniş alan ── */
+        const HIT_PAD = 14;
         sg.append('rect')
-          .attr('x', xStart - 4)
+          .attr('x', xStart - 6)
           .attr('y', yOff - HIT_PAD)
-          .attr('width', Math.max(xEnd - xStart + 8, 20))
+          .attr('width', Math.max(xEnd - xStart + 12, 24))
           .attr('height', HIT_PAD * 2)
           .attr('fill', 'transparent')
-          .attr('cursor', 'pointer')
-          .style('pointer-events', 'all');
+          .attr('cursor', 'pointer');
+        /* pointer-events default = 'visiblePainted' for <rect>,
+           transparent fill + no stroke = pointer events on BOUNDING BOX.
+           Diğer tüm elementlerde pointer-events:none var. */
 
         st.hitZones.push({
           id: s.id, xStart, xEnd, yOff, s, sw, style,
-          isSelected: isSel, lineNode: line.node(), groupNode: sg.node(),
+          isSelected: isSel, lineNode: line.node(),
         });
         scholarById[s.id] = { ...s, _x: (xStart + xEnd) / 2, _y: yOff };
       });
 
+      /* ── Teacher links ── */
       if (showLinks) {
         links.filter(l => l.type === 'teacher').forEach(link => {
           const src = scholarById[link.source];
@@ -401,62 +376,50 @@ export default function ScholarTimeline({ scholars, links, lang, selected, onSel
         });
       }
 
-      /* ═══ HOVER — Nedensellik yaklaşımı ═══
-         D3 mouseenter/mouseleave doğrudan <g>'ye bağlı.
-         Her <g>'de invisible geniş <rect> var (yukarıda).
-         Tarayıcının native hover → titreme YOK. */
+      /* ═══ HOVER — CausalView BİREBİR AYNI ═══
+         nodeG.on('mouseenter', ...).on('mouseleave', ...)
+         setTooltip({ x, y, html })  →  setTooltip(null)      */
 
       scholarLayer.selectAll('.scholar-group')
         .on('mouseenter', function (ev) {
           const id = +this.getAttribute('data-id');
           const hz = st.hitZones.find(h => h.id === id);
           if (!hz) return;
-          if (st.currentHoverId !== id) {
-            // Clear previous highlight
-            if (st.currentHoverId !== null) {
-              const prev = st.hitZones.find(h => h.id === st.currentHoverId);
-              if (prev?.lineNode) {
-                prev.lineNode.setAttribute('stroke-width',
-                  String(prev.isSelected ? prev.sw + 1 : prev.sw));
-                prev.lineNode.setAttribute('stroke-opacity',
-                  String(prev.isSelected ? 1 : prev.style.lineOpacity));
-              }
-            }
-            hz.lineNode.setAttribute('stroke-width', String(hz.sw + 3));
-            hz.lineNode.setAttribute('stroke-opacity', '1');
-            st.currentHoverId = id;
-          }
-          if (tipEl) {
-            const nm   = lang === 'tr' ? hz.s.tr : hz.s.en;
-            const city = lang === 'tr' ? (hz.s.city_tr || '') : (hz.s.city_en || '');
-            const work = (hz.s.works_tr || '').split(',')[0] || '';
-            const badge = IMPORTANCE_3.has(hz.s.id) ? '⭐ ' : '';
-            tipEl._name.textContent = badge + nm;
-            tipEl._info.textContent = '\n' + hz.s.b + '–' + (hz.s.d > 2024 ? '?' : hz.s.d) + (city ? ' · ' + city : '');
-            tipEl._work.textContent = work;
-            tipEl.style.left = (ev.clientX + 14) + 'px';
-            tipEl.style.top  = (ev.clientY - 12) + 'px';
-            tipEl.style.display = 'block';
-          }
-        })
-        .on('mousemove', function (ev) {
-          if (tipEl) {
-            tipEl.style.left = (ev.clientX + 14) + 'px';
-            tipEl.style.top  = (ev.clientY - 12) + 'px';
-          }
-        })
-        .on('mouseleave', function () {
-          if (st.currentHoverId !== null) {
+
+          // Clear prev highlight
+          if (st.currentHoverId !== null && st.currentHoverId !== id) {
             const prev = st.hitZones.find(h => h.id === st.currentHoverId);
             if (prev?.lineNode) {
-              prev.lineNode.setAttribute('stroke-width',
-                String(prev.isSelected ? prev.sw + 1 : prev.sw));
-              prev.lineNode.setAttribute('stroke-opacity',
-                String(prev.isSelected ? 1 : prev.style.lineOpacity));
+              prev.lineNode.setAttribute('stroke-width', String(prev.isSelected ? prev.sw + 1 : prev.sw));
+              prev.lineNode.setAttribute('stroke-opacity', String(prev.isSelected ? 1 : prev.style.lineOpacity));
             }
-            st.currentHoverId = null;
           }
-          if (tipEl) tipEl.style.display = 'none';
+          hz.lineNode.setAttribute('stroke-width', String(hz.sw + 3));
+          hz.lineNode.setAttribute('stroke-opacity', '1');
+          st.currentHoverId = id;
+
+          // Tooltip
+          const nm   = lang === 'tr' ? hz.s.tr : hz.s.en;
+          const city = lang === 'tr' ? (hz.s.city_tr || '') : (hz.s.city_en || '');
+          const work = (hz.s.works_tr || '').split(',')[0] || '';
+          const badge = IMPORTANCE_3.has(hz.s.id) ? '⭐ ' : '';
+          setTooltip({
+            x: ev.pageX, y: ev.pageY,
+            html: `<b>${badge}${nm}</b><br/>${hz.s.b}–${hz.s.d > 2024 ? '?' : hz.s.d}${city ? ' · ' + city : ''}${work ? '<br/>' + work : ''}`
+          });
+        })
+        .on('mousemove', function (ev) {
+          setTooltip(prev => prev ? { ...prev, x: ev.pageX, y: ev.pageY } : null);
+        })
+        .on('mouseleave', function () {
+          const id = +this.getAttribute('data-id');
+          const hz = st.hitZones.find(h => h.id === id);
+          if (hz?.lineNode) {
+            hz.lineNode.setAttribute('stroke-width', String(hz.isSelected ? hz.sw + 1 : hz.sw));
+            hz.lineNode.setAttribute('stroke-opacity', String(hz.isSelected ? 1 : hz.style.lineOpacity));
+          }
+          st.currentHoverId = null;
+          setTooltip(null);
         })
         .on('click', function () {
           const id = +this.getAttribute('data-id');
@@ -471,9 +434,6 @@ export default function ScholarTimeline({ scholars, links, lang, selected, onSel
     svgEl.__zoom = t0;
     g.attr('transform', t0);
 
-    return () => {
-      if (st.rafId) { cancelAnimationFrame(st.rafId); st.rafId = 0; }
-    };
   }, [scholars, links, lang, showLinks]);
 
   /* ═══ Selection highlight ═══ */
@@ -494,7 +454,7 @@ export default function ScholarTimeline({ scholars, links, lang, selected, onSel
 
   return (
     <div className="scholar-graph" ref={wrapRef} style={{ position: 'relative' }}>
-      <svg ref={svgRef} />
+      <svg ref={svgRef} style={{ display: 'block' }} />
 
       {/* Zoom counter + Reset */}
       <div style={{
@@ -524,6 +484,11 @@ export default function ScholarTimeline({ scholars, links, lang, selected, onSel
         </div>
       )}
 
+      {/* Tooltip — CausalView ile BİREBİR AYNI */}
+      {tooltip && (
+        <div className="tt" style={{ left: tooltip.x + 12, top: tooltip.y - 10 }}
+          dangerouslySetInnerHTML={{ __html: tooltip.html }} />
+      )}
     </div>
   );
 }
