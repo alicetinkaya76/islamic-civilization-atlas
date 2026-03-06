@@ -92,7 +92,7 @@ function hideOverlappingLabels(scholars, xScale) {
 }
 
 /* ═══════════════════════════════════════════════════════════
-   COMPONENT — v4.8.4 ULTRA-RADİKAL YAZIM
+   COMPONENT — v4.8.5 STICKY HOVER
 
    HOVER SIRASINDA REACT RE-RENDER = SIFIR.
 
@@ -114,7 +114,29 @@ export default function ScholarTimeline({ scholars, links, lang, selected, onSel
   const wrapRef   = useRef(null);
   const zoomRef   = useRef(null);
   const counterRef = useRef(null);
-  const tipRef    = useRef(null);   // tooltip DOM node — React state DEĞİL
+  const tipRef    = useRef(null);   // tooltip DOM node — document.body'de, wrapper DIŞINDA
+
+  // Tooltip'i document.body'ye ekle — wrapper'ın DIŞINDA olacak
+  // Bu sayede tooltip DOM değişiklikleri wrapper'da layout shift YAPMAZ
+  useEffect(() => {
+    const el = document.createElement('div');
+    el.className = 'scholar-tt';
+    el.style.cssText = 'position:fixed;display:none;pointer-events:none;z-index:9999;';
+    // Pre-create child spans — innerHTML KULLANMIYORUZ, childList mutation YOK
+    const nameSpan = document.createElement('b');
+    const infoSpan = document.createElement('span');
+    const workSpan = document.createElement('span');
+    workSpan.style.display = 'block';
+    el.appendChild(nameSpan);
+    el.appendChild(infoSpan);
+    el.appendChild(workSpan);
+    el._name = nameSpan;
+    el._info = infoSpan;
+    el._work = workSpan;
+    document.body.appendChild(el);
+    tipRef.current = el;
+    return () => { document.body.removeChild(el); };
+  }, []);
 
   const [showHint, setShowHint] = useState(true);
 
@@ -128,6 +150,7 @@ export default function ScholarTimeline({ scholars, links, lang, selected, onSel
     currentHoverId: null,
     rafId: 0,
     gNode: null,
+    stickyTarget: null, // { id, cx, cy } — sticky hover anchor point (screen px)
   });
 
   useEffect(() => {
@@ -163,6 +186,7 @@ export default function ScholarTimeline({ scholars, links, lang, selected, onSel
     if (st.rafId) { cancelAnimationFrame(st.rafId); st.rafId = 0; }
     st.hitZones = [];
     st.currentHoverId = null;
+    st.stickyTarget = null;
     if (tipEl) tipEl.style.display = 'none';
 
     const g = svg.append('g');
@@ -387,7 +411,8 @@ export default function ScholarTimeline({ scholars, links, lang, selected, onSel
        6. tipRef.current (DOM node) ile tooltip güncelle
        7. React HABERSIZ — re-render YOK
        ═══════════════════════════════════════════════════════════ */
-    const HIT_HALF = 7;
+    const HIT_HALF = 14;  // Geniş hit zone — titreme önlenir
+    let unhoverTimer = 0; // Debounce timer for unhover
 
     function clearHover() {
       if (st.currentHoverId === null) return;
@@ -407,10 +432,9 @@ export default function ScholarTimeline({ scholars, links, lang, selected, onSel
       const city = lang === 'tr' ? (s.city_tr || '') : (s.city_en || '');
       const work = (s.works_tr || '').split(',')[0] || '';
       const badge = IMPORTANCE_3.has(s.id) ? '⭐ ' : '';
-      tipEl.innerHTML =
-        `<b>${badge}${nm}</b><br/>${s.b}–${s.d > 2024 ? '?' : s.d}` +
-        (city ? ' · ' + city : '') +
-        (work ? '<br/>' + work : '');
+      tipEl._name.textContent = badge + nm;
+      tipEl._info.textContent = '\n' + s.b + '–' + (s.d > 2024 ? '?' : s.d) + (city ? ' · ' + city : '');
+      tipEl._work.textContent = work;
       tipEl.style.left = (clientX + 14) + 'px';
       tipEl.style.top  = (clientY - 12) + 'px';
       tipEl.style.display = 'block';
@@ -420,9 +444,31 @@ export default function ScholarTimeline({ scholars, links, lang, selected, onSel
       if (tipEl) tipEl.style.display = 'none';
     }
 
+    const STICKY_RADIUS = 30; // screen pixels — hover stays active within this radius
+
     function processHover(clientX, clientY) {
       const gNode = st.gNode;
       if (!gNode) return;
+
+      // ── STICKY CHECK: if we have an active sticky target, check distance first ──
+      if (st.stickyTarget) {
+        const dx = clientX - st.stickyTarget.cx;
+        const dy = clientY - st.stickyTarget.cy;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < STICKY_RADIUS) {
+          // Still within sticky radius — just update tooltip position, skip hit testing
+          if (unhoverTimer) { clearTimeout(unhoverTimer); unhoverTimer = 0; }
+          if (tipEl) {
+            tipEl.style.left = (clientX + 14) + 'px';
+            tipEl.style.top  = (clientY - 12) + 'px';
+          }
+          return;
+        }
+        // Moved beyond sticky radius — clear sticky and do fresh hit test
+        st.stickyTarget = null;
+      }
+
+      // ── Normal hit testing ──
       const ctm = gNode.getScreenCTM();
       if (!ctm) return;
       const inv = ctm.inverse();
@@ -438,20 +484,32 @@ export default function ScholarTimeline({ scholars, links, lang, selected, onSel
       }
 
       if (found) {
+        // Scholar found — cancel any pending unhover, set sticky anchor
+        if (unhoverTimer) { clearTimeout(unhoverTimer); unhoverTimer = 0; }
+        st.stickyTarget = { id: found.id, cx: clientX, cy: clientY };
+
         if (st.currentHoverId !== found.id) {
           clearHover();
           found.lineNode.setAttribute('stroke-width', String(found.sw + 3));
           found.lineNode.setAttribute('stroke-opacity', '1');
           st.currentHoverId = found.id;
+          showTip(clientX, clientY, found.s);
+        } else if (tipEl) {
+          tipEl.style.left = (clientX + 14) + 'px';
+          tipEl.style.top  = (clientY - 12) + 'px';
         }
-        showTip(clientX, clientY, found.s);
         svgEl.style.cursor = 'pointer';
       } else {
-        if (st.currentHoverId !== null) {
-          clearHover();
-          hideTip();
+        // No scholar — debounced unhover
+        if (st.currentHoverId !== null && !unhoverTimer) {
+          unhoverTimer = setTimeout(() => {
+            unhoverTimer = 0;
+            st.stickyTarget = null;
+            clearHover();
+            hideTip();
+            svgEl.style.cursor = '';
+          }, 100);
         }
-        svgEl.style.cursor = '';
       }
     }
 
@@ -466,6 +524,8 @@ export default function ScholarTimeline({ scholars, links, lang, selected, onSel
 
     function onMouseLeave() {
       if (st.rafId) { cancelAnimationFrame(st.rafId); st.rafId = 0; }
+      if (unhoverTimer) { clearTimeout(unhoverTimer); unhoverTimer = 0; }
+      st.stickyTarget = null;
       clearHover();
       hideTip();
       svgEl.style.cursor = '';
@@ -502,6 +562,7 @@ export default function ScholarTimeline({ scholars, links, lang, selected, onSel
       svgEl.removeEventListener('mouseleave', onMouseLeave);
       svgEl.removeEventListener('click', onClick);
       if (st.rafId) { cancelAnimationFrame(st.rafId); st.rafId = 0; }
+      if (unhoverTimer) { clearTimeout(unhoverTimer); unhoverTimer = 0; }
     };
   }, [scholars, links, lang, showLinks]);
 
@@ -553,20 +614,6 @@ export default function ScholarTimeline({ scholars, links, lang, selected, onSel
         </div>
       )}
 
-      {/* TOOLTIP — position:fixed, React state KULLANMIYOR.
-          useRef ile doğrudan DOM manipulation.
-          Bu div her zaman DOM'da, display:none ile gizli.
-          React bunu ASLA re-render etmez. */}
-      <div
-        ref={tipRef}
-        className="scholar-tt"
-        style={{
-          position: 'fixed',
-          display: 'none',
-          pointerEvents: 'none',
-          zIndex: 9999,
-        }}
-      />
     </div>
   );
 }
