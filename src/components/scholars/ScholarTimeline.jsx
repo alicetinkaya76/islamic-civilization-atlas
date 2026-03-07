@@ -179,6 +179,7 @@ export default function ScholarTimeline({ scholars, links, lang, selected, onSel
   const tipRef     = useRef(null);
   const zoomRef    = useRef(null);
   const counterRef = useRef(null);
+  const currentKRef = useRef(0.85);
 
   const [showHint, setShowHint] = useState(true);
 
@@ -251,6 +252,7 @@ export default function ScholarTimeline({ scholars, links, lang, selected, onSel
 
     /* ── Zoom ── */
     let currentK = 0.85;
+    let zoomRenderTimer = 0;
     const getMinScore = (k) => k < 1.5 ? 3 : k < 2.5 ? 2 : k < 4.0 ? 1 : 0;
 
     const zoom = d3.zoom()
@@ -258,15 +260,19 @@ export default function ScholarTimeline({ scholars, links, lang, selected, onSel
       .on('zoom', (e) => {
         g.attr('transform', e.transform);
         const newK = e.transform.k;
-        const oldMin = getMinScore(currentK);
-        const newMin = getMinScore(newK);
         currentK = newK;
+        currentKRef.current = newK;
         if (counterRef.current) {
+          const newMin = getMinScore(newK);
           const cnt = scholars.filter(s => getImportance(s) >= newMin).length;
           counterRef.current.textContent = cnt + '/' + scholars.length +
             ' ' + (lang === 'tr' ? 'âlim' : 'scholars');
         }
-        if (oldMin !== newMin) renderScholars(newMin, newK);
+        // Debounced re-render for label recalculation at every zoom level
+        clearTimeout(zoomRenderTimer);
+        zoomRenderTimer = setTimeout(() => {
+          renderScholars(getMinScore(currentK), currentK);
+        }, 150);
       });
 
     svg.call(zoom);
@@ -388,11 +394,13 @@ export default function ScholarTimeline({ scholars, links, lang, selected, onSel
         const score = getImportance(s);
         const style = VIS_STYLE[score];
         const alive = s.d > 2024;
-        const sw = style.lineWidth;
-        const dotR = style.r;
 
-        // Adaptive font size
-        const adaptiveFontSize = Math.min(style.fontSize + (zoomK > 2 ? 2 : 0), 16);
+        // Inverse-scale sizes so they stay constant on screen
+        const invK = 1 / (zoomK || 0.85);
+        const sw = style.lineWidth * invK;
+        const dotR = style.r * invK;
+        const baseFontSize = style.fontSize;
+        const adaptiveFontSize = baseFontSize * invK;
 
         const sg = scholarLayer.append('g')
           .attr('class', 'scholar-group')
@@ -400,11 +408,11 @@ export default function ScholarTimeline({ scholars, links, lang, selected, onSel
           .attr('cursor', 'pointer');
 
         /* Hit rect */
-        const rectPad = 14;
+        const rectPad = 14 * invK;
         sg.append('rect')
-          .attr('x', xStart - 4)
+          .attr('x', xStart - 4 * invK)
           .attr('y', yOff - rectPad)
-          .attr('width', Math.max(xEnd - xStart + 8, 16))
+          .attr('width', Math.max(xEnd - xStart + 8 * invK, 16 * invK))
           .attr('height', rectPad * 2)
           .attr('fill', '#000')
           .attr('fill-opacity', 0)
@@ -424,32 +432,32 @@ export default function ScholarTimeline({ scholars, links, lang, selected, onSel
         /* Birth dot */
         sg.append('circle').attr('cx', xStart).attr('cy', yOff)
           .attr('r', dotR).attr('fill', col)
-          .attr('stroke', '#080c18').attr('stroke-width', 1.5)
+          .attr('stroke', '#080c18').attr('stroke-width', 1.5 * invK)
           .attr('pointer-events', 'none');
 
         /* Death dot or arrow */
         if (alive) {
-          sg.append('text').attr('x', xEnd + 2).attr('y', yOff + 4)
-            .attr('fill', col).attr('font-size', score >= 3 ? '14px' : '11px')
+          sg.append('text').attr('x', xEnd + 2 * invK).attr('y', yOff + 4 * invK)
+            .attr('fill', col).attr('font-size', (score >= 3 ? 14 : 11) * invK + 'px')
             .attr('font-family', 'Outfit').text('→')
             .attr('pointer-events', 'none');
         } else {
           sg.append('circle').attr('cx', xEnd).attr('cy', yOff)
             .attr('r', dotR).attr('fill', '#080c18')
-            .attr('stroke', col).attr('stroke-width', 2)
+            .attr('stroke', col).attr('stroke-width', 2 * invK)
             .attr('pointer-events', 'none');
         }
 
-        /* Label — adaptive length & size */
+        /* Label — inverse-scaled so it stays same size on screen */
         if (!hiddenLabels.has(s.id) && (xEnd - xStart > 20 || score >= 3)) {
           const nm = lang === 'tr' ? s.tr : s.en;
           const label = nm.length > maxLabelLen ? nm.slice(0, maxLabelLen - 1) + '…' : nm;
-          const charW = score >= 3 ? 6.5 : score >= 2 ? 5.5 : 5;
-          const textW = label.length * charW + 4;
-          const tx = xStart + 2, ty = yOff - 6;
-          sg.append('rect').attr('x', tx - 2).attr('y', ty - adaptiveFontSize + 1)
-            .attr('width', textW + 4).attr('height', adaptiveFontSize + 2)
-            .attr('fill', '#080c18').attr('opacity', 0.7).attr('rx', 3)
+          const charW = (score >= 3 ? 6.5 : score >= 2 ? 5.5 : 5) * invK;
+          const textW = label.length * charW + 4 * invK;
+          const tx = xStart + 2 * invK, ty = yOff - 6 * invK;
+          sg.append('rect').attr('x', tx - 2 * invK).attr('y', ty - adaptiveFontSize + invK)
+            .attr('width', textW + 4 * invK).attr('height', adaptiveFontSize + 2 * invK)
+            .attr('fill', '#080c18').attr('opacity', 0.7).attr('rx', 3 * invK)
             .attr('pointer-events', 'none');
           sg.append('text').attr('x', tx).attr('y', ty)
             .attr('fill', style.labelColor)
@@ -464,7 +472,8 @@ export default function ScholarTimeline({ scholars, links, lang, selected, onSel
         /* ── Events — pure DOM tooltip ── */
         sg.on('mouseenter', function(ev) {
           // Highlight line
-          line.attr('stroke-width', sw + 3).attr('stroke-opacity', 1)
+          const curInvK = 1 / (currentK || 0.85);
+          line.attr('stroke-width', (style.lineWidth + 3) * curInvK).attr('stroke-opacity', 1)
               .attr('stroke', col); // solid color on hover for clarity
 
           // Highlight related links
@@ -473,7 +482,7 @@ export default function ScholarTimeline({ scholars, links, lang, selected, onSel
             const src = +el.attr('data-source');
             const tgt = +el.attr('data-target');
             if (src === s.id || tgt === s.id) {
-              el.attr('stroke-opacity', 0.9).attr('stroke-width', 3);
+              el.attr('stroke-opacity', 0.9).attr('stroke-width', 3 * curInvK);
             } else {
               el.attr('stroke-opacity', 0.08);
             }
@@ -489,13 +498,14 @@ export default function ScholarTimeline({ scholars, links, lang, selected, onSel
         })
         .on('mouseleave', function() {
           const curSel = s.id === selectedRef.current;
-          line.attr('stroke-width', curSel ? sw + 1 : sw)
+          const curInvK = 1 / (currentK || 0.85);
+          line.attr('stroke-width', (curSel ? style.lineWidth + 1 : style.lineWidth) * curInvK)
               .attr('stroke-opacity', curSel ? 1 : style.lineOpacity)
               .attr('stroke', score >= 2 ? `url(#${gradId})` : col);
 
           // Reset link highlights
           linkLayer.selectAll('.tl-link')
-            .attr('stroke-opacity', 0.5).attr('stroke-width', 1.5);
+            .attr('stroke-opacity', 0.5).attr('stroke-width', 1.5 * curInvK);
 
           tipEl.style.display = 'none';
         })
@@ -512,14 +522,15 @@ export default function ScholarTimeline({ scholars, links, lang, selected, onSel
           if (!src?._x || !tgt?._x) return;
           const cx2 = (src._x + tgt._x) / 2;
           const cy2 = Math.min(src._y, tgt._y) - 30;
+          const invKLink = 1 / (zoomK || 0.85);
           linkLayer.append('path')
             .attr('class', 'tl-link')
             .attr('data-source', link.source)
             .attr('data-target', link.target)
             .attr('d', `M${src._x},${src._y} Q${cx2},${cy2} ${tgt._x},${tgt._y}`)
             .attr('fill', 'none').attr('stroke', '#9ca3af')
-            .attr('stroke-width', 1.5).attr('stroke-opacity', 0.5)
-            .attr('stroke-dasharray', '4,3')
+            .attr('stroke-width', 1.5 * invKLink).attr('stroke-opacity', 0.5)
+            .attr('stroke-dasharray', `${4 * invKLink},${3 * invKLink}`)
             .attr('marker-end', 'url(#teacher-arrow)')
             .attr('pointer-events', 'none');
         });
@@ -537,6 +548,7 @@ export default function ScholarTimeline({ scholars, links, lang, selected, onSel
   /* ═══ Selection highlight ═══ */
   useEffect(() => {
     if (!svgRef.current) return;
+    const invK = 1 / (currentKRef.current || 0.85);
     const svg = d3.select(svgRef.current);
     svg.selectAll('.scholar-group').each(function() {
       const sg = d3.select(this);
@@ -547,7 +559,7 @@ export default function ScholarTimeline({ scholars, links, lang, selected, onSel
       const scholar = scholars.find(s => s.id === id);
       if (!scholar) return;
       const style = VIS_STYLE[getImportance(scholar)];
-      line.attr('stroke-width', isSel ? style.lineWidth + 1 : style.lineWidth)
+      line.attr('stroke-width', (isSel ? style.lineWidth + 1 : style.lineWidth) * invK)
           .attr('stroke-opacity', isSel ? 1 : style.lineOpacity);
     });
   }, [selected, scholars]);

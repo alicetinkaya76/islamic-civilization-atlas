@@ -29,7 +29,7 @@ export default function TourMode({ lang, onNavigate, onClose }) {
     if (stop && onNavigate) {
       onNavigate({ lat: stop.lat, lon: stop.lon, zoom: stop.zoom, year: stop.year });
     }
-  }, [step, tourId]);
+  }, [step, tourId, onNavigate]);
 
   const lf = (obj, field) => lang === 'tr' ? obj[`${field}_tr`] : obj[`${field}_en`];
 

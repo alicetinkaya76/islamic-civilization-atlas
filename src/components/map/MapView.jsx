@@ -27,10 +27,16 @@ export default function MapView({ lang, t, sidebarOpen, mapRef, onPopupOpen }) {
   const causalIdx = useCausalIndex();
   const uniques = useFilterUniques();
 
-  /* Tour navigation callback */
+  /* Tour navigation callback — ref-based for guaranteed fresh mapObj */
   const handleTourNavigate = useCallback(({ lat, lon, zoom, year: yr }) => {
-    if (mapObj.current) {
-      mapObj.current.flyTo([lat, lon], zoom, { duration: 1.5 });
+    const map = mapObj.current;
+    if (map) {
+      try {
+        map.flyTo([lat, lon], zoom || 6, { duration: 1.5 });
+      } catch (e) {
+        // fallback if flyTo fails
+        try { map.setView([lat, lon], zoom || 6); } catch (_) {}
+      }
     }
     if (yr) setYear(yr);
   }, []);
