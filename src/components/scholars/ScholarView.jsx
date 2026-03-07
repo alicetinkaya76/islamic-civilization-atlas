@@ -367,6 +367,22 @@ export default function ScholarView({ lang, t }) {
                   </div>
                 </div>
               )}
+
+              {/* DİA Attribution */}
+              {SCHOLAR_IDENTITY[sel.id] && (
+                <div className="scholar-dia-attribution">
+                  <span className="scholar-dia-attribution-icon">📚</span>
+                  <span>
+                    {lang === 'tr'
+                      ? 'Biyografik veriler: TDV İslâm Ansiklopedisi (DİA)'
+                      : 'Biographical data: TDV Encyclopedia of Islam (DİA)'}
+                  </span>
+                  <a href="https://islamansiklopedisi.org.tr" target="_blank" rel="noopener noreferrer"
+                    className="scholar-dia-attribution-link">
+                    islamansiklopedisi.org.tr ↗
+                  </a>
+                </div>
+              )}
             </>
           )}
         </div>

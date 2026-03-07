@@ -367,6 +367,36 @@
   background: rgba(201,168,76,0.08);
 }
 
+/* ─── DİA Attribution ─── */
+.scholar-dia-attribution {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  margin-top: 16px;
+  padding: 10px 12px;
+  border-radius: 6px;
+  background: rgba(201,168,76,0.03);
+  border: 1px dashed rgba(201,168,76,0.15);
+  text-align: center;
+  font-size: 9.5px;
+  color: rgba(201,168,76,0.5);
+  line-height: 1.4;
+}
+.scholar-dia-attribution-icon {
+  font-size: 12px;
+  opacity: 0.6;
+}
+.scholar-dia-attribution-link {
+  color: rgba(201,168,76,0.6);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.15s;
+}
+.scholar-dia-attribution-link:hover {
+  color: var(--gold);
+}
+
 /* ─── Tooltip ─── */
 .scholar-tt {
   position: absolute;
