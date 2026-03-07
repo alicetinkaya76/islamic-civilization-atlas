@@ -1,0 +1,241 @@
+/* ═══ Landing Page ═══ */
+
+.landing {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: #070b14;
+  transition: transform 0.65s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.landing-exit {
+  transform: translateY(-100vh);
+}
+
+/* ── Background ── */
+.landing-bg {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.landing-pattern {
+  position: absolute;
+  inset: -50%;
+  width: 200%;
+  height: 200%;
+  /* Islamic geometric star pattern via CSS */
+  background-image:
+    /* 8-point star grid */
+    repeating-conic-gradient(
+      from 0deg at 50% 50%,
+      rgba(201, 168, 76, 0.03) 0deg 45deg,
+      transparent 45deg 90deg
+    );
+  background-size: 80px 80px;
+  animation: patternDrift 120s linear infinite;
+  opacity: 0.5;
+}
+
+/* Overlay: subtle grid lines for geometric feel */
+.landing-pattern::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(201, 168, 76, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(201, 168, 76, 0.04) 1px, transparent 1px);
+  background-size: 80px 80px;
+}
+
+@keyframes patternDrift {
+  0% { transform: translate(0, 0) rotate(0deg); }
+  100% { transform: translate(-80px, -80px) rotate(3deg); }
+}
+
+.landing-gradient {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse 60% 50% at 50% 45%,
+    rgba(201, 168, 76, 0.06) 0%,
+    rgba(7, 11, 20, 0.7) 60%,
+    #070b14 100%
+  );
+  animation: gradientPulse 8s ease-in-out infinite alternate;
+}
+
+@keyframes gradientPulse {
+  0% { opacity: 0.8; }
+  100% { opacity: 1; }
+}
+
+/* ── Language toggle ── */
+.landing-lang {
+  position: absolute;
+  top: 20px;
+  right: 24px;
+  z-index: 10;
+  background: rgba(201, 168, 76, 0.1);
+  border: 1px solid rgba(201, 168, 76, 0.25);
+  color: #c9a84c;
+  padding: 6px 14px;
+  border-radius: 6px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: background 0.2s;
+  animation: fadeInDown 0.6s ease both;
+  animation-delay: 0.2s;
+}
+
+.landing-lang:hover {
+  background: rgba(201, 168, 76, 0.2);
+}
+
+/* ── Hero ── */
+.landing-hero {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 0 24px;
+}
+
+.landing-logo {
+  font-size: 72px;
+  color: #c9a84c;
+  line-height: 1;
+  margin-bottom: 16px;
+  animation: logoReveal 0.8s ease both;
+  filter: drop-shadow(0 0 20px rgba(201, 168, 76, 0.3));
+}
+
+@keyframes logoReveal {
+  0% { opacity: 0; transform: scale(0.5); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+.landing-title {
+  font-size: clamp(28px, 5vw, 48px);
+  font-weight: 700;
+  color: #e2e8f0;
+  margin: 0 0 8px 0;
+  letter-spacing: 0.5px;
+  line-height: 1.2;
+  animation: fadeInUp 0.6s ease both;
+  animation-delay: 0.3s;
+}
+
+.landing-subtitle {
+  font-size: clamp(14px, 2vw, 18px);
+  color: #94a3b8;
+  margin: 0 0 32px 0;
+  font-weight: 400;
+  letter-spacing: 1px;
+  animation: fadeInUp 0.6s ease both;
+  animation-delay: 0.6s;
+}
+
+.landing-explore {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 36px;
+  background: linear-gradient(135deg, #c9a84c, #a88a3a);
+  border: none;
+  border-radius: 8px;
+  color: #0f172a;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  letter-spacing: 0.5px;
+  transition: transform 0.2s, box-shadow 0.2s;
+  animation: fadeInUp 0.6s ease both, explorePulse 2.5s ease-in-out infinite;
+  animation-delay: 1s, 2s;
+  box-shadow: 0 4px 20px rgba(201, 168, 76, 0.25);
+}
+
+.landing-explore:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 8px 30px rgba(201, 168, 76, 0.4);
+}
+
+.landing-explore-icon {
+  font-size: 18px;
+}
+
+@keyframes explorePulse {
+  0%, 100% { box-shadow: 0 4px 20px rgba(201, 168, 76, 0.25); }
+  50% { box-shadow: 0 4px 30px rgba(201, 168, 76, 0.45); }
+}
+
+/* ── Stats strip ── */
+.landing-stats {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px 28px;
+  margin-top: 48px;
+  padding: 0 24px;
+}
+
+.landing-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  min-width: 72px;
+  animation: fadeInUp 0.5s ease both;
+}
+
+.landing-stat-num {
+  font-size: 26px;
+  font-weight: 700;
+  color: #c9a84c;
+  font-variant-numeric: tabular-nums;
+}
+
+.landing-stat-label {
+  font-size: 11px;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+}
+
+/* ── Shared keyframes ── */
+@keyframes fadeInUp {
+  0% { opacity: 0; transform: translateY(30px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInDown {
+  0% { opacity: 0; transform: translateY(-20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Mobile ── */
+@media (max-width: 640px) {
+  .landing-logo {
+    font-size: 52px;
+  }
+  .landing-stats {
+    gap: 10px 18px;
+    margin-top: 36px;
+  }
+  .landing-stat-num {
+    font-size: 20px;
+  }
+  .landing-explore {
+    padding: 12px 28px;
+    font-size: 15px;
+  }
+}

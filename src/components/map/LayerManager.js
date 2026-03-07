@@ -5,7 +5,7 @@ import { n } from '../../hooks/useEntityLookup';
 import {
   buildDynastyPopup, buildBattlePopup, buildEventPopup,
   buildScholarPopup, buildMonumentPopup, buildCityPopup, buildRoutePopup,
-  buildRulerPopup, buildRulerListHtml,
+  buildRulerPopup, buildRulerListHtml, buildMadrasaPopup,
   popOpt
 } from '../shared/PopupFactory';
 
@@ -275,6 +275,43 @@ export function renderLayers({ lg, layers, filters, year, lang, t, analyticsMap,
         .addTo(lg.rulers);
       const rLayers = lg.rulers.getLayers();
       if (rLayers.length) popupTrack(rLayers[rLayers.length - 1], 'ruler', r.id);
+    });
+  }
+
+  // ── Madrasas ──
+  lg.madrasas.clearLayers();
+  if (layers.madrasas) {
+    const scholarsById = {};
+    (DB.scholars || []).forEach(s => { scholarsById[s.id] = s; });
+    (DB.madrasas || []).forEach(m => {
+      if (!m.lat || !m.lon) return;
+      const active = m.founded <= year && (!m.closed || m.closed >= year);
+      const past = m.closed && m.closed < year;
+      const future = m.founded > year;
+      if (future && m.founded > year + 50) return;
+
+      const op = active ? 0.95 : past ? 0.4 : 0.2;
+      const col = active ? '#22d3ee' : past ? '#0e7490' : '#164e63';
+      const size = active ? 24 : 18;
+
+      const icon = L.divIcon({
+        className: '', iconSize: [size, size], iconAnchor: [size/2, size/2],
+        html: `<svg xmlns="http://www.w3.org/2000/svg" width="${size}" height="${size}" viewBox="0 0 24 24" opacity="${op}">
+          <rect x="2" y="8" width="20" height="14" rx="2" fill="${col}" opacity="0.85"/>
+          <path d="M12 2 L4 8 L20 8 Z" fill="${col}"/>
+          <rect x="6" y="12" width="3" height="4" rx="0.5" fill="#0f172a" opacity="0.6"/>
+          <rect x="10.5" y="12" width="3" height="4" rx="0.5" fill="#0f172a" opacity="0.6"/>
+          <rect x="15" y="12" width="3" height="4" rx="0.5" fill="#0f172a" opacity="0.6"/>
+          <circle cx="12" cy="5.5" r="1.2" fill="#fbbf24" opacity="0.9"/>
+        </svg>`
+      });
+
+      L.marker([m.lat, m.lon], { icon })
+        .bindPopup(buildMadrasaPopup(m, lang, t, scholarsById), popOpt(360))
+        .bindTooltip(`🎓 ${lang === 'tr' ? m.tr : m.en}`, { direction: 'top', offset: [0, -6] })
+        .addTo(lg.madrasas);
+      const mLayers = lg.madrasas.getLayers();
+      if (mLayers.length) popupTrack(mLayers[mLayers.length - 1], 'madrasa', m.id);
     });
   }
 

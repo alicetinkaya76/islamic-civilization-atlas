@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-export default function AboutModal({ lang, onResetOnboarding }) {
+export default function AboutModal({ lang, onResetOnboarding, onResetLanding }) {
   const [open, setOpen] = useState(false);
 
   const content = lang === 'tr' ? {
@@ -62,6 +62,11 @@ export default function AboutModal({ lang, onResetOnboarding }) {
             {onResetOnboarding && (
               <button className="modal-onboarding-reset" onClick={() => { onResetOnboarding(); setOpen(false); }}>
                 🗺 {lang === 'tr' ? 'Rehberi Tekrar Göster' : 'Show Guide Again'}
+              </button>
+            )}
+            {onResetLanding && (
+              <button className="modal-onboarding-reset" onClick={() => { onResetLanding(); setOpen(false); }} style={{ marginTop: 6 }}>
+                ☪ {lang === 'tr' ? 'Giriş Sayfasını Tekrar Göster' : 'Show Landing Page Again'}
               </button>
             )}
             <button className="modal-close" onClick={() => setOpen(false)}>{content.close}</button>
