@@ -123,3 +123,15 @@ button:focus-visible, .tab:focus-visible, select:focus-visible, input:focus-visi
 /* ─── Trade Route Animation ─── */
 @keyframes tradeFlow { to { stroke-dashoffset: -30; } }
 .trade-anim { animation: tradeFlow 2s linear infinite; }
+
+/* ─── Respect user motion preferences ─── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
