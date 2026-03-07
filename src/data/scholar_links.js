@@ -172,5 +172,70 @@ const SCHOLAR_LINKS = [
   { source:157, target:168, type:'influence' },  // İbn Hazm → İbn Bâcce
   { source:168, target:158, type:'influence' },  // İbn Bâcce → İbn Tufeyl
   { source:158, target:21,  type:'influence' },  // İbn Tufeyl → İbn Rüşd
+
+  // ═══════════════════════════════════════════════════
+  // İSNÂD BAĞLANTILARI (v4.8.7.0)
+  // ═══════════════════════════════════════════════════
+
+  // Zincir 1: Altın Zincir — İbn Ömer → Nâfi' → Mâlik
+  { source:52,  target:306, type:'isnad' },
+  { source:306, target:2,   type:'isnad' },
+
+  // Zincir 2: Mâlik → Şâfiî → Ahmed
+  { source:2,   target:3,   type:'isnad' },
+  { source:3,   target:4,   type:'isnad' },
+
+  // Zincir 3: İbn Abbâs → Amr b. Dînâr → Süfyân b. Uyeyne → Humeydî → Buhârî
+  { source:303, target:313, type:'isnad' },
+  { source:313, target:315, type:'isnad' },
+  { source:315, target:324, type:'isnad' },
+  { source:324, target:5,   type:'isnad' },
+
+  // Zincir 4: Âişe → Urve → Zührî
+  { source:110, target:307, type:'isnad' },
+  { source:307, target:59,  type:'isnad' },
+
+  // Zincir 5: İbn Mes'ûd → Alkame → İbrâhîm → Hammâd → Ebû Hanîfe
+  { source:304, target:309, type:'isnad' },
+  { source:309, target:61,  type:'isnad' },
+  { source:61,  target:139, type:'isnad' },
+  { source:139, target:1,   type:'isnad' },
+
+  // Zincir 6: İbn Mes'ûd → Ebû Vâil → A'meş → Süfyân es-Sevrî
+  { source:304, target:325, type:'isnad' },
+  { source:325, target:317, type:'isnad' },
+  { source:317, target:314, type:'isnad' },
+
+  // Zincir 7: İbrâhîm → Mansûr → Süfyân es-Sevrî
+  { source:61,  target:318, type:'isnad' },
+  { source:318, target:314, type:'isnad' },
+
+  // Zincir 8: Enes → Katâde → Şu'be
+  { source:123, target:311, type:'isnad' },
+  { source:311, target:316, type:'isnad' },
+
+  // Zincir 9: İbn Ömer → Sâlim → Zührî → Mâlik
+  { source:52,  target:310, type:'isnad' },
+  { source:310, target:59,  type:'isnad' },
+  { source:59,  target:2,   type:'isnad' },
+
+  // Zincir 10: Ebû Hüreyre → Saîd b. Müseyyeb → Zührî → Mâlik
+  { source:109, target:305, type:'isnad' },
+  { source:305, target:59,  type:'isnad' },
+
+  // EK İSNÂD BAĞLANTILARI
+  { source:303, target:308, type:'isnad' },  // İbn Abbâs → İkrime
+  { source:314, target:323, type:'isnad' },  // Süfyân es-Sevrî → Vekî'
+  { source:323, target:4,   type:'isnad' },  // Vekî' → Ahmed b. Hanbel
+  { source:59,  target:322, type:'isnad' },  // Zührî → Leys b. Sa'd
+  { source:306, target:322, type:'isnad' },  // Nâfi' → Leys b. Sa'd
+  { source:306, target:319, type:'isnad' },  // Nâfi' → Yahyâ b. Saîd
+  { source:319, target:314, type:'isnad' },  // Yahyâ b. Saîd → Süfyân es-Sevrî
+  { source:313, target:320, type:'isnad' },  // Amr b. Dînâr → İbn Cüreyc
+  { source:321, target:314, type:'isnad' },  // İbn Mübârek ← Süfyân es-Sevrî
+  { source:321, target:2,   type:'isnad' },  // İbn Mübârek ← Mâlik
+  { source:307, target:312, type:'isnad' },  // Urve → Hişâm b. Urve (father→son)
+  { source:315, target:3,   type:'isnad' },  // Süfyân b. Uyeyne → Şâfiî
+  { source:315, target:4,   type:'isnad' },  // Süfyân b. Uyeyne → Ahmed
 ];
 export default SCHOLAR_LINKS;

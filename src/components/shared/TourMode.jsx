@@ -1,11 +1,12 @@
 import { useState, useEffect, useRef } from 'react';
 import TOURS from '../../data/tours';
 
-export default function TourMode({ lang, onNavigate, onClose }) {
+export default function TourMode({ lang, onNavigate, onClose, onTourComplete }) {
   const [tourId, setTourId] = useState(null);
   const [step, setStep] = useState(0);
   const [playing, setPlaying] = useState(false);
   const playRef = useRef(false);
+  const completedRef = useRef(new Set());
 
   const tour = TOURS.find(t => t.id === tourId);
   const stop = tour?.stops[step];
@@ -24,10 +25,15 @@ export default function TourMode({ lang, onNavigate, onClose }) {
     return () => clearInterval(iv);
   }, [playing, tour]);
 
-  // Navigate map when stop changes
+  // Navigate map when stop changes + check for tour completion
   useEffect(() => {
     if (stop && onNavigate) {
       onNavigate({ lat: stop.lat, lon: stop.lon, zoom: stop.zoom, year: stop.year });
+    }
+    // Tour completion check
+    if (tour && step === tour.stops.length - 1 && !completedRef.current.has(tour.id)) {
+      completedRef.current.add(tour.id);
+      if (onTourComplete) onTourComplete(tour.id);
     }
   }, [step, tourId, onNavigate]);
 
@@ -96,6 +102,13 @@ export default function TourMode({ lang, onNavigate, onClose }) {
           {lang === 'tr' ? 'Sonraki' : 'Next'} →
         </button>
       </div>
+
+      {/* Tour completion indicator */}
+      {step === tour.stops.length - 1 && (
+        <div className="tour-complete-msg">
+          🎉 {lang === 'tr' ? 'Tur tamamlandı!' : 'Tour completed!'}
+        </div>
+      )}
     </div>
   );
 }

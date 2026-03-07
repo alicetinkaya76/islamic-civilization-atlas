@@ -353,8 +353,55 @@ export default function ScholarTimeline({ scholars, links, lang, selected, onSel
     });
 
     /* ── Layers ── */
+    const milestoneLayer = g.append('g').attr('class', 'milestone-layer');
     const linkLayer    = g.append('g').attr('class', 'link-layer');
     const scholarLayer = g.append('g').attr('class', 'scholar-layer');
+
+    /* ── MILESTONE MARKERS ── */
+    const MILESTONES = [
+      { yr: 622,  icon:'🕌', tr:'Hicret',                    en:'The Hijra' },
+      { yr: 750,  icon:'⚔',  tr:'Abbâsî Devrimi',            en:'Abbasid Revolution' },
+      { yr: 830,  icon:'📚', tr:'Beytü\'l-Hikme',            en:'House of Wisdom' },
+      { yr: 1071, icon:'🗡',  tr:'Malazgirt',                 en:'Battle of Manzikert' },
+      { yr: 1258, icon:'🔥', tr:'Bağdat\'ın Düşüşü',         en:'Fall of Baghdad' },
+      { yr: 1453, icon:'🏰', tr:'İstanbul\'un Fethi',         en:'Fall of Constantinople' },
+      { yr: 1492, icon:'📕', tr:'Endülüs\'ün Sonu',          en:'Fall of Granada' },
+      { yr: 1517, icon:'🇪🇬', tr:'Osmanlı-Mısır',             en:'Ottoman Egypt' },
+      { yr: 1683, icon:'⬇',  tr:'Viyana Bozgunu',            en:'Siege of Vienna' },
+      { yr: 1924, icon:'🏛',  tr:'Hilafetin Kaldırılması',    en:'Abolition of Caliphate' },
+    ];
+
+    MILESTONES.forEach(ms => {
+      const mx = x(ms.yr);
+      /* Dashed vertical line */
+      milestoneLayer.append('line')
+        .attr('x1', mx).attr('x2', mx)
+        .attr('y1', mt - 5).attr('y2', H - mb + 5)
+        .attr('stroke', '#ef4444').attr('stroke-width', 1)
+        .attr('stroke-dasharray', '4,4').attr('stroke-opacity', 0.35)
+        .attr('pointer-events', 'none');
+      /* Icon at top */
+      const iconG = milestoneLayer.append('g')
+        .attr('class', 'milestone-icon')
+        .attr('transform', `translate(${mx},${mt - 8})`)
+        .attr('cursor', 'default');
+      iconG.append('text')
+        .attr('text-anchor', 'middle').attr('dy', -2)
+        .attr('font-size', '13px').attr('pointer-events', 'all')
+        .text(ms.icon);
+      /* Hover for tooltip — pure DOM */
+      iconG.on('mouseenter', function(ev) {
+        const label = lang === 'tr' ? ms.tr : ms.en;
+        tipEl.innerHTML =
+          `<div style="font-size:13px;font-weight:700;color:#f3f4f6;margin-bottom:2px">${label}</div>` +
+          `<div style="font-size:11px;color:#6b7280">📅 ${ms.yr}</div>`;
+        tipEl.style.borderColor = '#ef4444';
+        tipEl.style.left = (ev.pageX + 12) + 'px';
+        tipEl.style.top = (ev.pageY - 8) + 'px';
+        tipEl.style.display = 'block';
+      })
+      .on('mouseleave', function() { tipEl.style.display = 'none'; });
+    });
 
     const scholarById = {};
     scholars.forEach(s => { scholarById[s.id] = { ...s }; });

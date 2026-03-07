@@ -508,3 +508,83 @@
   color: var(--text, #e5e7eb);
   border-color: var(--accent, #c9a84c);
 }
+
+/* ═══════════════════════════════════════════
+   İSNÂD MODE — v4.8.7.0
+   ═══════════════════════════════════════════ */
+
+/* Chain selector bar */
+.isnad-chain-bar {
+  display: flex; align-items: flex-start; gap: 8px;
+  padding: 8px 12px; background: rgba(255,215,0,.04);
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+}
+.isnad-chain-bar-title {
+  font-size: 11px; color: #c9a84c; font-weight: 600;
+  white-space: nowrap; padding-top: 3px;
+  font-family: var(--font-display);
+}
+.isnad-chain-chips {
+  display: flex; flex-wrap: wrap; gap: 4px;
+}
+.isnad-chain-chip {
+  display: flex; align-items: center; gap: 4px;
+  padding: 3px 8px; border-radius: 12px; font-size: 10px;
+  background: transparent; border: 1px solid var(--border);
+  cursor: pointer; transition: all .15s;
+  font-family: var(--font-body); white-space: nowrap;
+}
+.isnad-chain-chip:hover { border-color: currentColor; }
+.isnad-chain-chip.active { font-weight: 600; }
+.isnad-chain-chip.clear {
+  color: #6b7280; border-color: #6b7280;
+  font-weight: 400;
+}
+.isnad-chip-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* İsnâd detail section */
+.isnad-info-section {
+  background: rgba(255,215,0,.04);
+  border-radius: 8px; padding: 10px !important;
+  border: 1px solid rgba(255,215,0,.15);
+}
+.isnad-info-grid {
+  display: flex; flex-direction: column; gap: 4px;
+  margin-top: 6px;
+}
+.isnad-info-row {
+  display: flex; gap: 8px; font-size: 11px;
+}
+.isnad-info-k {
+  color: #6b7280; min-width: 60px; flex-shrink: 0;
+}
+.isnad-info-v {
+  color: #d1d5db; font-weight: 500;
+}
+.isnad-chains-list {
+  margin-top: 10px; padding-top: 8px;
+  border-top: 1px solid rgba(255,215,0,.1);
+}
+.isnad-chains-list-title {
+  font-size: 10px; color: #9ca3af; margin-bottom: 6px;
+  font-weight: 600;
+}
+.isnad-chain-mini {
+  display: flex; align-items: center; gap: 4px;
+  width: 100%; padding: 4px 8px; margin-bottom: 3px;
+  background: rgba(0,0,0,.2); border: 1px solid rgba(255,215,0,.1);
+  border-radius: 6px; cursor: pointer; font-size: 10px;
+  transition: all .15s; font-family: var(--font-body);
+}
+.isnad-chain-mini:hover { border-color: currentColor; background: rgba(255,215,0,.06); }
+.isnad-chain-arrow { margin-left: auto; opacity: .5; }
+
+/* Responsive */
+@media (max-width: 768px) {
+  .isnad-chain-bar { flex-direction: column; gap: 4px; padding: 6px 8px; }
+  .isnad-chain-chip { font-size: 9px; padding: 2px 6px; }
+}

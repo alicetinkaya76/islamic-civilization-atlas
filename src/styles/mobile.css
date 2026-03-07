@@ -1,11 +1,11 @@
 /* ═══════════════════════════════════════════
-   MOBILE RESPONSIVE — 5.8
-   Breakpoints: 768px (tablet), 600px (phone)
+   MOBILE RESPONSIVE — v4.8.6.0
+   Breakpoints: 768px (tablet), 600px (phone), 400px (small)
    ═══════════════════════════════════════════ */
 
 /* ─── Hamburger Button ─── */
 .hamburger {
-  display: none; /* hidden on desktop */
+  display: none;
   flex-direction: column; justify-content: center; gap: 4px;
   background: none; border: none;
   width: 28px; height: 28px; padding: 2px;
@@ -22,7 +22,7 @@
 
 /* ─── Sidebar toggle (map filters on mobile) ─── */
 .sidebar-toggle {
-  display: none; /* hidden on desktop */
+  display: none;
   background: var(--bg3); border: 1px solid var(--border);
   color: var(--gold); width: 28px; height: 28px;
   border-radius: 6px; cursor: pointer;
@@ -39,20 +39,26 @@
   backdrop-filter: blur(2px);
 }
 
+/* ─── General touch enhancements ─── */
+
 /* ═══ TABLET — max-width: 768px ═══ */
 @media (max-width: 768px) {
 
-  /* Show hamburger */
   .hamburger { display: flex; }
   .sidebar-toggle { display: flex; align-items: center; justify-content: center; }
 
-  /* Header compact */
-  .header { padding: 6px 10px; gap: 8px; }
-  .h-title { font-size: 15px; }
+  /* P1: Header fixes */
+  .header { padding: 6px 10px; gap: 6px; }
+  .header-left { gap: 6px; }
+  .h-title { font-size: 15px; max-width: 40vw; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
   .h-sub { font-size: 9px; }
-  .logo { font-size: 22px; }
+  .logo { font-size: 22px; width: 28px; height: 28px; }
 
-  /* Nav slides in from right */
+  /* P2: Search — show desktop search in menu, hide mobile version on tablet */
+  .header-search-mobile { display: none; }
+  .header-search-desktop { display: contents; }
+
+  /* Nav slides from right */
   .header-right {
     position: fixed; top: 0; right: -280px;
     width: 260px; height: 100vh;
@@ -62,23 +68,27 @@
     z-index: 1000; gap: 12px;
     transition: right .3s ease;
     box-shadow: -4px 0 20px rgba(0,0,0,.5);
+    overflow-y: auto;
   }
   .header-right.mobile-open { right: 0; }
   .mobile-backdrop { display: block; }
 
-  /* Tabs go vertical in mobile menu */
-  .tabs {
-    flex-direction: column; gap: 4px;
-  }
+  /* P2: Search z-index fix */
+  .search-dropdown { z-index: 9500 !important; max-height: 50vh; overflow-y: auto; }
+  .search-result-name { text-overflow: ellipsis; overflow: hidden; white-space: nowrap; }
+
+  /* P3: Tabs vertical in mobile menu */
+  .tabs { flex-direction: column; gap: 4px; }
   .tab {
     text-align: left; padding: 10px 14px;
     border-radius: 8px; font-size: 14px;
+    min-height: 44px; display: flex; align-items: center;
   }
-  .tab.active { background: #c9a84c22; }
+  .tab.active { background: #c9a84c22; border-left: 3px solid var(--gold); }
 
   .lang-btn { align-self: flex-start; margin-top: 8px; }
 
-  /* Map panel slides from left */
+  /* P4: Map panel with close button and overlay */
   .map-panel {
     position: fixed; top: 48px; left: -260px;
     width: 240px; height: calc(100vh - 48px);
@@ -107,14 +117,13 @@
     line-height: 1.5 !important;
     margin: 8px 10px !important;
   }
-
-  /* Popup touch targets */
   .p-rulers-h { padding: 8px 0; min-height: 36px; }
   .p-ruler-row { padding: 6px 4px; min-height: 32px; }
 
-  /* Tour panel compact */
-  .tour-panel { width: 90%; bottom: 100px; }
-  .tour-stop-text { font-size: 11px; max-height: 80px; }
+  /* P9: Tour panel compact */
+  .tour-panel { width: 90%; bottom: 80px; max-height: 40vh; }
+  .tour-stop { max-height: 120px; overflow-y: auto; }
+  .tour-stop-text { font-size: 11px; max-height: 80px; overflow-y: auto; }
 
   /* Timeline horizontal scroll */
   .tl-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
@@ -122,20 +131,66 @@
   /* Causal view compact */
   .cv-graph { height: 50vh; }
 
-  /* Footer compact */
+  /* P10: Footer compact */
   .footer-inner { flex-direction: column; align-items: flex-start; gap: 6px; padding: 8px 12px; }
+
+  /* P5: Battle view mobile */
+  .battle-view { flex-direction: column; }
+  #battle-map { min-height: 250px; height: 40vh; flex: none; }
+  .battle-sidebar { width: 100%; border-left: none;
+    border-top: 1px solid var(--border); max-height: 55vh; overflow-y: auto; }
+  .battle-card { max-height: 50%; overflow-y: auto; }
+
+  /* P6/P7: Scholar views */
+  .scholar-main { flex-direction: column; }
+  .scholar-detail { width: 100%; border-left: none;
+    border-top: 1px solid var(--border); max-height: 250px; }
+  .scholar-toolbar { gap: 4px; }
+  .disc-pill { font-size: 10px; padding: 2px 6px; }
+
+  /* P11: Progress panel fix */
+  .progress-panel {
+    right: 0 !important; left: auto !important;
+    width: min(280px, 90vw) !important;
+    max-height: 70vh; overflow-y: auto;
+  }
+
+  /* P6: Scholar zoom buttons bigger */
+  .scholar-zoom-reset { min-width: 40px; min-height: 40px; }
+
+  /* Search chips responsive */
+  .search-chips { gap: 2px; }
+  .search-chip { font-size: 9px; padding: 1px 5px; }
 }
 
 /* ═══ PHONE — max-width: 600px ═══ */
 @media (max-width: 600px) {
 
-  /* Even more compact header */
+  /* P1: Even more compact header */
   .header { padding: 4px 8px; min-height: 40px; }
-  .h-title { font-size: 13px; }
+  .header-left { gap: 4px; }
+  .h-title { font-size: 13px; max-width: 30vw; }
   .h-sub { display: none; }
-  .logo { font-size: 18px; }
+  .logo { font-size: 18px; width: 24px; height: 24px; }
 
-  /* Map panel hidden unless toggled */
+  /* P2: Search bar visible below header on phones */
+  .header-search-mobile {
+    display: block;
+    padding: 4px 8px;
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+    position: sticky; top: 40px; z-index: 900;
+  }
+  .header-search-mobile .search-wrap { width: 100%; }
+  .header-search-mobile .search-input { width: 100%; }
+  .header-search-mobile .search-input-row { width: 100%; }
+  .header-search-mobile .search-dropdown {
+    position: fixed; left: 4px; right: 4px; top: auto;
+    width: auto; z-index: 9500; max-height: 50vh; overflow-y: auto;
+  }
+  .header-search-desktop { display: none !important; }
+
+  /* Map panel */
   .map-panel { width: 220px; top: 40px; height: calc(100vh - 40px); }
 
   /* Timebar minimal */
@@ -158,27 +213,22 @@
   .p-row { font-size: 10px; }
   .p-k { min-width: 60px; }
   .p-narr { font-size: 10px; max-height: 60px; }
-
-  /* Popup close button bigger for touch */
   .leaflet-popup-close-button {
     width: 28px !important; height: 28px !important;
-    font-size: 20px !important;
-    padding: 4px !important;
+    font-size: 20px !important; padding: 4px !important;
   }
 
   /* Tour compact */
   .tour-trigger { top: 8px; left: 8px; padding: 6px 12px; font-size: 11px; }
-  .tour-panel { width: 96%; bottom: 72px; }
+  .tour-panel { width: 96%; bottom: 60px; max-height: 40vh; }
   .tour-panel-header { padding: 8px 10px; }
   .tour-panel-title { font-size: 12px; }
   .tour-stop { padding: 8px 12px; }
   .tour-stop-title { font-size: 14px; }
   .tour-stop-text { font-size: 10px; max-height: 70px; }
   .tour-nav { padding: 8px 10px; }
-  .tour-nav-btn { padding: 4px 10px; font-size: 10px; }
+  .tour-nav-btn { padding: 4px 10px; font-size: 10px; min-height: 36px; }
   .tour-play-btn { width: 30px; height: 30px; font-size: 12px; }
-
-  /* Tour selection grid */
   .tour-select { padding: 14px; }
   .tour-select-title { font-size: 18px; }
   .tour-grid { grid-template-columns: 1fr; gap: 8px; }
@@ -186,34 +236,58 @@
   .tour-card-icon { font-size: 22px; }
   .tour-card-title { font-size: 13px; }
 
-  /* Timeline scroll */
+  /* P6: Timeline toolbar */
   .tl-toolbar { flex-wrap: wrap; gap: 4px; padding: 6px; }
   .tl-btn { padding: 3px 6px; font-size: 9px; }
   .tl-zoom { gap: 4px; }
-  .tl-zoom button { padding: 3px 8px; font-size: 12px; }
+  .tl-zoom button { padding: 3px 8px; font-size: 12px; min-width: 40px; min-height: 40px; }
+
+  /* P8: Quiz mobile */
+  .quiz-panel, .quiz-overlay .quiz-panel {
+    max-height: 90vh !important; overflow-y: auto !important;
+    width: 95vw !important; padding: 14px !important;
+  }
+  .quiz-options { flex-direction: column !important; }
+  .quiz-option, .quiz-opt {
+    min-width: 100% !important; font-size: 13px; padding: 12px !important;
+  }
 
   /* Causal view */
   .cv-wrap { flex-direction: column; }
   .cv-graph { height: 40vh; min-width: auto; }
   .cv-list { max-height: 30vh; }
 
-  /* About modal */
+  /* P13: About modal */
   .modal-box { padding: 16px; max-width: 95vw; }
   .modal-title { font-size: 18px; }
 
-  /* Footer */
+  /* P10: Footer */
   .footer-names { font-size: 10px; flex-wrap: wrap; }
   .footer-affil { font-size: 9px; }
   .footer-cite-btn { font-size: 10px; padding: 3px 8px; }
+  .footer-right { flex-wrap: wrap; gap: 4px; }
+  .site-footer { max-height: 48px; overflow: hidden; }
+
+  /* P12: Glossary */
+  .glossary-search { width: 100%; }
 
   /* Citation panel */
   .cite-text { font-size: 10px; max-height: 100px; }
+
+  /* Onboarding responsive */
+  .onboarding-card { padding: 20px 16px; }
+  .onboarding-icon { font-size: 36px; }
+  .onboarding-title { font-size: 18px; }
+  .onboarding-text { font-size: 13px; }
+
+  /* Export dropdown */
+  .export-dropdown { right: -40px; min-width: 160px; }
 }
 
 /* ═══ SMALL PHONE — max-width: 400px ═══ */
 @media (max-width: 400px) {
-  .header { padding: 3px 6px; }
-  .h-title { font-size: 11px; letter-spacing: 0; }
+  .header { padding: 3px 6px; min-height: 36px; }
+  .h-title { font-size: 11px; letter-spacing: 0; max-width: 25vw; }
   .logo { font-size: 16px; }
   .hamburger { width: 24px; height: 24px; }
   .hb-line { width: 16px; }
@@ -223,6 +297,14 @@
   .tbar-range { height: 4px; }
 
   .leaflet-popup-content-wrapper { max-width: 92vw !important; }
+
+  /* Collapse footer further */
+  .site-footer { max-height: 40px; }
+  .footer-inner { gap: 2px; padding: 4px 8px; }
+  .footer-center { display: none; }
+
+  .search-chip-label { display: none; }
+  .search-chip { padding: 2px 4px; }
 }
 
 /* ═══ LANDSCAPE PHONE ═══ */
@@ -231,46 +313,42 @@
   .h-sub { display: none; }
   .tbar { padding: 8px 10px 6px; }
   .tbar-yr { font-size: 20px; }
-  .tour-panel { bottom: 50px; }
+  .tour-panel { bottom: 50px; max-height: 35vh; }
   .tour-stop-text { max-height: 50px; }
+  .header-search-mobile { display: none; }
 }
 
 /* ═══ TOUCH ENHANCEMENTS ═══ */
 @media (hover: none) and (pointer: coarse) {
-  /* Bigger touch targets */
-  .tab { min-height: 38px; }
+  .tab { min-height: 44px; }
   .lang-btn { min-height: 36px; min-width: 52px; }
-  .tbar-play { min-width: 40px; min-height: 40px; }
+  .tbar-play { min-width: 44px; min-height: 44px; }
   .tbar-range { height: 8px; }
-
-  /* Layer toggle bigger */
+  .tbar-step { min-width: 44px; min-height: 44px; }
   .lyr-item label { padding: 6px 4px; min-height: 32px; }
-
-  /* Filter selects bigger */
   .flt-sel { min-height: 32px; font-size: 12px; }
-
-  /* Ruler expand area bigger */
   .p-rulers-h { padding: 10px 0; }
-
-  /* Tour dots bigger */
   .tour-dot { width: 14px; height: 14px; }
   .tour-dot.active { transform: scale(1.2); }
+  .tour-nav-btn { min-height: 44px; }
+  .tour-play-btn { min-width: 44px; min-height: 44px; }
+  .quiz-trigger { min-height: 44px; }
+  .search-random-btn { min-width: 36px; min-height: 36px; }
+  .onboarding-btn { min-height: 44px; padding: 10px 24px; }
+
+  /* Disable tap highlight */
+  * { -webkit-tap-highlight-color: transparent; }
 }
 
-/* Âlimler — mobile */
-@media (max-width: 768px) {
-  .scholar-main { flex-direction: column; }
-  .scholar-detail { width: 100%; border-left: none;
-    border-top: 1px solid var(--border); max-height: 250px; }
-  .scholar-toolbar { gap: 4px; }
-  .disc-pill { font-size: 10px; padding: 2px 6px; }
+/* ═══ SAFE AREA (notch phones) ═══ */
+@supports (padding-bottom: env(safe-area-inset-bottom)) {
+  .site-footer { padding-bottom: env(safe-area-inset-bottom); }
+  .tour-panel { margin-bottom: env(safe-area-inset-bottom); }
 }
 
-/* Savaşlar — mobile */
-@media (max-width: 768px) {
-  .battle-view { flex-direction: column; }
-  #battle-map { min-height: 280px; flex: none; }
-  .battle-sidebar { width: 100%; border-left: none;
-    border-top: 1px solid var(--border); max-height: 350px; }
-  .battle-card { max-height: 200px; }
+/* ═══ PRINT ═══ */
+@media print {
+  .header, .tbar, .tour-panel, .tour-trigger, .mobile-backdrop,
+  .map-canvas, .leaflet-container, .quiz-overlay, .onboarding-overlay { display: none !important; }
+  .main { display: block !important; }
 }

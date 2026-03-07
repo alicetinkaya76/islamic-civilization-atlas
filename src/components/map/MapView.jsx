@@ -11,7 +11,7 @@ import TourMode from '../shared/TourMode';
 import MapLegend from '../shared/MapLegend';
 import YearInfoPanel from './YearInfoPanel';
 
-export default function MapView({ lang, t, sidebarOpen, mapRef, onPopupOpen }) {
+export default function MapView({ lang, t, sidebarOpen, mapRef, onPopupOpen, onTourComplete, onCloseSidebar }) {
   const mapEl = useRef(null);
   const mapObj = useRef(null);
   const lgRef = useRef({});
@@ -86,6 +86,7 @@ export default function MapView({ lang, t, sidebarOpen, mapRef, onPopupOpen }) {
         uniques={uniques}
         activeCount={activeCount} year={year}
         sidebarOpen={sidebarOpen}
+        onCloseMobile={onCloseSidebar}
       />
       <div className="map-area">
         <div ref={mapEl} className="map-canvas" />
@@ -96,7 +97,7 @@ export default function MapView({ lang, t, sidebarOpen, mapRef, onPopupOpen }) {
         </button>
         {/* Tour overlay */}
         {tourActive && (
-          <TourMode lang={lang} onNavigate={handleTourNavigate} onClose={() => setTourActive(false)} />
+          <TourMode lang={lang} onNavigate={handleTourNavigate} onClose={() => setTourActive(false)} onTourComplete={onTourComplete} />
         )}
         {/* Legend */}
         <MapLegend lang={lang} />

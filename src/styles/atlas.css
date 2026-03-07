@@ -527,3 +527,13 @@ body {
 @media (max-width: 600px) {
   .cl-list { display: none; }
 }
+
+/* Modal onboarding reset */
+.modal-onboarding-reset {
+  display: block; width: 100%; margin: 8px 0;
+  padding: 8px 16px; border-radius: 6px;
+  background: var(--bg3); border: 1px solid var(--border);
+  color: var(--cream2); cursor: pointer; font-size: 12px;
+  transition: all .2s; font-family: var(--font-body);
+}
+.modal-onboarding-reset:hover { border-color: var(--gold); color: var(--gold); }

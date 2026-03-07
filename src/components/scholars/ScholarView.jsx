@@ -3,6 +3,7 @@ import DB from '../../data/db.json';
 import SCHOLAR_META from '../../data/scholar_meta';
 import SCHOLAR_LINKS from '../../data/scholar_links';
 import SCHOLAR_IDENTITY from '../../data/scholar_identity';
+import ISNAD_CHAINS from '../../data/isnad_chains';
 import ScholarNetwork, { DISC_COLORS } from './ScholarNetwork';
 import ScholarTimeline from './ScholarTimeline';
 import { lf } from '../../hooks/useEntityLookup';
@@ -26,7 +27,7 @@ const DISC_EN = {
 };
 
 export default function ScholarView({ lang, t }) {
-  const [view, setView] = useState('network'); // 'network' | 'timeline'
+  const [view, setView] = useState('network'); // 'network' | 'isnad' | 'timeline'
   const [activeDiscs, setActiveDiscs] = useState(new Set(ALL_DISCS));
   const [periodYear, setPeriodYear] = useState(2025);
   const [linkFilter, setLinkFilter] = useState('');
@@ -34,6 +35,7 @@ export default function ScholarView({ lang, t }) {
   const [selectedId, setSelectedId] = useState(null);
   const [showLinks, setShowLinks] = useState(true);
   const [showIdCard, setShowIdCard] = useState(false);
+  const [activeChains, setActiveChains] = useState(new Set());
 
   const ts = t.scholars || {};
 
@@ -132,6 +134,10 @@ export default function ScholarView({ lang, t }) {
             onClick={() => setView('network')}>
             🕸 {ts.networkView || 'Network'}
           </button>
+          <button className={`scholar-view-btn${view === 'isnad' ? ' active' : ''}`}
+            onClick={() => setView('isnad')}>
+            📿 {ts.isnadView || 'İsnâd'}
+          </button>
           <button className={`scholar-view-btn${view === 'timeline' ? ' active' : ''}`}
             onClick={() => setView('timeline')}>
             📊 {ts.timelineView || 'Timeline'}
@@ -176,6 +182,7 @@ export default function ScholarView({ lang, t }) {
           <option value="teacher">{ts.teacher || 'Teacher'}</option>
           <option value="influence">{ts.influence || 'Influence'}</option>
           <option value="debate">{ts.debate || 'Debate'}</option>
+          <option value="isnad">{ts.isnad || 'Isnad'}</option>
         </select>
 
         {/* Show links toggle (timeline) */}
@@ -198,8 +205,44 @@ export default function ScholarView({ lang, t }) {
 
       {/* Main area */}
       <div className="scholar-main">
+        {/* Chain selector (isnad mode only) */}
+        {view === 'isnad' && (
+          <div className="isnad-chain-bar">
+            <span className="isnad-chain-bar-title">
+              📿 {lang === 'tr' ? 'İsnâd Zincirleri' : 'Isnad Chains'}:
+            </span>
+            <div className="isnad-chain-chips">
+              {ISNAD_CHAINS.map(ch => (
+                <button key={ch.id}
+                  className={`isnad-chain-chip${activeChains.has(ch.id) ? ' active' : ''}`}
+                  style={{
+                    borderColor: activeChains.has(ch.id) ? ch.color : 'var(--border)',
+                    color: activeChains.has(ch.id) ? ch.color : '#6b7280',
+                    background: activeChains.has(ch.id) ? ch.color + '18' : 'transparent',
+                  }}
+                  onClick={() => {
+                    setActiveChains(prev => {
+                      const next = new Set(prev);
+                      if (next.has(ch.id)) next.delete(ch.id); else next.add(ch.id);
+                      return next;
+                    });
+                  }}
+                  title={lang === 'tr' ? ch.desc_tr : ch.desc_en}>
+                  <span className="isnad-chip-dot" style={{ background: ch.color }} />
+                  {lang === 'tr' ? ch.name_tr : ch.name_en}
+                </button>
+              ))}
+              {activeChains.size > 0 && (
+                <button className="isnad-chain-chip clear" onClick={() => setActiveChains(new Set())}>
+                  ✕ {lang === 'tr' ? 'Temizle' : 'Clear'}
+                </button>
+              )}
+            </div>
+          </div>
+        )}
+
         {/* D3 view */}
-        {view === 'network' ? (
+        {view === 'network' || view === 'isnad' ? (
           <ScholarNetwork
             scholars={filtered}
             links={filteredLinks}
@@ -208,6 +251,8 @@ export default function ScholarView({ lang, t }) {
             onSelect={handleSelect}
             searchId={searchId}
             t={t}
+            isnadMode={view === 'isnad'}
+            activeChains={activeChains}
           />
         ) : (
           <ScholarTimeline
@@ -306,6 +351,57 @@ export default function ScholarView({ lang, t }) {
                   </div>
                 );
               })()}
+
+              <hr className="scholar-detail-hr" />
+
+              {/* İsnâd Info (visible when scholar has rawi_tag) */}
+              {sel.rawi_tag && (
+                <div className="scholar-detail-section isnad-info-section">
+                  <div className="scholar-detail-label">📿 {lang === 'tr' ? 'İsnâd Bilgileri' : 'Isnad Information'}</div>
+                  <div className="isnad-info-grid">
+                    <div className="isnad-info-row">
+                      <span className="isnad-info-k">{lang === 'tr' ? 'Tabaka' : 'Layer'}</span>
+                      <span className="isnad-info-v">{lang === 'tr' ? sel.tabaqa_tr : sel.tabaqa_en}{sel.tabaqa ? ` (${sel.tabaqa})` : ''}</span>
+                    </div>
+                    <div className="isnad-info-row">
+                      <span className="isnad-info-k">{lang === 'tr' ? 'Derece' : 'Grade'}</span>
+                      <span className="isnad-info-v">{lang === 'tr' ? sel.rawi_rank_tr : sel.rawi_rank_en}</span>
+                    </div>
+                    {sel.hadith_count > 0 && (
+                      <div className="isnad-info-row">
+                        <span className="isnad-info-k">{lang === 'tr' ? 'Rivâyet' : 'Narrations'}</span>
+                        <span className="isnad-info-v">~{sel.hadith_count.toLocaleString()}</span>
+                      </div>
+                    )}
+                  </div>
+                  {/* Chains this scholar belongs to */}
+                  {(() => {
+                    const memberChains = ISNAD_CHAINS.filter(ch =>
+                      ch.links.some(l => l.from === sel.id || l.to === sel.id)
+                    );
+                    if (memberChains.length === 0) return null;
+                    return (
+                      <div className="isnad-chains-list">
+                        <div className="isnad-chains-list-title">
+                          {lang === 'tr' ? 'Dahil Olduğu Zincirler' : 'Member of Chains'}:
+                        </div>
+                        {memberChains.map(ch => (
+                          <button key={ch.id} className="isnad-chain-mini"
+                            style={{ color: ch.color }}
+                            onClick={() => {
+                              setView('isnad');
+                              setActiveChains(new Set([ch.id]));
+                            }}>
+                            <span className="isnad-chip-dot" style={{ background: ch.color }} />
+                            {lang === 'tr' ? ch.name_tr : ch.name_en}
+                            <span className="isnad-chain-arrow">→</span>
+                          </button>
+                        ))}
+                      </div>
+                    );
+                  })()}
+                </div>
+              )}
 
               <hr className="scholar-detail-hr" />
 

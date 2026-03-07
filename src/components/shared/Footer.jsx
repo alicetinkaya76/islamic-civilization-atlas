@@ -32,7 +32,7 @@ export default function Footer({ lang }) {
         </div>
         <div className="footer-right">
           <span className="footer-copy">© 2026 · CC BY-SA 4.0</span>
-          <span style={{ fontSize: 10, color: '#4b5563', marginLeft: 6 }}>v4.8.5.0</span>
+          <span style={{ fontSize: 10, color: '#4b5563', marginLeft: 6 }}>v4.8.7.0</span>
           <a className="footer-gh" href="https://github.com/alicetinkaya76/islamic-civilization-atlas" target="_blank" rel="noopener noreferrer">
             GitHub
           </a>

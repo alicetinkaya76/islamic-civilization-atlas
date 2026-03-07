@@ -8,9 +8,11 @@ LAYER_KEYS.forEach(k => {
   META[k] = { c: LYR_COL[k], n: DB[dataKey]?.length || 0 };
 });
 
-export default function FilterPanel({ lang, t, layers, toggleLayer, filters, setFilter, uniques, activeCount, year, sidebarOpen }) {
+export default function FilterPanel({ lang, t, layers, toggleLayer, filters, setFilter, uniques, activeCount, year, sidebarOpen, onCloseMobile }) {
   return (
     <div className={`map-panel${sidebarOpen ? ' mobile-visible' : ''}`} role="complementary" aria-label={lang === 'tr' ? 'Harita kontrolleri' : 'Map controls'}>
+      {/* Mobile close button */}
+      <button className="map-panel-close" onClick={onCloseMobile} aria-label={lang === 'tr' ? 'Paneli kapat' : 'Close panel'}>✕</button>
       {/* Layers */}
       <div className="ps">
         <div className="ps-h">{lang === 'tr' ? 'Katmanlar' : 'Layers'}</div>

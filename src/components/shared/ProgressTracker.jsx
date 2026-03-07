@@ -30,6 +30,12 @@ const BADGES = [
   { id: '10_events', icon: '📜', threshold: 10, type: 'event',
     label_tr: '10 Olay', label_en: '10 Events',
     desc_tr: '10 tarihi olay keşfettin!', desc_en: 'You explored 10 events!' },
+  { id: 'tour_1', icon: '🗺', threshold: 1, type: 'tour',
+    label_tr: 'İlk Tur', label_en: 'First Tour',
+    desc_tr: 'İlk turunu tamamladın!', desc_en: 'You completed your first tour!' },
+  { id: 'tour_3', icon: '🧭', threshold: 3, type: 'tour',
+    label_tr: 'Gezgin', label_en: 'Explorer',
+    desc_tr: '3 tur tamamladın!', desc_en: 'You completed 3 tours!' },
 ];
 
 function loadProgress() {
@@ -37,7 +43,7 @@ function loadProgress() {
     const raw = localStorage.getItem(STORAGE_KEY);
     if (raw) return JSON.parse(raw);
   } catch { /* ignore */ }
-  return { discovered: {}, counts: { total: 0, dynasty: 0, battle: 0, event: 0, scholar: 0, monument: 0, city: 0, ruler: 0, route: 0 }, badges: [] };
+  return { discovered: {}, counts: { total: 0, dynasty: 0, battle: 0, event: 0, scholar: 0, monument: 0, city: 0, ruler: 0, route: 0, tour: 0 }, badges: [] };
 }
 
 function saveProgress(data) {
@@ -93,7 +99,7 @@ export function useProgress() {
   }, [progress]);
 
   const resetProgress = useCallback(() => {
-    const empty = { discovered: {}, counts: { total: 0, dynasty: 0, battle: 0, event: 0, scholar: 0, monument: 0, city: 0, ruler: 0, route: 0 }, badges: [] };
+    const empty = { discovered: {}, counts: { total: 0, dynasty: 0, battle: 0, event: 0, scholar: 0, monument: 0, city: 0, ruler: 0, route: 0, tour: 0 }, badges: [] };
     setProgress(empty);
     saveProgress(empty);
   }, []);

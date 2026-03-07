@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-export default function AboutModal({ lang }) {
+export default function AboutModal({ lang, onResetOnboarding }) {
   const [open, setOpen] = useState(false);
 
   const content = lang === 'tr' ? {
@@ -59,6 +59,11 @@ export default function AboutModal({ lang }) {
               <p className="modal-p modal-ref">{content.dataDesc}</p>
             </div>
             <p className="modal-license">{content.license}</p>
+            {onResetOnboarding && (
+              <button className="modal-onboarding-reset" onClick={() => { onResetOnboarding(); setOpen(false); }}>
+                🗺 {lang === 'tr' ? 'Rehberi Tekrar Göster' : 'Show Guide Again'}
+              </button>
+            )}
             <button className="modal-close" onClick={() => setOpen(false)}>{content.close}</button>
           </div>
         </div>
