@@ -24,7 +24,8 @@ function getOutcomeType(b) {
       out.includes('holy league victory') || out.includes('mongol victory') ||
       out.includes('spanish victory') || out.includes('british victory') ||
       out.includes('qara khitai victory') || out.includes('timurid victory') ||
-      out.includes('partial defeat') || out.includes('umayyad victory')) return 'loss';
+      out.includes('partial defeat') || out.includes('umayyad victory') ||
+      out.includes('tactical withdrawal')) return 'loss';
   return 'win';
 }
 
@@ -86,6 +87,32 @@ export default function BattleCard({ battle, lang, t }) {
         {outLabel}
       </div>
       <hr className="bc-divider" />
+
+      {/* Forces & Casualties */}
+      {(lf(battle, 'forces_m', lang) || battle.forces_m) && (
+        <>
+          <div className="bc-section-label">{lang === 'tr' ? 'Kuvvetler' : 'Forces'}</div>
+          <div className="bc-forces-row">
+            <span className="bc-cmd-symbol">☪</span>
+            <span>{lf(battle, 'forces_m', lang) || battle.forces_m}</span>
+          </div>
+          <div className="bc-forces-row">
+            <span className="bc-cmd-symbol">✦</span>
+            <span>{lf(battle, 'forces_o', lang) || battle.forces_o}</span>
+          </div>
+          {(lf(battle, 'casualties', lang) || battle.casualties) && (
+            <div className="bc-casualties" style={{ fontSize: 11, marginTop: 4, color: '#f87171' }}>
+              ☠ {lf(battle, 'casualties', lang) || battle.casualties}
+            </div>
+          )}
+          {lf(battle, 'terrain', lang) && (
+            <div style={{ fontSize: 11, marginTop: 3, color: 'var(--cream2)' }}>
+              ⛰ {lf(battle, 'terrain', lang)}
+            </div>
+          )}
+          <hr className="bc-divider" />
+        </>
+      )}
 
       {/* Tactic */}
       {tactic && (
