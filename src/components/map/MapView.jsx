@@ -102,9 +102,11 @@ export default function MapView({ lang, t, sidebarOpen, mapRef, onPopupOpen, onT
         {/* Legend */}
         <MapLegend lang={lang} />
         {/* Year Info Panel */}
-        <YearInfoPanel year={year} lang={lang} onFlyTo={({ lat, lon, zoom }) => {
-          if (mapObj.current) mapObj.current.flyTo([lat, lon], zoom || 6, { duration: 1.2 });
-        }} />
+        {!tourActive && (
+          <YearInfoPanel year={year} lang={lang} onFlyTo={({ lat, lon, zoom }) => {
+            if (mapObj.current) mapObj.current.flyTo([lat, lon], zoom || 6, { duration: 1.2 });
+          }} />
+        )}
         <div className="tbar">
           <div className="tbar-controls">
             <button className="tbar-step" onClick={() => setYear(y => Math.max(622, y - 10))} aria-label="-10 yıl">◀</button>
