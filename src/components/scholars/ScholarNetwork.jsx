@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, useMemo } from 'react';
+import { useEffect, useRef, useMemo } from 'react';
 import * as d3 from 'd3';
 import SCHOLAR_LINKS from '../../data/scholar_links';
 
@@ -53,8 +53,7 @@ export default function ScholarNetwork({ scholars, links, lang, selected, onSele
   const nodeGRef = useRef(null);
   const linkGRef = useRef(null);
 
-  const [hovered, setHovered] = useState(null);
-  const [hoverPos, setHoverPos] = useState({ x: 0, y: 0 });
+  const tipRef = useRef(null);
 
   // Radius scale based on link count
   const rScale = useMemo(() =>
@@ -202,15 +201,47 @@ export default function ScholarNetwork({ scholars, links, lang, selected, onSele
       onSelect(d.id);
     });
 
-    // Hover → set React state for mini card
-    nodeG.on('mouseover', (event, d) => {
-      setHovered(d);
-      setHoverPos({ x: event.offsetX + 14, y: event.offsetY - 14 });
+    // Hover → pure DOM tooltip (NO React re-render)
+    nodeG.on('mouseover', function(event, d) {
+      const tipEl = tipRef.current;
+      if (!tipEl) return;
+      const disc = d.disc_tr || d.disc_en || '';
+      const dColor = DISC_COLORS[disc] || '#c9a84c';
+      const nm_tr = d.tr || '';
+      const nm_en = d.en || '';
+      const dates = d.b && d.d ? `${d.b} – ${d.d > 2024 ? '?' : d.d}` : '';
+      const city = d.city_tr ? ` · ${d.city_tr}` : '';
+      const lc = linkCount[d.id] || 0;
+      const lcLabel = lang === 'tr' ? 'bağlantı' : 'connections';
+      const worksLabel = lang === 'tr' ? 'Başlıca Eserler: ' : 'Major Works: ';
+      const work = d.works_tr ? d.works_tr.split(',')[0].trim() + (d.works_tr.split(',').length > 1 ? ', ...' : '') : '';
+
+      tipEl.innerHTML =
+        `<div style="display:flex;align-items:center;gap:6px;margin-bottom:6px">` +
+          `<span style="background:${dColor};color:#fff;font-size:10px;font-weight:700;padding:2px 7px;border-radius:10px">${disc}</span>` +
+        `</div>` +
+        `<div style="font-size:15px;font-weight:700;color:#f3f4f6;margin-bottom:2px">${nm_tr}</div>` +
+        `<div style="font-size:12px;color:#9ca3af;margin-bottom:6px">${nm_en}</div>` +
+        `<div style="font-size:12px;color:#6b7280;margin-bottom:6px">${dates}${city}</div>` +
+        `<div style="font-size:11px;color:#9ca3af;margin-bottom:4px">🔗 ${lc} ${lcLabel}</div>` +
+        (work ? `<div style="font-size:11px;color:#d1d5db;border-top:1px solid #374151;padding-top:6px;margin-top:4px"><span style="color:#9ca3af;font-size:10px">${worksLabel}</span>${work}</div>` : '');
+
+      tipEl.style.borderColor = dColor;
+      tipEl.style.left = (event.pageX + 14) + 'px';
+      tipEl.style.top = (event.pageY - 14) + 'px';
+      tipEl.style.display = 'block';
     })
-    .on('mousemove', (event) => {
-      setHoverPos({ x: event.offsetX + 14, y: event.offsetY - 14 });
+    .on('mousemove', function(event) {
+      const tipEl = tipRef.current;
+      if (tipEl) {
+        tipEl.style.left = (event.pageX + 14) + 'px';
+        tipEl.style.top = (event.pageY - 14) + 'px';
+      }
     })
-    .on('mouseout', () => setHovered(null));
+    .on('mouseout', function() {
+      const tipEl = tipRef.current;
+      if (tipEl) tipEl.style.display = 'none';
+    });
 
     // Highlight searched node
     if (searchId) {
@@ -299,54 +330,19 @@ export default function ScholarNetwork({ scholars, links, lang, selected, onSele
     <div className="scholar-graph" ref={wrapRef} style={{ position: 'relative' }}>
       <svg ref={svgRef} />
 
-      {/* ═══ HOVER MINI CARD ═══ */}
-      {hovered && (
-        <div className="scholar-hover-card" style={{
-          position: 'absolute',
-          left: hoverPos.x, top: hoverPos.y,
-          background: '#1f2937',
-          border: `1px solid ${DISC_COLORS[hovered.disc_tr] || '#c9a84c'}`,
-          borderRadius: 8,
-          padding: '10px 14px',
-          minWidth: 200, maxWidth: 280,
-          pointerEvents: 'none',
-          zIndex: 100,
-          boxShadow: '0 4px 20px rgba(0,0,0,0.5)',
-        }}>
-          {/* Discipline badge */}
-          <div style={{ display:'flex', alignItems:'center', gap:6, marginBottom:6 }}>
-            <span style={{
-              background: DISC_COLORS[hovered.disc_tr] || '#c9a84c',
-              color:'#fff', fontSize:10, fontWeight:700,
-              padding:'2px 7px', borderRadius:10
-            }}>{hovered.disc_tr || hovered.disc_en}</span>
-          </div>
-          {/* Name */}
-          <div style={{ fontSize:15, fontWeight:700, color:'#f3f4f6', marginBottom:2 }}>
-            {hovered.tr}
-          </div>
-          <div style={{ fontSize:12, color:'#9ca3af', marginBottom:6 }}>
-            {hovered.en}
-          </div>
-          {/* Dates & City */}
-          <div style={{ fontSize:12, color:'#6b7280', marginBottom:6 }}>
-            {hovered.b && hovered.d ? `${hovered.b} – ${hovered.d > 2024 ? '?' : hovered.d}` : ''}
-            {hovered.city_tr ? `  ·  ${hovered.city_tr}` : ''}
-          </div>
-          {/* Link count */}
-          <div style={{ fontSize:11, color:'#9ca3af', marginBottom:4 }}>
-            🔗 {linkCount[hovered.id] || 0} {lang === 'tr' ? 'bağlantı' : 'connections'}
-          </div>
-          {/* Works */}
-          {hovered.works_tr && (
-            <div style={{ fontSize:11, color:'#d1d5db', borderTop:'1px solid #374151', paddingTop:6, marginTop:4 }}>
-              <span style={{ color:'#9ca3af', fontSize:10 }}>{lang === 'tr' ? 'Başlıca Eserler: ' : 'Major Works: '}</span>
-              {hovered.works_tr.split(',')[0].trim()}
-              {hovered.works_tr.split(',').length > 1 ? ', ...' : ''}
-            </div>
-          )}
-        </div>
-      )}
+      {/* ═══ HOVER CARD — pure DOM, always present, display toggled ═══ */}
+      <div ref={tipRef} style={{
+        display: 'none',
+        position: 'fixed',
+        background: '#1f2937',
+        border: '1px solid #c9a84c',
+        borderRadius: 8,
+        padding: '10px 14px',
+        minWidth: 200, maxWidth: 280,
+        pointerEvents: 'none',
+        zIndex: 9999,
+        boxShadow: '0 4px 20px rgba(0,0,0,0.5)',
+      }} />
     </div>
   );
 }
