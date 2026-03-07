@@ -20,9 +20,9 @@
   display: inline-block; padding: 1px 8px; border-radius: 10px;
   font-size: 10px; font-weight: 600;
 }
-.p-sunni { background: #166534; color: #4ade80; }
-.p-shia { background: #7f1d1d; color: #f87171; }
-.p-khariji { background: #78350f; color: #fb923c; }
+.p-sunni { background: var(--clr-sunni-bg); color: var(--clr-sunni-fg); }
+.p-shia { background: var(--clr-shia-bg); color: var(--clr-shia-fg); }
+.p-khariji { background: var(--clr-khariji-bg); color: var(--clr-khariji-fg); }
 .p-pi { margin-top: 4px; padding-top: 4px; border-top: 1px solid var(--border); }
 .p-pi .p-k { color: var(--gold) !important; }
 .p-pi .p-v { color: var(--gold2) !important; font-weight: 700; }
@@ -111,5 +111,5 @@
 }
 .p-badges { margin: 4px 0; display: flex; gap: 6px; }
 .p-founder { background: #854d0e; color: #fbbf24; }
-.p-last-ruler { background: #7f1d1d; color: #f87171; }
+.p-last-ruler { background: var(--clr-shia-bg); color: var(--clr-shia-fg); }
 .p-fn { font-size: 10px; font-style: italic; }

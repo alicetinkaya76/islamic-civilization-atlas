@@ -13,6 +13,20 @@
   --border: #1e2a44;
   --font-display: 'Amiri', serif;
   --font-body: 'Outfit', sans-serif;
+
+  /* Status & feedback colors */
+  --clr-win: #16a34a;
+  --clr-loss: #dc2626;
+  --clr-draw: #ca8a04;
+  --clr-sunni-bg: #166534;
+  --clr-sunni-fg: #4ade80;
+  --clr-shia-bg: #7f1d1d;
+  --clr-shia-fg: #f87171;
+  --clr-khariji-bg: #78350f;
+  --clr-khariji-fg: #fb923c;
+  --clr-correct: #4ecdc4;
+  --clr-wrong: #ff6b6b;
+  --clr-info: #60a5fa;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }

@@ -84,9 +84,9 @@
   overflow: hidden; text-overflow: ellipsis;
 }
 .battle-outcome { font-size: 13px; font-weight: 600; flex-shrink: 0; }
-.battle-outcome.win  { color: #16a34a; }
-.battle-outcome.loss { color: #dc2626; }
-.battle-outcome.draw { color: #ca8a04; }
+.battle-outcome.win  { color: var(--clr-win); }
+.battle-outcome.loss { color: var(--clr-loss); }
+.battle-outcome.draw { color: var(--clr-draw); }
 
 .battle-count {
   font-size: 10px; color: var(--cream2); padding: 4px 10px;
