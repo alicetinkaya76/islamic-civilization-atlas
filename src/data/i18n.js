@@ -2,11 +2,11 @@ const T = {
   tr: {
     title: 'Müslüman Hanedanlar Atlası',
     sub: 'Bosworth Veri Tabanı • 186 Hanedan • 632–1924',
-    tabs: { map: '🗺 Harita', timeline: '📅 Zaman Çizelgesi', links: '🔗 Nedensellik', scholars: '🎓 Âlimler', battles: '⚔ Savaşlar' },
+    tabs: { map: '🗺 Harita', dashboard: '📊 Pano', timeline: '📅 Zaman Çizelgesi', links: '🔗 Nedensellik', scholars: '🎓 Âlimler', battles: '⚔ Savaşlar' },
     layers: {
       dynasties: 'Hanedanlar', battles: 'Savaşlar', events: 'Olaylar',
       scholars: 'Âlimler', monuments: 'Mimari Eserler', cities: 'Şehirler',
-      routes: 'Ticaret Yolları', rulers: 'Hükümdarlar'
+      routes: 'Ticaret Yolları', rulers: 'Hükümdarlar', madrasas: 'Medreseler'
     },
     filters: {
       religion: 'Mezhep', ethnic: 'Etnik Köken', government: 'Yönetim',
@@ -137,15 +137,30 @@ const T = {
       authors: 'Yazarlar', data: 'Veri Kaynağı',
       license: 'Lisans: CC BY-SA 4.0',
     },
+    landing: {
+      explore: 'Keşfet',
+      subtitle: '632–1924 · Bosworth Veri Tabanı',
+      dynasties: 'Hanedan', scholars: 'Âlim', battles: 'Savaş',
+      rulers: 'Hükümdar', monuments: 'Eser', cities: 'Şehir',
+      chains: 'İsnâd Zinciri', madrasas: 'Medrese',
+    },
+    dashboard: {
+      overview: 'Genel Bakış', eraDistribution: 'Dönemsel Dağılım',
+      regionalDistribution: 'Bölgesel Dağılım', disciplineDistribution: 'Disiplin Dağılımı',
+      scholarsOverTime: 'Zaman İçinde Âlimler', mostConnected: 'En Bağlantılı Âlimler',
+      battleOutcomes: 'Savaş Sonuçları', madrasasCard: 'Medreseler & Kütüphaneler',
+      connections: 'bağlantı', viewOnMap: 'Haritada Gör',
+      victory: 'Zafer', defeat: 'Yenilgi', inconclusive: 'Belirsiz',
+    },
   },
   en: {
     title: 'Islamic Dynasties Atlas',
     sub: 'Bosworth Database • 186 Dynasties • 632–1924',
-    tabs: { map: '🗺 Map', timeline: '📅 Timeline', links: '🔗 Causality', scholars: '🎓 Scholars', battles: '⚔ Battles' },
+    tabs: { map: '🗺 Map', dashboard: '📊 Dashboard', timeline: '📅 Timeline', links: '🔗 Causality', scholars: '🎓 Scholars', battles: '⚔ Battles' },
     layers: {
       dynasties: 'Dynasties', battles: 'Battles', events: 'Events',
       scholars: 'Scholars', monuments: 'Monuments', cities: 'Cities',
-      routes: 'Trade Routes', rulers: 'Rulers'
+      routes: 'Trade Routes', rulers: 'Rulers', madrasas: 'Madrasas'
     },
     filters: {
       religion: 'Religion', ethnic: 'Ethnic Origin', government: 'Government',
@@ -275,6 +290,21 @@ const T = {
       btn: 'About', title: 'About', close: 'Close',
       authors: 'Authors', data: 'Data Source',
       license: 'License: CC BY-SA 4.0',
+    },
+    landing: {
+      explore: 'Explore',
+      subtitle: '632–1924 · Bosworth Database',
+      dynasties: 'Dynasties', scholars: 'Scholars', battles: 'Battles',
+      rulers: 'Rulers', monuments: 'Monuments', cities: 'Cities',
+      chains: 'Isnad Chains', madrasas: 'Madrasas',
+    },
+    dashboard: {
+      overview: 'Overview', eraDistribution: 'Era Distribution',
+      regionalDistribution: 'Regional Distribution', disciplineDistribution: 'Discipline Distribution',
+      scholarsOverTime: 'Scholars Over Time', mostConnected: 'Most Connected Scholars',
+      battleOutcomes: 'Battle Outcomes', madrasasCard: 'Madrasas & Libraries',
+      connections: 'connections', viewOnMap: 'View on Map',
+      victory: 'Victory', defeat: 'Defeat', inconclusive: 'Inconclusive',
     },
   }
 };

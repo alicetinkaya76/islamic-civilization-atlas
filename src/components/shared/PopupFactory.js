@@ -189,3 +189,38 @@ export function buildRulerListHtml(rulers, lang, t) {
 
   return header + rows + '</div></div>';
 }
+
+/* ═══ Madrasa Popup ═══ */
+export function buildMadrasaPopup(m, lang, t, scholarsById) {
+  const name = lang === 'tr' ? m.tr : m.en;
+  const city = lang === 'tr' ? m.city_tr : m.city_en;
+  const type = lang === 'tr' ? m.type_tr : m.type_en;
+  const founder = lang === 'tr' ? m.founder_tr : m.founder_en;
+  const dynasty = lang === 'tr' ? m.dynasty_tr : m.dynasty_en;
+  const desc = lang === 'tr' ? m.desc_tr : m.desc_en;
+  const fields = lang === 'tr' ? m.fields_tr : m.fields_en;
+  const status = lang === 'tr' ? m.status_tr : m.status_en;
+  const closedStr = m.closed ? `${m.founded}–${m.closed}` : `${m.founded}–`;
+
+  let scholarHtml = '';
+  if (m.scholars && m.scholars.length && scholarsById) {
+    const items = m.scholars.map(sid => {
+      const s = scholarsById[sid];
+      return s ? `<span class="p-madrasa-scholar">• ${lang === 'tr' ? s.tr : s.en}</span>` : '';
+    }).filter(Boolean).join(' ');
+    if (items) {
+      scholarHtml = `<div class="p-sect"><div class="p-sect-h">${lang === 'tr' ? 'İlişkili Âlimler' : 'Associated Scholars'}</div>${items}</div>`;
+    }
+  }
+
+  return `<div class="popup-card p-madrasa">
+    <div class="p-head"><span class="p-icon">🎓</span><span class="p-name">${name}</span></div>
+    <div class="p-meta">${city} · ${closedStr}</div>
+    <div class="p-type-badge" style="color:#22d3ee">${type}</div>
+    ${row(lang === 'tr' ? 'Kurucu' : 'Founder', `${founder} (${dynasty})`)}
+    ${row(lang === 'tr' ? 'Alanlar' : 'Fields', fields)}
+    ${row(lang === 'tr' ? 'Durum' : 'Status', status)}
+    ${scholarHtml}
+    ${desc ? `<div class="p-narr">${desc}</div>` : ''}
+  </div>`;
+}
