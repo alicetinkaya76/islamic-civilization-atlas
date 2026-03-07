@@ -5,7 +5,7 @@ import { DISC_COLORS } from './ScholarNetwork';
 import SCHOLAR_LINKS from '../../data/scholar_links';
 
 /* ═══════════════════════════════════════════════════════════
-   ScholarTimeline v4.8.4.3 — SOFISTIKE ZAMAN ÇİZELGESİ
+   ScholarTimeline v4.8.4.4 — SOFISTIKE ZAMAN ÇİZELGESİ
 
    Yenilikler:
    1. Zengin tooltip kartı (eserler, hocalar, öğrenciler)
@@ -61,6 +61,8 @@ const IMPORTANCE_2 = new Set([
   263, 264, 265, 266, 267, 268,
   269, 270, 271, 272, 274, 275,
   276, 277, 278, 279, 280,
+  // v4.8.4.4 — Yeni önemli âlimler
+  281, 282, 285, 287, 288, 292, 295, 296, 299, 300, 301,
 ]);
 
 const getImportance = (scholar) => {

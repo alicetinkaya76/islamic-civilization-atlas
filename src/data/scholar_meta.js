@@ -26,7 +26,7 @@ const SCHOLAR_META = {
   20: { disc_tr:'Kelam', disc_en:'Islamic Theology', city_tr:'Fârâb', city_en:'Farab', lat:43.57, lon:68.78, works_tr:'Ârâü Ehli\'l-Medîneti\'l-Fâzıla, Kitâbü\'l-Mûsîkî\'l-Kebîr' },
   21: { disc_tr:'Kelam', disc_en:'Islamic Theology', city_tr:'Kurtuba', city_en:'Cordoba', lat:37.88, lon:-4.78, works_tr:'Tehâfütü\'t-Tehâfüt, Bidâyetü\'l-Müctehid' },
   22: { disc_tr:'Dil & Edebiyat', disc_en:'Language & Literature', city_tr:'Tûs', city_en:'Tus', lat:36.34, lon:59.56, works_tr:'Şehnâme (60.000 beyit)' },
-  23: { disc_tr:'Tasavvuf', disc_en:'Sufism', city_tr:'Konya', city_en:'Konya', lat:37.87, lon:32.49, works_tr:'Mesnevî (6 cilt), Dîvân-ı Kebîr, Fîhi Mâ Fîh' },
+
   24: { disc_tr:'Dil & Edebiyat', disc_en:'Language & Literature', city_tr:'Şiraz', city_en:'Shiraz', lat:29.59, lon:52.58, works_tr:'Dîvân-ı Hâfız (~500 gazel)' },
   25: { disc_tr:'Dil & Edebiyat', disc_en:'Language & Literature', city_tr:'Şiraz', city_en:'Shiraz', lat:29.59, lon:52.58, works_tr:'Bostan, Gülistan, Dîvân-ı Sa\'dî' },
   26: { disc_tr:'Dil & Edebiyat', disc_en:'Language & Literature', city_tr:'Herat', city_en:'Herat', lat:34.35, lon:62.20, works_tr:'Hamse, Muhâkemetü\'l-Lugateyn, Mecâlisü\'n-Nefâis' },
@@ -34,7 +34,7 @@ const SCHOLAR_META = {
   28: { disc_tr:'Tasavvuf', disc_en:'Sufism', city_tr:'Eskişehir', city_en:'Eskisehir', lat:39.77, lon:30.52, works_tr:'Dîvân-ı İlâhiyyât, Risâle' },
   29: { disc_tr:'Dil & Edebiyat', disc_en:'Language & Literature', city_tr:'Maarretünnuman', city_en:"Ma'arrat al-Nu'man", lat:35.64, lon:36.67, works_tr:'Lüzûmiyyât, Risâletü\'l-Gufrân' },
   30: { disc_tr:'Dil & Edebiyat', disc_en:'Language & Literature', city_tr:'Halep', city_en:'Aleppo', lat:36.20, lon:37.16, works_tr:'Dîvânü\'l-Mütenebbî (~300 kaside)' },
-  31: { disc_tr:'Tasavvuf', disc_en:'Sufism', city_tr:'Mürcia', city_en:'Murcia', lat:37.98, lon:-1.13, works_tr:'Fütûhât-ı Mekkiyye, Fusûsü\'l-Hikem' },
+
   32: { disc_tr:'Tasavvuf', disc_en:'Sufism', city_tr:'Bağdat', city_en:'Baghdad', lat:33.34, lon:44.40, works_tr:'el-Gunye li-Tâlibî Tarîki\'l-Hakk, Fütûhu\'l-Gayb' },
   33: { disc_tr:'Tasavvuf', disc_en:'Sufism', city_tr:'Kırşehir', city_en:'Kirsehir', lat:39.14, lon:34.16, works_tr:'Makâlât, Velâyetnâme' },
   34: { disc_tr:'Tarih', disc_en:'History', city_tr:'Bağdat', city_en:'Baghdad', lat:33.34, lon:44.40, works_tr:'Câmiü\'l-Beyân (Tefsir), Târîhü\'r-Rusül ve\'l-Mülûk' },
@@ -53,5 +53,28 @@ const SCHOLAR_META = {
   47: { disc_tr:'Tarih', disc_en:'History', city_tr:'İstanbul', city_en:'Istanbul', lat:41.01, lon:28.98, works_tr:'Keşfü\'z-Zünûn, Mîzânü\'l-Hakk, Cihannümâ' },
   48: { disc_tr:'Coğrafya & Seyahat', disc_en:'Geography & Travel', city_tr:'İstanbul', city_en:'Istanbul', lat:41.01, lon:28.98, works_tr:'Seyahatnâme (10 cilt)' },
   49: { disc_tr:'Tıp', disc_en:'Medicine', city_tr:'Şam', city_en:'Damascus', lat:33.51, lon:36.29, works_tr:'Şerhu\'l-Kânûn, el-Muhtâr fi\'l-Ağziye' },
+  // v4.8.4.4 — Yeni âlimler
+  281: { disc_tr:'Fıkıh', disc_en:'Islamic Law', city_tr:'Bağdat', city_en:'Baghdad', lat:33.34, lon:44.40, works_tr:'Kitâbü\'l-Harâc, Kitâbü\'l-Âsâr', works_en:'Kitab al-Kharaj, Kitab al-Athar' },
+  282: { disc_tr:'Fıkıh', disc_en:'Islamic Law', city_tr:'Bağdat', city_en:'Baghdad', lat:33.34, lon:44.40, works_tr:'el-Câmiü\'s-Sağîr, es-Siyer el-Kebîr', works_en:'al-Jami al-Saghir, al-Siyar al-Kabir' },
+  283: { disc_tr:'Fıkıh', disc_en:'Islamic Law', city_tr:'Kahire', city_en:'Cairo', lat:30.01, lon:31.23, works_tr:'el-Muhtasar, el-Câmiü\'l-Kebîr', works_en:'al-Mukhtasar, al-Jami al-Kabir' },
+
+  285: { disc_tr:'Tasavvuf', disc_en:'Sufism', city_tr:'Bağdat', city_en:'Baghdad', lat:33.34, lon:44.40, works_tr:'Resâil, Kitâbü\'l-Fenâ', works_en:'Rasa\'il (Letters), Kitab al-Fana' },
+
+  287: { disc_tr:'Tıp', disc_en:'Medicine', city_tr:'Bağdat', city_en:'Baghdad', lat:33.34, lon:44.40, works_tr:'el-Aşr Makâlât fi\'l-Ayn, tercümeler', works_en:'Ten Treatises on the Eye, Galen translations' },
+  288: { disc_tr:'Tıp', disc_en:'Medicine', city_tr:'Kurtuba', city_en:'Cordoba', lat:37.88, lon:-4.78, works_tr:'et-Tasrîf (30 cilt)', works_en:'al-Tasrif (30 volumes)' },
+  289: { disc_tr:'Tıp', disc_en:'Medicine', city_tr:'Şiraz', city_en:'Shiraz', lat:29.59, lon:52.58, works_tr:'Kâmilü\'s-Sınâa (Liber Regius)', works_en:'Kamil al-Sina\'a (Liber Regius)' },
+  290: { disc_tr:'Tıp', disc_en:'Medicine', city_tr:'Kayrevan', city_en:'Kairouan', lat:35.68, lon:10.10, works_tr:'Zâdü\'l-Müsâfir', works_en:'Zad al-Musafir (Viaticum)' },
+  291: { disc_tr:'Tıp', disc_en:'Medicine', city_tr:'Kahire', city_en:'Cairo', lat:30.01, lon:31.23, works_tr:'el-Müntehab fî İlâci\'l-Ayn', works_en:'al-Muntakhab fi Ilaj al-Ayn' },
+  292: { disc_tr:'Tıp', disc_en:'Medicine', city_tr:'Mâleka → Kahire', city_en:'Malaga → Cairo', lat:30.01, lon:31.23, works_tr:'el-Câmiʿ li-Müfredâti\'l-Edviye', works_en:'al-Jami li-Mufradat al-Adwiya' },
+  293: { disc_tr:'Tıp', disc_en:'Medicine', city_tr:'Amasya', city_en:'Amasya', lat:40.66, lon:35.83, works_tr:'Şifâü\'l-Eskām', works_en:'Shifa al-Askam' },
+  294: { disc_tr:'Tıp', disc_en:'Medicine', city_tr:'İstanbul', city_en:'Istanbul', lat:41.01, lon:28.98, works_tr:'Teşrîhu\'l-Ebdân', works_en:'Tashrih al-Abdan' },
+  295: { disc_tr:'Coğrafya & Seyahat', disc_en:'Geography & Travel', city_tr:'Musul', city_en:'Mosul', lat:36.34, lon:43.13, works_tr:'Sûretü\'l-Arz', works_en:'Surat al-Ard (Face of the Earth)' },
+  296: { disc_tr:'Coğrafya & Seyahat', disc_en:'Geography & Travel', city_tr:'Kudüs', city_en:'Jerusalem', lat:31.77, lon:35.23, works_tr:'Ahsenü\'t-Tekāsîm', works_en:'Ahsan al-Taqasim fi Marifat al-Aqalim' },
+  297: { disc_tr:'Coğrafya & Seyahat', disc_en:'Geography & Travel', city_tr:'Ra\'s el-Hayme', city_en:'Ras al-Khaimah', lat:25.37, lon:55.41, works_tr:'Kitâbü\'l-Fevâid', works_en:'Kitab al-Fawa\'id' },
+  298: { disc_tr:'Coğrafya & Seyahat', disc_en:'Geography & Travel', city_tr:'İstanbul', city_en:'Istanbul', lat:41.01, lon:28.98, works_tr:'Mir\'âtü\'l-Memâlik, el-Muhît', works_en:'Mir\'at al-Mamalik, al-Muhit' },
+  299: { disc_tr:'Tarih', disc_en:'History', city_tr:'Rey → İsfahan', city_en:'Ray → Isfahan', lat:32.66, lon:51.68, works_tr:'Tecâribü\'l-Ümem, Tehzîbü\'l-Ahlâk', works_en:'Tajarib al-Umam, Tahdhib al-Akhlaq' },
+  300: { disc_tr:'Tarih', disc_en:'History', city_tr:'İstanbul', city_en:'Istanbul', lat:41.01, lon:28.98, works_tr:'Târîh-i Naîmâ (6 cilt)', works_en:'Tarikh-i Naima (6 volumes)' },
+  301: { disc_tr:'Matematik & Astronomi', disc_en:'Mathematics & Astronomy', city_tr:'İstanbul', city_en:'Istanbul', lat:41.01, lon:28.98, works_tr:'Hisâb-ı Küsûr, el-Burhân', works_en:'Hisab-i Kusur, al-Burhan' },
+  302: { disc_tr:'Matematik & Astronomi', disc_en:'Mathematics & Astronomy', city_tr:'İstanbul', city_en:'Istanbul', lat:41.01, lon:28.98, works_tr:'Kıstâsü\'l-Müstakîm, risâleler', works_en:'Qistas al-Mustaqim, treatises' },
 };
 export default SCHOLAR_META;
