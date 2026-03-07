@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef, useMemo } from 'react';
-import * as d3 from 'd3';
+import { select, zoom, forceSimulation, forceLink, forceManyBody, forceCenter, forceCollide, drag } from 'd3';
 import DB from '../../data/db.json';
 import { LINK_COL, NODE_COL, ENTITY_ICON } from '../../config/colors';
 import { useNameMap } from '../../hooks/useEntityLookup';
@@ -57,7 +57,7 @@ export default function CausalView({ lang, t }) {
     if (!svgRef.current || !wrapRef.current) return;
     const wrap = wrapRef.current;
     const W = wrap.clientWidth, H = wrap.clientHeight || 600;
-    const svg = d3.select(svgRef.current);
+    const svg = select(svgRef.current);
     svg.selectAll('*').remove();
     svg.attr('width', W).attr('height', H);
 
@@ -69,8 +69,8 @@ export default function CausalView({ lang, t }) {
     }
 
     const g = svg.append('g');
-    const zoom = d3.zoom().scaleExtent([0.2, 4]).on('zoom', e => g.attr('transform', e.transform));
-    svg.call(zoom);
+    const zoomBehavior = zoom().scaleExtent([0.2, 4]).on('zoom', e => g.attr('transform', e.transform));
+    svg.call(zoomBehavior);
 
     // Arrow markers
     const markerTypes = [...new Set(graphData.edges.map(e => e.lt))];
@@ -83,11 +83,11 @@ export default function CausalView({ lang, t }) {
         .attr('fill', LINK_COL[lt] || '#c9a84c');
     });
 
-    const sim = d3.forceSimulation(graphData.nodes)
-      .force('link', d3.forceLink(graphData.edges).id(d => d.id).distance(90))
-      .force('charge', d3.forceManyBody().strength(-200))
-      .force('center', d3.forceCenter(W / 2, H / 2))
-      .force('collision', d3.forceCollide(25));
+    const sim = forceSimulation(graphData.nodes)
+      .force('link', forceLink(graphData.edges).id(d => d.id).distance(90))
+      .force('charge', forceManyBody().strength(-200))
+      .force('center', forceCenter(W / 2, H / 2))
+      .force('collision', forceCollide(25));
 
     const link = g.selectAll('.cl-edge')
       .data(graphData.edges).enter().append('line')
@@ -101,7 +101,7 @@ export default function CausalView({ lang, t }) {
       .data(graphData.nodes).enter().append('g')
       .attr('class', 'cl-node')
       .attr('cursor', 'pointer')
-      .call(d3.drag()
+      .call(drag()
         .on('start', (e, d) => { if (!e.active) sim.alphaTarget(0.3).restart(); d.fx = d.x; d.fy = d.y; })
         .on('drag', (e, d) => { d.fx = e.x; d.fy = e.y; })
         .on('end', (e, d) => { if (!e.active) sim.alphaTarget(0); d.fx = null; d.fy = null; })

@@ -1,5 +1,5 @@
 import { useEffect, useRef, useMemo } from 'react';
-import * as d3 from 'd3';
+import { select, scaleSqrt, zoom, zoomIdentity, forceSimulation, forceLink, forceManyBody, forceCenter, forceCollide, forceX, forceY, drag } from 'd3';
 import SCHOLAR_LINKS from '../../data/scholar_links';
 import ISNAD_CHAINS from '../../data/isnad_chains';
 
@@ -97,7 +97,7 @@ export default function ScholarNetwork({ scholars, links, lang, selected, onSele
   const tipRef = useRef(null);
 
   const rScale = useMemo(() =>
-    d3.scaleSqrt().domain([0, maxLinks]).range([12, 28]),
+    scaleSqrt().domain([0, maxLinks]).range([12, 28]),
   []);
   const getRadius = (s) => rScale(linkCount[s.id] || 0);
 
@@ -158,7 +158,7 @@ export default function ScholarNetwork({ scholars, links, lang, selected, onSele
     const wrap = wrapRef.current;
     const W = wrap.clientWidth || 800;
     const H = Math.max(wrap.clientHeight || 500, 400);
-    const svg = d3.select(svgRef.current);
+    const svg = select(svgRef.current);
     svg.selectAll('*').remove();
     svg.attr('width', W).attr('height', H);
 
@@ -171,8 +171,8 @@ export default function ScholarNetwork({ scholars, links, lang, selected, onSele
     }
 
     const g = svg.append('g');
-    const zoom = d3.zoom().scaleExtent([0.15, 4]).on('zoom', e => g.attr('transform', e.transform));
-    svg.call(zoom);
+    const zoomBehavior = zoom().scaleExtent([0.15, 4]).on('zoom', e => g.attr('transform', e.transform));
+    svg.call(zoomBehavior);
 
     // Arrow markers
     const defs = svg.append('defs');
@@ -202,7 +202,7 @@ export default function ScholarNetwork({ scholars, links, lang, selected, onSele
     const nodes = scholars.map(s => ({ ...s }));
 
     // ═══ FORCE SIMULATION — different for isnad mode ═══
-    const sim = d3.forceSimulation(nodes);
+    const sim = forceSimulation(nodes);
 
     if (isnadMode) {
       // Tabaka-based Y, School-based X
@@ -212,11 +212,11 @@ export default function ScholarNetwork({ scholars, links, lang, selected, onSele
         return 60 + ((tab - 1) / 11) * (H - 120);
       };
       sim
-        .force('link', d3.forceLink(validLinks).id(d => d.id).distance(80).strength(0.3))
-        .force('charge', d3.forceManyBody().strength(-200))
-        .force('y', d3.forceY(d => tabakaY(d.tabaqa || 6)).strength(0.6))
-        .force('x', d3.forceX(d => getSchoolX(d.city_tr) * W).strength(0.15))
-        .force('collision', d3.forceCollide(d => (d.rawi_tag ? getRadius(d) + 4 : 10)));
+        .force('link', forceLink(validLinks).id(d => d.id).distance(80).strength(0.3))
+        .force('charge', forceManyBody().strength(-200))
+        .force('y', forceY(d => tabakaY(d.tabaqa || 6)).strength(0.6))
+        .force('x', forceX(d => getSchoolX(d.city_tr) * W).strength(0.15))
+        .force('collision', forceCollide(d => (d.rawi_tag ? getRadius(d) + 4 : 10)));
 
       // Tabaka labels on left side
       const tabakaLabels = [
@@ -250,12 +250,12 @@ export default function ScholarNetwork({ scholars, links, lang, selected, onSele
       });
     } else {
       sim
-        .force('link', d3.forceLink(validLinks).id(d => d.id).distance(130))
-        .force('charge', d3.forceManyBody().strength(-450))
-        .force('center', d3.forceCenter(W/2, H/2).strength(0.08))
-        .force('collision', d3.forceCollide(d => getRadius(d) + 6))
-        .force('groupX', d3.forceX(d => (GROUP_X[d.disc_tr] || 0.5) * W).strength(0.04))
-        .force('groupY', d3.forceY(H/2).strength(0.02));
+        .force('link', forceLink(validLinks).id(d => d.id).distance(130))
+        .force('charge', forceManyBody().strength(-450))
+        .force('center', forceCenter(W/2, H/2).strength(0.08))
+        .force('collision', forceCollide(d => getRadius(d) + 6))
+        .force('groupX', forceX(d => (GROUP_X[d.disc_tr] || 0.5) * W).strength(0.04))
+        .force('groupY', forceY(H/2).strength(0.02));
     }
     simRef.current = sim;
 
@@ -308,7 +308,7 @@ export default function ScholarNetwork({ scholars, links, lang, selected, onSele
       .data(nodes).enter().append('g')
       .attr('class', 'sch-node')
       .attr('cursor', 'pointer')
-      .call(d3.drag()
+      .call(drag()
         .on('start', (e, d) => { if (!e.active) sim.alphaTarget(0.3).restart(); d.fx = d.x; d.fy = d.y; })
         .on('drag', (e, d) => { d.fx = e.x; d.fy = e.y; })
         .on('end', (e, d) => { if (!e.active) sim.alphaTarget(0); d.fx = null; d.fy = null; })
@@ -440,7 +440,7 @@ export default function ScholarNetwork({ scholars, links, lang, selected, onSele
       const searchNode = nodes.find(n => n.id === searchId);
       if (searchNode) {
         svg.transition().duration(750)
-          .call(zoom.transform, d3.zoomIdentity.translate(W/2 - (searchNode.x||0), H/2 - (searchNode.y||0)));
+          .call(zoomBehavior.transform, zoomIdentity.translate(W/2 - (searchNode.x||0), H/2 - (searchNode.y||0)));
       }
     }
 
