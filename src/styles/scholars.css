@@ -150,6 +150,7 @@
   flex: 1;
   position: relative;
   overflow: hidden;
+  min-height: 400px;
 }
 .scholar-graph svg {
   width: 100%;

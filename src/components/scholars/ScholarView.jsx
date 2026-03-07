@@ -203,44 +203,44 @@ export default function ScholarView({ lang, t }) {
         </span>
       </div>
 
+      {/* Chain selector (isnad mode only) — OUTSIDE scholar-main */}
+      {view === 'isnad' && (
+        <div className="isnad-chain-bar">
+          <span className="isnad-chain-bar-title">
+            📿 {lang === 'tr' ? 'İsnâd Zincirleri' : 'Isnad Chains'}:
+          </span>
+          <div className="isnad-chain-chips">
+            {ISNAD_CHAINS.map(ch => (
+              <button key={ch.id}
+                className={`isnad-chain-chip${activeChains.has(ch.id) ? ' active' : ''}`}
+                style={{
+                  borderColor: activeChains.has(ch.id) ? ch.color : 'var(--border)',
+                  color: activeChains.has(ch.id) ? ch.color : '#6b7280',
+                  background: activeChains.has(ch.id) ? ch.color + '18' : 'transparent',
+                }}
+                onClick={() => {
+                  setActiveChains(prev => {
+                    const next = new Set(prev);
+                    if (next.has(ch.id)) next.delete(ch.id); else next.add(ch.id);
+                    return next;
+                  });
+                }}
+                title={lang === 'tr' ? ch.desc_tr : ch.desc_en}>
+                <span className="isnad-chip-dot" style={{ background: ch.color }} />
+                {lang === 'tr' ? ch.name_tr : ch.name_en}
+              </button>
+            ))}
+            {activeChains.size > 0 && (
+              <button className="isnad-chain-chip clear" onClick={() => setActiveChains(new Set())}>
+                ✕ {lang === 'tr' ? 'Temizle' : 'Clear'}
+              </button>
+            )}
+          </div>
+        </div>
+      )}
+
       {/* Main area */}
       <div className="scholar-main">
-        {/* Chain selector (isnad mode only) */}
-        {view === 'isnad' && (
-          <div className="isnad-chain-bar">
-            <span className="isnad-chain-bar-title">
-              📿 {lang === 'tr' ? 'İsnâd Zincirleri' : 'Isnad Chains'}:
-            </span>
-            <div className="isnad-chain-chips">
-              {ISNAD_CHAINS.map(ch => (
-                <button key={ch.id}
-                  className={`isnad-chain-chip${activeChains.has(ch.id) ? ' active' : ''}`}
-                  style={{
-                    borderColor: activeChains.has(ch.id) ? ch.color : 'var(--border)',
-                    color: activeChains.has(ch.id) ? ch.color : '#6b7280',
-                    background: activeChains.has(ch.id) ? ch.color + '18' : 'transparent',
-                  }}
-                  onClick={() => {
-                    setActiveChains(prev => {
-                      const next = new Set(prev);
-                      if (next.has(ch.id)) next.delete(ch.id); else next.add(ch.id);
-                      return next;
-                    });
-                  }}
-                  title={lang === 'tr' ? ch.desc_tr : ch.desc_en}>
-                  <span className="isnad-chip-dot" style={{ background: ch.color }} />
-                  {lang === 'tr' ? ch.name_tr : ch.name_en}
-                </button>
-              ))}
-              {activeChains.size > 0 && (
-                <button className="isnad-chain-chip clear" onClick={() => setActiveChains(new Set())}>
-                  ✕ {lang === 'tr' ? 'Temizle' : 'Clear'}
-                </button>
-              )}
-            </div>
-          </div>
-        )}
-
         {/* D3 view */}
         {view === 'network' || view === 'isnad' ? (
           <ScholarNetwork

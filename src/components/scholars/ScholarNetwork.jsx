@@ -157,7 +157,7 @@ export default function ScholarNetwork({ scholars, links, lang, selected, onSele
     if (!svgRef.current || !wrapRef.current) return;
     const wrap = wrapRef.current;
     const W = wrap.clientWidth || 800;
-    const H = wrap.clientHeight || 600;
+    const H = Math.max(wrap.clientHeight || 500, 400);
     const svg = d3.select(svgRef.current);
     svg.selectAll('*').remove();
     svg.attr('width', W).attr('height', H);
