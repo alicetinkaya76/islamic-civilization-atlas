@@ -92,11 +92,18 @@ function hideOverlappingLabels(scholars, xScale) {
 }
 
 /* ═══════════════════════════════════════════════════════════
-   COMPONENT — v4.8.5
+   v4.8.5.1 — TOOLTIP TİTREME KESİN ÇÖZÜM
 
-   Tooltip: CausalView ile BİREBİR AYNI pattern.
-   useState(tooltip) + JSX render.
-   Her scholar <g>'sine invisible <rect> + D3 mouseenter/mouseleave.
+   Kök neden: setTooltip() → React re-render → DOM güncellenir →
+   tarayıcı mouse event chain'i keser → mouseleave tetiklenir →
+   tooltip kapanır → mouseenter tekrar tetiklenir → DÖNGÜ.
+
+   Çözüm:
+   1. Tooltip = useRef DOM node, HER ZAMAN DOM'da
+      (conditional render YOK → DOM insert/remove YOK)
+   2. display:none/block ile toggle (React re-render YOK)
+   3. Invisible hit rect: fill=#000, fill-opacity=0, pointer-events=all
+   4. D3 mouseenter/mouseleave doğrudan <g>'ye bağlı
    ═══════════════════════════════════════════════════════════ */
 
 export default function ScholarTimeline({ scholars, links, lang, selected, onSelect, showLinks }) {
@@ -104,9 +111,7 @@ export default function ScholarTimeline({ scholars, links, lang, selected, onSel
   const wrapRef    = useRef(null);
   const zoomRef    = useRef(null);
   const counterRef = useRef(null);
-
-  /* ── Tooltip: CausalView ile aynı — React state ── */
-  const [tooltip, setTooltip] = useState(null);
+  const tipRef     = useRef(null); // tooltip div — JSX'te HER ZAMAN render
 
   const [showHint, setShowHint] = useState(true);
 
@@ -137,6 +142,7 @@ export default function ScholarTimeline({ scholars, links, lang, selected, onSel
     if (!svgRef.current || !wrapRef.current) return;
     const wrap  = wrapRef.current;
     const svgEl = svgRef.current;
+    const tipEl = tipRef.current;
     const W     = wrap.clientWidth || 1000;
     const st    = d3State.current;
     const svg   = d3.select(svgEl);
@@ -152,7 +158,7 @@ export default function ScholarTimeline({ scholars, links, lang, selected, onSel
     svg.attr('width', W).attr('height', H);
     st.hitZones = [];
     st.currentHoverId = null;
-    setTooltip(null);
+    if (tipEl) tipEl.style.display = 'none';
 
     const g = svg.append('g');
     st.gNode = g.node();
@@ -254,13 +260,43 @@ export default function ScholarTimeline({ scholars, links, lang, selected, onSel
     const scholarById = {};
     scholars.forEach(s => { scholarById[s.id] = { ...s }; });
 
+    /* ── Tooltip helpers — pure DOM, SIFIR React re-render ── */
+    function showTip(pageX, pageY, s) {
+      if (!tipEl) return;
+      const nm   = lang === 'tr' ? s.tr : s.en;
+      const city = lang === 'tr' ? (s.city_tr || '') : (s.city_en || '');
+      const work = (s.works_tr || '').split(',')[0] || '';
+      const badge = IMPORTANCE_3.has(s.id) ? '⭐ ' : '';
+      tipEl.innerHTML = `<b>${badge}${nm}</b><br/>${s.b}–${s.d > 2024 ? '?' : s.d}${city ? ' · ' + city : ''}${work ? '<br/>' + work : ''}`;
+      tipEl.style.left = (pageX + 12) + 'px';
+      tipEl.style.top  = (pageY - 10) + 'px';
+      tipEl.style.display = 'block';
+    }
+    function moveTip(pageX, pageY) {
+      if (!tipEl) return;
+      tipEl.style.left = (pageX + 12) + 'px';
+      tipEl.style.top  = (pageY - 10) + 'px';
+    }
+    function hideTip() {
+      if (tipEl) tipEl.style.display = 'none';
+    }
+    function clearHighlight() {
+      if (st.currentHoverId === null) return;
+      const prev = st.hitZones.find(h => h.id === st.currentHoverId);
+      if (prev?.lineNode) {
+        prev.lineNode.setAttribute('stroke-width', String(prev.isSelected ? prev.sw + 1 : prev.sw));
+        prev.lineNode.setAttribute('stroke-opacity', String(prev.isSelected ? 1 : prev.style.lineOpacity));
+      }
+      st.currentHoverId = null;
+    }
+
     /* ═══ renderScholars ═══ */
     function renderScholars(minScore) {
       scholarLayer.selectAll('*').remove();
       linkLayer.selectAll('*').remove();
       st.hitZones = [];
       st.currentHoverId = null;
-      setTooltip(null);
+      hideTip();
 
       const vis = scholars.filter(s => getImportance(s) >= minScore);
       const hiddenLabels = hideOverlappingLabels(vis, x);
@@ -295,6 +331,19 @@ export default function ScholarTimeline({ scholars, links, lang, selected, onSel
         const sg = scholarLayer.append('g')
           .attr('class', 'scholar-group').attr('data-id', s.id);
 
+        /* ── HIT RECT İLK ELEMAN — en altta ama pointer-events:all ── */
+        const HIT_PAD = 14;
+        sg.append('rect')
+          .attr('x', xStart - 6)
+          .attr('y', yOff - HIT_PAD)
+          .attr('width', Math.max(xEnd - xStart + 12, 24))
+          .attr('height', HIT_PAD * 2)
+          .attr('fill', '#000')
+          .attr('fill-opacity', 0)
+          .attr('cursor', 'pointer')
+          .style('pointer-events', 'all');
+
+        /* ── Visible elements — hepsi pointer-events:none ── */
         const line = sg.append('line')
           .attr('x1', xStart).attr('x2', xEnd)
           .attr('y1', yOff).attr('y2', yOff)
@@ -339,17 +388,6 @@ export default function ScholarTimeline({ scholars, links, lang, selected, onSel
             .style('pointer-events', 'none').text(label);
         }
 
-        /* ── Invisible hit rect — CausalView node'ları gibi geniş alan ── */
-        const HIT_PAD = 14;
-        sg.append('rect')
-          .attr('x', xStart - 6)
-          .attr('y', yOff - HIT_PAD)
-          .attr('width', Math.max(xEnd - xStart + 12, 24))
-          .attr('height', HIT_PAD * 2)
-          .attr('fill', '#000').attr('fill-opacity', 0)
-          .attr('cursor', 'pointer')
-          .style('pointer-events', 'all');
-
         st.hitZones.push({
           id: s.id, xStart, xEnd, yOff, s, sw, style,
           isSelected: isSel, lineNode: line.node(),
@@ -374,50 +412,29 @@ export default function ScholarTimeline({ scholars, links, lang, selected, onSel
         });
       }
 
-      /* ═══ HOVER — CausalView BİREBİR AYNI ═══
-         nodeG.on('mouseenter', ...).on('mouseleave', ...)
-         setTooltip({ x, y, html })  →  setTooltip(null)      */
+      /* ═══ HOVER — D3 mouseenter/mouseleave + pure DOM tooltip ═══
+         SIFIR React re-render. SIFIR setState.
+         Tooltip = useRef div, her zaman DOM'da, display toggle.       */
 
       scholarLayer.selectAll('.scholar-group')
         .on('mouseenter', function (ev) {
           const id = +this.getAttribute('data-id');
           const hz = st.hitZones.find(h => h.id === id);
           if (!hz) return;
-
-          // Clear prev highlight
-          if (st.currentHoverId !== null && st.currentHoverId !== id) {
-            const prev = st.hitZones.find(h => h.id === st.currentHoverId);
-            if (prev?.lineNode) {
-              prev.lineNode.setAttribute('stroke-width', String(prev.isSelected ? prev.sw + 1 : prev.sw));
-              prev.lineNode.setAttribute('stroke-opacity', String(prev.isSelected ? 1 : prev.style.lineOpacity));
-            }
+          if (st.currentHoverId !== id) {
+            clearHighlight();
+            hz.lineNode.setAttribute('stroke-width', String(hz.sw + 3));
+            hz.lineNode.setAttribute('stroke-opacity', '1');
+            st.currentHoverId = id;
           }
-          hz.lineNode.setAttribute('stroke-width', String(hz.sw + 3));
-          hz.lineNode.setAttribute('stroke-opacity', '1');
-          st.currentHoverId = id;
-
-          // Tooltip
-          const nm   = lang === 'tr' ? hz.s.tr : hz.s.en;
-          const city = lang === 'tr' ? (hz.s.city_tr || '') : (hz.s.city_en || '');
-          const work = (hz.s.works_tr || '').split(',')[0] || '';
-          const badge = IMPORTANCE_3.has(hz.s.id) ? '⭐ ' : '';
-          setTooltip({
-            x: ev.pageX, y: ev.pageY,
-            html: `<b>${badge}${nm}</b><br/>${hz.s.b}–${hz.s.d > 2024 ? '?' : hz.s.d}${city ? ' · ' + city : ''}${work ? '<br/>' + work : ''}`
-          });
+          showTip(ev.pageX, ev.pageY, hz.s);
         })
         .on('mousemove', function (ev) {
-          setTooltip(prev => prev ? { ...prev, x: ev.pageX, y: ev.pageY } : null);
+          moveTip(ev.pageX, ev.pageY);
         })
         .on('mouseleave', function () {
-          const id = +this.getAttribute('data-id');
-          const hz = st.hitZones.find(h => h.id === id);
-          if (hz?.lineNode) {
-            hz.lineNode.setAttribute('stroke-width', String(hz.isSelected ? hz.sw + 1 : hz.sw));
-            hz.lineNode.setAttribute('stroke-opacity', String(hz.isSelected ? 1 : hz.style.lineOpacity));
-          }
-          st.currentHoverId = null;
-          setTooltip(null);
+          clearHighlight();
+          hideTip();
         })
         .on('click', function () {
           const id = +this.getAttribute('data-id');
@@ -454,6 +471,12 @@ export default function ScholarTimeline({ scholars, links, lang, selected, onSel
     <div className="scholar-graph" ref={wrapRef} style={{ position: 'relative' }}>
       <svg ref={svgRef} style={{ display: 'block' }} />
 
+      {/* Tooltip — HER ZAMAN DOM'da, display:none ile gizli.
+          Conditional render YOK → DOM insert/remove YOK → re-render döngüsü YOK.
+          pointer-events:none → fare olaylarını ALMAZ. */}
+      <div ref={tipRef} className="tt"
+        style={{ display: 'none', pointerEvents: 'none' }} />
+
       {/* Zoom counter + Reset */}
       <div style={{
         position: 'absolute', top: 6, right: 8,
@@ -480,12 +503,6 @@ export default function ScholarTimeline({ scholars, links, lang, selected, onSel
         }}>
           🔍 {lang === 'tr' ? 'Yakınlaştır: daha fazla âlim görünür' : 'Zoom in to reveal more scholars'}
         </div>
-      )}
-
-      {/* Tooltip — CausalView ile BİREBİR AYNI */}
-      {tooltip && (
-        <div className="tt" style={{ left: tooltip.x + 12, top: tooltip.y - 10 }}
-          dangerouslySetInnerHTML={{ __html: tooltip.html }} />
       )}
     </div>
   );
