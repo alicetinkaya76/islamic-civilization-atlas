@@ -1,5 +1,9 @@
 {
-  "buildCommand": "npm run build",
-  "outputDirectory": "dist",
-  "framework": "vite"
+  "redirects": [
+    {
+      "source": "/(.*)",
+      "destination": "https://islamicatlas.org/$1",
+      "permanent": true
+    }
+  ]
 }
