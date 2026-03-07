@@ -4,17 +4,20 @@ import { ERA_BANDS } from '../../config/eras';
 import { DISC_COLORS } from './ScholarNetwork';
 
 /* ═══════════════════════════════════════════════════════════
-   ScholarTimeline v4.8.4.1 — SIFIRDAN YAZIM
-   
-   Tooltip mimarisi CausalView.jsx ile BİREBİR AYNI:
-   - const [tooltip, setTooltip] = useState(null)
-   - D3 .on('mouseenter') → setTooltip({x, y, html})
-   - D3 .on('mouseleave') → setTooltip(null)
-   - JSX: {tooltip && <div className="tt" />} — SVG wrapper DIŞINDA
-   
-   Hit area: Her scholar <g> içinde geniş invisible <rect>
-   - fill="#000" fill-opacity="0" pointer-events="all"
-   - Diğer tüm elementler pointer-events="none"
+   ScholarTimeline v4.8.4.2 — TOOLTIP TİTREME KESİN ÇÖZÜM
+
+   SORUN ANALİZİ:
+   - setTooltip() ile React re-render → DOM değişir
+   - DOM değişince invisible rect yeniden oluşuyor
+   - Fare "yeni" rect üzerinde değilmiş gibi algılanıyor
+   - mouseenter/mouseleave döngüsü → TİTREME
+
+   ÇÖZÜM:
+   - Tooltip = useRef + pure DOM (React state KULLANILMIYOR)
+   - Tooltip div JSX'te sabit duruyor (conditional render YOK)
+   - Hover sırasında sadece style.display ve innerHTML değişiyor
+   - React ASLA re-render etmiyor → DOM ASLA değişmiyor
+   - Hit area: geniş invisible rect + pointer-events:all
    ═══════════════════════════════════════════════════════════ */
 
 const discColor = d => DISC_COLORS[d] || '#c9a84c';
@@ -105,27 +108,12 @@ function hideOverlappingLabels(scholars, xScale) {
   return hidden;
 }
 
-/* ═══ Tooltip HTML builder ═══ */
-function buildTooltipHtml(s, lang) {
-  const nm   = lang === 'tr' ? s.tr : s.en;
-  const city = lang === 'tr' ? (s.city_tr || '') : (s.city_en || '');
-  const work = (s.works_tr || '').split(',')[0] || '';
-  const badge = IMPORTANCE_3.has(s.id) ? '⭐ ' : '';
-  let html = `<b>${badge}${nm}</b><br/>`;
-  html += `${s.b}–${s.d > 2024 ? '?' : s.d}`;
-  if (city) html += ` · ${city}`;
-  if (work) html += `<br/>${work}`;
-  return html;
-}
-
 export default function ScholarTimeline({ scholars, links, lang, selected, onSelect, showLinks }) {
   const svgRef     = useRef(null);
   const wrapRef    = useRef(null);
+  const tipRef     = useRef(null);
   const zoomRef    = useRef(null);
   const counterRef = useRef(null);
-
-  /* ─── CausalView-style tooltip state ─── */
-  const [tooltip, setTooltip] = useState(null);
 
   const [showHint, setShowHint] = useState(true);
 
@@ -147,9 +135,10 @@ export default function ScholarTimeline({ scholars, links, lang, selected, onSel
 
   /* ═══ MAIN D3 EFFECT ═══ */
   useEffect(() => {
-    if (!svgRef.current || !wrapRef.current) return;
+    if (!svgRef.current || !wrapRef.current || !tipRef.current) return;
     const wrap  = wrapRef.current;
     const svgEl = svgRef.current;
+    const tipEl = tipRef.current;
     const W     = wrap.clientWidth || 1000;
     const svg   = d3.select(svgEl);
 
@@ -162,7 +151,7 @@ export default function ScholarTimeline({ scholars, links, lang, selected, onSel
     svg.on('.zoom', null);
     svg.selectAll('*').remove();
     svg.attr('width', W).attr('height', H);
-    setTooltip(null);
+    tipEl.style.display = 'none';
 
     const g = svg.append('g');
 
@@ -267,7 +256,7 @@ export default function ScholarTimeline({ scholars, links, lang, selected, onSel
     function renderScholars(minScore) {
       scholarLayer.selectAll('*').remove();
       linkLayer.selectAll('*').remove();
-      setTooltip(null);
+      tipEl.style.display = 'none';
 
       const vis = scholars.filter(s => getImportance(s) >= minScore);
       const hiddenLabels = hideOverlappingLabels(vis, x);
@@ -299,15 +288,13 @@ export default function ScholarTimeline({ scholars, links, lang, selected, onSel
         const sw = style.lineWidth;
         const dotR = style.r;
 
-        /* ── <g> group — CausalView pattern ── */
+        /* ── <g> group ── */
         const sg = scholarLayer.append('g')
           .attr('class', 'scholar-group')
           .attr('data-id', s.id)
           .attr('cursor', 'pointer');
 
-        /* INVISIBLE HIT RECT — <g>'nin İLK çocuğu
-           fill="#000" + fill-opacity="0" + pointer-events="all"
-           (fill="transparent" KULLANMA — pointer-events almaz!) */
+        /* INVISIBLE HIT RECT — geniş, pointer-events:all */
         const rectPad = 14;
         sg.append('rect')
           .attr('x', xStart - 4)
@@ -318,7 +305,7 @@ export default function ScholarTimeline({ scholars, links, lang, selected, onSel
           .attr('fill-opacity', 0)
           .attr('pointer-events', 'all');
 
-        /* Visible elements — hepsi pointer-events: none */
+        /* Visible elements — hepsi pointer-events:none */
         const line = sg.append('line')
           .attr('x1', xStart).attr('x2', xEnd)
           .attr('y1', yOff).attr('y2', yOff)
@@ -365,24 +352,31 @@ export default function ScholarTimeline({ scholars, links, lang, selected, onSel
 
         scholarById[s.id] = { ...s, _x: (xStart + xEnd) / 2, _y: yOff };
 
-        /* ── D3 event binding — CausalView ile BİREBİR AYNI ── */
+        /* ── D3 event binding — PURE DOM, ZERO setState ── */
         sg.on('mouseenter', function(ev) {
-          // Highlight
+          // Highlight line
           line.attr('stroke-width', sw + 3).attr('stroke-opacity', 1);
-          // Tooltip — CausalView pattern: setTooltip({x, y, html})
-          setTooltip({
-            x: ev.pageX,
-            y: ev.pageY,
-            html: buildTooltipHtml(s, lang)
-          });
+          // Show tooltip via DOM — NO React re-render
+          const nm   = lang === 'tr' ? s.tr : s.en;
+          const city = lang === 'tr' ? (s.city_tr || '') : (s.city_en || '');
+          const work = (s.works_tr || '').split(',')[0] || '';
+          const badge = IMPORTANCE_3.has(s.id) ? '⭐ ' : '';
+          let html = `<b>${badge}${nm}</b><br/>`;
+          html += `${s.b}–${s.d > 2024 ? '?' : s.d}`;
+          if (city) html += ` · ${city}`;
+          if (work) html += `<br/>${work}`;
+          tipEl.innerHTML = html;
+          tipEl.style.left = (ev.pageX + 14) + 'px';
+          tipEl.style.top  = (ev.pageY - 12) + 'px';
+          tipEl.style.display = 'block';
         })
         .on('mouseleave', function() {
-          // Unhighlight
+          // Unhighlight line
           const curSel = s.id === selectedRef.current;
           line.attr('stroke-width', curSel ? sw + 1 : sw)
               .attr('stroke-opacity', curSel ? 1 : style.lineOpacity);
-          // CausalView pattern: setTooltip(null)
-          setTooltip(null);
+          // Hide tooltip via DOM — NO React re-render
+          tipEl.style.display = 'none';
         })
         .on('click', function() {
           onSelectRef.current(s.id);
@@ -409,7 +403,7 @@ export default function ScholarTimeline({ scholars, links, lang, selected, onSel
 
     renderScholars(3);
 
-    // Initial zoom — event fire etmeden
+    // Initial zoom
     const t0 = d3.zoomIdentity.scale(0.85).translate(20, 0);
     svgEl.__zoom = t0;
     g.attr('transform', t0);
@@ -434,64 +428,43 @@ export default function ScholarTimeline({ scholars, links, lang, selected, onSel
     });
   }, [selected, scholars]);
 
-  /* ═══ RETURN — CausalView ile BİREBİR AYNI yapı ═══
-     
-     CausalView:
-       <div className="cl-wrap">
-         <div className="cl-graph" ref={wrapRef}><svg/></div>
-         {tooltip && <div className="tt" />}
-       </div>
-     
-     ScholarTimeline:
-       <div className="scholar-timeline-outer">
-         <div className="scholar-graph" ref={wrapRef}><svg/></div>
-         {tooltip && <div className="tt" />}    ← SVG wrapper DIŞINDA!
-       </div>
-  */
   return (
-    <div className="scholar-timeline-outer" style={{
-      position: 'relative', flex: 1, display: 'flex',
-      flexDirection: 'column', overflow: 'hidden'
-    }}>
-      {/* SVG wrapper */}
-      <div className="scholar-graph" ref={wrapRef} style={{ flex: 1, position: 'relative' }}>
-        <svg ref={svgRef} style={{ display: 'block' }} />
+    <div className="scholar-graph" ref={wrapRef} style={{ position: 'relative' }}>
+      <svg ref={svgRef} style={{ display: 'block' }} />
 
-        {/* Zoom counter + Reset */}
-        <div style={{
-          position: 'absolute', top: 6, right: 8,
-          display: 'flex', alignItems: 'center', gap: 6, zIndex: 5,
-          pointerEvents: 'auto',
-        }}>
-          <span ref={counterRef} style={{ fontSize: 11, color: '#6b7280', fontFamily: 'Outfit' }}>
-            {scholars.filter(s => getImportance(s) >= 3).length}/{scholars.length} {lang === 'tr' ? 'âlim' : 'scholars'}
-          </span>
-          <button className="scholar-zoom-reset" onClick={resetZoom} style={{ position: 'static' }}>
-            ⟳ {lang === 'tr' ? 'Sıfırla' : 'Reset'}
-          </button>
-        </div>
+      {/* TOOLTIP — position:fixed, pointer-events:none
+          JSX'te HER ZAMAN mevcut, sadece display toggle ediliyor.
+          Conditional render YOK → React re-render YOK → titreme YOK */}
+      <div ref={tipRef} className="tt"
+        style={{ display: 'none', position: 'fixed', pointerEvents: 'none', zIndex: 9999 }}
+      />
 
-        {/* Zoom hint */}
-        {showHint && (
-          <div style={{
-            position: 'absolute', bottom: 40, left: '50%',
-            transform: 'translateX(-50%)',
-            background: '#1f2937', border: '1px solid #374151',
-            borderRadius: 8, padding: '8px 16px',
-            fontSize: 12, color: '#9ca3af', fontFamily: 'Outfit',
-            pointerEvents: 'none', whiteSpace: 'nowrap', zIndex: 5,
-          }}>
-            🔍 {lang === 'tr' ? 'Yakınlaştır: daha fazla âlim görünür' : 'Zoom in to reveal more scholars'}
-          </div>
-        )}
+      {/* Zoom counter + Reset */}
+      <div style={{
+        position: 'absolute', top: 6, right: 8,
+        display: 'flex', alignItems: 'center', gap: 6, zIndex: 5,
+        pointerEvents: 'auto',
+      }}>
+        <span ref={counterRef} style={{ fontSize: 11, color: '#6b7280', fontFamily: 'Outfit' }}>
+          {scholars.filter(s => getImportance(s) >= 3).length}/{scholars.length} {lang === 'tr' ? 'âlim' : 'scholars'}
+        </span>
+        <button className="scholar-zoom-reset" onClick={resetZoom} style={{ position: 'static' }}>
+          ⟳ {lang === 'tr' ? 'Sıfırla' : 'Reset'}
+        </button>
       </div>
 
-      {/* TOOLTIP — scholar-graph DIŞINDA, CausalView pattern */}
-      {tooltip && (
-        <div className="tt"
-          style={{ left: tooltip.x + 12, top: tooltip.y - 10 }}
-          dangerouslySetInnerHTML={{ __html: tooltip.html }}
-        />
+      {/* Zoom hint */}
+      {showHint && (
+        <div style={{
+          position: 'absolute', bottom: 40, left: '50%',
+          transform: 'translateX(-50%)',
+          background: '#1f2937', border: '1px solid #374151',
+          borderRadius: 8, padding: '8px 16px',
+          fontSize: 12, color: '#9ca3af', fontFamily: 'Outfit',
+          pointerEvents: 'none', whiteSpace: 'nowrap', zIndex: 5,
+        }}>
+          🔍 {lang === 'tr' ? 'Yakınlaştır: daha fazla âlim görünür' : 'Zoom in to reveal more scholars'}
+        </div>
       )}
     </div>
   );
