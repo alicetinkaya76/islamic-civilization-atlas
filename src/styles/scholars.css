@@ -265,6 +265,108 @@
   overflow-y: auto;
 }
 
+/* ─── Identity Card Toggle ─── */
+.scholar-idcard-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 8px;
+  padding: 4px 12px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  background: linear-gradient(135deg, rgba(201,168,76,0.08), rgba(201,168,76,0.03));
+  color: var(--gold);
+  border: 1px solid rgba(201,168,76,0.25);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.scholar-idcard-toggle:hover {
+  background: linear-gradient(135deg, rgba(201,168,76,0.15), rgba(201,168,76,0.06));
+  border-color: rgba(201,168,76,0.5);
+}
+.scholar-idcard-toggle.active {
+  background: linear-gradient(135deg, rgba(201,168,76,0.2), rgba(201,168,76,0.08));
+  border-color: var(--gold);
+  box-shadow: 0 0 8px rgba(201,168,76,0.15);
+}
+
+/* ─── Identity Card Panel ─── */
+.scholar-idcard {
+  margin-top: 10px;
+  border: 1px solid rgba(201,168,76,0.2);
+  border-radius: 8px;
+  background: linear-gradient(170deg, rgba(201,168,76,0.04) 0%, rgba(30,28,24,0.6) 100%);
+  overflow: hidden;
+  animation: idcard-slide 0.25s ease-out;
+}
+@keyframes idcard-slide {
+  from { opacity: 0; max-height: 0; transform: translateY(-6px); }
+  to   { opacity: 1; max-height: 1200px; transform: translateY(0); }
+}
+.scholar-idcard-header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  background: linear-gradient(135deg, rgba(201,168,76,0.12), rgba(201,168,76,0.04));
+  border-bottom: 1px solid rgba(201,168,76,0.15);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+.scholar-idcard-icon {
+  font-size: 14px;
+}
+.scholar-idcard-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.scholar-idcard-table tr {
+  border-bottom: 1px solid rgba(201,168,76,0.06);
+}
+.scholar-idcard-table tr:last-child {
+  border-bottom: none;
+}
+.scholar-idcard-table tr:hover {
+  background: rgba(201,168,76,0.04);
+}
+.scholar-idcard-label {
+  padding: 5px 8px 5px 12px;
+  font-size: 9.5px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: rgba(201,168,76,0.7);
+  white-space: nowrap;
+  vertical-align: top;
+  width: 1%;
+}
+.scholar-idcard-value {
+  padding: 5px 12px 5px 4px;
+  font-size: 11px;
+  color: var(--cream);
+  line-height: 1.45;
+}
+.scholar-idcard-dia {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 12px;
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--gold);
+  text-decoration: none;
+  border-top: 1px solid rgba(201,168,76,0.1);
+  transition: background 0.15s;
+}
+.scholar-idcard-dia:hover {
+  background: rgba(201,168,76,0.08);
+}
+
 /* ─── Tooltip ─── */
 .scholar-tt {
   position: absolute;

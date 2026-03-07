@@ -2,6 +2,7 @@ import { useState, useMemo, useCallback } from 'react';
 import DB from '../../data/db.json';
 import SCHOLAR_META from '../../data/scholar_meta';
 import SCHOLAR_LINKS from '../../data/scholar_links';
+import SCHOLAR_IDENTITY from '../../data/scholar_identity';
 import ScholarNetwork, { DISC_COLORS } from './ScholarNetwork';
 import ScholarTimeline from './ScholarTimeline';
 import { lf } from '../../hooks/useEntityLookup';
@@ -32,6 +33,7 @@ export default function ScholarView({ lang, t }) {
   const [search, setSearch] = useState('');
   const [selectedId, setSelectedId] = useState(null);
   const [showLinks, setShowLinks] = useState(true);
+  const [showIdCard, setShowIdCard] = useState(false);
 
   const ts = t.scholars || {};
 
@@ -238,6 +240,73 @@ export default function ScholarView({ lang, t }) {
                   <> · {lang === 'tr' ? sel.city_tr : sel.city_en}</>
                 )}
               </div>
+
+              {/* Identity Card Toggle */}
+              {SCHOLAR_IDENTITY[sel.id] && (
+                <button
+                  className={`scholar-idcard-toggle${showIdCard ? ' active' : ''}`}
+                  onClick={() => setShowIdCard(p => !p)}
+                >
+                  🪪 {ts.idCardToggle || 'Identity Card'}
+                </button>
+              )}
+
+              {/* Identity Card */}
+              {showIdCard && SCHOLAR_IDENTITY[sel.id] && (() => {
+                const card = SCHOLAR_IDENTITY[sel.id];
+                const lk = lang === 'tr' ? '_tr' : '_en';
+                const rows = [
+                  ['idLaqab',      card['laqab' + lk]],
+                  ['idKunya',      card['kunya' + lk]],
+                  ['idNisba',      card['nisba' + lk]],
+                  ['idTabaqa',     card['tabaqa' + lk]],
+                  ['idBirthDate',  card['birthDate' + lk]],
+                  ['idBirthPlace', card['birthPlace' + lk]],
+                  ['idDeathDate',  card['deathDate' + lk]],
+                  ['idDeathPlace', card['deathPlace' + lk]],
+                  ['idGrave',      card['grave' + lk]],
+                  ['idFather',     card['father' + lk]],
+                  ['idMother',     card['mother' + lk]],
+                  ['idSpouses',    card['spouses' + lk]],
+                  ['idChildren',   card['children' + lk]],
+                  ['idPredecessor',card['predecessor' + lk]],
+                  ['idSuccessor',  card['successor' + lk]],
+                  ['idCreed',      card['creed' + lk]],
+                  ['idFiqh',       card['fiqh' + lk]],
+                  ['idPosition',   card['position' + lk]],
+                  ['idInstitutions', card['institutions' + lk]],
+                  ['idTeachers',   card['teachers_txt' + lk]],
+                  ['idStudents',   card['students_txt' + lk]],
+                  ['idReign',      card['reignPeriod' + lk]],
+                ];
+                return (
+                  <div className="scholar-idcard">
+                    <div className="scholar-idcard-header">
+                      <span className="scholar-idcard-icon">🪪</span>
+                      <span>{ts.idCard || 'Identity Card'}</span>
+                    </div>
+                    <table className="scholar-idcard-table">
+                      <tbody>
+                        {rows.map(([key, val]) =>
+                          val && val !== '—' ? (
+                            <tr key={key}>
+                              <td className="scholar-idcard-label">{ts[key] || key}</td>
+                              <td className="scholar-idcard-value">{val}</td>
+                            </tr>
+                          ) : null
+                        )}
+                      </tbody>
+                    </table>
+                    {card.diaRef && (
+                      <a className="scholar-idcard-dia"
+                        href={card.diaRef} target="_blank" rel="noopener noreferrer">
+                        📖 {ts.idDiaRef || 'DİA Entry'} ↗
+                      </a>
+                    )}
+                  </div>
+                );
+              })()}
+
               <hr className="scholar-detail-hr" />
 
               {/* Works */}
