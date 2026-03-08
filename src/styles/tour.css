@@ -11,7 +11,7 @@
 
 /* ═══ Tour Selection Overlay ═══ */
 .tour-overlay {
-  position: absolute; inset: 0; z-index: 600;
+  position: absolute; inset: 0; z-index: 900;
   background: rgba(8,12,24,.85);
   display: flex; align-items: center; justify-content: center;
   backdrop-filter: blur(6px);
@@ -64,7 +64,7 @@
 /* ═══ Active Tour Panel ═══ */
 .tour-panel {
   position: absolute; bottom: 120px; left: 50%; transform: translateX(-50%);
-  z-index: 600; width: 480px; max-width: 92%;
+  z-index: 900; width: 480px; max-width: 92%;
   background: var(--bg2); border: 1px solid var(--gold);
   border-radius: 14px; overflow: hidden;
   box-shadow: 0 8px 40px rgba(0,0,0,.6);

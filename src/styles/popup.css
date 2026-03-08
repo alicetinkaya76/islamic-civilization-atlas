@@ -113,3 +113,22 @@
 .p-founder { background: #854d0e; color: #fbbf24; }
 .p-last-ruler { background: var(--clr-shia-bg); color: var(--clr-shia-fg); }
 .p-fn { font-size: 10px; font-style: italic; }
+
+/* ── Madrasa popup ── */
+.p-madrasa .p-type-badge {
+  font-size: 10px;
+  font-weight: 600;
+  margin: 4px 0 6px;
+  letter-spacing: 0.3px;
+}
+.p-madrasa .p-sect { margin: 6px 0; }
+.p-madrasa .p-sect-h {
+  font-size: 10px; font-weight: 600; color: #22d3ee;
+  margin-bottom: 2px;
+}
+.p-madrasa-scholar {
+  display: inline-block;
+  font-size: 10px;
+  color: #34d399;
+  margin-right: 8px;
+}
