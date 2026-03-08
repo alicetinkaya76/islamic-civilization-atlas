@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef, useMemo } from 'react';
-import * as d3 from 'd3';
+import { select, scaleLinear } from 'd3';
 import DB from '../../data/db.json';
 import { REL_C, ZONE_C, LINK_COL } from '../../config/colors';
 import { ERA_BANDS } from '../../config/eras';
@@ -87,7 +87,7 @@ export default function TimelineView({ lang, t }) {
 
   useEffect(() => {
     if (!svgRef.current) return;
-    const svg = d3.select(svgRef.current);
+    const svg = select(svgRef.current);
     svg.selectAll('*').remove();
 
     const ml = 210, mr = 30, mt = 50, mb = 60;
@@ -107,7 +107,7 @@ export default function TimelineView({ lang, t }) {
       .append('path').attr('d', 'M 0 0 L 10 5 L 0 10 z')
       .attr('fill', '#c9a84c');
 
-    const x = d3.scaleLinear().domain([622, 1930]).range([ml, W - mr]);
+    const x = scaleLinear().domain([622, 1930]).range([ml, W - mr]);
 
     // Era bands
     ERA_BANDS.forEach(([s, e, fill, labels]) => {

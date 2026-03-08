@@ -1,12 +1,12 @@
-import { useState, useRef, useCallback, useEffect } from 'react';
+import { useState, useRef, useCallback, useEffect, lazy, Suspense } from 'react';
 import T from './data/i18n';
 import LandingPage from './components/landing/LandingPage';
 import MapView from './components/map/MapView';
+const TimelineView = lazy(() => import('./components/timeline/TimelineView'));
+const CausalView = lazy(() => import('./components/causal/CausalView'));
+const ScholarView = lazy(() => import('./components/scholars/ScholarView'));
+const BattleView = lazy(() => import('./components/battles/BattleView'));
 import Dashboard from './components/dashboard/Dashboard';
-import TimelineView from './components/timeline/TimelineView';
-import CausalView from './components/causal/CausalView';
-import ScholarView from './components/scholars/ScholarView';
-import BattleView from './components/battles/BattleView';
 import Footer from './components/shared/Footer';
 import AboutModal from './components/shared/AboutModal';
 import QuizMode from './components/QuizMode';
@@ -169,11 +169,13 @@ export default function App() {
       {menuOpen && <div className="mobile-backdrop" onClick={() => setMenuOpen(false)} />}
       <main id="main-content" className={`main${sidebarOpen ? ' sidebar-visible' : ''}`} role="main">
         {tab === 'map' ? <MapView lang={lang} t={t} sidebarOpen={sidebarOpen} mapRef={mapRef} onPopupOpen={recordDiscovery} onTourComplete={handleTourComplete} onCloseSidebar={() => setSidebarOpen(false)} /> :
-         tab === 'dashboard' ? <Dashboard lang={lang} t={t} onTabChange={selectTab} /> :
-         tab === 'timeline' ? <TimelineView lang={lang} t={t} /> :
-         tab === 'scholars' ? <ScholarView lang={lang} t={t} /> :
-         tab === 'battles' ? <BattleView lang={lang} t={t} /> :
-         <CausalView lang={lang} t={t} />}
+         <Suspense fallback={<div style={{display:'flex',alignItems:'center',justifyContent:'center',height:'100%',color:'var(--cream2)'}}>Yükleniyor...</div>}>
+           {tab === 'dashboard' ? <Dashboard lang={lang} t={t} /> :
+            tab === 'timeline' ? <TimelineView lang={lang} t={t} /> :
+            tab === 'scholars' ? <ScholarView lang={lang} t={t} /> :
+            tab === 'battles' ? <BattleView lang={lang} t={t} /> :
+            <CausalView lang={lang} t={t} />}
+         </Suspense>}
       </main>
       <Footer lang={lang} />
       {quizOpen && <QuizMode lang={lang} onFlyTo={handleFlyTo} onClose={() => setQuizOpen(false)} />}

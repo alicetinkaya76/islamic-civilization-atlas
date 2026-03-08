@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
-import * as d3 from 'd3';
+import { select, scaleLinear, zoom, zoomIdentity } from 'd3';
 import { ERA_BANDS } from '../../config/eras';
 import { DISC_COLORS } from './ScholarNetwork';
 import SCHOLAR_LINKS from '../../data/scholar_links';
@@ -199,8 +199,8 @@ export default function ScholarTimeline({ scholars, links, lang, selected, onSel
 
   const resetZoom = useCallback(() => {
     if (!svgRef.current || !zoomRef.current) return;
-    d3.select(svgRef.current).transition().duration(400)
-      .call(zoomRef.current.transform, d3.zoomIdentity.scale(0.85).translate(20, 0));
+    select(svgRef.current).transition().duration(400)
+      .call(zoomRef.current.transform, zoomIdentity.scale(0.85).translate(20, 0));
   }, []);
 
   /* ═══ MAIN D3 EFFECT ═══ */
@@ -210,7 +210,7 @@ export default function ScholarTimeline({ scholars, links, lang, selected, onSel
     const svgEl = svgRef.current;
     const tipEl = tipRef.current;
     const W     = wrap.clientWidth || 1000;
-    const svg   = d3.select(svgEl);
+    const svg   = select(svgEl);
 
     const ml = 180, mr = 30, mt = 52, mb = 30;
     const bandH = 42;
@@ -257,7 +257,7 @@ export default function ScholarTimeline({ scholars, links, lang, selected, onSel
     let zoomRenderTimer = 0;
     const getMinScore = (k) => k < 1.5 ? 3 : k < 2.5 ? 2 : k < 4.0 ? 1 : 0;
 
-    const zoom = d3.zoom()
+    const zoomBehavior = zoom()
       .scaleExtent([0.5, 6])
       .on('zoom', (e) => {
         g.attr('transform', e.transform);
@@ -277,10 +277,10 @@ export default function ScholarTimeline({ scholars, links, lang, selected, onSel
         }, 150);
       });
 
-    svg.call(zoom);
-    zoomRef.current = zoom;
+    svg.call(zoomBehavior);
+    zoomRef.current = zoomBehavior;
 
-    const x = d3.scaleLinear().domain([622, 2030]).range([ml, W - mr]);
+    const x = scaleLinear().domain([622, 2030]).range([ml, W - mr]);
 
     /* ── ERA BANDS with decorative dividers ── */
     ERA_BANDS.forEach(([s, e, , labels], idx) => {
@@ -527,7 +527,7 @@ export default function ScholarTimeline({ scholars, links, lang, selected, onSel
 
           // Highlight related links
           linkLayer.selectAll('.tl-link').each(function() {
-            const el = d3.select(this);
+            const el = select(this);
             const src = +el.attr('data-source');
             const tgt = +el.attr('data-target');
             if (src === s.id || tgt === s.id) {
@@ -588,7 +588,7 @@ export default function ScholarTimeline({ scholars, links, lang, selected, onSel
 
     renderScholars(3, 0.85);
 
-    const t0 = d3.zoomIdentity.scale(0.85).translate(20, 0);
+    const t0 = zoomIdentity.scale(0.85).translate(20, 0);
     svgEl.__zoom = t0;
     g.attr('transform', t0);
 
@@ -598,9 +598,9 @@ export default function ScholarTimeline({ scholars, links, lang, selected, onSel
   useEffect(() => {
     if (!svgRef.current) return;
     const invK = 1 / (currentKRef.current || 0.85);
-    const svg = d3.select(svgRef.current);
+    const svg = select(svgRef.current);
     svg.selectAll('.scholar-group').each(function() {
-      const sg = d3.select(this);
+      const sg = select(this);
       const id = +sg.attr('data-id');
       const isSel = id === selected;
       const line = sg.select('line');
