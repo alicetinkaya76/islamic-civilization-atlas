@@ -123,7 +123,7 @@ export function buildCityPopup(c, lang, t) {
   const fun = lf(c, 'fun', lang);
 
   return `<div class="p-title">🏙 ${n(c, lang)}</div>` +
-    `<div class="p-row"><span class="p-k">${mk.pop}</span><span class="p-v">${c.pop ? c.pop.toLocaleString() : '—'} (${c.yr})</span></div>` +
+    `<div class="p-row"><span class="p-k">${mk.pop}</span><span class="p-v">${c.pop ? c.pop.toLocaleString() : '—'}${c.yr ? ' (' + c.yr + ')' : ''}</span></div>` +
     `<div class="p-row"><span class="p-k">${mk.role}</span><span class="p-v">${lf(c, 'role', lang)}</span></div>` +
     narrBlock(c, lang) +
     ctxRow('🏗', lang === 'tr' ? 'Katmanlar' : 'Layers', lf(c, 'layers', lang)) +
