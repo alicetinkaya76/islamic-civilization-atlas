@@ -14,20 +14,19 @@
   --font-display: 'Amiri', serif;
   --font-body: 'Outfit', sans-serif;
 
-  /* Stacking order */
-  --z-footer: 100;
-  --z-trigger: 500;
-  --z-panel: 800;
-  --z-overlay: 900;
-  --z-backdrop: 950;
-  --z-nav: 1000;
-  --z-hamburger: 1100;
-  --z-modal: 5000;
-  --z-dropdown: 9000;
-  --z-glossary: 9500;
-  --z-toast: 9800;
-  --z-tooltip: 9999;
-  --z-top: 10000;
+  /* Status & feedback colors */
+  --clr-win: #16a34a;
+  --clr-loss: #dc2626;
+  --clr-draw: #ca8a04;
+  --clr-sunni-bg: #166534;
+  --clr-sunni-fg: #4ade80;
+  --clr-shia-bg: #7f1d1d;
+  --clr-shia-fg: #f87171;
+  --clr-khariji-bg: #78350f;
+  --clr-khariji-fg: #fb923c;
+  --clr-correct: #4ecdc4;
+  --clr-wrong: #ff6b6b;
+  --clr-info: #60a5fa;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }

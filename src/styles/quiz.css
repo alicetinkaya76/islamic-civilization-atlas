@@ -321,37 +321,37 @@
   font-weight: 700;
   flex-shrink: 0;
 }
-.quiz-opt-check { color: #4ecdc4; }
-.quiz-opt-x { color: #ff6b6b; }
+.quiz-opt-check { color: var(--clr-correct); }
+.quiz-opt-x { color: var(--clr-wrong); }
 
 /* Correct state */
 .quiz-option.correct {
-  border-color: #4ecdc4;
+  border-color: var(--clr-correct);
   background: rgba(78, 205, 196, 0.1);
   animation: quizCorrectPulse 0.5s ease;
 }
 .quiz-option.correct .quiz-opt-key {
-  background: #4ecdc4;
-  border-color: #4ecdc4;
+  background: var(--clr-correct);
+  border-color: var(--clr-correct);
   color: var(--bg);
 }
 .quiz-option.correct .quiz-opt-text {
-  color: #4ecdc4;
+  color: var(--clr-correct);
 }
 
 /* Wrong state */
 .quiz-option.wrong {
-  border-color: #ff6b6b;
+  border-color: var(--clr-wrong);
   background: rgba(255, 107, 107, 0.1);
   animation: quizWrongShake 0.4s ease;
 }
 .quiz-option.wrong .quiz-opt-key {
-  background: #ff6b6b;
-  border-color: #ff6b6b;
+  background: var(--clr-wrong);
+  border-color: var(--clr-wrong);
   color: white;
 }
 .quiz-option.wrong .quiz-opt-text {
-  color: #ff6b6b;
+  color: var(--clr-wrong);
 }
 
 /* Faded (other options after answer) */
@@ -389,12 +389,12 @@
 .quiz-feedback.correct {
   background: rgba(78, 205, 196, 0.1);
   border: 1px solid rgba(78, 205, 196, 0.3);
-  color: #4ecdc4;
+  color: var(--clr-correct);
 }
 .quiz-feedback.wrong {
   background: rgba(255, 107, 107, 0.08);
   border: 1px solid rgba(255, 107, 107, 0.3);
-  color: #ff6b6b;
+  color: var(--clr-wrong);
 }
 .quiz-feedback-answer {
   font-size: 12px;
