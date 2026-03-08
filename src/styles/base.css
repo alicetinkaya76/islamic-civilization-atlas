@@ -13,6 +13,21 @@
   --border: #1e2a44;
   --font-display: 'Amiri', serif;
   --font-body: 'Outfit', sans-serif;
+
+  /* Stacking order */
+  --z-footer: 100;
+  --z-trigger: 500;
+  --z-panel: 800;
+  --z-overlay: 900;
+  --z-backdrop: 950;
+  --z-nav: 1000;
+  --z-hamburger: 1100;
+  --z-modal: 5000;
+  --z-dropdown: 9000;
+  --z-glossary: 9500;
+  --z-toast: 9800;
+  --z-tooltip: 9999;
+  --z-top: 10000;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -81,7 +96,7 @@ body {
 
 /* ─── Tooltip ─── */
 .tt {
-  position: fixed; z-index: 9999;
+  position: fixed; z-index: var(--z-tooltip);
   background: var(--bg3); border: 1px solid var(--gold);
   border-radius: 8px; padding: 8px 12px;
   font-size: 11px; color: var(--cream); line-height: 1.5;
@@ -96,7 +111,7 @@ body {
   background: var(--gold); color: var(--bg);
   padding: 8px 16px; border-radius: 0 0 6px 6px;
   font-weight: 600; font-size: 13px;
-  z-index: 10000; text-decoration: none;
+  z-index: var(--z-top); text-decoration: none;
   transition: top .2s;
 }
 .skip-link:focus { top: 0; }
@@ -123,3 +138,15 @@ button:focus-visible, .tab:focus-visible, select:focus-visible, input:focus-visi
 /* ─── Trade Route Animation ─── */
 @keyframes tradeFlow { to { stroke-dashoffset: -30; } }
 .trade-anim { animation: tradeFlow 2s linear infinite; }
+
+/* ─── Respect user motion preferences ─── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

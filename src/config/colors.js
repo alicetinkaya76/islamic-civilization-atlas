@@ -21,7 +21,8 @@ export const IMP_OP = {
 export const LYR_COL = {
   dynasties: '#c9a84c', battles: '#dc2626', events: '#60a5fa',
   scholars: '#34d399', monuments: '#fbbf24', cities: '#f97316', routes: '#c9a84c',
-  rulers: '#e879f9'
+  rulers: '#e879f9',
+  madrasas: '#22d3ee'
 };
 
 export const LINK_COL = {

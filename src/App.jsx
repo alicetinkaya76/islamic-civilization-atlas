@@ -1,10 +1,12 @@
 import { useState, useRef, useCallback, useEffect, lazy, Suspense } from 'react';
 import T from './data/i18n';
+import LandingPage from './components/landing/LandingPage';
 import MapView from './components/map/MapView';
 const TimelineView = lazy(() => import('./components/timeline/TimelineView'));
 const CausalView = lazy(() => import('./components/causal/CausalView'));
 const ScholarView = lazy(() => import('./components/scholars/ScholarView'));
 const BattleView = lazy(() => import('./components/battles/BattleView'));
+import Dashboard from './components/dashboard/Dashboard';
 import Footer from './components/shared/Footer';
 import AboutModal from './components/shared/AboutModal';
 import QuizMode from './components/QuizMode';
@@ -14,7 +16,7 @@ import ProgressTracker, { BadgeToast, useProgress } from './components/shared/Pr
 import Onboarding from './components/shared/Onboarding';
 import ExportButton from './components/shared/ExportButton';
 
-const VALID_TABS = ['map', 'timeline', 'links', 'scholars', 'battles'];
+const VALID_TABS = ['map', 'dashboard', 'timeline', 'links', 'scholars', 'battles'];
 
 /* Parse hash → { tab, params } */
 function parseHash() {
@@ -27,8 +29,14 @@ function parseHash() {
   return VALID_TABS.includes(tab) ? { tab, params } : null;
 }
 
+/* Check if landing should show */
+function shouldShowLanding() {
+  try { return !localStorage.getItem('atlas-visited'); } catch { return true; }
+}
+
 export default function App() {
   const [lang, setLang] = useState('tr');
+  const [showLanding, setShowLanding] = useState(shouldShowLanding);
   const [tab, setTab] = useState(() => { const h = parseHash(); return h ? h.tab : 'map'; });
   const [menuOpen, setMenuOpen] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -75,10 +83,11 @@ export default function App() {
 
   /* Onboarding check */
   useEffect(() => {
+    if (showLanding) return;
     try {
       if (!localStorage.getItem('atlas-onboarded')) setShowOnboarding(true);
     } catch {}
-  }, []);
+  }, [showLanding]);
 
   const handleOnboardingDone = useCallback((dontShowAgain) => {
     setShowOnboarding(false);
@@ -91,6 +100,20 @@ export default function App() {
     try { localStorage.removeItem('atlas-onboarded'); } catch {}
     setShowOnboarding(true);
   }, []);
+
+  const resetLanding = useCallback(() => {
+    try { localStorage.removeItem('atlas-visited'); } catch {}
+    setShowLanding(true);
+  }, []);
+
+  const handleLandingEnter = useCallback(() => {
+    setShowLanding(false);
+  }, []);
+
+  /* Landing page */
+  if (showLanding) {
+    return <LandingPage lang={lang} setLang={setLang} onEnter={handleLandingEnter} />;
+  }
 
   return (
     <div className="app">
@@ -115,7 +138,7 @@ export default function App() {
             <p className="h-sub">{t.sub}</p>
           </div>
         </div>
-        {/* Mobile search bar (always visible on phone) */}
+        {/* Mobile search bar */}
         <div className="header-search-mobile">
           <SearchBar lang={lang} onFlyTo={handleFlyTo} onSelectEntity={handleSearchSelect} />
         </div>
@@ -125,18 +148,19 @@ export default function App() {
             <SearchBar lang={lang} onFlyTo={handleFlyTo} onSelectEntity={handleSearchSelect} />
           </div>
           <div className="tabs" role="tablist" aria-label={lang === 'tr' ? 'Görünüm seçimi' : 'View selection'}>
-            <button role="tab" aria-selected={tab === 'map'} className={`tab${tab === 'map' ? ' active' : ''}`} onClick={() => selectTab('map')}>🗺 {t.tabs.map}</button>
-            <button role="tab" aria-selected={tab === 'timeline'} className={`tab${tab === 'timeline' ? ' active' : ''}`} onClick={() => selectTab('timeline')}>📊 {t.tabs.timeline}</button>
-            <button role="tab" aria-selected={tab === 'links'} className={`tab${tab === 'links' ? ' active' : ''}`} onClick={() => selectTab('links')}>🔗 {t.tabs.links}</button>
-            <button role="tab" aria-selected={tab === 'scholars'} className={`tab${tab === 'scholars' ? ' active' : ''}`} onClick={() => selectTab('scholars')}>📚 {t.tabs.scholars}</button>
-            <button role="tab" aria-selected={tab === 'battles'} className={`tab${tab === 'battles' ? ' active' : ''}`} onClick={() => selectTab('battles')}>⚔ {t.tabs.battles}</button>
+            <button role="tab" aria-selected={tab === 'map'} className={`tab${tab === 'map' ? ' active' : ''}`} onClick={() => selectTab('map')}>{t.tabs.map}</button>
+            <button role="tab" aria-selected={tab === 'dashboard'} className={`tab${tab === 'dashboard' ? ' active' : ''}`} onClick={() => selectTab('dashboard')}>{t.tabs.dashboard}</button>
+            <button role="tab" aria-selected={tab === 'timeline'} className={`tab${tab === 'timeline' ? ' active' : ''}`} onClick={() => selectTab('timeline')}>{t.tabs.timeline}</button>
+            <button role="tab" aria-selected={tab === 'links'} className={`tab${tab === 'links' ? ' active' : ''}`} onClick={() => selectTab('links')}>{t.tabs.links}</button>
+            <button role="tab" aria-selected={tab === 'scholars'} className={`tab${tab === 'scholars' ? ' active' : ''}`} onClick={() => selectTab('scholars')}>{t.tabs.scholars}</button>
+            <button role="tab" aria-selected={tab === 'battles'} className={`tab${tab === 'battles' ? ' active' : ''}`} onClick={() => selectTab('battles')}>{t.tabs.battles}</button>
           </div>
           <button className="quiz-trigger" onClick={() => setQuizOpen(true)}
             aria-label={lang === 'tr' ? 'Bilgi yarışması' : 'Knowledge quiz'}>🎓 Quiz</button>
           <GlossaryModal lang={lang} />
           <ProgressTracker lang={lang} progress={progress} onReset={resetProgress} />
           <ExportButton lang={lang} />
-          <AboutModal lang={lang} onResetOnboarding={resetOnboarding} />
+          <AboutModal lang={lang} onResetOnboarding={resetOnboarding} onResetLanding={resetLanding} />
           <button className="lang-btn" onClick={() => setLang(l => l === 'tr' ? 'en' : 'tr')} aria-label={lang === 'tr' ? 'Switch to English' : 'Türkçeye geç'}>
             {lang === 'tr' ? '🇬🇧 EN' : '🇹🇷 TR'}
           </button>
@@ -146,7 +170,8 @@ export default function App() {
       <main id="main-content" className={`main${sidebarOpen ? ' sidebar-visible' : ''}`} role="main">
         {tab === 'map' ? <MapView lang={lang} t={t} sidebarOpen={sidebarOpen} mapRef={mapRef} onPopupOpen={recordDiscovery} onTourComplete={handleTourComplete} onCloseSidebar={() => setSidebarOpen(false)} /> :
          <Suspense fallback={<div style={{display:'flex',alignItems:'center',justifyContent:'center',height:'100%',color:'var(--cream2)'}}>Yükleniyor...</div>}>
-           {tab === 'timeline' ? <TimelineView lang={lang} t={t} /> :
+           {tab === 'dashboard' ? <Dashboard lang={lang} t={t} /> :
+            tab === 'timeline' ? <TimelineView lang={lang} t={t} /> :
             tab === 'scholars' ? <ScholarView lang={lang} t={t} /> :
             tab === 'battles' ? <BattleView lang={lang} t={t} /> :
             <CausalView lang={lang} t={t} />}

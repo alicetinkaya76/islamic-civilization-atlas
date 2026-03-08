@@ -127,6 +127,24 @@ function buildSearchIndex() {
     }
   });
 
+  (DB.madrasas || []).forEach(m => {
+    if (m.lat && m.lon) {
+      const extra = [
+        m.city_tr || '', m.city_en || '',
+        m.type_tr || '', m.type_en || '',
+        m.founder_tr || '', m.founder_en || '',
+        m.fields_tr || '', m.dynasty_tr || '',
+      ].filter(Boolean).map(normalize).join(' ');
+      idx.push({ type: 'madrasa', icon: '🎓', obj: m, lat: m.lat, lon: m.lon, zoom: 8,
+        name_tr: m.tr, name_en: m.en,
+        search_tr: normalize(m.tr), search_en: normalize(m.en || ''),
+        search_extra: extra,
+        ctx_yr: m.founded ? `(${m.founded})` : '',
+        ctx_detail: [m.type_tr || '', m.city_tr || ''].filter(Boolean).join(' · '),
+      });
+    }
+  });
+
   return idx;
 }
 
@@ -146,8 +164,8 @@ function fuzzyMatch(haystack, needle) {
 
 /* ═══ Type labels ═══ */
 const TYPE_LABEL = {
-  tr: { dynasty: 'Hanedan', battle: 'Savaş', event: 'Olay', scholar: 'Âlim', monument: 'Eser', city: 'Şehir', ruler: 'Hükümdar' },
-  en: { dynasty: 'Dynasty', battle: 'Battle', event: 'Event', scholar: 'Scholar', monument: 'Monument', city: 'City', ruler: 'Ruler' }
+  tr: { dynasty: 'Hanedan', battle: 'Savaş', event: 'Olay', scholar: 'Âlim', monument: 'Eser', city: 'Şehir', ruler: 'Hükümdar', madrasa: 'Medrese' },
+  en: { dynasty: 'Dynasty', battle: 'Battle', event: 'Event', scholar: 'Scholar', monument: 'Monument', city: 'City', ruler: 'Ruler', madrasa: 'Madrasa' }
 };
 
 const CATEGORIES = [
