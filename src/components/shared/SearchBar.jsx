@@ -1,8 +1,9 @@
 import { useState, useMemo, useCallback, useRef, useEffect } from 'react';
 import DB from '../../data/db.json';
+import ALAM_LITE from '../../data/alam_lite.json';
 import { n } from '../../hooks/useEntityLookup';
 
-/* ═══ Turkish-tolerant normalization ═══ */
+/* ═══ Turkish + Arabic tolerant normalization ═══ */
 const normalize = (s) =>
   s.toLowerCase()
     .replace(/ı/g, 'i')
@@ -13,7 +14,20 @@ const normalize = (s) =>
     .replace(/ç/g, 'c')
     .replace(/â/g, 'a')
     .replace(/î/g, 'i')
-    .replace(/û/g, 'u');
+    .replace(/û/g, 'u')
+    .replace(/[āáà]/g, 'a')
+    .replace(/[ūú]/g, 'u')
+    .replace(/[īíì]/g, 'i')
+    .replace(/[ḥḫ]/g, 'h')
+    .replace(/ṣ/g, 's')
+    .replace(/ṭ/g, 't')
+    .replace(/ḍ/g, 'd')
+    .replace(/ẓ/g, 'z')
+    .replace(/ʿ|ʾ|'/g, '')
+    .replace(/[\u0610-\u065f\u0670]/g, '')
+    .replace(/ة/g, 'ه')
+    .replace(/ى/g, 'ي')
+    .replace(/أ|إ|آ/g, 'ا');
 
 /* ═══ Build search index with multi-field support ═══ */
 function buildSearchIndex() {
@@ -145,6 +159,26 @@ function buildSearchIndex() {
     }
   });
 
+  // el-A'lâm biographies (only geocoded for map, all for search)
+  ALAM_LITE.forEach(b => {
+    const searchTr = normalize(b.ht || '');
+    const searchEn = normalize(b.he || '');
+    const searchAr = normalize(b.h || '');
+    const extra = normalize([b.pt || '', b.pe || '', b.dt || '', b.de || ''].join(' '));
+    idx.push({
+      type: 'alam', icon: '📖',
+      obj: { id: b.id },
+      lat: b.lat || 30, lon: b.lon || 45,
+      zoom: b.lat ? 7 : 4,
+      name_tr: b.ht || b.h, name_en: b.he || b.h,
+      search_tr: searchTr + ' ' + searchAr,
+      search_en: searchEn + ' ' + searchAr,
+      search_extra: extra,
+      ctx_yr: b.md ? `(ö. ${b.md})` : b.mb ? `(d. ${b.mb})` : '',
+      ctx_detail: [b.pt || '', b.mz || ''].filter(Boolean).join(' · '),
+    });
+  });
+
   return idx;
 }
 
@@ -164,8 +198,8 @@ function fuzzyMatch(haystack, needle) {
 
 /* ═══ Type labels ═══ */
 const TYPE_LABEL = {
-  tr: { dynasty: 'Hanedan', battle: 'Savaş', event: 'Olay', scholar: 'Âlim', monument: 'Eser', city: 'Şehir', ruler: 'Hükümdar', madrasa: 'Medrese' },
-  en: { dynasty: 'Dynasty', battle: 'Battle', event: 'Event', scholar: 'Scholar', monument: 'Monument', city: 'City', ruler: 'Ruler', madrasa: 'Madrasa' }
+  tr: { dynasty: 'Hanedan', battle: 'Savaş', event: 'Olay', scholar: 'Âlim', monument: 'Eser', city: 'Şehir', ruler: 'Hükümdar', madrasa: 'Medrese', alam: "el-A'lâm" },
+  en: { dynasty: 'Dynasty', battle: 'Battle', event: 'Event', scholar: 'Scholar', monument: 'Monument', city: 'City', ruler: 'Ruler', madrasa: 'Madrasa', alam: "al-Aʿlām" }
 };
 
 const CATEGORIES = [
@@ -176,6 +210,7 @@ const CATEGORIES = [
   { key: 'city',     icon: '🏙', label_tr: 'Şehir',    label_en: 'City' },
   { key: 'event',    icon: '📜', label_tr: 'Olay',     label_en: 'Event' },
   { key: 'ruler',    icon: '👑', label_tr: 'Hükümdar', label_en: 'Ruler' },
+  { key: 'alam',     icon: '📖', label_tr: "el-A'lâm", label_en: "al-Aʿlām" },
 ];
 
 const RECENT_KEY = 'atlas-recent-searches';

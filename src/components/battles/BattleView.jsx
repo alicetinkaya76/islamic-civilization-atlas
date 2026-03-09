@@ -45,13 +45,25 @@ export default function BattleView({ lang, t }) {
       }
       // Search
       if (filters.search) {
-        const q = filters.search.toLowerCase();
-        return (b.tr || '').toLowerCase().includes(q) ||
-               (b.en || '').toLowerCase().includes(q) ||
-               (b.cmd_m_tr || '').toLowerCase().includes(q) ||
-               (b.cmd_m_en || '').toLowerCase().includes(q) ||
-               (b.cmd_o_tr || '').toLowerCase().includes(q) ||
-               (b.cmd_o_en || '').toLowerCase().includes(q);
+        const q = filters.search.toLowerCase()
+          .replace(/ı/g, 'i').replace(/ğ/g, 'g').replace(/ü/g, 'u')
+          .replace(/ş/g, 's').replace(/ö/g, 'o').replace(/ç/g, 'c')
+          .replace(/â/g, 'a').replace(/î/g, 'i').replace(/û/g, 'u');
+        const norm = (s) => (s || '').toLowerCase()
+          .replace(/ı/g, 'i').replace(/ğ/g, 'g').replace(/ü/g, 'u')
+          .replace(/ş/g, 's').replace(/ö/g, 'o').replace(/ç/g, 'c')
+          .replace(/â/g, 'a').replace(/î/g, 'i').replace(/û/g, 'u')
+          .replace(/'/g, '').replace(/'/g, '');
+        return norm(b.tr).includes(q) ||
+               norm(b.en).includes(q) ||
+               norm(b.cmd_m_tr).includes(q) ||
+               norm(b.cmd_m_en).includes(q) ||
+               norm(b.cmd_o_tr).includes(q) ||
+               norm(b.cmd_o_en).includes(q) ||
+               norm(b.opp_tr).includes(q) ||
+               norm(b.opp_en).includes(q) ||
+               norm(b.narr_tr).includes(q) ||
+               norm(b.narr_en).includes(q);
       }
       return true;
     });

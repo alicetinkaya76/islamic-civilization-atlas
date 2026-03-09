@@ -60,6 +60,7 @@ export default function LandingPage({ lang, setLang, onEnter }) {
     { key: 'monuments', count: DB.monuments?.length || 60, tr: 'Eser', en: 'Monuments' },
     { key: 'cities', count: DB.cities?.length || 82, tr: 'Şehir', en: 'Cities' },
     { key: 'madrasas', count: DB.madrasas?.length || 35, tr: 'Medrese', en: 'Madrasas' },
+    { key: 'alam', count: 13940, tr: "el-A'lâm Biyografi", en: "al-Aʿlām Biographies" },
   ];
 
   return (

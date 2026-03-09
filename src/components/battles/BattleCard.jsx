@@ -52,6 +52,12 @@ export default function BattleCard({ battle, lang, t }) {
   const impact = lf(battle, 'impact', lang);
   const narr = lf(battle, 'narr', lang);
 
+  const isCivil = (battle.type_en || '').includes('Civil');
+  const cmdM = lf(battle, 'cmd_m', lang);
+  const cmdO = lf(battle, 'cmd_o', lang);
+  const symM = isCivil ? '⚔' : '☪';
+  const symO = isCivil ? '⚔' : '✦';
+
   return (
     <div className="battle-card">
       <div className="bc-header">
@@ -66,12 +72,12 @@ export default function BattleCard({ battle, lang, t }) {
       {/* Commanders */}
       <div className="bc-section-label">{ts.commanders || 'Commanders'}</div>
       <div className="bc-cmd-row">
-        <span className="bc-cmd-symbol">☪</span>
-        {lf(battle, 'cmd_m', lang)}
+        <span className="bc-cmd-symbol">{symM}</span>
+        {cmdM}
       </div>
       <div className="bc-cmd-row">
-        <span className="bc-cmd-symbol">✦</span>
-        {lf(battle, 'cmd_o', lang)}
+        <span className="bc-cmd-symbol">{symO}</span>
+        {cmdO}
       </div>
       <div className="bc-cmd-row" style={{ fontSize: 11, color: 'var(--cream2)' }}>
         vs {lf(battle, 'opp', lang)}
@@ -93,12 +99,12 @@ export default function BattleCard({ battle, lang, t }) {
         <>
           <div className="bc-section-label">{lang === 'tr' ? 'Kuvvetler' : 'Forces'}</div>
           <div className="bc-forces-row">
-            <span className="bc-cmd-symbol">☪</span>
-            <span>{lf(battle, 'forces_m', lang) || battle.forces_m}</span>
+            <span className="bc-cmd-symbol">{symM}</span>
+            <span>{cmdM && <small style={{ color: 'var(--gold)', marginRight: 4 }}>{cmdM}:</small>}{lf(battle, 'forces_m', lang) || battle.forces_m}</span>
           </div>
           <div className="bc-forces-row">
-            <span className="bc-cmd-symbol">✦</span>
-            <span>{lf(battle, 'forces_o', lang) || battle.forces_o}</span>
+            <span className="bc-cmd-symbol">{symO}</span>
+            <span>{cmdO && <small style={{ color: 'var(--cream2)', marginRight: 4 }}>{cmdO}:</small>}{lf(battle, 'forces_o', lang) || battle.forces_o}</span>
           </div>
           {(lf(battle, 'casualties', lang) || battle.casualties) && (
             <div className="bc-casualties" style={{ fontSize: 11, marginTop: 4, color: '#f87171' }}>
