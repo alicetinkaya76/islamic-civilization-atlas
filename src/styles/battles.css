@@ -57,7 +57,28 @@
 }
 .battle-year-val {
   font-size: 11px; color: var(--gold); font-weight: 600;
-  min-width: 36px; text-align: right;
+  min-width: 60px; text-align: right;
+}
+
+/* Play button */
+.battle-play-btn {
+  width: 24px; height: 24px;
+  border-radius: 50%;
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  color: var(--gold);
+  font-size: 10px;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.2s;
+  padding: 0;
+}
+.battle-play-btn:hover { border-color: var(--gold); }
+.battle-play-btn.playing {
+  background: var(--gold);
+  color: var(--bg);
+  border-color: var(--gold);
 }
 
 /* ─── List ─── */

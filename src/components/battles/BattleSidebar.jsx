@@ -1,4 +1,4 @@
-import { useCallback } from 'react';
+import { useCallback, useState, useRef, useEffect } from 'react';
 import { n, lf } from '../../hooks/useEntityLookup';
 import BattleCard from './BattleCard';
 
@@ -35,6 +35,27 @@ export default function BattleSidebar({
   filteredBattles, selectedId, onSelectBattle, filters, setFilters, selectedBattle, lang, t
 }) {
   const ts = t.battles || {};
+  const [playing, setPlaying] = useState(false);
+  const playRef = useRef(null);
+
+  /* Auto-play: advance year by ~25 per interval */
+  useEffect(() => {
+    if (!playing) {
+      if (playRef.current) clearInterval(playRef.current);
+      return;
+    }
+    playRef.current = setInterval(() => {
+      setFilters(f => {
+        const next = f.year + 25;
+        if (next >= 1924) {
+          setPlaying(false);
+          return { ...f, year: 1924 };
+        }
+        return { ...f, year: next };
+      });
+    }, 400);
+    return () => { if (playRef.current) clearInterval(playRef.current); };
+  }, [playing, setFilters]);
 
   const toggleType = useCallback((type) => {
     setFilters(f => {
@@ -103,15 +124,27 @@ export default function BattleSidebar({
             ~ {ts.inconclusive || 'Inconclusive'}
           </button>
         </div>
-        {/* Year slider */}
+        {/* Year slider with play button */}
         <div className="battle-year-filter">
           <label>{ts.period || 'Period'}</label>
+          <button
+            className={`battle-play-btn${playing ? ' playing' : ''}`}
+            onClick={() => {
+              if (!playing && filters.year >= 1920) {
+                setFilters(f => ({ ...f, year: 622 }));
+              }
+              setPlaying(p => !p);
+            }}
+            title={playing ? (lang === 'tr' ? 'Durdur' : 'Pause') : (lang === 'tr' ? 'Oynat' : 'Play')}
+          >
+            {playing ? '⏸' : '▶'}
+          </button>
           <input
             type="range" min={622} max={1924} step={1}
             value={filters.year}
-            onChange={e => setFilters(f => ({ ...f, year: +e.target.value }))}
+            onChange={e => { setPlaying(false); setFilters(f => ({ ...f, year: +e.target.value })); }}
           />
-          <span className="battle-year-val">{filters.year}</span>
+          <span className="battle-year-val">622–{filters.year}</span>
         </div>
       </div>
 
