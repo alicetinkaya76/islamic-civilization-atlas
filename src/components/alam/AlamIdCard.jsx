@@ -46,7 +46,7 @@ export default function AlamIdCard({ lang, ta, bio, detail, onClose }) {
         <h3 className="alam-idcard-h1">{heading1}</h3>
         <p className="alam-idcard-h2">{heading2}</p>
         <p className="alam-idcard-arabic" dir="rtl">{bio.h}</p>
-        {bio.g === 'F' && <span className="alam-idcard-gender-badge">♀</span>}
+        {bio.g === 'F' && <span className="alam-idcard-gender-badge">{lang === 'tr' ? 'Kadın' : 'Female'}</span>}
       </div>
 
       {/* Full name */}

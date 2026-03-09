@@ -146,6 +146,7 @@ export default function Dashboard({ lang, t, onTabChange }) {
     { key: 'cities', icon: '🏙', count: DB.cities?.length || 0, label: lang === 'tr' ? 'Şehir' : 'Cities', tab: 'map' },
     { key: 'routes', icon: '🛤', count: DB.routes?.length || 0, label: lang === 'tr' ? 'Ticaret Yolu' : 'Trade Routes', tab: 'map' },
     { key: 'madrasas', icon: '🎓', count: DB.madrasas?.length || 0, label: lang === 'tr' ? 'Medrese' : 'Madrasas', tab: 'map' },
+    { key: 'alam', icon: '📖', count: 13940, label: lang === 'tr' ? "el-A'lâm Biyografi" : "al-Aʿlām Biographies", tab: 'alam' },
   ], [lang]);
 
   /* Era distribution */

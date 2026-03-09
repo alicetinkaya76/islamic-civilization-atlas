@@ -58,8 +58,14 @@
   overflow: hidden;
 }
 
-.alam-body-analytics {
-  overflow-y: auto;
+.alam-body.alam-body-col {
+  flex-direction: column;
+}
+
+.alam-analytics-row {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
 }
 
 /* ─── Left sidebar ─── */
@@ -447,10 +453,15 @@
 }
 .alam-idcard-gender-badge {
   position: absolute;
-  top: 0;
+  top: 4px;
   left: 8px;
-  font-size: 18px;
-  color: #f06292;
+  font-size: 10px;
+  color: var(--gold);
+  background: #c9a84c15;
+  border: 1px solid var(--gold);
+  border-radius: 4px;
+  padding: 1px 6px;
+  font-family: var(--font-body);
 }
 
 .alam-idcard-fullname {
@@ -612,7 +623,7 @@
 .alam-chart-card {
   background: var(--bg2);
   border: 1px solid var(--border);
-  border-radius: 10px;
+  border-radius: 10px 10px 0 0;
   padding: 14px;
   overflow: hidden;
 }
@@ -622,6 +633,23 @@
   color: var(--gold);
   margin: 0 0 10px;
   font-weight: 600;
+}
+
+.alam-chart-wrap {
+  display: flex;
+  flex-direction: column;
+}
+.alam-chart-desc {
+  font-size: 11px;
+  color: var(--cream2);
+  line-height: 1.5;
+  padding: 8px 14px 12px;
+  margin: 0;
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-top: none;
+  border-radius: 0 0 10px 10px;
+  opacity: 0.8;
 }
 
 .alam-century-selector {
@@ -671,6 +699,448 @@
   font-size: 10px;
   color: var(--cream2);
   min-width: 30px;
+}
+
+/* ─── Analytics sub-tabs ─── */
+.alam-analytics-tabs {
+  display: flex;
+  gap: 3px;
+  padding: 6px 10px;
+  background: var(--bg2);
+  border-bottom: 1px solid var(--border);
+  overflow-x: auto;
+  flex-shrink: 0;
+  width: 100%;
+}
+.alam-analytics-tabs button {
+  padding: 5px 12px;
+  border-radius: 6px;
+  font-size: 12px;
+  cursor: pointer;
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--cream2);
+  font-family: var(--font-body);
+  white-space: nowrap;
+  transition: all 0.2s;
+}
+.alam-analytics-tabs button:hover { border-color: var(--gold); color: var(--gold); }
+.alam-analytics-tabs button.active {
+  background: linear-gradient(135deg, #c9a84c22, #c9a84c11);
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+/* ─── Analytics layout with sidebar ─── */
+.alam-analytics-main {
+  flex: 1;
+  overflow-y: auto;
+  min-width: 0;
+}
+.alam-analytics-sidebar {
+  width: 300px;
+  min-width: 280px;
+  border-left: 1px solid var(--border);
+  overflow-y: auto;
+  background: var(--bg);
+}
+
+/* ─── Stats Panel ─── */
+.alam-stats-panel {
+  padding: 14px;
+}
+.alam-sp-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+.alam-sp-header h3 {
+  font-family: var(--font-display);
+  font-size: 16px;
+  color: var(--gold);
+  margin: 0;
+  font-weight: 700;
+}
+.alam-sp-badge {
+  font-size: 9px;
+  color: var(--gold);
+  background: #c9a84c15;
+  border: 1px solid var(--gold);
+  border-radius: 10px;
+  padding: 2px 8px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.alam-sp-metrics {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 6px;
+  margin-bottom: 14px;
+}
+.alam-sp-metric {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 8px 4px;
+  text-align: center;
+}
+.alam-sp-metric-num {
+  display: block;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--gold2);
+  font-family: var(--font-body);
+  line-height: 1.2;
+}
+.alam-sp-metric-label {
+  font-size: 9px;
+  color: var(--cream2);
+  letter-spacing: 0.2px;
+}
+
+.alam-sp-section {
+  margin-bottom: 14px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--border);
+}
+.alam-sp-section-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--cream);
+}
+.alam-sp-range {
+  font-size: 10px;
+  color: var(--cream2);
+  font-weight: 400;
+}
+
+/* Donut + legend row */
+.alam-sp-donut-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.alam-sp-donut-legend {
+  flex: 1;
+}
+.alam-sp-legend-row {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 1.5px 0;
+  font-size: 11px;
+}
+.alam-sp-legend-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+.alam-sp-legend-label {
+  color: var(--cream2);
+  flex: 1;
+}
+.alam-sp-legend-val {
+  color: var(--cream);
+  font-weight: 600;
+  font-size: 10px;
+}
+
+/* Mini bar charts */
+.alam-sp-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.alam-sp-bar-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.alam-sp-bar-label {
+  font-size: 10px;
+  color: var(--cream2);
+  min-width: 72px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.alam-sp-bar-track {
+  flex: 1;
+  height: 6px;
+  background: var(--bg3);
+  border-radius: 3px;
+  overflow: hidden;
+}
+.alam-sp-bar-fill {
+  height: 100%;
+  background: var(--gold);
+  border-radius: 3px;
+  transition: width 0.6s ease;
+  opacity: 0.8;
+}
+.alam-sp-bar-fill.alam-sp-bar-teal {
+  background: #4dd0e1;
+}
+.alam-sp-bar-val {
+  font-size: 10px;
+  color: var(--cream);
+  font-weight: 600;
+  min-width: 28px;
+  text-align: right;
+}
+
+/* Works highlight */
+.alam-sp-works-highlight {
+  background: linear-gradient(135deg, #c9a84c08, #c9a84c04);
+  border: 1px solid #c9a84c22;
+  border-radius: 8px;
+  padding: 10px;
+  margin-bottom: 14px;
+}
+.alam-sp-works-row {
+  display: flex;
+  justify-content: space-around;
+  gap: 6px;
+}
+.alam-sp-works-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.alam-sp-works-item strong {
+  font-size: 16px;
+  color: var(--gold2);
+  font-weight: 700;
+}
+.alam-sp-works-item small {
+  font-size: 9px;
+  color: var(--cream2);
+  margin-top: 2px;
+}
+
+/* Rotating fact */
+.alam-sp-fact {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 10px;
+  background: linear-gradient(135deg, #c9a84c10, #c9a84c05);
+  border: 1px solid #c9a84c33;
+  border-radius: 8px;
+  margin-top: 4px;
+}
+.alam-sp-fact-icon {
+  font-size: 16px;
+  flex-shrink: 0;
+}
+.alam-sp-fact-text {
+  font-size: 11px;
+  color: var(--cream);
+  line-height: 1.5;
+  animation: factFade 5s ease infinite;
+}
+@keyframes factFade {
+  0%, 90%, 100% { opacity: 1; }
+  95% { opacity: 0; }
+}
+
+/* ─── Advanced panels ─── */
+.alam-adv-panel {
+  padding: 20px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+.alam-adv-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+.alam-adv-header h3 {
+  font-family: var(--font-display);
+  font-size: 18px;
+  color: var(--gold);
+  margin: 0;
+}
+.alam-adv-stat {
+  font-size: 11px;
+  color: var(--cream2);
+  background: var(--bg3);
+  padding: 3px 10px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+}
+.alam-adv-desc {
+  font-size: 12px;
+  color: var(--cream2);
+  line-height: 1.6;
+  margin-bottom: 14px;
+  padding: 8px 12px;
+  background: #c9a84c08;
+  border-left: 3px solid var(--gold);
+  border-radius: 0 6px 6px 0;
+}
+.alam-adv-tooltip {
+  margin-top: 8px;
+  padding: 10px 14px;
+  background: var(--bg2);
+  border: 1px solid var(--gold);
+  border-radius: 8px;
+  font-size: 12px;
+  color: var(--cream);
+  line-height: 1.6;
+}
+.alam-adv-tooltip strong { color: var(--gold); }
+
+/* ─── Time Machine ─── */
+.alam-tm-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+.alam-tm-slider {
+  flex: 1;
+  accent-color: var(--gold);
+}
+.alam-tm-year {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--gold2);
+  min-width: 70px;
+  text-align: right;
+}
+.alam-tm-big-num {
+  text-align: center;
+  padding: 20px;
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  margin-bottom: 16px;
+}
+.alam-tm-count {
+  display: block;
+  font-size: 48px;
+  font-weight: 800;
+  color: var(--gold2);
+  line-height: 1;
+}
+.alam-tm-label {
+  font-size: 14px;
+  color: var(--cream2);
+}
+.alam-tm-sub {
+  display: block;
+  font-size: 11px;
+  color: var(--cream2);
+  opacity: 0.6;
+  margin-top: 4px;
+}
+.alam-tm-section {
+  margin-bottom: 14px;
+}
+.alam-tm-section h4 {
+  font-size: 12px;
+  color: var(--gold);
+  margin: 0 0 6px;
+  font-weight: 600;
+}
+
+/* ─── Comparison ─── */
+.alam-cmp-grid {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+.alam-cmp-col {
+  flex: 1;
+  padding: 14px;
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  border-top-width: 3px;
+}
+.alam-cmp-select {
+  width: 100%;
+  padding: 6px 10px;
+  background: var(--bg3);
+  border: 2px solid var(--border);
+  border-radius: 6px;
+  color: var(--gold);
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+.alam-cmp-select option { background: var(--bg2); color: var(--cream); }
+.alam-cmp-big {
+  text-align: center;
+  font-size: 13px;
+  color: var(--cream);
+  margin-bottom: 8px;
+}
+.alam-cmp-big strong {
+  font-size: 28px;
+  color: var(--gold2);
+  display: block;
+}
+.alam-cmp-stats {
+  display: flex;
+  justify-content: space-around;
+  font-size: 10px;
+  color: var(--cream2);
+  margin-bottom: 12px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border);
+}
+.alam-cmp-col h5 {
+  font-size: 10px;
+  color: var(--gold);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin: 10px 0 4px;
+}
+.alam-cmp-item {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  color: var(--cream2);
+  padding: 2px 0;
+}
+.alam-cmp-item strong { color: var(--cream); }
+.alam-cmp-vs {
+  display: flex;
+  align-items: center;
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--gold);
+  opacity: 0.4;
+  padding: 0 4px;
+}
+
+/* ─── Heatmap toggle ─── */
+.alam-heat-toggle {
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  padding: 2px 6px;
+  margin-left: 8px;
+  transition: all 0.2s;
+}
+.alam-heat-toggle:hover { border-color: var(--gold); }
+.alam-heat-toggle.active {
+  background: #c9a84c33;
+  border-color: var(--gold);
 }
 
 /* ─── Mobile toggle ─── */
@@ -736,6 +1206,10 @@
 
   .alam-analytics-grid {
     grid-template-columns: 1fr;
+  }
+
+  .alam-analytics-sidebar {
+    display: none;
   }
 
   .alam-histogram {
