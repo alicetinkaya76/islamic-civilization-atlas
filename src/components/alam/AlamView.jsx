@@ -4,6 +4,8 @@ import AlamSidebar from './AlamSidebar';
 import AlamMap from './AlamMap';
 import AlamIdCard from './AlamIdCard';
 import AlamAnalytics from './AlamAnalytics';
+import AlamStatsPanel from './AlamStatsPanel';
+import { CrossRefNetwork, TimeMachine, WorkProfessionScatter, CenturyComparison } from './AlamAdvanced';
 import '../../styles/alam.css';
 
 /* ═══ Precompute lookup maps ═══ */
@@ -73,6 +75,7 @@ export default function AlamView({ lang, t }) {
   const [selectedGender, setSelectedGender] = useState('');
   const [selectedId, setSelectedId] = useState(null);
   const [subView, setSubView] = useState('map'); // 'map' | 'analytics'
+  const [analyticsTab, setAnalyticsTab] = useState('charts'); // 'charts' | 'network' | 'timemachine' | 'scatter' | 'compare'
   const [detailData, setDetailData] = useState(null);
   const [detailCache, setDetailCache] = useState({});
   const [showMobile, setShowMobile] = useState('list'); // 'list' | 'map' | 'card'
@@ -248,8 +251,39 @@ export default function AlamView({ lang, t }) {
           </div>
         </div>
       ) : (
-        <div className="alam-body alam-body-analytics">
-          <AlamAnalytics lang={lang} ta={ta} data={ALAM_LITE} filtered={filtered} />
+        <div className="alam-body alam-body-col">
+          {/* Analytics sub-tabs */}
+          <div className="alam-analytics-tabs">
+            <button className={analyticsTab === 'charts' ? 'active' : ''} onClick={() => setAnalyticsTab('charts')}>
+              📊 {lang === 'tr' ? 'Grafikler' : 'Charts'}
+            </button>
+            <button className={analyticsTab === 'network' ? 'active' : ''} onClick={() => setAnalyticsTab('network')}>
+              🕸 {lang === 'tr' ? 'Referans Ağı' : 'Ref Network'}
+            </button>
+            <button className={analyticsTab === 'timemachine' ? 'active' : ''} onClick={() => setAnalyticsTab('timemachine')}>
+              ⏳ {lang === 'tr' ? 'Zaman Makinesi' : 'Time Machine'}
+            </button>
+            <button className={analyticsTab === 'scatter' ? 'active' : ''} onClick={() => setAnalyticsTab('scatter')}>
+              🔬 {lang === 'tr' ? 'Korelasyon' : 'Correlation'}
+            </button>
+            <button className={analyticsTab === 'compare' ? 'active' : ''} onClick={() => setAnalyticsTab('compare')}>
+              ⚖ {lang === 'tr' ? 'Karşılaştır' : 'Compare'}
+            </button>
+          </div>
+
+          <div className="alam-analytics-row">
+            <div className="alam-analytics-main">
+              {analyticsTab === 'charts' && <AlamAnalytics lang={lang} ta={ta} data={ALAM_LITE} filtered={filtered} />}
+              {analyticsTab === 'network' && <CrossRefNetwork data={ALAM_LITE} lang={lang} />}
+              {analyticsTab === 'timemachine' && <TimeMachine data={ALAM_LITE} lang={lang} />}
+              {analyticsTab === 'scatter' && <WorkProfessionScatter data={ALAM_LITE} lang={lang} />}
+              {analyticsTab === 'compare' && <CenturyComparison data={ALAM_LITE} lang={lang} />}
+            </div>
+
+            <div className="alam-analytics-sidebar">
+              <AlamStatsPanel lang={lang} ta={ta} data={ALAM_LITE} />
+            </div>
+          </div>
         </div>
       )}
 

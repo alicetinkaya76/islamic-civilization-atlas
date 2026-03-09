@@ -1,6 +1,6 @@
 {
   "name": "islamic-dynasties-atlas",
-  "version": "5.0.1.1",
+  "version": "5.0.1.5",
   "description": "Bosworth's Islamic Dynasties + al-Zirikli's al-A'lam — 186 dynasties, 13,940 biographies, 632–1924 CE",
   "private": true,
   "type": "module",

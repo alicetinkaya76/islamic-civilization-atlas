@@ -180,9 +180,9 @@ export default function AlamSidebar({
               <button className={`alam-gender-btn${selectedGender === '' ? ' active' : ''}`}
                 onClick={() => setSelectedGender('')}>{ta.allGenders}</button>
               <button className={`alam-gender-btn${selectedGender === 'M' ? ' active' : ''}`}
-                onClick={() => setSelectedGender('M')}>♂ {ta.male}</button>
+                onClick={() => setSelectedGender('M')}>{ta.male}</button>
               <button className={`alam-gender-btn${selectedGender === 'F' ? ' active' : ''}`}
-                onClick={() => setSelectedGender('F')}>♀ {ta.female}</button>
+                onClick={() => setSelectedGender('F')}>{ta.female}</button>
             </div>
           </div>
 

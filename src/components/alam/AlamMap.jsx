@@ -1,4 +1,4 @@
-import { useEffect, useRef, useCallback, useMemo } from 'react';
+import { useEffect, useRef, useCallback, useMemo, useState } from 'react';
 import L from 'leaflet';
 
 /* ═══ Marker clustering via simple grid-based approach ═══ */
@@ -41,6 +41,8 @@ export default function AlamMap({ lang, ta, data, selectedId, selectedBio, detai
   const markersRef = useRef(null);
   const selectedMarkerRef = useRef(null);
   const linesRef = useRef(null);
+  const heatRef = useRef(null);
+  const [showHeat, setShowHeat] = useState(false);
 
   /* ═══ Initialize map ═══ */
   useEffect(() => {
@@ -161,6 +163,39 @@ export default function AlamMap({ lang, ta, data, selectedId, selectedBio, detai
     }
   }, [selectedBio, detailData]);
 
+  /* ═══ Heatmap layer ═══ */
+  useEffect(() => {
+    const map = mapRef.current;
+    if (!map) return;
+    if (heatRef.current) { map.removeLayer(heatRef.current); heatRef.current = null; }
+    if (!showHeat) return;
+
+    // Simple heatmap via many small transparent circles
+    const heatGroup = L.layerGroup();
+    const GRID = {};
+    const RESOLUTION = 1; // 1 degree grid
+    data.forEach(b => {
+      if (b.lat == null) return;
+      const key = `${Math.round(b.lat / RESOLUTION) * RESOLUTION},${Math.round(b.lon / RESOLUTION) * RESOLUTION}`;
+      GRID[key] = (GRID[key] || 0) + 1;
+    });
+    const maxDensity = Math.max(...Object.values(GRID), 1);
+    Object.entries(GRID).forEach(([key, count]) => {
+      const [lat, lon] = key.split(',').map(Number);
+      const intensity = count / maxDensity;
+      const radius = 15 + intensity * 35;
+      L.circleMarker([lat, lon], {
+        radius,
+        color: 'transparent',
+        fillColor: `hsl(${40 - intensity * 40}, 90%, ${50 + intensity * 20}%)`,
+        fillOpacity: 0.15 + intensity * 0.35,
+        weight: 0,
+      }).addTo(heatGroup);
+    });
+    heatGroup.addTo(map);
+    heatRef.current = heatGroup;
+  }, [data, showHeat]);
+
   /* ═══ Century histogram overlay ═══ */
   const histogram = useMemo(() => buildHistogram(filtered), [filtered]);
   const maxCount = useMemo(() => Math.max(...histogram.map(h => h.count), 1), [histogram]);
@@ -190,6 +225,11 @@ export default function AlamMap({ lang, ta, data, selectedId, selectedBio, detai
       {/* Map stats overlay */}
       <div className="alam-map-stats">
         {data.length.toLocaleString()} {ta.withCoords}
+        <button className={`alam-heat-toggle${showHeat ? ' active' : ''}`}
+          onClick={() => setShowHeat(p => !p)}
+          title={lang === 'tr' ? 'Isı haritası' : 'Heatmap'}>
+          🔥
+        </button>
       </div>
     </div>
   );
