@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useMemo, useState, useRef } from 'react';
 import YAQUT_CROSSREF from '../../data/yaqut_crossref.json';
 
 /* ═══ Geo type icons ═══ */
@@ -20,6 +20,21 @@ export default function YaqutIdCard({ lang, ty, entry, detail, onClose }) {
   const [xrefPage, setXrefPage] = useState(0);
   const XREF_PER_PAGE = 15;
 
+  // Reset states when entry changes
+  const prevIdRef = useRef(null);
+  const entryId = entry ? entry.id : null;
+  if (entryId !== prevIdRef.current) {
+    prevIdRef.current = entryId;
+    if (xrefPage !== 0) setXrefPage(0);
+    if (showFullText) setShowFullText(false);
+  }
+
+  // Cross-ref persons — MUST be before any conditional return (React hooks rule)
+  const crossRefPersons = useMemo(() => {
+    if (!entryId) return [];
+    return YAQUT_CROSSREF[String(entryId)] || [];
+  }, [entryId]);
+
   if (!entry) {
     return (
       <div className="yaqut-idcard-empty">
@@ -39,11 +54,6 @@ export default function YaqutIdCard({ lang, ty, entry, detail, onClose }) {
     : (isTr ? entry.st : entry.se);
   const geoType = isTr ? entry.gtt : entry.gte;
   const periodBadge = PERIOD_BADGE[entry.hp] || null;
-
-  // Cross-ref persons for this place
-  const crossRefPersons = useMemo(() => {
-    return YAQUT_CROSSREF[String(entry.id)] || [];
-  }, [entry.id]);
 
   const xrefTotal = crossRefPersons.length;
   const xrefPages = Math.ceil(xrefTotal / XREF_PER_PAGE);
@@ -182,20 +192,21 @@ export default function YaqutIdCard({ lang, ty, entry, detail, onClose }) {
         </div>
       )}
 
-      {/* Cross-ref persons (from Zirikli) */}
+      {/* Cross-ref persons (from al-A'lam / Zirikli) */}
       {xrefTotal > 0 && (
         <div className="yaqut-idcard-section yaqut-xref-section">
           <h4 className="yaqut-idcard-section-title">
-            📖 {ty.crossRefPersons || 'Ziriklî Kişileri'} ({xrefTotal})
+            📖 {ty.crossRefPersons || (isTr ? "el-A'lâm Kişileri" : "al-Aʿlām Persons")} ({xrefTotal})
           </h4>
           <div className="yaqut-xref-list">
             {xrefSlice.map((p, i) => (
               <div key={i} className="yaqut-xref-item">
                 <div className="yaqut-xref-name">
                   {isTr ? p.ht : p.he}
-                  {p.dia && (
-                    <a href={p.dia} target="_blank" rel="noopener noreferrer" className="yaqut-xref-dia-link">↗</a>
-                  )}
+                  <a href={`#alam?id=${p.id}`} className="yaqut-xref-alam-link"
+                    title={isTr ? "el-A'lâm'da gör" : "View in al-Aʿlām"}>
+                    📖
+                  </a>
                 </div>
                 <div className="yaqut-xref-meta">
                   <span className="yaqut-xref-prof">{isTr ? p.pt : p.pe}</span>

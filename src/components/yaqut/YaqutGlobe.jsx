@@ -3,9 +3,10 @@ import * as THREE from 'three';
 
 /* ═══ Constants ═══ */
 const GLOBE_RADIUS = 5;
-const MARKER_BASE_SIZE = 0.03;
+const MARKER_BASE_SIZE = 0.06;
 const ATMOSPHERE_COLOR = new THREE.Color(0x1a6b5a);
 const ROTATION_SPEED = 0.0008;
+const CLICK_THRESHOLD = 8; // pixels — ignore click if mouse moved more than this
 
 /* ═══ Geo type colors (same palette as flat map) ═══ */
 const GEO_COLORS_HEX = {
@@ -200,6 +201,8 @@ export default function YaqutGlobe({ lang, ty, data, selectedId, selectedEntry, 
       isDragging.current = true;
       autoRotate.current = false;
       prevMouse.current = { x: e.clientX, y: e.clientY };
+      // Store click start position to distinguish click from drag
+      containerRef.current._clickStart = { x: e.clientX, y: e.clientY };
     };
 
     const onMouseMove = (e) => {
@@ -208,31 +211,36 @@ export default function YaqutGlobe({ lang, ty, data, selectedId, selectedEntry, 
       const dy = e.clientY - prevMouse.current.y;
       globeRef.current.rotation.y += dx * 0.005;
       globeRef.current.rotation.x += dy * 0.005;
-      // Clamp x rotation
       globeRef.current.rotation.x = Math.max(-1.5, Math.min(1.5, globeRef.current.rotation.x));
       prevMouse.current = { x: e.clientX, y: e.clientY };
     };
 
-    const onMouseUp = () => {
+    const onMouseUp = (e) => {
+      const start = containerRef.current?._clickStart;
+      const wasDrag = start && (Math.abs(e.clientX - start.x) > CLICK_THRESHOLD || Math.abs(e.clientY - start.y) > CLICK_THRESHOLD);
       isDragging.current = false;
+
+      // Only fire click if mouse didn't move (not a drag)
+      if (!wasDrag && containerRef.current && cameraRef.current && markersGroupRef.current) {
+        const rect = containerRef.current.getBoundingClientRect();
+        mouse.current.x = ((e.clientX - rect.left) / rect.width) * 2 - 1;
+        mouse.current.y = -((e.clientY - rect.top) / rect.height) * 2 + 1;
+
+        raycaster.current.setFromCamera(mouse.current, cameraRef.current);
+        // Use larger threshold for small markers
+        raycaster.current.params.Points = { threshold: 0.1 };
+
+        const intersects = raycaster.current.intersectObjects(markersGroupRef.current.children, true);
+        if (intersects.length > 0) {
+          const id = intersects[0].object.userData?.entryId;
+          if (id && onSelect) onSelect(id);
+        }
+      }
     };
 
     const onWheel = (e) => {
       e.preventDefault();
       zoomRef.current = Math.max(7, Math.min(25, zoomRef.current + e.deltaY * 0.005));
-    };
-
-    const onClick = (e) => {
-      if (!containerRef.current || !cameraRef.current || !markersGroupRef.current) return;
-      const rect = containerRef.current.getBoundingClientRect();
-      mouse.current.x = ((e.clientX - rect.left) / rect.width) * 2 - 1;
-      mouse.current.y = -((e.clientY - rect.top) / rect.height) * 2 + 1;
-      raycaster.current.setFromCamera(mouse.current, cameraRef.current);
-      const intersects = raycaster.current.intersectObjects(markersGroupRef.current.children, false);
-      if (intersects.length > 0) {
-        const id = intersects[0].object.userData?.entryId;
-        if (id && onSelect) onSelect(id);
-      }
     };
 
     // Touch support
@@ -241,6 +249,7 @@ export default function YaqutGlobe({ lang, ty, data, selectedId, selectedEntry, 
         isDragging.current = true;
         autoRotate.current = false;
         prevMouse.current = { x: e.touches[0].clientX, y: e.touches[0].clientY };
+        containerRef.current._clickStart = { x: e.touches[0].clientX, y: e.touches[0].clientY };
       }
     };
     const onTouchMove = (e) => {
@@ -252,13 +261,28 @@ export default function YaqutGlobe({ lang, ty, data, selectedId, selectedEntry, 
       globeRef.current.rotation.x = Math.max(-1.5, Math.min(1.5, globeRef.current.rotation.x));
       prevMouse.current = { x: e.touches[0].clientX, y: e.touches[0].clientY };
     };
-    const onTouchEnd = () => { isDragging.current = false; };
+    const onTouchEnd = (e) => {
+      const start = containerRef.current?._clickStart;
+      const touch = e.changedTouches?.[0];
+      const wasDrag = start && touch && (Math.abs(touch.clientX - start.x) > CLICK_THRESHOLD || Math.abs(touch.clientY - start.y) > CLICK_THRESHOLD);
+      isDragging.current = false;
+      if (!wasDrag && touch && containerRef.current && cameraRef.current && markersGroupRef.current) {
+        const rect = containerRef.current.getBoundingClientRect();
+        mouse.current.x = ((touch.clientX - rect.left) / rect.width) * 2 - 1;
+        mouse.current.y = -((touch.clientY - rect.top) / rect.height) * 2 + 1;
+        raycaster.current.setFromCamera(mouse.current, cameraRef.current);
+        const intersects = raycaster.current.intersectObjects(markersGroupRef.current.children, true);
+        if (intersects.length > 0) {
+          const id = intersects[0].object.userData?.entryId;
+          if (id && onSelect) onSelect(id);
+        }
+      }
+    };
 
     container.addEventListener('mousedown', onMouseDown);
     window.addEventListener('mousemove', onMouseMove);
-    window.addEventListener('mouseup', onMouseUp);
+    container.addEventListener('mouseup', onMouseUp);
     container.addEventListener('wheel', onWheel, { passive: false });
-    container.addEventListener('click', onClick);
     container.addEventListener('touchstart', onTouchStart, { passive: true });
     container.addEventListener('touchmove', onTouchMove, { passive: true });
     container.addEventListener('touchend', onTouchEnd);
@@ -266,9 +290,8 @@ export default function YaqutGlobe({ lang, ty, data, selectedId, selectedEntry, 
     return () => {
       container.removeEventListener('mousedown', onMouseDown);
       window.removeEventListener('mousemove', onMouseMove);
-      window.removeEventListener('mouseup', onMouseUp);
+      container.removeEventListener('mouseup', onMouseUp);
       container.removeEventListener('wheel', onWheel);
-      container.removeEventListener('click', onClick);
       container.removeEventListener('touchstart', onTouchStart);
       container.removeEventListener('touchmove', onTouchMove);
       container.removeEventListener('touchend', onTouchEnd);

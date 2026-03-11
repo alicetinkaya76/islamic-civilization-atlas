@@ -1,8 +1,10 @@
 import { useState, useEffect, useCallback, useMemo, useRef } from 'react';
 import DB from '../data/db.json';
+import ALAM_LITE from '../data/alam_lite.json';
+import YAQUT_LITE from '../data/yaqut_lite.json';
 
 /* ══════════════════════════════════════════════════════════
-   QuizMode — 6 question types, 3 difficulties, bilingual
+   QuizMode — 10 question types, 3 difficulties, bilingual
    ══════════════════════════════════════════════════════════ */
 
 const TOTAL_Q = 10;
@@ -179,6 +181,94 @@ function genEventCentury(lang, diff) {
   };
 }
 
+/* Type 7: el-A'lâm — "Bu âlimin mesleği nedir?" */
+function genAlamProfession(lang, diff) {
+  const pool = ALAM_LITE.filter(b => b.pt && b.pe && b.md);
+  if (pool.length < 4) return null;
+  const b = pick(pool)[0];
+  const correctProf = lang === 'tr' ? b.pt : b.pe;
+  const others = pick(pool.filter(x => (lang === 'tr' ? x.pt : x.pe) !== correctProf), 3)
+    .map(x => lang === 'tr' ? x.pt : x.pe);
+  if (others.length < 3) return null;
+  const options = shuffle([correctProf, ...others]);
+  return {
+    question: lang === 'tr'
+      ? `"${b.ht}" (ö. ${b.md}) — mesleği nedir?`
+      : `"${b.he}" (d. ${b.md}) — what was their profession?`,
+    options,
+    correctIndex: options.indexOf(correctProf),
+    flyTo: b.lat && b.lon ? { lat: b.lat, lon: b.lon, zoom: 6 } : null,
+    emoji: '📖',
+  };
+}
+
+/* Type 8: el-A'lâm — "Bu âlim hangi yüzyılda yaşadı?" */
+function genAlamCentury(lang, diff) {
+  const pool = ALAM_LITE.filter(b => b.md && b.c);
+  if (pool.length < 4) return null;
+  const b = pick(pool)[0];
+  const correct = centuryLabel(b.md, lang);
+  const wrongs = centuryDistractors(b.md, 3).map(c =>
+    lang === 'tr' ? `${c}. yüzyıl` : `${c}th century`
+  );
+  const options = shuffle([correct, ...wrongs]);
+  return {
+    question: lang === 'tr'
+      ? `"${b.ht}" hangi yüzyılda vefat etti?`
+      : `In which century did "${b.he}" die?`,
+    options,
+    correctIndex: options.indexOf(correct),
+    flyTo: b.lat && b.lon ? { lat: b.lat, lon: b.lon, zoom: 6 } : null,
+    emoji: '📖',
+  };
+}
+
+/* Type 9: Yâkût — "Bu yer hangi ülkede?" */
+function genYaqutCountry(lang, diff) {
+  const pool = YAQUT_LITE.filter(e => e.ct && e.ht && e.he);
+  if (pool.length < 4) return null;
+  const e = pick(pool)[0];
+  const correctCountry = e.ct;
+  const countries = [...new Set(pool.map(x => x.ct))].filter(c => c !== correctCountry);
+  const wrongs = pick(countries, 3);
+  if (wrongs.length < 3) return null;
+  const options = shuffle([correctCountry, ...wrongs]);
+  return {
+    question: lang === 'tr'
+      ? `Yâkût'a göre "${e.ht}" (${e.gtt || e.gt}) hangi ülkededir?`
+      : `According to Yāqūt, in which country is "${e.he}" (${e.gte || e.gt})?`,
+    options,
+    correctIndex: options.indexOf(correctCountry),
+    flyTo: e.lat && e.lon ? { lat: e.lat, lon: e.lon, zoom: 7 } : null,
+    emoji: '🌍',
+  };
+}
+
+/* Type 10: Yâkût — "Bu yer ne tür bir coğrafi birim?" */
+function genYaqutGeoType(lang, diff) {
+  const GEO_TR = { city: 'Şehir', village: 'Köy', mountain: 'Dağ', river: 'Nehir', fortress: 'Kale', region: 'Bölge', town: 'Kasaba', island: 'Ada', desert: 'Çöl', well: 'Kuyu' };
+  const GEO_EN = { city: 'City', village: 'Village', mountain: 'Mountain', river: 'River', fortress: 'Fortress', region: 'Region', town: 'Town', island: 'Island', desert: 'Desert', well: 'Well' };
+  const validTypes = Object.keys(GEO_TR);
+  const pool = YAQUT_LITE.filter(e => validTypes.includes(e.gt) && e.ht && e.he);
+  if (pool.length < 4) return null;
+  const e = pick(pool)[0];
+  const labels = lang === 'tr' ? GEO_TR : GEO_EN;
+  const correctLabel = labels[e.gt];
+  const otherTypes = validTypes.filter(t => t !== e.gt);
+  const wrongs = pick(otherTypes, 3).map(t => labels[t]);
+  if (wrongs.length < 3) return null;
+  const options = shuffle([correctLabel, ...wrongs]);
+  return {
+    question: lang === 'tr'
+      ? `Yâkût'un sözlüğünde "${e.ht}" ne tür bir coğrafi birimdir?`
+      : `In Yāqūt's dictionary, what type of geographic entity is "${e.he}"?`,
+    options,
+    correctIndex: options.indexOf(correctLabel),
+    flyTo: e.lat && e.lon ? { lat: e.lat, lon: e.lon, zoom: 7 } : null,
+    emoji: '🌍',
+  };
+}
+
 const GENERATORS = [
   genDynastyCentury,
   genBattleWinner,
@@ -186,6 +276,10 @@ const GENERATORS = [
   genWhichEarlier,
   genMonumentCity,
   genEventCentury,
+  genAlamProfession,
+  genAlamCentury,
+  genYaqutCountry,
+  genYaqutGeoType,
 ];
 
 function generateQuiz(lang, diff) {
@@ -239,8 +333,8 @@ export default function QuizMode({ lang, onFlyTo, onClose }) {
   const t = useMemo(() => ({
     title: lang === 'tr' ? 'Bilgi Yarışması' : 'Knowledge Quiz',
     subtitle: lang === 'tr'
-      ? 'İslam tarihinden 10 soru ile bilginizi test edin!'
-      : 'Test your knowledge with 10 questions from Islamic history!',
+      ? 'Hanedanlar, savaşlar, el-A\'lâm ve Yâkût\'tan 10 soru!'
+      : 'Test your knowledge: dynasties, battles, al-Aʿlām & Yāqūt!',
     start: lang === 'tr' ? 'Başla' : 'Start',
     next: lang === 'tr' ? 'Sonraki Soru' : 'Next Question',
     finish: lang === 'tr' ? 'Sonuçları Gör' : 'See Results',

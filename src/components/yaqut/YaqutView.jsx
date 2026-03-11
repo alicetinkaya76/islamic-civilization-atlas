@@ -1,4 +1,4 @@
-import { useState, useMemo, useCallback, useEffect } from 'react';
+import { useState, useMemo, useCallback, useEffect, Component } from 'react';
 import YAQUT_LITE from '../../data/yaqut_lite.json';
 import YaqutSidebar from './YaqutSidebar';
 import YaqutMap from './YaqutMap';
@@ -7,6 +7,28 @@ import YaqutAnalytics from './YaqutAnalytics';
 import YaqutStatsPanel from './YaqutStatsPanel';
 import { PlaceGraph, PersonPlaceNetwork, GeoHeatmap } from './YaqutAdvanced';
 import '../../styles/yaqut.css';
+
+/* ═══ Error Boundary ═══ */
+class YaqutErrorBoundary extends Component {
+  constructor(props) { super(props); this.state = { hasError: false, error: null }; }
+  static getDerivedStateFromError(error) { return { hasError: true, error }; }
+  componentDidCatch(error, info) { console.error('YaqutView error:', error, info); }
+  render() {
+    if (this.state.hasError) {
+      return (
+        <div style={{ padding: 40, textAlign: 'center', color: '#c4b89a' }}>
+          <h3>⚠️ {this.props.lang === 'tr' ? 'Bir hata oluştu' : 'An error occurred'}</h3>
+          <p style={{ color: '#ef5350', fontSize: 12, fontFamily: 'monospace' }}>{String(this.state.error)}</p>
+          <button onClick={() => this.setState({ hasError: false, error: null })}
+            style={{ marginTop: 16, padding: '8px 16px', background: '#1a6b5a', color: '#fff', border: 'none', borderRadius: 6, cursor: 'pointer' }}>
+            {this.props.lang === 'tr' ? 'Tekrar Dene' : 'Retry'}
+          </button>
+        </div>
+      );
+    }
+    return this.props.children;
+  }
+}
 
 /* ═══ Precompute lookup maps ═══ */
 const YAQUT_BY_ID = {};
@@ -36,15 +58,13 @@ function extractCountries() {
     .map(([k]) => k);
 }
 
-/* ═══ Extract unique letters ═══ */
+/* ═══ Extract unique letters (Arabic alphabet order) ═══ */
+const ARABIC_ALPHA_ORDER = 'أبتثجحخدذرزسشصضطظعغفقكلمنوهي'.split('');
 function extractLetters() {
-  const counts = {};
-  YAQUT_LITE.forEach(e => {
-    if (e.lt) counts[e.lt] = (counts[e.lt] || 0) + 1;
-  });
-  return Object.entries(counts)
-    .sort((a, b) => b[1] - a[1])
-    .map(([k]) => k);
+  const present = new Set();
+  YAQUT_LITE.forEach(e => { if (e.lt) present.add(e.lt); });
+  // Return in Arabic alphabet order, only letters that exist in data
+  return ARABIC_ALPHA_ORDER.filter(l => present.has(l));
 }
 
 /* ═══ Extract unique tags (top 20) ═══ */
@@ -86,7 +106,7 @@ const STATS = {
   withEvents: YAQUT_LITE.filter(e => e.ec > 0).length,
 };
 
-export default function YaqutView({ lang, t }) {
+function YaqutViewInner({ lang, t }) {
   const ty = t.yaqut || {};
 
   /* ═══ State ═══ */
@@ -169,8 +189,9 @@ export default function YaqutView({ lang, t }) {
 
   /* ═══ Load detail data on selection ═══ */
   const loadDetail = useCallback(async (id) => {
-    if (detailCache[id]) {
-      setDetailData(detailCache[id]);
+    const sid = String(id);
+    if (detailCache[sid]) {
+      setDetailData(detailCache[sid]);
       return;
     }
     try {
@@ -179,10 +200,11 @@ export default function YaqutView({ lang, t }) {
       if (resp.ok) {
         const all = await resp.json();
         setDetailCache(all);
-        setDetailData(all[id] || null);
+        setDetailData(all[sid] || null);
       }
     } catch (e) {
       console.warn('Failed to load yaqut detail:', e);
+      setDetailData(null);
     }
   }, [detailCache]);
 
@@ -190,7 +212,10 @@ export default function YaqutView({ lang, t }) {
   const handleSelect = useCallback((id) => {
     setSelectedId(id);
     loadDetail(id);
-    setShowMobile('card');
+    // Only switch to card view on mobile (< 900px)
+    if (window.innerWidth <= 900) {
+      setShowMobile('card');
+    }
   }, [loadDetail]);
 
   /* Selected entry object */
@@ -285,16 +310,16 @@ export default function YaqutView({ lang, t }) {
           {/* Analytics sub-tabs */}
           <div className="yaqut-analytics-tabs">
             <button className={analyticsTab === 'charts' ? 'active' : ''} onClick={() => setAnalyticsTab('charts')}>
-              📊 {lang === 'tr' ? 'Grafikler' : 'Charts'}
+              📊 {ty.tabCharts || (lang === 'tr' ? 'Grafikler' : 'Charts')}
             </button>
             <button className={analyticsTab === 'graph' ? 'active' : ''} onClick={() => setAnalyticsTab('graph')}>
-              🕸 {lang === 'tr' ? 'Yer Grafı' : 'Place Graph'}
+              🕸 {ty.tabGraph || (lang === 'tr' ? 'Yer Grafı' : 'Place Graph')}
             </button>
             <button className={analyticsTab === 'network' ? 'active' : ''} onClick={() => setAnalyticsTab('network')}>
-              👤 {lang === 'tr' ? 'Kişi-Yer Ağı' : 'Person-Place Network'}
+              👤 {ty.tabNetwork || (lang === 'tr' ? 'Kişi-Yer Ağı' : 'Person-Place Network')}
             </button>
             <button className={analyticsTab === 'heatmap' ? 'active' : ''} onClick={() => setAnalyticsTab('heatmap')}>
-              🔥 {lang === 'tr' ? 'Coğrafi Kümeleme' : 'Geo Clustering'}
+              🔥 {ty.tabHeatmap || (lang === 'tr' ? 'Coğrafi Kümeleme' : 'Geo Clustering')}
             </button>
           </div>
 
@@ -320,3 +345,12 @@ export default function YaqutView({ lang, t }) {
 }
 
 export { YAQUT_LITE, YAQUT_BY_ID, STATS, normalize as yaqutNormalize };
+
+/* ═══ Wrapped export with Error Boundary ═══ */
+export default function YaqutViewWrapper(props) {
+  return (
+    <YaqutErrorBoundary lang={props.lang}>
+      <YaqutViewInner {...props} />
+    </YaqutErrorBoundary>
+  );
+}

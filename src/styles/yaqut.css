@@ -640,6 +640,15 @@
   text-decoration: none;
   font-size: 10px;
 }
+.yaqut-xref-alam-link {
+  color: #c9a84c;
+  text-decoration: none;
+  font-size: 12px;
+  margin-left: 4px;
+  opacity: 0.7;
+  transition: opacity 0.15s;
+}
+.yaqut-xref-alam-link:hover { opacity: 1; }
 .yaqut-xref-meta {
   font-size: 10px;
   color: var(--cream2);
@@ -989,9 +998,9 @@
 /* ─── Map/Globe View Mode Toggle ─── */
 .yaqut-map-mode-toggle {
   position: absolute;
-  top: 12px;
-  right: 12px;
-  z-index: 900;
+  top: 100px;
+  right: 10px;
+  z-index: 1100;
   display: flex;
   gap: 2px;
   background: var(--bg2);
@@ -1158,12 +1167,13 @@
 /* ─── Responsive ─── */
 @media (max-width: 900px) {
   .yaqut-mobile-toggle { display: flex; }
-  .yaqut-sidebar { display: none; }
-  .yaqut-map-area { display: none; }
-  .yaqut-card-area { display: none; width: 100%; min-width: 0; border-left: none; }
-  .yaqut-sidebar.mobile-visible,
-  .yaqut-map-area.mobile-visible,
-  .yaqut-card-area.mobile-visible { display: flex; flex: 1; width: 100%; min-width: 0; }
+  .yaqut-sidebar { position: absolute; left: -100%; width: 100%; transition: left 0.2s; z-index: 10; background: var(--bg); height: 100%; }
+  .yaqut-map-area { position: absolute; left: -100%; width: 100%; height: 100%; z-index: 5; }
+  .yaqut-card-area { position: absolute; left: -100%; width: 100%; min-width: 0; border-left: none; height: 100%; z-index: 10; background: var(--bg); overflow-y: auto; }
+  .yaqut-body { position: relative; overflow: hidden; }
+  .yaqut-sidebar.mobile-visible { left: 0; display: flex; flex: 1; }
+  .yaqut-map-area.mobile-visible { left: 0; display: flex; flex: 1; position: relative; }
+  .yaqut-card-area.mobile-visible { left: 0; display: flex; flex: 1; }
   .yaqut-analytics-row { flex-direction: column; }
   .yaqut-analytics-sidebar { width: 100%; min-width: 0; border-left: none; border-top: 1px solid var(--border); }
   .yaqut-analytics-grid { grid-template-columns: 1fr; }
