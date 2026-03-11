@@ -8,6 +8,7 @@ import CausalView from './components/causal/CausalView';
 import ScholarView from './components/scholars/ScholarView';
 import BattleView from './components/battles/BattleView';
 import AlamView from './components/alam/AlamView';
+import YaqutView from './components/yaqut/YaqutView';
 import Footer from './components/shared/Footer';
 import AboutModal from './components/shared/AboutModal';
 import QuizMode from './components/QuizMode';
@@ -17,7 +18,7 @@ import ProgressTracker, { BadgeToast, useProgress } from './components/shared/Pr
 import Onboarding from './components/shared/Onboarding';
 import ExportButton from './components/shared/ExportButton';
 
-const VALID_TABS = ['map', 'dashboard', 'timeline', 'links', 'scholars', 'battles', 'alam'];
+const VALID_TABS = ['map', 'dashboard', 'timeline', 'links', 'scholars', 'battles', 'alam', 'yaqut'];
 
 /* Parse hash → { tab, params } */
 function parseHash() {
@@ -156,6 +157,7 @@ export default function App() {
             <button role="tab" aria-selected={tab === 'scholars'} className={`tab${tab === 'scholars' ? ' active' : ''}`} onClick={() => selectTab('scholars')}>{t.tabs.scholars}</button>
             <button role="tab" aria-selected={tab === 'battles'} className={`tab${tab === 'battles' ? ' active' : ''}`} onClick={() => selectTab('battles')}>{t.tabs.battles}</button>
             <button role="tab" aria-selected={tab === 'alam'} className={`tab${tab === 'alam' ? ' active' : ''}`} onClick={() => selectTab('alam')}>{t.tabs.alam}</button>
+            <button role="tab" aria-selected={tab === 'yaqut'} className={`tab${tab === 'yaqut' ? ' active' : ''}`} onClick={() => selectTab('yaqut')}>{t.tabs.yaqut}</button>
           </div>
           <button className="quiz-trigger" onClick={() => setQuizOpen(true)}
             aria-label={lang === 'tr' ? 'Bilgi yarışması' : 'Knowledge quiz'}>🎓 Quiz</button>
@@ -176,6 +178,7 @@ export default function App() {
          tab === 'scholars' ? <ScholarView lang={lang} t={t} /> :
          tab === 'battles' ? <BattleView lang={lang} t={t} /> :
          tab === 'alam' ? <AlamView lang={lang} t={t} /> :
+         tab === 'yaqut' ? <YaqutView lang={lang} t={t} /> :
          <CausalView lang={lang} t={t} />}
       </main>
       <Footer lang={lang} />
