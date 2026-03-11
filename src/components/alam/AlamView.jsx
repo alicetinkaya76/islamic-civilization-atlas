@@ -247,6 +247,8 @@ export default function AlamView({ lang, t }) {
               bio={selectedBio}
               detail={detailData}
               onClose={() => { setSelectedId(null); setDetailData(null); }}
+              allData={ALAM_LITE}
+              onNavigate={(id) => { setSelectedId(id); setDetailData(null); }}
             />
           </div>
         </div>

@@ -3,31 +3,100 @@ import * as d3 from 'd3';
 import XREFS from '../../data/alam_xrefs.json';
 
 /* ═══════════════════════════════════════════════════
+   İlişki Türü Renk ve Etiket Haritaları
+   ═══════════════════════════════════════════════════ */
+const REL_COLOR = {
+  student_of:    '#4fc3f7',   // mavi — hoca-talebe
+  influenced_by: '#81c784',   // yeşil — entelektüel etki
+  criticism:     '#ef5350',   // kırmızı — eleştiri/reddiye
+  commentary:    '#ffb74d',   // turuncu — şerh/yorum
+  peer:          '#ce93d8',   // mor — akran/muasır
+  family:        '#f06292',   // pembe — aile
+  biographer:    '#4db6ac',   // teal — biyografi
+  patron:        '#a5d6a7',   // açık yeşil — himaye
+  related:       '#546e7a',   // gri-mavi — genel (alam crossref)
+};
+
+const REL_LABEL_TR = {
+  student_of:    'Hoca-Talebe',
+  influenced_by: 'Etki',
+  criticism:     'Eleştiri',
+  commentary:    'Şerh',
+  peer:          'Akran',
+  family:        'Aile',
+  biographer:    'Biyografi',
+  patron:        'Himaye',
+  related:       'Çapraz Ref',
+};
+
+const REL_LABEL_EN = {
+  student_of:    'Teacher-Student',
+  influenced_by: 'Influence',
+  criticism:     'Criticism',
+  commentary:    'Commentary',
+  peer:          'Peer',
+  family:        'Family',
+  biographer:    'Biographer',
+  patron:        'Patron',
+  related:       'Cross-Ref',
+};
+
+const SRC_ICON = { wikidata: 'W', dia: 'D', alam: 'A' };
+
+/* ═══════════════════════════════════════════════════
    1) CROSS-REFERENCE NETWORK — D3 Force Graph
    ═══════════════════════════════════════════════════ */
-export function CrossRefNetwork({ data, lang }) {
+export function CrossRefNetwork({ data, lang, onSelectPerson }) {
   const svgRef = useRef(null);
   const containerRef = useRef(null);
   const [selectedNode, setSelectedNode] = useState(null);
+  const [filterRel, setFilterRel] = useState('all');
   const isTr = lang === 'tr';
+
+  /* Normalize XREFS: yeni format {s,t,r,src,c} veya eski [[s,t]] */
+  const normalizedXrefs = useMemo(() => {
+    if (!XREFS.length) return [];
+    const first = XREFS[0];
+    if (Array.isArray(first)) {
+      // Eski format: [[s,t], ...]
+      return XREFS.map(([s, t]) => ({ s, t, r: 'related', src: ['alam'], c: 2 }));
+    }
+    return XREFS; // Yeni format
+  }, []);
+
+  /* İlişki türleri (filtre için) */
+  const relTypes = useMemo(() => {
+    const types = new Set(normalizedXrefs.map(e => e.r || 'related'));
+    return ['all', ...Array.from(types)];
+  }, [normalizedXrefs]);
 
   /* Build graph data */
   const graph = useMemo(() => {
     const byId = {};
     data.forEach(b => { byId[b.id] = b; });
 
-    // Get unique node IDs from edges
+    const filtered = filterRel === 'all'
+      ? normalizedXrefs
+      : normalizedXrefs.filter(e => (e.r || 'related') === filterRel);
+
     const nodeIds = new Set();
     const validEdges = [];
-    XREFS.forEach(([s, t]) => {
+    filtered.forEach(edge => {
+      const s = edge.s, t = edge.t;
       if (byId[s] && byId[t]) {
         nodeIds.add(s);
         nodeIds.add(t);
-        validEdges.push({ source: s, target: t });
+        validEdges.push({
+          source: s,
+          target: t,
+          rel: edge.r || 'related',
+          sources: edge.src || ['alam'],
+          confidence: edge.c || 2,
+        });
       }
     });
 
-    // Build nodes with degree
+    // Degree hesapla
     const degree = {};
     validEdges.forEach(e => {
       degree[e.source] = (degree[e.source] || 0) + 1;
@@ -44,11 +113,22 @@ export function CrossRefNetwork({ data, lang }) {
         profession: isTr ? b.pt : b.pe,
         degree: degree[id] || 0,
         death: b.md,
+        madhab: b.mz,
+        diaSlug: b.ds,
       };
     });
 
     return { nodes, edges: validEdges };
-  }, [data, isTr]);
+  }, [data, isTr, normalizedXrefs, filterRel]);
+
+  /* İstatistikler */
+  const stats = useMemo(() => {
+    const bySrc = { alam: 0, wikidata: 0, dia: 0 };
+    normalizedXrefs.forEach(e => {
+      (e.src || ['alam']).forEach(s => { if (bySrc[s] !== undefined) bySrc[s]++; });
+    });
+    return bySrc;
+  }, [normalizedXrefs]);
 
   /* D3 force simulation */
   useEffect(() => {
@@ -58,19 +138,19 @@ export function CrossRefNetwork({ data, lang }) {
 
     const container = containerRef.current;
     const w = container?.clientWidth || 700;
-    const h = 500;
+    const h = 520;
     svg.attr('width', w).attr('height', h);
 
     const g = svg.append('g');
 
     // Zoom
-    svg.call(d3.zoom().scaleExtent([0.3, 5]).on('zoom', (e) => {
+    svg.call(d3.zoom().scaleExtent([0.2, 6]).on('zoom', (e) => {
       g.attr('transform', e.transform);
     }));
 
     const CENTURY_COLOR = c => {
       if (!c) return '#666';
-      if (c <= 8) return '#aed581';
+      if (c <= 8)  return '#aed581';
       if (c <= 10) return '#4fc3f7';
       if (c <= 12) return '#ce93d8';
       if (c <= 14) return '#ff8a65';
@@ -80,34 +160,41 @@ export function CrossRefNetwork({ data, lang }) {
     };
 
     const sim = d3.forceSimulation(graph.nodes)
-      .force('link', d3.forceLink(graph.edges).id(d => d.id).distance(60).strength(0.3))
-      .force('charge', d3.forceManyBody().strength(-80))
+      .force('link', d3.forceLink(graph.edges).id(d => d.id).distance(55).strength(0.25))
+      .force('charge', d3.forceManyBody().strength(-70))
       .force('center', d3.forceCenter(w / 2, h / 2))
-      .force('collision', d3.forceCollide().radius(d => Math.max(4, d.degree * 1.5) + 3));
+      .force('collision', d3.forceCollide().radius(d => Math.max(4, d.degree * 1.5) + 4));
 
+    // Kenarlar: renk = ilişki türü, kalınlık = kaynak sayısı × güven
     const link = g.selectAll('line')
       .data(graph.edges)
       .join('line')
-      .attr('stroke', '#1e2a44')
-      .attr('stroke-width', 0.5)
-      .attr('stroke-opacity', 0.6);
+      .attr('stroke', d => REL_COLOR[d.rel] || REL_COLOR.related)
+      .attr('stroke-width', d => Math.min(3, 0.5 + (d.sources.length * 0.5) + (d.confidence > 3 ? 0.5 : 0)))
+      .attr('stroke-opacity', d => d.sources.length > 1 ? 0.9 : 0.5);
 
+    // Düğümler
     const node = g.selectAll('circle')
       .data(graph.nodes)
       .join('circle')
-      .attr('r', d => Math.max(3, Math.min(12, d.degree * 2)))
+      .attr('r', d => Math.max(3, Math.min(14, d.degree * 2)))
       .attr('fill', d => CENTURY_COLOR(d.century))
       .attr('stroke', '#080c18')
       .attr('stroke-width', 0.5)
       .attr('cursor', 'pointer')
-      .on('click', (e, d) => setSelectedNode(d))
+      .on('click', (e, d) => {
+        setSelectedNode(d);
+        if (onSelectPerson) onSelectPerson(d.id);
+      })
       .call(d3.drag()
         .on('start', (e, d) => { if (!e.active) sim.alphaTarget(0.3).restart(); d.fx = d.x; d.fy = d.y; })
         .on('drag', (e, d) => { d.fx = e.x; d.fy = e.y; })
         .on('end', (e, d) => { if (!e.active) sim.alphaTarget(0); d.fx = null; d.fy = null; })
       );
 
-    node.append('title').text(d => `${d.name} (${d.arabic}) — ${d.degree} ref`);
+    node.append('title').text(d =>
+      `${d.name} (${d.arabic})\n${isTr ? 'Vefat' : 'Death'}: ${d.death || '?'}\n${d.degree} ${isTr ? 'bağlantı' : 'connections'}`
+    );
 
     sim.on('tick', () => {
       link.attr('x1', d => d.source.x).attr('y1', d => d.source.y)
@@ -116,25 +203,90 @@ export function CrossRefNetwork({ data, lang }) {
     });
 
     return () => sim.stop();
-  }, [graph]);
+  }, [graph, isTr, onSelectPerson]);
+
+  const relLabels = isTr ? REL_LABEL_TR : REL_LABEL_EN;
 
   return (
     <div className="alam-adv-panel" ref={containerRef}>
       <div className="alam-adv-header">
-        <h3>🕸 {isTr ? 'Çapraz Referans Ağı' : 'Cross-Reference Network'}</h3>
-        <span className="alam-adv-stat">{graph.nodes.length} {isTr ? 'düğüm' : 'nodes'} · {graph.edges.length} {isTr ? 'bağlantı' : 'links'}</span>
+        <h3>🕸 {isTr ? 'Entelektüel İlişki Ağı' : 'Intellectual Relationship Network'}</h3>
+        <span className="alam-adv-stat">
+          {graph.nodes.length} {isTr ? 'düğüm' : 'nodes'} · {graph.edges.length} {isTr ? 'bağlantı' : 'links'}
+        </span>
       </div>
-      <p className="alam-adv-desc">
+
+      {/* Kaynak istatistikleri */}
+      <div style={{ display: 'flex', gap: 8, margin: '6px 0', flexWrap: 'wrap' }}>
+        <span style={{ fontSize: 11, color: '#90a4ae' }}>
+          📚 el-A'lâm: {stats.alam} &nbsp;|&nbsp;
+          🌐 Wikidata: {stats.wikidata} &nbsp;|&nbsp;
+          📖 DİA: {stats.dia}
+        </span>
+      </div>
+
+      {/* İlişki türü filtresi */}
+      <div style={{ display: 'flex', gap: 6, margin: '8px 0', flexWrap: 'wrap' }}>
+        {relTypes.map(r => (
+          <button key={r}
+            onClick={() => setFilterRel(r)}
+            style={{
+              padding: '2px 10px', borderRadius: 12, fontSize: 11, cursor: 'pointer',
+              background: filterRel === r ? (REL_COLOR[r] || '#4fc3f7') : '#1e2a44',
+              color: filterRel === r ? '#080c18' : '#c4b89a',
+              border: `1px solid ${REL_COLOR[r] || '#4fc3f7'}`,
+              fontWeight: filterRel === r ? 700 : 400,
+            }}>
+            {r === 'all' ? (isTr ? 'Tümü' : 'All') : (relLabels[r] || r)}
+          </button>
+        ))}
+      </div>
+
+      <p className="alam-adv-desc" style={{ marginBottom: 4 }}>
         {isTr
-          ? "Ziriklî'nin el-A'lâm'daki çapraz referanslarını gösterir. Her düğüm bir biyografi, bağlantılar 'bkz.' yönlendirmeleridir. Düğüm büyüklüğü referans sayısına, renk yüzyıla göre değişir. Sürükle, yakınlaştır, tıkla."
-          : "Visualizes al-Zirikli's cross-references in al-Aʿlām. Each node is a biography, links are 'see also' references. Node size = reference count, color = century. Drag, zoom, click."}
+          ? "Hoca-talebe (mavi), etki (yeşil), eleştiri (kırmızı) ilişkileri gösterir. Kenar kalınlığı = çoklu kaynak doğrulaması. Sürükle, yakınlaştır, tıkla."
+          : "Shows teacher-student (blue), influence (green), criticism (red) relationships. Edge thickness = multi-source verification. Drag, zoom, click."}
       </p>
-      <svg ref={svgRef} style={{ width: '100%', height: 500, background: '#080c18', borderRadius: 8 }} />
+
+      {/* Renk açıklaması */}
+      <div style={{ display: 'flex', gap: 10, marginBottom: 6, flexWrap: 'wrap' }}>
+        {Object.entries(REL_COLOR).filter(([k]) => k !== 'related').map(([k, v]) => (
+          <span key={k} style={{ fontSize: 10, display: 'flex', alignItems: 'center', gap: 3 }}>
+            <span style={{ width: 10, height: 10, background: v, borderRadius: 2, display: 'inline-block' }} />
+            <span style={{ color: '#90a4ae' }}>{relLabels[k] || k}</span>
+          </span>
+        ))}
+      </div>
+
+      <svg ref={svgRef} style={{ width: '100%', height: 520, background: '#080c18', borderRadius: 8 }} />
+
       {selectedNode && (
         <div className="alam-adv-tooltip">
-          <strong>{selectedNode.name}</strong> <span dir="rtl">{selectedNode.arabic}</span>
-          <br />{isTr ? 'Vefat' : 'Death'}: {selectedNode.death || '?'} · {selectedNode.profession || ''}
-          <br />{selectedNode.degree} {isTr ? 'çapraz referans' : 'cross-references'}
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+            <div>
+              <strong>{selectedNode.name}</strong>
+              <span dir="rtl" style={{ marginLeft: 8, color: '#c4b89a' }}>{selectedNode.arabic}</span>
+            </div>
+            <button onClick={() => setSelectedNode(null)}
+              style={{ background: 'none', border: 'none', color: '#90a4ae', cursor: 'pointer', fontSize: 14 }}>✕</button>
+          </div>
+          <div style={{ fontSize: 12, color: '#90a4ae', marginTop: 4 }}>
+            {isTr ? 'Vefat' : 'Death'}: {selectedNode.death || '?'}
+            {selectedNode.madhab && <> · {selectedNode.madhab}</>}
+          </div>
+          {selectedNode.profession && (
+            <div style={{ fontSize: 11, color: '#c4b89a', marginTop: 2 }}>{selectedNode.profession}</div>
+          )}
+          <div style={{ marginTop: 6, fontWeight: 600, color: '#4fc3f7' }}>
+            {selectedNode.degree} {isTr ? 'bağlantı' : 'connections'}
+          </div>
+          {selectedNode.diaSlug && (
+            <a href={`https://islamansiklopedisi.org.tr/${selectedNode.diaSlug}`}
+              target="_blank" rel="noopener noreferrer"
+              style={{ fontSize: 11, color: '#ffb74d', display: 'block', marginTop: 4 }}>
+              📖 DİA →
+            </a>
+          )}
         </div>
       )}
     </div>
