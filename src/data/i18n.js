@@ -2,7 +2,7 @@ const T = {
   tr: {
     title: 'Müslüman Hanedanlar Atlası',
     sub: 'Bosworth Veri Tabanı • 186 Hanedan • 632–1924',
-    tabs: { map: '🗺 Harita', dashboard: '📊 Pano', timeline: '📅 Zaman Çizelgesi', links: '🔗 Nedensellik', scholars: '🎓 Âlimler', battles: '⚔ Savaşlar', alam: '📖 el-A\'lâm', yaqut: '🌍 Mu'cem' },
+    tabs: { map: '🗺 Harita', dashboard: '📊 Pano', timeline: '📅 Zaman Çizelgesi', links: '🔗 Nedensellik', scholars: '🎓 Âlimler', battles: '⚔ Savaşlar', alam: '📖 el-A\'lâm', yaqut: "🌍 Mu'cem" },
     layers: {
       dynasties: 'Hanedanlar', battles: 'Savaşlar', events: 'Olaylar',
       scholars: 'Âlimler', monuments: 'Mimari Eserler', cities: 'Şehirler',
@@ -242,7 +242,7 @@ const T = {
   en: {
     title: 'Islamic Dynasties Atlas',
     sub: 'Bosworth Database • 186 Dynasties • 632–1924',
-    tabs: { map: '🗺 Map', dashboard: '📊 Dashboard', timeline: '📅 Timeline', links: '🔗 Causality', scholars: '🎓 Scholars', battles: '⚔ Battles', alam: '📖 al-Aʿlām', yaqut: '🌍 Mu'jam' },
+    tabs: { map: '🗺 Map', dashboard: '📊 Dashboard', timeline: '📅 Timeline', links: '🔗 Causality', scholars: '🎓 Scholars', battles: '⚔ Battles', alam: '📖 al-Aʿlām', yaqut: "🌍 Mu'jam" },
     layers: {
       dynasties: 'Dynasties', battles: 'Battles', events: 'Events',
       scholars: 'Scholars', monuments: 'Monuments', cities: 'Cities',
