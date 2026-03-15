@@ -92,8 +92,8 @@ export default function MapView({ lang, t, sidebarOpen, mapRef, onPopupOpen, onT
         <div ref={mapEl} className="map-canvas" />
         {/* Tour button */}
         <button className="tour-trigger" onClick={() => setTourActive(true)}
-          aria-label={lang === 'tr' ? 'Rehberli turlar' : 'Guided tours'}>
-          🗺 {lang === 'tr' ? 'Turlar' : 'Tours'}
+          aria-label={{ tr: 'Rehberli turlar', en: 'Guided tours', ar: '' }[lang]}>
+          🗺 {{ tr: 'Turlar', en: 'Tours', ar: '' }[lang]}
         </button>
         {/* Tour overlay */}
         {tourActive && (
@@ -116,14 +116,14 @@ export default function MapView({ lang, t, sidebarOpen, mapRef, onPopupOpen, onT
               min={622} max={1924}
               value={year}
               onChange={e => { const v = +e.target.value; if (v >= 622 && v <= 1924) setYear(v); }}
-              aria-label={lang === 'tr' ? 'Yıl gir' : 'Enter year'}
+              aria-label={{ tr: 'Yıl gir', en: 'Enter year', ar: '' }[lang]}
             />
             <button className="tbar-step" onClick={() => setYear(y => Math.min(1924, y + 10))} aria-label="+10 yıl">▶</button>
           </div>
           <div className="tbar-era">{eraName(year, lang)}</div>
           <input type="range" className="tbar-range" min={622} max={1924} value={year} step={1}
             onChange={e => setYear(+e.target.value)}
-            aria-label={lang === 'tr' ? 'Zaman kaydırıcısı' : 'Time slider'}
+            aria-label={{ tr: 'Zaman kaydırıcısı', en: 'Time slider', ar: '' }[lang]}
             aria-valuemin={622} aria-valuemax={1924} aria-valuenow={year} />
           <div className="tbar-ticks">
             {['622', '750', '900', '1055', '1258', '1453', '1600', '1800', '1924'].map(y => <span key={y}>{y}</span>)}

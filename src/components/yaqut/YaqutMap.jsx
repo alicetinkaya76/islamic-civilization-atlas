@@ -1,5 +1,6 @@
 import { useEffect, useRef, useCallback, useMemo, useState, lazy, Suspense } from 'react';
 import L from 'leaflet';
+import { hn } from '../../data/i18n-utils';
 
 /* ═══ Lazy-load Globe (Three.js only when needed) ═══ */
 const YaqutGlobe = lazy(() => import('./YaqutGlobe'));
@@ -90,7 +91,7 @@ function FlatMap({ lang, ty, data, selectedId, selectedEntry, detailData, onSele
       marker._yaqutId = e.id;
       marker.on('click', () => onSelect(e.id));
 
-      const label = lang === 'tr' ? e.ht : e.he;
+      const label = hn(e, lang);
       const gType = lang === 'tr' ? e.gtt : e.gte;
       marker.bindTooltip(
         `<b style="font-family:'Amiri',serif;font-size:14px" dir="rtl">${e.h}</b><br/>` +
@@ -181,7 +182,7 @@ function FlatMap({ lang, ty, data, selectedId, selectedEntry, detailData, onSele
         <div className="yaqut-histogram-bars">
           {histogram.map(h => (
             <div key={h.type} className="yaqut-histo-col"
-              title={`${lang === 'tr' ? h.type : h.type}: ${h.count}`}>
+              title={`${h.type}: ${h.count}`}>
               <div className="yaqut-histo-bar"
                 style={{
                   height: `${Math.max(2, (h.count / maxCount) * 60)}px`,
@@ -198,7 +199,7 @@ function FlatMap({ lang, ty, data, selectedId, selectedEntry, detailData, onSele
         {data.length.toLocaleString()} {ty.geocoded || 'koordinatlı'}
         <button className={`yaqut-heat-toggle${showHeat ? ' active' : ''}`}
           onClick={() => setShowHeat(p => !p)}
-          title={lang === 'tr' ? 'Isı haritası' : 'Heatmap'}>
+          title={{ tr: 'Isı haritası', en: 'Heatmap', ar: '' }[lang]}>
           🔥
         </button>
       </div>
@@ -209,7 +210,6 @@ function FlatMap({ lang, ty, data, selectedId, selectedEntry, detailData, onSele
 /* ═══ Main Map Component with Flat/Globe Toggle ═══ */
 export default function YaqutMap({ lang, ty, data, selectedId, selectedEntry, detailData, onSelect, filtered }) {
   const [viewMode, setViewMode] = useState('flat'); // 'flat' | 'globe'
-  const isTr = lang === 'tr';
 
   return (
     <div className="yaqut-map-wrapper">
@@ -218,14 +218,14 @@ export default function YaqutMap({ lang, ty, data, selectedId, selectedEntry, de
         <button
           className={`yaqut-mode-btn${viewMode === 'flat' ? ' active' : ''}`}
           onClick={() => setViewMode('flat')}
-          title={isTr ? 'Düz Harita' : 'Flat Map'}>
-          🗺️ {ty.flatMap || (isTr ? 'Harita' : 'Map')}
+          title={{ tr: 'Düz Harita', en: 'Flat Map', ar: '' }[lang]}>
+          🗺️ {ty.flatMap || ({ tr: 'Harita', en: 'Map', ar: '' }[lang])}
         </button>
         <button
           className={`yaqut-mode-btn${viewMode === 'globe' ? ' active' : ''}`}
           onClick={() => setViewMode('globe')}
-          title={isTr ? '3D Küre' : '3D Globe'}>
-          🌍 {ty.globe3D || (isTr ? 'Küre' : 'Globe')}
+          title={{ tr: '3D Küre', en: '3D Globe', ar: '' }[lang]}>
+          🌍 {ty.globe3D || ({ tr: 'Küre', en: 'Globe', ar: '' }[lang])}
         </button>
       </div>
 
@@ -247,7 +247,7 @@ export default function YaqutMap({ lang, ty, data, selectedId, selectedEntry, de
         <Suspense fallback={
           <div className="yaqut-globe-loading">
             <div className="yaqut-globe-loading-spinner" />
-            <span>{ty.globeLoading || (isTr ? 'Küre yükleniyor…' : 'Loading globe…')}</span>
+            <span>{ty.globeLoading || ({ tr: 'Küre yükleniyor…', en: 'Loading globe…', ar: '' }[lang])}</span>
           </div>
         }>
           <YaqutGlobe

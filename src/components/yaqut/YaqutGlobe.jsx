@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState, useCallback } from 'react';
 import * as THREE from 'three';
+import { hn } from '../../data/i18n-utils';
 
 /* ═══ Constants ═══ */
 const GLOBE_RADIUS = 5;
@@ -396,8 +397,6 @@ export default function YaqutGlobe({ lang, ty, data, selectedId, selectedEntry, 
     autoRotate.current = true;
   }, []);
 
-  const isTr = lang === 'tr';
-
   return (
     <div className="yaqut-globe-wrapper">
       <div ref={containerRef} className="yaqut-globe-canvas"
@@ -410,9 +409,7 @@ export default function YaqutGlobe({ lang, ty, data, selectedId, selectedEntry, 
 
       {/* Globe hint */}
       <div className="yaqut-globe-hint">
-        {ty.globeHint || (isTr
-          ? '🖱 Sürükle: döndür · Tekerlek: yakınlaştır · Çift tıkla: oto-dönüş'
-          : '🖱 Drag: rotate · Wheel: zoom · Dbl-click: auto-rotate')}
+        {ty.globeHint || ({ tr: '🖱 Sürükle: döndür · Tekerlek: yakınlaştır · Çift tıkla: oto-dönüş', en: '🖱 Drag: rotate · Wheel: zoom · Dbl-click: auto-rotate', ar: '' }[lang])}
       </div>
 
       {/* Selected info bar */}
@@ -420,10 +417,10 @@ export default function YaqutGlobe({ lang, ty, data, selectedId, selectedEntry, 
         <div className="yaqut-globe-selected">
           <span className="yaqut-globe-selected-ar" dir="rtl">{selectedEntry.h}</span>
           <span className="yaqut-globe-selected-name">
-            {isTr ? selectedEntry.ht : selectedEntry.he}
+            {hn(selectedEntry, lang)}
           </span>
           <span className="yaqut-globe-selected-type">
-            {isTr ? selectedEntry.gtt : selectedEntry.gte}
+            {(lang === "tr" ? selectedEntry.gtt : selectedEntry.gte)}
             {selectedEntry.ct ? ` · ${selectedEntry.ct}` : ''}
           </span>
         </div>

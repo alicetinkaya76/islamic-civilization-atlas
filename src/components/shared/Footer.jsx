@@ -19,7 +19,7 @@ export default function Footer({ lang }) {
             </span>
           </div>
           <div className="footer-affil">
-            Selçuk {lang === 'tr' ? 'Üniversitesi' : 'University'} — Konya, {lang === 'tr' ? 'Türkiye' : 'Turkey'}
+            Selçuk {{ tr: 'Üniversitesi', en: 'University', ar: '' }[lang]} — Konya, {{ tr: 'Türkiye', en: 'Turkey', ar: '' }[lang]}
           </div>
         </div>
         <div className="footer-center">
@@ -27,7 +27,7 @@ export default function Footer({ lang }) {
             <img src="https://zenodo.org/badge/DOI/10.5281/zenodo.18818238.svg" alt="DOI" height="18" />
           </a>
           <button className="footer-cite-btn" onClick={() => setShowCite(p => !p)}>
-            📝 {lang === 'tr' ? 'Atıf Yap' : 'Cite'}
+            📝 {{ tr: 'Atıf Yap', en: 'Cite', ar: '' }[lang]}
           </button>
         </div>
         <div className="footer-right">

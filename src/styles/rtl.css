@@ -1,0 +1,260 @@
+/* ═══════════════════════════════════════════════════
+   RTL Overrides — Arabic Language Support
+   v5.1.0.0
+   Applied when: <div class="app" dir="rtl" lang="ar">
+   ═══════════════════════════════════════════════════ */
+
+/* ── Arabic Typography ── */
+[dir="rtl"] {
+  font-family: 'Noto Sans Arabic', 'Amiri', 'Traditional Arabic', 'Outfit', sans-serif;
+}
+
+[dir="rtl"] .h-title,
+[dir="rtl"] .p-title,
+[dir="rtl"] .p-name,
+[dir="rtl"] .alam-h,
+[dir="rtl"] .yaqut-h,
+[dir="rtl"] .era-card-title,
+[dir="rtl"] .landing-title {
+  font-family: 'Amiri', 'Traditional Arabic', serif;
+  font-size: 1.15em;
+}
+
+/* ── General Layout Direction ── */
+[dir="rtl"] .header-left {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .header-right {
+  direction: rtl;
+}
+
+[dir="rtl"] .tabs {
+  direction: rtl;
+}
+
+/* ── Lang Switcher ── */
+[dir="rtl"] .lang-switcher {
+  direction: ltr; /* Keep lang buttons in LTR order */
+}
+
+/* ── Sidebar Panels: flip border sides ── */
+[dir="rtl"] .map-panel {
+  border-right: none;
+  border-left: 1px solid var(--gold);
+  left: auto;
+  right: 0;
+}
+
+[dir="rtl"] .battle-sidebar {
+  border-right: 1px solid var(--border, rgba(201, 168, 76, 0.15));
+  border-left: none;
+}
+
+[dir="rtl"] .scholar-detail {
+  border-right: 1px solid var(--border, rgba(201, 168, 76, 0.15));
+  border-left: none;
+}
+
+/* ── Active Item Indicators ── */
+[dir="rtl"] .battle-item.active {
+  border-left-color: transparent;
+  border-right: 3px solid var(--gold, #c9a84c);
+}
+
+[dir="rtl"] .yaqut-list-item.selected {
+  border-left: none;
+  border-right: 3px solid #1a6b5a;
+}
+
+[dir="rtl"] .alam-list-item.selected {
+  border-left: none;
+  border-right: 3px solid var(--gold, #c9a84c);
+}
+
+/* ── Popup Content ── */
+[dir="rtl"] .p-row {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .p-v {
+  text-align: left;
+}
+
+[dir="rtl"] .p-k {
+  text-align: right;
+}
+
+[dir="rtl"] .p-narr {
+  text-align: right;
+}
+
+/* ── Margin/Padding Flips ── */
+[dir="rtl"] .lyr-n {
+  margin-left: 0;
+  margin-right: auto;
+}
+
+[dir="rtl"] .yaqut-person-tr {
+  margin-left: 0;
+  margin-right: 6px;
+}
+
+[dir="rtl"] .tab {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+/* ── Filter Panel ── */
+[dir="rtl"] .filter-panel {
+  text-align: right;
+}
+
+[dir="rtl"] .filter-group label {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+/* ── Search Bar ── */
+[dir="rtl"] .search-input {
+  text-align: right;
+  padding-left: 8px;
+  padding-right: 32px;
+}
+
+[dir="rtl"] .search-icon {
+  left: auto;
+  right: 8px;
+}
+
+/* ── Footer ── */
+[dir="rtl"] .footer {
+  text-align: right;
+}
+
+/* ── Causal View ── */
+[dir="rtl"] .cl-item-tgt {
+  text-align: left;
+}
+
+/* ── Mobile Menu ── */
+[dir="rtl"] .header-right.mobile-open {
+  left: 0;
+  right: auto;
+  border-left: none;
+  border-right: 1px solid var(--gold, #c9a84c);
+}
+
+/* ── Dashboard Cards ── */
+[dir="rtl"] .dash-card {
+  text-align: right;
+}
+
+/* ── Timeline ── */
+[dir="rtl"] .tl-label {
+  text-align: right;
+}
+
+/* ── Scholar Network / Timeline panels ── */
+[dir="rtl"] .sch-sidebar {
+  border-right: 1px solid var(--border, rgba(201, 168, 76, 0.15));
+  border-left: none;
+}
+
+/* ── Quiz Mode ── */
+[dir="rtl"] .quiz-overlay {
+  text-align: right;
+}
+
+/* ── Badges ── */
+[dir="rtl"] .p-badge {
+  margin-left: 0;
+  margin-right: 4px;
+}
+
+/* ── Modal Overrides ── */
+[dir="rtl"] .modal-close {
+  left: 12px;
+  right: auto;
+}
+
+/* ── Progress Tracker ── */
+[dir="rtl"] .progress-bar {
+  direction: ltr; /* Progress bars always fill left-to-right */
+}
+
+/* ── Onboarding ── */
+[dir="rtl"] .onboarding-content {
+  text-align: right;
+}
+
+/* ── Tour Mode ── */
+[dir="rtl"] .tour-card {
+  text-align: right;
+}
+
+/* ── Leaflet Map Popups (scoped) ── */
+[dir="rtl"] .leaflet-popup-content {
+  direction: rtl;
+  text-align: right;
+}
+
+/* ── Glossary ── */
+[dir="rtl"] .glossary-term {
+  text-align: right;
+}
+
+[dir="rtl"] .glossary-def {
+  text-align: right;
+}
+
+/* ── Layer checkboxes ── */
+[dir="rtl"] .lyr-row {
+  flex-direction: row-reverse;
+}
+
+/* ── Export Button ── */
+[dir="rtl"] .export-menu {
+  left: 0;
+  right: auto;
+}
+
+/* ── Era Cards ── */
+[dir="rtl"] .era-card {
+  text-align: right;
+}
+
+/* ── Stats Panels ── */
+[dir="rtl"] .stats-row {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .stat-label {
+  text-align: right;
+}
+
+[dir="rtl"] .stat-value {
+  text-align: left;
+}
+
+/* ── Alam/Yaqut ID Cards ── */
+[dir="rtl"] .id-card-row {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .id-card-label {
+  text-align: right;
+}
+
+[dir="rtl"] .id-card-value {
+  text-align: left;
+}
+
+/* ── Landing Page ── */
+[dir="rtl"] .landing-page {
+  text-align: right;
+}
+
+[dir="rtl"] .landing-stats {
+  direction: ltr; /* Numbers stay LTR */
+}

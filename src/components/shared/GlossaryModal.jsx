@@ -55,23 +55,23 @@ export default function GlossaryModal({ lang }) {
   return (
     <>
       <button className="glossary-btn" onClick={() => setOpen(true)}
-        aria-label={lang === 'tr' ? 'Sözlük' : 'Glossary'} title={lang === 'tr' ? 'Sözlük' : 'Glossary'}>
+        aria-label={{ tr: 'Sözlük', en: 'Glossary', ar: '' }[lang]} title={{ tr: 'Sözlük', en: 'Glossary', ar: '' }[lang]}>
         📖
       </button>
 
       {open && (
         <div className="glossary-overlay" onClick={(e) => { if (e.target === e.currentTarget) setOpen(false); }}>
           <div className="glossary-panel" ref={panelRef} role="dialog" aria-modal="true"
-            aria-label={lang === 'tr' ? 'İslam Tarihi Sözlüğü' : 'Islamic History Glossary'}>
+            aria-label={{ tr: 'İslam Tarihi Sözlüğü', en: 'Islamic History Glossary', ar: '' }[lang]}>
             {/* Header */}
             <div className="glossary-header">
               <div className="glossary-title-row">
                 <span className="glossary-icon">📖</span>
                 <h2 className="glossary-title">
-                  {lang === 'tr' ? 'İslam Tarihi Sözlüğü' : 'Islamic History Glossary'}
+                  {{ tr: 'İslam Tarihi Sözlüğü', en: 'Islamic History Glossary', ar: '' }[lang]}
                 </h2>
               </div>
-              <button className="glossary-close" onClick={() => setOpen(false)} aria-label={lang === 'tr' ? 'Kapat' : 'Close'}>✕</button>
+              <button className="glossary-close" onClick={() => setOpen(false)} aria-label={{ tr: 'Kapat', en: 'Close', ar: '' }[lang]}>✕</button>
             </div>
 
             {/* Search */}
@@ -81,26 +81,26 @@ export default function GlossaryModal({ lang }) {
                 ref={inputRef}
                 type="text"
                 className="glossary-search"
-                placeholder={lang === 'tr' ? 'Terim ara… (ör: halife, vakıf, medrese)' : 'Search terms… (e.g. caliph, waqf, madrasa)'}
+                placeholder={{ tr: 'Terim ara… (ör: halife, vakıf, medrese)', en: 'Search terms… (e.g. caliph, waqf, madrasa)', ar: '' }[lang]}
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
-                aria-label={lang === 'tr' ? 'Sözlükte ara' : 'Search glossary'}
+                aria-label={{ tr: 'Sözlükte ara', en: 'Search glossary', ar: '' }[lang]}
               />
               {query && (
-                <button className="glossary-clear" onClick={() => setQuery('')} aria-label={lang === 'tr' ? 'Temizle' : 'Clear'}>✕</button>
+                <button className="glossary-clear" onClick={() => setQuery('')} aria-label={{ tr: 'Temizle', en: 'Clear', ar: '' }[lang]}>✕</button>
               )}
             </div>
 
             {/* Count */}
             <div className="glossary-count">
-              {filtered.length} / {glossary.length} {lang === 'tr' ? 'terim' : 'terms'}
+              {filtered.length} / {glossary.length} {{ tr: 'terim', en: 'terms', ar: '' }[lang]}
             </div>
 
             {/* List */}
             <div className="glossary-list">
               {filtered.length === 0 ? (
                 <div className="glossary-empty">
-                  {lang === 'tr' ? 'Sonuç bulunamadı.' : 'No results found.'}
+                  {{ tr: 'Sonuç bulunamadı.', en: 'No results found.', ar: '' }[lang]}
                 </div>
               ) : (
                 filtered.map(g => (

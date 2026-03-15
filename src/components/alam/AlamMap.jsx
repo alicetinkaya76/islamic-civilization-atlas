@@ -1,5 +1,6 @@
 import { useEffect, useRef, useCallback, useMemo, useState } from 'react';
 import L from 'leaflet';
+import { hn } from '../../data/i18n-utils';
 
 /* ═══ Marker clustering via simple grid-based approach ═══ */
 /* (No external dependency - manual cluster for 7,904 points) */
@@ -92,7 +93,7 @@ export default function AlamMap({ lang, ta, data, selectedId, selectedBio, detai
       marker.on('click', () => onSelect(b.id));
       
       // Tooltip
-      const label = lang === 'tr' ? b.ht : b.he;
+      const label = hn(b, lang);
       const yr = b.md ? `ö. ${b.md}` : b.mb ? `d. ${b.mb}` : '';
       marker.bindTooltip(
         `<b style="font-family:'Amiri',serif;font-size:14px" dir="rtl">${b.h}</b><br/>` +
@@ -227,7 +228,7 @@ export default function AlamMap({ lang, ta, data, selectedId, selectedBio, detai
         {data.length.toLocaleString()} {ta.withCoords}
         <button className={`alam-heat-toggle${showHeat ? ' active' : ''}`}
           onClick={() => setShowHeat(p => !p)}
-          title={lang === 'tr' ? 'Isı haritası' : 'Heatmap'}>
+          title={{ tr: 'Isı haritası', en: 'Heatmap', ar: '' }[lang]}>
           🔥
         </button>
       </div>

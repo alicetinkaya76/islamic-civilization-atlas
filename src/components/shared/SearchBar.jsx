@@ -2,6 +2,7 @@ import { useState, useMemo, useCallback, useRef, useEffect } from 'react';
 import DB from '../../data/db.json';
 import ALAM_LITE from '../../data/alam_lite.json';
 import { n } from '../../hooks/useEntityLookup';
+import { f } from '../../data/i18n-utils';
 
 /* ═══ Turkish + Arabic tolerant normalization ═══ */
 const normalize = (s) =>
@@ -296,7 +297,7 @@ export default function SearchBar({ lang, onFlyTo, onSelectEntity }) {
 
   const handleSelect = useCallback((item) => {
     setShowDropdown(false); setShowRecent(false);
-    addToRecent(query.trim() || (lang === 'tr' ? item.name_tr : item.name_en));
+    addToRecent(query.trim() || (f(item, 'name', lang)));
     setQuery('');
     if (onFlyTo) onFlyTo({ lat: item.lat, lon: item.lon, zoom: item.zoom });
     if (onSelectEntity) onSelectEntity(item);
@@ -335,13 +336,13 @@ export default function SearchBar({ lang, onFlyTo, onSelectEntity }) {
       <div className="search-input-row">
         <span className="search-icon">🔍</span>
         <input ref={inputRef} type="text" className="search-input"
-          placeholder={lang === 'tr' ? 'Hanedan, savaş, âlim, şehir ara…' : 'Search dynasties, battles, scholars, cities…'}
+          placeholder={{ tr: 'Hanedan, savaş, âlim, şehir ara…', en: 'Search dynasties, battles, scholars, cities…', ar: '' }[lang]}
           value={query} onChange={handleChange} onKeyDown={handleKeyDown} onFocus={handleFocus}
-          aria-label={lang === 'tr' ? 'Haritada ara' : 'Search map'}
+          aria-label={{ tr: 'Haritada ara', en: 'Search map', ar: '' }[lang]}
           aria-expanded={showDropdown || showRecent} aria-autocomplete="list" role="combobox" />
         <button className="search-random-btn" onClick={handleRandom}
-          title={lang === 'tr' ? 'Rastgele keşfet' : 'Random discovery'}
-          aria-label={lang === 'tr' ? 'Rastgele keşfet' : 'Random discovery'}>🎲</button>
+          title={{ tr: 'Rastgele keşfet', en: 'Random discovery', ar: '' }[lang]}
+          aria-label={{ tr: 'Rastgele keşfet', en: 'Random discovery', ar: '' }[lang]}>🎲</button>
       </div>
 
       {/* Category filter chips */}
@@ -350,9 +351,9 @@ export default function SearchBar({ lang, onFlyTo, onSelectEntity }) {
           <button key={cat.key}
             className={`search-chip${activeCategories.has(cat.key) ? ' active' : ''}`}
             onClick={() => toggleCategory(cat.key)}
-            title={lang === 'tr' ? cat.label_tr : cat.label_en}>
+            title={f(cat, 'label', lang)}>
             <span className="search-chip-icon">{cat.icon}</span>
-            <span className="search-chip-label">{lang === 'tr' ? cat.label_tr : cat.label_en}</span>
+            <span className="search-chip-label">{f(cat, 'label', lang)}</span>
           </button>
         ))}
       </div>
@@ -361,9 +362,9 @@ export default function SearchBar({ lang, onFlyTo, onSelectEntity }) {
       {showRecent && recentSearches.length > 0 && (
         <ul className="search-dropdown" role="listbox">
           <li className="search-recent-header">
-            <span>{lang === 'tr' ? '🕐 Son Aramalar' : '🕐 Recent Searches'}</span>
+            <span>{{ tr: '🕐 Son Aramalar', en: '🕐 Recent Searches', ar: '' }[lang]}</span>
             <button className="search-recent-clear" onClick={clearRecent}>
-              {lang === 'tr' ? 'Temizle' : 'Clear'}
+              {{ tr: 'Temizle', en: 'Clear', ar: '' }[lang]}
             </button>
           </li>
           {recentSearches.map((term, i) => (
@@ -388,7 +389,7 @@ export default function SearchBar({ lang, onFlyTo, onSelectEntity }) {
               role="option" aria-selected={i === selectedIdx}>
               <span className="search-result-icon">{r.icon}</span>
               <div className="search-result-info">
-                <span className="search-result-name">{lang === 'tr' ? r.name_tr : r.name_en}</span>
+                <span className="search-result-name">{f(r, 'name', lang)}</span>
                 {(r.ctx_yr || r.ctx_detail) && (
                   <span className="search-result-meta">
                     {r.ctx_yr}{r.ctx_yr && r.ctx_detail ? ' · ' : ''}{r.ctx_detail}
@@ -399,7 +400,7 @@ export default function SearchBar({ lang, onFlyTo, onSelectEntity }) {
             </li>
           ))}
           <li className="search-stats">
-            {results.length} {lang === 'tr' ? 'sonuç' : 'results'} / {totalCount.toLocaleString()} {lang === 'tr' ? 'kayıt arasında' : 'records'}
+            {results.length} {{ tr: 'sonuç', en: 'results', ar: '' }[lang]} / {totalCount.toLocaleString()} {{ tr: 'kayıt arasında', en: 'records', ar: '' }[lang]}
           </li>
         </ul>
       )}

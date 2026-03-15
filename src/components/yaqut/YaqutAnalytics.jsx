@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef, useMemo } from 'react';
 import * as d3 from 'd3';
+import { hn } from '../../data/i18n-utils';
 
 /* ═══ Shared ═══ */
 const MARGIN = { top: 30, right: 20, bottom: 40, left: 50 };
@@ -23,7 +24,6 @@ const GEO_TR = {
 /* ═══ A) Geo Type Distribution — Bar Chart ═══ */
 function GeoTypeChart({ data, lang, ty }) {
   const svgRef = useRef(null);
-  const isTr = lang === 'tr';
 
   const geoData = useMemo(() => {
     const counts = {};
@@ -59,7 +59,7 @@ function GeoTypeChart({ data, lang, ty }) {
 
   return (
     <div className="yaqut-chart-card">
-      <h3 className="yaqut-chart-title">📍 {ty.chartGeoType || (isTr ? 'Coğrafi Tip Dağılımı' : 'Geographic Type Distribution')}</h3>
+      <h3 className="yaqut-chart-title">📍 {ty.chartGeoType || ({ tr: 'Coğrafi Tip Dağılımı', en: 'Geographic Type Distribution', ar: '' }[lang])}</h3>
       <svg ref={svgRef} style={{ width: '100%', height: 320 }} />
     </div>
   );
@@ -67,7 +67,7 @@ function GeoTypeChart({ data, lang, ty }) {
 
 /* ═══ B) Country Distribution ═══ */
 function CountryChart({ data, lang, ty }) {
-  const svgRef = useRef(null); const isTr = lang === 'tr';
+  const svgRef = useRef(null);
 
   const countryData = useMemo(() => {
     const counts = {};
@@ -104,7 +104,7 @@ function CountryChart({ data, lang, ty }) {
 
   return (
     <div className="yaqut-chart-card">
-      <h3 className="yaqut-chart-title">🌍 {ty.chartCountry || (isTr ? 'Ülke Dağılımı' : 'Country Distribution')}</h3>
+      <h3 className="yaqut-chart-title">🌍 {ty.chartCountry || ({ tr: 'Ülke Dağılımı', en: 'Country Distribution', ar: '' }[lang])}</h3>
       <svg ref={svgRef} style={{ width: '100%', height: 300 }} />
     </div>
   );
@@ -112,7 +112,7 @@ function CountryChart({ data, lang, ty }) {
 
 /* ═══ C) Arabic Letter Distribution ═══ */
 function LetterChart({ data, lang, ty }) {
-  const svgRef = useRef(null); const isTr = lang === 'tr';
+  const svgRef = useRef(null);
 
   const letterData = useMemo(() => {
     const ARABIC_ORDER = 'أبتثجحخدذرزسشصضطظعغفقكلمنوهي'.split('');
@@ -147,7 +147,7 @@ function LetterChart({ data, lang, ty }) {
 
   return (
     <div className="yaqut-chart-card">
-      <h3 className="yaqut-chart-title">🔤 {ty.chartLetter || (isTr ? 'Harf Dağılımı' : 'Letter Distribution')}</h3>
+      <h3 className="yaqut-chart-title">🔤 {ty.chartLetter || ({ tr: 'Harf Dağılımı', en: 'Letter Distribution', ar: '' }[lang])}</h3>
       <svg ref={svgRef} style={{ width: '100%', height: 260 }} />
     </div>
   );
@@ -155,7 +155,6 @@ function LetterChart({ data, lang, ty }) {
 
 /* ═══ D) Atlas Tags — Tag Cloud ═══ */
 function TagCloud({ data, lang, ty }) {
-  const isTr = lang === 'tr';
   const tagData = useMemo(() => {
     const counts = {};
     data.forEach(e => { if (e.tg) e.tg.forEach(t => { counts[t] = (counts[t] || 0) + 1; }); });
@@ -166,7 +165,7 @@ function TagCloud({ data, lang, ty }) {
 
   return (
     <div className="yaqut-chart-card">
-      <h3 className="yaqut-chart-title">🏷 {ty.chartTags || (isTr ? 'Atlas Etiketleri' : 'Atlas Tags')}</h3>
+      <h3 className="yaqut-chart-title">🏷 {ty.chartTags || ({ tr: 'Atlas Etiketleri', en: 'Atlas Tags', ar: '' }[lang])}</h3>
       <div className="yaqut-tagcloud">
         {tagData.map(d => (
           <span key={d.tag} className="yaqut-tagcloud-item"
@@ -180,10 +179,10 @@ function TagCloud({ data, lang, ty }) {
 
 /* ═══ E) Cross-ref Density ═══ */
 function CrossRefDensity({ data, lang, ty }) {
-  const svgRef = useRef(null); const isTr = lang === 'tr';
+  const svgRef = useRef(null);
   const topPlaces = useMemo(() =>
     data.filter(e => e.pc > 0).sort((a, b) => b.pc - a.pc).slice(0, 20)
-      .map(e => ({ name: isTr ? e.ht : e.he, count: e.pc })), [data, isTr]);
+      .map(e => ({ name: hn(e, lang), count: e.pc })), [data, isTr]);
 
   useEffect(() => {
     const svg = d3.select(svgRef.current); svg.selectAll('*').remove();
@@ -213,7 +212,7 @@ function CrossRefDensity({ data, lang, ty }) {
 
   return (
     <div className="yaqut-chart-card">
-      <h3 className="yaqut-chart-title">👤 {ty.chartCrossRef || (isTr ? 'En Çok Kişi Bağlanan Yerler' : 'Top Places by Person Count')}</h3>
+      <h3 className="yaqut-chart-title">👤 {ty.chartCrossRef || ({ tr: 'En Çok Kişi Bağlanan Yerler', en: 'Top Places by Person Count', ar: '' }[lang])}</h3>
       <svg ref={svgRef} style={{ width: '100%', height: 380 }} />
     </div>
   );
@@ -221,7 +220,7 @@ function CrossRefDensity({ data, lang, ty }) {
 
 /* ═══ F) Time Distribution ═══ */
 function TimeDistribution({ data, lang, ty }) {
-  const svgRef = useRef(null); const isTr = lang === 'tr';
+  const svgRef = useRef(null);
   const centuryData = useMemo(() => {
     const counts = {};
     data.forEach(e => {
@@ -255,7 +254,7 @@ function TimeDistribution({ data, lang, ty }) {
 
   return (
     <div className="yaqut-chart-card">
-      <h3 className="yaqut-chart-title">📅 {ty.chartTime || (isTr ? 'Hicrî Yüzyıl Dağılımı' : 'Hijri Century Distribution')}</h3>
+      <h3 className="yaqut-chart-title">📅 {ty.chartTime || ({ tr: 'Hicrî Yüzyıl Dağılımı', en: 'Hijri Century Distribution', ar: '' }[lang])}</h3>
       <svg ref={svgRef} style={{ width: '100%', height: 250 }} />
     </div>
   );
@@ -263,7 +262,7 @@ function TimeDistribution({ data, lang, ty }) {
 
 /* ═══ G) DIA Coverage — Stacked bar (DIA linked vs not) per geo type ═══ */
 function DiaCoverage({ data, lang, ty }) {
-  const svgRef = useRef(null); const isTr = lang === 'tr';
+  const svgRef = useRef(null);
   const chartData = useMemo(() => {
     const byType = {};
     data.forEach(e => {
@@ -311,16 +310,16 @@ function DiaCoverage({ data, lang, ty }) {
     const lg = svg.append('g').attr('transform', `translate(${MARGIN.left + 10}, ${MARGIN.top - 16})`);
     lg.append('rect').attr('width', 10).attr('height', 10).attr('fill', '#d4a84b').attr('rx', 1);
     lg.append('text').attr('x', 14).attr('y', 9).attr('fill', '#d4a84b').attr('font-size', 10)
-      .text(isTr ? 'DİA bağlantılı' : 'DIA linked');
+      .text({ tr: 'DİA bağlantılı', en: 'DIA linked', ar: '' }[lang]);
     const lg2 = svg.append('g').attr('transform', `translate(${MARGIN.left + 120}, ${MARGIN.top - 16})`);
     lg2.append('rect').attr('width', 10).attr('height', 10).attr('fill', '#1e2a44').attr('rx', 1);
     lg2.append('text').attr('x', 14).attr('y', 9).attr('fill', '#90a4ae').attr('font-size', 10)
-      .text(isTr ? 'Bağlantısız' : 'Not linked');
+      .text({ tr: 'Bağlantısız', en: 'Not linked', ar: '' }[lang]);
   }, [chartData, isTr]);
 
   return (
     <div className="yaqut-chart-card">
-      <h3 className="yaqut-chart-title">📖 {ty.chartDia || (isTr ? 'DİA Kapsam Oranı' : 'DIA Coverage Rate')}</h3>
+      <h3 className="yaqut-chart-title">📖 {ty.chartDia || ({ tr: 'DİA Kapsam Oranı', en: 'DIA Coverage Rate', ar: '' }[lang])}</h3>
       <svg ref={svgRef} style={{ width: '100%', height: 300 }} />
     </div>
   );
@@ -328,10 +327,10 @@ function DiaCoverage({ data, lang, ty }) {
 
 /* ═══ H) Events & Persons Scatter — bubble chart ═══ */
 function EventPersonScatter({ data, lang, ty }) {
-  const svgRef = useRef(null); const isTr = lang === 'tr';
+  const svgRef = useRef(null);
   const bubbles = useMemo(() => {
     return data.filter(e => ((e.np || 0) > 0 || (e.ec || 0) > 0) && e.ct)
-      .map(e => ({ name: isTr ? e.ht : e.he, np: e.np || 0, ec: e.ec || 0, pc: e.pc || 0, ct: e.ct }))
+      .map(e => ({ name: hn(e, lang), np: e.np || 0, ec: e.ec || 0, pc: e.pc || 0, ct: e.ct }))
       .sort((a, b) => (b.np + b.ec) - (a.np + a.ec)).slice(0, 60);
   }, [data, isTr]);
 
@@ -351,7 +350,7 @@ function EventPersonScatter({ data, lang, ty }) {
       .attr('cx', d => x(d.ec)).attr('cy', d => y(d.np))
       .attr('r', d => r(d.pc || 1)).attr('fill', (d, i) => color(i % 8))
       .attr('opacity', 0.7).attr('stroke', '#080c18').attr('stroke-width', 0.5)
-      .append('title').text(d => `${d.name}: ${d.np} ${isTr ? 'kişi' : 'persons'}, ${d.ec} ${isTr ? 'olay' : 'events'}, ${d.pc} ${isTr ? 'xref' : 'xref'}`);
+      .append('title').text(d => `${d.name}: ${d.np} ${{ tr: 'kişi', en: 'persons', ar: '' }[lang]}, ${d.ec} ${{ tr: 'olay', en: 'events', ar: '' }[lang]}, ${d.pc} ${{ tr: 'xref', en: 'xref', ar: '' }[lang]}`);
 
     svg.selectAll('text.lbl').data(bubbles.filter(d => d.np > 3 || d.ec > 3)).join('text').attr('class', 'lbl')
       .attr('x', d => x(d.ec)).attr('y', d => y(d.np) - r(d.pc || 1) - 3)
@@ -362,15 +361,15 @@ function EventPersonScatter({ data, lang, ty }) {
     svg.append('g').attr('transform', `translate(${M.left},0)`).call(d3.axisLeft(y).ticks(6)).attr('color', '#c4b89a');
 
     svg.append('text').attr('x', w / 2).attr('y', h - 8).attr('text-anchor', 'middle')
-      .attr('fill', '#c4b89a').attr('font-size', 11).text(isTr ? 'Olay Sayısı' : 'Event Count');
+      .attr('fill', '#c4b89a').attr('font-size', 11).text({ tr: 'Olay Sayısı', en: 'Event Count', ar: '' }[lang]);
     svg.append('text').attr('x', -h / 2).attr('y', 14).attr('transform', 'rotate(-90)')
       .attr('text-anchor', 'middle').attr('fill', '#c4b89a').attr('font-size', 11)
-      .text(isTr ? 'Kişi Sayısı (Yâkût)' : 'Person Count (Yāqūt)');
+      .text({ tr: 'Kişi Sayısı (Yâkût)', en: 'Person Count (Yāqūt)', ar: '' }[lang]);
   }, [bubbles, isTr]);
 
   return (
     <div className="yaqut-chart-card">
-      <h3 className="yaqut-chart-title">🔬 {ty.chartScatter || (isTr ? 'Olay–Kişi Korelasyonu' : 'Event–Person Correlation')}</h3>
+      <h3 className="yaqut-chart-title">🔬 {ty.chartScatter || ({ tr: 'Olay–Kişi Korelasyonu', en: 'Event–Person Correlation', ar: '' }[lang])}</h3>
       <svg ref={svgRef} style={{ width: '100%', height: 350 }} />
     </div>
   );
@@ -390,7 +389,7 @@ const DESC = {
 
 /* ═══ Main Analytics ═══ */
 export default function YaqutAnalytics({ lang, ty, data, filtered }) {
-  const desc = (key) => lang === 'tr' ? DESC[key].tr : DESC[key].en;
+  const desc = (key) => DESC[key]?.[lang] || DESC[key]?.en || DESC[key]?.tr || '';
 
   return (
     <div className="yaqut-analytics">

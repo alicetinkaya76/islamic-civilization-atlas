@@ -1,5 +1,6 @@
 import { useMemo } from 'react';
 import XREFS from '../../data/alam_xrefs.json';
+import { hn, dn } from '../../data/i18n-utils';
 
 /* ═══ Normalize xrefs ═══ */
 function normalizeXrefs(raw) {
@@ -44,12 +45,10 @@ export default function AlamIdCard({ lang, ta, bio, detail, onClose, allData, on
       </div>
     );
   }
-
-  const isTr = lang === 'tr';
-  const heading1 = isTr ? bio.ht : bio.he;
+  const heading1 = hn(bio, lang);
   const heading2 = isTr ? bio.he : bio.ht;
-  const fullName = detail ? (isTr ? detail.nt : detail.ne) : (isTr ? bio.ht : bio.he);
-  const desc = detail ? (isTr ? detail.dt : detail.de) : (isTr ? bio.dt : bio.de);
+  const fullName = detail ? (isTr ? detail.nt : detail.ne) : (hn(bio, lang));
+  const desc = detail ? (dn(detail, lang)) : (dn(bio, lang));
   const prof = isTr ? bio.pt : bio.pe;
   const nisbe = detail ? (isTr ? detail.n2 : detail.ne2) : '';
   const birthPlace = detail ? detail.bp : bio.bp;
@@ -80,7 +79,7 @@ export default function AlamIdCard({ lang, ta, bio, detail, onClose, allData, on
       const other = byId[otherId];
       const entry = {
         id: otherId,
-        name: isTr ? other.ht : other.he,
+        name: hn(other, lang),
         arabic: other.h,
         death: other.md,
         rel: r,
@@ -160,7 +159,7 @@ export default function AlamIdCard({ lang, ta, bio, detail, onClose, allData, on
         <h3 className="alam-idcard-h1">{heading1}</h3>
         <p className="alam-idcard-h2">{heading2}</p>
         <p className="alam-idcard-arabic" dir="rtl">{bio.h}</p>
-        {bio.g === 'F' && <span className="alam-idcard-gender-badge">{lang === 'tr' ? 'Kadın' : 'Female'}</span>}
+        {bio.g === 'F' && <span className="alam-idcard-gender-badge">{{ tr: 'Kadın', en: 'Female', ar: '' }[lang]}</span>}
       </div>
 
       {/* Full name */}
@@ -231,33 +230,33 @@ export default function AlamIdCard({ lang, ta, bio, detail, onClose, allData, on
             🕸 {isTr ? `İlişkiler (${relations.total})` : `Relationships (${relations.total})`}
           </h4>
           <RelList
-            title={isTr ? 'Hocaları' : 'Teachers'}
+            title={{ tr: 'Hocaları', en: 'Teachers', ar: '' }[lang]}
             items={relations.teachers}
             icon="→"
           />
           <RelList
-            title={isTr ? 'Talebeleri' : 'Students'}
+            title={{ tr: 'Talebeleri', en: 'Students', ar: '' }[lang]}
             items={relations.students}
             icon="←"
           />
           <RelList
-            title={isTr ? 'Etkilendikleri' : 'Influenced by'}
+            title={{ tr: 'Etkilendikleri', en: 'Influenced by', ar: '' }[lang]}
             items={relations.influences}
             icon="💡"
           />
           <RelList
-            title={isTr ? 'Akranlar' : 'Peers'}
+            title={{ tr: 'Akranlar', en: 'Peers', ar: '' }[lang]}
             items={relations.peers}
             icon="⟷"
           />
           <RelList
-            title={isTr ? 'Diğer' : 'Other'}
+            title={{ tr: 'Diğer', en: 'Other', ar: '' }[lang]}
             items={relations.others}
             icon="·"
           />
           {onNavigate && (
             <p style={{ fontSize: 10, color: '#546e7a', marginTop: 4 }}>
-              {isTr ? '↑ Tıkla → kişiye git' : '↑ Click → navigate to person'}
+              {{ tr: '↑ Tıkla → kişiye git', en: '↑ Click → navigate to person', ar: '' }[lang]}
             </p>
           )}
         </div>
@@ -283,7 +282,7 @@ export default function AlamIdCard({ lang, ta, bio, detail, onClose, allData, on
       {/* Multi-coordinates */}
       {multiCoords && multiCoords.length > 1 && (
         <div className="alam-idcard-places">
-          <h4 className="alam-idcard-section-title">📍 {isTr ? 'Mekânlar' : 'Places'}</h4>
+          <h4 className="alam-idcard-section-title">📍 {{ tr: 'Mekânlar', en: 'Places', ar: '' }[lang]}</h4>
           <div className="alam-places-list">
             {multiCoords.map((c, i) => (
               <span key={i} className="alam-place-tag">

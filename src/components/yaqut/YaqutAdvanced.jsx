@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef, useMemo, useCallback } from 'react';
 import * as d3 from 'd3';
+import { hn } from '../../data/i18n-utils';
 
 /* ═══════════════════════════════════════════════════
    1) PLACE-PLACE GRAPH — D3 Force Graph
@@ -10,7 +11,6 @@ export function PlaceGraph({ lang }) {
   const [graphData, setGraphData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [selectedNode, setSelectedNode] = useState(null);
-  const isTr = lang === 'tr';
 
   // Load graph data on demand
   useEffect(() => {
@@ -82,7 +82,7 @@ export function PlaceGraph({ lang }) {
         .on('end', (e, d) => { if (!e.active) sim.alphaTarget(0); d.fx = null; d.fy = null; })
       );
 
-    node.append('title').text(d => `${d.n} (${d.degree} ${isTr ? 'bağlantı' : 'connections'})`);
+    node.append('title').text(d => `${d.n} (${d.degree} ${{ tr: 'bağlantı', en: 'connections', ar: '' }[lang]})`);
 
     sim.on('tick', () => {
       link.attr('x1', d => d.source.x).attr('y1', d => d.source.y)
@@ -96,27 +96,25 @@ export function PlaceGraph({ lang }) {
   return (
     <div className="yaqut-adv-panel" ref={containerRef}>
       <div className="yaqut-adv-header">
-        <h3>🕸 {isTr ? 'Yer-Yer İlişki Grafı' : 'Place-Place Relationship Graph'}</h3>
+        <h3>🕸 {{ tr: 'Yer-Yer İlişki Grafı', en: 'Place-Place Relationship Graph', ar: '' }[lang]}</h3>
         {graphData && (
           <span className="yaqut-adv-stat">
-            {graphData.nodes.length} {isTr ? 'düğüm' : 'nodes'} · {graphData.edges.length} {isTr ? 'bağlantı' : 'links'}
+            {graphData.nodes.length} {{ tr: 'düğüm', en: 'nodes', ar: '' }[lang]} · {graphData.edges.length} {{ tr: 'bağlantı', en: 'links', ar: '' }[lang]}
           </span>
         )}
       </div>
       <p className="yaqut-adv-desc">
-        {isTr
-          ? 'Yâkût metninden çıkarılan yer-yer ilişkileri (parent_locations, location_relations). En bağlantılı 300 düğüm gösterilmektedir. Düğümleri sürükleyebilir, zoom yapabilirsiniz.'
-          : 'Place-place relationships extracted from Yāqūt\'s text. Top 300 connected nodes shown. Drag nodes and zoom to explore.'}
+        {{ tr: 'Yâkût metninden çıkarılan yer-yer ilişkileri (parent_locations, location_relations). En bağlantılı 300 düğüm gösterilmektedir. Düğümleri sürükleyebilir, zoom yapabilirsiniz.', en: 'Place-place relationships extracted from Yāqūt\'s text. Top 300 connected nodes shown. Drag nodes and zoom to explore.', ar: '' }[lang]}
       </p>
       {loading ? (
-        <div className="yaqut-loading">{isTr ? 'Yükleniyor...' : 'Loading...'}</div>
+        <div className="yaqut-loading">{{ tr: 'Yükleniyor...', en: 'Loading...', ar: '' }[lang]}</div>
       ) : (
         <svg ref={svgRef} style={{ width: '100%', height: 520 }} />
       )}
       {selectedNode && (
         <div className="yaqut-adv-info">
           <strong dir="rtl">{selectedNode.n}</strong>
-          <span> — {selectedNode.degree} {isTr ? 'bağlantı' : 'connections'}</span>
+          <span> — {selectedNode.degree} {{ tr: 'bağlantı', en: 'connections', ar: '' }[lang]}</span>
         </div>
       )}
     </div>
@@ -129,7 +127,6 @@ export function PlaceGraph({ lang }) {
 export function PersonPlaceNetwork({ data, lang }) {
   const svgRef = useRef(null);
   const containerRef = useRef(null);
-  const isTr = lang === 'tr';
 
   // Top places by cross-ref count
   const topPlaces = useMemo(() => {
@@ -138,7 +135,7 @@ export function PersonPlaceNetwork({ data, lang }) {
       .slice(0, 15)
       .map(e => ({
         id: `p_${e.id}`,
-        name: isTr ? e.ht : e.he,
+        name: hn(e, lang),
         type: 'place',
         count: e.pc || 0,
       }));
@@ -173,7 +170,7 @@ export function PersonPlaceNetwork({ data, lang }) {
     svg.append('text')
       .attr('x', cx).attr('y', cy + 4)
       .attr('text-anchor', 'middle').attr('fill', '#c4b89a').attr('font-size', 10)
-      .text(isTr ? 'Yerler' : 'Places');
+      .text({ tr: 'Yerler', en: 'Places', ar: '' }[lang]);
 
     // Draw connections
     nodes.forEach(n => {
@@ -208,12 +205,10 @@ export function PersonPlaceNetwork({ data, lang }) {
   return (
     <div className="yaqut-adv-panel" ref={containerRef}>
       <div className="yaqut-adv-header">
-        <h3>👤 {isTr ? 'Kişi-Yer Ağı' : 'Person-Place Network'}</h3>
+        <h3>👤 {{ tr: 'Kişi-Yer Ağı', en: 'Person-Place Network', ar: '' }[lang]}</h3>
       </div>
       <p className="yaqut-adv-desc">
-        {isTr
-          ? 'En çok Ziriklî biyografisi bağlanan 15 yer. Düğüm büyüklüğü kişi sayısına orantılıdır. Kahire, Bağdat ve Mısır başı çeker.'
-          : 'Top 15 places with most Zirikli biography links. Node size proportional to person count. Cairo, Baghdad and Egypt lead.'}
+        {{ tr: 'En çok Ziriklî biyografisi bağlanan 15 yer. Düğüm büyüklüğü kişi sayısına orantılıdır. Kahire, Bağdat ve Mısır başı çeker.', en: 'Top 15 places with most Zirikli biography links. Node size proportional to person count. Cairo, Baghdad and Egypt lead.', ar: '' }[lang]}
       </p>
       <svg ref={svgRef} style={{ width: '100%', height: 400 }} />
     </div>
@@ -225,7 +220,6 @@ export function PersonPlaceNetwork({ data, lang }) {
    ═══════════════════════════════════════════════════ */
 export function GeoHeatmap({ data, lang }) {
   const svgRef = useRef(null);
-  const isTr = lang === 'tr';
 
   const regionData = useMemo(() => {
     const counts = {};
@@ -286,12 +280,10 @@ export function GeoHeatmap({ data, lang }) {
   return (
     <div className="yaqut-adv-panel">
       <div className="yaqut-adv-header">
-        <h3>🔥 {isTr ? 'Coğrafi Kümeleme (Treemap)' : 'Geographic Clustering (Treemap)'}</h3>
+        <h3>🔥 {{ tr: 'Coğrafi Kümeleme (Treemap)', en: 'Geographic Clustering (Treemap)', ar: '' }[lang]}</h3>
       </div>
       <p className="yaqut-adv-desc">
-        {isTr
-          ? 'Modern ülkelere göre Yâkût girişlerinin treemap görselleştirmesi. Alan büyüklüğü giriş sayısıyla orantılıdır.'
-          : 'Treemap visualization of Yāqūt entries by modern country. Area size proportional to entry count.'}
+        {{ tr: 'Modern ülkelere göre Yâkût girişlerinin treemap görselleştirmesi. Alan büyüklüğü giriş sayısıyla orantılıdır.', en: 'Treemap visualization of Yāqūt entries by modern country. Area size proportional to entry count.', ar: '' }[lang]}
       </p>
       <svg ref={svgRef} style={{ width: '100%', height: 400 }} />
     </div>

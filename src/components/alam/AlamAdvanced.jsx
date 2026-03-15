@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef, useMemo, useCallback } from 'react';
 import * as d3 from 'd3';
 import XREFS from '../../data/alam_xrefs.json';
+import { hn } from '../../data/i18n-utils';
 
 /* ═══════════════════════════════════════════════════
    İlişki Türü Renk ve Etiket Haritaları
@@ -51,7 +52,6 @@ export function CrossRefNetwork({ data, lang, onSelectPerson }) {
   const containerRef = useRef(null);
   const [selectedNode, setSelectedNode] = useState(null);
   const [filterRel, setFilterRel] = useState('all');
-  const isTr = lang === 'tr';
 
   /* Normalize XREFS: yeni format {s,t,r,src,c} veya eski [[s,t]] */
   const normalizedXrefs = useMemo(() => {
@@ -107,7 +107,7 @@ export function CrossRefNetwork({ data, lang, onSelectPerson }) {
       const b = byId[id];
       return {
         id,
-        name: isTr ? b.ht : b.he,
+        name: hn(b, lang),
         arabic: b.h,
         century: b.c,
         profession: isTr ? b.pt : b.pe,
@@ -193,7 +193,7 @@ export function CrossRefNetwork({ data, lang, onSelectPerson }) {
       );
 
     node.append('title').text(d =>
-      `${d.name} (${d.arabic})\n${isTr ? 'Vefat' : 'Death'}: ${d.death || '?'}\n${d.degree} ${isTr ? 'bağlantı' : 'connections'}`
+      `${d.name} (${d.arabic})\n${{ tr: 'Vefat', en: 'Death', ar: '' }[lang]}: ${d.death || '?'}\n${d.degree} ${{ tr: 'bağlantı', en: 'connections', ar: '' }[lang]}`
     );
 
     sim.on('tick', () => {
@@ -210,9 +210,9 @@ export function CrossRefNetwork({ data, lang, onSelectPerson }) {
   return (
     <div className="alam-adv-panel" ref={containerRef}>
       <div className="alam-adv-header">
-        <h3>🕸 {isTr ? 'Entelektüel İlişki Ağı' : 'Intellectual Relationship Network'}</h3>
+        <h3>🕸 {{ tr: 'Entelektüel İlişki Ağı', en: 'Intellectual Relationship Network', ar: '' }[lang]}</h3>
         <span className="alam-adv-stat">
-          {graph.nodes.length} {isTr ? 'düğüm' : 'nodes'} · {graph.edges.length} {isTr ? 'bağlantı' : 'links'}
+          {graph.nodes.length} {{ tr: 'düğüm', en: 'nodes', ar: '' }[lang]} · {graph.edges.length} {{ tr: 'bağlantı', en: 'links', ar: '' }[lang]}
         </span>
       </div>
 
@@ -237,15 +237,13 @@ export function CrossRefNetwork({ data, lang, onSelectPerson }) {
               border: `1px solid ${REL_COLOR[r] || '#4fc3f7'}`,
               fontWeight: filterRel === r ? 700 : 400,
             }}>
-            {r === 'all' ? (isTr ? 'Tümü' : 'All') : (relLabels[r] || r)}
+            {r === 'all' ? ({ tr: 'Tümü', en: 'All', ar: '' }[lang]) : (relLabels[r] || r)}
           </button>
         ))}
       </div>
 
       <p className="alam-adv-desc" style={{ marginBottom: 4 }}>
-        {isTr
-          ? "Hoca-talebe (mavi), etki (yeşil), eleştiri (kırmızı) ilişkileri gösterir. Kenar kalınlığı = çoklu kaynak doğrulaması. Sürükle, yakınlaştır, tıkla."
-          : "Shows teacher-student (blue), influence (green), criticism (red) relationships. Edge thickness = multi-source verification. Drag, zoom, click."}
+        {{ tr: 'Hoca-talebe (mavi), etki (yeşil), eleştiri (kırmızı) ilişkileri gösterir. Kenar kalınlığı = çoklu kaynak doğrulaması. Sürükle, yakınlaştır, tıkla.', en: 'Shows teacher-student (blue), influence (green), criticism (red) relationships. Edge thickness = multi-source verification. Drag, zoom, click.', ar: '' }[lang]}
       </p>
 
       {/* Renk açıklaması */}
@@ -271,14 +269,14 @@ export function CrossRefNetwork({ data, lang, onSelectPerson }) {
               style={{ background: 'none', border: 'none', color: '#90a4ae', cursor: 'pointer', fontSize: 14 }}>✕</button>
           </div>
           <div style={{ fontSize: 12, color: '#90a4ae', marginTop: 4 }}>
-            {isTr ? 'Vefat' : 'Death'}: {selectedNode.death || '?'}
+            {{ tr: 'Vefat', en: 'Death', ar: '' }[lang]}: {selectedNode.death || '?'}
             {selectedNode.madhab && <> · {selectedNode.madhab}</>}
           </div>
           {selectedNode.profession && (
             <div style={{ fontSize: 11, color: '#c4b89a', marginTop: 2 }}>{selectedNode.profession}</div>
           )}
           <div style={{ marginTop: 6, fontWeight: 600, color: '#4fc3f7' }}>
-            {selectedNode.degree} {isTr ? 'bağlantı' : 'connections'}
+            {selectedNode.degree} {{ tr: 'bağlantı', en: 'connections', ar: '' }[lang]}
           </div>
           {selectedNode.diaSlug && (
             <a href={`https://islamansiklopedisi.org.tr/${selectedNode.diaSlug}`}
@@ -300,7 +298,6 @@ export function TimeMachine({ data, lang }) {
   const [year, setYear] = useState(850);
   const [playing, setPlaying] = useState(false);
   const intervalRef = useRef(null);
-  const isTr = lang === 'tr';
 
   const alive = useMemo(() => {
     return data.filter(b => {
@@ -348,8 +345,8 @@ export function TimeMachine({ data, lang }) {
   return (
     <div className="alam-adv-panel">
       <div className="alam-adv-header">
-        <h3>⏳ {isTr ? 'Zaman Makinesi' : 'Time Machine'}</h3>
-        <span className="alam-adv-stat">{alive.length} {isTr ? 'kişi hayatta' : 'alive'}</span>
+        <h3>⏳ {{ tr: 'Zaman Makinesi', en: 'Time Machine', ar: '' }[lang]}</h3>
+        <span className="alam-adv-stat">{alive.length} {{ tr: 'kişi hayatta', en: 'alive', ar: '' }[lang]}</span>
       </div>
       <p className="alam-adv-desc">
         {isTr
@@ -365,18 +362,18 @@ export function TimeMachine({ data, lang }) {
         <input type="range" min={632} max={1950} step={5} value={year}
           onChange={e => { setPlaying(false); setYear(+e.target.value); }}
           className="alam-tm-slider" />
-        <span className="alam-tm-year">{year} {isTr ? 'M' : 'CE'}</span>
+        <span className="alam-tm-year">{year} {{ tr: 'M', en: 'CE', ar: '' }[lang]}</span>
       </div>
 
       <div className="alam-tm-big-num">
         <span className="alam-tm-count">{alive.length}</span>
-        <span className="alam-tm-label">{isTr ? 'kişi hayatta' : 'persons alive'}</span>
-        <span className="alam-tm-sub">{aliveGeocoded.length} {isTr ? 'konumlu' : 'geocoded'}</span>
+        <span className="alam-tm-label">{{ tr: 'kişi hayatta', en: 'persons alive', ar: '' }[lang]}</span>
+        <span className="alam-tm-sub">{aliveGeocoded.length} {{ tr: 'konumlu', en: 'geocoded', ar: '' }[lang]}</span>
       </div>
 
       {/* Top regions alive */}
       <div className="alam-tm-section">
-        <h4>{isTr ? 'En Yoğun Bölgeler' : 'Top Regions'}</h4>
+        <h4>{{ tr: 'En Yoğun Bölgeler', en: 'Top Regions', ar: '' }[lang]}</h4>
         {topCities.map(([name, count]) => (
           <div key={name} className="alam-sp-bar-row">
             <span className="alam-sp-bar-label">{name}</span>
@@ -390,7 +387,7 @@ export function TimeMachine({ data, lang }) {
 
       {/* Top professions alive */}
       <div className="alam-tm-section">
-        <h4>{isTr ? 'Baskın Meslekler' : 'Top Professions'}</h4>
+        <h4>{{ tr: 'Baskın Meslekler', en: 'Top Professions', ar: '' }[lang]}</h4>
         {topProfs.map(([name, count]) => (
           <div key={name} className="alam-sp-bar-row">
             <span className="alam-sp-bar-label">{name}</span>
@@ -410,7 +407,6 @@ export function TimeMachine({ data, lang }) {
    ═══════════════════════════════════════════════════ */
 export function WorkProfessionScatter({ data, lang }) {
   const svgRef = useRef(null);
-  const isTr = lang === 'tr';
 
   const bubbles = useMemo(() => {
     const profStats = {};
@@ -467,7 +463,7 @@ export function WorkProfessionScatter({ data, lang }) {
       .attr('stroke', '#080c18')
       .attr('stroke-width', 1)
       .append('title')
-      .text(d => `${d.name}: ${d.count} ${isTr ? 'kişi' : 'persons'}, ${d.avgWorks} ${isTr ? 'ort. eser' : 'avg works'}, %${d.workRatio} ${isTr ? 'eserli' : 'with works'}`);
+      .text(d => `${d.name}: ${d.count} ${{ tr: 'kişi', en: 'persons', ar: '' }[lang]}, ${d.avgWorks} ${{ tr: 'ort. eser', en: 'avg works', ar: '' }[lang]}, %${d.workRatio} ${{ tr: 'eserli', en: 'with works', ar: '' }[lang]}`);
 
     g.selectAll('text')
       .data(bubbles.filter(d => d.count > 100 || d.avgWorks > 4))
@@ -488,23 +484,21 @@ export function WorkProfessionScatter({ data, lang }) {
     // Axis labels
     svg.append('text').attr('x', w / 2).attr('y', h - 8)
       .attr('text-anchor', 'middle').attr('fill', '#c4b89a').attr('font-size', 11)
-      .text(isTr ? 'Kişi Sayısı' : 'Person Count');
+      .text({ tr: 'Kişi Sayısı', en: 'Person Count', ar: '' }[lang]);
     svg.append('text').attr('x', -h / 2).attr('y', 14)
       .attr('transform', 'rotate(-90)').attr('text-anchor', 'middle')
       .attr('fill', '#c4b89a').attr('font-size', 11)
-      .text(isTr ? 'Ort. Eser Sayısı' : 'Avg. Work Count');
+      .text({ tr: 'Ort. Eser Sayısı', en: 'Avg. Work Count', ar: '' }[lang]);
 
   }, [bubbles, isTr]);
 
   return (
     <div className="alam-adv-panel">
       <div className="alam-adv-header">
-        <h3>🔬 {isTr ? 'Eser-Meslek Korelasyonu' : 'Work-Profession Correlation'}</h3>
+        <h3>🔬 {{ tr: 'Eser-Meslek Korelasyonu', en: 'Work-Profession Correlation', ar: '' }[lang]}</h3>
       </div>
       <p className="alam-adv-desc">
-        {isTr
-          ? 'Her balon bir meslek grubunu temsil eder. X ekseni = kişi sayısı, Y ekseni = ortalama eser sayısı, balon büyüklüğü = eser sahibi oranı. Kalabalık meslekler ile üretken meslekler arasındaki farkı gösterir.'
-          : 'Each bubble represents a profession. X = person count, Y = avg works, bubble size = % with works. Shows the difference between populous and productive professions.'}
+        {{ tr: 'Her balon bir meslek grubunu temsil eder. X ekseni = kişi sayısı, Y ekseni = ortalama eser sayısı, balon büyüklüğü = eser sahibi oranı. Kalabalık meslekler ile üretken meslekler arasındaki farkı gösterir.', en: 'Each bubble represents a profession. X = person count, Y = avg works, bubble size = % with works. Shows the difference between populous and productive professions.', ar: '' }[lang]}
       </p>
       <svg ref={svgRef} style={{ width: '100%', height: 400 }} />
     </div>
@@ -517,7 +511,6 @@ export function WorkProfessionScatter({ data, lang }) {
 export function CenturyComparison({ data, lang }) {
   const [centuryA, setCenturyA] = useState(10);
   const [centuryB, setCenturyB] = useState(15);
-  const isTr = lang === 'tr';
   const CENTURIES = Array.from({ length: 15 }, (_, i) => i + 6);
 
   const getProfile = useCallback((c) => {
@@ -554,23 +547,23 @@ export function CenturyComparison({ data, lang }) {
       <select className="alam-cmp-select" value={century}
         onChange={e => century === centuryA ? setCenturyA(+e.target.value) : setCenturyB(+e.target.value)}
         style={{ borderColor: color, color }}>
-        {CENTURIES.map(c => <option key={c} value={c}>{c}. {isTr ? 'yüzyıl' : 'century'}</option>)}
+        {CENTURIES.map(c => <option key={c} value={c}>{c}. {{ tr: 'yüzyıl', en: 'century', ar: '' }[lang]}</option>)}
       </select>
-      <div className="alam-cmp-big"><strong>{profile.total}</strong> {isTr ? 'biyografi' : 'biographies'}</div>
+      <div className="alam-cmp-big"><strong>{profile.total}</strong> {{ tr: 'biyografi', en: 'biographies', ar: '' }[lang]}</div>
       <div className="alam-cmp-stats">
-        <span>{profile.works} {isTr ? 'eser' : 'works'}</span>
-        <span>{profile.female} {isTr ? 'kadın' : 'female'}</span>
+        <span>{profile.works} {{ tr: 'eser', en: 'works', ar: '' }[lang]}</span>
+        <span>{profile.female} {{ tr: 'kadın', en: 'female', ar: '' }[lang]}</span>
         <span>{profile.withDia} DİA</span>
       </div>
-      <h5>{isTr ? 'Meslekler' : 'Professions'}</h5>
+      <h5>{{ tr: 'Meslekler', en: 'Professions', ar: '' }[lang]}</h5>
       {profile.topProfs.map(([n, c]) => (
         <div key={n} className="alam-cmp-item"><span>{n}</span><strong>{c}</strong></div>
       ))}
-      <h5>{isTr ? 'Bölgeler' : 'Regions'}</h5>
+      <h5>{{ tr: 'Bölgeler', en: 'Regions', ar: '' }[lang]}</h5>
       {profile.topRegions.map(([n, c]) => (
         <div key={n} className="alam-cmp-item"><span>{n}</span><strong>{c}</strong></div>
       ))}
-      <h5>{isTr ? 'Mezhepler' : 'Schools'}</h5>
+      <h5>{{ tr: 'Mezhepler', en: 'Schools', ar: '' }[lang]}</h5>
       {profile.topMadh.map(([n, c]) => (
         <div key={n} className="alam-cmp-item"><span>{n}</span><strong>{c}</strong></div>
       ))}
@@ -580,12 +573,10 @@ export function CenturyComparison({ data, lang }) {
   return (
     <div className="alam-adv-panel">
       <div className="alam-adv-header">
-        <h3>⚖ {isTr ? 'Yüzyıl Karşılaştırması' : 'Century Comparison'}</h3>
+        <h3>⚖ {{ tr: 'Yüzyıl Karşılaştırması', en: 'Century Comparison', ar: '' }[lang]}</h3>
       </div>
       <p className="alam-adv-desc">
-        {isTr
-          ? 'İki yüzyılı yan yana karşılaştır. Meslek, bölge ve mezhep dağılımındaki değişimi gör.'
-          : 'Compare two centuries side by side. See shifts in profession, region and school distribution.'}
+        {{ tr: 'İki yüzyılı yan yana karşılaştır. Meslek, bölge ve mezhep dağılımındaki değişimi gör.', en: 'Compare two centuries side by side. See shifts in profession, region and school distribution.', ar: '' }[lang]}
       </p>
       <div className="alam-cmp-grid">
         <CompareCol century={centuryA} profile={profileA} color="#4fc3f7" />

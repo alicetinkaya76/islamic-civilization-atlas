@@ -26,7 +26,7 @@ export default function CausalView({ lang, t }) {
       arr = arr.filter(c => {
         const sn = nameMap[`${c.st}:${c.si}`] || '';
         const tn = nameMap[`${c.tt}:${c.ti}`] || '';
-        const desc = lang === 'tr' ? c.dtr : c.den;
+        const desc = (c[`d${lang}`] || c.den || c.dtr);
         return sn.toLowerCase().includes(q) || tn.toLowerCase().includes(q) || desc.toLowerCase().includes(q);
       });
     }
@@ -64,7 +64,7 @@ export default function CausalView({ lang, t }) {
     if (graphData.nodes.length === 0) {
       svg.append('text').attr('x', W / 2).attr('y', H / 2)
         .attr('text-anchor', 'middle').attr('fill', '#6b6b7b')
-        .attr('font-size', '14px').text(lang === 'tr' ? 'Sonuç bulunamadı' : 'No results found');
+        .attr('font-size', '14px').text({ tr: 'Sonuç bulunamadı', en: 'No results found', ar: '' }[lang]);
       return;
     }
 
@@ -122,12 +122,12 @@ export default function CausalView({ lang, t }) {
       const relLinks = graphData.edges.filter(e => e.source.id === d.id || e.target.id === d.id);
       setTooltip({
         x: ev.pageX, y: ev.pageY,
-        html: `<b>${ENTITY_ICON[d.type] || ''} ${d.label}</b><br/>${lang === 'tr' ? 'Bağlantı' : 'Links'}: ${relLinks.length}`
+        html: `<b>${ENTITY_ICON[d.type] || ''} ${d.label}</b><br/>${{ tr: 'Bağlantı', en: 'Links', ar: '' }[lang]}: ${relLinks.length}`
       });
     }).on('mouseleave', () => setTooltip(null));
 
     link.on('mouseenter', (ev, d) => {
-      const desc = lang === 'tr' ? d.dtr : d.den;
+      const desc = (d[`d${lang}`] || d.den || d.dtr);
       setTooltip({ x: ev.pageX, y: ev.pageY, html: `<b>${d.lt}</b><br/>${desc}` });
     }).on('mouseleave', () => setTooltip(null));
 
@@ -147,7 +147,7 @@ export default function CausalView({ lang, t }) {
       <div className="cl-toolbar">
         <div className="cl-title">
           <span className="cl-h">{tl.title || 'Causality Network'}</span>
-          <span className="cl-sub">{links.length} / {(DB.causal || []).length} {lang === 'tr' ? 'bağlantı' : 'links'}</span>
+          <span className="cl-sub">{links.length} / {(DB.causal || []).length} {{ tr: 'bağlantı', en: 'links', ar: '' }[lang]}</span>
         </div>
         <div className="cl-filters">
           <select className="cl-sel" value={filterEntity} onChange={e => setFilterEntity(e.target.value)}>
@@ -164,7 +164,7 @@ export default function CausalView({ lang, t }) {
           </select>
           <input className="cl-search" type="text" value={search}
             onChange={e => setSearch(e.target.value)}
-            placeholder={lang === 'tr' ? 'Ara…' : 'Search…'} />
+            placeholder={{ tr: 'Ara…', en: 'Search…', ar: '' }[lang]} />
         </div>
       </div>
       <div className="cl-content">
@@ -172,12 +172,12 @@ export default function CausalView({ lang, t }) {
           <svg ref={svgRef} />
         </div>
         <div className="cl-list">
-          <div className="cl-list-h">{lang === 'tr' ? 'Bağlantı Listesi' : 'Link List'}</div>
+          <div className="cl-list-h">{{ tr: 'Bağlantı Listesi', en: 'Link List', ar: '' }[lang]}</div>
           <div className="cl-list-scroll">
             {links.slice(0, 80).map((l, i) => {
               const sn = nameMap[`${l.st}:${l.si}`] || `${l.st}#${l.si}`;
               const tn = nameMap[`${l.tt}:${l.ti}`] || `${l.tt}#${l.ti}`;
-              const desc = lang === 'tr' ? l.dtr : l.den;
+              const desc = (l[`d${lang}`] || l.den || l.dtr);
               return (
                 <div key={i} className="cl-item">
                   <div className="cl-item-top">
@@ -194,7 +194,7 @@ export default function CausalView({ lang, t }) {
                 </div>
               );
             })}
-            {links.length > 80 && <div className="cl-more">{lang === 'tr' ? `+${links.length - 80} daha…` : `+${links.length - 80} more…`}</div>}
+            {links.length > 80 && <div className="cl-more">{{ tr: `+${links.length - 80} daha…`, en: `+${links.length - 80} more…`, ar: `` }[lang]}</div>}
           </div>
         </div>
       </div>

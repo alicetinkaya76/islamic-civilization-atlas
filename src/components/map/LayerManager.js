@@ -308,7 +308,7 @@ export function renderLayers({ lg, layers, filters, year, lang, t, analyticsMap,
 
       L.marker([m.lat, m.lon], { icon })
         .bindPopup(buildMadrasaPopup(m, lang, t, scholarsById), popOpt(360))
-        .bindTooltip(`🎓 ${lang === 'tr' ? m.tr : m.en}`, { direction: 'top', offset: [0, -6] })
+        .bindTooltip(`🎓 ${n(m, lang)}`, { direction: 'top', offset: [0, -6] })
         .addTo(lg.madrasas);
       const mLayers = lg.madrasas.getLayers();
       if (mLayers.length) popupTrack(mLayers[mLayers.length - 1], 'madrasa', m.id);

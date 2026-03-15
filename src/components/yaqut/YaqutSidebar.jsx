@@ -1,4 +1,5 @@
 import { useState, useCallback, useRef, useEffect } from 'react';
+import { hn } from '../../data/i18n-utils';
 
 /* ═══ Geo type color + icon map ═══ */
 const GEO_COLORS = {
@@ -76,7 +77,7 @@ function VirtualList({ items, selectedId, onSelect, lang }) {
                 </span>
                 <div className="yaqut-list-heading" dir="rtl">{e.h}</div>
               </div>
-              <div className="yaqut-list-name">{lang === 'tr' ? e.ht : e.he}</div>
+              <div className="yaqut-list-name">{hn(e, lang)}</div>
               <div className="yaqut-list-meta">
                 <span className="yaqut-list-type">{lang === 'tr' ? e.gtt : e.gte}</span>
                 {e.ct && <span className="yaqut-list-country"> · {e.ct}</span>}
@@ -153,8 +154,6 @@ export default function YaqutSidebar({
     });
   }, [setSelectedTags]);
 
-  const isTr = lang === 'tr';
-
   return (
     <div className="yaqut-sidebar-inner">
       {/* Search */}
@@ -169,7 +168,7 @@ export default function YaqutSidebar({
 
       {/* Filters toggle */}
       <button className="yaqut-filters-toggle" onClick={() => setFiltersOpen(p => !p)}>
-        {filtersOpen ? '▾' : '▸'} {isTr ? 'Filtreler' : 'Filters'}
+        {filtersOpen ? '▾' : '▸'} {{ tr: 'Filtreler', en: 'Filters', ar: '' }[lang]}
         <span className="yaqut-filter-count">{filtered.length.toLocaleString()} {ty.entries || 'giriş'}</span>
       </button>
 

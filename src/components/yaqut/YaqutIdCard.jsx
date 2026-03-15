@@ -1,5 +1,6 @@
 import { useMemo, useState, useRef } from 'react';
 import YAQUT_CROSSREF from '../../data/yaqut_crossref.json';
+import { hn } from '../../data/i18n-utils';
 
 /* ═══ Geo type icons ═══ */
 const GEO_ICONS = {
@@ -45,14 +46,12 @@ export default function YaqutIdCard({ lang, ty, entry, detail, onClose }) {
       </div>
     );
   }
-
-  const isTr = lang === 'tr';
-  const heading1 = isTr ? entry.ht : entry.he;
+  const heading1 = hn(entry, lang);
   const heading2 = isTr ? entry.he : entry.ht;
   const summary = detail
     ? (isTr ? (detail.sft || entry.st) : (detail.sfe || entry.se))
     : (isTr ? entry.st : entry.se);
-  const geoType = isTr ? entry.gtt : entry.gte;
+  const geoType = (lang === "tr" ? entry.gtt : entry.gte);
   const periodBadge = PERIOD_BADGE[entry.hp] || null;
 
   const xrefTotal = crossRefPersons.length;
@@ -196,15 +195,15 @@ export default function YaqutIdCard({ lang, ty, entry, detail, onClose }) {
       {xrefTotal > 0 && (
         <div className="yaqut-idcard-section yaqut-xref-section">
           <h4 className="yaqut-idcard-section-title">
-            📖 {ty.crossRefPersons || (isTr ? "el-A'lâm Kişileri" : "al-Aʿlām Persons")} ({xrefTotal})
+            📖 {ty.crossRefPersons || ({ tr: 'el-A\'lâm Kişileri', en: 'al-Aʿlām Persons', ar: '' }[lang])} ({xrefTotal})
           </h4>
           <div className="yaqut-xref-list">
             {xrefSlice.map((p, i) => (
               <div key={i} className="yaqut-xref-item">
                 <div className="yaqut-xref-name">
-                  {isTr ? p.ht : p.he}
+                  {hn(p, lang)}
                   <a href={`#alam?id=${p.id}`} className="yaqut-xref-alam-link"
-                    title={isTr ? "el-A'lâm'da gör" : "View in al-Aʿlām"}>
+                    title={{ tr: 'el-A\'lâm\'da gör', en: 'View in al-Aʿlām', ar: '' }[lang]}>
                     📖
                   </a>
                 </div>
@@ -229,8 +228,8 @@ export default function YaqutIdCard({ lang, ty, entry, detail, onClose }) {
       {(entry.py > 0 || (detail && detail.qr)) && (
         <div className="yaqut-idcard-section">
           <div className="yaqut-poetry-row">
-            {entry.py > 0 && <span className="yaqut-poetry-badge">📜 {entry.py} {isTr ? 'şiir' : 'poems'}</span>}
-            {detail && detail.qr && <span className="yaqut-quran-badge">📖 {isTr ? 'Kur\'an ref.' : 'Quran ref.'}</span>}
+            {entry.py > 0 && <span className="yaqut-poetry-badge">📜 {entry.py} {{ tr: 'şiir', en: 'poems', ar: '' }[lang]}</span>}
+            {detail && detail.qr && <span className="yaqut-quran-badge">📖 {{ tr: 'Kur\'an ref.', en: 'Quran ref.', ar: '' }[lang]}</span>}
           </div>
         </div>
       )}
@@ -250,7 +249,7 @@ export default function YaqutIdCard({ lang, ty, entry, detail, onClose }) {
       {detail && detail.ft && (
         <div className="yaqut-idcard-section">
           <button className="yaqut-fulltext-toggle" onClick={() => setShowFullText(p => !p)}>
-            📜 {showFullText ? (isTr ? 'Metni gizle' : 'Hide text') : (isTr ? 'Orijinal metin' : 'Original text')}
+            📜 {showFullText ? ({ tr: 'Metni gizle', en: 'Hide text', ar: '' }[lang]) : ({ tr: 'Orijinal metin', en: 'Original text', ar: '' }[lang])}
           </button>
           {showFullText && (
             <div className="yaqut-fulltext" dir="rtl">

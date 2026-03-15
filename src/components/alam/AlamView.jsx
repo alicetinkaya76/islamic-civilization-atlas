@@ -195,14 +195,14 @@ export default function AlamView({ lang, t }) {
       {/* Mobile toggle */}
       <div className="alam-mobile-toggle">
         <button className={showMobile === 'list' ? 'active' : ''} onClick={() => setShowMobile('list')}>
-          ☰ {lang === 'tr' ? 'Liste' : 'List'}
+          ☰ {{ tr: 'Liste', en: 'List', ar: '' }[lang]}
         </button>
         <button className={showMobile === 'map' ? 'active' : ''} onClick={() => setShowMobile('map')}>
           🗺 {ta.mapView}
         </button>
         {selectedBio && (
           <button className={showMobile === 'card' ? 'active' : ''} onClick={() => setShowMobile('card')}>
-            📋 {lang === 'tr' ? 'Detay' : 'Detail'}
+            📋 {{ tr: 'Detay', en: 'Detail', ar: '' }[lang]}
           </button>
         )}
       </div>
@@ -257,19 +257,19 @@ export default function AlamView({ lang, t }) {
           {/* Analytics sub-tabs */}
           <div className="alam-analytics-tabs">
             <button className={analyticsTab === 'charts' ? 'active' : ''} onClick={() => setAnalyticsTab('charts')}>
-              📊 {lang === 'tr' ? 'Grafikler' : 'Charts'}
+              📊 {{ tr: 'Grafikler', en: 'Charts', ar: '' }[lang]}
             </button>
             <button className={analyticsTab === 'network' ? 'active' : ''} onClick={() => setAnalyticsTab('network')}>
-              🕸 {lang === 'tr' ? 'Referans Ağı' : 'Ref Network'}
+              🕸 {{ tr: 'Referans Ağı', en: 'Ref Network', ar: '' }[lang]}
             </button>
             <button className={analyticsTab === 'timemachine' ? 'active' : ''} onClick={() => setAnalyticsTab('timemachine')}>
-              ⏳ {lang === 'tr' ? 'Zaman Makinesi' : 'Time Machine'}
+              ⏳ {{ tr: 'Zaman Makinesi', en: 'Time Machine', ar: '' }[lang]}
             </button>
             <button className={analyticsTab === 'scatter' ? 'active' : ''} onClick={() => setAnalyticsTab('scatter')}>
-              🔬 {lang === 'tr' ? 'Korelasyon' : 'Correlation'}
+              🔬 {{ tr: 'Korelasyon', en: 'Correlation', ar: '' }[lang]}
             </button>
             <button className={analyticsTab === 'compare' ? 'active' : ''} onClick={() => setAnalyticsTab('compare')}>
-              ⚖ {lang === 'tr' ? 'Karşılaştır' : 'Compare'}
+              ⚖ {{ tr: 'Karşılaştır', en: 'Compare', ar: '' }[lang]}
             </button>
           </div>
 

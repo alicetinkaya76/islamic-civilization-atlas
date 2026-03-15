@@ -73,21 +73,21 @@ export default function LandingPage({ lang, setLang, onEnter }) {
 
       {/* Language toggle */}
       <button className="landing-lang" onClick={toggleLang} aria-label="Toggle language">
-        {lang === 'tr' ? '🇬🇧 EN' : '🇹🇷 TR'}
+        {{ tr: '🇬🇧 EN', en: '🇹🇷 TR', ar: '' }[lang]}
       </button>
 
       {/* Hero */}
       <div className="landing-hero">
         <div className="landing-logo">☪</div>
         <h1 className="landing-title">
-          {lang === 'tr' ? 'Müslüman Hanedanlar Atlası' : 'Islamic Dynasties Atlas'}
+          {{ tr: 'Müslüman Hanedanlar Atlası', en: 'Islamic Dynasties Atlas', ar: '' }[lang]}
         </h1>
         <p className="landing-subtitle">
-          {lang === 'tr' ? '632–1924 · Bosworth Veri Tabanı' : '632–1924 · Bosworth Database'}
+          {{ tr: '632–1924 · Bosworth Veri Tabanı', en: '632–1924 · Bosworth Database', ar: '' }[lang]}
         </p>
         <button className="landing-explore" onClick={handleExplore}>
           <span className="landing-explore-icon">🗺</span>
-          {lang === 'tr' ? 'Keşfet' : 'Explore'}
+          {{ tr: 'Keşfet', en: 'Explore', ar: '' }[lang]}
         </button>
       </div>
 
@@ -97,7 +97,7 @@ export default function LandingPage({ lang, setLang, onEnter }) {
           <StatItem
             key={s.key}
             target={s.count}
-            label={lang === 'tr' ? s.tr : s.en}
+            label={n(s, lang)}
             delay={1200 + i * 200}
           />
         ))}

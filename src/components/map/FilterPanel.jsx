@@ -10,12 +10,12 @@ LAYER_KEYS.forEach(k => {
 
 export default function FilterPanel({ lang, t, layers, toggleLayer, filters, setFilter, uniques, activeCount, year, sidebarOpen, onCloseMobile }) {
   return (
-    <div className={`map-panel${sidebarOpen ? ' mobile-visible' : ''}`} role="complementary" aria-label={lang === 'tr' ? 'Harita kontrolleri' : 'Map controls'}>
+    <div className={`map-panel${sidebarOpen ? ' mobile-visible' : ''}`} role="complementary" aria-label={{ tr: 'Harita kontrolleri', en: 'Map controls', ar: '' }[lang]}>
       {/* Mobile close button */}
-      <button className="map-panel-close" onClick={onCloseMobile} aria-label={lang === 'tr' ? 'Paneli kapat' : 'Close panel'}>✕</button>
+      <button className="map-panel-close" onClick={onCloseMobile} aria-label={{ tr: 'Paneli kapat', en: 'Close panel', ar: '' }[lang]}>✕</button>
       {/* Layers */}
       <div className="ps">
-        <div className="ps-h">{lang === 'tr' ? 'Katmanlar' : 'Layers'}</div>
+        <div className="ps-h">{{ tr: 'Katmanlar', en: 'Layers', ar: '' }[lang]}</div>
         {LAYER_KEYS.map(k => (
           <div key={k} className="lyr" onClick={() => toggleLayer(k)}>
             <div className={`lyr-cb${layers[k] ? ' on' : ''}`}>{layers[k] ? '✓' : ''}</div>
@@ -27,7 +27,7 @@ export default function FilterPanel({ lang, t, layers, toggleLayer, filters, set
       </div>
       {/* Filters */}
       <div className="ps">
-        <div className="ps-h">{lang === 'tr' ? 'Filtreler' : 'Filters'}</div>
+        <div className="ps-h">{{ tr: 'Filtreler', en: 'Filters', ar: '' }[lang]}</div>
         {['religion', 'ethnic', 'government', 'period', 'zone'].map(fk => (
           <div key={fk} className="flt">
             <div className="flt-l">{t.filters[fk]}</div>
@@ -42,7 +42,7 @@ export default function FilterPanel({ lang, t, layers, toggleLayer, filters, set
       </div>
       {/* Status */}
       <div className="ps">
-        <div className="ps-h">{lang === 'tr' ? 'Durum' : 'Status'}</div>
+        <div className="ps-h">{{ tr: 'Durum', en: 'Status', ar: '' }[lang]}</div>
         <div className="st"><span className="st-l">{t.m.year}</span><span className="st-v">{year}</span></div>
         <div className="st"><span className="st-l">{t.m.active}</span><span className="st-v">{activeCount}</span></div>
         <div className="st"><span className="st-l">🔗</span><span className="st-v">{DB.causal?.length || 0}</span></div>

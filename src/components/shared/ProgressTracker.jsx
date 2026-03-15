@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
+import { f } from '../../data/i18n-utils';
 
 /* ═══ Progress / Discovery Tracker ═══ */
 
@@ -131,8 +132,8 @@ export default function ProgressTracker({ lang, progress, onReset }) {
   return (
     <div className="progress-wrap" ref={panelRef}>
       <button className="progress-btn" onClick={() => setShowPanel(p => !p)}
-        title={lang === 'tr' ? `${total} keşif` : `${total} discoveries`}
-        aria-label={lang === 'tr' ? `İlerleme: ${total} keşif` : `Progress: ${total} discoveries`}>
+        title={{ tr: `${total} keşif`, en: `${total} discoveries`, ar: `` }[lang]}
+        aria-label={{ tr: `İlerleme: ${total} keşif`, en: `Progress: ${total} discoveries`, ar: `` }[lang]}>
         <span className="progress-icon">🧭</span>
         <span className="progress-count">{total}</span>
       </button>
@@ -141,7 +142,7 @@ export default function ProgressTracker({ lang, progress, onReset }) {
         <div className="progress-panel">
           <div className="progress-panel-header">
             <h3 className="progress-panel-title">
-              {lang === 'tr' ? '🧭 Keşif İlerlemesi' : '🧭 Discovery Progress'}
+              {{ tr: '🧭 Keşif İlerlemesi', en: '🧭 Discovery Progress', ar: '' }[lang]}
             </h3>
           </div>
 
@@ -158,13 +159,13 @@ export default function ProgressTracker({ lang, progress, onReset }) {
             ].map(cat => (
               <div key={cat.key} className="progress-stat-row">
                 <span className="progress-stat-icon">{cat.icon}</span>
-                <span className="progress-stat-label">{lang === 'tr' ? cat.tr : cat.en}</span>
+                <span className="progress-stat-label">{n(cat, lang)}</span>
                 <span className="progress-stat-count">{progress.counts[cat.key] || 0}</span>
               </div>
             ))}
             <div className="progress-stat-row total">
               <span className="progress-stat-icon">📊</span>
-              <span className="progress-stat-label">{lang === 'tr' ? 'Toplam' : 'Total'}</span>
+              <span className="progress-stat-label">{{ tr: 'Toplam', en: 'Total', ar: '' }[lang]}</span>
               <span className="progress-stat-count">{total}</span>
             </div>
           </div>
@@ -172,20 +173,20 @@ export default function ProgressTracker({ lang, progress, onReset }) {
           {/* Badges */}
           <div className="progress-badges-section">
             <h4 className="progress-badges-title">
-              {lang === 'tr' ? '🏅 Rozetler' : '🏅 Badges'}
+              {{ tr: '🏅 Rozetler', en: '🏅 Badges', ar: '' }[lang]}
               <span className="progress-badges-count">{earnedBadges.length}/{BADGES.length}</span>
             </h4>
             <div className="progress-badges-grid">
               {earnedBadges.map(b => (
-                <div key={b.id} className="progress-badge earned" title={lang === 'tr' ? b.desc_tr : b.desc_en}>
+                <div key={b.id} className="progress-badge earned" title={f(b, 'desc', lang)}>
                   <span className="progress-badge-icon">{b.icon}</span>
-                  <span className="progress-badge-label">{lang === 'tr' ? b.label_tr : b.label_en}</span>
+                  <span className="progress-badge-label">{f(b, 'label', lang)}</span>
                 </div>
               ))}
               {unearnedBadges.map(b => (
-                <div key={b.id} className="progress-badge locked" title={lang === 'tr' ? `${b.threshold} keşif gerekli` : `${b.threshold} discoveries needed`}>
+                <div key={b.id} className="progress-badge locked" title={{ tr: `${b.threshold} keşif gerekli`, en: `${b.threshold} discoveries needed`, ar: `` }[lang]}>
                   <span className="progress-badge-icon">🔒</span>
-                  <span className="progress-badge-label">{lang === 'tr' ? b.label_tr : b.label_en}</span>
+                  <span className="progress-badge-label">{f(b, 'label', lang)}</span>
                 </div>
               ))}
             </div>
@@ -193,11 +194,11 @@ export default function ProgressTracker({ lang, progress, onReset }) {
 
           {/* Reset */}
           <button className="progress-reset" onClick={() => {
-            if (window.confirm(lang === 'tr' ? 'Tüm ilerleme sıfırlansın mı?' : 'Reset all progress?')) {
+            if (window.confirm({ tr: 'Tüm ilerleme sıfırlansın mı?', en: 'Reset all progress?', ar: '' }[lang])) {
               onReset();
             }
           }}>
-            {lang === 'tr' ? '🔄 Sıfırla' : '🔄 Reset'}
+            {{ tr: '🔄 Sıfırla', en: '🔄 Reset', ar: '' }[lang]}
           </button>
         </div>
       )}
@@ -212,8 +213,8 @@ export function BadgeToast({ badge, lang, onDismiss }) {
     <div className="badge-toast" onClick={onDismiss}>
       <span className="badge-toast-icon">{badge.icon}</span>
       <div className="badge-toast-text">
-        <strong>{lang === 'tr' ? 'Yeni Rozet!' : 'New Badge!'}</strong>
-        <span>{lang === 'tr' ? badge.label_tr : badge.label_en}</span>
+        <strong>{{ tr: 'Yeni Rozet!', en: 'New Badge!', ar: '' }[lang]}</strong>
+        <span>{f(badge, 'label', lang)}</span>
       </div>
     </div>
   );

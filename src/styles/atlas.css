@@ -61,13 +61,20 @@ body {
   border-color: var(--gold); color: var(--gold);
 }
 
+.lang-switcher {
+  display: flex; gap: 4px; align-items: center;
+}
 .lang-btn {
   background: var(--bg3); border: 1px solid var(--border); color: var(--cream2);
-  padding: 6px 12px; border-radius: 6px; cursor: pointer;
+  padding: 6px 10px; border-radius: 6px; cursor: pointer;
   font-family: var(--font-body); font-size: 12px;
   transition: all .2s;
 }
 .lang-btn:hover { border-color: var(--gold); color: var(--gold); }
+.lang-btn.active {
+  background: linear-gradient(135deg, #c9a84c33, #c9a84c22);
+  border-color: var(--gold); color: var(--gold);
+}
 
 .main { flex: 1; overflow: hidden; }
 

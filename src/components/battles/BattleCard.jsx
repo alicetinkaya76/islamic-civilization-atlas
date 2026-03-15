@@ -41,13 +41,11 @@ export default function BattleCard({ battle, lang, t }) {
   const typeEn = battle.type_en || 'Land';
   const icon = TYPE_ICONS[typeEn] || '⚔';
   const ot = getOutcomeType(battle);
-  const sig = lang === 'tr' ? (t.imp?.[battle.sig] || battle.sig) : (battle.sig === 'Kritik' ? 'Critical' : battle.sig === 'Yüksek' ? 'High' : battle.sig || 'Normal');
-  const typeLabel = lang === 'tr' ? (battle.type_tr || typeEn) : typeEn;
-  const outLabel = lang === 'tr' ? (battle.out_tr || battle.out_en || '') : (battle.out_en || '');
+  const sig = t.imp?.[battle.sig] || battle.sig;
+  const typeLabel = battle[`type_${lang}`] || battle.type_en || battle.type_tr || typeEn;
+  const outLabel = battle[`out_${lang}`] || battle.out_en || battle.out_tr || '';
 
-  const tactic = lang === 'tr'
-    ? (battle.tactic_tr || battle.tactic_en || '')
-    : (battle.tactic_en || battle.tactic_tr || '');
+  const tactic = battle[`tactic_${lang}`] || battle.tactic_en || battle.tactic_tr || '';
 
   const impact = lf(battle, 'impact', lang);
   const narr = lf(battle, 'narr', lang);
@@ -97,7 +95,7 @@ export default function BattleCard({ battle, lang, t }) {
       {/* Forces & Casualties */}
       {(lf(battle, 'forces_m', lang) || battle.forces_m) && (
         <>
-          <div className="bc-section-label">{lang === 'tr' ? 'Kuvvetler' : 'Forces'}</div>
+          <div className="bc-section-label">{{ tr: 'Kuvvetler', en: 'Forces', ar: '' }[lang]}</div>
           <div className="bc-forces-row">
             <span className="bc-cmd-symbol">{symM}</span>
             <span>{cmdM && <small style={{ color: 'var(--gold)', marginRight: 4 }}>{cmdM}:</small>}{lf(battle, 'forces_m', lang) || battle.forces_m}</span>

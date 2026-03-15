@@ -28,7 +28,7 @@ const pick = (arr, n = 1) => shuffle(arr).slice(0, n);
 const centuryOf = yr => Math.ceil(yr / 100);
 const centuryLabel = (yr, lang) => {
   const c = centuryOf(yr);
-  return lang === 'tr' ? `${c}. yüzyıl` : `${c}th century`;
+  return { tr: `${c}. yüzyıl`, en: `${c}th century`, ar: `` }[lang];
 };
 const name = (item, lang) => item[lang] || item.tr || item.en || '?';
 
@@ -53,13 +53,11 @@ function genDynastyCentury(lang, diff) {
   const d = pick(pool)[0];
   const correct = centuryLabel(d.start, lang);
   const wrongs = centuryDistractors(d.start, 3).map(c =>
-    lang === 'tr' ? `${c}. yüzyıl` : `${c}th century`
+    ({ tr: `${c}. yüzyıl`, en: `${c}th century`, ar: `` }[lang])
   );
   const options = shuffle([correct, ...wrongs]);
   return {
-    question: lang === 'tr'
-      ? `"${name(d, lang)}" hangi yüzyılda kuruldu?`
-      : `In which century was "${name(d, lang)}" founded?`,
+    question: { tr: `"${name(d, lang)}" hangi yüzyılda kuruldu?`, en: `In which century was "${name(d, lang)}" founded?`, ar: `` }[lang],
     options,
     correctIndex: options.indexOf(correct),
     flyTo: d.lat && d.lon ? { lat: d.lat, lon: d.lon, zoom: 6 } : null,
@@ -77,9 +75,7 @@ function genBattleWinner(lang, diff) {
   if (wrongBattles.length < 3) return null;
   const options = shuffle([correctText, ...wrongBattles.map(w => w.res)]);
   return {
-    question: lang === 'tr'
-      ? `"${name(b, lang)}" (${b.yr}) — sonucu nedir?`
-      : `"${name(b, lang)}" (${b.yr}) — what was the outcome?`,
+    question: { tr: `"${name(b, lang)}" (${b.yr}) — sonucu nedir?`, en: `"${name(b, lang)}" (${b.yr}) — what was the outcome?`, ar: `` }[lang],
     options,
     correctIndex: options.indexOf(correctText),
     flyTo: b.lat && b.lon ? { lat: b.lat, lon: b.lon, zoom: 7 } : null,
@@ -106,9 +102,7 @@ function genScholarCity(lang, diff) {
   if (otherCities.length < 3) return null;
   const options = shuffle([correctCity, ...otherCities]);
   return {
-    question: lang === 'tr'
-      ? `"${name(s, lang)}" hangi şehirde himaye gördü?`
-      : `In which city was "${name(s, lang)}" patronized?`,
+    question: { tr: `"${name(s, lang)}" hangi şehirde himaye gördü?`, en: `In which city was "${name(s, lang)}" patronized?`, ar: `` }[lang],
     options,
     correctIndex: options.indexOf(correctCity),
     flyTo: patronDyn.lat && patronDyn.lon ? { lat: patronDyn.lat, lon: patronDyn.lon, zoom: 7 } : null,
@@ -127,9 +121,7 @@ function genWhichEarlier(lang, diff) {
   const nameB = name(two[1], lang);
   const options = [nameA, nameB];
   return {
-    question: lang === 'tr'
-      ? `Hangisi daha önce kuruldu?`
-      : `Which was founded earlier?`,
+    question: { tr: `Hangisi daha önce kuruldu?`, en: `Which was founded earlier?`, ar: `` }[lang],
     options,
     correctIndex: options.indexOf(name(earlier, lang)),
     flyTo: earlier.lat && earlier.lon ? { lat: earlier.lat, lon: earlier.lon, zoom: 5 } : null,
@@ -142,7 +134,7 @@ function genMonumentCity(lang, diff) {
   const monuments = DB.monuments.filter(m => m.city_tr || m.city_en);
   if (monuments.length < 4) return null;
   const m = pick(monuments)[0];
-  const correctCity = lang === 'tr' ? (m.city_tr || m.city_en) : (m.city_en || m.city_tr);
+  const correctCity = m[`city_${lang}`] || m.city_en || m.city_tr;
   const wrongCities = pick(
     DB.cities.filter(c => name(c, lang) !== correctCity),
     3
@@ -150,9 +142,7 @@ function genMonumentCity(lang, diff) {
   if (wrongCities.length < 3) return null;
   const options = shuffle([correctCity, ...wrongCities]);
   return {
-    question: lang === 'tr'
-      ? `"${name(m, lang)}" hangi şehirdedir?`
-      : `In which city is "${name(m, lang)}" located?`,
+    question: { tr: `"${name(m, lang)}" hangi şehirdedir?`, en: `In which city is "${name(m, lang)}" located?`, ar: `` }[lang],
     options,
     correctIndex: options.indexOf(correctCity),
     flyTo: m.lat && m.lon ? { lat: m.lat, lon: m.lon, zoom: 8 } : null,
@@ -167,13 +157,11 @@ function genEventCentury(lang, diff) {
   const e = pick(pool)[0];
   const correct = centuryLabel(e.yr, lang);
   const wrongs = centuryDistractors(e.yr, 3).map(c =>
-    lang === 'tr' ? `${c}. yüzyıl` : `${c}th century`
+    ({ tr: `${c}. yüzyıl`, en: `${c}th century`, ar: `` }[lang])
   );
   const options = shuffle([correct, ...wrongs]);
   return {
-    question: lang === 'tr'
-      ? `"${name(e, lang)}" hangi yüzyılda gerçekleşti?`
-      : `In which century did "${name(e, lang)}" occur?`,
+    question: { tr: `"${name(e, lang)}" hangi yüzyılda gerçekleşti?`, en: `In which century did "${name(e, lang)}" occur?`, ar: `` }[lang],
     options,
     correctIndex: options.indexOf(correct),
     flyTo: e.lat && e.lon ? { lat: e.lat, lon: e.lon, zoom: 7 } : null,
@@ -186,15 +174,13 @@ function genAlamProfession(lang, diff) {
   const pool = ALAM_LITE.filter(b => b.pt && b.pe && b.md);
   if (pool.length < 4) return null;
   const b = pick(pool)[0];
-  const correctProf = lang === 'tr' ? b.pt : b.pe;
+  const correctProf = lang === 'ar' ? (b.pe || b.pt) : lang === 'tr' ? b.pt : b.pe;
   const others = pick(pool.filter(x => (lang === 'tr' ? x.pt : x.pe) !== correctProf), 3)
     .map(x => lang === 'tr' ? x.pt : x.pe);
   if (others.length < 3) return null;
   const options = shuffle([correctProf, ...others]);
   return {
-    question: lang === 'tr'
-      ? `"${b.ht}" (ö. ${b.md}) — mesleği nedir?`
-      : `"${b.he}" (d. ${b.md}) — what was their profession?`,
+    question: { tr: `"${b.ht}" (ö. ${b.md}) — mesleği nedir?`, en: `"${b.he}" (d. ${b.md}) — what was their profession?`, ar: `` }[lang],
     options,
     correctIndex: options.indexOf(correctProf),
     flyTo: b.lat && b.lon ? { lat: b.lat, lon: b.lon, zoom: 6 } : null,
@@ -209,13 +195,11 @@ function genAlamCentury(lang, diff) {
   const b = pick(pool)[0];
   const correct = centuryLabel(b.md, lang);
   const wrongs = centuryDistractors(b.md, 3).map(c =>
-    lang === 'tr' ? `${c}. yüzyıl` : `${c}th century`
+    ({ tr: `${c}. yüzyıl`, en: `${c}th century`, ar: `` }[lang])
   );
   const options = shuffle([correct, ...wrongs]);
   return {
-    question: lang === 'tr'
-      ? `"${b.ht}" hangi yüzyılda vefat etti?`
-      : `In which century did "${b.he}" die?`,
+    question: { tr: `"${b.ht}" hangi yüzyılda vefat etti?`, en: `In which century did "${b.he}" die?`, ar: `` }[lang],
     options,
     correctIndex: options.indexOf(correct),
     flyTo: b.lat && b.lon ? { lat: b.lat, lon: b.lon, zoom: 6 } : null,
@@ -234,9 +218,7 @@ function genYaqutCountry(lang, diff) {
   if (wrongs.length < 3) return null;
   const options = shuffle([correctCountry, ...wrongs]);
   return {
-    question: lang === 'tr'
-      ? `Yâkût'a göre "${e.ht}" (${e.gtt || e.gt}) hangi ülkededir?`
-      : `According to Yāqūt, in which country is "${e.he}" (${e.gte || e.gt})?`,
+    question: { tr: `Yâkût'a göre "${e.ht}" (${e.gtt || e.gt}) hangi ülkededir?`, en: `According to Yāqūt, in which country is "${e.he}" (${e.gte || e.gt})?`, ar: `` }[lang],
     options,
     correctIndex: options.indexOf(correctCountry),
     flyTo: e.lat && e.lon ? { lat: e.lat, lon: e.lon, zoom: 7 } : null,
@@ -259,9 +241,7 @@ function genYaqutGeoType(lang, diff) {
   if (wrongs.length < 3) return null;
   const options = shuffle([correctLabel, ...wrongs]);
   return {
-    question: lang === 'tr'
-      ? `Yâkût'un sözlüğünde "${e.ht}" ne tür bir coğrafi birimdir?`
-      : `In Yāqūt's dictionary, what type of geographic entity is "${e.he}"?`,
+    question: { tr: `Yâkût'un sözlüğünde "${e.ht}" ne tür bir coğrafi birimdir?`, en: `In Yāqūt's dictionary, what type of geographic entity is "${e.he}"?`, ar: `` }[lang],
     options,
     correctIndex: options.indexOf(correctLabel),
     flyTo: e.lat && e.lon ? { lat: e.lat, lon: e.lon, zoom: 7 } : null,
@@ -308,11 +288,11 @@ function generateQuiz(lang, diff) {
 
 /* ── Score titles ── */
 function getScoreTitle(score, lang) {
-  if (score >= 9) return lang === 'tr' ? 'Tarih Üstadı! 🏆' : 'History Master! 🏆';
-  if (score >= 7) return lang === 'tr' ? 'Tarih Meraklısı! 🏅' : 'History Enthusiast! 🏅';
-  if (score >= 5) return lang === 'tr' ? 'İyi Deneme! 📖' : 'Good Attempt! 📖';
-  if (score >= 3) return lang === 'tr' ? 'Öğrenmeye Devam! 📝' : 'Keep Learning! 📝';
-  return lang === 'tr' ? 'Tekrar Dene! 💪' : 'Try Again! 💪';
+  if (score >= 9) return { tr: 'Tarih Üstadı! 🏆', en: 'History Master! 🏆', ar: '' }[lang];
+  if (score >= 7) return { tr: 'Tarih Meraklısı! 🏅', en: 'History Enthusiast! 🏅', ar: '' }[lang];
+  if (score >= 5) return { tr: 'İyi Deneme! 📖', en: 'Good Attempt! 📖', ar: '' }[lang];
+  if (score >= 3) return { tr: 'Öğrenmeye Devam! 📝', en: 'Keep Learning! 📝', ar: '' }[lang];
+  return { tr: 'Tekrar Dene! 💪', en: 'Try Again! 💪', ar: '' }[lang];
 }
 
 /* ══════════════════════════════════════════════════════════
@@ -331,28 +311,26 @@ export default function QuizMode({ lang, onFlyTo, onClose }) {
   const timerRef = useRef(null);
 
   const t = useMemo(() => ({
-    title: lang === 'tr' ? 'Bilgi Yarışması' : 'Knowledge Quiz',
-    subtitle: lang === 'tr'
-      ? 'Hanedanlar, savaşlar, el-A\'lâm ve Yâkût\'tan 10 soru!'
-      : 'Test your knowledge: dynasties, battles, al-Aʿlām & Yāqūt!',
-    start: lang === 'tr' ? 'Başla' : 'Start',
-    next: lang === 'tr' ? 'Sonraki Soru' : 'Next Question',
-    finish: lang === 'tr' ? 'Sonuçları Gör' : 'See Results',
-    playAgain: lang === 'tr' ? 'Tekrar Oyna' : 'Play Again',
-    close: lang === 'tr' ? 'Kapat' : 'Close',
-    qOf: lang === 'tr' ? 'Soru' : 'Question',
-    score: lang === 'tr' ? 'Skor' : 'Score',
-    correct: lang === 'tr' ? 'Doğru!' : 'Correct!',
-    wrong: lang === 'tr' ? 'Yanlış!' : 'Wrong!',
-    correctAnswer: lang === 'tr' ? 'Doğru cevap' : 'Correct answer',
-    difficulty: lang === 'tr' ? 'Zorluk' : 'Difficulty',
-    easy: lang === 'tr' ? 'Kolay' : 'Easy',
-    medium: lang === 'tr' ? 'Orta' : 'Medium',
-    hard: lang === 'tr' ? 'Zor' : 'Hard',
-    easyDesc: lang === 'tr' ? 'Büyük hanedanlar ve kritik olaylar' : 'Major dynasties and critical events',
-    mediumDesc: lang === 'tr' ? 'Karma zorluk' : 'Mixed difficulty',
-    hardDesc: lang === 'tr' ? 'Küçük beylikler dahil' : 'Including minor principalities',
-    yourScore: lang === 'tr' ? 'Skorunuz' : 'Your Score',
+    title: { tr: 'Bilgi Yarışması', en: 'Knowledge Quiz', ar: '' }[lang],
+    subtitle: { tr: 'Hanedanlar, savaşlar, el-A\'lâm ve Yâkût\'tan 10 soru!', en: 'Test your knowledge: dynasties, battles, al-Aʿlām & Yāqūt!', ar: '' }[lang],
+    start: { tr: 'Başla', en: 'Start', ar: '' }[lang],
+    next: { tr: 'Sonraki Soru', en: 'Next Question', ar: '' }[lang],
+    finish: { tr: 'Sonuçları Gör', en: 'See Results', ar: '' }[lang],
+    playAgain: { tr: 'Tekrar Oyna', en: 'Play Again', ar: '' }[lang],
+    close: { tr: 'Kapat', en: 'Close', ar: '' }[lang],
+    qOf: { tr: 'Soru', en: 'Question', ar: '' }[lang],
+    score: { tr: 'Skor', en: 'Score', ar: '' }[lang],
+    correct: { tr: 'Doğru!', en: 'Correct!', ar: '' }[lang],
+    wrong: { tr: 'Yanlış!', en: 'Wrong!', ar: '' }[lang],
+    correctAnswer: { tr: 'Doğru cevap', en: 'Correct answer', ar: '' }[lang],
+    difficulty: { tr: 'Zorluk', en: 'Difficulty', ar: '' }[lang],
+    easy: { tr: 'Kolay', en: 'Easy', ar: '' }[lang],
+    medium: { tr: 'Orta', en: 'Medium', ar: '' }[lang],
+    hard: { tr: 'Zor', en: 'Hard', ar: '' }[lang],
+    easyDesc: { tr: 'Büyük hanedanlar ve kritik olaylar', en: 'Major dynasties and critical events', ar: '' }[lang],
+    mediumDesc: { tr: 'Karma zorluk', en: 'Mixed difficulty', ar: '' }[lang],
+    hardDesc: { tr: 'Küçük beylikler dahil', en: 'Including minor principalities', ar: '' }[lang],
+    yourScore: { tr: 'Skorunuz', en: 'Your Score', ar: '' }[lang],
   }), [lang]);
 
   const startQuiz = useCallback(() => {

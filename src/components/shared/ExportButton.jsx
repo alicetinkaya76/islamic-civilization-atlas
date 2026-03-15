@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect, useCallback } from 'react';
 import DB from '../../data/db.json';
+import { f } from '../../data/i18n-utils';
 
 /* ═══ CSV helpers ═══ */
 function escapeCSV(val) {
@@ -105,15 +106,15 @@ export default function ExportButton({ lang }) {
   return (
     <div className="export-wrap" ref={ref}>
       <button className="export-btn" onClick={() => setOpen(p => !p)}
-        title={lang === 'tr' ? 'CSV İndir' : 'Download CSV'}
-        aria-label={lang === 'tr' ? 'CSV İndir' : 'Download CSV'}>
+        title={{ tr: 'CSV İndir', en: 'Download CSV', ar: '' }[lang]}
+        aria-label={{ tr: 'CSV İndir', en: 'Download CSV', ar: '' }[lang]}>
         📥 CSV
       </button>
       {open && (
         <div className="export-dropdown">
           {Object.entries(EXPORTS).map(([key, exp]) => (
             <button key={key} className="export-item" onClick={() => handleExport(key)}>
-              <span className="export-item-label">{lang === 'tr' ? exp.label_tr : exp.label_en}</span>
+              <span className="export-item-label">{f(exp, 'label', lang)}</span>
               <span className="export-item-count">({exp.count()})</span>
             </button>
           ))}

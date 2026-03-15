@@ -86,12 +86,12 @@ export default function YearInfoPanel({ year, lang, onFlyTo }) {
         onClick={() => info.top3[0] && handleFly(info.top3[0].lat, info.top3[0].lon, 5)}
         role="button" tabIndex={0}
         onKeyDown={e => e.key === 'Enter' && info.top3[0] && handleFly(info.top3[0].lat, info.top3[0].lon, 5)}
-        aria-label={lang === 'tr' ? `Aktif hanedanlar: ${info.activeCount}` : `Active dynasties: ${info.activeCount}`}
+        aria-label={{ tr: `Aktif hanedanlar: ${info.activeCount}`, en: `Active dynasties: ${info.activeCount}`, ar: `` }[lang]}
       >
         <span className="yip-icon">🏛</span>
         <span className="yip-count">{info.activeCount}</span>
         <span className="yip-label">
-          {lang === 'tr' ? 'aktif hanedan' : 'active dynasties'}
+          {{ tr: 'aktif hanedan', en: 'active dynasties', ar: '' }[lang]}
         </span>
         {topNames && <span className="yip-detail">{topNames}</span>}
       </div>
@@ -128,12 +128,12 @@ export default function YearInfoPanel({ year, lang, onFlyTo }) {
               if (coord) handleFly(coord.lat, coord.lon, 6);
             }
           }}
-          aria-label={lang === 'tr' ? `Yaşayan âlimler: ${livingCount}` : `Living scholars: ${livingCount}`}
+          aria-label={{ tr: `Yaşayan âlimler: ${livingCount}`, en: `Living scholars: ${livingCount}`, ar: `` }[lang]}
         >
           <span className="yip-icon">📚</span>
           <span className="yip-count">{livingCount}</span>
           <span className="yip-label">
-            {lang === 'tr' ? 'âlim' : (livingCount === 1 ? 'scholar' : 'scholars')}
+            {{ tr: 'âlim', en: livingCount === 1 ? 'scholar' : 'scholars', ar: 'عالِم' }[lang]}
           </span>
           {livingTop && <span className="yip-detail">{livingTop}</span>}
         </div>

@@ -48,7 +48,7 @@ export default function EraCard({ eraId, lang, onClose, onFlyTo }) {
             <h3 className="era-card__title">{label}</h3>
             <span className="era-card__dates">{era.start} – {era.end}</span>
           </div>
-          <button className="era-card__close" onClick={handleClose} aria-label={lang === 'tr' ? 'Kapat' : 'Close'}>✕</button>
+          <button className="era-card__close" onClick={handleClose} aria-label={{ tr: 'Kapat', en: 'Close', ar: '' }[lang]}>✕</button>
         </div>
 
         {/* Description */}
@@ -59,7 +59,7 @@ export default function EraCard({ eraId, lang, onClose, onFlyTo }) {
           <div className="era-card__section">
             <h4 className="era-card__section-title">
               <span className="era-card__section-icon">⚡</span>
-              {lang === 'tr' ? 'Anahtar Gelişmeler' : 'Key Developments'}
+              {{ tr: 'Anahtar Gelişmeler', en: 'Key Developments', ar: '' }[lang]}
             </h4>
             <div className="era-card__tags">
               {devs.map((d, i) => (
@@ -74,7 +74,7 @@ export default function EraCard({ eraId, lang, onClose, onFlyTo }) {
           <div className="era-card__section">
             <h4 className="era-card__section-title">
               <span className="era-card__section-icon">📚</span>
-              {lang === 'tr' ? 'Öne Çıkan Âlimler' : 'Notable Scholars'}
+              {{ tr: 'Öne Çıkan Âlimler', en: 'Notable Scholars', ar: '' }[lang]}
             </h4>
             <div className="era-card__scholars">
               {schs.map((s, i) => (
@@ -90,7 +90,7 @@ export default function EraCard({ eraId, lang, onClose, onFlyTo }) {
         {era.flyTo && (
           <div className="era-card__footer">
             <button className="era-card__fly-btn" onClick={handleFly} style={{ background: era.color + '22', borderColor: era.color + '66', color: era.color }}>
-              🗺 {lang === 'tr' ? 'Haritada Göster' : 'Show on Map'}
+              🗺 {{ tr: 'Haritada Göster', en: 'Show on Map', ar: '' }[lang]}
             </button>
           </div>
         )}

@@ -203,7 +203,7 @@ export default function TimelineView({ lang, t }) {
         const ty = mt + tgtRow * (barH + gap) + barH / 2;
 
         const col = TL_LINK_COL[link.lt] || '#c9a84c55';
-        const desc = lang === 'tr' ? link.dtr : link.den;
+        const desc = (link[`d${lang}`] || link.den || link.dtr);
 
         const midX = cx + (ty > sy ? 15 : -15);
         const path = `M${cx},${sy} C${midX},${sy} ${midX},${ty} ${cx},${ty}`;
@@ -342,7 +342,7 @@ export default function TimelineView({ lang, t }) {
           <button className={`tl-btn${showEvents ? ' active' : ''}`} onClick={() => setShowEvents(p => !p)}>📜 {t.tl.events}</button>
           <button className={`tl-btn${showScholars ? ' active' : ''}`} onClick={() => setShowScholars(p => !p)}>📚 {t.tl.scholars}</button>
           <button className={`tl-btn${showRulers ? ' active' : ''}`} onClick={() => setShowRulers(p => !p)}>👑 {t.m.rulers}</button>
-          <button className={`tl-btn${showCausal ? ' active' : ''}`} onClick={() => setShowCausal(p => !p)}>🔗 {lang === 'tr' ? 'Nedensellik' : 'Causality'}</button>
+          <button className={`tl-btn${showCausal ? ' active' : ''}`} onClick={() => setShowCausal(p => !p)}>🔗 {{ tr: 'Nedensellik', en: 'Causality', ar: '' }[lang]}</button>
         </div>
         <div className="tl-grp">
           <button className="tl-btn" onClick={() => setZoom(z => Math.max(0.5, z - 0.25))}>🔍−</button>

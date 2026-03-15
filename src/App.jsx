@@ -118,21 +118,21 @@ export default function App() {
   }
 
   return (
-    <div className="app">
+    <div className="app" dir={lang === 'ar' ? 'rtl' : 'ltr'} lang={lang}>
       <a href="#main-content" className="skip-link">
-        {lang === 'tr' ? 'İçeriğe geç' : 'Skip to content'}
+        {{ tr: 'İçeriğe geç', en: 'Skip to content', ar: 'انتقل إلى المحتوى' }[lang]}
       </a>
       <header className="header" role="banner">
         <div className="header-left">
           <button className="hamburger" onClick={() => setMenuOpen(p => !p)}
-            aria-label={lang === 'tr' ? 'Menü' : 'Menu'} aria-expanded={menuOpen}>
+            aria-label={{ tr: 'Menü', en: 'Menu', ar: 'القائمة' }[lang]} aria-expanded={menuOpen}>
             <span className={`hb-line${menuOpen ? ' open' : ''}`} />
             <span className={`hb-line${menuOpen ? ' open' : ''}`} />
             <span className={`hb-line${menuOpen ? ' open' : ''}`} />
           </button>
           {tab === 'map' && (
             <button className="sidebar-toggle" onClick={() => setSidebarOpen(p => !p)}
-              aria-label={lang === 'tr' ? 'Filtreler' : 'Filters'}>☰</button>
+              aria-label={{ tr: 'Filtreler', en: 'Filters', ar: 'المرشحات' }[lang]}>☰</button>
           )}
           <div className="logo" aria-hidden="true">☪</div>
           <div>
@@ -145,11 +145,11 @@ export default function App() {
           <SearchBar lang={lang} onFlyTo={handleFlyTo} onSelectEntity={handleSearchSelect} />
         </div>
         <nav className={`header-right${menuOpen ? ' mobile-open' : ''}`} role="navigation"
-          aria-label={lang === 'tr' ? 'Ana navigasyon' : 'Main navigation'}>
+          aria-label={{ tr: 'Ana navigasyon', en: 'Main navigation', ar: 'التنقل الرئيسي' }[lang]}>
           <div className="header-search-desktop">
             <SearchBar lang={lang} onFlyTo={handleFlyTo} onSelectEntity={handleSearchSelect} />
           </div>
-          <div className="tabs" role="tablist" aria-label={lang === 'tr' ? 'Görünüm seçimi' : 'View selection'}>
+          <div className="tabs" role="tablist" aria-label={{ tr: 'Görünüm seçimi', en: 'View selection', ar: 'اختيار العرض' }[lang]}>
             <button role="tab" aria-selected={tab === 'map'} className={`tab${tab === 'map' ? ' active' : ''}`} onClick={() => selectTab('map')}>{t.tabs.map}</button>
             <button role="tab" aria-selected={tab === 'dashboard'} className={`tab${tab === 'dashboard' ? ' active' : ''}`} onClick={() => selectTab('dashboard')}>{t.tabs.dashboard}</button>
             <button role="tab" aria-selected={tab === 'timeline'} className={`tab${tab === 'timeline' ? ' active' : ''}`} onClick={() => selectTab('timeline')}>{t.tabs.timeline}</button>
@@ -160,14 +160,21 @@ export default function App() {
             <button role="tab" aria-selected={tab === 'yaqut'} className={`tab${tab === 'yaqut' ? ' active' : ''}`} onClick={() => selectTab('yaqut')}>{t.tabs.yaqut}</button>
           </div>
           <button className="quiz-trigger" onClick={() => setQuizOpen(true)}
-            aria-label={lang === 'tr' ? 'Bilgi yarışması' : 'Knowledge quiz'}>🎓 Quiz</button>
+            aria-label={{ tr: 'Bilgi yarışması', en: 'Knowledge quiz', ar: 'اختبار المعرفة' }[lang]}>🎓 Quiz</button>
           <GlossaryModal lang={lang} />
           <ProgressTracker lang={lang} progress={progress} onReset={resetProgress} />
           <ExportButton lang={lang} />
           <AboutModal lang={lang} onResetOnboarding={resetOnboarding} onResetLanding={resetLanding} />
-          <button className="lang-btn" onClick={() => setLang(l => l === 'tr' ? 'en' : 'tr')} aria-label={lang === 'tr' ? 'Switch to English' : 'Türkçeye geç'}>
-            {lang === 'tr' ? '🇬🇧 EN' : '🇹🇷 TR'}
-          </button>
+          <div className="lang-switcher">
+            {['tr', 'en', 'ar'].map(l => (
+              <button key={l}
+                className={`lang-btn${lang === l ? ' active' : ''}`}
+                onClick={() => setLang(l)}
+                aria-label={l === 'ar' ? 'العربية' : l === 'en' ? 'English' : 'Türkçe'}>
+                {{ tr: '🇹🇷 TR', en: '🇬🇧 EN', ar: '🇸🇦 AR' }[l]}
+              </button>
+            ))}
+          </div>
         </nav>
       </header>
       {menuOpen && <div className="mobile-backdrop" onClick={() => setMenuOpen(false)} />}

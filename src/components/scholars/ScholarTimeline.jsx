@@ -123,9 +123,9 @@ function hideOverlappingLabels(scholars, xScale, zoomK) {
 
 /* ═══ Build rich tooltip HTML ═══ */
 function buildRichTooltip(s, lang, allScholars) {
-  const nm   = lang === 'tr' ? s.tr : s.en;
-  const city = lang === 'tr' ? (s.city_tr || '') : (s.city_en || '');
-  const disc = lang === 'tr' ? (s.disc_tr || '') : (s.disc_en || s.disc_tr || '');
+  const nm   = n(s, lang);
+  const city = (s[`city_${lang}`] || s.city_en || s.city_tr || '');
+  const disc = (s[`disc_${lang}`] || s.disc_en || s.disc_tr || '');
   const dColor = discColor(s.disc_tr);
   const badge = IMPORTANCE_3.has(s.id) ? '⭐' : '';
   const dates = `${s.b}–${s.d > 2024 ? '?' : s.d}`;
@@ -136,7 +136,7 @@ function buildRichTooltip(s, lang, allScholars) {
   const sIds = studentsOf[s.id] || [];
   const getName = id => {
     const sch = allScholars.find(x => x.id === id);
-    return sch ? (lang === 'tr' ? sch.tr : sch.en) : '';
+    return sch ? (n(sch, lang)) : '';
   };
   const teacherNames = tIds.map(getName).filter(Boolean);
   const studentNames = sIds.map(getName).filter(Boolean);
@@ -156,20 +156,20 @@ function buildRichTooltip(s, lang, allScholars) {
   html += `</div>`;
   // Works
   if (works.length > 0) {
-    html += `<div style="font-size:10px;color:#9ca3af;margin-bottom:2px;font-weight:600">${lang === 'tr' ? 'Eserler' : 'Works'}:</div>`;
+    html += `<div style="font-size:10px;color:#9ca3af;margin-bottom:2px;font-weight:600">${{ tr: 'Eserler', en: 'Works', ar: '' }[lang]}:</div>`;
     html += `<div style="font-size:11px;color:#d1d5db;margin-bottom:6px;line-height:1.4">`;
     works.slice(0, 3).forEach(w => { html += `<span style="color:${dColor}">•</span> ${w}<br/>`; });
-    if (works.length > 3) html += `<span style="color:#6b7280">+${works.length - 3} ${lang === 'tr' ? 'daha' : 'more'}…</span>`;
+    if (works.length > 3) html += `<span style="color:#6b7280">+${works.length - 3} ${{ tr: 'daha', en: 'more', ar: '' }[lang]}…</span>`;
     html += `</div>`;
   }
   // Teachers
   if (teacherNames.length > 0) {
-    html += `<div style="font-size:10px;color:#9ca3af;margin-bottom:2px;font-weight:600">👨‍🏫 ${lang === 'tr' ? 'Hocaları' : 'Teachers'}:</div>`;
+    html += `<div style="font-size:10px;color:#9ca3af;margin-bottom:2px;font-weight:600">👨‍🏫 ${{ tr: 'Hocaları', en: 'Teachers', ar: '' }[lang]}:</div>`;
     html += `<div style="font-size:11px;color:#a3e635;margin-bottom:4px">${teacherNames.join(', ')}</div>`;
   }
   // Students
   if (studentNames.length > 0) {
-    html += `<div style="font-size:10px;color:#9ca3af;margin-bottom:2px;font-weight:600">🎓 ${lang === 'tr' ? 'Öğrencileri' : 'Students'}:</div>`;
+    html += `<div style="font-size:10px;color:#9ca3af;margin-bottom:2px;font-weight:600">🎓 ${{ tr: 'Öğrencileri', en: 'Students', ar: '' }[lang]}:</div>`;
     html += `<div style="font-size:11px;color:#60a5fa;margin-bottom:2px">${studentNames.join(', ')}</div>`;
   }
   return { html, dColor };
@@ -268,7 +268,7 @@ export default function ScholarTimeline({ scholars, links, lang, selected, onSel
           const newMin = getMinScore(newK);
           const cnt = scholars.filter(s => getImportance(s) >= newMin).length;
           counterRef.current.textContent = cnt + '/' + scholars.length +
-            ' ' + (lang === 'tr' ? 'âlim' : 'scholars');
+            ' ' + ({ tr: 'âlim', en: 'scholars', ar: '' }[lang]);
         }
         // Debounced re-render for label recalculation at every zoom level
         clearTimeout(zoomRenderTimer);
@@ -391,7 +391,7 @@ export default function ScholarTimeline({ scholars, links, lang, selected, onSel
         .text(ms.icon);
       /* Hover for tooltip — pure DOM */
       iconG.on('mouseenter', function(ev) {
-        const label = lang === 'tr' ? ms.tr : ms.en;
+        const label = n(ms, lang);
         tipEl.innerHTML =
           `<div style="font-size:13px;font-weight:700;color:#f3f4f6;margin-bottom:2px">${label}</div>` +
           `<div style="font-size:11px;color:#6b7280">📅 ${ms.yr}</div>`;
@@ -499,7 +499,7 @@ export default function ScholarTimeline({ scholars, links, lang, selected, onSel
 
         /* Label — inverse-scaled so it stays same size on screen */
         if (!hiddenLabels.has(s.id) && (xEnd - xStart > 20 || score >= 3)) {
-          const nm = lang === 'tr' ? s.tr : s.en;
+          const nm = n(s, lang);
           const label = nm.length > maxLabelLen ? nm.slice(0, maxLabelLen - 1) + '…' : nm;
           const charW = (score >= 3 ? 6.5 : score >= 2 ? 5.5 : 5) * invK;
           const textW = label.length * charW + 4 * invK;
@@ -640,10 +640,10 @@ export default function ScholarTimeline({ scholars, links, lang, selected, onSel
         pointerEvents: 'auto',
       }}>
         <span ref={counterRef} style={{ fontSize: 11, color: '#6b7280', fontFamily: 'Outfit' }}>
-          {scholars.filter(s => getImportance(s) >= 3).length}/{scholars.length} {lang === 'tr' ? 'âlim' : 'scholars'}
+          {scholars.filter(s => getImportance(s) >= 3).length}/{scholars.length} {{ tr: 'âlim', en: 'scholars', ar: '' }[lang]}
         </span>
         <button className="scholar-zoom-reset" onClick={resetZoom} style={{ position: 'static' }}>
-          ⟳ {lang === 'tr' ? 'Sıfırla' : 'Reset'}
+          ⟳ {{ tr: 'Sıfırla', en: 'Reset', ar: '' }[lang]}
         </button>
       </div>
 
@@ -657,7 +657,7 @@ export default function ScholarTimeline({ scholars, links, lang, selected, onSel
           fontSize: 12, color: '#9ca3af', fontFamily: 'Outfit',
           pointerEvents: 'none', whiteSpace: 'nowrap', zIndex: 5,
         }}>
-          🔍 {lang === 'tr' ? 'Yakınlaştır: daha fazla âlim görünür' : 'Zoom in to reveal more scholars'}
+          🔍 {{ tr: 'Yakınlaştır: daha fazla âlim görünür', en: 'Zoom in to reveal more scholars', ar: '' }[lang]}
         </div>
       )}
     </div>

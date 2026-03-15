@@ -207,7 +207,7 @@ export default function ScholarView({ lang, t }) {
       {view === 'isnad' && (
         <div className="isnad-chain-bar">
           <span className="isnad-chain-bar-title">
-            📿 {lang === 'tr' ? 'İsnâd Zincirleri' : 'Isnad Chains'}:
+            📿 {{ tr: 'İsnâd Zincirleri', en: 'Isnad Chains', ar: '' }[lang]}:
           </span>
           <div className="isnad-chain-chips">
             {ISNAD_CHAINS.map(ch => (
@@ -225,14 +225,14 @@ export default function ScholarView({ lang, t }) {
                     return next;
                   });
                 }}
-                title={lang === 'tr' ? ch.desc_tr : ch.desc_en}>
+                title={lf(ch, 'desc', lang)}>
                 <span className="isnad-chip-dot" style={{ background: ch.color }} />
-                {lang === 'tr' ? ch.name_tr : ch.name_en}
+                {lf(ch, 'name', lang)}
               </button>
             ))}
             {activeChains.size > 0 && (
               <button className="isnad-chain-chip clear" onClick={() => setActiveChains(new Set())}>
-                ✕ {lang === 'tr' ? 'Temizle' : 'Clear'}
+                ✕ {{ tr: 'Temizle', en: 'Clear', ar: '' }[lang]}
               </button>
             )}
           </div>
@@ -275,14 +275,14 @@ export default function ScholarView({ lang, t }) {
             <>
               <span className="scholar-detail-disc"
                 style={{ color: discColor(sel.disc_tr), background: discColor(sel.disc_tr) + '22' }}>
-                ● {lang === 'tr' ? sel.disc_tr : (sel.disc_en || sel.disc_tr)}
+                ● {(sel[`disc_${lang}`] || sel.disc_en || sel.disc_tr)}
               </span>
               <div className="scholar-detail-name">{sel.tr}</div>
               <div className="scholar-detail-en">{sel.en}</div>
               <div className="scholar-detail-dates">
                 {sel.b} – {sel.d}
                 {(sel.city_tr || sel.city_en) && (
-                  <> · {lang === 'tr' ? sel.city_tr : sel.city_en}</>
+                  <> · {lf(sel, 'city', lang)}</>
                 )}
               </div>
 
@@ -299,7 +299,7 @@ export default function ScholarView({ lang, t }) {
               {/* Identity Card */}
               {showIdCard && SCHOLAR_IDENTITY[sel.id] && (() => {
                 const card = SCHOLAR_IDENTITY[sel.id];
-                const lk = lang === 'tr' ? '_tr' : '_en';
+                const lk = { tr: '_tr', en: '_en', ar: '' }[lang];
                 const rows = [
                   ['idLaqab',      card['laqab' + lk]],
                   ['idKunya',      card['kunya' + lk]],
@@ -357,19 +357,19 @@ export default function ScholarView({ lang, t }) {
               {/* İsnâd Info (visible when scholar has rawi_tag) */}
               {sel.rawi_tag && (
                 <div className="scholar-detail-section isnad-info-section">
-                  <div className="scholar-detail-label">📿 {lang === 'tr' ? 'İsnâd Bilgileri' : 'Isnad Information'}</div>
+                  <div className="scholar-detail-label">📿 {{ tr: 'İsnâd Bilgileri', en: 'Isnad Information', ar: '' }[lang]}</div>
                   <div className="isnad-info-grid">
                     <div className="isnad-info-row">
-                      <span className="isnad-info-k">{lang === 'tr' ? 'Tabaka' : 'Layer'}</span>
-                      <span className="isnad-info-v">{lang === 'tr' ? sel.tabaqa_tr : sel.tabaqa_en}{sel.tabaqa ? ` (${sel.tabaqa})` : ''}</span>
+                      <span className="isnad-info-k">{{ tr: 'Tabaka', en: 'Layer', ar: '' }[lang]}</span>
+                      <span className="isnad-info-v">{lf(sel, 'tabaqa', lang)}{sel.tabaqa ? ` (${sel.tabaqa})` : ''}</span>
                     </div>
                     <div className="isnad-info-row">
-                      <span className="isnad-info-k">{lang === 'tr' ? 'Derece' : 'Grade'}</span>
-                      <span className="isnad-info-v">{lang === 'tr' ? sel.rawi_rank_tr : sel.rawi_rank_en}</span>
+                      <span className="isnad-info-k">{{ tr: 'Derece', en: 'Grade', ar: '' }[lang]}</span>
+                      <span className="isnad-info-v">{lf(sel, 'rawi_rank', lang)}</span>
                     </div>
                     {sel.hadith_count > 0 && (
                       <div className="isnad-info-row">
-                        <span className="isnad-info-k">{lang === 'tr' ? 'Rivâyet' : 'Narrations'}</span>
+                        <span className="isnad-info-k">{{ tr: 'Rivâyet', en: 'Narrations', ar: '' }[lang]}</span>
                         <span className="isnad-info-v">~{sel.hadith_count.toLocaleString()}</span>
                       </div>
                     )}
@@ -383,7 +383,7 @@ export default function ScholarView({ lang, t }) {
                     return (
                       <div className="isnad-chains-list">
                         <div className="isnad-chains-list-title">
-                          {lang === 'tr' ? 'Dahil Olduğu Zincirler' : 'Member of Chains'}:
+                          {{ tr: 'Dahil Olduğu Zincirler', en: 'Member of Chains', ar: '' }[lang]}:
                         </div>
                         {memberChains.map(ch => (
                           <button key={ch.id} className="isnad-chain-mini"
@@ -393,7 +393,7 @@ export default function ScholarView({ lang, t }) {
                               setActiveChains(new Set([ch.id]));
                             }}>
                             <span className="isnad-chip-dot" style={{ background: ch.color }} />
-                            {lang === 'tr' ? ch.name_tr : ch.name_en}
+                            {lf(ch, 'name', lang)}
                             <span className="isnad-chain-arrow">→</span>
                           </button>
                         ))}
@@ -421,7 +421,7 @@ export default function ScholarView({ lang, t }) {
                     {teachers.map(t2 => (
                       <button key={t2.id} className="scholar-detail-link-chip"
                         onClick={() => setSelectedId(t2.id)}>
-                        {lang === 'tr' ? t2.tr : t2.en}
+                        {n(t2, lang)}
                       </button>
                     ))}
                   </div>
@@ -436,7 +436,7 @@ export default function ScholarView({ lang, t }) {
                     {students.map(st => (
                       <button key={st.id} className="scholar-detail-link-chip"
                         onClick={() => setSelectedId(st.id)}>
-                        {lang === 'tr' ? st.tr : st.en}
+                        {n(st, lang)}
                       </button>
                     ))}
                   </div>
@@ -469,9 +469,7 @@ export default function ScholarView({ lang, t }) {
                 <div className="scholar-dia-attribution">
                   <span className="scholar-dia-attribution-icon">📚</span>
                   <span>
-                    {lang === 'tr'
-                      ? 'Biyografik veriler: TDV İslâm Ansiklopedisi (DİA)'
-                      : 'Biographical data: TDV Encyclopedia of Islam (DİA)'}
+                    {{ tr: 'Biyografik veriler: TDV İslâm Ansiklopedisi (DİA)', en: 'Biographical data: TDV Encyclopedia of Islam (DİA)', ar: '' }[lang]}
                   </span>
                   <a href="https://islamansiklopedisi.org.tr" target="_blank" rel="noopener noreferrer"
                     className="scholar-dia-attribution-link">

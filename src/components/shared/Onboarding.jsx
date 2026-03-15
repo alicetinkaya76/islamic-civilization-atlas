@@ -1,4 +1,5 @@
 import { useState, useCallback } from 'react';
+import { f } from '../../data/i18n-utils';
 
 const STEPS = [
   { icon: '🗺', title_tr: 'Harita', title_en: 'Map',
@@ -44,32 +45,32 @@ export default function Onboarding({ lang, onDone }) {
 
         <div className="onboarding-icon">{current.icon}</div>
         <h2 className="onboarding-title">
-          {lang === 'tr' ? current.title_tr : current.title_en}
+          {f(current, 'title', lang)}
         </h2>
         <p className="onboarding-text">
-          {lang === 'tr' ? current.text_tr : current.text_en}
+          {f(current, 'text', lang)}
         </p>
 
         <div className="onboarding-nav">
           {step > 0 && (
             <button className="onboarding-btn secondary" onClick={handlePrev}>
-              ← {lang === 'tr' ? 'Geri' : 'Back'}
+              ← {{ tr: 'Geri', en: 'Back', ar: '' }[lang]}
             </button>
           )}
           <button className="onboarding-btn primary" onClick={handleNext}>
             {isLast
-              ? (lang === 'tr' ? 'Başla!' : 'Start!')
-              : (lang === 'tr' ? 'İleri →' : 'Next →')}
+              ? ({ tr: 'Başla!', en: 'Start!', ar: '' }[lang])
+              : ({ tr: 'İleri →', en: 'Next →', ar: '' }[lang])}
           </button>
         </div>
 
         <div className="onboarding-footer">
           <label className="onboarding-checkbox-label">
             <input type="checkbox" checked={dontShow} onChange={e => setDontShow(e.target.checked)} />
-            <span>{lang === 'tr' ? 'Tekrar gösterme' : "Don't show again"}</span>
+            <span>{{ tr: 'Tekrar gösterme', en: "Don't show again", ar: 'لا تعرض مرة أخرى' }[lang]}</span>
           </label>
           <button className="onboarding-skip" onClick={handleSkip}>
-            {lang === 'tr' ? 'Atla' : 'Skip'}
+            {{ tr: 'Atla', en: 'Skip', ar: '' }[lang]}
           </button>
         </div>
       </div>

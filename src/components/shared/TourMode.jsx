@@ -37,7 +37,7 @@ export default function TourMode({ lang, onNavigate, onClose, onTourComplete }) 
     }
   }, [step, tourId, onNavigate]);
 
-  const lf = (obj, field) => lang === 'tr' ? obj[`${field}_tr`] : obj[`${field}_en`];
+  const lf = (obj, field) => obj[`${field}_${lang}`] || obj[`${field}_en`] || obj[`${field}_tr`] || '';
 
   // Tour selection screen
   if (!tourId) {
@@ -46,10 +46,10 @@ export default function TourMode({ lang, onNavigate, onClose, onTourComplete }) 
         <div className="tour-select">
           <div className="tour-select-header">
             <h2 className="tour-select-title">
-              {lang === 'tr' ? '🗺 Rehberli Turlar' : '🗺 Guided Tours'}
+              {{ tr: '🗺 Rehberli Turlar', en: '🗺 Guided Tours', ar: '' }[lang]}
             </h2>
             <p className="tour-select-sub">
-              {lang === 'tr' ? 'Bir tur seçerek İslam tarihini keşfedin' : 'Explore Islamic history by selecting a tour'}
+              {{ tr: 'Bir tur seçerek İslam tarihini keşfedin', en: 'Explore Islamic history by selecting a tour', ar: '' }[lang]}
             </p>
             <button className="tour-close-btn" onClick={onClose}>✕</button>
           </div>
@@ -59,7 +59,7 @@ export default function TourMode({ lang, onNavigate, onClose, onTourComplete }) 
                 <span className="tour-card-icon">{t.icon}</span>
                 <span className="tour-card-title">{lf(t, 'title')}</span>
                 <span className="tour-card-desc">{lf(t, 'desc')}</span>
-                <span className="tour-card-stops">{t.stops.length} {lang === 'tr' ? 'durak' : 'stops'}</span>
+                <span className="tour-card-stops">{t.stops.length} {{ tr: 'durak', en: 'stops', ar: '' }[lang]}</span>
               </button>
             ))}
           </div>
@@ -72,7 +72,7 @@ export default function TourMode({ lang, onNavigate, onClose, onTourComplete }) 
   return (
     <div className="tour-panel">
       <div className="tour-panel-header">
-        <button className="tour-back" onClick={() => { setTourId(null); setPlaying(false); }}>← {lang === 'tr' ? 'Turlar' : 'Tours'}</button>
+        <button className="tour-back" onClick={() => { setTourId(null); setPlaying(false); }}>← {{ tr: 'Turlar', en: 'Tours', ar: '' }[lang]}</button>
         <span className="tour-panel-title">{tour.icon} {lf(tour, 'title')}</span>
         <button className="tour-close-btn-sm" onClick={onClose}>✕</button>
       </div>
@@ -93,20 +93,20 @@ export default function TourMode({ lang, onNavigate, onClose, onTourComplete }) 
 
       <div className="tour-nav">
         <button className="tour-nav-btn" disabled={step === 0} onClick={() => setStep(s => s - 1)}>
-          ← {lang === 'tr' ? 'Önceki' : 'Previous'}
+          ← {{ tr: 'Önceki', en: 'Previous', ar: '' }[lang]}
         </button>
         <button className="tour-play-btn" onClick={() => setPlaying(p => !p)}>
           {playing ? '⏸' : '▶'}
         </button>
         <button className="tour-nav-btn" disabled={step === tour.stops.length - 1} onClick={() => setStep(s => s + 1)}>
-          {lang === 'tr' ? 'Sonraki' : 'Next'} →
+          {{ tr: 'Sonraki', en: 'Next', ar: '' }[lang]} →
         </button>
       </div>
 
       {/* Tour completion indicator */}
       {step === tour.stops.length - 1 && (
         <div className="tour-complete-msg">
-          🎉 {lang === 'tr' ? 'Tur tamamlandı!' : 'Tour completed!'}
+          🎉 {{ tr: 'Tur tamamlandı!', en: 'Tour completed!', ar: '' }[lang]}
         </div>
       )}
     </div>

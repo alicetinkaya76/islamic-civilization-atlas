@@ -17,11 +17,11 @@ class YaqutErrorBoundary extends Component {
     if (this.state.hasError) {
       return (
         <div style={{ padding: 40, textAlign: 'center', color: '#c4b89a' }}>
-          <h3>⚠️ {this.props.lang === 'tr' ? 'Bir hata oluştu' : 'An error occurred'}</h3>
+          <h3>⚠️ {{ tr: 'Bir hata oluştu', en: 'An error occurred', ar: 'حدث خطأ' }[this.props.lang]}</h3>
           <p style={{ color: '#ef5350', fontSize: 12, fontFamily: 'monospace' }}>{String(this.state.error)}</p>
           <button onClick={() => this.setState({ hasError: false, error: null })}
             style={{ marginTop: 16, padding: '8px 16px', background: '#1a6b5a', color: '#fff', border: 'none', borderRadius: 6, cursor: 'pointer' }}>
-            {this.props.lang === 'tr' ? 'Tekrar Dene' : 'Retry'}
+            {{ tr: 'Tekrar Dene', en: 'Retry', ar: 'إعادة المحاولة' }[this.props.lang]}
           </button>
         </div>
       );
@@ -247,14 +247,14 @@ function YaqutViewInner({ lang, t }) {
       {/* Mobile toggle */}
       <div className="yaqut-mobile-toggle">
         <button className={showMobile === 'list' ? 'active' : ''} onClick={() => setShowMobile('list')}>
-          ☰ {lang === 'tr' ? 'Liste' : 'List'}
+          ☰ {{ tr: 'Liste', en: 'List', ar: '' }[lang]}
         </button>
         <button className={showMobile === 'map' ? 'active' : ''} onClick={() => setShowMobile('map')}>
           🗺 {ty.mapView}
         </button>
         {selectedEntry && (
           <button className={showMobile === 'card' ? 'active' : ''} onClick={() => setShowMobile('card')}>
-            📋 {lang === 'tr' ? 'Detay' : 'Detail'}
+            📋 {{ tr: 'Detay', en: 'Detail', ar: '' }[lang]}
           </button>
         )}
       </div>
@@ -310,16 +310,16 @@ function YaqutViewInner({ lang, t }) {
           {/* Analytics sub-tabs */}
           <div className="yaqut-analytics-tabs">
             <button className={analyticsTab === 'charts' ? 'active' : ''} onClick={() => setAnalyticsTab('charts')}>
-              📊 {ty.tabCharts || (lang === 'tr' ? 'Grafikler' : 'Charts')}
+              📊 {ty.tabCharts || ({ tr: 'Grafikler', en: 'Charts', ar: '' }[lang])}
             </button>
             <button className={analyticsTab === 'graph' ? 'active' : ''} onClick={() => setAnalyticsTab('graph')}>
-              🕸 {ty.tabGraph || (lang === 'tr' ? 'Yer Grafı' : 'Place Graph')}
+              🕸 {ty.tabGraph || ({ tr: 'Yer Grafı', en: 'Place Graph', ar: '' }[lang])}
             </button>
             <button className={analyticsTab === 'network' ? 'active' : ''} onClick={() => setAnalyticsTab('network')}>
-              👤 {ty.tabNetwork || (lang === 'tr' ? 'Kişi-Yer Ağı' : 'Person-Place Network')}
+              👤 {ty.tabNetwork || ({ tr: 'Kişi-Yer Ağı', en: 'Person-Place Network', ar: '' }[lang])}
             </button>
             <button className={analyticsTab === 'heatmap' ? 'active' : ''} onClick={() => setAnalyticsTab('heatmap')}>
-              🔥 {ty.tabHeatmap || (lang === 'tr' ? 'Coğrafi Kümeleme' : 'Geo Clustering')}
+              🔥 {ty.tabHeatmap || ({ tr: 'Coğrafi Kümeleme', en: 'Geo Clustering', ar: '' }[lang])}
             </button>
           </div>
 

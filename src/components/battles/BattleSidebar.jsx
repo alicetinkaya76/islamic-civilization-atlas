@@ -135,7 +135,7 @@ export default function BattleSidebar({
               }
               setPlaying(p => !p);
             }}
-            title={playing ? (lang === 'tr' ? 'Durdur' : 'Pause') : (lang === 'tr' ? 'Oynat' : 'Play')}
+            title={playing ? ({ tr: 'Durdur', en: 'Pause', ar: '' }[lang]) : ({ tr: 'Oynat', en: 'Play', ar: '' }[lang])}
           >
             {playing ? '⏸' : '▶'}
           </button>

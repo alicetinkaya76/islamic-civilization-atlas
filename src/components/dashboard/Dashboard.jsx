@@ -5,6 +5,7 @@ import SCHOLAR_LINKS from '../../data/scholar_links';
 import { ERA_BANDS } from '../../config/eras';
 import { ZONE_C } from '../../config/colors';
 import '../../styles/dashboard.css';
+import { f } from '../../data/i18n-utils';
 
 /* ── CountUp animation ── */
 function CountUp({ target, duration = 1800 }) {
@@ -138,27 +139,27 @@ export default function Dashboard({ lang, t, onTabChange }) {
 
   /* Computed data */
   const overviewStats = useMemo(() => [
-    { key: 'dynasties', icon: '🏛', count: DB.dynasties?.length || 0, label: lang === 'tr' ? 'Hanedan' : 'Dynasties', tab: 'map' },
-    { key: 'scholars', icon: '📚', count: DB.scholars?.length || 0, label: lang === 'tr' ? 'Âlim' : 'Scholars', tab: 'scholars' },
-    { key: 'battles', icon: '⚔', count: DB.battles?.length || 0, label: lang === 'tr' ? 'Savaş' : 'Battles', tab: 'battles' },
-    { key: 'rulers', icon: '👑', count: DB.rulers?.length || 0, label: lang === 'tr' ? 'Hükümdar' : 'Rulers', tab: 'map' },
-    { key: 'monuments', icon: '🕌', count: DB.monuments?.length || 0, label: lang === 'tr' ? 'Eser' : 'Monuments', tab: 'map' },
-    { key: 'cities', icon: '🏙', count: DB.cities?.length || 0, label: lang === 'tr' ? 'Şehir' : 'Cities', tab: 'map' },
-    { key: 'routes', icon: '🛤', count: DB.routes?.length || 0, label: lang === 'tr' ? 'Ticaret Yolu' : 'Trade Routes', tab: 'map' },
-    { key: 'madrasas', icon: '🎓', count: DB.madrasas?.length || 0, label: lang === 'tr' ? 'Medrese' : 'Madrasas', tab: 'map' },
-    { key: 'alam', icon: '📖', count: 13940, label: lang === 'tr' ? "el-A'lâm Biyografi" : "al-Aʿlām Biographies", tab: 'alam' },
+    { key: 'dynasties', icon: '🏛', count: DB.dynasties?.length || 0, label: { tr: 'Hanedan', en: 'Dynasties', ar: '' }[lang], tab: 'map' },
+    { key: 'scholars', icon: '📚', count: DB.scholars?.length || 0, label: { tr: 'Âlim', en: 'Scholars', ar: '' }[lang], tab: 'scholars' },
+    { key: 'battles', icon: '⚔', count: DB.battles?.length || 0, label: { tr: 'Savaş', en: 'Battles', ar: '' }[lang], tab: 'battles' },
+    { key: 'rulers', icon: '👑', count: DB.rulers?.length || 0, label: { tr: 'Hükümdar', en: 'Rulers', ar: '' }[lang], tab: 'map' },
+    { key: 'monuments', icon: '🕌', count: DB.monuments?.length || 0, label: { tr: 'Eser', en: 'Monuments', ar: '' }[lang], tab: 'map' },
+    { key: 'cities', icon: '🏙', count: DB.cities?.length || 0, label: { tr: 'Şehir', en: 'Cities', ar: '' }[lang], tab: 'map' },
+    { key: 'routes', icon: '🛤', count: DB.routes?.length || 0, label: { tr: 'Ticaret Yolu', en: 'Trade Routes', ar: '' }[lang], tab: 'map' },
+    { key: 'madrasas', icon: '🎓', count: DB.madrasas?.length || 0, label: { tr: 'Medrese', en: 'Madrasas', ar: '' }[lang], tab: 'map' },
+    { key: 'alam', icon: '📖', count: 13940, label: { tr: 'el-A\'lâm Biyografi', en: 'al-Aʿlām Biographies', ar: '' }[lang], tab: 'alam' },
   ], [lang]);
 
   /* Era distribution */
   const eraData = useMemo(() => {
     const counts = {};
     ERA_BANDS.forEach(([s, e, , names]) => {
-      const name = lang === 'tr' ? names.tr : names.en;
+      const name = n(names, lang);
       counts[name] = 0;
     });
     DB.dynasties.forEach(d => {
       ERA_BANDS.forEach(([s, e, , names]) => {
-        const name = lang === 'tr' ? names.tr : names.en;
+        const name = n(names, lang);
         if (d.start < e && (d.end || 9999) > s) counts[name]++;
       });
     });
@@ -174,7 +175,7 @@ export default function Dashboard({ lang, t, onTabChange }) {
   const regionData = useMemo(() => {
     const counts = {};
     DB.dynasties.forEach(d => {
-      const z = d.zone || (lang === 'tr' ? 'Bilinmeyen' : 'Unknown');
+      const z = d.zone || ({ tr: 'Bilinmeyen', en: 'Unknown', ar: '' }[lang]);
       counts[z] = (counts[z] || 0) + 1;
     });
     return Object.entries(counts)
@@ -231,7 +232,7 @@ export default function Dashboard({ lang, t, onTabChange }) {
       .slice(0, 10)
       .map(([id, cnt]) => {
         const s = scholarMap[+id];
-        return s ? { name: lang === 'tr' ? s.tr : s.en, count: cnt, disc: s.disc_tr || '', id: s.id } : null;
+        return s ? { name: n(s, lang), count: cnt, disc: s.disc_tr || '', id: s.id } : null;
       })
       .filter(Boolean);
   }, [lang]);
@@ -259,10 +260,10 @@ export default function Dashboard({ lang, t, onTabChange }) {
       .sort((a, b) => a.founded - b.founded)
       .slice(0, 6)
       .map(m => ({
-        name: lang === 'tr' ? m.tr : m.en,
-        city: lang === 'tr' ? m.city_tr : m.city_en,
+        name: n(m, lang),
+        city: f(m, 'city', lang),
         year: m.founded,
-        type: lang === 'tr' ? m.type_tr : m.type_en,
+        type: f(m, 'type', lang),
       }))
   , [lang]);
 

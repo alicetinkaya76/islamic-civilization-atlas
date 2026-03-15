@@ -1,4 +1,5 @@
 import { useState, useCallback, useRef, useEffect, useMemo } from 'react';
+import { hn } from '../../data/i18n-utils';
 
 /* ═══ Profession color map (consistent with scholar disc colors) ═══ */
 const PROF_COLORS = {
@@ -50,7 +51,7 @@ function VirtualList({ items, selectedId, onSelect, lang }) {
               style={{ height: ITEM_HEIGHT }}
               onClick={() => onSelect(b.id)}>
               <div className="alam-list-heading" dir="rtl">{b.h}</div>
-              <div className="alam-list-name">{lang === 'tr' ? b.ht : b.he}</div>
+              <div className="alam-list-name">{hn(b, lang)}</div>
               <div className="alam-list-meta">
                 {b.md ? `ö. ${b.md}` : b.mb ? `d. ${b.mb}` : ''}
                 {(b.pt || b.pe) && <span className="alam-list-prof"> · {lang === 'tr' ? b.pt : b.pe}</span>}
@@ -117,7 +118,7 @@ export default function AlamSidebar({
 
       {/* Filters toggle */}
       <button className="alam-filters-toggle" onClick={() => setFiltersOpen(p => !p)}>
-        {filtersOpen ? '▾' : '▸'} {lang === 'tr' ? 'Filtreler' : 'Filters'}
+        {filtersOpen ? '▾' : '▸'} {{ tr: 'Filtreler', en: 'Filters', ar: '' }[lang]}
         <span className="alam-filter-count">{filtered.length.toLocaleString()} {ta.biographies}</span>
       </button>
 
