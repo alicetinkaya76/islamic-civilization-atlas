@@ -1,6 +1,9 @@
-import { useState, useRef, useCallback, useEffect } from 'react';
+import { useState, useRef, useCallback, useEffect, Suspense, lazy } from 'react';
 import T from './data/i18n';
 import LandingPage from './components/landing/LandingPage';
+
+/* Admin Panel — lazy-loaded to keep main bundle small */
+const AdminPanel = lazy(() => import('./components/admin/AdminPanel'));
 import MapView from './components/map/MapView';
 import Dashboard from './components/dashboard/Dashboard';
 import TimelineView from './components/timeline/TimelineView';
@@ -18,7 +21,7 @@ import ProgressTracker, { BadgeToast, useProgress } from './components/shared/Pr
 import Onboarding from './components/shared/Onboarding';
 import ExportButton from './components/shared/ExportButton';
 
-const VALID_TABS = ['map', 'dashboard', 'timeline', 'links', 'scholars', 'battles', 'alam', 'yaqut'];
+const VALID_TABS = ['map', 'dashboard', 'timeline', 'links', 'scholars', 'battles', 'alam', 'yaqut', 'admin'];
 
 /* Parse hash → { tab, params } */
 function parseHash() {
@@ -112,6 +115,15 @@ export default function App() {
     setShowLanding(false);
   }, []);
 
+  /* Admin Panel — full screen overlay */
+  if (tab === 'admin') {
+    return (
+      <Suspense fallback={<div style={{ display:'flex',alignItems:'center',justifyContent:'center',height:'100vh',background:'#0f1419',color:'#c9a84c',fontSize:18 }}>Yükleniyor...</div>}>
+        <AdminPanel lang={lang} onBack={() => selectTab('map')} />
+      </Suspense>
+    );
+  }
+
   /* Landing page */
   if (showLanding) {
     return <LandingPage lang={lang} setLang={setLang} onEnter={handleLandingEnter} />;
@@ -165,6 +177,8 @@ export default function App() {
           <ProgressTracker lang={lang} progress={progress} onReset={resetProgress} />
           <ExportButton lang={lang} />
           <AboutModal lang={lang} onResetOnboarding={resetOnboarding} onResetLanding={resetLanding} />
+          <button className="admin-trigger" onClick={() => selectTab('admin')}
+            title="Admin Panel" style={{ background:'none',border:'none',cursor:'pointer',fontSize:14,color:'#a89b8c',padding:'4px 8px',borderRadius:4 }}>⚙</button>
           <div className="lang-switcher">
             {['tr', 'en', 'ar'].map(l => (
               <button key={l}
