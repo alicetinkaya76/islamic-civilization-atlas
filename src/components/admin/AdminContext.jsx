@@ -154,6 +154,22 @@ export function AdminProvider({ children }) {
   /* ═══ Dirty files tracking ═══ */
   const [dirtyFiles, setDirtyFiles] = useState(new Set());
 
+  const markDirty = useCallback((fileName) => {
+    setDirtyFiles(prev => {
+      const next = new Set(prev);
+      next.add(fileName);
+      return next;
+    });
+  }, []);
+
+  const logChange = useCallback((type, entity, id, field, oldVal, newVal) => {
+    setChangeLog(prev => [...prev, {
+      ts: Date.now(), type, entity, id, field,
+      old: oldVal != null && typeof oldVal === 'string' ? oldVal.slice(0, 120) : oldVal,
+      new: newVal != null && typeof newVal === 'string' ? newVal.slice(0, 120) : newVal,
+    }]);
+  }, []);
+
   /* ═══ Undo/Redo History (Command Pattern) ═══ */
   const [history, setHistory] = useState([]);
   const [historyIndex, setHistoryIndex] = useState(-1);
@@ -241,22 +257,6 @@ export function AdminProvider({ children }) {
     isUndoRedoRef.current = false;
     return cmd;
   }, [history, historyIndex, markDirty]);
-
-  const markDirty = useCallback((fileName) => {
-    setDirtyFiles(prev => {
-      const next = new Set(prev);
-      next.add(fileName);
-      return next;
-    });
-  }, []);
-
-  const logChange = useCallback((type, entity, id, field, oldVal, newVal) => {
-    setChangeLog(prev => [...prev, {
-      ts: Date.now(), type, entity, id, field,
-      old: oldVal != null && typeof oldVal === 'string' ? oldVal.slice(0, 120) : oldVal,
-      new: newVal != null && typeof newVal === 'string' ? newVal.slice(0, 120) : newVal,
-    }]);
-  }, []);
 
   /* ═══ CRUD: db.json collections ═══ */
   const updateEntity = useCallback((collection, id, updates) => {
