@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
+import T from '../../data/i18n';
 import { f } from '../../data/i18n-utils';
 
 /* ═══ Progress / Discovery Tracker ═══ */
@@ -112,6 +113,7 @@ export function useProgress() {
 export default function ProgressTracker({ lang, progress, onReset }) {
   const [showPanel, setShowPanel] = useState(false);
   const panelRef = useRef(null);
+  const t = T[lang];
 
   /* Click outside to close */
   useEffect(() => {
@@ -129,11 +131,19 @@ export default function ProgressTracker({ lang, progress, onReset }) {
   const earnedBadges = BADGES.filter(b => (progress.badges || []).includes(b.id));
   const unearnedBadges = BADGES.filter(b => !(progress.badges || []).includes(b.id));
 
+  const catLabels = {
+    dynasty: t.layers.dynasties, battle: t.layers.battles,
+    event: t.layers.events, scholar: t.layers.scholars,
+    monument: t.layers.monuments, city: t.layers.cities,
+    ruler: t.layers.rulers,
+  };
+  const catIcons = { dynasty: '🏛', battle: '⚔', event: '📜', scholar: '📚', monument: '🕌', city: '🏙', ruler: '👑' };
+
   return (
     <div className="progress-wrap" ref={panelRef}>
       <button className="progress-btn" onClick={() => setShowPanel(p => !p)}
-        title={{ tr: `${total} keşif`, en: `${total} discoveries`, ar: `` }[lang]}
-        aria-label={{ tr: `İlerleme: ${total} keşif`, en: `Progress: ${total} discoveries`, ar: `` }[lang]}>
+        title={`${total} ${t.progress.discoveries}`}
+        aria-label={`${t.progress.progressLabel}: ${total} ${t.progress.discoveries}`}>
         <span className="progress-icon">🧭</span>
         <span className="progress-count">{total}</span>
       </button>
@@ -142,30 +152,22 @@ export default function ProgressTracker({ lang, progress, onReset }) {
         <div className="progress-panel">
           <div className="progress-panel-header">
             <h3 className="progress-panel-title">
-              {{ tr: '🧭 Keşif İlerlemesi', en: '🧭 Discovery Progress', ar: '' }[lang]}
+              {t.progress.title}
             </h3>
           </div>
 
           {/* Category counts */}
           <div className="progress-stats">
-            {[
-              { key: 'dynasty', icon: '🏛', tr: 'Hanedan', en: 'Dynasties' },
-              { key: 'battle', icon: '⚔', tr: 'Savaş', en: 'Battles' },
-              { key: 'event', icon: '📜', tr: 'Olay', en: 'Events' },
-              { key: 'scholar', icon: '📚', tr: 'Âlim', en: 'Scholars' },
-              { key: 'monument', icon: '🕌', tr: 'Eser', en: 'Monuments' },
-              { key: 'city', icon: '🏙', tr: 'Şehir', en: 'Cities' },
-              { key: 'ruler', icon: '👑', tr: 'Hükümdar', en: 'Rulers' },
-            ].map(cat => (
-              <div key={cat.key} className="progress-stat-row">
-                <span className="progress-stat-icon">{cat.icon}</span>
-                <span className="progress-stat-label">{n(cat, lang)}</span>
-                <span className="progress-stat-count">{progress.counts[cat.key] || 0}</span>
+            {Object.entries(catLabels).map(([key, label]) => (
+              <div key={key} className="progress-stat-row">
+                <span className="progress-stat-icon">{catIcons[key]}</span>
+                <span className="progress-stat-label">{label}</span>
+                <span className="progress-stat-count">{progress.counts[key] || 0}</span>
               </div>
             ))}
             <div className="progress-stat-row total">
               <span className="progress-stat-icon">📊</span>
-              <span className="progress-stat-label">{{ tr: 'Toplam', en: 'Total', ar: '' }[lang]}</span>
+              <span className="progress-stat-label">{t.progress.total}</span>
               <span className="progress-stat-count">{total}</span>
             </div>
           </div>
@@ -173,7 +175,7 @@ export default function ProgressTracker({ lang, progress, onReset }) {
           {/* Badges */}
           <div className="progress-badges-section">
             <h4 className="progress-badges-title">
-              {{ tr: '🏅 Rozetler', en: '🏅 Badges', ar: '' }[lang]}
+              {t.progress.badges}
               <span className="progress-badges-count">{earnedBadges.length}/{BADGES.length}</span>
             </h4>
             <div className="progress-badges-grid">
@@ -184,7 +186,7 @@ export default function ProgressTracker({ lang, progress, onReset }) {
                 </div>
               ))}
               {unearnedBadges.map(b => (
-                <div key={b.id} className="progress-badge locked" title={{ tr: `${b.threshold} keşif gerekli`, en: `${b.threshold} discoveries needed`, ar: `` }[lang]}>
+                <div key={b.id} className="progress-badge locked" title={`${b.threshold} ${t.progress.needed}`}>
                   <span className="progress-badge-icon">🔒</span>
                   <span className="progress-badge-label">{f(b, 'label', lang)}</span>
                 </div>
@@ -194,11 +196,11 @@ export default function ProgressTracker({ lang, progress, onReset }) {
 
           {/* Reset */}
           <button className="progress-reset" onClick={() => {
-            if (window.confirm({ tr: 'Tüm ilerleme sıfırlansın mı?', en: 'Reset all progress?', ar: '' }[lang])) {
+            if (window.confirm(t.progress.resetConfirm)) {
               onReset();
             }
           }}>
-            {{ tr: '🔄 Sıfırla', en: '🔄 Reset', ar: '' }[lang]}
+            {t.progress.reset}
           </button>
         </div>
       )}
@@ -209,11 +211,12 @@ export default function ProgressTracker({ lang, progress, onReset }) {
 /* ═══ Badge Toast Notification ═══ */
 export function BadgeToast({ badge, lang, onDismiss }) {
   if (!badge) return null;
+  const t = T[lang];
   return (
     <div className="badge-toast" onClick={onDismiss}>
       <span className="badge-toast-icon">{badge.icon}</span>
       <div className="badge-toast-text">
-        <strong>{{ tr: 'Yeni Rozet!', en: 'New Badge!', ar: '' }[lang]}</strong>
+        <strong>{t.progress.newBadge}</strong>
         <span>{f(badge, 'label', lang)}</span>
       </div>
     </div>

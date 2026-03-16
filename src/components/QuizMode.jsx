@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback, useMemo, useRef } from 'react';
 import DB from '../data/db.json';
+import T from '../data/i18n';
 import ALAM_LITE from '../data/alam_lite.json';
 import YAQUT_LITE from '../data/yaqut_lite.json';
 
@@ -288,11 +289,12 @@ function generateQuiz(lang, diff) {
 
 /* ── Score titles ── */
 function getScoreTitle(score, lang) {
-  if (score >= 9) return { tr: 'Tarih Üstadı! 🏆', en: 'History Master! 🏆', ar: '' }[lang];
-  if (score >= 7) return { tr: 'Tarih Meraklısı! 🏅', en: 'History Enthusiast! 🏅', ar: '' }[lang];
-  if (score >= 5) return { tr: 'İyi Deneme! 📖', en: 'Good Attempt! 📖', ar: '' }[lang];
-  if (score >= 3) return { tr: 'Öğrenmeye Devam! 📝', en: 'Keep Learning! 📝', ar: '' }[lang];
-  return { tr: 'Tekrar Dene! 💪', en: 'Try Again! 💪', ar: '' }[lang];
+  const q = T[lang].quiz;
+  if (score >= 9) return q.res9;
+  if (score >= 7) return q.res7;
+  if (score >= 5) return q.res5;
+  if (score >= 3) return q.res3;
+  return q.res0;
 }
 
 /* ══════════════════════════════════════════════════════════
@@ -310,28 +312,7 @@ export default function QuizMode({ lang, onFlyTo, onClose }) {
   const [showConfetti, setShowConfetti] = useState(false);
   const timerRef = useRef(null);
 
-  const t = useMemo(() => ({
-    title: { tr: 'Bilgi Yarışması', en: 'Knowledge Quiz', ar: '' }[lang],
-    subtitle: { tr: 'Hanedanlar, savaşlar, el-A\'lâm ve Yâkût\'tan 10 soru!', en: 'Test your knowledge: dynasties, battles, al-Aʿlām & Yāqūt!', ar: '' }[lang],
-    start: { tr: 'Başla', en: 'Start', ar: '' }[lang],
-    next: { tr: 'Sonraki Soru', en: 'Next Question', ar: '' }[lang],
-    finish: { tr: 'Sonuçları Gör', en: 'See Results', ar: '' }[lang],
-    playAgain: { tr: 'Tekrar Oyna', en: 'Play Again', ar: '' }[lang],
-    close: { tr: 'Kapat', en: 'Close', ar: '' }[lang],
-    qOf: { tr: 'Soru', en: 'Question', ar: '' }[lang],
-    score: { tr: 'Skor', en: 'Score', ar: '' }[lang],
-    correct: { tr: 'Doğru!', en: 'Correct!', ar: '' }[lang],
-    wrong: { tr: 'Yanlış!', en: 'Wrong!', ar: '' }[lang],
-    correctAnswer: { tr: 'Doğru cevap', en: 'Correct answer', ar: '' }[lang],
-    difficulty: { tr: 'Zorluk', en: 'Difficulty', ar: '' }[lang],
-    easy: { tr: 'Kolay', en: 'Easy', ar: '' }[lang],
-    medium: { tr: 'Orta', en: 'Medium', ar: '' }[lang],
-    hard: { tr: 'Zor', en: 'Hard', ar: '' }[lang],
-    easyDesc: { tr: 'Büyük hanedanlar ve kritik olaylar', en: 'Major dynasties and critical events', ar: '' }[lang],
-    mediumDesc: { tr: 'Karma zorluk', en: 'Mixed difficulty', ar: '' }[lang],
-    hardDesc: { tr: 'Küçük beylikler dahil', en: 'Including minor principalities', ar: '' }[lang],
-    yourScore: { tr: 'Skorunuz', en: 'Your Score', ar: '' }[lang],
-  }), [lang]);
+  const t = useMemo(() => T[lang].quiz, [lang]);
 
   const startQuiz = useCallback(() => {
     const qs = generateQuiz(lang, diff);

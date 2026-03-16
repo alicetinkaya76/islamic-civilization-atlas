@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import T from '../../data/i18n';
 import ERA_INFO from '../../data/era_info.js';
 
 /**
@@ -48,7 +49,7 @@ export default function EraCard({ eraId, lang, onClose, onFlyTo }) {
             <h3 className="era-card__title">{label}</h3>
             <span className="era-card__dates">{era.start} – {era.end}</span>
           </div>
-          <button className="era-card__close" onClick={handleClose} aria-label={{ tr: 'Kapat', en: 'Close', ar: '' }[lang]}>✕</button>
+          <button className="era-card__close" onClick={handleClose} aria-label={T[lang].about.close}>✕</button>
         </div>
 
         {/* Description */}
@@ -59,7 +60,7 @@ export default function EraCard({ eraId, lang, onClose, onFlyTo }) {
           <div className="era-card__section">
             <h4 className="era-card__section-title">
               <span className="era-card__section-icon">⚡</span>
-              {{ tr: 'Anahtar Gelişmeler', en: 'Key Developments', ar: '' }[lang]}
+              {T[lang].era.keyDev}
             </h4>
             <div className="era-card__tags">
               {devs.map((d, i) => (
@@ -74,7 +75,7 @@ export default function EraCard({ eraId, lang, onClose, onFlyTo }) {
           <div className="era-card__section">
             <h4 className="era-card__section-title">
               <span className="era-card__section-icon">📚</span>
-              {{ tr: 'Öne Çıkan Âlimler', en: 'Notable Scholars', ar: '' }[lang]}
+              {T[lang].era.scholars}
             </h4>
             <div className="era-card__scholars">
               {schs.map((s, i) => (
@@ -90,7 +91,7 @@ export default function EraCard({ eraId, lang, onClose, onFlyTo }) {
         {era.flyTo && (
           <div className="era-card__footer">
             <button className="era-card__fly-btn" onClick={handleFly} style={{ background: era.color + '22', borderColor: era.color + '66', color: era.color }}>
-              🗺 {{ tr: 'Haritada Göster', en: 'Show on Map', ar: '' }[lang]}
+              🗺 {T[lang].era.showOnMap}
             </button>
           </div>
         )}

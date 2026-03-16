@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect, useCallback } from 'react';
 import DB from '../../data/db.json';
-import { f } from '../../data/i18n-utils';
+import T from '../../data/i18n';
 
 /* ═══ CSV helpers ═══ */
 function escapeCSV(val) {
@@ -90,6 +90,15 @@ const EXPORTS = {
 export default function ExportButton({ lang }) {
   const [open, setOpen] = useState(false);
   const ref = useRef(null);
+  const t = T[lang];
+
+  const EXPORT_LABELS = {
+    scholars: t.layers.scholars,
+    battles: t.layers.battles,
+    monuments: t.layers.monuments,
+    cities: t.layers.cities,
+    dynasties: t.layers.dynasties,
+  };
 
   useEffect(() => {
     if (!open) return;
@@ -106,15 +115,15 @@ export default function ExportButton({ lang }) {
   return (
     <div className="export-wrap" ref={ref}>
       <button className="export-btn" onClick={() => setOpen(p => !p)}
-        title={{ tr: 'CSV İndir', en: 'Download CSV', ar: '' }[lang]}
-        aria-label={{ tr: 'CSV İndir', en: 'Download CSV', ar: '' }[lang]}>
+        title={t.export.title}
+        aria-label={t.export.title}>
         📥 CSV
       </button>
       {open && (
         <div className="export-dropdown">
           {Object.entries(EXPORTS).map(([key, exp]) => (
             <button key={key} className="export-item" onClick={() => handleExport(key)}>
-              <span className="export-item-label">{f(exp, 'label', lang)}</span>
+              <span className="export-item-label">{EXPORT_LABELS[key]}</span>
               <span className="export-item-count">({exp.count()})</span>
             </button>
           ))}

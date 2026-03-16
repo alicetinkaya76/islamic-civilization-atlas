@@ -64,7 +64,7 @@ export default function CausalView({ lang, t }) {
     if (graphData.nodes.length === 0) {
       svg.append('text').attr('x', W / 2).attr('y', H / 2)
         .attr('text-anchor', 'middle').attr('fill', '#6b6b7b')
-        .attr('font-size', '14px').text({ tr: 'Sonuç bulunamadı', en: 'No results found', ar: '' }[lang]);
+        .attr('font-size', '14px').text(t.causal?.noResults || 'No results found');
       return;
     }
 
@@ -122,7 +122,7 @@ export default function CausalView({ lang, t }) {
       const relLinks = graphData.edges.filter(e => e.source.id === d.id || e.target.id === d.id);
       setTooltip({
         x: ev.pageX, y: ev.pageY,
-        html: `<b>${ENTITY_ICON[d.type] || ''} ${d.label}</b><br/>${{ tr: 'Bağlantı', en: 'Links', ar: '' }[lang]}: ${relLinks.length}`
+        html: `<b>${ENTITY_ICON[d.type] || ''} ${d.label}</b><br/>${t.causal?.links || 'links'}: ${relLinks.length}`
       });
     }).on('mouseleave', () => setTooltip(null));
 
@@ -147,7 +147,7 @@ export default function CausalView({ lang, t }) {
       <div className="cl-toolbar">
         <div className="cl-title">
           <span className="cl-h">{tl.title || 'Causality Network'}</span>
-          <span className="cl-sub">{links.length} / {(DB.causal || []).length} {{ tr: 'bağlantı', en: 'links', ar: '' }[lang]}</span>
+          <span className="cl-sub">{links.length} / {(DB.causal || []).length} {t.causal?.links || 'links'}</span>
         </div>
         <div className="cl-filters">
           <select className="cl-sel" value={filterEntity} onChange={e => setFilterEntity(e.target.value)}>
@@ -164,7 +164,7 @@ export default function CausalView({ lang, t }) {
           </select>
           <input className="cl-search" type="text" value={search}
             onChange={e => setSearch(e.target.value)}
-            placeholder={{ tr: 'Ara…', en: 'Search…', ar: '' }[lang]} />
+            placeholder={t.causal?.searchPlaceholder || 'Search…'} />
         </div>
       </div>
       <div className="cl-content">
@@ -172,7 +172,7 @@ export default function CausalView({ lang, t }) {
           <svg ref={svgRef} />
         </div>
         <div className="cl-list">
-          <div className="cl-list-h">{{ tr: 'Bağlantı Listesi', en: 'Link List', ar: '' }[lang]}</div>
+          <div className="cl-list-h">{t.causal?.linkList || 'Link List'}</div>
           <div className="cl-list-scroll">
             {links.slice(0, 80).map((l, i) => {
               const sn = nameMap[`${l.st}:${l.si}`] || `${l.st}#${l.si}`;
@@ -194,7 +194,7 @@ export default function CausalView({ lang, t }) {
                 </div>
               );
             })}
-            {links.length > 80 && <div className="cl-more">{{ tr: `+${links.length - 80} daha…`, en: `+${links.length - 80} more…`, ar: `` }[lang]}</div>}
+            {links.length > 80 && <div className="cl-more">{`+${links.length - 80} ${t.causal?.more || 'more…'}`}</div>}
           </div>
         </div>
       </div>

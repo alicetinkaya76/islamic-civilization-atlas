@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import T from '../../data/i18n';
 import { REL_C, IMP_OP } from '../../config/colors';
 import '../../styles/legend.css';
 
@@ -83,69 +84,50 @@ const IMP_ITEMS = [
   { key: 'Düşük', op: IMP_OP['Düşük'], w: 1.4, dash: true }
 ];
 
-const LABELS = {
-  tr: {
-    legend: 'Lejant',
-    sects: 'Mezhep Renkleri',
-    entities: 'Varlık Tipleri',
-    importance: 'Önem Dereceleri',
-    dynasty: 'Hanedan', battle: 'Savaş', event: 'Olay',
-    scholar: 'Âlim', monument: 'Eser', city: 'Şehir',
-    route: 'Ticaret Yolu', ruler: 'Hükümdar',
-    Kritik: 'Kritik', Yüksek: 'Yüksek', Normal: 'Normal', Düşük: 'Düşük',
-    'Sünnî': 'Sünnî', 'Şiî': 'Şiî', 'Hâricî': 'Hâricî', '': 'Diğer'
-  },
-  en: {
-    legend: 'Legend',
-    sects: 'Sect Colors',
-    entities: 'Entity Types',
-    importance: 'Importance Levels',
-    dynasty: 'Dynasty', battle: 'Battle', event: 'Event',
-    scholar: 'Scholar', monument: 'Monument', city: 'City',
-    route: 'Trade Route', ruler: 'Ruler',
-    Kritik: 'Critical', Yüksek: 'High', Normal: 'Normal', Düşük: 'Low',
-    'Sünnî': 'Sunni', 'Şiî': 'Shia', 'Hâricî': 'Kharijite', '': 'Other'
-  }
-};
-
 export default function MapLegend({ lang }) {
   const [open, setOpen] = useState(false);
-  const l = LABELS[lang] || LABELS.tr;
+  const t = T[lang];
+
+  const entityLabel = {
+    dynasty: t.layers.dynasties, battle: t.layers.battles, event: t.layers.events,
+    scholar: t.layers.scholars, monument: t.layers.monuments, city: t.layers.cities,
+    route: t.layers.routes, ruler: t.layers.rulers,
+  };
 
   return (
     <div className={`map-legend ${open ? 'legend-open' : 'legend-closed'}`}>
       <button className="legend-toggle" onClick={() => setOpen(p => !p)}
-        aria-label={l.legend} aria-expanded={open}>
-        {open ? '✕' : '☰'} <span className="legend-toggle-label">{l.legend}</span>
+        aria-label={t.legend.title} aria-expanded={open}>
+        {open ? '✕' : '☰'} <span className="legend-toggle-label">{t.legend.title}</span>
       </button>
 
       {open && (
         <div className="legend-body">
           {/* Sect Colors */}
           <div className="legend-section">
-            <div className="legend-section-title">{l.sects}</div>
+            <div className="legend-section-title">{t.legend.sects}</div>
             {Object.entries(REL_C).map(([key, color]) => (
               <div className="legend-row" key={key || '_other'}>
                 <span className="legend-swatch" style={{ background: color }} />
-                <span className="legend-label">{l[key] || l['']}</span>
+                <span className="legend-label">{key ? (t.rel[key] || key) : t.legend.other}</span>
               </div>
             ))}
           </div>
 
           {/* Entity Types */}
           <div className="legend-section">
-            <div className="legend-section-title">{l.entities}</div>
+            <div className="legend-section-title">{t.legend.entities}</div>
             {ENTITY_ITEMS.map(item => (
               <div className="legend-row" key={item.key}>
                 <span className="legend-icon">{item.svg}</span>
-                <span className="legend-label">{l[item.key]}</span>
+                <span className="legend-label">{entityLabel[item.key]}</span>
               </div>
             ))}
           </div>
 
           {/* Importance Levels */}
           <div className="legend-section">
-            <div className="legend-section-title">{l.importance}</div>
+            <div className="legend-section-title">{t.legend.importance}</div>
             {IMP_ITEMS.map(item => (
               <div className="legend-row" key={item.key}>
                 <svg width="30" height="14" viewBox="0 0 30 14">
@@ -154,7 +136,7 @@ export default function MapLegend({ lang }) {
                     stroke="#c9a84c" strokeWidth={item.w}
                     strokeDasharray={item.dash ? '3,2' : 'none'} />
                 </svg>
-                <span className="legend-label">{l[item.key]}</span>
+                <span className="legend-label">{t.imp[item.key]}</span>
               </div>
             ))}
           </div>
