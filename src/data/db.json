@@ -29,10 +29,10 @@
       "fall_ar": "",
       "ctx_b_ar": "",
       "ctx_a_ar": "",
-      "rise_en": "",
-      "fall_en": "",
-      "ctx_b_en": "",
-      "ctx_a_en": ""
+      "rise_en": "Following the death of the Prophet Muhammad (632), the leadership vacuum within the umma was filled by the election of Abū Bakr as caliph through bayʿa.",
+      "fall_en": "The assassination of ʿAlī by a Khārijite and al-Ḥasan's withdrawal from the caliphate left Muʿāwiya without rivals; the Islamic world transitioned to the principle of dynastic rule.",
+      "ctx_b_en": "The Medina-centered Islamic community established by the Prophet Muhammad had not yet expanded beyond Arabia; the Sasanian and Byzantine empires were the dominant powers in the region.",
+      "ctx_a_en": "The Umayyads assumed power; the caliphate moved from Medina to Damascus and the Islamic state transformed into the sultanate of a tribal aristocracy."
     },
     {
       "id": 2,
@@ -63,10 +63,10 @@
       "fall_ar": "",
       "ctx_b_ar": "",
       "ctx_a_ar": "",
-      "rise_en": "",
-      "fall_en": "",
-      "ctx_b_en": "",
-      "ctx_a_en": ""
+      "rise_en": "Muʿāwiya's political acumen and the loyalty of the Syrian army opened the path to power for the Umayyads.",
+      "fall_en": "The Abbasid revolution in Khurasan, under the leadership of Abū Muslim, united the mawālī and Arab opposition to overthrow Umayyad rule.",
+      "ctx_b_en": "The Rāshidūn period, which ended with the assassination of ʿAlī and al-Ḥasan's withdrawal, left behind a civil war environment in which central authority had weakened.",
+      "ctx_a_en": "The Abbasids assumed power and moved the capital to Baghdad; the Umayyad prince ʿAbd al-Raḥmān fled to Spain and established the Umayyad state of al-Andalus."
     },
     {
       "id": 3,
@@ -97,10 +97,10 @@
       "fall_ar": "",
       "ctx_b_ar": "",
       "ctx_a_ar": "",
-      "rise_en": "",
-      "fall_en": "",
-      "ctx_b_en": "",
-      "ctx_a_en": ""
+      "rise_en": "The Khurasan-centered revolutionary movement achieved success by uniting mawālī discontent and Ahl al-Bayt sympathy against Umayyad rule.",
+      "fall_en": "The Mongol invasion ended the Baghdad branch (1258); the symbolic caliphate in Cairo came to an end with the Ottoman conquest (1517).",
+      "ctx_b_en": "In the final years of Umayyad rule, the mawālī problem, tribal conflicts, and Khārijite revolts had shaken the empire.",
+      "ctx_a_en": "The Mongol invasion devastated the eastern Islamic world; in Egypt the Mamluks, in Anatolia the Seljuk successor principalities formed new political centers."
     },
     {
       "id": 4,
@@ -131,10 +131,10 @@
       "fall_ar": "",
       "ctx_b_ar": "",
       "ctx_a_ar": "",
-      "rise_en": "",
-      "fall_en": "",
-      "ctx_b_en": "",
-      "ctx_a_en": ""
+      "rise_en": "The Umayyad prince ʿAbd al-Raḥmān, who survived the Abbasid revolution, reached Spain via North Africa and gained the support of local Arab tribes.",
+      "fall_en": "Following internal strife and the collapse of the ʿĀmirid ḥājib rulers, political authority fragmented and divided into dozens of small Taifa principalities.",
+      "ctx_b_en": "The Abbasid revolution had almost completely destroyed the Umayyad family; the Arab-Berber garrisons in the Iberian Peninsula lacked central authority.",
+      "ctx_a_en": "The Mulūk al-Ṭawā'if period began; although political fragmentation maintained cultural vitality, military weakness accelerated the Christian Reconquista."
     },
     {
       "id": 5,
@@ -165,10 +165,10 @@
       "fall_ar": "",
       "ctx_b_ar": "",
       "ctx_a_ar": "",
-      "rise_en": "",
-      "fall_en": "",
-      "ctx_b_en": "",
-      "ctx_a_en": ""
+      "rise_en": "With the collapse of the Umayyad caliphate and the elimination of the ʿĀmirid family, central authority completely disintegrated.",
+      "fall_en": "The Almoravids annexed the principalities one by one following their victory at Zallāka, reunifying al-Andalus.",
+      "ctx_b_en": "In the final years of the Andalusi Umayyad caliphate, palace coup followed palace coup, and the central state had completely collapsed.",
+      "ctx_a_en": "The Almoravids' unification of al-Andalus provided brief stability; however, pressure from the Christian kingdoms continued to increase."
     },
     {
       "id": 6,
@@ -199,10 +199,10 @@
       "fall_ar": "انتهت الأسرة بفتح الموحدين للبليار، ثم انتقلت الجزر إلى مملكة أراغون",
       "ctx_b_ar": "فقد المرابطون أراضيهم في البر الرئيسي للموحدين وبقيت حاميات البليار دون دعم مركزي",
       "ctx_a_ar": "سيطر الموحدون على البليار فترة قصيرة ثم فتح الجزر الملك خايمي الأول ملك أراغون",
-      "rise_en": "",
-      "fall_en": "",
-      "ctx_b_en": "",
-      "ctx_a_en": ""
+      "rise_en": "During the collapse of the Almoravid dynasty, the Balearic governors declared their independence and relied on naval power.",
+      "fall_en": "The dynasty ended with the Almohad conquest of the Balearics; the islands subsequently passed to the Kingdom of Aragon.",
+      "ctx_b_en": "The Almoravids had lost the mainland to the Almohads; the Balearic garrisons were left without central support.",
+      "ctx_a_en": "After the Almohads briefly controlled the Balearics, the islands were conquered by King James I of Aragon."
     },
     {
       "id": 7,
@@ -233,10 +233,10 @@
       "fall_ar": "اتحاد مملكتي قشتالة وأراغون بالزواج نفذ الضربة الأخيرة للاسترداد واستسلمت غرناطة عام 1492",
       "ctx_b_ar": "مع تفكك الإمبراطورية الموحدية تقلصت الأراضي الإسلامية في شبه الجزيرة الإيبيرية بصورة دراماتيكية",
       "ctx_a_ar": "انتهى الوجود الإسلامي في شبه الجزيرة الإيبيرية الذي دام سبعة قرون وواجه السكان المسلمون واليهود النفي أو التنصير القسري",
-      "rise_en": "",
-      "fall_en": "",
-      "ctx_b_en": "",
-      "ctx_a_en": ""
+      "rise_en": "Following the Almohad collapse, they established an independent emirate by turning Granada's mountainous geography into a defensive advantage.",
+      "fall_en": "The union of the kingdoms of Castile and Aragon through marriage accomplished the final phase of the Reconquista; Granada surrendered in 1492.",
+      "ctx_b_en": "With the fragmentation of the Almohad Empire, Muslim territories in the Iberian Peninsula had dramatically diminished.",
+      "ctx_a_en": "Islam's seven-century presence in the Iberian Peninsula came to an end; the Muslim and Jewish populations faced exile or forced conversion."
     },
     {
       "id": 8,
@@ -268,10 +268,10 @@
       "fall_ar": "ضعفوا تحت الضغط الفاطمي وتدخل أمويي الأندلس وفقدوا وجودهم السياسي",
       "ctx_b_ar": "لم تكن في المغرب سلطة إسلامية مركزية وكانت المنطقة في حالة تشرذم قبلي",
       "ctx_a_ar": "دخل الفاطميون وأمويو الأندلس في صراع نفوذ في المغرب واستمر الإرث الثقافي لفاس مع الأسر اللاحقة",
-      "rise_en": "",
-      "fall_en": "",
-      "ctx_b_en": "",
-      "ctx_a_en": ""
+      "rise_en": "Idrīs b. ʿAbd Allāh fled from the Hijaz after the battle of Fakhkh, gained the support of Berber tribes, and established an independent state.",
+      "fall_en": "They lost their political existence, weakened by Fatimid pressure and Andalusi Umayyad intervention.",
+      "ctx_b_en": "There was no central Islamic authority in the Maghrib; the region was fragmented among tribal divisions.",
+      "ctx_a_en": "The Fāṭimids and the Umayyads of al-Andalus entered into a struggle for influence in the Maghrib; the cultural legacy of the city of Fez was continued by subsequent dynasties."
     },
     {
       "id": 9,
@@ -303,10 +303,10 @@
       "fall_ar": "فتح أبو عبد الله داعية الفاطميين مع بربر كتامة أزال دولة الرستميين",
       "ctx_b_ar": "في عهد لم تصل فيه السلطة المركزية العباسية إلى المغرب أصبحت المنطقة مفتوحة لحركات مذهبية مختلفة",
       "ctx_a_ar": "استولى الفاطميون على إفريقية وغيروا الخريطة السياسية لشمال أفريقيا من الأساس",
-      "rise_en": "",
-      "fall_en": "",
-      "ctx_b_en": "",
-      "ctx_a_en": ""
+      "rise_en": "The migration of Ibāḍī communities to the Maghrib and Tāhert's strategic position on trade routes formed the foundations of the dynasty.",
+      "fall_en": "The conquest carried out by the Fāṭimid missionary Abū ʿAbd Allāh with the Kutāma Berbers eliminated the Rustamid state.",
+      "ctx_b_en": "During a period when ʿAbbāsid central authority could not reach the Maghrib, the region became open to various sectarian movements.",
+      "ctx_a_en": "The Fāṭimids seized Ifrīqiya, fundamentally transforming the political map of North Africa."
     },
     {
       "id": 10,
@@ -338,10 +338,10 @@
       "fall_ar": "",
       "ctx_b_ar": "",
       "ctx_a_ar": "",
-      "rise_en": "",
-      "fall_en": "",
-      "ctx_b_en": "",
-      "ctx_a_en": ""
+      "rise_en": "The Miknāsa Berber tribe's control over the Sijilmāsa oasis and trans-Saharan trade revenues strengthened the dynasty.",
+      "fall_en": "The dynasty came to an end when Khazrūn, chief of the Maghrāwa tribe, killed the last Midrārid ruler.",
+      "ctx_b_en": "During the first centuries of Islamic rule in the Maghrib, various Khārijī communities were establishing independent political structures.",
+      "ctx_a_en": "Sijilmāsa continued to be a point of transition between regional powers; it came under Fāṭimid and subsequently Murābiṭ control."
     },
     {
       "id": 11,
@@ -372,10 +372,10 @@
       "fall_ar": "انتهت دولتهم بالفتح الفاطمي حين فر آخر أمير أغلبي زيادة الله الثالث إلى مصر.",
       "ctx_b_ar": "ضعفت السلطة المركزية العباسية في الأقاليم الغربية النائية وأخذ ولاة إفريقية يستقلون تدريجيا.",
       "ctx_a_ar": "اتخذ الفاطميون إفريقية قاعدة لتنفيذ استراتيجية التوسع نحو مصر.",
-      "rise_en": "",
-      "fall_en": "",
-      "ctx_b_en": "",
-      "ctx_a_en": ""
+      "rise_en": "Ibrahim I gained de facto independence when Hārūn al-Rashīd granted Ifrīqiya as an iqṭāʿ.",
+      "fall_en": "Following the Fāṭimid conquest, the last Aghlabid emir Ziyādat Allāh III fled to Egypt.",
+      "ctx_b_en": "ʿAbbāsid central authority had weakened in the distant western provinces, and the governors of Ifrīqiya had gradually become autonomous.",
+      "ctx_a_en": "The Fāṭimids implemented their expansion strategies toward Egypt, using Ifrīqiya as their base."
     },
     {
       "id": 12,
@@ -406,10 +406,10 @@
       "fall_ar": "أنهى التفكك الداخلي والغزو النورماني الحكم الإسلامي للجزيرة.",
       "ctx_b_ar": "ركز الفاطميون على مصر بينما أسندوا الحكم غير المباشر في صقلية إلى الأسر المحلية.",
       "ctx_a_ar": "فتح النورمان صقلية لكن تركيب الجزيرة الإسلامي البيزنطي اللاتيني غذى العصر الذهبي الثقافي في عهد روجر.",
-      "rise_en": "",
-      "fall_en": "",
-      "ctx_b_en": "",
-      "ctx_a_en": ""
+      "rise_en": "They gained de facto autonomy when appointed as governors of Sicily by the Fāṭimid caliph al-Manṣūr.",
+      "fall_en": "Internal fragmentation and the Norman invasion ended Islamic rule on the island.",
+      "ctx_b_en": "As the Fāṭimids focused on Egypt, indirect rule in Sicily was transferred to local dynasties.",
+      "ctx_a_en": "The Normans conquered Sicily; however, the island's Islamic-Byzantine-Latin synthesis nourished the cultural golden age of the Roger period."
     },
     {
       "id": 13,
@@ -440,10 +440,10 @@
       "fall_ar": "انتهى الفرعان معا بالفتح الموحدي والغزو النورماني.",
       "ctx_b_ar": "خفف الفاطميون من سيطرتهم المباشرة على المغرب بنقل عاصمتهم إلى القاهرة.",
       "ctx_a_ar": "غيرت الهجرة الهلالية التركيب الديموغرافي للمغرب وحاول الموحدون إعادة توحيد المنطقة.",
-      "rise_en": "",
-      "fall_en": "",
-      "ctx_b_en": "",
-      "ctx_a_en": ""
+      "rise_en": "They gained power in North Africa as Fāṭimid governors; they achieved de facto independence when the Fāṭimids moved to Egypt.",
+      "fall_en": "Both branches ended with the Muwaḥḥid conquest and Norman occupation.",
+      "ctx_b_en": "The Fatimids had loosened their direct control over the Maghrib by moving their capital to Cairo.",
+      "ctx_a_en": "The Hilālī migration changed the demographic structure of the Maghrib; the Almohads attempted to reunify the region."
     },
     {
       "id": 14,
@@ -474,10 +474,10 @@
       "fall_ar": "لم يستطيعوا مقاومة الإيديولوجية الدينية الإصلاحية والقوة العسكرية للموحدين فقتل آخر حكامهم في مراكش.",
       "ctx_b_ar": "عجزت ممالك الطوائف عن مواجهة إسبانيا المسيحية وسقطت طليطلة، ولم تكن هناك وحدة سياسية في المغرب.",
       "ctx_a_ar": "أعاد الموحدون توحيد المغرب والأندلس وبدؤوا حركة إصلاح أشمل.",
-      "rise_en": "",
-      "fall_en": "",
-      "ctx_b_en": "",
-      "ctx_a_en": ""
+      "rise_en": "The combination of the ribāṭ movement in the Sahara with military discipline and the call for aid from the Taifa kingdoms gave the Almoravids an opportunity for expansion.",
+      "fall_en": "Unable to resist the religious reform ideology and military power of the Almohads, the last ruler was killed in Marrakesh.",
+      "ctx_b_en": "The Taifa kingdoms had become helpless against Christian Spain, Toledo had fallen; there was no political unity in the Maghrib.",
+      "ctx_a_en": "The Almohads reunified the Maghrib and al-Andalus, initiating a more comprehensive reform movement."
     },
     {
       "id": 15,
@@ -508,10 +508,10 @@
       "fall_ar": "هزيمة العقاب وانفصال الأقاليم (الحفصيون والعبد الواديون والمرينيون) مزقا الإمبراطورية.",
       "ctx_b_ar": "واجه الجمود المالكي المرابطي معارضة فكرية وارتفعت دعوات الإصلاح الجديد في المغرب.",
       "ctx_a_ar": "انقسم المغرب بين ثلاث أسر كبرى (الحفصيون والعبد الواديون والمرينيون) وبقيت غرناطة النصرية آخر قلعة إسلامية في الأندلس.",
-      "rise_en": "",
-      "fall_en": "",
-      "ctx_b_en": "",
-      "ctx_a_en": ""
+      "rise_en": "Ibn Tūmart's proclamation as Mahdī and ʿAbd al-Muʾmin's military genius brought down Almoravid rule.",
+      "fall_en": "The defeat at Las Navas de Tolosa and provincial secessions (Ḥafṣids, ʿAbd al-Wādids, Marīnids) fragmented the empire.",
+      "ctx_b_en": "The rigid Mālikism of Almoravid rule was meeting with intellectual opposition, and a new demand for reform was rising in the Maghrib.",
+      "ctx_a_en": "The Maghrib was divided among three major dynasties (Ḥafṣids, ʿAbd al-Wādids, Marīnids); in al-Andalus, Naṣrid Granada remained as the last Islamic stronghold."
     },
     {
       "id": 16,
@@ -542,10 +542,10 @@
       "fall_ar": "قتل السلطان الاخير عبد الحق الثاني وكانت السلطة الفعلية قد انتقلت بالفعل الى الوطاسيين النواب.",
       "ctx_b_ar": "الامبراطورية الموحدية تفككت وتكون فراغ في السلطة المركزية بالمغرب.",
       "ctx_a_ar": "الوطاسيون استولوا على السلطة كنواب للمرينيين ودخل المغرب فترة عدم استقرار سياسي.",
-      "rise_en": "",
-      "fall_en": "",
-      "ctx_b_en": "",
-      "ctx_a_en": ""
+      "rise_en": "Coming from the northwestern edge of the Sahara, they took advantage of Almohad weakness and seized Marrakesh.",
+      "fall_en": "The last sultan ʿAbd al-Ḥaqq II was killed; effective power had already passed to the Waṭṭāsid regents.",
+      "ctx_b_en": "The Almohad Empire had fragmented, creating a central authority vacuum in Morocco.",
+      "ctx_a_en": "The Waṭṭāsids seized power as Marīnid regents; Morocco entered a period of political instability."
     },
     {
       "id": 17,
@@ -576,10 +576,10 @@
       "fall_ar": "الباشا العثماني صالح رايس فتح تلمسان وانهى السلالة.",
       "ctx_b_ar": "تفكك الامبراطورية الموحدية خلق فراغا في السلطة بغرب الجزائر.",
       "ctx_a_ar": "العثمانيون استقروا في شمال افريقيا وغيروا الخارطة السياسية للمنطقة جذريا.",
-      "rise_en": "",
-      "fall_en": "",
-      "ctx_b_en": "",
-      "ctx_a_en": ""
+      "rise_en": "Yaghmurāsan declared independence centered in Tlemcen during the Almohad collapse.",
+      "fall_en": "Ottoman pasha Ṣalāḥ Raʾīs conquered Tlemcen, ending the dynasty.",
+      "ctx_b_en": "The fragmentation of the Almohad Empire created an authority vacuum in western Algeria.",
+      "ctx_a_en": "The Ottomans established themselves in North Africa, fundamentally changing the region's political map."
     },
     {
       "id": 18,
@@ -610,10 +610,10 @@
       "fall_ar": "الفتح العثماني انهى الدولة الحفصية والصراع بين القوى الاسبانية والعثمانية حول افريقية الى ساحة حرب.",
       "ctx_b_ar": "تفكك الامبراطورية الموحدية خلق فراغا في السلطة بافريقية.",
       "ctx_a_ar": "العثمانيون فتحوا تونس والغوا آخر سلالة محلية كبيرة في شمال افريقيا.",
-      "rise_en": "",
-      "fall_en": "",
-      "ctx_b_en": "",
-      "ctx_a_en": ""
+      "rise_en": "Yaḥyā I's break from the Almohad caliph and independence with claims to the Abbasid caliphate.",
+      "fall_en": "Ottoman conquest ended the Ḥafṣid state; the struggle between Spanish and Ottoman forces turned Ifrīqiya into a battleground.",
+      "ctx_b_en": "With the dissolution of the Almohad Empire, an authority vacuum emerged in Ifrīqiya.",
+      "ctx_a_en": "The Ottomans conquered Tunis, eliminating the last major local dynasty in North Africa."
     },
     {
       "id": 19,
@@ -644,10 +644,10 @@
       "fall_ar": "فتح الاشراف السعديين لفاس انهى السلالة.",
       "ctx_b_ar": "انهيار السلطنة المرينية خلق فراغا في السلطة بالمغرب والبرتغال احتل المدن الساحلية.",
       "ctx_a_ar": "الاشراف السعديون وحدوا المغرب من جديد وبدأوا عهدا جديدا قائما على شرعية الشرف.",
-      "rise_en": "",
-      "fall_en": "",
-      "ctx_b_en": "",
-      "ctx_a_en": ""
+      "rise_en": "They already held de facto power as Marīnid regents; in 1472 they proclaimed their independent sultanate.",
+      "fall_en": "The Sa'did Sharifs' conquest of Fez brought the dynasty to an end.",
+      "ctx_b_en": "With the collapse of Marīnid rule, a power vacuum emerged in Morocco, and Portugal had occupied coastal cities.",
+      "ctx_a_en": "The Sa'did Sharifs reunified Morocco, initiating a new period based on sharifian legitimacy."
     },
     {
       "id": 20,
@@ -678,10 +678,10 @@
       "fall_ar": "",
       "ctx_b_ar": "",
       "ctx_a_ar": "",
-      "rise_en": "",
-      "fall_en": "",
-      "ctx_b_en": "",
-      "ctx_a_en": ""
+      "rise_en": "The jihad movement in the south against Portuguese coastal occupation gained popular support and brought the Sa'dids to power.",
+      "fall_en": "Internal succession struggles and the anarchy in Morocco led to the rise of the 'Alawī Sharifs, ending Sa'did rule.",
+      "ctx_b_en": "The Wattāsids proved ineffective against Portuguese occupation, and the people expected leadership from the sharif families of the south.",
+      "ctx_a_en": "After experiencing anarchy for some time, Morocco entered a new period of stability under the 'Alawī Sharifs."
     },
     {
       "id": 21,
@@ -711,10 +711,10 @@
       "fall_ar": "",
       "ctx_b_ar": "انهارت الدولة السعدية فدخل المغرب في فترة فوضى طويلة تنازعت فيها قوى محلية مختلفة على السيطرة.",
       "ctx_a_ar": "تواصل الأسرة العلوية الحكم اليوم في المملكة المغربية، وفي عهدها تحققت حركة الاستقلال وتحول المغرب إلى ملكية دستورية.",
-      "rise_en": "",
+      "rise_en": "The sharīf family of Tafilalt origin came to power through legitimacy and military force in the anarchic environment following the Sa'dī collapse.",
       "fall_en": "",
-      "ctx_b_en": "",
-      "ctx_a_en": ""
+      "ctx_b_en": "With the collapse of the Sa'dī dynasty, Morocco entered a long period of anarchy; various local powers were trying to seize control.",
+      "ctx_a_en": "The 'Alawid dynasty continues to rule today as the Kingdom of Morocco; Morocco's independence movement and constitutional monarchy transformation occurred during this dynastic period."
     },
     {
       "id": 22,
@@ -745,10 +745,10 @@
       "fall_ar": "ألغت الحماية الفرنسية سنة 1881 الاستقلال الفعلي، وبعد استقلال 1956 أعلنت الجمهورية.",
       "ctx_b_ar": "كان الحكم العثماني المباشر في تونس يثير عدم الاستقرار المحلي.",
       "ctx_a_ar": "تأسست الجمهورية التونسية وبرز الحبيب بورقيبة كمؤسس تونس الحديثة.",
-      "rise_en": "",
-      "fall_en": "",
-      "ctx_b_en": "",
-      "ctx_a_en": ""
+      "rise_en": "With al-Ḥusayn b. 'Alī's acquisition of the beylerbeyi position in 1705, de facto autonomy from the Ottoman Empire was achieved.",
+      "fall_en": "The French protectorate (1881) eliminated de facto independence; a republic was proclaimed following independence in 1956.",
+      "ctx_b_en": "The Ottoman Empire's direct rule in Tunisia had created local instability.",
+      "ctx_a_en": "The Republic of Tunisia was established; Habib Bourguiba emerged as the founder of modern Tunisia."
     },
     {
       "id": 23,
@@ -779,10 +779,10 @@
       "fall_ar": "قضت الحملة العسكرية للسلطان العثماني محمود الثاني على السلالة وأعادت الحكم المباشر.",
       "ctx_b_ar": "ضعف الحكم العثماني في طرابلس الغرب بسبب الاضطرابات الداخلية.",
       "ctx_a_ar": "أعيد الحكم العثماني المباشر وأصبحت المنطقة لاحقا هدفا للاستعمار الإيطالي.",
-      "rise_en": "",
-      "fall_en": "",
-      "ctx_b_en": "",
-      "ctx_a_en": ""
+      "rise_en": "Amidst chaos, Aḥmad Qaramānlī seized power and managed to obtain Istanbul's approval as well.",
+      "fall_en": "Ottoman Sultan Maḥmūd II's military expedition liquidated the dynasty and reestablished direct rule.",
+      "ctx_b_en": "Ottoman rule in Tripolitania had been weakened by internal disorders.",
+      "ctx_a_en": "Ottoman direct rule was reestablished; the region later became the target of Italian colonialism."
     },
     {
       "id": 24,
@@ -813,10 +813,10 @@
       "fall_ar": "سقط الملك إدريس بالانقلاب العسكري سنة 1969 وأعلن معمر القذافي الجمهورية.",
       "ctx_b_ar": "انهار الحكم العثماني وصعد الاستعمار الإيطالي ولم تعد هناك سلطة مركزية في المنطقة.",
       "ctx_a_ar": "غير نظام القذافي ليبيا تغييرا جذريا وقمع الإرث السنوسي.",
-      "rise_en": "",
-      "fall_en": "",
-      "ctx_b_en": "",
-      "ctx_a_en": ""
+      "rise_en": "The order's extensive network in the Sahara and the anti-Italian resistance movement brought political legitimacy to the Sanūsīs.",
+      "fall_en": "King Idrīs was overthrown by the 1969 military coup; Muammar Gaddafi proclaimed a republic.",
+      "ctx_b_en": "As Ottoman administration collapsed and Italian colonialism rose, there was no central authority in the region.",
+      "ctx_a_en": "The Gaddafi regime radically transformed Libya; the Sanūsī legacy was suppressed."
     },
     {
       "id": 25,
@@ -847,10 +847,10 @@
       "fall_ar": "",
       "ctx_b_ar": "",
       "ctx_a_ar": "",
-      "rise_en": "",
-      "fall_en": "",
-      "ctx_b_en": "",
-      "ctx_a_en": ""
+      "rise_en": "Aḥmad ibn Ṭūlūn came as an Abbasid governor and achieved independence by using Egypt's revenue surplus.",
+      "fall_en": "The dynasty was destroyed by the military campaign of the Abbasid general Muḥammad ibn Sulaymān.",
+      "ctx_b_en": "With the weakening of Abbasid central authority, governors in Egypt were becoming increasingly autonomous.",
+      "ctx_a_en": "After the Abbasids ruled directly for thirty years, a similar process was repeated with the Ikhshīdids."
     },
     {
       "id": 26,
@@ -881,10 +881,10 @@
       "fall_ar": "انتهت الدولة الاخشيدية بفتح جوهر القائد الفاطمي لمدينة الفسطاط",
       "ctx_b_ar": "بعد سقوط الطولونيين حكم العباسيون مصر مباشرة لفترة من الزمن",
       "ctx_a_ar": "فتح الفاطميون مصر وأسسوا القاهرة ونقلوا الخلافة الاسماعيلية الشيعية من شمال افريقيا الى مصر",
-      "rise_en": "",
-      "fall_en": "",
-      "ctx_b_en": "",
-      "ctx_a_en": ""
+      "rise_en": "Muḥammad ibn Ṭughj gained power in Egypt as an Abbasid governor; he established his dynasty by taking the title Ikhshīd.",
+      "fall_en": "The Ikhshīdid state came to an end with the conquest of Fusṭāṭ by the Fāṭimid general Jawhar.",
+      "ctx_b_en": "After the fall of the Ṭūlūnids, the Abbasids had directly governed Egypt for a period.",
+      "ctx_a_en": "The Fāṭimids conquered Egypt, founded Cairo, and transferred the Ismāʿīlī Shīʿī caliphate from North Africa to Egypt."
     },
     {
       "id": 27,
@@ -916,10 +916,10 @@
       "fall_ar": "ألغى الايوبي صلاح الدين الخلافة الفاطمية واعاد السلطة السنية",
       "ctx_b_ar": "بضعف الاخشيديين اصبحت مصر مفتوحة امام التوسع الفاطمي",
       "ctx_a_ar": "وحد الايوبيون مصر والشام وبدأوا حركة الجهاد ضد الصليبيين",
-      "rise_en": "",
-      "fall_en": "",
-      "ctx_b_en": "",
-      "ctx_a_en": ""
+      "rise_en": "The dāʿī Abū ʿAbd Allāh's conquest of Ifrīqiya with the Kutāma Berbers and subsequent expansion into Egypt.",
+      "fall_en": "The Ayyūbid Ṣalāḥ al-Dīn abolished the Fāṭimid caliphate and restored Sunnī rule.",
+      "ctx_b_en": "With the weakening of the Ikhshīdids, Egypt became open to Fāṭimid expansion.",
+      "ctx_a_en": "The Ayyūbids united Egypt and Syria and launched the jihad movement against the Crusaders."
     },
     {
       "id": 28,
@@ -950,10 +950,10 @@
       "fall_ar": "تحت وطأة الحرب الاهلية والضغط السلجوقي انتقلت المدينة الى العقيليين",
       "ctx_b_ar": "بانهيار الحمدانيين تشكل فراغ سلطوي في حلب وتنافس النفوذ الفاطمي والبيزنطي",
       "ctx_a_ar": "دخلت حلب في مجال النفوذ السلجوقي وحافظت المنطقة على أهميتها الاستراتيجية في عهد الحروب الصليبية",
-      "rise_en": "",
-      "fall_en": "",
-      "ctx_b_en": "",
-      "ctx_a_en": ""
+      "rise_en": "The Kilāb tribe migrated from the Euphrates region to Aleppo, taking advantage of the vacuum created by the Ḥamdānid collapse.",
+      "fall_en": "Under civil war and Seljuk pressure, the city passed to the ʿUqaylids.",
+      "ctx_b_en": "With the collapse of the Ḥamdānids, an authority vacuum emerged in Aleppo, with Fāṭimid and Byzantine influence in competition.",
+      "ctx_a_en": "Aleppo came under Seljuk influence; the region maintained its strategic importance during the Crusades period."
     },
     {
       "id": 29,
@@ -984,10 +984,10 @@
       "fall_ar": "استولى السلطان المملوكي بيبرس على القلاع واحدة تلو الاخرى واخضع الحركة لتبعيته",
       "ctx_b_ar": "خلق الانشقاق النزاري المستعلي في الخلافة الفاطمية مجالا لحركة اسماعيلية مستقلة في الشام",
       "ctx_a_ar": "بالسيطرة المملوكية تم تصفية القلاع الاسماعيلية وانتقلت الحركة الى العمل السري",
-      "rise_en": "",
-      "fall_en": "",
-      "ctx_b_en": "",
-      "ctx_a_en": ""
+      "rise_en": "Agents from Alamut established bases in the mountainous regions of Syria, gaining strength from the Fāṭimid-Nizārī schism.",
+      "fall_en": "Mamlūk Sultan Baybars took the fortresses one by one, bringing the movement under his suzerainty.",
+      "ctx_b_en": "The Nizārī-Mustaʿlī schism within the Fāṭimid caliphate had created an independent Ismāʿīlī sphere of activity in Syria.",
+      "ctx_a_en": "Under Mamlūk control, the Ismāʿīlī fortresses were liquidated; the movement went underground."
     },
     {
       "id": 30,
@@ -1019,10 +1019,10 @@
       "fall_ar": "",
       "ctx_b_ar": "",
       "ctx_a_ar": "",
-      "rise_en": "",
-      "fall_en": "",
-      "ctx_b_en": "",
-      "ctx_a_en": ""
+      "rise_en": "Shīrkūh's conquest of Fāṭimid Egypt and Ṣalāḥ al-Dīn's abolition of the Ismāʿīlī caliphate, restoring Sunnism.",
+      "fall_en": "Mamlūk Aybak's seizure of power ended Ayyūbid rule in Egypt; the Mongol invasion liquidated the Syrian branches.",
+      "ctx_b_en": "The Fāṭimid caliphate had weakened, the Crusaders were in a strong position in the Levant; the Zangids had initiated the jihad movement.",
+      "ctx_a_en": "The Mamlūks inherited the Ayyūbid military tradition; they became the defensive shield of the Islamic world against Mongol and Crusader threats."
     },
     {
       "id": 31,
@@ -1054,10 +1054,10 @@
       "fall_ar": "انهارت الدولة المملوكية بانتصارات السلطان العثماني سليم الأول في مرج دابق والريدانية.",
       "ctx_b_ar": "الكونفدرالية الأيوبية كانت قد ضعفت، والغزو المغولي دمر شرق العالم الإسلامي؛ والصليبيون ما زالوا على سواحل الشام.",
       "ctx_a_ar": "الإمبراطورية العثمانية ضمت مصر والشام إلى أراضيها فصارت أعظم قوى العالم الإسلامي.",
-      "rise_en": "",
-      "fall_en": "",
-      "ctx_b_en": "",
-      "ctx_a_en": ""
+      "rise_en": "Commanders emerging from the Ayyūbid Baḥrī slave soldiers seized power in the face of the Mongol threat.",
+      "fall_en": "The Mamlūk state was destroyed by Ottoman Sultan Selīm I's victories at Marj Dābiq and al-Raydāniyya.",
+      "ctx_b_en": "The Ayyūbid confederation had weakened, the Mongol invasion had devastated the eastern Islamic world; the Crusaders were still on the Syrian coasts.",
+      "ctx_a_en": "The Ottoman Empire became the greatest power in the Islamic world by incorporating Egypt and Syria into its territories."
     },
     {
       "id": 32,
@@ -1088,10 +1088,10 @@
       "fall_ar": "انتهت السلالة بانقطاع النسل الذكوري المباشر؛ وانتقلت السلطة بالقرابة إلى آل شهاب.",
       "ctx_b_ar": "عندما أخذ العثمانيون الشام عام 1516 كان أمراء الدروز في جبل لبنان في وضع شبه مستقل.",
       "ctx_a_ar": "أمراء شهاب ورثوا تركة المعنيين؛ واستمر جبل لبنان في بنيته المستقلة تحت المظلة العثمانية.",
-      "rise_en": "",
-      "fall_en": "",
-      "ctx_b_en": "",
-      "ctx_a_en": ""
+      "rise_en": "With the Ottoman conquest of Syria, the Maʿnids consolidated their existing feudal positions within the Ottoman system.",
+      "fall_en": "The dynasty ended with the extinction of the direct male line; power passed to the Shihāb family through kinship.",
+      "ctx_b_en": "When the Ottomans took Syria in 1516, the Druze amīrs of Mount Lebanon were in a semi-independent position.",
+      "ctx_a_en": "The Shihāb Amīrs inherited the Maʿnid legacy; Mount Lebanon continued its autonomous structure under the Ottoman umbrella."
     },
     {
       "id": 33,
@@ -1122,10 +1122,10 @@
       "fall_ar": "بالتدخل العثماني-الحليف نُفي بشير الثاني؛ وألغي نظام الإمارة عام 1842.",
       "ctx_b_ar": "عهد المعنيين كان قد رسخ تقليد الإمارة الإقطاعية الدرزية في جبل لبنان.",
       "ctx_a_ar": "أسس العثمانيون حكما مباشرا في لبنان؛ ووصلت النزاعات المذهبية ذروتها بالحرب الأهلية عام 1860.",
-      "rise_en": "",
-      "fall_en": "",
-      "ctx_b_en": "",
-      "ctx_a_en": ""
+      "rise_en": "They inherited the Lebanese emirate through kinship ties following the extinction of the Maʿnid line.",
+      "fall_en": "As a result of Ottoman-allied intervention, Bashīr II was sent into exile; the emirate system was abolished in 1842.",
+      "ctx_b_en": "The Maʿnid period had established the tradition of Druze feudal principality in Mount Lebanon.",
+      "ctx_a_en": "The Ottomans established direct rule in Lebanon; sectarian conflicts reached their peak with the 1860 civil war."
     },
     {
       "id": 34,
@@ -1156,10 +1156,10 @@
       "fall_ar": "بانقلاب الضباط الأحرار عام 1952 تنحى الملك فاروق عن العرش؛ وأعلنت الجمهورية.",
       "ctx_b_ar": "حملة نابليون على مصر كانت قد زعزعت النظام العثماني-المملوكي وخلقت فراغا في السلطة.",
       "ctx_a_ar": "تأسست جمهورية مصر فصارت في عهد ناصر مركز القومية العربية.",
-      "rise_en": "",
-      "fall_en": "",
-      "ctx_b_en": "",
-      "ctx_a_en": ""
+      "rise_en": "In the chaotic environment following Napoleon, Muḥammad ʿAlī seized power through military acumen and eliminated the Mamlūk remnants.",
+      "fall_en": "With the 1952 Free Officers coup, King Fārūq abdicated; the republic was proclaimed.",
+      "ctx_b_en": "Napoleon's Egyptian expedition had shaken the Ottoman-Mamlūk order, creating a power vacuum.",
+      "ctx_a_en": "The Egyptian Republic was established, and during the Nasser period it became the center of Arab nationalism."
     },
     {
       "id": 35,
@@ -1190,10 +1190,10 @@
       "fall_ar": "",
       "ctx_b_ar": "",
       "ctx_a_ar": "",
-      "rise_en": "",
-      "fall_en": "",
-      "ctx_b_en": "",
-      "ctx_a_en": ""
+      "rise_en": "The military power of the Hamdān family and ʿAbbāsid weakness enabled the establishment of independent emirates in Mosul and Aleppo.",
+      "fall_en": "Both branches came to an end under pressure from the ʿUqaylids in Mosul, the Fāṭimids in Aleppo, and internal collapse.",
+      "ctx_b_en": "ʿAbbāsid central authority's control over the Jazīra and northern Syria had weakened.",
+      "ctx_a_en": "The ʿUqaylids took over Mosul, the Mirdāsids Aleppo; the region remained fragmented until Seljuk expansion."
     },
     {
       "id": 36,
@@ -1225,10 +1225,10 @@
       "fall_ar": "",
       "ctx_b_ar": "",
       "ctx_a_ar": "",
-      "rise_en": "",
-      "fall_en": "",
-      "ctx_b_en": "",
-      "ctx_a_en": ""
+      "rise_en": "The Asad tribe's military power in central Iraq and exploitation of Būyid weakness.",
+      "fall_en": "The emirate came to an end with Seljuk pressure and the reestablishment of central authority.",
+      "ctx_b_en": "With the weakening of Buyid rule, Bedouin tribes were gaining power in central Iraq.",
+      "ctx_a_en": "The Seljuks established direct control in Iraq; Hilla continued its existence as a Shiite center of learning."
     },
     {
       "id": 37,
@@ -1259,10 +1259,10 @@
       "fall_ar": "",
       "ctx_b_ar": "",
       "ctx_a_ar": "",
-      "rise_en": "",
-      "fall_en": "",
-      "ctx_b_en": "",
-      "ctx_a_en": ""
+      "rise_en": "Bād al-Kurdī took advantage of Buyid weakness to seize regional control.",
+      "fall_en": "The dynasty came to an end with the conquest of Diyār Bakr by the Seljuk sultan Malik-Shāh.",
+      "ctx_b_en": "With the dissolution of Buyid rule on the eastern frontiers, Kurdish mountain lords found space for independence.",
+      "ctx_a_en": "The Seljuks brought the region under direct control; Diyār Bakr entered a new period that would pass to the Artuqids."
     },
     {
       "id": 38,
@@ -1294,10 +1294,10 @@
       "fall_ar": "",
       "ctx_b_ar": "",
       "ctx_a_ar": "",
-      "rise_en": "",
-      "fall_en": "",
-      "ctx_b_en": "",
-      "ctx_a_en": ""
+      "rise_en": "The ʿUqaylid Bedouins, taking advantage of Buyid weakness, gained power in Mosul over the Hamdanid legacy.",
+      "fall_en": "The dynasty came to an end with the surrender of the last emir in the face of Seljuk advance.",
+      "ctx_b_en": "With the collapse of the Hamdanids, a power vacuum had formed in Mosul and the Jazira; Buyid control had loosened.",
+      "ctx_a_en": "The Seljuks took direct control of the region; Mosul would later become the center of the Zangid atabegate."
     },
     {
       "id": 39,
@@ -1326,8 +1326,8 @@
       "fall_ar": "",
       "ctx_b_ar": "",
       "ctx_a_ar": "",
-      "rise_en": "",
-      "fall_en": "",
+      "rise_en": "The Numayrī Bedouins took advantage of Būyid and Fāṭimid weakness to establish an emirate in the Ḥarrān region.",
+      "fall_en": "The Seljuk advance brought the region under control; it was transformed into the County of Edessa during the Crusader period.",
       "ctx_b_en": "",
       "ctx_a_en": ""
     },
@@ -1361,10 +1361,10 @@
       "fall_ar": "",
       "ctx_b_ar": "",
       "ctx_a_ar": "",
-      "rise_en": "",
-      "fall_en": "",
-      "ctx_b_en": "",
-      "ctx_a_en": ""
+      "rise_en": "Successful propaganda by Ismāʿīlī missionaries among the Bedouin tribes of Eastern Arabia.",
+      "fall_en": "They were eliminated by a joint Seljuk-ʿAbbāsid expedition and attacks by the local ʿUyūnī Bedouin chief.",
+      "ctx_b_en": "The legitimacy crisis of the ʿAbbāsid caliphate and the spread of Ismāʿīlī propaganda had prepared the ground for radical movements.",
+      "ctx_a_en": "The ʿUyūnīs took over the region; the Qarmaṭī egalitarian experiment ended but left its mark on the Islamic heterodox tradition."
     },
     {
       "id": 41,
@@ -1396,10 +1396,10 @@
       "fall_ar": "",
       "ctx_b_ar": "",
       "ctx_a_ar": "",
-      "rise_en": "",
-      "fall_en": "",
-      "ctx_b_en": "",
-      "ctx_a_en": ""
+      "rise_en": "Al-Qāsim b. Ibrāhīm's arrival in Yemen from Medina and the Zaydī doctrine's finding tribal support in mountainous Yemen.",
+      "fall_en": "The imamate tradition ended with the 1962 military coup and the subsequent civil war.",
+      "ctx_b_en": "Various local powers and sectarian movements were in competition in Yemen; Zaydism had taken root in the mountainous regions.",
+      "ctx_a_en": "The Yemen Arab Republic was established; Zaydī identity continued to exist as a political force."
     },
     {
       "id": 42,
@@ -1430,10 +1430,10 @@
       "fall_ar": "",
       "ctx_b_ar": "",
       "ctx_a_ar": "",
-      "rise_en": "",
-      "fall_en": "",
-      "ctx_b_en": "",
-      "ctx_a_en": ""
+      "rise_en": "The Abbasid caliph al-Ma'mūn's appointment of Muḥammad b. Ziyād as governor of Yemen.",
+      "fall_en": "The last Ziyādids became puppets; power passed to Abyssinian slave viziers.",
+      "ctx_b_en": "Abbasid central authority's direct control over Yemen had weakened.",
+      "ctx_a_en": "The Najāhids (Abyssinian slave viziers) took over power in Zabīd."
     },
     {
       "id": 43,
@@ -1465,10 +1465,10 @@
       "fall_ar": "",
       "ctx_b_ar": "",
       "ctx_a_ar": "",
-      "rise_en": "",
-      "fall_en": "",
-      "ctx_b_en": "",
-      "ctx_a_en": ""
+      "rise_en": "The Yu'firid family seized Ṣan'ā' and Janad with tribal power, establishing the first local government in the highlands.",
+      "fall_en": "They fragmented due to internal conflicts and loss of power, dividing into small local principalities.",
+      "ctx_b_en": "During the period when Abbasid central authority could not reach Yemen, the highland region was in a political vacuum.",
+      "ctx_a_en": "The Ṣulayḥids became the new dominant power of the Yemeni highlands with their Ismā'īlī ideology."
     },
     {
       "id": 44,
@@ -1499,10 +1499,10 @@
       "fall_ar": "",
       "ctx_b_ar": "",
       "ctx_a_ar": "",
-      "rise_en": "",
-      "fall_en": "",
-      "ctx_b_en": "",
-      "ctx_a_en": ""
+      "rise_en": "Najāḥ, as one of the Ziyādid slave viziers, killed his rival and declared his independent rule.",
+      "fall_en": "The dynasty ended with the Mahdids' conquest of Zabīd.",
+      "ctx_b_en": "With the collapse of the Ziyādids, power in Tihāma had passed into the hands of slave viziers.",
+      "ctx_a_en": "The Mahdids soon ended with the Ayyubid conquest; Zabīd continued to change hands."
     },
     {
       "id": 45,
@@ -1534,10 +1534,10 @@
       "fall_ar": "",
       "ctx_b_ar": "",
       "ctx_a_ar": "",
-      "rise_en": "",
-      "fall_en": "",
-      "ctx_b_en": "",
-      "ctx_a_en": ""
+      "rise_en": "ʿAlī b. Muḥammad's successful conduct of the Ismāʿīlī daʿwa as a Fāṭimid dāʿī and his gaining of tribal support.",
+      "fall_en": "The dynasty ended with the death of al-Sayyida Arwā (1138); power passed to the Zurayʿids.",
+      "ctx_b_en": "The Yemeni highlands were in political fragmentation amid Zaydī and Najāḥid rivalry.",
+      "ctx_a_en": "The Zurayʿids in Aden and the Yemeni Hamdānids in Ṣanʿāʾ shared power; the fragmented structure continued until the Ayyubid conquest."
     },
     {
       "id": 46,
@@ -1568,10 +1568,10 @@
       "fall_ar": "انتهت السلالة بفتح توران شاه الأيوبي لعدن.",
       "ctx_b_ar": "نشأ فراغ في السلطة على الساحل الجنوبي لليمن مع ضعف الدولة الصليحية.",
       "ctx_a_ar": "وحد الأيوبيون اليمن ووضعوا تجارة عدن تحت السيطرة المركزية.",
-      "rise_en": "",
-      "fall_en": "",
-      "ctx_b_en": "",
-      "ctx_a_en": ""
+      "rise_en": "They were appointed as co-rulers in Aden by the Ṣulayḥid Aḥmad al-Mukarram.",
+      "fall_en": "The dynasty ended with the Ayyubid Tūrān Shāh's conquest of Aden.",
+      "ctx_b_en": "With the weakening of the Ṣulayḥid state, a power vacuum had formed on Yemen's southern coast.",
+      "ctx_a_en": "The Ayyubids unified Yemen and brought the Aden trade under central control."
     },
     {
       "id": 47,
@@ -1602,10 +1602,10 @@
       "fall_ar": "انتهت السلالة بفتح الأيوبيين لصنعاء.",
       "ctx_b_ar": "نشأ فراغ في السلطة في مرتفعات اليمن مع انهيار الدولة الصليحية.",
       "ctx_a_ar": "وحد الأيوبيون اليمن تحت سقف واحد ومهدت الأرضية لصعود السلالة الرسولية.",
-      "rise_en": "",
-      "fall_en": "",
-      "ctx_b_en": "",
-      "ctx_a_en": ""
+      "rise_en": "Ḥātim b. al-Ghashīm, as a powerful tribal chief, took advantage of Sulayhid weakness.",
+      "fall_en": "The dynasty ended with the Ayyubid conquest of Sanaa.",
+      "ctx_b_en": "A power vacuum had formed in the Yemeni highlands with the collapse of the Sulayhid state.",
+      "ctx_a_en": "The Ayyubids united Yemen under a single roof; the ground was prepared for the rise of the Rasulid dynasty."
     },
     {
       "id": 48,
@@ -1634,8 +1634,8 @@
       "fall_ar": "فتح توران شاه الأيوبي وإعدام عبد النبي.",
       "ctx_b_ar": "",
       "ctx_a_ar": "",
-      "rise_en": "",
-      "fall_en": "",
+      "rise_en": "ʿAlī b. Mahdī's ascetic preaching movement gained popular support and overthrew the Najahids.",
+      "fall_en": "The conquest by the Ayyubid Tūrān Shāh; ʿAbd al-Nabī was executed.",
       "ctx_b_en": "",
       "ctx_a_en": ""
     },
@@ -1669,10 +1669,10 @@
       "fall_ar": "انتهت بانهيار داخلي وصراعات الوراثة حين أطاح أمير عدن التاهري بالسلالة.",
       "ctx_b_ar": "نشأت حاجة لسلالة محلية قوية في المنطقة عند انسحاب الأيوبيين من اليمن.",
       "ctx_a_ar": "عاش التاهريون فترة انتقالية قصيرة ثم أصبح اليمن ساحة للتنافس العثماني البرتغالي.",
-      "rise_en": "",
-      "fall_en": "",
-      "ctx_b_en": "",
-      "ctx_a_en": ""
+      "rise_en": "The Rasulid family, who came to Yemen as Ayyubid emirs, declared their independence after the Ayyubid withdrawal.",
+      "fall_en": "It ended with internal collapse and succession struggles when the Tahirid emir of Aden overthrew the dynasty.",
+      "ctx_b_en": "As the Ayyubids withdrew from Yemen, the need for a strong local dynasty arose in the region.",
+      "ctx_a_en": "After the Tāhirids experienced a brief transitional period, Yemen became the arena of Ottoman and Portuguese rivalry."
     },
     {
       "id": 50,
@@ -1703,10 +1703,10 @@
       "fall_ar": "",
       "ctx_b_ar": "",
       "ctx_a_ar": "",
-      "rise_en": "",
-      "fall_en": "",
-      "ctx_b_en": "",
-      "ctx_a_en": ""
+      "rise_en": "The emirs of Aden took over power, taking advantage of the weakness during the final period of the Rasūlid state.",
+      "fall_en": "The dynasty came to an end with the conquest of Yemen by the Egyptian Mamlūks and subsequently by the Ottomans.",
+      "ctx_b_en": "While the Rasūlid state collapsed due to succession disputes, Portuguese naval power threatened Indian Ocean trade.",
+      "ctx_a_en": "Yemen became an Ottoman province; the Portuguese-Ottoman naval struggle determined the fate of the region."
     },
     {
       "id": 51,
@@ -1737,10 +1737,10 @@
       "fall_ar": "سقطت الأسرة من السلطة بسبب ثورات القبائل وتأسيس تقليد الإمامة الإباضية.",
       "ctx_b_ar": "مع ضعف النفوذ الساساني، اكتسب الأمراء العرب المحليون القوة في عُمان.",
       "ctx_a_ar": "تولى الأئمة الإباضيون القيادة السياسية والدينية لعُمان.",
-      "rise_en": "",
-      "fall_en": "",
-      "ctx_b_en": "",
-      "ctx_a_en": ""
+      "rise_en": "The family, which settled in Oman with the Azdī migration, had held regional authority since pre-Islamic times.",
+      "fall_en": "The family fell from power due to tribal rebellions and the institutionalization of the Ibāḍī imamate tradition.",
+      "ctx_b_en": "With the weakening of Sāsānid influence, local Arab chieftains had gained power in Oman.",
+      "ctx_a_en": "The Ibāḍī Imams took over the political and religious leadership of Oman."
     },
     {
       "id": 52,
@@ -1771,10 +1771,10 @@
       "fall_ar": "بعد محاولة التمرد، عُيِّن الأمير البويهي والياً مباشراً.",
       "ctx_b_ar": "كانت الإمبراطورية البويهية توسع نفوذها حتى الخليج العربي.",
       "ctx_a_ar": "تأسست الإدارة البويهية المباشرة؛ وبقيت المنطقة تحت هذا التحكم حتى العهد السلجوقي.",
-      "rise_en": "",
-      "fall_en": "",
-      "ctx_b_en": "",
-      "ctx_a_en": ""
+      "rise_en": "They gained a semi-independent position when appointed as governors of coastal Oman by the Būyids.",
+      "fall_en": "After the attempted rebellion, a Buyid prince was directly appointed as governor.",
+      "ctx_b_en": "The Buyid Empire was extending its influence to the Persian Gulf.",
+      "ctx_a_en": "Direct Buyid rule was established; the region remained under this control until the Seljuk period."
     },
     {
       "id": 53,
@@ -1803,8 +1803,8 @@
       "fall_ar": "انهاروا بسبب أزمة الخلافة والحرب الأهلية الهناوية-الغافرية والتدخل الإيراني.",
       "ctx_b_ar": "",
       "ctx_a_ar": "",
-      "rise_en": "",
-      "fall_en": "",
+      "rise_en": "Nāṣir b. Murshid's achievement of national unity by repelling Portuguese and external threats.",
+      "fall_en": "They collapsed due to succession crisis, Hināwī-Ghāfirī civil war, and Iranian intervention.",
       "ctx_b_en": "",
       "ctx_a_en": ""
     },
@@ -1836,10 +1836,10 @@
       "fall_ar": "",
       "ctx_b_ar": "كانت أسرة اليعاربة قد انهارت بسبب الحرب الأهلية والتدخل الإيراني.",
       "ctx_a_ar": "تواصل أسرة آل بو سعيد الحكم حتى اليوم كسلطنة عُمان؛ وبعد 1970 مع ثروة النفط وبرامج التحديث شكلوا إحدى أكثر دول المنطقة استقراراً.",
-      "rise_en": "",
+      "rise_en": "Aḥmad b. Sa'īd's seizure of power by filling the authority vacuum following Iranian intervention.",
       "fall_en": "",
-      "ctx_b_en": "",
-      "ctx_a_en": ""
+      "ctx_b_en": "The Ya'rubid dynasty had collapsed due to civil war and Iranian intervention.",
+      "ctx_a_en": "The Āl Bū Sa'īd dynasty continues to rule today as the Sultanate of Oman; after 1970, through oil wealth and modernization programs, they established one of the most stable states in the region."
     },
     {
       "id": 55,
@@ -1869,10 +1869,10 @@
       "fall_ar": "",
       "ctx_b_ar": "لم تكن هناك سلطة مركزية في الجزيرة العربية؛ وكانت إمارات قبلية مختلفة تعمل بشكل مستقل.",
       "ctx_a_ar": "تواصل أسرة آل سعود الحكم حتى اليوم كالمملكة العربية السعودية؛ واكتشاف النفط نقل البلاد إلى مركز السياسة الطاقوية العالمية.",
-      "rise_en": "",
+      "rise_en": "The religio-political alliance established with Muḥammad b. 'Abd al-Wahhāb provided a strong legitimacy base in Najd.",
       "fall_en": "",
-      "ctx_b_en": "",
-      "ctx_a_en": ""
+      "ctx_b_en": "There was no central authority in the Arabian Peninsula; various tribal principalities acted independently.",
+      "ctx_a_en": "The Āl Su'ūd dynasty continues to rule today as the Kingdom of Saudi Arabia; the discovery of oil brought the country to the center of global energy politics."
     },
     {
       "id": 56,
@@ -1903,10 +1903,10 @@
       "fall_ar": "الفتح السعودي للحجاز قضى على أراضيهم الأصلية، وانقلاب 1958 في العراق أسقط الملكية الهاشمية",
       "ctx_b_ar": "في عصر انهيار الدولة العثمانية كانت القومية العربية في صعود",
       "ctx_a_ar": "وحد السعوديون الحجاز، واستمر الهاشميون في حكم الأردن، وأصبح العراق جمهورية",
-      "rise_en": "",
-      "fall_en": "",
-      "ctx_b_en": "",
-      "ctx_a_en": ""
+      "rise_en": "With legitimacy derived from descent from the Prophet Muhammad and British support, they launched the Arab Revolt against the Ottomans.",
+      "fall_en": "The Saudi conquest of the Hijaz eliminated the dynasty's main territories; the 1958 coup in Iraq overthrew the monarchy.",
+      "ctx_b_en": "Arab nationalism was rising during the decline of the Ottoman Empire.",
+      "ctx_a_en": "The Saudis unified the Hijaz; the Hashimites continued to rule in Jordan; Iraq became a republic."
     },
     {
       "id": 57,
@@ -1937,10 +1937,10 @@
       "fall_ar": "فتح عبد العزيز آل سعود لحائل أنهى هذه السلالة",
       "ctx_b_ar": "كان التنافس السعودي الرشيدي في نجد يحدد الديناميكية السياسية للمنطقة",
       "ctx_a_ar": "بتأسيس المملكة العربية السعودية توحدت الجزيرة العربية تحت سقف واحد",
-      "rise_en": "",
-      "fall_en": "",
-      "ctx_b_en": "",
-      "ctx_a_en": ""
+      "rise_en": "The family came to power in Hā'il with Saudi support and consolidated its independent position under Ottoman protection.",
+      "fall_en": "The dynasty ended with 'Abd al-'Azīz Ibn Su'ūd's conquest of Hā'il.",
+      "ctx_b_en": "The Saudi-Rashīdī rivalry in Najd determined the political dynamics of the region.",
+      "ctx_a_en": "With the establishment of the Kingdom of Saudi Arabia, Arabia was unified under one roof."
     },
     {
       "id": 58,
@@ -1971,10 +1971,10 @@
       "fall_ar": "نزاعات الوراثة وفقدان تمبكتو للطوارق، وصعود إمبراطورية الصونغاي",
       "ctx_b_ar": "بانهيار مملكة غانا نشأ فراغ في السلطة بغرب إفريقيا، وأقامت مملكة السوسو هيمنة إقليمية",
       "ctx_a_ar": "ورثت إمبراطورية الصونغاي تركة مالي، واستمرت تمبكتو كمركز علمي",
-      "rise_en": "",
-      "fall_en": "",
-      "ctx_b_en": "",
-      "ctx_a_en": ""
+      "rise_en": "The founding was achieved through Sundiata's unification of the Malinke tribes against Soso domination.",
+      "fall_en": "Succession struggles and the loss of Timbuktu to the Tuaregs; the rise of the Songhay Empire.",
+      "ctx_b_en": "With the collapse of the Kingdom of Ghana, a power vacuum emerged in West Africa, and the Soso Kingdom had established regional hegemony.",
+      "ctx_a_en": "The Songhay Empire inherited Mali's legacy; Timbuktu continued its role as a center of learning."
     },
     {
       "id": 59,
@@ -2005,10 +2005,10 @@
       "fall_ar": "تفوق الجيش السعدي المغربي بالأسلحة النارية وفتحه لغاو قضى على الإمبراطورية",
       "ctx_b_ar": "إمبراطورية مالي كانت قد ضعفت، والقوى المحلية على طول منعطف النيجر تستقل",
       "ctx_a_ar": "باشوات المغرب أسسوا حكما قصير الأمد في تمبكتو، ودخلت المنطقة عصر التشرذم السياسي",
-      "rise_en": "",
-      "fall_en": "",
-      "ctx_b_en": "",
-      "ctx_a_en": ""
+      "rise_en": "Sonni Ali's military genius broke Mali's dominance, building an independent empire.",
+      "fall_en": "The Moroccan Sa'di army's conquest of Gao with firearm superiority destroyed the empire.",
+      "ctx_b_en": "The Mali Empire had weakened, and local powers along the Niger bend were gaining independence.",
+      "ctx_a_en": "Moroccan pashas established brief rule in Timbuktu; the region entered a period of political fragmentation."
     },
     {
       "id": 60,
@@ -2039,10 +2039,10 @@
       "fall_ar": "",
       "ctx_b_ar": "",
       "ctx_a_ar": "",
-      "rise_en": "",
-      "fall_en": "",
-      "ctx_b_en": "",
-      "ctx_a_en": ""
+      "rise_en": "The Zaghawa tribal chiefs' adoption of Islam and gaining power from trans-Saharan trade.",
+      "fall_en": "The Sayfi dynasty was exhausted; the Kanembu group took over power; British-French colonialism delivered the final blow.",
+      "ctx_b_en": "Various tribal structures around Lake Chad were in competition; the adoption of Islam strengthened political unity.",
+      "ctx_a_en": "British and French colonial administration divided the region; local sultans continued their existence under indirect rule."
     },
     {
       "id": 61,
@@ -2073,10 +2073,10 @@
       "fall_ar": "احتلال القوات البريطانية لصوكوتو سنة 1903 دون مقاومة أنهى استقلال السلالة.",
       "ctx_b_ar": "مطالب الإصلاح الإسلامي في إمارات الهوسا والاستياء بين جماعات الفولاني مهد لحركة الجهاد.",
       "ctx_a_ar": "استمر لقب السلطان رمزيا تحت الإدارة البريطانية غير المباشرة؛ تشكلت الهوية الإسلامية لشمال نيجيريا.",
-      "rise_en": "",
-      "fall_en": "",
-      "ctx_b_en": "",
-      "ctx_a_en": ""
+      "rise_en": "Usman dan Fodio's declaration of hijra and jihad in 1804 united the Fulani tribes.",
+      "fall_en": "The British forces' occupation of Sokoto in 1903 without resistance ended the dynasty's independence.",
+      "ctx_b_en": "The demand for Islamic reform in the Hausa emirates and discontent among Fulani communities had prepared the ground for the jihad movement.",
+      "ctx_a_en": "Under British indirect rule, the sultan title continued symbolically; the Islamic identity of Northern Nigeria was shaped."
     },
     {
       "id": 62,
@@ -2107,10 +2107,10 @@
       "fall_ar": "الهيمنة البحرية البرتغالية أنهت تجارة كيلوا؛ فقد السلاطين الأواخر قوتهم.",
       "ctx_b_ar": "مع تطور تجارة المحيط الهندي تكثفت المستوطنات التجارية على ساحل شرق أفريقيا.",
       "ctx_a_ar": "السيطرة البرتغالية ثم العمانية غيرت الخريطة السياسية لساحل شرق أفريقيا.",
-      "rise_en": "",
-      "fall_en": "",
-      "ctx_b_en": "",
-      "ctx_a_en": ""
+      "rise_en": "Strategic position on the East African coast within the trans-oceanic trade network and control of the gold trade.",
+      "fall_en": "Portuguese maritime dominance collapsed Kilwa's trade; the last sultans lost their power.",
+      "ctx_b_en": "With the development of Indian Ocean trade, merchant settlements along the East African coast were intensifying.",
+      "ctx_a_en": "Portuguese and subsequently Omani control changed the political map of the East African coast."
     },
     {
       "id": 63,
@@ -2141,10 +2141,10 @@
       "fall_ar": "الإدارة الاستعمارية البريطانية (1894) أنهت استقلال الجزيرة؛ استمر التراث الثقافي السواحيلي في كينيا الحديثة.",
       "ctx_b_ar": "كان على سواحل شرق أفريقيا عدد كبير من دول المدن السواحيلية الصغيرة تتنافس فيما بينها؛ لم تكن هناك قوة مهيمنة واحدة بعد.",
       "ctx_a_ar": "النظام الاستعماري البريطاني جمع كل إمارات ساحل شرق أفريقيا تحت سقف واحد؛ أصبحت باتي جزءا صغيرا من منطقة لامو.",
-      "rise_en": "",
-      "fall_en": "",
-      "ctx_b_en": "",
-      "ctx_a_en": ""
+      "rise_en": "The island of Pate was an important waystation for Indian Ocean trade; Omani merchant families settled in the region and merged with the local Swahili community.",
+      "fall_en": "British colonial administration (1894) ended the island's independence; Swahili cultural heritage continued to live on in modern Kenya.",
+      "ctx_b_en": "Numerous small Swahili city-states along the East African coast were in competition with each other; there was not yet a single hegemonic power.",
+      "ctx_a_en": "The British colonial order brought all East African coastal principalities under one roof; Pate became a small part of the Lamu region."
     },
     {
       "id": 64,
@@ -2175,10 +2175,10 @@
       "fall_ar": "الحاكم البوسعيدي سعيد بن سلطان أنهى الحكم الذاتي المزروعي بسياسة السيطرة المباشرة (1837).",
       "ctx_b_ar": "كانت البرتغال تحكم مومباسا من قلعة فورت جيسوس؛ القوات العمانية أقامت الهيمنة في المنطقة بسقوط القلعة.",
       "ctx_a_ar": "البوسعيديون تولوا الحكم المباشر؛ نقلوا عاصمتهم لاحقا إلى زنجبار وأسسوا أقوى دولة إسلامية في شرق أفريقيا.",
-      "rise_en": "",
-      "fall_en": "",
-      "ctx_b_en": "",
-      "ctx_a_en": ""
+      "rise_en": "With Portugal's withdrawal from the region, Oman established a sphere of influence along the East African coast; the Mazrū'īs were appointed as governors within this structure.",
+      "fall_en": "The Bū Sa'īdī ruler Sa'īd b. Sulṭān ended Mazrū'ī autonomy through a policy of direct control (1837).",
+      "ctx_b_en": "Portugal administered Mombasa from Fort Jesus; Omani forces established dominance in the region with the fall of the fort.",
+      "ctx_a_en": "The Bū Sa'īdīs took over direct administration; they later moved their capital to Zanzibar, establishing the most powerful Islamic state in East Africa."
     },
     {
       "id": 65,
@@ -2209,10 +2209,10 @@
       "fall_ar": "",
       "ctx_b_ar": "",
       "ctx_a_ar": "",
-      "rise_en": "",
-      "fall_en": "",
-      "ctx_b_en": "",
-      "ctx_a_en": ""
+      "rise_en": "Sa'īd b. Sulṭān's commercial vision and internal conflicts in Oman encouraged the transfer of the capital to Zanzibar.",
+      "fall_en": "Sultan Jamshīd was overthrown in the 1964 coup; Zanzibar united with Tanganyika to form Tanzania.",
+      "ctx_b_en": "While the Bū Sa'īdīs were experiencing power struggles in Oman, the trade networks in East Africa were becoming increasingly profitable.",
+      "ctx_a_en": "The Republic of Zanzibar was proclaimed and shortly thereafter merged with Tanganyika to form the United Republic of Tanzania; the sultanate legacy came to an end."
     },
     {
       "id": 66,
@@ -2243,10 +2243,10 @@
       "fall_ar": "",
       "ctx_b_ar": "",
       "ctx_a_ar": "",
-      "rise_en": "",
-      "fall_en": "",
-      "ctx_b_en": "",
-      "ctx_a_en": ""
+      "rise_en": "As heir to the Walashma Sultanate of Ifat, Harar continued to function as the Islamic capital of the region.",
+      "fall_en": "The Turkish-Egyptian occupation (1875) followed by the conquest of Ethiopian Emperor Menelik (1887) brought the sultanate to an end.",
+      "ctx_b_en": "After the collapse of the Ifat and Adal sultanates, Harar had become the political center of the Muslim communities in the region.",
+      "ctx_a_en": "The Ethiopian Empire annexed the region; Harar partially preserved its Islamic identity as a provincial center."
     },
     {
       "id": 67,
@@ -2277,10 +2277,10 @@
       "fall_ar": "",
       "ctx_b_ar": "",
       "ctx_a_ar": "",
-      "rise_en": "",
-      "fall_en": "",
-      "ctx_b_en": "",
-      "ctx_a_en": ""
+      "rise_en": "As Sassanid frontier governors, they controlled the Caucasus passes; with the Islamic conquests, they adapted to the new order and continued their dynasty.",
+      "fall_en": "The conquests of Safavid Shah Ismail I ended the independence of the Shirwān Shāhs (c. 1511); the remaining branches also faded as Safavid vassals.",
+      "ctx_b_en": "The Caucasus was strategically important as a Sassanid-Byzantine frontier region; with the Islamic conquests, the region entered a new political order.",
+      "ctx_a_en": "The Safavids brought Shirwān under direct administration; the region became one of the fronts of Iranian-Ottoman rivalry."
     },
     {
       "id": 68,
@@ -2311,10 +2311,10 @@
       "fall_ar": "",
       "ctx_b_ar": "",
       "ctx_a_ar": "",
-      "rise_en": "",
-      "fall_en": "",
-      "ctx_b_en": "",
-      "ctx_a_en": ""
+      "rise_en": "The Abbasid state appointed trusted governors to Derbent against the Khazar threat from the north; the Hāshimids became established in this position.",
+      "fall_en": "Seljuk expansion changed the power balance of the region; the Hāshimids were crushed between local powers and Seljuk pressure.",
+      "ctx_b_en": "Derbent was Islam's northernmost defense line against the Khazar Khaganate; the region was continuously shaped by border conflicts.",
+      "ctx_a_en": "Seljuk influence reached the Caucasus; Derbent transformed from an independent principality into part of the Seljuk order."
     },
     {
       "id": 69,
@@ -2344,10 +2344,10 @@
       "fall_ar": "",
       "ctx_b_ar": "",
       "ctx_a_ar": "",
-      "rise_en": "",
-      "fall_en": "",
-      "ctx_b_en": "",
-      "ctx_a_en": ""
+      "rise_en": "The mountainous geography of Daylam facilitated independence from central authority; local tribal chiefs held de facto power.",
+      "fall_en": "With Buyid expansion and changes in regional power balances, Justānid authority came to an end.",
+      "ctx_b_en": "Daylam was one of the Iranian regions that converted to Islam latest due to its geographical isolation; local peoples preserved their ancient traditions for a long time.",
+      "ctx_a_en": "The Buyids emerged from Daylam and established dominion as far as Baghdad; the region now became a source that exported soldiers to the center of the Islamic world."
     },
     {
       "id": 70,
@@ -2378,10 +2378,10 @@
       "fall_ar": "",
       "ctx_b_ar": "",
       "ctx_a_ar": "",
-      "rise_en": "",
-      "fall_en": "",
-      "ctx_b_en": "",
-      "ctx_a_en": ""
+      "rise_en": "With the weakening of Abbasid central authority, military families from Ushrūsana became established in governorships; the Sajids filled this power vacuum in Azerbaijan.",
+      "fall_en": "The dynasty ended with the military defeats of the last emir and the extinction of the lineage; the Musāfirids filled the power vacuum in Azerbaijan.",
+      "ctx_b_en": "While the Abbasid caliphate lost control in the eastern provinces during the 9th century, military governors gained de facto independence.",
+      "ctx_a_en": "The power vacuum in Azerbaijan and the Caucasus was filled by the Musāfirids and Sallārids; the region came under the influence of the Daylamī military tradition."
     },
     {
       "id": 71,
@@ -2412,10 +2412,10 @@
       "fall_ar": "التوسع السلجوقي غربا والمنافسة الروادية أضعفت القوة المسافرية ودخلت المنطقة في نفوذ السلاجقة",
       "ctx_b_ar": "كان الفراغ السياسي قد نشأ في أذربيجان بسقوط الساجيين فاستغلت الأسر المحاربة الديلمية هذه الفرصة",
       "ctx_a_ar": "دخلت أذربيجان نظاما سياسيا جديدا مع الرواديين ثم الفتوحات السلجوقية وحل التقليد العسكري التركي الغزي محل التقليد العسكري الديلمي",
-      "rise_en": "",
-      "fall_en": "",
-      "ctx_b_en": "",
-      "ctx_a_en": ""
+      "rise_en": "The power vacuum created by the collapse of the Sajids and the regional expansion of the Daylamī military elite enabled the rise of the Musāfirids.",
+      "fall_en": "Seljuk westward expansion and Rawwādid competition weakened Musāfirid power; the region entered the Seljuk sphere of influence.",
+      "ctx_b_en": "A political vacuum had formed in Azerbaijan with the fall of the Sajids; Daylamī warrior families took advantage of this opportunity.",
+      "ctx_a_en": "Azerbaijan entered a new political order with the Rawwādids and subsequently Seljuk conquests; the Daylamī military tradition gave way to Oghuz Turkish military culture."
     },
     {
       "id": 72,
@@ -2446,10 +2446,10 @@
       "fall_ar": "فتوحات السلطان السلجوقي ألب أرسلان حوالي سنة 1071 أنهت استقلال الرواديين ودخلت تبريز في النظام السلجوقي",
       "ctx_b_ar": "كانت المنافسة مستمرة في أذربيجان بين المسافريين والشداديين وقوى محلية مختلفة",
       "ctx_a_ar": "سيطر السلاجقة على أذربيجان كاملة وتحولت تبريز في العهد السلجوقي ثم الإيلخاني إلى عاصمة إمبراطورية كبيرة",
-      "rise_en": "",
-      "fall_en": "",
-      "ctx_b_en": "",
-      "ctx_a_en": ""
+      "rise_en": "The weakening of Musāfirid rule and changes in the ethnic-political balances of the region opened space for the Rawwādids.",
+      "fall_en": "The conquests of the Seljuk sultan Alp Arslan (c. 1071) ended Rawwādid independence; Tabriz was incorporated into the Seljuk order.",
+      "ctx_b_en": "An environment of ongoing competition existed in Azerbaijan between the Musāfirids, Shaddādids, and various local powers.",
+      "ctx_a_en": "The Seljuks brought all of Azerbaijan under control; Tabriz was transformed into a great imperial capital during the Seljuk and subsequently Ilkhanid periods."
     },
     {
       "id": 73,
@@ -2480,10 +2480,10 @@
       "fall_ar": "النفوذ السلجوقي والضغط الجورجي أذاب القوة الشدادية وصار أتابكة إيلدنز الحكام الجدد للمنطقة",
       "ctx_b_ar": "كانت أران منطقة حدودية تتبدل باستمرار بين القوى المسلمة والمسيحية",
       "ctx_a_ar": "صار الإيلدنزيون أتابكة أذربيجان الحكام الجدد للمنطقة وأداروا سياسة القفقاس ضمن النظام السلجوقي",
-      "rise_en": "",
-      "fall_en": "",
-      "ctx_b_en": "",
-      "ctx_a_en": ""
+      "rise_en": "The weakening of Musāfirid rule in Arrān opened the path to regional power for the Kurdish Shaddādid family.",
+      "fall_en": "Seljuk influence and Georgian pressure eroded Shaddādid power; the Ildenizid Atabegs became the new rulers of the region.",
+      "ctx_b_en": "Arrān was a frontier region that constantly changed hands between Muslim and Christian powers.",
+      "ctx_a_en": "The Ildenizids (Atabegs of Azerbaijan) became the new rulers of the region, directing Caucasian politics within the Seljuk order."
     },
     {
       "id": 74,
@@ -2512,8 +2512,8 @@
       "fall_ar": "الخليفة العباسي المعتضد صفى الأسرة وأعاد تأسيس السلطة المركزية",
       "ctx_b_ar": "",
       "ctx_a_ar": "",
-      "rise_en": "",
-      "fall_en": "",
+      "rise_en": "They gained power through governorship duties in the Jibāl region under Abbasid suzerainty.",
+      "fall_en": "The Abbasid caliph al-Mu'taḍid eliminated the dynasty and reestablished central authority.",
       "ctx_b_en": "",
       "ctx_a_en": ""
     },
@@ -2547,10 +2547,10 @@
       "fall_ar": "",
       "ctx_b_ar": "",
       "ctx_a_ar": "",
-      "rise_en": "",
-      "fall_en": "",
-      "ctx_b_en": "",
-      "ctx_a_en": ""
+      "rise_en": "Three brothers (ʿAlī, Ḥasan, Aḥmad) from the warrior mountain tribes of Daylam rapidly rose with their military forces in Iraq and Fārs, where Abbasid authority had collapsed.",
+      "fall_en": "The Seljuk leader Ṭughril Beg's capture of Baghdad (1055) definitively ended Būyid rule; all branches collapsed under Seljuk pressure.",
+      "ctx_b_en": "The Abbasid caliphs had completely lost their actual power in the 10th century, becoming puppets of Turkish military commanders (amīr al-umarāʾ).",
+      "ctx_a_en": "The Seljuks initiated the resurgence of Sunni Islam, ending Būyid Shiʿi influence; Baghdad was restructured as a center of Sunni caliphate under Seljuk protection."
     },
     {
       "id": 76,
@@ -2581,10 +2581,10 @@
       "fall_ar": "",
       "ctx_b_ar": "",
       "ctx_a_ar": "",
-      "rise_en": "",
-      "fall_en": "",
-      "ctx_b_en": "",
-      "ctx_a_en": ""
+      "rise_en": "The mountainous geography of Jibāl allowed Kurdish tribal structures independent from central authority to strengthen.",
+      "fall_en": "Buyid pressure, 'Annāzid rise, and ultimately Seljuk advance brought an end to Hasanūyid power.",
+      "ctx_b_en": "Under Buyid rule, various local powers in the Jibāl region maintained their semi-independent administrations.",
+      "ctx_a_en": "The 'Annāzids established partial dominance in the region; subsequently the Seljuks incorporated all Kurdish principalities into their system."
     },
     {
       "id": 77,
@@ -2615,10 +2615,10 @@
       "fall_ar": "",
       "ctx_b_ar": "",
       "ctx_a_ar": "",
-      "rise_en": "",
-      "fall_en": "",
-      "ctx_b_en": "",
-      "ctx_a_en": ""
+      "rise_en": "With the weakening of the Hasanūyids, they filled the power vacuum in the western parts of Jibāl.",
+      "fall_en": "Seljuk expansion systematically eliminated the Kurdish principalities; the 'Annāzids also lost their independence in this process.",
+      "ctx_b_en": "With the undermining of Hasanūyid dominance, a search for new power began in the mountainous region on the Iraqi border.",
+      "ctx_a_en": "The Seljuks attached the entire region to central administration; the era of independent Kurdish principalities came to an end."
     },
     {
       "id": 78,
@@ -2649,10 +2649,10 @@
       "fall_ar": "",
       "ctx_b_ar": "",
       "ctx_a_ar": "",
-      "rise_en": "",
-      "fall_en": "",
-      "ctx_b_en": "",
-      "ctx_a_en": ""
+      "rise_en": "With the collapse of Buyid authority in Isfahan, the Kākūyids, coming from the Daylamī military tradition, took over regional power.",
+      "fall_en": "They were expelled from Isfahan under Seljuk pressure; the small principality they maintained in Yazd also ultimately passed under direct Seljuk administration.",
+      "ctx_b_en": "While the Buyid empire was fragmenting, numerous local powers in Central Iran were seeking independence.",
+      "ctx_a_en": "The Seljuks made Isfahan their capital, transforming the city into one of the most important centers of the Islamic world."
     },
     {
       "id": 79,
@@ -2680,8 +2680,8 @@
       "fall_ar": "",
       "ctx_b_ar": "",
       "ctx_a_ar": "",
-      "rise_en": "",
-      "fall_en": "",
+      "rise_en": "The mountainous structure of Ṭabaristān enabled independence from central authority; the Sasanian Ispahbadh tradition continued.",
+      "fall_en": "The Abbasid army conquered Ṭabaristān, eliminating the old Iranian principalities.",
       "ctx_b_en": "",
       "ctx_a_en": ""
     },
@@ -2714,10 +2714,10 @@
       "fall_ar": "",
       "ctx_b_ar": "",
       "ctx_a_ar": "",
-      "rise_en": "",
-      "fall_en": "",
-      "ctx_b_en": "",
-      "ctx_a_en": ""
+      "rise_en": "The geographical isolation of Ṭabaristān and the traditional loyalty of the local population ensured Bāwandid sustainability.",
+      "fall_en": "The third branch continued as an Ilkhanid vassal; ultimately ended with Timurid expansion.",
+      "ctx_b_en": "Ṭabaristān was a region that continuously maintained its independence from central authorities through its mountainous structure.",
+      "ctx_a_en": "Timurid conquests ended the local dynastic tradition of Ṭabaristān; the region came under direct rule of great empires."
     },
     {
       "id": 81,
@@ -2748,10 +2748,10 @@
       "fall_ar": "الضغط السلجوقي وفقدان الأمراء الأواخر للقوة العسكرية والسياسية أطاح بالسلالة؛ دخلت جرجان في نطاق النفوذ السلجوقي.",
       "ctx_b_ar": "مع انهيار السلطة العباسية في شمال إيران كانت السلالات الديلمية (البويهيون والزياريون) تكسب الاستقلال.",
       "ctx_a_ar": "سيطر السلاجقة على كامل المنطقة؛ استمر الإرث الفكري الزياري تحت الرعاية السلجوقية.",
-      "rise_en": "",
-      "fall_en": "",
-      "ctx_b_en": "",
-      "ctx_a_en": ""
+      "rise_en": "The warrior tribal tradition of Daylamān and Mardāwīj's charismatic leadership provided rapid ascendancy along the Caspian Sea coast.",
+      "fall_en": "Seljuk pressure and the military-political power loss of the last emirs collapsed the dynasty; Jurjān entered the Seljuk sphere of influence.",
+      "ctx_b_en": "With the collapse of Abbasid authority in northern Iran, Daylamite dynasties (Būyids, Ziyārids) gained independence.",
+      "ctx_a_en": "The Seljuks brought the entire region under control; the Ziyārid intellectual legacy continued under Seljuk patronage."
     },
     {
       "id": 82,
@@ -2782,10 +2782,10 @@
       "fall_ar": "يعقوب بن الليث الصفاري فتح خراسان وأنهى الحكم الطاهري سنة 873.",
       "ctx_b_ar": "بعد الحرب الأهلية العباسية (الأمين والمأمون) كانت خراسان تحتاج إلى ترتيب سياسي جديد.",
       "ctx_a_ar": "استولى الصفاريون على خراسان؛ ثم نهض السامانيون كحاكم جديد وأقوى للمنطقة.",
-      "rise_en": "",
-      "fall_en": "",
-      "ctx_b_en": "",
-      "ctx_a_en": ""
+      "rise_en": "Ṭāhir b. al-Ḥusayn, who supported al-Maʾmūn's side in the Abbasid civil wars, received the governorship of Khurasan as a reward and established his family permanently.",
+      "fall_en": "The Ṣaffārid Yaʿqūb b. al-Layth conquered Khurasan, ending Ṭāhirid rule (873).",
+      "ctx_b_en": "Following the Abbasid civil war (al-Amīn-al-Maʾmūn), Khurasan required a new political arrangement.",
+      "ctx_a_en": "The Ṣaffārids seized Khurasan; subsequently the Sāmānids rose as the new and more powerful rulers of the region."
     },
     {
       "id": 83,
@@ -2816,10 +2816,10 @@
       "fall_ar": "تفتتوا وانهاروا بالضغط المتزامن للأتراك القراخانيين من الشمال والغزنويين من الجنوب؛ قتل الأمير الأخير.",
       "ctx_b_ar": "مع ضعف السلطة المركزية العباسية في الولايات الشرقية سعت السلالات الإيرانية المحلية (الطاهريون والصفاريون) للاستقلال.",
       "ctx_a_ar": "انتقل ما وراء النهر للقراخانيين وخراسان للغزنويين؛ واصلت كلا السلالتين الإرث الثقافي الساماني.",
-      "rise_en": "",
-      "fall_en": "",
-      "ctx_b_en": "",
-      "ctx_a_en": ""
+      "rise_en": "They gained power in Transoxiana as Abbasid governors; they achieved de facto independence with the support of Iranian dihqāns (landed aristocracy).",
+      "fall_en": "They fragmented and collapsed under simultaneous pressure from the Qarakhānid Turks from the north and the Ghaznavids from the south; the last emir was killed.",
+      "ctx_b_en": "With the weakening of Abbasid central authority in the eastern provinces, local Iranian dynasties (Ṭāhirids, Ṣaffārids) sought independence.",
+      "ctx_a_en": "Transoxiana passed to the Qarakhānids, Khurasan to the Ghaznavids; the Sāmānid cultural legacy was continued by both dynasties."
     },
     {
       "id": 84,
@@ -2850,10 +2850,10 @@
       "fall_ar": "انهزم الفرع الليثي أمام السامانيين سنة 900؛ استمر الفرع الخلفي في سجستان كإمارة صغيرة حتى العهد التيموري.",
       "ctx_b_ar": "مع ضعف الطاهريين تشكل فراغ سلطوي في خراسان وشرق إيران؛ كانت الحركات المحلية تكسب القوة.",
       "ctx_a_ar": "نهض السامانيون كحاكم بلا منازع لخراسان وما وراء النهر؛ بقي الإرث الصفاري محصورا بسجستان.",
-      "rise_en": "",
-      "fall_en": "",
-      "ctx_b_en": "",
-      "ctx_a_en": ""
+      "rise_en": "Yaʿqūb b. al-Layth rose from the ʿayyār (popular warrior) movement in Sīstān and conquered Khurasan.",
+      "fall_en": "The Layth branch was defeated by the Sāmānids (900); the successor branch continued as a small principality in Sīstān until the Timurid period.",
+      "ctx_b_en": "With the weakening of the Ṭāhirids, an authority vacuum emerged in Khurāsān and eastern Iran; local movements were gaining strength.",
+      "ctx_a_en": "The Sāmānids rose as the undisputed rulers of Khurāsān and Transoxiana; the Ṣaffārid legacy remained confined to Sīstān."
     },
     {
       "id": 85,
@@ -2882,8 +2882,8 @@
       "fall_ar": "فقدوا استقلالهم الفعلي مع تقوية السلطة المركزية السامانية.",
       "ctx_b_ar": "",
       "ctx_a_ar": "",
-      "rise_en": "",
-      "fall_en": "",
+      "rise_en": "Regional landholding and local influence enabled them to establish a small principality under Sāmānid suzerainty.",
+      "fall_en": "They lost their de facto independence with the strengthening of Sāmānid central authority.",
       "ctx_b_en": "",
       "ctx_a_en": ""
     },
@@ -2913,8 +2913,8 @@
       "fall_ar": "انتهت السلالة عندما قام محمود الغزنوي بتصفية القوى المناوئة في خراسان.",
       "ctx_b_ar": "",
       "ctx_a_ar": "",
-      "rise_en": "",
-      "fall_en": "",
+      "rise_en": "Their military service in the Sāmānid army and strategic position in Kūhistān enabled them to gain influence.",
+      "fall_en": "The dynasty ended when Ghaznavid Maḥmūd eliminated rival powers in Khurāsān.",
       "ctx_b_en": "",
       "ctx_a_en": ""
     },
@@ -2944,8 +2944,8 @@
       "fall_ar": "انتهوا سريعا بفتح البويهيين لكرمان.",
       "ctx_b_ar": "",
       "ctx_a_ar": "",
-      "rise_en": "",
-      "fall_en": "",
+      "rise_en": "They took advantage of the local power vacuum in Kirmān to establish a short-lived principality.",
+      "fall_en": "They quickly came to an end with the Būyid conquest of Kirmān.",
       "ctx_b_en": "",
       "ctx_a_en": ""
     },
@@ -2978,10 +2978,10 @@
       "fall_ar": "فقدوا قوتهم الإقليمية بسبب الضغط الغزنوي وانهيار النظام الساماني.",
       "ctx_b_ar": "أسس السامانيون سلطة مركزية قوية في ما وراء النهر؛ وكان الأمراء المحليون يعملون كتابعين ضمن هذا النظام.",
       "ctx_a_ar": "أنهى الغزنويون والقراخانيون نظام التبعية الساماني باعتبارهم الحكام الجدد للمنطقة.",
-      "rise_en": "",
-      "fall_en": "",
-      "ctx_b_en": "",
-      "ctx_a_en": ""
+      "rise_en": "The local landed aristocracy of Chaghāniyān formalized their rule under Sāmānid suzerainty.",
+      "fall_en": "They lost their regional power due to Ghaznavid pressure and the collapse of the Samanid order.",
+      "ctx_b_en": "The Samanids had established a strong central authority in Transoxiana; local rulers functioned as vassals within this system.",
+      "ctx_a_en": "The Ghaznavids and Qarakhanids, as the new rulers of the region, ended the Samanid vassal system."
     },
     {
       "id": 89,
@@ -3012,10 +3012,10 @@
       "fall_ar": "دمر غزو جنكيز خان (1219-1231) السلالة؛ مات السلطان محمد هاربا في جزيرة ببحر قزوين؛ قاوم ابنه جلال الدين من الهند إلى الأناضول لكن دون نجاح.",
       "ctx_b_ar": "تمزقت الإمبراطورية السلجوقية وضعف القراخانيون والغزنويون؛ هيأ فراغ القوة في آسيا الوسطى الأرضية للتوسع السريع للخوارزمشاهيين.",
       "ctx_a_ar": "دمر الغزو المغولي شرق العالم الإسلامي؛ سقطت بغداد عام 1258؛ انتقل مركز ثقل الحضارة الإسلامية إلى مصر (المماليك) والأناضول (السلجوقية-العثمانية).",
-      "rise_en": "",
-      "fall_en": "",
-      "ctx_b_en": "",
-      "ctx_a_en": ""
+      "rise_en": "The Anushteginid branch, starting from a governorship in Seljuk service, became independent with the Seljuk collapse and rapidly annexed Qarakhanid-Ghaznavid territories.",
+      "fall_en": "Genghis Khan's invasion (1219-31) destroyed the dynasty; Sultan Muhammad died on an island in the Caspian Sea while fleeing; his son Jalal al-Din resisted from India to Anatolia but was unsuccessful.",
+      "ctx_b_en": "The Seljuk Empire had fragmented, the Qarakhanids and Ghaznavids had weakened; the power vacuum in Central Asia provided the foundation for rapid Khwarazmshah expansion.",
+      "ctx_a_en": "The Mongol invasion devastated the eastern Islamic world; Baghdad fell in 1258; the center of gravity of Islamic civilization shifted to Egypt (Mamluks) and Anatolia (Seljuk-Ottoman)."
     },
     {
       "id": 90,
@@ -3046,10 +3046,10 @@
       "fall_ar": "فتح الفرع الغربي من قبل الخوارزمشاهيين (حوالي 1212)؛ ضعف الفرع الشرقي كتابع للقراختايين وانتهى.",
       "ctx_b_ar": "بينما كان السامانيون يضعفون، كانت القبائل التركية شمال ما وراء النهر تتعرف على الإسلام وتشكل قوة عسكرية هائلة.",
       "ctx_a_ar": "خضع ما وراء النهر لحكم الخوارزمشاهيين ثم المغول؛ أصبح الإرث الثقافي القراخاني أساسا دائما للحضارة التركية الإسلامية.",
-      "rise_en": "",
-      "fall_en": "",
-      "ctx_b_en": "",
-      "ctx_a_en": ""
+      "rise_en": "Satuq Bughra Khan's conversion to Islam and the mass conversion of Turkic tribes provided the Qarakhanids with legitimacy and motivation to conquer Samanid territories.",
+      "fall_en": "The western branch was conquered by the Khwarazmshahs (c. 1212); the eastern branch weakened as vassals of the Qara Khitai and came to an end.",
+      "ctx_b_en": "While the Samanids were weakening, the Turkic tribes north of Transoxiana were encountering Islam and forming a strong military potential.",
+      "ctx_a_en": "Transoxiana came under the dominion of the Khwarazmshahs and subsequently the Mongols; the Qarakhanid cultural legacy became the lasting foundation of Turko-Islamic civilization."
     },
     {
       "id": 91,
@@ -3081,10 +3081,10 @@
       "fall_ar": "صراعات العرش بين السلاطين واستقلال الأتابكة وضغط الخوارزمشاهية مزق الإمبراطورية؛ آخر السلاجقة العراقيين طغرل الثالث قتله الخوارزمشاه تكش (1194)",
       "ctx_b_ar": "الخلافة العباسية كانت في الظل تحت الهيمنة البويهية الشيعية؛ الغزنويون فقدوا قوتهم في الشرق؛ العالم الإسلامي كان يبحث عن منقذ سني",
       "ctx_a_ar": "الخوارزمشاهية واجهت الغزو المغولي بعد هيمنة قصيرة؛ الإرث السلجوقي استمر عبر سلاجقة الأناضول والزنكيين والأيوبيين وأخيراً العثمانيين",
-      "rise_en": "",
-      "fall_en": "",
-      "ctx_b_en": "",
-      "ctx_a_en": ""
+      "rise_en": "The military strength of the Oghuz Turkic tribes migrating from the Central Asian steppes, combined with the power vacuum created by the weakening of the Ghaznavid and Buyid states, enabled the Seljuq rise.",
+      "fall_en": "Succession struggles among sultans, the independence of atabegs, and Khwarazmshah pressure fragmented the empire; the last Iraq Seljuq Toghrul III was killed by Khwarazmshah Tekish (1194).",
+      "ctx_b_en": "The Abbasid caliphate had been overshadowed under Buyid Shi'i dominance; the Ghaznavids were losing their power in the east; the Islamic world was seeking a Sunni savior.",
+      "ctx_a_en": "The Khwarازmshahs suffered Mongol invasion after a brief hegemony; the Seljuq legacy was continued by the Anatolian Seljuqs, Zangids, Ayyubids, and ultimately the Ottomans."
     },
     {
       "id": 92,
@@ -3115,10 +3115,10 @@
       "fall_ar": "نور الدين محمود الزنكي فتح دمشق (1154) فأنهى الحكم البوري",
       "ctx_b_ar": "الهيمنة السلجوقية على الشام انحلت، والصليبيون استولوا على القدس والشريط الساحلي؛ الشام المسلمة كانت تظهر مشهداً سياسياً مجزأً",
       "ctx_a_ar": "نور الدين وحد دمشق وحلب فشكل جبهة مسلمة قوية ضد الصليبيين؛ صلاح الدين الأيوبي نهض على هذه الأسس",
-      "rise_en": "",
-      "fall_en": "",
-      "ctx_b_en": "",
-      "ctx_a_en": ""
+      "rise_en": "With the fragmentation of Seljuq Syrian administration, the atabeg family in Damascus began to act independently.",
+      "fall_en": "The Zangid ruler Nur al-Din Mahmud conquered Damascus (1154), ending Burid rule.",
+      "ctx_b_en": "Seljuq dominance in Syria had dissolved, the Crusaders had seized Jerusalem and the coastal strip; Muslim Syria presented a fragmented political tableau.",
+      "ctx_a_en": "Nur al-Din united Damascus and Aleppo, creating a strong Muslim front against the Crusaders; Saladin Ayyubi rose upon these foundations."
     },
     {
       "id": 93,
@@ -3149,10 +3149,10 @@
       "fall_ar": "الفرع الأصلي في الموصل انتقل إلى اللؤلؤيين (1259)؛ الفروع الأخرى انتهت في تواريخ مختلفة تحت الضغط الأيوبي والمغولي",
       "ctx_b_ar": "الصليبيون استولوا على القدس (1099)، والعالم الإسلامي كان مجزأً؛ أتابكة السلاجقة تولوا الدفاع الإقليمي",
       "ctx_a_ar": "الأيوبيون ورثوا الإرث الزنكي؛ صلاح الدين استرد القدس (1187)؛ في الموصل استمر اللؤلؤيون حتى الغزو المغولي",
-      "rise_en": "",
-      "fall_en": "",
-      "ctx_b_en": "",
-      "ctx_a_en": ""
+      "rise_en": "'Imad al-Din Zangi was appointed as governor of Mosul in Seljuq service; through his effective struggle against the Crusader threat, he became an independent power.",
+      "fall_en": "The main branch transferred power to the Lu'lu'ids in Mosul (1259); other branches ended at various dates under Ayyubid and Mongol pressure.",
+      "ctx_b_en": "The Crusaders had taken Jerusalem (1099), the Muslim world was fragmented; Seljuk atabegs were undertaking regional defense.",
+      "ctx_a_en": "The Ayyubids inherited the Zangid legacy; Saladin reconquered Jerusalem (1187); the Lu'lu'ids in Mosul continued their existence until the Mongol invasion."
     },
     {
       "id": 94,
@@ -3183,10 +3183,10 @@
       "fall_ar": "بموت آخر الأمراء انتهت السلالة؛ العباسيون أخذوا إربل تحت الإدارة المباشرة",
       "ctx_b_ar": "بينما كان الزنكيون ينهارون كانت الأتابكيات في المنطقة تحصل على الاستقلال الفعلي",
       "ctx_a_ar": "العباسيون ورثوا إربل؛ بعد فترة قصيرة دمر الغزو المغولي كل التركيبة السياسية للمنطقة",
-      "rise_en": "",
-      "fall_en": "",
-      "ctx_b_en": "",
-      "ctx_a_en": ""
+      "rise_en": "With the fragmentation of the Zangid order, the governors of Erbil began to act independently.",
+      "fall_en": "The dynasty ended with the death of the last emir; the Abbasids took Erbil under direct rule.",
+      "ctx_b_en": "As the Zangids collapsed, the atabegliks in the region were gaining de facto independence.",
+      "ctx_a_en": "The Abbasids took over Erbil; shortly after, the Mongol invasion destroyed the entire political structure of the region."
     },
     {
       "id": 95,
@@ -3217,10 +3217,10 @@
       "fall_ar": "بعد استيلاء المغولي هولاكو على بغداد دخلت المنطقة تحت السيطرة الإيلخانية",
       "ctx_b_ar": "في الأواخر الزنكية للموصل أضعفت الصراعات الداخلية للسلالة الإدارة",
       "ctx_a_ar": "الغزو المغولي أدخل كل شمال بلاد الرافدين بما فيها الموصل في النظام الإيلخاني",
-      "rise_en": "",
-      "fall_en": "",
-      "ctx_b_en": "",
-      "ctx_a_en": ""
+      "rise_en": "With the weakening of the Zangid dynasty, effective power in Mosul passed to the mamluk commander Lu'lu'.",
+      "fall_en": "After the Mongol Hülegü's capture of Baghdad, the region came under Ilkhanid control.",
+      "ctx_b_en": "During the final period of the Zangid Mosul branch, internal dynastic conflicts had weakened the administration.",
+      "ctx_a_en": "The Mongol invasion incorporated all of Northern Mesopotamia, including Mosul, into the Ilkhanid order."
     },
     {
       "id": 96,
@@ -3251,10 +3251,10 @@
       "fall_ar": "انتهت الفروع في تواريخ مختلفة بضغوط الأيوبيين والسلاجقة ثم المغول والتركمان.",
       "ctx_b_ar": "كانت القبائل التركية المتدفقة إلى الأناضول بعد انتصار ملاذكرد تؤسس إمارات عديدة في المنطقة.",
       "ctx_a_ar": "دخل جنوب شرق الأناضول تحت سيطرة القراقويونلو والآققويونلو وأخيرا العثمانيين.",
-      "rise_en": "",
-      "fall_en": "",
-      "ctx_b_en": "",
-      "ctx_a_en": ""
+      "rise_en": "The sons of Artuq Bey, who settled in southeastern Anatolia as a Great Seljuk frontier principality, became permanently established in the region.",
+      "fall_en": "The various branches came to an end separately at different times under Ayyubid, Seljuk, and subsequently Mongol-Turkmen pressures.",
+      "ctx_b_en": "Following the victory at Manzikert, Turkic tribes flowing into Anatolia were establishing numerous principalities in the region.",
+      "ctx_a_en": "Southeastern Anatolia came under the dominion of the Qara Qoyunlu, Aq Qoyunlu, and ultimately the Ottomans."
     },
     {
       "id": 97,
@@ -3285,10 +3285,10 @@
       "fall_ar": "أنهى فتح الأيوبي الملك الأشرف الأسرة (1207).",
       "ctx_b_ar": "بينما كانت الإمارات التركية تتأسس في شرق الأناضول بعد ملاذكرد، برزت منطقة بحيرة وان بأهميتها الاستراتيجية.",
       "ctx_a_ar": "ورث الأيوبيون المنطقة ثم غيرت الغزوة المغولية البنية السياسية لشرق الأناضول من الأساس.",
-      "rise_en": "",
-      "fall_en": "",
-      "ctx_b_en": "",
-      "ctx_a_en": ""
+      "rise_en": "The military successes of the Sökmen family, who settled in Ahlat as Great Seljuk frontier lords, transformed into regional power.",
+      "fall_en": "The conquest by the Ayyubid al-Malik al-Ashraf (1207) brought the dynasty to an end.",
+      "ctx_b_en": "While Turkic principalities were being established in eastern Anatolia after Manzikert, the Lake Van region stood out for its strategic importance.",
+      "ctx_a_en": "The Ayyubids took over the region; subsequently, the Mongol invasion fundamentally transformed the political structure of eastern Anatolia."
     },
     {
       "id": 98,
@@ -3317,8 +3317,8 @@
       "fall_ar": "أزالها ضغط الخوارزمشاهيين ثم المغول.",
       "ctx_b_ar": "",
       "ctx_a_ar": "",
-      "rise_en": "",
-      "fall_en": "",
+      "rise_en": "With the dissolution of the Seljuk order, the local governor family in Marāgha gained independence.",
+      "fall_en": "The Khwārazm-Shāh and subsequently Mongol pressure eliminated the dynasty.",
       "ctx_b_en": "",
       "ctx_a_en": ""
     },
@@ -3351,10 +3351,10 @@
       "fall_ar": "هدمهم الخوارزمشاه جلال الدين (1225) وأصبحت المنطقة مفتوحة للغزو المغولي.",
       "ctx_b_ar": "بينما كانت سلطنة سلاجقة العراق تضعف كانت عائلات الأتابكة تمسك بالسلطة الفعلية.",
       "ctx_a_ar": "بعد الهيمنة الخوارزمشاهية قصيرة المدى خربت الغزوة المغولية أذربيجان وأصبح الإلخانيون الحكام الجدد للمنطقة.",
-      "rise_en": "",
-      "fall_en": "",
-      "ctx_b_en": "",
-      "ctx_a_en": ""
+      "rise_en": "Ildeniz, of ghulām origin, seized de facto power in Azerbaijan during the power vacuum of the Iraq Seljuks.",
+      "fall_en": "They were destroyed by Khwārazm-Shāh Jalāl al-Dīn (1225); the region became exposed to Mongol invasion.",
+      "ctx_b_en": "While the Iraq Seljuk sultanate was weakening, atabeg families held de facto power.",
+      "ctx_a_en": "After brief Khwārazm-Shāh rule, the Mongol invasion devastated Azerbaijan; the Ilkhanids became the new rulers of the region."
     },
     {
       "id": 100,
@@ -3384,10 +3384,10 @@
       "fall_ar": "",
       "ctx_b_ar": "",
       "ctx_a_ar": "",
-      "rise_en": "",
-      "fall_en": "",
-      "ctx_b_en": "",
-      "ctx_a_en": ""
+      "rise_en": "The pre-Sassanid Iranian princely tradition continued independently from central authority in the mountainous geography of Ṭabaristān.",
+      "fall_en": "They were eliminated by the Safavids (c. 1567); the region was incorporated into central Iranian administration.",
+      "ctx_b_en": "The mountainous structure of Ṭabaristān allowed local principalities to maintain their existence in every period.",
+      "ctx_a_en": "The centralized Safavid state eliminated all local principalities of Iran and brought them under a single roof."
     },
     {
       "id": 101,
@@ -3418,10 +3418,10 @@
       "fall_ar": "فتح المغولي هولاكو الموت ودمرها مع مكتبتها سنة 1256، وانتهت القوة السياسية الإسماعيلية.",
       "ctx_b_ar": "تحت هيمنة الإمبراطورية السلجوقية السنية كانت الجماعات الإسماعيلية تحت ضغط سياسي.",
       "ctx_a_ar": "بعد تدمير المغول للموت عاد الإسماعيليون إلى بنية الجماعة السرية، واستمرت زعامة الآغا خان في العصر الحديث.",
-      "rise_en": "",
-      "fall_en": "",
-      "ctx_b_en": "",
-      "ctx_a_en": ""
+      "rise_en": "Ḥasan-i Ṣabbāḥ, drawing from the Fāṭimid Ismāʿīlī daʿwa structure, transformed Seljuk hostility into strategic advantage and established an independent state in mountain fortresses.",
+      "fall_en": "The Mongol Hülegü conquered Alamut and destroyed it along with its library (1256); Ismāʿīlī political power came to an end.",
+      "ctx_b_en": "Under the Sunnī hegemony of the Seljuk Empire, Ismāʿīlī communities were under political pressure.",
+      "ctx_a_en": "After the Mongols destroyed Alamut, the Ismāʿīlīs returned to a secret community structure; the Aga Khan leadership continued in the modern period."
     },
     {
       "id": 102,
@@ -3452,10 +3452,10 @@
       "fall_ar": "ضعفوا تدريجيا تحت ضغط التيموريين والقرقويونلو وانتهوا.",
       "ctx_b_ar": "بينما كان النظام السلجوقي يتفكك، سمحت الطبيعة الجبلية للورستان للإمارات المحلية بالبقاء.",
       "ctx_a_ar": "أصبح التيموريون وتلاهم الأسر التركمانية القرقويونلو والآققويونلو الحكام الجدد للمنطقة.",
-      "rise_en": "",
-      "fall_en": "",
-      "ctx_b_en": "",
-      "ctx_a_en": ""
+      "rise_en": "The family that gained power in Luristan under Seljuk vassalage established their atabegship permanently with the protection of the mountainous geography.",
+      "fall_en": "They gradually weakened and came to an end under Timurid and Qara Qoyunlu pressure.",
+      "ctx_b_en": "While the Seljuk order was dissolving, the mountainous structure of Luristan enabled local principalities to survive.",
+      "ctx_a_en": "The Timurids and subsequently the Turkmen dynasties (Qara Qoyunlu/Aq Qoyunlu) became the new rulers of the region."
     },
     {
       "id": 103,
@@ -3486,10 +3486,10 @@
       "fall_ar": "السيطرة الإلخانية المباشرة أنهت الأتابكية فعليا، وتحولت فارس إلى ولاية إلخانية.",
       "ctx_b_ar": "مع تفتت الإمبراطورية السلجوقية كانت الأسر الأتابكية المحلية في فارس تستقل.",
       "ctx_a_ar": "أخذ الإلخانيون فارس تحت الإدارة المباشرة، وتلاهم الإنجويون والمظفريون كقوى محلية جديدة في المنطقة.",
-      "rise_en": "",
-      "fall_en": "",
-      "ctx_b_en": "",
-      "ctx_a_en": ""
+      "rise_en": "With the dissolution of the Seljuk governorship of Fars, the Oghuz-origin atabeg family established independent rule in Shiraz.",
+      "fall_en": "Direct Ilkhanid control effectively ended the atabegship; Fars was transformed into an Ilkhanid province.",
+      "ctx_b_en": "With the fragmentation of the Seljuk Empire, local atabeg families in Fars were gaining independence.",
+      "ctx_a_en": "The Ilkhanids took Fars under direct rule; subsequently the Injuids and Muzaffarids became the new local powers of the region."
     },
     {
       "id": 104,
@@ -3518,8 +3518,8 @@
       "fall_ar": "في العهد الإلخاني انتقلت يزد إلى الأسرة المظفرية.",
       "ctx_b_ar": "",
       "ctx_a_ar": "",
-      "rise_en": "",
-      "fall_en": "",
+      "rise_en": "Local authority was preserved as a continuation of the Yazd branch of the Kakuyids.",
+      "fall_en": "During the Ilkhanid period, the Muzaffarid dynasty took over Yazd.",
       "ctx_b_en": "",
       "ctx_a_en": ""
     },
@@ -3552,10 +3552,10 @@
       "fall_ar": "",
       "ctx_b_ar": "",
       "ctx_a_ar": "",
-      "rise_en": "",
-      "fall_en": "",
-      "ctx_b_en": "",
-      "ctx_a_en": ""
+      "rise_en": "With the collapse of the Seljuq branch of Kirman, they seized power in Kirman as Mongol vassals.",
+      "fall_en": "Ilkhanid direct control and subsequently the rise of the Muzaffarids brought the dynasty to an end.",
+      "ctx_b_en": "As Seljuq rule over Kirman came to an end, the region was left to local powers who were Mongol vassals.",
+      "ctx_a_en": "The Muzaffarids and subsequently the Timurids became the new rulers of Kirman."
     },
     {
       "id": 106,
@@ -3586,10 +3586,10 @@
       "fall_ar": "انهى الضغط التيموري استقلال الامارات المحلية",
       "ctx_b_ar": "بعد انهيار القوة الصفارية كانت سجستان تدار بامارات محلية حول الامبراطوريات الكبرى",
       "ctx_a_ar": "انهى الفتح التيموري تقليد الامارات المستقلة في سجستان وتحولت المنطقة الى ولاية تابعة للدول الكبرى",
-      "rise_en": "",
-      "fall_en": "",
-      "ctx_b_en": "",
-      "ctx_a_en": ""
+      "rise_en": "With the weakening of the Saffarids, local rulers in Sistan consolidated their regional authority.",
+      "fall_en": "Timurid pressure brought the independence of local principalities to an end.",
+      "ctx_b_en": "After the collapse of Saffarid power, Sistan was governed by local principalities on the periphery of great empires.",
+      "ctx_a_en": "The Timurid conquest ended Sīstān's tradition of independent principalities; the region became a province of major empires."
     },
     {
       "id": 107,
@@ -3620,10 +3620,10 @@
       "fall_ar": "بعد معركة كوسه داغ عام 1243 سقطوا تحت تبعية المغول الايلخانيين وانتقلت السلطة الفعلية للاتابكة والامراء وتحولت الاسرة الى سلطنة ظلية",
       "ctx_b_ar": "كان نصر ملاذكرد عام 1071 قد فتح الاناضول للهجرة التركية والمنطقة كانت ما تزال مقسمة بين القوى البيزنطية والصليبية والتركية",
       "ctx_a_ar": "مع انحلال التبعية المغولية انقسمت الاناضول الى عشرات الامارات الصغيرة وواحدة من هذه الامارات وهي العثمانيون وحدت كل الاناضول اخيرا",
-      "rise_en": "",
-      "fall_en": "",
-      "ctx_b_en": "",
-      "ctx_a_en": ""
+      "rise_en": "Great Seljuq frontier lord Sulaymān Shāh ibn Qutalmish took advantage of Byzantine weakness to establish an independent sultanate in Nicaea.",
+      "fall_en": "After the Battle of Köse Dağ (1243) they fell under Mongol Ilkhanid vassalage; real power passed to atabegs and lords, and the dynasty became a shadow sultanate.",
+      "ctx_b_en": "The Victory of Manzikert (1071) had opened Anatolia to Turkic migration; the region was still divided among Byzantine, Crusader, and Turkic forces.",
+      "ctx_a_en": "With the collapse of Mongol vassalage, Anatolia was divided into dozens of small principalities; the Ottomans, one of these principalities, eventually unified all of Anatolia."
     },
     {
       "id": 108,
@@ -3654,10 +3654,10 @@
       "fall_ar": "الحق السلطان السلجوقي قلج ارسلان الثاني الاسرة",
       "ctx_b_ar": "كانت الاناضول بعد ملاذكرد قد اصبحت ساحة تتنافس فيها عديد من الامارات التركية",
       "ctx_a_ar": "سلاجقة الروم الحقوا الامارات المتنافسة وبنوا دولة تركية اسلامية مركزية في الاناضول",
-      "rise_en": "",
-      "fall_en": "",
-      "ctx_b_en": "",
-      "ctx_a_en": ""
+      "rise_en": "Among the Turkic lords who entered Anatolia after Manzikert, Dānishmend Ghāzī established a powerful principality in north-central Anatolia.",
+      "fall_en": "The Anatolian Seljuq sultan Qilij Arslān II annexed the dynasty.",
+      "ctx_b_en": "After Manzikert, Anatolia had become an arena where numerous Turkic principalities competed.",
+      "ctx_a_en": "The Anatolian Seljuqs built a centralized Turko-Islamic state in Anatolia by annexing rival principalities."
     },
     {
       "id": 109,
@@ -3688,10 +3688,10 @@
       "fall_ar": "انتهت الاسرة بالحاق سلاجقة الروم لها",
       "ctx_b_ar": "في فترة فتح الاناضول كان كثير من امراء الغزاة الاتراك يؤسسون امارات مستقلة في مناطقهم",
       "ctx_a_ar": "جمع سلاجقة الروم كل الامارات الاقليمية تحت سقف واحد واسسوا حكما مركزيا",
-      "rise_en": "",
-      "fall_en": "",
-      "ctx_b_en": "",
-      "ctx_a_en": ""
+      "rise_en": "After Manzikert, a principality was established in east-central Anatolia under the leadership of Mengüjek Ghāzī.",
+      "fall_en": "The dynasty ended with annexation by the Anatolian Seljuks.",
+      "ctx_b_en": "During the conquest period of Anatolia, many Turkish ghazi chiefs were establishing independent principalities in their respective regions.",
+      "ctx_a_en": "The Anatolian Seljuks established central administration by uniting all regional principalities under one roof."
     },
     {
       "id": 110,
@@ -3722,10 +3722,10 @@
       "fall_ar": "",
       "ctx_b_ar": "",
       "ctx_a_ar": "",
-      "rise_en": "",
-      "fall_en": "",
-      "ctx_b_en": "",
-      "ctx_a_en": ""
+      "rise_en": "The Saltuqid family, settling in the Erzurum region after Manzikert, undertook border defense against the Georgians.",
+      "fall_en": "Annexed by Anatolian Seljuk Sultan Rukn al-Din I.",
+      "ctx_b_en": "Erzurum was of strategic importance as the gateway to the Caucasus; Georgian-Turkish rivalry was intense in the region.",
+      "ctx_a_en": "The Anatolian Seljuks strengthened the defense line of northeastern Anatolia by bringing the region under direct administration."
     },
     {
       "id": 111,
@@ -3754,8 +3754,8 @@
       "fall_ar": "الحقها العثمانيون في عهد اورخان غازي او مراد الاول",
       "ctx_b_ar": "",
       "ctx_a_ar": "",
-      "rise_en": "",
-      "fall_en": "",
+      "rise_en": "Established as an Anatolian Seljuk frontier principality in western Anatolia.",
+      "fall_en": "Annexed by Ottoman Orhan Ghazi / Murad I.",
       "ctx_b_en": "",
       "ctx_a_en": ""
     },
@@ -3788,10 +3788,10 @@
       "fall_ar": "الحقهم العثمانيون في عهد بايزيد الاول، وبعد احياء قصير اثر تيمور انضموا نهائيا للعثمانيين",
       "ctx_b_ar": "مع انهيار السلاجقة تنافست عشرات الامارات الصغيرة في غرب الاناضول فيما بينها ومع بقايا البيزنطيين",
       "ctx_a_ar": "التوسع العثماني حقق الوحدة في شبه الجزيرة بإلحاق امارات غرب الاناضول واحدة تلو الاخرى",
-      "rise_en": "",
-      "fall_en": "",
-      "ctx_b_en": "",
-      "ctx_a_en": ""
+      "rise_en": "Became independent as an Anatolian Seljuk frontier principality in the Manisa region.",
+      "fall_en": "They were annexed by Ottoman Bayezid I; after a brief revival following Timur, they were definitively incorporated into the Ottoman Empire.",
+      "ctx_b_en": "With the collapse of the Seljuks, dozens of small beyliks in western Anatolia competed with each other and Byzantine remnants.",
+      "ctx_a_en": "Ottoman expansion achieved unity in the peninsula by annexing the western Anatolian beyliks one by one."
     },
     {
       "id": 113,
@@ -3822,10 +3822,10 @@
       "fall_ar": "انتهوا بالالحاق العثماني، وبعد احياء قصير اثر بايزيد الاول وتيمور انضموا نهائيا للعثمانيين",
       "ctx_b_ar": "بعد انهيار السلاجقة كانت الامارات التركية على سواحل ايجة تفتح الاراضي البيزنطية",
       "ctx_a_ar": "العثمانيون حققوا الوحدة في غرب الاناضول بإلحاق امارات ايجة",
-      "rise_en": "",
-      "fall_en": "",
-      "ctx_b_en": "",
-      "ctx_a_en": ""
+      "rise_en": "The family, established as an Anatolian Seljuk frontier beylik on the Aegean coasts, gained independence with Byzantine withdrawal.",
+      "fall_en": "They ended with Ottoman annexation; after a revival following Bayezid I and Timur, they were definitively incorporated into the Ottoman Empire.",
+      "ctx_b_en": "After the Seljuks, Turkmen beyliks on the Aegean coasts were conquering Byzantine territories.",
+      "ctx_a_en": "The Ottomans achieved unity in western Anatolia by annexing the Aegean beyliks."
     },
     {
       "id": 114,
@@ -3856,10 +3856,10 @@
       "fall_ar": "انتهوا بالالحاق العثماني",
       "ctx_b_ar": "مع انهيار السلاجقة استقلت الامارات التركية على سواحل جنوب غرب الاناضول",
       "ctx_a_ar": "العثمانيون اسسوا ادارة مركزية في المنطقة بإلحاق جميع امارات سواحل ايجة",
-      "rise_en": "",
-      "fall_en": "",
-      "ctx_b_en": "",
-      "ctx_a_en": ""
+      "rise_en": "As a Seljuk frontier beylik, they established themselves on the southern Aegean coasts and built naval power.",
+      "fall_en": "They ended with Ottoman annexation.",
+      "ctx_b_en": "With the Seljuk collapse, Turkmen beyliks on the southwestern Anatolian coasts were gaining independence.",
+      "ctx_a_en": "The Ottomans annexed all Aegean coastal principalities and established central administration in the region."
     },
     {
       "id": 115,
@@ -3888,8 +3888,8 @@
       "fall_ar": "",
       "ctx_b_ar": "",
       "ctx_a_ar": "",
-      "rise_en": "",
-      "fall_en": "",
+      "rise_en": "They gained independence in the Denizli region as a Seljuk frontier principality.",
+      "fall_en": "They came to an end with the Germiyanid annexation.",
       "ctx_b_en": "",
       "ctx_a_en": ""
     },
@@ -3922,10 +3922,10 @@
       "fall_ar": "ترك الأمير الأخير يعقوب الثاني كوتاهيا للعثمانيين بوصيته محققا انتقالا سلميا",
       "ctx_b_ar": "تشكلت فترة الإمارات بعد السلاجقة في الأناضول بالتنافس بينما أصبح العثمانيون القوة المهيمنة تدريجيا",
       "ctx_a_ar": "سيطر العثمانيون على كامل غرب الأناضول وأدمجوا أراضي آل جرميان في النظام الإداري العثماني",
-      "rise_en": "",
-      "fall_en": "",
-      "ctx_b_en": "",
-      "ctx_a_en": ""
+      "rise_en": "They gained independence in Kütahya as a Seljuk frontier principality and became a regional power.",
+      "fall_en": "The last bey, Yakub II, bequeathed Kütahya to the Ottomans in his will; a peaceful transition took place.",
+      "ctx_b_en": "While the post-Seljuk principalities period in Anatolia was shaped by rivalry, the Ottomans gradually became the dominant power.",
+      "ctx_a_en": "The Ottomans brought all of western Anatolia under control; Germiyanid territories were incorporated into the Ottoman provincial system."
     },
     {
       "id": 117,
@@ -3954,8 +3954,8 @@
       "fall_ar": "انتهوا تحت ضغط آل جرميان",
       "ctx_b_ar": "",
       "ctx_a_ar": "",
-      "rise_en": "",
-      "fall_en": "",
+      "rise_en": "The political capital of the Seljuk vizier family was transformed into a local principality.",
+      "fall_en": "They came to an end under Germiyanid pressure.",
       "ctx_b_en": "",
       "ctx_a_en": ""
     },
@@ -3988,10 +3988,10 @@
       "fall_ar": "اشترى مراد الأول أراضيهم، وبعد إحياء قصير عقب تيمور انضموا نهائيا للعثمانيين",
       "ctx_b_ar": "تشكلت فترة الإمارات بعد السلاجقة في جنوب غرب الأناضول بالتنافس والتحالفات",
       "ctx_a_ar": "ضم العثمانيون كامل المنطقة وأسسوا الإدارة المركزية على سواحل المتوسط",
-      "rise_en": "",
-      "fall_en": "",
-      "ctx_b_en": "",
-      "ctx_a_en": ""
+      "rise_en": "They gained independence as Seljuk frontier principalities around Lake Eğirdir and in the Antalya region.",
+      "fall_en": "Murad I purchased their territories; after a brief revival following Timur, they definitively joined the Ottomans.",
+      "ctx_b_en": "The post-Seljuk beylik period in southwestern Anatolia was shaped by competition and alliances.",
+      "ctx_a_en": "The Ottomans annexed the entire region, establishing central administration along the Mediterranean coast."
     },
     {
       "id": 119,
@@ -4020,8 +4020,8 @@
       "fall_ar": "انتهوا تحت ضغط العثمانيين والمماليك",
       "ctx_b_ar": "",
       "ctx_a_ar": "",
-      "rise_en": "",
-      "fall_en": "",
+      "rise_en": "They gained independence from Seljuk governorship and controlled the strategic port of Alanya.",
+      "fall_en": "They came to an end under Ottoman and Mamluk pressure.",
       "ctx_b_en": "",
       "ctx_a_en": ""
     },
@@ -4052,8 +4052,8 @@
       "fall_ar": "",
       "ctx_b_ar": "",
       "ctx_a_ar": "",
-      "rise_en": "",
-      "fall_en": "",
+      "rise_en": "They gained independence in the Beyşehir region as a Seljuk frontier beylik.",
+      "fall_en": "They came to an end in a short time under pressure from rival beyliks.",
       "ctx_b_en": "",
       "ctx_a_en": ""
     },
@@ -4086,10 +4086,10 @@
       "fall_ar": "ضمها السلطان محمد الفاتح عام ١٤٦١؛ كانت من الحملات الأخيرة لإتمام وحدة الأناضول العثمانية",
       "ctx_b_ar": "فترة الإمارات بعد السلاجقة في شمال الأناضول تشكلت تحت الضغط المغولي",
       "ctx_a_ar": "مع إتمام الفاتح وحدة الأناضول انضمت كامل شبه الجزيرة للإدارة المركزية العثمانية",
-      "rise_en": "",
-      "fall_en": "",
-      "ctx_b_en": "",
-      "ctx_a_en": ""
+      "rise_en": "They gained power in the Kastamonu region as a Seljuk frontier beylik; they strengthened their economic foundation by capturing the port of Sinop.",
+      "fall_en": "Annexed by Mehmed the Conqueror (1461); this was one of the final moves completing Ottoman unification of Anatolia.",
+      "ctx_b_en": "The post-Seljuk beylik period in northern Anatolia was shaped under Mongol pressure.",
+      "ctx_a_en": "With Mehmed the Conqueror's completion of Anatolian unification, the entire peninsula was incorporated into Ottoman central administration."
     },
     {
       "id": 122,
@@ -4118,8 +4118,8 @@
       "fall_ar": "أطاحت بها إمارة آل جاندار",
       "ctx_b_ar": "",
       "ctx_a_ar": "",
-      "rise_en": "",
-      "fall_en": "",
+      "rise_en": "The political capital of the Seljuk high official family was transformed into a local principality.",
+      "fall_en": "Overthrown by the Jāndār Oghullari.",
       "ctx_b_en": "",
       "ctx_a_en": ""
     },
@@ -4150,8 +4150,8 @@
       "fall_ar": "أطاحت بهم إمارة آل جاندار",
       "ctx_b_ar": "",
       "ctx_a_ar": "",
-      "rise_en": "",
-      "fall_en": "",
+      "rise_en": "They gained independence in Kastamonu as a Seljuk frontier principality.",
+      "fall_en": "Overthrown by the Jāndār Oghullari.",
       "ctx_b_en": "",
       "ctx_a_en": ""
     },
@@ -4184,10 +4184,10 @@
       "fall_ar": "استولى السلطان محمد الفاتح على قونية؛ وكسرت المقاومة الأخيرة لآل قرمان في عهد السلطان بايزيد الثاني",
       "ctx_b_ar": "مع انهيار السلاجقة اشتدت المنافسة بين الإمارات في الأناضول؛ كانت الأهمية الرمزية لقونية كبيرة",
       "ctx_a_ar": "سيطر العثمانيون على وسط الأناضول نهائيا؛ ضمت أراضي آل قرمان لنظام الولايات العثماني",
-      "rise_en": "",
-      "fall_en": "",
-      "ctx_b_en": "",
-      "ctx_a_en": ""
+      "rise_en": "As a Seljuk frontier principality, they took control of Konya and assumed the position of Seljuk successor.",
+      "fall_en": "Sultan Mehmed the Conqueror took Konya; the last Qaramānid resistance was broken during the reign of Bayezid II.",
+      "ctx_b_en": "With the Seljuk collapse, competition among Anatolian principalities intensified; the symbolic importance of Konya was great.",
+      "ctx_a_en": "The Ottomans definitively brought Central Anatolia under control; Qaramānid territories were incorporated into the Ottoman provincial system."
     },
     {
       "id": 125,
@@ -4218,10 +4218,10 @@
       "fall_ar": "",
       "ctx_b_ar": "",
       "ctx_a_ar": "",
-      "rise_en": "",
-      "fall_en": "",
-      "ctx_b_en": "",
-      "ctx_a_en": ""
+      "rise_en": "Eretna, son of the Ilkhanid governor, declared independence in Sivas with the collapse of central authority.",
+      "fall_en": "Overthrown by Qādī Burhān al-Dīn; Central Anatolia entered a new political order.",
+      "ctx_b_en": "As the Ilkhanid Empire collapsed, local powers in Anatolia sought independence.",
+      "ctx_a_en": "Qādī Burhān al-Dīn established a short-lived but brilliant administration in Sivas; subsequently the Ottomans took over the region."
     },
     {
       "id": 126,
@@ -4252,10 +4252,10 @@
       "fall_ar": "قتل على يد قرا يولوق عثمان الآق قويونلو وانتقلت سيواس بعد فترة قصيرة الى السيطرة العثمانية.",
       "ctx_b_ar": "ضعف الارطناويون بسبب الصراعات الداخلية وكان هناك بحث عن قائد قوي في وسط الاناضول.",
       "ctx_a_ar": "استولى العثماني بايزيد الاول على سيواس ومعركة انقرة لتيمور (1402) اعادت رسم مصير المنطقة.",
-      "rise_en": "",
-      "fall_en": "",
-      "ctx_b_en": "",
-      "ctx_a_en": ""
+      "rise_en": "Taking advantage of the weakening of the Eretna Oghullari, Burhān al-Dīn rose from the position of qādī to political power and established an independent state in Sivas.",
+      "fall_en": "Killed by the Aq Qoyunlu Qara Yülük ʿUthmān; Sivas came under Ottoman control shortly thereafter.",
+      "ctx_b_en": "The Eretna Oghullari had weakened due to internal conflicts; there was a search for a strong leader in Central Anatolia.",
+      "ctx_a_en": "Ottoman Bāyezīd I took over Sivas; Timur's Battle of Ankara (1402) redrew the fate of the region."
     },
     {
       "id": 127,
@@ -4284,8 +4284,8 @@
       "fall_ar": "انتهوا مع الالحاق العثماني.",
       "ctx_b_ar": "",
       "ctx_a_ar": "",
-      "rise_en": "",
-      "fall_en": "",
+      "rise_en": "They established a small beylik by taking advantage of the political fragmentation in the region.",
+      "fall_en": "They came to an end with Ottoman annexation.",
       "ctx_b_en": "",
       "ctx_a_en": ""
     },
@@ -4318,10 +4318,10 @@
       "fall_ar": "الانتقال الى الادارة العثمانية المباشرة (حوالي 1610) انهى استقلالية البيليك.",
       "ctx_b_ar": "كانت جوقوروفا منطقة استراتيجية في مثلث المماليك وارمينيا الكيليكية وسلاجقة الاناضول.",
       "ctx_a_ar": "نظمت الادارة العثمانية المركزية جوقوروفا كايالة مباشرة.",
-      "rise_en": "",
-      "fall_en": "",
-      "ctx_b_en": "",
-      "ctx_a_en": ""
+      "rise_en": "The political organization of the Turkmen population in Cilicia and Mamluk patronage enabled the establishment of the beylik.",
+      "fall_en": "The transition to direct Ottoman administration (c. 1610) ended the beylik's autonomy.",
+      "ctx_b_en": "Cilicia was a strategic region in the triangle between the Mamluks, Armenian Cilicia, and the Anatolian Seljuks.",
+      "ctx_a_en": "The Ottoman central administration restructured Cilicia directly as a province."
     },
     {
       "id": 129,
@@ -4352,10 +4352,10 @@
       "fall_ar": "الحق السلطان سليم الاول البيليك خلال حملة مصر (1522) وانتهت منطقة الحاجز العثماني المملوكي.",
       "ctx_b_ar": "كانت جنوب شرق الاناضول منطقة الحدود التي شهدت اقوى منافسة مملوكية عثمانية.",
       "ctx_a_ar": "بتدمير سليم للدولة المملوكية دخلت المنطقة كليا تحت السيطرة العثمانية وانتهى عصر البيليكات الحاجزة.",
-      "rise_en": "",
-      "fall_en": "",
-      "ctx_b_en": "",
-      "ctx_a_en": ""
+      "rise_en": "The political organization of the Turkmen population in the Marash region and exploitation of the Ottoman-Mamluk balance strengthened the beylik.",
+      "fall_en": "Yavuz Sultan Selim annexed the beylik during his Egyptian campaign (1522); the Ottoman-Mamluk buffer zone came to an end.",
+      "ctx_b_en": "Southeastern Anatolia was the border region where Mamluk-Ottoman rivalry was most intensely experienced.",
+      "ctx_a_en": "With Yavuz's destruction of the Mamluk state, the region came completely under Ottoman control; the era of buffer beyliks ended."
     },
     {
       "id": 130,
@@ -4386,10 +4386,10 @@
       "fall_ar": "",
       "ctx_b_ar": "",
       "ctx_a_ar": "",
-      "rise_en": "",
-      "fall_en": "",
-      "ctx_b_en": "",
-      "ctx_a_en": ""
+      "rise_en": "As an Anatolian Seljuk frontier beylik strengthened by the ghazi tradition on the Byzantine border, the Ottomans gained strategic advantage through their crossing into Rumelia, surpassing rival beyliks.",
+      "fall_en": "Defeat in World War I, occupation, and subsequent National Struggle; the Grand National Assembly abolished the sultanate (1922) and abolished the caliphate (1924); the Republic was proclaimed.",
+      "ctx_b_en": "The Anatolian Seljuks had fallen under Mongol vassalage, Anatolia was divided into dozens of beyliks; Byzantine presence in Anatolia was contracting.",
+      "ctx_a_en": "The Republic of Turkey was established (1923); Ottoman institutional and cultural legacy formed the foundation of modern Turkey; dozens of independent states emerged in former Ottoman territories."
     },
     {
       "id": 131,
@@ -4420,10 +4420,10 @@
       "fall_ar": "ثورة المينغ أخرجت المغول من الصين؛ وقد انقسمت الإمبراطورية إلى أربع قبائل من قبل.",
       "ctx_b_ar": "كانت القبائل المغولية تعيش متفرقة في آسيا الوسطى؛ وكانت الإمبراطورية الخوارزمشاهية سيدة المنطقة.",
       "ctx_a_ar": "انقسمت الإمبراطورية إلى أربع قبائل: الإيلخانيون (إيران)، القبيلة الذهبية (روسيا)، الجاغاطائيون (آسيا الوسطى)، اليوان (الصين)؛ وأعيد تنظيم العالم الإسلامي.",
-      "rise_en": "",
-      "fall_en": "",
-      "ctx_b_en": "",
-      "ctx_a_en": ""
+      "rise_en": "Genghis Khan's unification of the Mongol tribes and unique military organization enabled worldwide conquests.",
+      "fall_en": "The Ming rebellion expelled the Mongols from China; the empire had previously been divided into four uluses.",
+      "ctx_b_en": "Mongol tribes lived fragmented in Central Asia; the Khwarazm-Shah Empire dominated the region.",
+      "ctx_a_en": "The empire was divided into four uluses: the Ilkhanids (Iran), the Golden Horde (Russia), the Chaghatayids (Central Asia), the Yuan (China); the Islamic world was restructured."
     },
     {
       "id": 132,
@@ -4454,10 +4454,10 @@
       "fall_ar": "استولى تيمور فعليا على الجناح الغربي (حوالي 1370)؛ وانتهى الجناح الشرقي بضعف تدريجي.",
       "ctx_b_ar": "تقسيم الإمبراطورية المغولية ترك آسيا الوسطى لعائلة جاغاطاي.",
       "ctx_a_ar": "استخدم تيمور خانات دمى من نسل جاغاطاي لتأسيس إمبراطوريته؛ ودخلت المنطقة تحت الهيمنة التيمورية.",
-      "rise_en": "",
-      "fall_en": "",
-      "ctx_b_en": "",
-      "ctx_a_en": ""
+      "rise_en": "Genghis Khan's territorial division granted Chagatay Transoxiana and Eastern Turkestan.",
+      "fall_en": "Timur effectively took over the western branch (c. 1370); the eastern branch gradually weakened and came to an end.",
+      "ctx_b_en": "The Mongol Empire's territorial division had left Central Asia to the Chagatay family.",
+      "ctx_a_en": "Timur established his own empire using puppet khans from the Chagatay lineage; the region came under Timurid hegemony."
     },
     {
       "id": 133,
@@ -4489,10 +4489,10 @@
       "fall_ar": "تفكك سريع بعد وفاة أبي سعيد (1335)؛ تقاسم الجلائريون والمظفريون والأكراد المنطقة.",
       "ctx_b_ar": "انهارت الإمبراطورية الخوارزمشاهية وضعفت الخلافة العباسية؛ وأصبح شرق العالم الإسلامي مفتوحا للغزو المغولي.",
       "ctx_a_ar": "بانهيار الإيلخانية انقسمت إيران والعراق إلى عدة سلالات محلية؛ وصعد تيمور بادعاء توحيد هذا التشتت.",
-      "rise_en": "",
-      "fall_en": "",
-      "ctx_b_en": "",
-      "ctx_a_en": ""
+      "rise_en": "Hülegü, grandson of Genghis Khan, was sent westward to conquer Islamic territories and established an independent state in Iran.",
+      "fall_en": "Rapid fragmentation after the death of Abū Saʿīd (1335); the Jalayirids, Muzaffarids, and Kurds divided the territory.",
+      "ctx_b_en": "The Khwārazm-Shāh Empire had collapsed, the Abbasid Caliphate had weakened; the eastern Islamic world had become vulnerable to Mongol invasion.",
+      "ctx_a_en": "With the collapse of the Il-Khanate, Iran and Iraq were divided among numerous local dynasties; Timur rose with the claim to reunify this fragmentation."
     },
     {
       "id": 134,
@@ -4523,10 +4523,10 @@
       "fall_ar": "حملات تيمور المدمرة (1395) أضعفت القبيلة الذهبية دائميا؛ وفي القرن 15 تفككت إلى خانات القرم وقازان وأستراخان وسيبيريا.",
       "ctx_b_ar": "تقسيم الإمبراطورية المغولية ترك سهوب القپچاق لعائلة جوجي؛ ولم تكن المنطقة قد أسلمت بعد.",
       "ctx_a_ar": "الخانات الناتجة عن تفكك القبيلة الذهبية أصبحت هدفا للتوسع الروسي؛ وبفتح قازان (1552) وأستراخان (1556) ضاقت الحدود الشمالية للعالم الإسلامي.",
-      "rise_en": "",
-      "fall_en": "",
-      "ctx_b_en": "",
-      "ctx_a_en": ""
+      "rise_en": "Chinggis Khan's territorial division granted the western steppes to Jochi; Batu Khan's European campaign (1236-42) extended the state's borders as far as Hungary.",
+      "fall_en": "Timur's devastating campaigns (1395) permanently weakened the Golden Horde; it fragmented into the Crimean, Kazan, Astrakhan, and Siberian khanates in the 15th century.",
+      "ctx_b_en": "The territorial division of the Mongol Empire had left the Qipchaq steppes to the Jochi family; the region had not yet been Islamized.",
+      "ctx_a_en": "The khanates that emerged from the Golden Horde's fragmentation became targets of Russian expansion; with the Russian conquest of Kazan (1552) and Astrakhan (1556), the northern frontier of the Islamic world contracted."
     },
     {
       "id": 135,
@@ -4557,10 +4557,10 @@
       "fall_ar": "",
       "ctx_b_ar": "",
       "ctx_a_ar": "",
-      "rise_en": "",
-      "fall_en": "",
-      "ctx_b_en": "",
-      "ctx_a_en": ""
+      "rise_en": "With the fragmentation of the Golden Horde, the Chinggisid Giray family established an independent khanate in Crimea; the Ottoman alliance consolidated its power.",
+      "fall_en": "Russian Empress Catherine II annexed Crimea (1783); the Ottomans could not intervene.",
+      "ctx_b_en": "As the Golden Horde collapsed, the Crimean Peninsula was becoming an independent political center due to its strategic position.",
+      "ctx_a_en": "Russian annexation initiated the process of exile and assimilation of Crimean Tatars; the Turco-Islamic presence in the Black Sea suffered a major blow."
     },
     {
       "id": 136,
@@ -4589,8 +4589,8 @@
       "fall_ar": "",
       "ctx_b_ar": "",
       "ctx_a_ar": "",
-      "rise_en": "",
-      "fall_en": "",
+      "rise_en": "An independent khanate was established in the Lower Volga with the fragmentation of the Golden Horde.",
+      "fall_en": "Conquered by Ivan the Terrible (Ivan IV) (1556).",
       "ctx_b_en": "",
       "ctx_a_en": ""
     },
@@ -4623,10 +4623,10 @@
       "fall_ar": "",
       "ctx_b_ar": "",
       "ctx_a_ar": "",
-      "rise_en": "",
-      "fall_en": "",
-      "ctx_b_en": "",
-      "ctx_a_en": ""
+      "rise_en": "Chinggisid khans established an independent state in the Middle Volga with the fragmentation of the Golden Horde.",
+      "fall_en": "Conquered by Ivan the Terrible (1552); the northern frontier of the Islamic world permanently contracted.",
+      "ctx_b_en": "As the Golden Horde collapsed, the Idel-Ural region was divided into independent khanates; the Principality of Moscow was rapidly gaining strength.",
+      "ctx_a_en": "The Russian Tsardom brought the entire Volga basin under control; the northern frontier of the Islamic world retreated to Crimea and the Caucasus."
     },
     {
       "id": 138,
@@ -4657,10 +4657,10 @@
       "fall_ar": "",
       "ctx_b_ar": "",
       "ctx_a_ar": "",
-      "rise_en": "",
-      "fall_en": "",
-      "ctx_b_en": "",
-      "ctx_a_en": ""
+      "rise_en": "A buffer principality was established on lands granted by the Principality of Moscow to its Tatar allies.",
+      "fall_en": "The Tsarist administration abolished the buffer principality status (c. 1681).",
+      "ctx_b_en": "As the Golden Horde fragmented, some Tatar princes chose to survive by forming alliances with Moscow.",
+      "ctx_a_en": "With Russia's strengthening, Tatar autonomy came to a complete end; Muslim communities fell to the status of subjects under Russian rule."
     },
     {
       "id": 139,
@@ -4691,10 +4691,10 @@
       "fall_ar": "",
       "ctx_b_ar": "",
       "ctx_a_ar": "",
-      "rise_en": "",
-      "fall_en": "",
-      "ctx_b_en": "",
-      "ctx_a_en": ""
+      "rise_en": "They gained power in Herāt under Ilkhanid vassalage over the Ghurid legacy.",
+      "fall_en": "Timur conquered Herāt (1381); the last Kurt malik was executed (1389).",
+      "ctx_b_en": "As the Ilkhanid order collapsed, local dynasties in Khurāsān were gaining independence.",
+      "ctx_a_en": "Timur transformed Herāt into the cultural center of his empire; the Timurid school of Herāt became one of the pinnacles of world art history."
     },
     {
       "id": 140,
@@ -4725,10 +4725,10 @@
       "fall_ar": "",
       "ctx_b_ar": "",
       "ctx_a_ar": "",
-      "rise_en": "",
-      "fall_en": "",
-      "ctx_b_en": "",
-      "ctx_a_en": ""
+      "rise_en": "With the Ilkhanid collapse, the Muzaffarid family filled the power vacuum in Fārs and Kirmān.",
+      "fall_en": "Fraternal conflicts weakened the dynasty; Timur eliminated all the Muzaffarids (1393).",
+      "ctx_b_en": "As the Ilkhanid Empire collapsed, the Fārs region was divided among numerous local powers.",
+      "ctx_a_en": "Timur incorporated Fārs into his own empire; Shīrāz maintained its cultural importance during the Timurid and Safavid periods."
     },
     {
       "id": 141,
@@ -4757,8 +4757,8 @@
       "fall_ar": "هزمت على يد المظفريين (1357).",
       "ctx_b_ar": "",
       "ctx_a_ar": "",
-      "rise_en": "",
-      "fall_en": "",
+      "rise_en": "With the Ilkhanid collapse, a family of financial officials gained independence in Fārs.",
+      "fall_en": "Defeated by the Muzaffarids (1357).",
       "ctx_b_en": "",
       "ctx_a_en": ""
     },
@@ -4791,10 +4791,10 @@
       "fall_ar": "قضى عليها إسكندر القره قويونلو، وكانت حملات تيمور قد أضعفتها بشدة من قبل.",
       "ctx_b_ar": "عندما انهارت الإمبراطورية الإيلخانية انقسمت العراق وأذربيجان بين عدة قوى محلية.",
       "ctx_a_ar": "أسس القره قويونلو سيطرتهم على أذربيجان والعراق، واستمرت بغداد تتداولها قوى مختلفة.",
-      "rise_en": "",
-      "fall_en": "",
-      "ctx_b_en": "",
-      "ctx_a_en": ""
+      "rise_en": "With the collapse of the Ilkhanate, the Mongol military elite in Baghdad and Tabriz established an independent state.",
+      "fall_en": "Ended by the Qara Qoyunlu ruler Iskandar; Timur's campaigns had previously severely weakened the dynasty.",
+      "ctx_b_en": "As the Ilkhanate Empire collapsed, Iraq and Azerbaijan were divided among multiple local powers.",
+      "ctx_a_en": "The Qara Qoyunlu established dominance in Azerbaijan and Iraq; Baghdad continued to change hands among various powers."
     },
     {
       "id": 143,
@@ -4825,10 +4825,10 @@
       "fall_ar": "فقدوا استقلالهم بالخضوع لتيمور (حوالي 1381).",
       "ctx_b_ar": "عندما انهار النظام الإيلخاني هيأ غياب السلطة المركزية في خراسان الأرضية للحركات الشعبية.",
       "ctx_a_ar": "ضم تيمور المنطقة إلى إمبراطوريته، وذكرت الحركة السربدارية في التاريخ الإيراني كمثال مهم على تقليد المقاومة الشعبية.",
-      "rise_en": "",
-      "fall_en": "",
-      "ctx_b_en": "",
-      "ctx_a_en": ""
+      "rise_en": "In the chaotic environment created by the Ilkhanate's collapse, popular warriors filled the authority vacuum in Khurasan.",
+      "fall_en": "Lost their independence by submitting to Timur (c. 1381).",
+      "ctx_b_en": "As the Ilkhanate order collapsed, the absence of central authority in Khurasan provided the foundation for popular movements.",
+      "ctx_a_en": "Timur incorporated the region into his empire; the Sarbadārid movement was remembered as an important example of popular resistance tradition in Iranian history."
     },
     {
       "id": 144,
@@ -4859,10 +4859,10 @@
       "fall_ar": "استولى الشيباني محمد خان على هراة (حوالي 1507)، انتقلت خراسان إلى الصفويين وما وراء النهر إلى الأوزبك، توجه بابور إلى الهند مؤسسا الإمبراطورية البابرية.",
       "ctx_b_ar": "الدول الوريثة للمغول (الإيلخانية والجلائرية والمظفرية والجغتائية) تفتت، وشرق العالم الإسلامي في فوضى سياسية.",
       "ctx_a_ar": "أسس الصفويون في إيران والشيبانيون في ما وراء النهر والبابريون في الهند إمبراطوريات جديدة واصلت الميراث التيموري.",
-      "rise_en": "",
-      "fall_en": "",
-      "ctx_b_en": "",
-      "ctx_a_en": ""
+      "rise_en": "With the collapse of the Chagatai Khanate, Timur seized power in Transoxiana using puppet khans; his extraordinary military genius enabled worldwide conquests.",
+      "fall_en": "Shaybānī Muḥammad Khān took Herāt (c. 1507); Khorasan passed to the Safavids, Transoxiana to the Uzbeks; Bābur turned to India and founded the Mughal Empire.",
+      "ctx_b_en": "The Mongol successor states (Ilkhanid, Jalayirid, Muzaffarid, Chaghatay) had fragmented; the east of the Islamic world was in political chaos.",
+      "ctx_a_en": "The Safavids in Iran, the Shaybanids in Transoxiana, and the Mughals in India established new empires, continuing the Timurid legacy."
     },
     {
       "id": 145,
@@ -4894,10 +4894,10 @@
       "fall_ar": "",
       "ctx_b_ar": "",
       "ctx_a_ar": "",
-      "rise_en": "",
-      "fall_en": "",
-      "ctx_b_en": "",
-      "ctx_a_en": ""
+      "rise_en": "With the collapse of Jalayirid and Ilkhanid remnants, the Turkmen confederation in Eastern Anatolia became independent.",
+      "fall_en": "Decisively defeated by Āq Qoyunlu Uzun Ḥasan (1469).",
+      "ctx_b_en": "Post-Ilkhanid Azerbaijan and Eastern Anatolia were divided among numerous local powers.",
+      "ctx_a_en": "The Āq Qoyunlu became the new masters of the region; the ground was prepared for Safavid rise."
     },
     {
       "id": 146,
@@ -4928,10 +4928,10 @@
       "fall_ar": "الشاه إسماعيل الصفوي طهر بقايا الآق قويونلو ليؤسس نظاما جديدا في إيران حوالي عام ١٥٠٨.",
       "ctx_b_ar": "كانت سيطرة القرا قويونلو تضعف بينما كان توازن القوى يتغير في شرق الأناضول وإيران.",
       "ctx_a_ar": "ورث الصفويون الإرث السياسي والقوة العسكرية للآق قويونلو وتحولت إيران إلى دولة شيعية.",
-      "rise_en": "",
-      "fall_en": "",
-      "ctx_b_en": "",
-      "ctx_a_en": ""
+      "rise_en": "Uzun Ḥasan, successful in his struggle against the Qara Qoyunlu, established a great confederation in Eastern Anatolia and Iran.",
+      "fall_en": "Safavid Shāh Ismāʿīl eliminated the Āq Qoyunlu remnants and established a new order in Iran (c. 1508).",
+      "ctx_b_en": "As Qara Qoyunlu dominance weakened, the balance of power in Eastern Anatolia and Iran was changing.",
+      "ctx_a_en": "The Safavids inherited the Āq Qoyunlu political legacy and military power; Iran was transformed into a Shiite state."
     },
     {
       "id": 147,
@@ -4963,10 +4963,10 @@
       "fall_ar": "تم تطهيرهم خلال فترة انهيار الصفويين وانتقلت المنطقة إلى الإدارة المركزية الأفشارية والقاجارية.",
       "ctx_b_ar": "كانت خوزستان منطقة مستنقعات استراتيجية بين إيران والعراق وكثيرا ما بقيت مستقلة عن السلطة المركزية.",
       "ctx_a_ar": "نادر شاه ومن بعده الإدارة المركزية القاجارية أخذت خوزستان تحت السيطرة المباشرة.",
-      "rise_en": "",
-      "fall_en": "",
-      "ctx_b_en": "",
-      "ctx_a_en": ""
+      "rise_en": "Extremist Shiite ideology and the marshy geography of Khuzestan enabled the establishment of a structure independent from central authority.",
+      "fall_en": "They were liquidated during the period of Safavid collapse; the region came under Afshārid/Qājār central administration.",
+      "ctx_b_en": "Khuzestan, as a strategic marshy region between Iran and Iraq, frequently remained independent from central authority.",
+      "ctx_a_en": "Nādir Shāh and subsequently Qājār central administration brought Khuzestan under direct control."
     },
     {
       "id": 148,
@@ -4998,10 +4998,10 @@
       "fall_ar": "الغزو الأفغاني الغلزائي أسقط أصفهان عام ١٧٢٢ وبقي آخر الشاهات الصفويين كدمى ثم أسس نادر شاه النظام الجديد.",
       "ctx_b_ar": "انهارت الإمبراطورية الآق قويونلية وكانت إيران في فوضى سياسية وكانت الحركات التركمانية القزلباشية تكتسب قوة في الأناضول وإيران.",
       "ctx_a_ar": "ورث الأفشاريون والزنديون والقاجاريون إيران الصفوية لكن النظام الشيعي والهوية الإيرانية التي أسسها الصفويون بقيت دائمة.",
-      "rise_en": "",
-      "fall_en": "",
-      "ctx_b_en": "",
-      "ctx_a_en": ""
+      "rise_en": "During the Āq Qoyunlu collapse, Shāh Ismā'īl combined the military power of the Qizilbāsh Turkmen tribes with the charismatic leadership of the Safavid order to seize power in Iran.",
+      "fall_en": "The Afghan Ghilzay invasion captured Isfahan (1722); the last Safavid shahs remained as puppets; Nādir Shāh established the new order.",
+      "ctx_b_en": "The Āq Qoyunlu Empire had fragmented, Iran was in political chaos; Qizilbāsh Turkmen movements in Anatolia and Iran were gaining strength.",
+      "ctx_a_en": "The Afshārids, Zands, and Qājārs inherited Safavid Iran; however, the Shiite state structure and Iranian identity established by the Safavids became permanent."
     },
     {
       "id": 149,
@@ -5032,10 +5032,10 @@
       "fall_ar": "اغتيل نادر شاه عام ١٧٤٧ وضعف خلفاؤه في صراع السلطة وانهزموا أمام الزنديين والقاجاريين.",
       "ctx_b_ar": "انهارت الإمبراطورية الصفوية بالغزو الأفغاني وتفككت إيران.",
       "ctx_a_ar": "حكم الزنديون لفترة قصيرة ثم أصبح القاجاريون الأسرة الجديدة وطويلة الأجل لإيران.",
-      "rise_en": "",
-      "fall_en": "",
-      "ctx_b_en": "",
-      "ctx_a_en": ""
+      "rise_en": "During the Safavid collapse, Nādir reunited Iran through his military genius and organized campaigns as far as India.",
+      "fall_en": "Nādir Shāh was assassinated (1747); his successors weakened in power struggles and were defeated by the Zands and Qājārs.",
+      "ctx_b_en": "The Safavid Empire had collapsed due to Afghan invasion, and Iran was fragmented.",
+      "ctx_a_en": "After brief Zand rule, the Qājārs became Iran's new and long-lasting dynasty."
     },
     {
       "id": 150,
@@ -5066,10 +5066,10 @@
       "fall_ar": "",
       "ctx_b_ar": "",
       "ctx_a_ar": "",
-      "rise_en": "",
-      "fall_en": "",
-      "ctx_b_en": "",
-      "ctx_a_en": ""
+      "rise_en": "In the chaos following Nādir Shāh's death, Karīm Khān established dominance in southern Iran through military successes and popular support.",
+      "fall_en": "Qājār Āghā Muḥammad Khān captured Kirmān and killed the last Zand ruler (1794).",
+      "ctx_b_en": "After Nādir Shāh's assassination, Iran was divided among numerous rival powers.",
+      "ctx_a_en": "The Qājārs became Iran's new dynasty, making Tehran the capital and reunifying the country."
     },
     {
       "id": 151,
@@ -5100,10 +5100,10 @@
       "fall_ar": "انقلاب رضا خان (البهلوي)؛ خلع المجلس أحمد شاه من العرش (1925).",
       "ctx_b_ar": "انهارت الأسرة الزندية وتقسمت إيران بين قوى محلية متنوعة.",
       "ctx_a_ar": "بدأت الأسرة البهلوية برنامج تحديث جذري في إيران؛ تحولت البنية الاجتماعية التقليدية بسرعة.",
-      "rise_en": "",
-      "fall_en": "",
-      "ctx_b_en": "",
-      "ctx_a_en": ""
+      "rise_en": "The military strength of the Qājār tribe and Āghā Muḥammad Khān's determination eliminated rival powers and unified Iran.",
+      "fall_en": "Riḍā Khān (Pahlavī) coup; the Majlis deposed Aḥmad Shāh (1925).",
+      "ctx_b_en": "The Zand dynasty had collapsed, and Iran was divided among various local powers.",
+      "ctx_a_en": "The Pahlawīs initiated a radical modernization program in Iran; traditional social structure was rapidly transformed."
     },
     {
       "id": 152,
@@ -5134,10 +5134,10 @@
       "fall_ar": "الثورة الإسلامية 1979؛ نفي الشاه محمد رضا؛ إعلان الجمهورية الإسلامية الإيرانية.",
       "ctx_b_ar": "كانت إيران القاجارية محاصرة بين ضغوط التحديث والاستعمار.",
       "ctx_a_ar": "تأسست الجمهورية الإسلامية الإيرانية؛ ظهر فاعل جديد غير موازين الشرق الأوسط السياسية جذريا.",
-      "rise_en": "",
-      "fall_en": "",
-      "ctx_b_en": "",
-      "ctx_a_en": ""
+      "rise_en": "With the weakening of the Qājār dynasty and the Britain-Russia rivalry driving Iran into deadlock, Riḍā Khān staged a military coup.",
+      "fall_en": "1979 Islamic Revolution; Shah Muḥammad Riḍā was sent into exile; the Islamic Republic of Iran was proclaimed.",
+      "ctx_b_en": "Qājār period Iran was caught between the pressures of modernization and colonialism.",
+      "ctx_a_en": "The Islamic Republic of Iran was established; a new actor emerged that fundamentally changed the political balances of the Middle East."
     },
     {
       "id": 153,
@@ -5168,10 +5168,10 @@
       "fall_ar": "بموت آخر سلاطين الشيبانيين ورثت أسرة الجانيين بخارى.",
       "ctx_b_ar": "تفككت الإمبراطورية التيمورية وأصبحت ما وراء النهر مكشوفة للضغط الأوزبكي من الشمال.",
       "ctx_a_ar": "أسس الجانيون (الأشترخانيون) أسرة جديدة في بخارى؛ استمر التنافس الصفوي الأوزبكي.",
-      "rise_en": "",
-      "fall_en": "",
-      "ctx_b_en": "",
-      "ctx_a_en": ""
+      "rise_en": "The dynasty was established when Uzbek tribes originating from the remnants of the Golden Horde conquered Transoxania by taking advantage of Timurid weakness.",
+      "fall_en": "With the death of the last Shībānid sultan, the Jānid dynasty took over Bukhara.",
+      "ctx_b_en": "As the Timurid Empire fragmented, Transoxania became exposed to Uzbek pressure from the north.",
+      "ctx_a_en": "The Jānids (Ashtarkhānids) established a new dynasty in Bukhara; Safavid-Uzbek rivalry continued."
     },
     {
       "id": 154,
@@ -5202,10 +5202,10 @@
       "fall_ar": "ضغط نادر شاه والنزاعات الداخلية أضعفت السلالة فتركت السلطة للمنغيت.",
       "ctx_b_ar": "انتهت الأسرة الشيبانية؛ كانت بخارى تبحث عن أسرة جديدة.",
       "ctx_a_ar": "تولى المنغيت (أمراء بخارى) السلطة دون انتماء لسلالة جنكيز؛ توجهت بخارى نحو الحماية الروسية.",
-      "rise_en": "",
-      "fall_en": "",
-      "ctx_b_en": "",
-      "ctx_a_en": ""
+      "rise_en": "With the extinction of the Shībānid lineage, khans from the Toqay Temūrid/Ashtarkhānid branch ascended to the throne of Bukhara.",
+      "fall_en": "The dynasty, weakened by Nādir Shāh's pressure and internal conflicts, ceded power to the Mangīts.",
+      "ctx_b_en": "The Shaybānid dynasty had ended; Bukhara was in search of a new dynasty.",
+      "ctx_a_en": "The Mangīts (Emirs of Bukhara) took over power without being of Chinggisid lineage; Bukhara moved toward Russian protectorate."
     },
     {
       "id": 155,
@@ -5236,10 +5236,10 @@
       "fall_ar": "",
       "ctx_b_ar": "",
       "ctx_a_ar": "",
-      "rise_en": "",
-      "fall_en": "",
-      "ctx_b_en": "",
-      "ctx_a_en": ""
+      "rise_en": "With the weakening of the Jānid dynasty, the Mangīt emirs seized actual power.",
+      "fall_en": "The Red Army conquered Bukhara (September 1920); the last emir went into exile.",
+      "ctx_b_en": "The Jānid dynasty had collapsed; Bukhara was shaken by internal power struggles.",
+      "ctx_a_en": "The Soviet Bukhara People's Republic was proclaimed; Central Asia's traditional Islamic form of government came to an end."
     },
     {
       "id": 156,
@@ -5270,10 +5270,10 @@
       "fall_ar": "",
       "ctx_b_ar": "",
       "ctx_a_ar": "",
-      "rise_en": "",
-      "fall_en": "",
-      "ctx_b_en": "",
-      "ctx_a_en": ""
+      "rise_en": "With the weakening of the Chinggisid khans in Khwārazm, the Qungrat emirs seized actual power.",
+      "fall_en": "The Red Army conquered Khiva (February 1920); the last khan was dethroned.",
+      "ctx_b_en": "While Khwārazm changed hands among various Chinggisid dynasties, central authority had weakened.",
+      "ctx_a_en": "The Soviet Khwarazm People's Republic was declared; the independent state tradition of ancient Khwarazm civilization came to an end."
     },
     {
       "id": 157,
@@ -5304,10 +5304,10 @@
       "fall_ar": "",
       "ctx_b_ar": "",
       "ctx_a_ar": "",
-      "rise_en": "",
-      "fall_en": "",
-      "ctx_b_en": "",
-      "ctx_a_en": ""
+      "rise_en": "The political unity of local begs in the Ferghana valley and agricultural wealth enabled the establishment of the khanate.",
+      "fall_en": "Russia directly annexed Ferghana (1876); the period of independent Islamic rule in Central Asia came to a close.",
+      "ctx_b_en": "While political fragmentation continued among various Ferghana begs, Russia was expanding southward.",
+      "ctx_a_en": "The Russian Turkestan Governorate-General was established; the Ferghana valley became the cotton production center of the Russian colonial economy."
     },
     {
       "id": 158,
@@ -5339,10 +5339,10 @@
       "fall_ar": "",
       "ctx_b_ar": "",
       "ctx_a_ar": "",
-      "rise_en": "",
-      "fall_en": "",
-      "ctx_b_en": "",
-      "ctx_a_en": ""
+      "rise_en": "The empire was founded through Sebüktegin's independence from the Samanid ghulam governorship and the military genius of his son Mahmud.",
+      "fall_en": "The Ghurid Muʿizz al-Dīn Muḥammad took Lahore (1186); the Ghaznavid state came to an end.",
+      "ctx_b_en": "As the Samanids collapsed, ghulam commanders were gaining independence; India was still largely outside Islam.",
+      "ctx_a_en": "The Ghurids inherited the Ghaznavid legacy, ensuring Islam's permanent entry into India; the Delhi Sultanate was built upon these foundations."
     },
     {
       "id": 159,
@@ -5373,10 +5373,10 @@
       "fall_ar": "",
       "ctx_b_ar": "",
       "ctx_a_ar": "",
-      "rise_en": "",
-      "fall_en": "",
-      "ctx_b_en": "",
-      "ctx_a_en": ""
+      "rise_en": "With the weakening of the Ghaznavids, the mountain begs of Ghur gained independence and established a powerful military state.",
+      "fall_en": "The dynasty ended due to Khwārazm-Shāh pressure and the death of the last sultan; the ghulām governors in India became independent.",
+      "ctx_b_en": "As the Ghaznavid Empire collapsed, a power vacuum emerged in Afghanistan and India.",
+      "ctx_a_en": "The Ghūrid ghulām governors in India established the Delhi Sultanate, laying the foundation of Islamic civilization in the subcontinent."
     },
     {
       "id": 160,
@@ -5407,10 +5407,10 @@
       "fall_ar": "",
       "ctx_b_ar": "",
       "ctx_a_ar": "",
-      "rise_en": "",
-      "fall_en": "",
-      "ctx_b_en": "",
-      "ctx_a_en": ""
+      "rise_en": "The state was established when Ghūrid ghulām commanders became independent in North India and Aybak declared the sultanate in Delhi.",
+      "fall_en": "Bābur defeated the last Lodī sultan at Pānīpat (1526), ending the Delhi Sultanate period.",
+      "ctx_b_en": "The Ghūrids had conquered North India; their ghulām governors had gained de facto independence; Islam in India was still only a superficial presence.",
+      "ctx_a_en": "The Mughals inherited the legacy of the Delhi Sultanate, initiating the most glorious period of Islamic civilization in the subcontinent."
     },
     {
       "id": 161,
@@ -5441,10 +5441,10 @@
       "fall_ar": "الحق الامبراطور البابري اكبر البنغال حوالي عام 1576 وانتقلت المنطقة الى ادارة الولايات البابرية",
       "ctx_b_ar": "في الحدود الشرقية لسلطنة دلهي طورت البنغال تقليدا اداريا شبه مستقل",
       "ctx_a_ar": "تحت الحكم البابري ازدادت البنغال ثراء ولكن معركة بلاسي عام 1757 اشارت الى بداية الاستعمار الانجليزي",
-      "rise_en": "",
-      "fall_en": "",
-      "ctx_b_en": "",
-      "ctx_a_en": ""
+      "rise_en": "The Ghūrid/Delhi conquests incorporated Bengal into the Islamic world; distance and local wealth facilitated the independence of governors.",
+      "fall_en": "The Mughal Akbar annexed Bengal (c. 1576); the region came under Mughal provincial administration.",
+      "ctx_b_en": "Bengal, on the eastern frontier of the Delhi Sultanate, had developed a tradition of semi-independent governance.",
+      "ctx_a_en": "Under Mughal rule, Bengal became even more prosperous; however, the 1757 Battle of Plassey marked the beginning of British colonialism."
     },
     {
       "id": 162,
@@ -5475,10 +5475,10 @@
       "fall_ar": "الحق الامبراطور البابري اكبر كشمير حوالي عام 1586",
       "ctx_b_ar": "كشمير بحماية الهيمالايا بقيت مستقلة الى حد كبير عن سلطنة دلهي",
       "ctx_a_ar": "تحت الحكم البابري اصبح وادي كشمير مركزا للاستجمام الصيفي للامبراطورية ورمزا لثقافة الحدائق",
-      "rise_en": "",
-      "fall_en": "",
-      "ctx_b_en": "",
-      "ctx_a_en": ""
+      "rise_en": "With the weakening of Hindu Kashmir rulers and Islam's influence in the region, a local Kashmiri Muslim dynasty was established.",
+      "fall_en": "The Mughal Akbar annexed Kashmir (c. 1586).",
+      "ctx_b_en": "Kashmir had remained largely independent from the Delhi Sultanate under the protection of the Himalayas.",
+      "ctx_a_en": "Under Mughal rule, the Kashmir valley became the empire's summer retreat center and a symbol of garden culture."
     },
     {
       "id": 163,
@@ -5509,10 +5509,10 @@
       "fall_ar": "الحق الامبراطور البابري اكبر كجرات حوالي عام 1583",
       "ctx_b_ar": "مع ضعف سلطنة دلهي كانت المناطق التجارية الغنية في غرب الهند تستقل",
       "ctx_a_ar": "الحكم البابري ادمج ثراء كجرات التجاري في الامبراطورية واستمر التنافس مع البرتغال",
-      "rise_en": "",
-      "fall_en": "",
-      "ctx_b_en": "",
-      "ctx_a_en": ""
+      "rise_en": "A separate sultanate was established in Gujarat through the independence of Delhi Sultanate governors.",
+      "fall_en": "The Mughal Akbar annexed Gujarat (c. 1583).",
+      "ctx_b_en": "As the Delhi Sultanate weakened, the rich trading regions of western India were gaining independence.",
+      "ctx_a_en": "Mughal rule integrated Gujarat's commercial wealth into the empire; Portuguese competition continued."
     },
     {
       "id": 164,
@@ -5541,8 +5541,8 @@
       "fall_ar": "الحقها السلطان اللودي",
       "ctx_b_ar": "",
       "ctx_a_ar": "",
-      "rise_en": "",
-      "fall_en": "",
+      "rise_en": "With the weakening of the Delhi Sultanate, the governors of Jawnpur became independent.",
+      "fall_en": "Annexed by the Lodī sultan.",
       "ctx_b_en": "",
       "ctx_a_en": ""
     },
@@ -5575,10 +5575,10 @@
       "fall_ar": "",
       "ctx_b_ar": "",
       "ctx_a_ar": "",
-      "rise_en": "",
-      "fall_en": "",
-      "ctx_b_en": "",
-      "ctx_a_en": ""
+      "rise_en": "A separate sultanate was established in Mālwa through the independence of Delhi Sultanate governors.",
+      "fall_en": "Annexed by the Mughal Akbar.",
+      "ctx_b_en": "As the Delhi Sultanate collapsed, regional powers in Central India were gaining independence.",
+      "ctx_a_en": "Mughal administration incorporated Mālwa into the imperial provincial system."
     },
     {
       "id": 166,
@@ -5609,10 +5609,10 @@
       "fall_ar": "قضت عليها إمبراطورية فيجايانغار الهندوسية.",
       "ctx_b_ar": "كانت إمبراطورية دلهي التغلقية تفقد سيطرتها على الأقاليم الجنوبية.",
       "ctx_a_ar": "سيطرت فيجايانغار على جنوب الهند واستمر التقليد الهندوسي المقاوم، بينما واصل الوجود الإسلامي شمالا مع البهمنيين.",
-      "rise_en": "",
-      "fall_en": "",
-      "ctx_b_en": "",
-      "ctx_a_en": ""
+      "rise_en": "Delhi Tughluq governors gained independence in the distant southern provinces.",
+      "fall_en": "Destroyed by the Vijayanagar Hindu Empire.",
+      "ctx_b_en": "The Delhi Tughluq Empire was losing control in the southern provinces.",
+      "ctx_a_en": "Vijayanagar, as the ruler of South India, continued the Hindu resistance tradition; Islamic presence continued in the north with the Bahmanids."
     },
     {
       "id": 167,
@@ -5643,10 +5643,10 @@
       "fall_ar": "تفككت بسبب الانقسام الداخلي إلى خمس سلطنات وارثة (حوالي 1518م).",
       "ctx_b_ar": "بينما فقدت سلطنة دلهي سيطرتها على جنوب الهند، كانت القوى المحلية تصعد في الدكن.",
       "ctx_a_ar": "تقاسمت السلطنات الخمس في الدكن (البريدشاهية والعادلشاهية والنظامشاهية والعمادشاهية والقطبشاهية) الإرث البهمني.",
-      "rise_en": "",
-      "fall_en": "",
-      "ctx_b_en": "",
-      "ctx_a_en": ""
+      "rise_en": "Delhi Tughluq governors gained independence in the Deccan, establishing a powerful sultanate.",
+      "fall_en": "Divided into five successor sultanates due to internal fragmentation (c. 1518).",
+      "ctx_b_en": "As the Delhi Sultanate lost control in South India, local powers were rising in the Deccan.",
+      "ctx_a_en": "The five Deccan sultanates (Barīd Shāhī, ʿĀdil Shāhī, Niẓām Shāhī, ʿImād Shāhī, Quṭub Shāhī) divided the Bahmanid legacy."
     },
     {
       "id": 168,
@@ -5677,10 +5677,10 @@
       "fall_ar": "ضمها المغولي أكبر (حوالي 1601م).",
       "ctx_b_ar": "بينما انهارت سلطنة دلهي، كانت المناطق على طريق العبور للدكن تستقل.",
       "ctx_a_ar": "استخدم المغوليون برهانپور كقاعدة لحملاتهم نحو الدكن.",
-      "rise_en": "",
-      "fall_en": "",
-      "ctx_b_en": "",
-      "ctx_a_en": ""
+      "rise_en": "An independent sultanate was established in the Khandesh region with the weakening of the Delhi Sultanate.",
+      "fall_en": "Annexed by the Mughal Akbar (c. 1601).",
+      "ctx_b_en": "As the Delhi Sultanate collapsed, regions along the route to the Deccan were gaining independence.",
+      "ctx_a_en": "The Mughals used Burhanpur as a base for their Deccan campaigns."
     },
     {
       "id": 169,
@@ -5711,10 +5711,10 @@
       "fall_ar": "ضمها العادلشاهيون.",
       "ctx_b_ar": "بينما تفككت الإمبراطورية البهمنية، ظهرت خمس سلطنات وارثة.",
       "ctx_a_ar": "ضم العادلشاهيون بيدار إلى أراضيهم؛ وفي النهاية فتح المغولي أورنگزيب جميع سلطنات الدكن.",
-      "rise_en": "",
-      "fall_en": "",
-      "ctx_b_en": "",
-      "ctx_a_en": ""
+      "rise_en": "With the fragmentation of the Bahmanid Empire, the vizier family in Bidar became independent.",
+      "fall_en": "Annexed by the ʿĀdil Shāhīs.",
+      "ctx_b_en": "As the Bahmanid Empire fragmented, five successor sultanates emerged.",
+      "ctx_a_en": "The 'Ādil Shāhīs incorporated Bīdār into their territories; ultimately all Deccan sultanates were conquered by the Mughal Awrangzīb."
     },
     {
       "id": 170,
@@ -5745,10 +5745,10 @@
       "fall_ar": "فتح المغولي أورنگزيب بيجاپور (1686م).",
       "ctx_b_ar": "تفككت الإمبراطورية البهمنية؛ وتنافست السلطنات الخمس الوارثة في الدكن فيما بينها ومع فيجايانغار.",
       "ctx_a_ar": "فتح المغولي أورنگزيب سلطنات الدكن واحدة تلو الأخرى ووصل بالإمبراطورية المغولية إلى أوسع حدودها.",
-      "rise_en": "",
-      "fall_en": "",
-      "ctx_b_en": "",
-      "ctx_a_en": ""
+      "rise_en": "An independent sultanate was established in Bījāpūr with the fragmentation of the Bahmanī.",
+      "fall_en": "The Mughal Awrangzīb conquered Bījāpūr (1686).",
+      "ctx_b_en": "The Bahmanī Empire had fragmented; five successor sultanates in the Deccan competed with each other and with Vijayanagar.",
+      "ctx_a_en": "The Mughal Awrangzīb conquered the Deccan sultanates one by one, bringing the Mughal Empire to its greatest extent."
     },
     {
       "id": 171,
@@ -5779,10 +5779,10 @@
       "fall_ar": "فتح شاهجهان البابري أحمد نغر (حوالي 1636م).",
       "ctx_b_ar": "تصارعت خمس سلطنات خليفة في الدكن فيما بينها ومع البابريين.",
       "ctx_a_ar": "رسخ البابريون سيطرتهم على الدكن، لكن مقاومة المراثا بدأت تنهض كقوة جديدة.",
-      "rise_en": "",
-      "fall_en": "",
-      "ctx_b_en": "",
-      "ctx_a_en": ""
+      "rise_en": "An independent sultanate was established in Ahmadnagar with the fragmentation of the Bahmanī.",
+      "fall_en": "The Mughal Shāh Jihān conquered Ahmadnagar (c. 1636).",
+      "ctx_b_en": "Five successor sultanates in the Deccan struggled with each other and with the Mughals.",
+      "ctx_a_en": "The Mughals consolidated control over the Deccan; however, Maratha resistance began to emerge as a new power."
     },
     {
       "id": 172,
@@ -5811,8 +5811,8 @@
       "fall_ar": "ضمها النظامشاهيون (حوالي 1574م).",
       "ctx_b_ar": "",
       "ctx_a_ar": "",
-      "rise_en": "",
-      "fall_en": "",
+      "rise_en": "A small independent sultanate was established in Berār with the fragmentation of the Bahmanī.",
+      "fall_en": "Annexed by the Nizām Shāhīs (c. 1574).",
       "ctx_b_en": "",
       "ctx_a_en": ""
     },
@@ -5845,10 +5845,10 @@
       "fall_ar": "فتح أورنگ زيب البابري گولكوندا (1687م).",
       "ctx_b_ar": "تنافست خمس سلطنات خليفة في الدكن على الثروة والسلطة.",
       "ctx_a_ar": "حافظت حيدر آباد على أهميتها الاستراتيجية تحت الحكم البابري، وأسست لاحقا دولة النظام المستقلة.",
-      "rise_en": "",
-      "fall_en": "",
-      "ctx_b_en": "",
-      "ctx_a_en": ""
+      "rise_en": "With the fragmentation of the Bahmanids, Turkmen lords established an independent sultanate in Golconda.",
+      "fall_en": "The Mughal Aurangzīb conquered Golconda (1687).",
+      "ctx_b_en": "The five successor sultanates in the Deccan were engaged in struggles for wealth and power.",
+      "ctx_a_en": "Under Mughal rule, Hyderabad maintained its strategic importance; later an independent Nizām state was established."
     },
     {
       "id": 174,
@@ -5879,10 +5879,10 @@
       "fall_ar": "ضم أكبر البابري السند (حوالي 1593م).",
       "ctx_b_ar": "تقسمت منطقة السند بين قوى محلية مختلفة أثناء انهيار الإمبراطورية التيمورية.",
       "ctx_a_ar": "أدمج الحكم البابري السند في النظام الإداري الإمبراطوري، وواصلت تهته أهميتها كمركز تجاري.",
-      "rise_en": "",
-      "fall_en": "",
-      "ctx_b_en": "",
-      "ctx_a_en": ""
+      "rise_en": "With the collapse of the Timurid order, local Turko-Mongol lords in Sindh became independent.",
+      "fall_en": "The Mughal Akbar annexed Sindh (c. 1593).",
+      "ctx_b_en": "As the Timurid Empire collapsed, the Sindh region was divided among various local powers.",
+      "ctx_a_en": "Mughal rule incorporated Sindh into the imperial provincial system; Thatta continued its importance as a commercial center."
     },
     {
       "id": 175,
@@ -5913,10 +5913,10 @@
       "fall_ar": "أنهى الإنجليز السلالة رسميا بعد قمع انتفاضة 1857م بنفي آخر أباطرة البابريين بهادر شاه ظفر إلى رانگون (1858م).",
       "ctx_b_ar": "ضعف فرع اللوديين من سلطنة دلهي وتشظت الهند سياسيا، وحمل بابر مكانة الأصل التيموري والجنگيزي.",
       "ctx_a_ar": "قامت الهند البريطانية، وشكل التراث الثقافي البابري الأساس المشترك للهند وباكستان وبنگلاديش الحديثة.",
-      "rise_en": "",
-      "fall_en": "",
-      "ctx_b_en": "",
-      "ctx_a_en": ""
+      "rise_en": "The Timurid prince Bābur, after losing his throne in Fergana, turned toward India from Kabul; defeating the Lodī army at Pānīpat (1526), he seized the throne of Delhi.",
+      "fall_en": "Following the suppression of the 1857 Rebellion, the British formally ended the dynasty by sending the last Mughal emperor Bahādur Shāh Ẓafar into exile in Rangoon (1858).",
+      "ctx_b_en": "The Lodi branch of the Delhi Sultanate had weakened; India was politically fragmented; Bābur carried the prestige of Timurid and Chingisid lineage.",
+      "ctx_a_en": "British India (British Raj) was established; the Mughal cultural legacy formed the common foundation of modern India, Pakistan and Bangladesh."
     },
     {
       "id": 176,
@@ -5947,10 +5947,10 @@
       "fall_ar": "بعد معركة بلاسي عام 1757 أصبحت شركة الهند الشرقية البريطانية الحاكم الفعلي للبنغال وتحولت النوابية إلى مؤسسة شكلية.",
       "ctx_b_ar": "بينما انهارت الامبراطورية المغولية أصبحت البنغال بثرائها محط اهتمام الشركات التجارية الاوروبية.",
       "ctx_a_ar": "سيطرت شركة الهند الشرقية البريطانية تدريجيا على كامل الهند انطلاقا من البنغال.",
-      "rise_en": "",
-      "fall_en": "",
-      "ctx_b_en": "",
-      "ctx_a_en": ""
+      "rise_en": "With the weakening of Mughal central authority, the governors of Bengal gained de facto independence.",
+      "fall_en": "After the Battle of Plassey (1757), the British East India Company became the de facto ruler of Bengal; the nawwābship was reduced to a shadow institution.",
+      "ctx_b_en": "As the Mughal Empire collapsed, Bengal, with its wealth, became the focus of European trading companies.",
+      "ctx_a_en": "The British East India Company gradually brought all of India under control through Bengal."
     },
     {
       "id": 177,
@@ -5982,10 +5982,10 @@
       "fall_ar": "ألحق اللورد دالهوزي أود عام 1856 وكان هذا الإلحاق من الأسباب الرئيسية لانتفاضة 1857.",
       "ctx_b_ar": "بينما انهارت الامبراطورية المغولية أصبحت أود إمارة شبه مستقلة بارزة بثرائها.",
       "ctx_a_ar": "بعد انتفاضة 1857 أدارت بريطانيا الهند مباشرة ونقلت لكناو هويتها الثقافية إلى العصر الحديث.",
-      "rise_en": "",
-      "fall_en": "",
-      "ctx_b_en": "",
-      "ctx_a_en": ""
+      "rise_en": "Iranian families who gained independence from Mughal governorship established a wealthy state in Awadh.",
+      "fall_en": "Lord Dalhousie annexed Awadh (1856); this annexation became one of the main causes of the 1857 Rebellion.",
+      "ctx_b_en": "As the Mughal Empire collapsed, Awadh became a semi-independent province distinguished by its wealth.",
+      "ctx_a_en": "Following the 1857 Rebellion, Britain took direct control of India; Lucknow carried its cultural identity into the modern period."
     },
     {
       "id": 178,
@@ -6016,10 +6016,10 @@
       "fall_ar": "ألحقت جمهورية الهند حيدر آباد بالعمل البوليسي عام 1948.",
       "ctx_b_ar": "بينما انهارت الامبراطورية المغولية كانت أسر الولاة في الدكن تستقل.",
       "ctx_a_ar": "انضمت حيدر آباد إلى جمهورية الهند وشكل تراث النظام الأساس الثقافي لولايات تيلانغانا وأندرا براديش الحديثة.",
-      "rise_en": "",
-      "fall_en": "",
-      "ctx_b_en": "",
-      "ctx_a_en": ""
+      "rise_en": "With the weakening of Mughal authority in the Deccan, the Niẓām family gained independence.",
+      "fall_en": "The Republic of India annexed Hyderabad through Police Action (1948).",
+      "ctx_b_en": "As the Mughal Empire collapsed, provincial families in the Deccan were gaining independence.",
+      "ctx_a_en": "Hyderabad joined the Republic of India; the niẓām legacy formed the cultural foundation of the modern states of Telangana and Andhra Pradesh."
     },
     {
       "id": 179,
@@ -6050,10 +6050,10 @@
       "fall_ar": "قتل تيبو سلطان مقاتلا في الحرب الإنجليزية الميسورية الرابعة عام 1799 واستعيدت سلالة ووديار كتابعة للبريطانيين.",
       "ctx_b_ar": "انهارت السلطة المغولية في جنوب الهند وخاضت القوى الاستعمارية البريطانية والفرنسية صراع نفوذ في المنطقة.",
       "ctx_a_ar": "سيطر البريطانيون على جنوب الهند واستمرت ميسور كإمارة تابعة للبريطانيين.",
-      "rise_en": "",
-      "fall_en": "",
-      "ctx_b_en": "",
-      "ctx_a_en": ""
+      "rise_en": "Ḥaydar ʿAlī overthrew the Hindu Wodeyar kings of Mysore and seized power, establishing a powerful military state.",
+      "fall_en": "Tīpū Sulṭān died fighting in the Fourth Anglo-Mysore War (1799); the Wodeyar dynasty was restored as British vassals.",
+      "ctx_b_en": "Mughal authority in South India had collapsed; British and French colonial powers were struggling for influence in the region.",
+      "ctx_a_en": "The British gained control of South India; Mysore continued as a British vassal princely state."
     },
     {
       "id": 180,
@@ -6084,10 +6084,10 @@
       "fall_ar": "",
       "ctx_b_ar": "",
       "ctx_a_ar": "",
-      "rise_en": "",
-      "fall_en": "",
-      "ctx_b_en": "",
-      "ctx_a_en": ""
+      "rise_en": "With the death of Nādir Shāh, unity was achieved among the Afghan tribes under the leadership of Aḥmad Shāh.",
+      "fall_en": "Coup by Muḥammad Dāʾūd Khān (1973); republic declared; monarchy ended.",
+      "ctx_b_en": "The Afshārid Empire had collapsed; Afghan tribes were seeking independence.",
+      "ctx_a_en": "The Republic of Afghanistan was declared; subsequently Soviet occupation (1979) and the Taliban period profoundly affected the country's destiny."
     },
     {
       "id": 181,
@@ -6118,10 +6118,10 @@
       "fall_ar": "",
       "ctx_b_ar": "",
       "ctx_a_ar": "",
-      "rise_en": "",
-      "fall_en": "",
-      "ctx_b_en": "",
-      "ctx_a_en": ""
+      "rise_en": "The conversion to Islam of Malay rulers who were heirs to Srīvijaya/Palembang and the strategic position of the Strait of Malacca strengthened the sultanate.",
+      "fall_en": "Portuguese Afonso de Albuquerque conquered Malacca (1511); the sultanate ended.",
+      "ctx_b_en": "Hindu-Buddhist kingdoms in Southeast Asia were encountering Islam; the Strait of Malacca was one of the most strategic points of world trade.",
+      "ctx_a_en": "Portuguese dominion initiated Southeast Asia's colonial period; the Johor-Riau sultanate continued the Malaccan legacy."
     },
     {
       "id": 182,
@@ -6152,10 +6152,10 @@
       "fall_ar": "",
       "ctx_b_ar": "",
       "ctx_a_ar": "",
-      "rise_en": "",
-      "fall_en": "",
-      "ctx_b_en": "",
-      "ctx_a_en": ""
+      "rise_en": "The unification of local Acehnese principalities and the wealth from Indian Ocean spice trade enabled the establishment and strengthening of the sultanate.",
+      "fall_en": "Came under complete Dutch control after the Dutch-Aceh War (1873-1903).",
+      "ctx_b_en": "After the fall of Malacca, the Islamic principalities in northern Sumatra constituted the strongest Islamic presence in the region.",
+      "ctx_a_en": "Dutch colonial administration brought Aceh under control; however, the spirit of Acehnese resistance became an important element of the Indonesian independence movement."
     },
     {
       "id": 183,
@@ -6186,10 +6186,10 @@
       "fall_ar": "",
       "ctx_b_ar": "",
       "ctx_a_ar": "",
-      "rise_en": "",
-      "fall_en": "",
-      "ctx_b_en": "",
-      "ctx_a_en": ""
+      "rise_en": "With the collapse of the Demak Sultanate and Pajang, the military leader Senopati in Mataram established an independent Islamic state.",
+      "fall_en": "The Treaty of Giyanti (1755) divided the sultanate into Surakarta and Yogyakarta.",
+      "ctx_b_en": "The spread of Islam in Java accelerated with the collapse of Hindu-Buddhist kingdoms; various small Islamic principalities were in competition.",
+      "ctx_a_en": "Surakarta and Yogyakarta continued Javanese cultural traditions under Dutch protectorate; they became the cultural foundation of the Indonesian independence movement."
     },
     {
       "id": 184,
@@ -6220,10 +6220,10 @@
       "fall_ar": "",
       "ctx_b_ar": "",
       "ctx_a_ar": "",
-      "rise_en": "",
-      "fall_en": "",
-      "ctx_b_en": "",
-      "ctx_a_en": ""
+      "rise_en": "The Treaty of Giyanti (1755) divided Mataram, making Surakarta a separate political center.",
+      "fall_en": "Indonesian independence (1945) ended the political status of the princely states.",
+      "ctx_b_en": "The Mataram Sultanate had weakened due to Dutch interventions and reached the point of division.",
+      "ctx_a_en": "In the Republic of Indonesia, Surakarta remained as a symbolic cultural center; political authority passed to the republic."
     },
     {
       "id": 185,
@@ -6254,10 +6254,10 @@
       "fall_ar": "",
       "ctx_b_ar": "",
       "ctx_a_ar": "",
-      "rise_en": "",
-      "fall_en": "",
-      "ctx_b_en": "",
-      "ctx_a_en": ""
+      "rise_en": "The Treaty of Giyanti (1755) established Yogyakarta as a separate sultanate.",
+      "fall_en": "Continuing — maintains its special status in the Republic of Indonesia as the Special Region of Yogyakarta.",
+      "ctx_b_en": "The Mataram Sultanate was divided; Dutch dominance in Java was increasing.",
+      "ctx_a_en": "Yogyakarta combined traditional and modern forms of governance as the only special status region of the Republic of Indonesia."
     },
     {
       "id": 186,
@@ -6288,10 +6288,10 @@
       "fall_ar": "",
       "ctx_b_ar": "",
       "ctx_a_ar": "",
-      "rise_en": "",
-      "fall_en": "",
-      "ctx_b_en": "",
-      "ctx_a_en": ""
+      "rise_en": "The conversion of the Hindu-Buddhist principality of Brunei to Islam and Borneo's strategic position enabled the sultanate's rise to power.",
+      "fall_en": "Continuing — Brunei Darussalam continues to rule as an independent state.",
+      "ctx_b_en": "As the spread of Islam in Southeast Asia transformed coastal trading states, Borneo's strategic position was creating new political centers.",
+      "ctx_a_en": "Brunei gained full independence in 1984, creating a model of a small but prosperous Islamic state through its oil wealth."
     }
   ],
   "battles": [
@@ -9261,8 +9261,8 @@
       "patron_ar": "رفض عرض الخليفة العباسي المنصور بتولي القضاء فسجن",
       "city_ar": "",
       "disc_ar": "",
-      "chain_en": "",
-      "patron_en": ""
+      "chain_en": "Ibrāhīm al-Nakhaʿī → Ḥammād b. Abī Sulaymān → Abū Ḥanīfa → Abū Yūsuf → Imām Muḥammad → Ottoman Legal Codes",
+      "patron_en": "Imprisoned for refusing the Abbasid Caliph al-Manṣūr's offer of judgeship."
     },
     {
       "id": 2,
@@ -9294,8 +9294,8 @@
       "patron_ar": "اختلف مع الخليفة العباسي المنصور وضرب بالسياط لكنه لم يتراجع عن رايه",
       "city_ar": "",
       "disc_ar": "",
-      "chain_en": "",
-      "patron_en": ""
+      "chain_en": "Nāfiʿ (freedman of Ibn ʿUmar) → Imām Mālik → Imām al-Shāfiʿī → North African Islamic legal tradition",
+      "patron_en": "Came into conflict with the Abbasid Caliph al-Manṣūr and was flogged; nevertheless did not retract his position."
     },
     {
       "id": 3,
@@ -9327,8 +9327,8 @@
       "patron_ar": "عاش عالما مستقلا ولم يقم علاقات رعاية مباشرة مع الخلفاء",
       "city_ar": "",
       "disc_ar": "",
-      "chain_en": "",
-      "patron_en": ""
+      "chain_en": "Imām Mālik → Imām al-Shāfiʿī → Imām Aḥmad b. Ḥanbal → Uṣūl al-fiqh tradition",
+      "patron_en": "Lived as an independent scholar; did not establish direct patronage relations with caliphs."
     },
     {
       "id": 4,
@@ -9360,8 +9360,8 @@
       "patron_ar": "قاوم فرض الخلفاء العباسيين للعقيدة المعتزلية ورفض الرعاية الحكومية فاصبح رمزا للعالم المستقل",
       "city_ar": "",
       "disc_ar": "",
-      "chain_en": "",
-      "patron_en": ""
+      "chain_en": "Imām al-Shāfiʿī → Aḥmad b. Ḥanbal → Ibn Taymiyya → Ibn ʿAbd al-Wahhāb → Modern Salafī movement",
+      "patron_en": "Resisted the Abbasid caliphs' imposition of Muʿtazilī doctrine; symbol of the independent scholar model that rejected state patronage."
     },
     {
       "id": 5,
@@ -9393,8 +9393,8 @@
       "patron_ar": "عمل في اراضي الامراء السامانيين وبقي مستقلا عن القصر رافضا الرعاية السياسية",
       "city_ar": "",
       "disc_ar": "",
-      "chain_en": "",
-      "patron_en": ""
+      "chain_en": "Prophet Muḥammad → Companions → Successors → al-Bukhārī → Ibn Ḥajar al-ʿAsqalānī → Modern ḥadīth science",
+      "patron_en": "Worked in the territories of the Samanid emirs; remained independent from the court and rejected political patronage."
     },
     {
       "id": 6,
@@ -9426,8 +9426,8 @@
       "patron_ar": "عمل في منطقة الحكم الساماني ونشط بشكل مستقل في الاوساط العلمية",
       "city_ar": "",
       "disc_ar": "",
-      "chain_en": "",
-      "patron_en": ""
+      "chain_en": "al-Bukhārī → Muslim → Imam al-Nawawī (commentary) → Ṣaḥīḥayn tradition",
+      "patron_en": "Worked in the Sāmānid realm; pursued independent scholarly activity in learned circles."
     },
     {
       "id": 7,
@@ -9452,8 +9452,8 @@
       "patron_ar": "عينه نظام الملك مدرسا في النظامية لكنه ترك المدرسة واختار طريقه المستقل",
       "city_ar": "",
       "disc_ar": "",
-      "chain_en": "",
-      "patron_en": ""
+      "chain_en": "Imam al-Ashʿarī → al-Juwaynī → al-Ghazālī → Fakhr al-Dīn al-Rāzī → al-Taftāzānī → Ottoman madrasa tradition",
+      "patron_en": "Appointed as professor to the Niẓāmiyya by Niẓām al-Mulk; however, left the madrasa to pursue an independent path."
     },
     {
       "id": 8,
@@ -9478,8 +9478,8 @@
       "patron_ar": "عاش علاقات متوترة مع سلاطين المماليك وسجن مرارا بسبب افكاره",
       "city_ar": "",
       "disc_ar": "",
-      "chain_en": "",
-      "patron_en": ""
+      "chain_en": "Aḥmad ibn Ḥanbal → Ibn Taymiyya → Ibn Qayyim al-Jawziyya → Muḥammad ibn ʿAbd al-Wahhāb → Modern Salafism",
+      "patron_en": "Had conflictual relations with Mamlūk sultans; was imprisoned multiple times due to his ideas."
     },
     {
       "id": 9,
@@ -9504,8 +9504,8 @@
       "patron_ar": "عين الخليفة العباسي المامون الخوارزمي في بيت الحكمة ودعم ابحاثه مباشرة",
       "city_ar": "",
       "disc_ar": "",
-      "chain_en": "",
-      "patron_en": ""
+      "chain_en": "Indian mathematicians (Brahmagupta) → al-Khwārizmī → European translations → Fibonacci → Modern mathematics",
+      "patron_en": "Abbasid Caliph al-Maʾmūn appointed al-Khwārizmī to the Bayt al-Ḥikma and directly supported his research."
     },
     {
       "id": 10,
@@ -9530,8 +9530,8 @@
       "patron_ar": "",
       "city_ar": "",
       "disc_ar": "",
-      "chain_en": "",
-      "patron_en": ""
+      "chain_en": "Aristotle → al-Kindī → al-Fārābī → Ibn Sīnā → European Scholastics (Albertus Magnus, Thomas Aquinas)",
+      "patron_en": "Worked under the patronage of Būyid emirs; frequently had to change cities to escape court intrigues."
     },
     {
       "id": 11,
@@ -9556,8 +9556,8 @@
       "patron_ar": "دعاه الخليفة الفاطمي الحاكم إلى القاهرة لكن علاقته بالخليفة أصبحت خطيرة بعد فشل مشروع النيل",
       "city_ar": "",
       "disc_ar": "",
-      "chain_en": "",
-      "patron_en": ""
+      "chain_en": "Euclidean/Ptolemaic optical tradition → Ibn al-Haytham → Roger Bacon → Kepler → Modern optics",
+      "patron_en": "Invited to Cairo by Fatimid Caliph al-Hakim; however, his relationship with the caliph became dangerous after the failure of the Nile project."
     },
     {
       "id": 12,
@@ -9582,8 +9582,8 @@
       "patron_ar": "اصطحبه السلطان محمود الغزنوي في غزوات الهند فحول الرعاية القسرية إلى تجربة بحثية فريدة",
       "city_ar": "",
       "disc_ar": "",
-      "chain_en": "",
-      "patron_en": ""
+      "chain_en": "Indian astronomical tradition + Greek mathematics → al-Biruni → Maragheh Observatory → Ottoman astronomy",
+      "patron_en": "Ghaznavid Sultan Mahmud took him on Indian campaigns; he transformed obligatory patronage into a unique research experience."
     },
     {
       "id": 13,
@@ -9608,8 +9608,8 @@
       "patron_ar": "يروى أنه عمل في رعاية الوزراء البرامكة وسقط من النعمة بسقوطهم",
       "city_ar": "",
       "disc_ar": "",
-      "chain_en": "",
-      "patron_en": ""
+      "chain_en": "Greek alchemical tradition → Jabir ibn Hayyan → al-Razi → European alchemists → Robert Boyle → Modern chemistry",
+      "patron_en": "It is reported that he worked under the patronage of the Barmakid viziers and fell from favor with their downfall."
     },
     {
       "id": 15,
@@ -9634,8 +9634,8 @@
       "patron_ar": "أنتج كمهندس بلاط الأرتقيين تحت رعاية البلاط المباشرة",
       "city_ar": "",
       "disc_ar": "",
-      "chain_en": "",
-      "patron_en": ""
+      "chain_en": "Banu Musa brothers → al-Jazari → European mechanical tradition → Leonardo da Vinci",
+      "patron_en": "As court engineer of the Artuqid rulers, he produced works under direct court patronage."
     },
     {
       "id": 16,
@@ -9660,8 +9660,8 @@
       "patron_ar": "دعا الملك روجر الثاني ملك صقلية الإدريسي إلى بلاطه وقدم له الدعم التام لمشروع الخريطة",
       "city_ar": "",
       "disc_ar": "",
-      "chain_en": "",
-      "patron_en": ""
+      "chain_en": "Ptolemy's Geography → Islamic geographical tradition → al-Idrisi → European Age of Exploration cartography",
+      "patron_en": "King Roger II of Sicily invited al-Idrisi to his court, providing full support for the mapping project."
     },
     {
       "id": 17,
@@ -9686,8 +9686,8 @@
       "patron_ar": "قدم السلطان السلجوقي ملكشاه والوزير نظام الملك الدعم التام لإصلاح التقويم",
       "city_ar": "",
       "disc_ar": "",
-      "chain_en": "",
-      "patron_en": ""
+      "chain_en": "al-Khwārizmī → ʿUmar Khayyām → Sharaf al-Dīn al-Ṭūsī → Islamic algebraic tradition",
+      "patron_en": "Seljuk Sultan Malikshāh and Vizier Niẓām al-Mulk provided full support for calendar reform."
     },
     {
       "id": 18,
@@ -9712,8 +9712,8 @@
       "patron_ar": "خدم حكاما مختلفين في المغرب وكتب أعظم أعماله في العزلة بعيدا عن الرعاية",
       "city_ar": "",
       "disc_ar": "",
-      "chain_en": "",
-      "patron_en": ""
+      "chain_en": "Islamic historiographical tradition → Ibn Khaldūn → Kātib Çelebi → Vico, Montesquieu → Modern sociology",
+      "patron_en": "Served various Maghribi rulers; wrote his greatest work in seclusion, independent of patronage."
     },
     {
       "id": 19,
@@ -9738,8 +9738,8 @@
       "patron_ar": "عمل في رعاية المأمون والمعتصم المباشرة وسقط من النعمة في عهد المتوكل",
       "city_ar": "",
       "disc_ar": "",
-      "chain_en": "",
-      "patron_en": ""
+      "chain_en": "Aristotle/Plato → al-Kindī → al-Fārābī → Ibn Sīnā → Ibn Rushd → European Scholastics",
+      "patron_en": "Worked under direct patronage of al-Maʾmūn and al-Muʿtaṣim; fell from favor during al-Mutawakkil's reign."
     },
     {
       "id": 20,
@@ -9764,8 +9764,8 @@
       "patron_ar": "نال الرعاية في بلاط الأمير الحمداني سيف الدولة في حلب",
       "city_ar": "",
       "disc_ar": "",
-      "chain_en": "",
-      "patron_en": ""
+      "chain_en": "Aristotle → al-Kindī → al-Fārābī → Ibn Sīnā → Ibn Rushd → Thomas Aquinas",
+      "patron_en": "Received patronage at the Aleppo court of Ḥamdānid emir Sayf al-Dawla."
     },
     {
       "id": 21,
@@ -9790,8 +9790,8 @@
       "patron_ar": "",
       "city_ar": "",
       "disc_ar": "",
-      "chain_en": "",
-      "patron_en": ""
+      "chain_en": "Aristotle → al-Fārābī → Ibn Sīnā → Ibn Rushd → Siger de Brabant → Thomas Aquinas → Western philosophy",
+      "patron_en": "Worked under patronage of Almohad sultans; al-Manṣūr exiled him under political pressure."
     },
     {
       "id": 22,
@@ -9816,8 +9816,8 @@
       "patron_ar": "اهدى الشاهنامه للسلطان محمود الغزنوي وتروي الروايات انه لم ينل الاجر الموعود.",
       "city_ar": "",
       "disc_ar": "",
-      "chain_en": "",
-      "patron_en": ""
+      "chain_en": "Iranian mythological tradition → Firdawsī → Niẓāmī Ganjavī → Ḥāfiẓ → Modern Iranian literature",
+      "patron_en": "Presented the Shāhnāma to Ghaznavid Sultan Maḥmūd; according to tradition, did not receive the promised reward."
     },
     {
       "id": 24,
@@ -9842,8 +9842,8 @@
       "patron_ar": "عمل تحت حماية الاسرة المظفرية ولم يتردد في نقد رعاته بأسلوب دقيق في اشعاره.",
       "city_ar": "",
       "disc_ar": "",
-      "chain_en": "",
-      "patron_en": ""
+      "chain_en": "Saʿdī → Ḥāfiẓ → Goethe (West-östlicher Divan) → Emerson → Modern world poetry",
+      "patron_en": "Worked under the patronage of the Muzaffarid dynasty; did not hesitate to subtly criticize his patrons in his poetry."
     },
     {
       "id": 25,
@@ -9868,8 +9868,8 @@
       "patron_ar": "عمل تحت حماية الاتابكة السلغوريين وحاز مكانة محترمة في شيراز الايلخانية.",
       "city_ar": "",
       "disc_ar": "",
-      "chain_en": "",
-      "patron_en": ""
+      "chain_en": "Iranian wisdom tradition → Saʿdī → Ḥāfiẓ → Ottoman divan literature → Goethe",
+      "patron_en": "Worked under the patronage of the Salghurids; held a respected position in Ilkhanid-era Shiraz."
     },
     {
       "id": 26,
@@ -9894,8 +9894,8 @@
       "patron_ar": "عاش علاقة فريدة بين الراعي والمثقف كصديق مقرب ووزير للسلطان التيموري حسين بايقرا.",
       "city_ar": "",
       "disc_ar": "",
-      "chain_en": "",
-      "patron_en": ""
+      "chain_en": "Yūsuf Khāṣṣ Ḥājib → ʿAlī Shīr Nawāʾī → Bābur → Uzbek and Uyghur literature",
+      "patron_en": "Experienced a unique patron-intellectual relationship as both close friend and vizier to Timurid Sultan Ḥusayn Bāyqarā."
     },
     {
       "id": 27,
@@ -9920,8 +9920,8 @@
       "patron_ar": "كتب القصائد للسلطان سليمان القانوني لكنه لم ينل الرعاية الموعودة بما يكفي.",
       "city_ar": "",
       "disc_ar": "",
-      "chain_en": "",
-      "patron_en": ""
+      "chain_en": "Niẓāmī Ganjavī → Fuḍūlī → Nābī → Ottoman and Azerbaijani divan tradition",
+      "patron_en": "Presented qasidas to Sultan Süleyman the Magnificent; did not adequately receive the promised patronage."
     },
     {
       "id": 29,
@@ -9946,8 +9946,8 @@
       "patron_ar": "عاش معظم حياته منعزلا في معرة النعمان محتفظا باستقلاله عن الرعاية.",
       "city_ar": "",
       "disc_ar": "",
-      "chain_en": "",
-      "patron_en": ""
+      "chain_en": "Arab poetic tradition → al-Maʿarrī → (possible influence) Dante Alighieri → World literature",
+      "patron_en": "Remained largely independent from patronage by living a reclusive life in Maʿarra."
     },
     {
       "id": 30,
@@ -9972,8 +9972,8 @@
       "patron_ar": "كان شاعرا لبلاط الامير الحمداني سيف الدولة وهرب الى مصر عندما فسدت علاقتهما.",
       "city_ar": "",
       "disc_ar": "",
-      "chain_en": "",
-      "patron_en": ""
+      "chain_en": "Jāhiliyya poetic tradition → al-Mutanabbī → Pinnacle of Arabic poetic canon → Modern Arabic poetry",
+      "patron_en": "Court poet of the Hamdanid emir Sayf al-Dawla; fled to Egypt when their relations deteriorated."
     },
     {
       "id": 32,
@@ -9998,8 +9998,8 @@
       "patron_ar": "نال القوة بدعم روحي من الشعب في بغداد السلجوقية.",
       "city_ar": "",
       "disc_ar": "",
-      "chain_en": "",
-      "patron_en": ""
+      "chain_en": "Junayd al-Baghdādī → al-Gīlānī → Qādiriyya order → Spread of Islam in West Africa and Southeast Asia",
+      "patron_en": "Gained power through popular spiritual support in Seljuk-era Baghdad."
     },
     {
       "id": 34,
@@ -10024,8 +10024,8 @@
       "patron_ar": "عمل عالما مستقلا في بغداد العباسية وانتج دون الاعتماد على رعاية القصر مباشرة.",
       "city_ar": "",
       "disc_ar": "",
-      "chain_en": "",
-      "patron_en": ""
+      "chain_en": "Ibn Isḥāq → al-Ṭabarī → Ibn al-Athīr → Ibn Khaldūn → Modern Islamic historiography",
+      "patron_en": "Worked as an independent scholar in Abbasid Baghdad; produced works without direct dependence on court patronage."
     },
     {
       "id": 35,
@@ -10050,8 +10050,8 @@
       "patron_ar": "",
       "city_ar": "",
       "disc_ar": "",
-      "chain_en": "",
-      "patron_en": ""
+      "chain_en": "Islamic travel tradition → Ibn Baṭṭūṭa → Evliyā Çelebi → Modern travel literature",
+      "patron_en": "Had his memoirs written by order of the Marinid sultan; was guest of various rulers in different countries."
     },
     {
       "id": 36,
@@ -10076,8 +10076,8 @@
       "patron_ar": "عمل بصفته معمار الباشي للحضرة السلطانية تحت السلاطين سليمان القانوني وسليم الثاني ومراد الثالث بدعم كامل من الدولة",
       "city_ar": "",
       "disc_ar": "",
-      "chain_en": "",
-      "patron_en": ""
+      "chain_en": "Byzantine tradition (Hagia Sophia) → Mimar Sinan → Sedefkâr Mehmed Agha → Ottoman architectural heritage",
+      "patron_en": "Worked with full state support as chief royal architect under Süleyman the Magnificent, Selim II, and Murad III."
     },
     {
       "id": 37,
@@ -10102,8 +10102,8 @@
       "patron_ar": "نشأ في بلاط التيموري حسين بايقرا ودعاه الشاه إسماعيل الصفوي إلى تبريز",
       "city_ar": "",
       "disc_ar": "",
-      "chain_en": "",
-      "patron_en": ""
+      "chain_en": "Herat miniature tradition → Behzād → Safavid Tabriz school → Mughal Indian miniature",
+      "patron_en": "Trained at the court of the Timurid Husayn Bayqara; invited to Tabriz by Safavid Shah Isma'il."
     },
     {
       "id": 38,
@@ -10128,8 +10128,8 @@
       "patron_ar": "كان خطاط البلاط لآخر الخلفاء العباسيين المستعصم",
       "city_ar": "",
       "disc_ar": "",
-      "chain_en": "",
-      "patron_en": ""
+      "chain_en": "Ibn Muqla → Ibn al-Bawwāb → Yāqūt → Şeyh Hamdullah → Ahmed Karahisari → Ottoman calligraphic tradition",
+      "patron_en": "Court calligrapher to the last Abbasid caliph al-Musta'ṣim."
     },
     {
       "id": 39,
@@ -10154,8 +10154,8 @@
       "patron_ar": "عمل في مستشفيات الحكام العباسيين والساmanيين",
       "city_ar": "",
       "disc_ar": "",
-      "chain_en": "",
-      "patron_en": ""
+      "chain_en": "Galen → al-Rāzī → Ibn Sīnā → European medical faculties → Modern clinical medicine",
+      "patron_en": "Served in hospitals under Abbasid and Samanid rulers."
     },
     {
       "id": 40,
@@ -10180,8 +10180,8 @@
       "patron_ar": "عمل طبيبا للبلاط تحت سلاطين المرابطين",
       "city_ar": "",
       "disc_ar": "",
-      "chain_en": "",
-      "patron_en": ""
+      "chain_en": "al-Rāzī → Ibn Zuhr → Ibn Rushd (collaboration) → European surgical tradition",
+      "patron_en": "Served as court physician to the Almoravid sultans."
     },
     {
       "id": 41,
@@ -10206,8 +10206,8 @@
       "patron_ar": "عمل في تقليد العلم المستقل في العصر العباسي ولم يحصل على رعاية مباشرة من البلاط",
       "city_ar": "",
       "disc_ar": "",
-      "chain_en": "",
-      "patron_en": ""
+      "chain_en": "Hadith transmission network → Ibn Mājah → Kutub al-Sitta → Islamic legal and theological tradition",
+      "patron_en": "Worked within the independent scholarly tradition of the Abbasid period; did not receive direct court patronage."
     },
     {
       "id": 42,
@@ -10232,8 +10232,8 @@
       "patron_ar": "أنتج في أراضي الساmanيين كعالم مستقل في محيط المدرسة",
       "city_ar": "",
       "disc_ar": "",
-      "chain_en": "",
-      "patron_en": ""
+      "chain_en": "Abū Ḥanīfa → al-Māturīdī → al-Pazdawī, al-Nasafī → Ottoman kalām tradition → Modern Turkish Islamic understanding",
+      "patron_en": "Produced scholarship as an independent scholar within madrasa circles in Samanid territories."
     },
     {
       "id": 43,
@@ -10258,8 +10258,8 @@
       "patron_ar": "اعتمد على الأسس الفكرية كعالم مستقل في بغداد العباسية",
       "city_ar": "",
       "disc_ar": "",
-      "chain_en": "",
-      "patron_en": ""
+      "chain_en": "Muʿtazila → al-Ashʿarī → al-Bāqillānī → al-Juwaynī → al-Ghazālī → Fakhr al-Dīn al-Rāzī → Ottoman kalām",
+      "patron_en": "Based his work on intellectual foundations as an independent scholar in Abbasid Baghdad."
     },
     {
       "id": 44,
@@ -10284,8 +10284,8 @@
       "patron_ar": "عمل في مصر في العصر العباسي المبكر",
       "city_ar": "",
       "disc_ar": "",
-      "chain_en": "",
-      "patron_en": ""
+      "chain_en": "Ibn Isḥāq → Ibn Hishām → al-Ṭabarī → Islamic biographical tradition",
+      "patron_en": "Worked in Egypt during the early Abbasid period."
     },
     {
       "id": 45,
@@ -10317,8 +10317,8 @@
       "patron_ar": "كان قاضي القضاة الشافعي في القاهرة المملوكية ممثلا لرابطة الدولة والعلماء",
       "city_ar": "",
       "disc_ar": "",
-      "chain_en": "",
-      "patron_en": ""
+      "chain_en": "al-Bukhārī → al-Nawawī → Ibn Ḥajar al-ʿAsqalānī → al-Suyūṭī → Modern hadith science",
+      "patron_en": "Served as chief Shāfiʿī judge in Mamluk Cairo, representing the state-ulama connection."
     },
     {
       "id": 46,
@@ -10343,8 +10343,8 @@
       "patron_ar": "خدم قبطانا في الاسطول العثماني ورفع خرائطه الى نظر السلاطين",
       "city_ar": "",
       "disc_ar": "",
-      "chain_en": "",
-      "patron_en": ""
+      "chain_en": "Portuguese-Spanish exploration maps → Pīrī Reʾīs → Ottoman cartography → Kātip Çelebi",
+      "patron_en": "Served as a captain in the Ottoman navy; presented his maps to the attention of the sultans."
     },
     {
       "id": 47,
@@ -10369,8 +10369,8 @@
       "patron_ar": "عمل في خدمة الدولة العثمانية جامعا بين الوظيفة البيروقراطية والانتاج العلمي",
       "city_ar": "",
       "disc_ar": "",
-      "chain_en": "",
-      "patron_en": ""
+      "chain_en": "Islamic bibliographical tradition → Kātip Çelebi → Ottoman modernization thought",
+      "patron_en": "Worked in Ottoman state service, combining his bureaucratic career with scholarly production."
     },
     {
       "id": 48,
@@ -10395,8 +10395,8 @@
       "patron_ar": "سافر في حاشية باشوات عثمانيين مختلفين ونال دعم السلاطين مباشرة",
       "city_ar": "",
       "disc_ar": "",
-      "chain_en": "",
-      "patron_en": ""
+      "chain_en": "Ibn Baṭṭūṭa → Evliyā Çelebi → Modern travel literature and Ottoman social history",
+      "patron_en": "Traveled in the retinue of various Ottoman pashas; also received direct support from the sultans."
     },
     {
       "id": 49,
@@ -10421,8 +10421,8 @@
       "patron_ar": "خدم رئيسا للاطباء في البيمارستان المنصوري في القاهرة المملوكية",
       "city_ar": "",
       "disc_ar": "",
-      "chain_en": "",
-      "patron_en": ""
+      "chain_en": "Galen → Ibn Sīnā → Ibn al-Nafīs → (possible influence) Miguel Servet → Harvey → Modern cardiology",
+      "patron_en": "Served as chief physician at the Manṣūrī Hospital in Mamluk Cairo."
     },
     {
       "id": 50,
@@ -21928,7 +21928,7 @@
       "type_ar": "",
       "goods_ar": "",
       "econ_ar": "شكلت ايرادات التجارة والرسوم الجمركية في العالم الاسلامي اساس ميزانيات الدول. وصلت الدراهم الفضية السامانية حتى اسكندنافيا الفايكنغية",
-      "econ_en": ""
+      "econ_en": "Trade revenues and customs duties from the Islamic world formed the foundation of state budgets. Samanid silver dirhams reached as far as Viking Scandinavia."
     },
     {
       "id": 2,
@@ -21949,7 +21949,7 @@
       "type_ar": "",
       "goods_ar": "",
       "econ_ar": "زودت موانئ البصرة وسيراف الخزينة العباسية بايرادات جمركية ضخمة. اصبح الخزف والحرير الصيني سلع استهلاكية ترفية في العالم الاسلامي",
-      "econ_en": ""
+      "econ_en": "The ports of Basra and Siraf provided enormous customs revenues to the Abbasid treasury. Chinese porcelain and silk became luxury consumer goods in the Islamic world."
     },
     {
       "id": 3,
@@ -21970,7 +21970,7 @@
       "type_ar": "",
       "goods_ar": "",
       "econ_ar": "كانت تجارة التوابل المصدر الاساسي لايرادات الاقتصاد المملوكي والرسولي. كسر البرتغاليون هذا الاحتكار عام 1498 بالدوران حول راس الرجاء الصالح",
-      "econ_en": ""
+      "econ_en": "The spice trade was the primary source of income for the Mamluk and Rasulid economies. The Portuguese rounding of the Cape of Good Hope in 1498 broke this monopoly."
     },
     {
       "id": 4,
@@ -21991,7 +21991,7 @@
       "type_ar": "",
       "goods_ar": "",
       "econ_ar": "غذى ذهب غرب افريقيا اقتصادات شمال افريقيا واوروبا. اعتمدت الدنانير الذهبية الفاطمية والمملوكية على هذا المصدر",
-      "econ_en": ""
+      "econ_en": "West African gold sustained the economies of North Africa and Europe. Fatimid and Mamluk gold dinars depended on this source."
     },
     {
       "id": 5,
@@ -22012,7 +22012,7 @@
       "type_ar": "",
       "goods_ar": "",
       "econ_ar": "المصدر الرئيسي لاقتصاد كانم برنو؛ التجارة المفتوحة على البحر المتوسط من ميناء طرابلس",
-      "econ_en": ""
+      "econ_en": "The main source of income for the Kanem-Bornu economy; trade opening to the Mediterranean through the port of Tripoli."
     },
     {
       "id": 6,
@@ -22033,7 +22033,7 @@
       "type_ar": "",
       "goods_ar": "",
       "econ_ar": "كانت قوافل الحج تحيي الاقتصادات المحلية؛ المدن على الطريق توفر خدمات الاقامة والطعام والماء",
-      "econ_en": ""
+      "econ_en": "Hajj caravans had a stimulating effect on local economies; cities along the route provided accommodation, food, and water services."
     },
     {
       "id": 7,
@@ -22054,7 +22054,7 @@
       "type_ar": "",
       "goods_ar": "",
       "econ_ar": "اشترت الخزينة المملوكية الشرعية السياسية من خلال تغطية مصاريف امن ولوجستيات قوافل الحج",
-      "econ_en": ""
+      "econ_en": "The Mamluk treasury purchased political legitimacy by covering the security and logistical expenses of the hajj caravan."
     },
     {
       "id": 8,
@@ -22075,7 +22075,7 @@
       "type_ar": "",
       "goods_ar": "",
       "econ_ar": "حولت تجارة الذهب في كلوة المدينة الى اغنى المستوطنات في شرق افريقيا في عصرها",
-      "econ_en": ""
+      "econ_en": "Kilwa's gold trade transformed the city into the wealthiest East African settlement of its time."
     },
     {
       "id": 9,
@@ -22096,7 +22096,7 @@
       "type_ar": "",
       "goods_ar": "",
       "econ_ar": "تجارة الحرير والخيل والفواكه ومنتجات التعدين؛ مصدر مهم لايرادات الضرائب العباسية",
-      "econ_en": ""
+      "econ_en": "Trade in silk, horses, fruits, and mining products; an important source of Abbasid tax revenues."
     },
     {
       "id": 10,
@@ -22117,7 +22117,7 @@
       "type_ar": "",
       "goods_ar": "",
       "econ_ar": "اساس هيمنة العالم الاسلامي على التجارة العالمية؛ تجارة التوابل والحرير والخزف خلقت ثروات هائلة",
-      "econ_en": ""
+      "econ_en": "The foundation of the Islamic world's dominance over global trade; the spice, silk, and porcelain trade created enormous wealth."
     },
     {
       "id": 11,
@@ -22138,7 +22138,7 @@
       "type_ar": "",
       "goods_ar": "",
       "econ_ar": "زود ذهب غرب افريقيا العرض النقدي الاساسي لاقتصاد البحر المتوسط؛ كان مصدر الذهب غير المباشر لاوروبا ايضا",
-      "econ_en": ""
+      "econ_en": "West African gold provided the fundamental money supply of the Mediterranean economy; it was also Europe's indirect source of gold."
     },
     {
       "id": 12,
@@ -22159,7 +22159,7 @@
       "type_ar": "",
       "goods_ar": "",
       "econ_ar": "ارتبط صعود تبريز في العهد الايلخاني مباشرة بحيوية هذا الطريق؛ كان تصدير الحرير الصفوي اساس ايرادات الدولة",
-      "econ_en": ""
+      "econ_en": "Tabriz's rise during the Ilkhanid period was directly linked to the vitality of this route; Safavid silk exports formed the foundation of state revenues."
     },
     {
       "id": 13,
@@ -22180,7 +22180,7 @@
       "type_ar": "",
       "goods_ar": "",
       "econ_ar": "كانت ايرادات جمارك عدن من اهم بنود ميزانيات الدولة الرسولية والمملوكية",
-      "econ_en": ""
+      "econ_en": "Aden customs revenues were among the most important items in Rasulid and Mamluk state budgets."
     },
     {
       "id": 14,
@@ -22201,7 +22201,7 @@
       "type_ar": "",
       "goods_ar": "",
       "econ_ar": "وصلت الدراهم الفضية العباسية الى عالم الفايكنغ الاسكندنافي فاثر الفضة الاسلامية على اقتصاد شمال اوروبا",
-      "econ_en": ""
+      "econ_en": "Abbasid silver dirhams reached as far as the Scandinavian Viking world, with 'Islamic silver' influencing the North European economy."
     },
     {
       "id": 15,
@@ -22222,7 +22222,7 @@
       "type_ar": "",
       "goods_ar": "",
       "econ_ar": "",
-      "econ_en": ""
+      "econ_en": "Horse trade played a critical role in South Asia's military economy; Arabian horses were strategic commodities for Indian sultans."
     }
   ],
   "analytics": [
