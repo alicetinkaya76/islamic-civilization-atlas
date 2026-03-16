@@ -135,20 +135,20 @@ function AreaChart({ data, width = 320, height = 180 }) {
 }
 
 /* ── DASHBOARD MAIN ── */
-export default function Dashboard({ lang, t, onTabChange }) {
-  const t = T[lang];
+export default function Dashboard({ lang, t: tProp, onTabChange }) {
+  const t = tProp || T[lang];
   const td = t.dashboard || {};
 
   /* Computed data */
   const overviewStats = useMemo(() => [
-    { key: 'dynasties', icon: '🏛', count: DB.dynasties?.length || 0, label: ${t.layers.dynasties}, tab: 'map' },
-    { key: 'scholars', icon: '📚', count: DB.scholars?.length || 0, label: ${t.layers.scholars}, tab: 'scholars' },
-    { key: 'battles', icon: '⚔', count: DB.battles?.length || 0, label: ${t.layers.battles}, tab: 'battles' },
-    { key: 'rulers', icon: '👑', count: DB.rulers?.length || 0, label: ${t.layers.rulers}, tab: 'map' },
-    { key: 'monuments', icon: '🕌', count: DB.monuments?.length || 0, label: ${t.layers.monuments}, tab: 'map' },
-    { key: 'cities', icon: '🏙', count: DB.cities?.length || 0, label: ${t.layers.cities}, tab: 'map' },
-    { key: 'routes', icon: '🛤', count: DB.routes?.length || 0, label: ${t.layers.routes}, tab: 'map' },
-    { key: 'madrasas', icon: '🎓', count: DB.madrasas?.length || 0, label: ${t.layers.madrasas}, tab: 'map' },
+    { key: 'dynasties', icon: '🏛', count: DB.dynasties?.length || 0, label: t.layers.dynasties, tab: 'map' },
+    { key: 'scholars', icon: '📚', count: DB.scholars?.length || 0, label: t.layers.scholars, tab: 'scholars' },
+    { key: 'battles', icon: '⚔', count: DB.battles?.length || 0, label: t.layers.battles, tab: 'battles' },
+    { key: 'rulers', icon: '👑', count: DB.rulers?.length || 0, label: t.layers.rulers, tab: 'map' },
+    { key: 'monuments', icon: '🕌', count: DB.monuments?.length || 0, label: t.layers.monuments, tab: 'map' },
+    { key: 'cities', icon: '🏙', count: DB.cities?.length || 0, label: t.layers.cities, tab: 'map' },
+    { key: 'routes', icon: '🛤', count: DB.routes?.length || 0, label: t.layers.routes, tab: 'map' },
+    { key: 'madrasas', icon: '🎓', count: DB.madrasas?.length || 0, label: t.layers.madrasas, tab: 'map' },
     { key: 'alam', icon: '📖', count: 13940, label: t.landing.alamBio, tab: 'alam' },
   ], [lang]);
 
@@ -177,7 +177,7 @@ export default function Dashboard({ lang, t, onTabChange }) {
   const regionData = useMemo(() => {
     const counts = {};
     DB.dynasties.forEach(d => {
-      const z = d.zone || (${t.dashboard.unknown});
+      const z = d.zone || t.dashboard.unknown;
       counts[z] = (counts[z] || 0) + 1;
     });
     return Object.entries(counts)

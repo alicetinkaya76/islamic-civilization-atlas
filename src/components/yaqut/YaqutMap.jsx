@@ -221,13 +221,13 @@ export default function YaqutMap({ lang, ty, data, selectedId, selectedEntry, de
           className={`yaqut-mode-btn${viewMode === 'flat' ? ' active' : ''}`}
           onClick={() => setViewMode('flat')}
           title={t.yaqut.tabFlatMap}>
-          🗺️ {ty.flatMap || (${t.yaqut.mapLabel})}
+          🗺️ {ty.flatMap || t.yaqut.mapLabel}
         </button>
         <button
           className={`yaqut-mode-btn${viewMode === 'globe' ? ' active' : ''}`}
           onClick={() => setViewMode('globe')}
           title={t.yaqut.tab3DGlobe}>
-          🌍 {ty.globe3D || (${t.yaqut.globeLabel})}
+          🌍 {ty.globe3D || t.yaqut.globeLabel}
         </button>
       </div>
 
@@ -249,7 +249,7 @@ export default function YaqutMap({ lang, ty, data, selectedId, selectedEntry, de
         <Suspense fallback={
           <div className="yaqut-globe-loading">
             <div className="yaqut-globe-loading-spinner" />
-            <span>{ty.globeLoading || (${t.yaqut.globeLoadingLabel})}</span>
+            <span>{ty.globeLoading || t.yaqut.globeLoadingLabel}</span>
           </div>
         }>
           <YaqutGlobe

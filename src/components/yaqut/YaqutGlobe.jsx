@@ -411,7 +411,7 @@ export default function YaqutGlobe({ lang, ty, data, selectedId, selectedEntry, 
 
       {/* Globe hint */}
       <div className="yaqut-globe-hint">
-        {ty.globeHint || (${t.yaqut.globeHint})}
+        {ty.globeHint || t.yaqut.globeHint}
       </div>
 
       {/* Selected info bar */}

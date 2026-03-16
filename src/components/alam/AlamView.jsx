@@ -64,8 +64,8 @@ const STATS = {
   female: ALAM_LITE.filter(b => b.g === 'F').length,
 };
 
-export default function AlamView({ lang, t }) {
-  const t = T[lang];
+export default function AlamView({ lang, t: tProp }) {
+  const t = tProp || T[lang];
   const ta = t.alam || {};
 
   /* ═══ State ═══ */

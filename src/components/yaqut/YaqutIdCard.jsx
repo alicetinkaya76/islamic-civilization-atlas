@@ -251,7 +251,7 @@ export default function YaqutIdCard({ lang, ty, entry, detail, onClose }) {
       {detail && detail.ft && (
         <div className="yaqut-idcard-section">
           <button className="yaqut-fulltext-toggle" onClick={() => setShowFullText(p => !p)}>
-            📜 {showFullText ? (${t.yaqut.idHideText}) : (${t.yaqut.idOriginalText})}
+            📜 {showFullText ? t.yaqut.idHideText : t.yaqut.idOriginalText}
           </button>
           {showFullText && (
             <div className="yaqut-fulltext" dir="rtl">

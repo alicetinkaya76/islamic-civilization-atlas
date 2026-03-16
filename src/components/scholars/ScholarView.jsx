@@ -27,8 +27,8 @@ const DISC_EN = {
   'Mimari & Sanat':'Architecture', 'Çağdaş İslam Düşüncesi':'Modern Thought',
 };
 
-export default function ScholarView({ lang, t }) {
-  const t = T[lang];
+export default function ScholarView({ lang, t: tProp }) {
+  const t = tProp || T[lang];
   const [view, setView] = useState('network'); // 'network' | 'isnad' | 'timeline'
   const [activeDiscs, setActiveDiscs] = useState(new Set(ALL_DISCS));
   const [periodYear, setPeriodYear] = useState(2025);

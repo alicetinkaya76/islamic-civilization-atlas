@@ -101,8 +101,8 @@ export default function AlamStatsPanel({ lang, ta, data }) {
     const m = data.filter(b => !b.g || b.g === 'M').length;
     const f = data.filter(b => b.g === 'F').length;
     return [
-      { label: ${t.alam.statsMale}, value: m },
-      { label: ${t.alam.statsFemale}, value: f },
+      { label: t.alam.statsMale, value: m },
+      { label: t.alam.statsFemale, value: f },
     ];
   }, [data, lang === "tr"]);
 

@@ -311,16 +311,16 @@ function YaqutViewInner({ lang, t }) {
           {/* Analytics sub-tabs */}
           <div className="yaqut-analytics-tabs">
             <button className={analyticsTab === 'charts' ? 'active' : ''} onClick={() => setAnalyticsTab('charts')}>
-              📊 {ty.tabCharts || (${t.yaqut.tabCharts})}
+              📊 {ty.tabCharts || t.yaqut.tabCharts}
             </button>
             <button className={analyticsTab === 'graph' ? 'active' : ''} onClick={() => setAnalyticsTab('graph')}>
-              🕸 {ty.tabGraph || (${t.yaqut.tabPlaceGraph})}
+              🕸 {ty.tabGraph || t.yaqut.tabPlaceGraph}
             </button>
             <button className={analyticsTab === 'network' ? 'active' : ''} onClick={() => setAnalyticsTab('network')}>
-              👤 {ty.tabNetwork || (${t.yaqut.advPersonPlace})}
+              👤 {ty.tabNetwork || t.yaqut.advPersonPlace}
             </button>
             <button className={analyticsTab === 'heatmap' ? 'active' : ''} onClick={() => setAnalyticsTab('heatmap')}>
-              🔥 {ty.tabHeatmap || (${t.yaqut.tabGeoCluster})}
+              🔥 {ty.tabHeatmap || t.yaqut.tabGeoCluster}
             </button>
           </div>
 

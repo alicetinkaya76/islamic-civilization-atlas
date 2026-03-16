@@ -664,7 +664,7 @@ function PrintedVsManuscript({ data, lang, ta }) {
     const lg = svg.append('g').attr('transform', `translate(${MARGIN.left + 10}, 10)`);
     lg.append('rect').attr('width', 10).attr('height', 10).attr('fill', '#c9a84c').attr('opacity', 0.3).attr('rx', 1);
     lg.append('text').attr('x', 14).attr('y', 9).attr('fill', '#c4b89a').attr('font-size', 10)
-      .text(${t.alam.analyticsTotalWorks});
+      .textt.alam.analyticsTotalWorks;
     const lg2 = svg.append('g').attr('transform', `translate(${MARGIN.left + 10}, 24)`);
     lg2.append('line').attr('x1', 0).attr('x2', 10).attr('y1', 5).attr('y2', 5).attr('stroke', '#4fc3f7').attr('stroke-width', 2);
     lg2.append('text').attr('x', 14).attr('y', 9).attr('fill', '#4fc3f7').attr('font-size', 10)

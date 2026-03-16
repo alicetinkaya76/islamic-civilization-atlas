@@ -271,7 +271,7 @@ export default function ScholarTimeline({ scholars, links, lang, selected, onSel
           const newMin = getMinScore(newK);
           const cnt = scholars.filter(s => getImportance(s) >= newMin).length;
           counterRef.current.textContent = cnt + '/' + scholars.length +
-            ' ' + (${t.scholars.advScholars});
+            ' ' + t.scholars.advScholars;
         }
         // Debounced re-render for label recalculation at every zoom level
         clearTimeout(zoomRenderTimer);

@@ -90,8 +90,8 @@ ISNAD_CHAINS.forEach(ch => {
 
 export { DISC_COLORS };
 
-export default function ScholarNetwork({ scholars, links, lang, selected, onSelect, searchId, t, isnadMode, activeChains }) {
-  const t = T[lang];
+export default function ScholarNetwork({ scholars, links, lang, selected, onSelect, searchId, t: tProp, isnadMode, activeChains }) {
+  const t = tProp || T[lang];
   const svgRef = useRef(null);
   const wrapRef = useRef(null);
   const simRef = useRef(null);
@@ -169,7 +169,7 @@ export default function ScholarNetwork({ scholars, links, lang, selected, onSele
       svg.append('text').attr('x', W/2).attr('y', H/2)
         .attr('text-anchor','middle').attr('fill','#6b6b7b')
         .attr('font-size','14px').attr('font-family','Outfit')
-        .text((t?.scholars?.noResults) || (${t.scholars.advNoResults}));
+        .text((t?.scholars?.noResults) || t.scholars.advNoResults);
       return;
     }
 
@@ -391,7 +391,7 @@ export default function ScholarNetwork({ scholars, links, lang, selected, onSele
       const dates = d.b && d.d ? `${d.b} – ${d.d > 2024 ? '?' : d.d}` : '';
       const city = d.city_tr ? ` · ${d.city_tr}` : '';
       const lc = linkCount[d.id] || 0;
-      const lcLabel = ${t.scholars.advConnections};
+      const lcLabel = t.scholars.advConnections;
 
       let html =
         `<div style="display:flex;align-items:center;gap:6px;margin-bottom:6px">` +
