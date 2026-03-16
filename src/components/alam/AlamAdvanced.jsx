@@ -49,6 +49,7 @@ const SRC_ICON = { wikidata: 'W', dia: 'D', alam: 'A' };
    1) CROSS-REFERENCE NETWORK — D3 Force Graph
    ═══════════════════════════════════════════════════ */
 export function CrossRefNetwork({ data, lang, onSelectPerson }) {
+  const t = T[lang];
   const svgRef = useRef(null);
   const containerRef = useRef(null);
   const [selectedNode, setSelectedNode] = useState(null);
@@ -296,6 +297,7 @@ export function CrossRefNetwork({ data, lang, onSelectPerson }) {
    2) TIME MACHINE — Animated Year Slider
    ═══════════════════════════════════════════════════ */
 export function TimeMachine({ data, lang }) {
+  const t = T[lang];
   const [year, setYear] = useState(850);
   const [playing, setPlaying] = useState(false);
   const intervalRef = useRef(null);
@@ -407,6 +409,7 @@ export function TimeMachine({ data, lang }) {
    3) WORK-PROFESSION SCATTER / BUBBLE
    ═══════════════════════════════════════════════════ */
 export function WorkProfessionScatter({ data, lang }) {
+  const t = T[lang];
   const svgRef = useRef(null);
 
   const bubbles = useMemo(() => {
@@ -510,6 +513,7 @@ export function WorkProfessionScatter({ data, lang }) {
    4) CENTURY COMPARISON — Split Screen
    ═══════════════════════════════════════════════════ */
 export function CenturyComparison({ data, lang }) {
+  const t = T[lang];
   const [centuryA, setCenturyA] = useState(10);
   const [centuryB, setCenturyB] = useState(15);
   const CENTURIES = Array.from({ length: 15 }, (_, i) => i + 6);

@@ -438,6 +438,7 @@ function WorksProduction({ data, lang, ta }) {
 
 /* ═══ F) Migration Map (static arcs view) ═══ */
 function MigrationArcs({ data, lang, ta }) {
+  const t = T[lang];
   const svgRef = useRef(null);
   const [activeCentury, setActiveCentury] = useState(0); // 0 = all
 
@@ -494,6 +495,7 @@ function MigrationArcs({ data, lang, ta }) {
 
 /* ═══ G) Top Authors by Work Count ═══ */
 function TopAuthors({ data, lang, ta }) {
+  const t = T[lang];
   const svgRef = useRef(null);
 
   const topAuthors = useMemo(() => {
@@ -574,6 +576,7 @@ function TopAuthors({ data, lang, ta }) {
 
 /* ═══ H) Printed vs Manuscript Dual Area ═══ */
 function PrintedVsManuscript({ data, lang, ta }) {
+  const t = T[lang];
   const svgRef = useRef(null);
 
   /* We need detail data for type info — use wc from lite as total, estimate from global ratio */

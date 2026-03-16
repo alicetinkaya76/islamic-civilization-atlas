@@ -40,6 +40,7 @@ function buildGeoHistogram(filtered) {
 
 /* ═══ Flat Map (Leaflet) ═══ */
 function FlatMap({ lang, ty, data, selectedId, selectedEntry, detailData, onSelect, filtered }) {
+  const t = T[lang];
   const mapContainer = useRef(null);
   const mapRef = useRef(null);
   const markersRef = useRef(null);

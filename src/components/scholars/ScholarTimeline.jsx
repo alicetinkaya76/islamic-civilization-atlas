@@ -125,6 +125,7 @@ function hideOverlappingLabels(scholars, xScale, zoomK) {
 
 /* ═══ Build rich tooltip HTML ═══ */
 function buildRichTooltip(s, lang, allScholars) {
+  const t = T[lang];
   const nm   = n(s, lang);
   const city = (s[`city_${lang}`] || s.city_en || s.city_tr || '');
   const disc = (s[`disc_${lang}`] || s.disc_en || s.disc_tr || '');

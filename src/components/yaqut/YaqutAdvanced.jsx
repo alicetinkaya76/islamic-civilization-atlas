@@ -7,6 +7,7 @@ import T from '../../data/i18n';
    1) PLACE-PLACE GRAPH — D3 Force Graph
    ═══════════════════════════════════════════════════ */
 export function PlaceGraph({ lang }) {
+  const t = T[lang];
   const svgRef = useRef(null);
   const containerRef = useRef(null);
   const [graphData, setGraphData] = useState(null);
@@ -126,6 +127,7 @@ export function PlaceGraph({ lang }) {
    2) PERSON-PLACE BIPARTITE NETWORK
    ═══════════════════════════════════════════════════ */
 export function PersonPlaceNetwork({ data, lang }) {
+  const t = T[lang];
   const svgRef = useRef(null);
   const containerRef = useRef(null);
 
@@ -220,6 +222,7 @@ export function PersonPlaceNetwork({ data, lang }) {
    3) GEO HEATMAP — Region clustering
    ═══════════════════════════════════════════════════ */
 export function GeoHeatmap({ data, lang }) {
+  const t = T[lang];
   const svgRef = useRef(null);
 
   const regionData = useMemo(() => {

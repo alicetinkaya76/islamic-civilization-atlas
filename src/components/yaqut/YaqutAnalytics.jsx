@@ -24,6 +24,7 @@ const GEO_TR = {
 
 /* ═══ A) Geo Type Distribution — Bar Chart ═══ */
 function GeoTypeChart({ data, lang, ty }) {
+  const t = T[lang];
   const svgRef = useRef(null);
 
   const geoData = useMemo(() => {
@@ -68,6 +69,7 @@ function GeoTypeChart({ data, lang, ty }) {
 
 /* ═══ B) Country Distribution ═══ */
 function CountryChart({ data, lang, ty }) {
+  const t = T[lang];
   const svgRef = useRef(null);
 
   const countryData = useMemo(() => {
@@ -113,6 +115,7 @@ function CountryChart({ data, lang, ty }) {
 
 /* ═══ C) Arabic Letter Distribution ═══ */
 function LetterChart({ data, lang, ty }) {
+  const t = T[lang];
   const svgRef = useRef(null);
 
   const letterData = useMemo(() => {
@@ -156,6 +159,7 @@ function LetterChart({ data, lang, ty }) {
 
 /* ═══ D) Atlas Tags — Tag Cloud ═══ */
 function TagCloud({ data, lang, ty }) {
+  const t = T[lang];
   const tagData = useMemo(() => {
     const counts = {};
     data.forEach(e => { if (e.tg) e.tg.forEach(t => { counts[t] = (counts[t] || 0) + 1; }); });
@@ -263,6 +267,7 @@ function TimeDistribution({ data, lang, ty }) {
 
 /* ═══ G) DIA Coverage — Stacked bar (DIA linked vs not) per geo type ═══ */
 function DiaCoverage({ data, lang, ty }) {
+  const t = T[lang];
   const svgRef = useRef(null);
   const chartData = useMemo(() => {
     const byType = {};
@@ -328,6 +333,7 @@ function DiaCoverage({ data, lang, ty }) {
 
 /* ═══ H) Events & Persons Scatter — bubble chart ═══ */
 function EventPersonScatter({ data, lang, ty }) {
+  const t = T[lang];
   const svgRef = useRef(null);
   const bubbles = useMemo(() => {
     return data.filter(e => ((e.np || 0) > 0 || (e.ec || 0) > 0) && e.ct)
