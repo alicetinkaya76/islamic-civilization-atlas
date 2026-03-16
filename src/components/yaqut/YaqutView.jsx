@@ -7,6 +7,7 @@ import YaqutAnalytics from './YaqutAnalytics';
 import YaqutStatsPanel from './YaqutStatsPanel';
 import { PlaceGraph, PersonPlaceNetwork, GeoHeatmap } from './YaqutAdvanced';
 import '../../styles/yaqut.css';
+import T from '../../data/i18n';
 
 /* ═══ Error Boundary ═══ */
 class YaqutErrorBoundary extends Component {
@@ -17,11 +18,11 @@ class YaqutErrorBoundary extends Component {
     if (this.state.hasError) {
       return (
         <div style={{ padding: 40, textAlign: 'center', color: '#c4b89a' }}>
-          <h3>⚠️ {{ tr: 'Bir hata oluştu', en: 'An error occurred', ar: 'حدث خطأ' }[this.props.lang]}</h3>
+          <h3>⚠️ {T[this.props.lang].yaqut.errorOccurred}</h3>
           <p style={{ color: '#ef5350', fontSize: 12, fontFamily: 'monospace' }}>{String(this.state.error)}</p>
           <button onClick={() => this.setState({ hasError: false, error: null })}
             style={{ marginTop: 16, padding: '8px 16px', background: '#1a6b5a', color: '#fff', border: 'none', borderRadius: 6, cursor: 'pointer' }}>
-            {{ tr: 'Tekrar Dene', en: 'Retry', ar: 'إعادة المحاولة' }[this.props.lang]}
+            {T[this.props.lang].yaqut.retry}
           </button>
         </div>
       );
@@ -247,14 +248,14 @@ function YaqutViewInner({ lang, t }) {
       {/* Mobile toggle */}
       <div className="yaqut-mobile-toggle">
         <button className={showMobile === 'list' ? 'active' : ''} onClick={() => setShowMobile('list')}>
-          ☰ {{ tr: 'Liste', en: 'List', ar: '' }[lang]}
+          ☰ {t.yaqut.tabList}
         </button>
         <button className={showMobile === 'map' ? 'active' : ''} onClick={() => setShowMobile('map')}>
           🗺 {ty.mapView}
         </button>
         {selectedEntry && (
           <button className={showMobile === 'card' ? 'active' : ''} onClick={() => setShowMobile('card')}>
-            📋 {{ tr: 'Detay', en: 'Detail', ar: '' }[lang]}
+            📋 {t.yaqut.tabDetail}
           </button>
         )}
       </div>
@@ -310,16 +311,16 @@ function YaqutViewInner({ lang, t }) {
           {/* Analytics sub-tabs */}
           <div className="yaqut-analytics-tabs">
             <button className={analyticsTab === 'charts' ? 'active' : ''} onClick={() => setAnalyticsTab('charts')}>
-              📊 {ty.tabCharts || ({ tr: 'Grafikler', en: 'Charts', ar: '' }[lang])}
+              📊 {ty.tabCharts || (${t.yaqut.tabCharts})}
             </button>
             <button className={analyticsTab === 'graph' ? 'active' : ''} onClick={() => setAnalyticsTab('graph')}>
-              🕸 {ty.tabGraph || ({ tr: 'Yer Grafı', en: 'Place Graph', ar: '' }[lang])}
+              🕸 {ty.tabGraph || (${t.yaqut.tabPlaceGraph})}
             </button>
             <button className={analyticsTab === 'network' ? 'active' : ''} onClick={() => setAnalyticsTab('network')}>
-              👤 {ty.tabNetwork || ({ tr: 'Kişi-Yer Ağı', en: 'Person-Place Network', ar: '' }[lang])}
+              👤 {ty.tabNetwork || (${t.yaqut.advPersonPlace})}
             </button>
             <button className={analyticsTab === 'heatmap' ? 'active' : ''} onClick={() => setAnalyticsTab('heatmap')}>
-              🔥 {ty.tabHeatmap || ({ tr: 'Coğrafi Kümeleme', en: 'Geo Clustering', ar: '' }[lang])}
+              🔥 {ty.tabHeatmap || (${t.yaqut.tabGeoCluster})}
             </button>
           </div>
 

@@ -6,6 +6,7 @@ import { ERA_BANDS } from '../../config/eras';
 import { ZONE_C } from '../../config/colors';
 import '../../styles/dashboard.css';
 import { f, n } from '../../data/i18n-utils';
+import T from '../../data/i18n';
 
 /* ── CountUp animation ── */
 function CountUp({ target, duration = 1800 }) {
@@ -135,19 +136,20 @@ function AreaChart({ data, width = 320, height = 180 }) {
 
 /* ── DASHBOARD MAIN ── */
 export default function Dashboard({ lang, t, onTabChange }) {
+  const t = T[lang];
   const td = t.dashboard || {};
 
   /* Computed data */
   const overviewStats = useMemo(() => [
-    { key: 'dynasties', icon: '🏛', count: DB.dynasties?.length || 0, label: { tr: 'Hanedan', en: 'Dynasties', ar: '' }[lang], tab: 'map' },
-    { key: 'scholars', icon: '📚', count: DB.scholars?.length || 0, label: { tr: 'Âlim', en: 'Scholars', ar: '' }[lang], tab: 'scholars' },
-    { key: 'battles', icon: '⚔', count: DB.battles?.length || 0, label: { tr: 'Savaş', en: 'Battles', ar: '' }[lang], tab: 'battles' },
-    { key: 'rulers', icon: '👑', count: DB.rulers?.length || 0, label: { tr: 'Hükümdar', en: 'Rulers', ar: '' }[lang], tab: 'map' },
-    { key: 'monuments', icon: '🕌', count: DB.monuments?.length || 0, label: { tr: 'Eser', en: 'Monuments', ar: '' }[lang], tab: 'map' },
-    { key: 'cities', icon: '🏙', count: DB.cities?.length || 0, label: { tr: 'Şehir', en: 'Cities', ar: '' }[lang], tab: 'map' },
-    { key: 'routes', icon: '🛤', count: DB.routes?.length || 0, label: { tr: 'Ticaret Yolu', en: 'Trade Routes', ar: '' }[lang], tab: 'map' },
-    { key: 'madrasas', icon: '🎓', count: DB.madrasas?.length || 0, label: { tr: 'Medrese', en: 'Madrasas', ar: '' }[lang], tab: 'map' },
-    { key: 'alam', icon: '📖', count: 13940, label: { tr: 'el-A\'lâm Biyografi', en: 'al-Aʿlām Biographies', ar: '' }[lang], tab: 'alam' },
+    { key: 'dynasties', icon: '🏛', count: DB.dynasties?.length || 0, label: ${t.layers.dynasties}, tab: 'map' },
+    { key: 'scholars', icon: '📚', count: DB.scholars?.length || 0, label: ${t.layers.scholars}, tab: 'scholars' },
+    { key: 'battles', icon: '⚔', count: DB.battles?.length || 0, label: ${t.layers.battles}, tab: 'battles' },
+    { key: 'rulers', icon: '👑', count: DB.rulers?.length || 0, label: ${t.layers.rulers}, tab: 'map' },
+    { key: 'monuments', icon: '🕌', count: DB.monuments?.length || 0, label: ${t.layers.monuments}, tab: 'map' },
+    { key: 'cities', icon: '🏙', count: DB.cities?.length || 0, label: ${t.layers.cities}, tab: 'map' },
+    { key: 'routes', icon: '🛤', count: DB.routes?.length || 0, label: ${t.layers.routes}, tab: 'map' },
+    { key: 'madrasas', icon: '🎓', count: DB.madrasas?.length || 0, label: ${t.layers.madrasas}, tab: 'map' },
+    { key: 'alam', icon: '📖', count: 13940, label: t.landing.alamBio, tab: 'alam' },
   ], [lang]);
 
   /* Era distribution */
@@ -175,7 +177,7 @@ export default function Dashboard({ lang, t, onTabChange }) {
   const regionData = useMemo(() => {
     const counts = {};
     DB.dynasties.forEach(d => {
-      const z = d.zone || ({ tr: 'Bilinmeyen', en: 'Unknown', ar: '' }[lang]);
+      const z = d.zone || (${t.dashboard.unknown});
       counts[z] = (counts[z] || 0) + 1;
     });
     return Object.entries(counts)

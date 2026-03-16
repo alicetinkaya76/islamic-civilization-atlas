@@ -7,6 +7,7 @@ import AlamAnalytics from './AlamAnalytics';
 import AlamStatsPanel from './AlamStatsPanel';
 import { CrossRefNetwork, TimeMachine, WorkProfessionScatter, CenturyComparison } from './AlamAdvanced';
 import '../../styles/alam.css';
+import T from '../../data/i18n';
 
 /* ═══ Precompute lookup maps ═══ */
 const ALAM_BY_ID = {};
@@ -64,6 +65,7 @@ const STATS = {
 };
 
 export default function AlamView({ lang, t }) {
+  const t = T[lang];
   const ta = t.alam || {};
 
   /* ═══ State ═══ */
@@ -195,14 +197,14 @@ export default function AlamView({ lang, t }) {
       {/* Mobile toggle */}
       <div className="alam-mobile-toggle">
         <button className={showMobile === 'list' ? 'active' : ''} onClick={() => setShowMobile('list')}>
-          ☰ {{ tr: 'Liste', en: 'List', ar: '' }[lang]}
+          ☰ {t.alam.tabList}
         </button>
         <button className={showMobile === 'map' ? 'active' : ''} onClick={() => setShowMobile('map')}>
           🗺 {ta.mapView}
         </button>
         {selectedBio && (
           <button className={showMobile === 'card' ? 'active' : ''} onClick={() => setShowMobile('card')}>
-            📋 {{ tr: 'Detay', en: 'Detail', ar: '' }[lang]}
+            📋 {t.alam.tabDetail}
           </button>
         )}
       </div>
@@ -257,19 +259,19 @@ export default function AlamView({ lang, t }) {
           {/* Analytics sub-tabs */}
           <div className="alam-analytics-tabs">
             <button className={analyticsTab === 'charts' ? 'active' : ''} onClick={() => setAnalyticsTab('charts')}>
-              📊 {{ tr: 'Grafikler', en: 'Charts', ar: '' }[lang]}
+              📊 {t.alam.tabCharts}
             </button>
             <button className={analyticsTab === 'network' ? 'active' : ''} onClick={() => setAnalyticsTab('network')}>
-              🕸 {{ tr: 'Referans Ağı', en: 'Ref Network', ar: '' }[lang]}
+              🕸 {t.alam.tabRefNetwork}
             </button>
             <button className={analyticsTab === 'timemachine' ? 'active' : ''} onClick={() => setAnalyticsTab('timemachine')}>
-              ⏳ {{ tr: 'Zaman Makinesi', en: 'Time Machine', ar: '' }[lang]}
+              ⏳ {t.alam.advTimeMachine}
             </button>
             <button className={analyticsTab === 'scatter' ? 'active' : ''} onClick={() => setAnalyticsTab('scatter')}>
-              🔬 {{ tr: 'Korelasyon', en: 'Correlation', ar: '' }[lang]}
+              🔬 {t.alam.tabCorrelation}
             </button>
             <button className={analyticsTab === 'compare' ? 'active' : ''} onClick={() => setAnalyticsTab('compare')}>
-              ⚖ {{ tr: 'Karşılaştır', en: 'Compare', ar: '' }[lang]}
+              ⚖ {t.alam.tabCompare}
             </button>
           </div>
 

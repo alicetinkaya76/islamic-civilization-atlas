@@ -1,5 +1,6 @@
 import { useMemo, useState, useEffect, useRef } from 'react';
 import * as d3 from 'd3';
+import T from '../../data/i18n';
 
 /* ═══ Mini donut chart ═══ */
 function MiniDonut({ data, colors, size = 100 }) {
@@ -61,6 +62,7 @@ function AnimNum({ target }) {
 }
 
 export default function AlamStatsPanel({ lang, ta, data }) {
+  const t = T[lang];
 
   /* ── Core stats ── */
   const stats = useMemo(() => {
@@ -99,8 +101,8 @@ export default function AlamStatsPanel({ lang, ta, data }) {
     const m = data.filter(b => !b.g || b.g === 'M').length;
     const f = data.filter(b => b.g === 'F').length;
     return [
-      { label: { tr: 'Erkek', en: 'Male', ar: '' }[lang], value: m },
-      { label: { tr: 'Kadın', en: 'Female', ar: '' }[lang], value: f },
+      { label: ${t.alam.statsMale}, value: m },
+      { label: ${t.alam.statsFemale}, value: f },
     ];
   }, [data, lang === "tr"]);
 
@@ -169,55 +171,55 @@ export default function AlamStatsPanel({ lang, ta, data }) {
     <div className="alam-stats-panel">
       {/* Title */}
       <div className="alam-sp-header">
-        <h3>{{ tr: 'Veri Profili', en: 'Data Profile', ar: '' }[lang]}</h3>
-        <span className="alam-sp-badge">{{ tr: 'Canlı İstatistik', en: 'Live Stats', ar: '' }[lang]}</span>
+        <h3>{t.alam.statsDataProfile}</h3>
+        <span className="alam-sp-badge">{t.alam.statsLive}</span>
       </div>
 
       {/* Key metrics */}
       <div className="alam-sp-metrics">
         <div className="alam-sp-metric">
           <span className="alam-sp-metric-num"><AnimNum target={stats.total} /></span>
-          <span className="alam-sp-metric-label">{{ tr: 'Biyografi', en: 'Biographies', ar: '' }[lang]}</span>
+          <span className="alam-sp-metric-label">{t.alam.statsBio}</span>
         </div>
         <div className="alam-sp-metric">
           <span className="alam-sp-metric-num"><AnimNum target={stats.geocoded} /></span>
-          <span className="alam-sp-metric-label">{{ tr: 'Konumlu', en: 'Geocoded', ar: '' }[lang]}</span>
+          <span className="alam-sp-metric-label">{t.alam.statsGeocoded}</span>
         </div>
         <div className="alam-sp-metric">
           <span className="alam-sp-metric-num"><AnimNum target={stats.totalWorks} /></span>
-          <span className="alam-sp-metric-label">{{ tr: 'Eser', en: 'Works', ar: '' }[lang]}</span>
+          <span className="alam-sp-metric-label">{t.alam.statsEser}</span>
         </div>
         <div className="alam-sp-metric">
           <span className="alam-sp-metric-num"><AnimNum target={stats.withDia} /></span>
-          <span className="alam-sp-metric-label">{{ tr: 'DİA Bağlantılı', en: 'DIA Linked', ar: '' }[lang]}</span>
+          <span className="alam-sp-metric-label">{t.alam.statsDiaLinked}</span>
         </div>
         <div className="alam-sp-metric">
           <span className="alam-sp-metric-num"><AnimNum target={stats.withWorks} /></span>
-          <span className="alam-sp-metric-label">{{ tr: 'Müellif', en: 'Authors', ar: '' }[lang]}</span>
+          <span className="alam-sp-metric-label">{t.alam.statsAuthors}</span>
         </div>
         <div className="alam-sp-metric">
           <span className="alam-sp-metric-num"><AnimNum target={stats.female} /></span>
-          <span className="alam-sp-metric-label">{{ tr: 'Kadın', en: 'Female', ar: '' }[lang]}</span>
+          <span className="alam-sp-metric-label">{t.alam.statsFemale}</span>
         </div>
       </div>
 
       {/* Works highlight */}
       <div className="alam-sp-section alam-sp-works-highlight">
         <div className="alam-sp-section-head">
-          <span>📚 {{ tr: 'Eser İstatistikleri', en: 'Works Statistics', ar: '' }[lang]}</span>
+          <span>📚 {t.alam.statsWorks}</span>
         </div>
         <div className="alam-sp-works-row">
           <span className="alam-sp-works-item">
             <strong>{stats.withWorks > 0 ? (stats.totalWorks / stats.withWorks).toFixed(1) : 0}</strong>
-            <small>{{ tr: 'ort. eser/müellif', en: 'avg works/author', ar: '' }[lang]}</small>
+            <small>{t.alam.statsAvgWorks}</small>
           </span>
           <span className="alam-sp-works-item">
             <strong>6,200</strong>
-            <small>{{ tr: 'basılı (ط)', en: 'printed (ط)', ar: '' }[lang]}</small>
+            <small>{t.alam.statsPrinted}</small>
           </span>
           <span className="alam-sp-works-item">
             <strong>5,212</strong>
-            <small>{{ tr: 'yazma (خ)', en: 'manuscript (خ)', ar: '' }[lang]}</small>
+            <small>{t.alam.statsManuscript}</small>
           </span>
         </div>
       </div>
@@ -225,8 +227,8 @@ export default function AlamStatsPanel({ lang, ta, data }) {
       {/* Century sparkline */}
       <div className="alam-sp-section">
         <div className="alam-sp-section-head">
-          <span>{{ tr: 'Yüzyıl Eğrisi', en: 'Century Curve', ar: '' }[lang]}</span>
-          <span className="alam-sp-range">6.–20. {{ tr: 'yy', en: 'c.', ar: '' }[lang]}</span>
+          <span>{t.alam.statsCenturyCurve}</span>
+          <span className="alam-sp-range">6.–20. {t.alam.statsCentury}</span>
         </div>
         <Sparkline values={centurySpark} color="#c9a84c" width={240} height={44} />
       </div>
@@ -234,8 +236,8 @@ export default function AlamStatsPanel({ lang, ta, data }) {
       {/* Madhab donut */}
       <div className="alam-sp-section">
         <div className="alam-sp-section-head">
-          <span>{{ tr: 'Mezhep Dağılımı', en: 'Legal Schools', ar: '' }[lang]}</span>
-          <span className="alam-sp-range">{stats.withMadhab.toLocaleString()} {{ tr: 'kayıt', en: 'entries', ar: '' }[lang]}</span>
+          <span>{t.alam.statsMadhab}</span>
+          <span className="alam-sp-range">{stats.withMadhab.toLocaleString()} {t.alam.statsEntries}</span>
         </div>
         <div className="alam-sp-donut-row">
           <MiniDonut data={madhabData} colors={madhabColors} size={90} />
@@ -254,7 +256,7 @@ export default function AlamStatsPanel({ lang, ta, data }) {
       {/* Gender donut */}
       <div className="alam-sp-section">
         <div className="alam-sp-section-head">
-          <span>{{ tr: 'Cinsiyet', en: 'Gender', ar: '' }[lang]}</span>
+          <span>{t.alam.statsGender}</span>
         </div>
         <div className="alam-sp-donut-row">
           <MiniDonut data={genderData} colors={['#4fc3f7', '#f06292']} size={70} />
@@ -273,7 +275,7 @@ export default function AlamStatsPanel({ lang, ta, data }) {
       {/* Top professions */}
       <div className="alam-sp-section">
         <div className="alam-sp-section-head">
-          <span>{{ tr: 'Baskın Meslekler', en: 'Top Professions', ar: '' }[lang]}</span>
+          <span>{t.alam.advTopProf}</span>
         </div>
         <div className="alam-sp-bars">
           {topProfs.map(([name, count]) => (
@@ -291,7 +293,7 @@ export default function AlamStatsPanel({ lang, ta, data }) {
       {/* Top regions */}
       <div className="alam-sp-section">
         <div className="alam-sp-section-head">
-          <span>{{ tr: 'En Yoğun Bölgeler', en: 'Top Regions', ar: '' }[lang]}</span>
+          <span>{t.alam.advTopRegions}</span>
         </div>
         <div className="alam-sp-bars">
           {topRegions.map(([name, count]) => (

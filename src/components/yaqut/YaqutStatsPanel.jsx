@@ -1,5 +1,6 @@
 import { useMemo, useState, useEffect, useRef } from 'react';
 import * as d3 from 'd3';
+import T from '../../data/i18n';
 
 /* ═══ Mini donut chart ═══ */
 function MiniDonut({ data, colors, size = 100 }) {
@@ -61,6 +62,7 @@ function AnimNum({ target }) {
 }
 
 export default function YaqutStatsPanel({ lang, ty, data }) {
+  const t = T[lang];
 
   /* ── Core stats ── */
   const stats = useMemo(() => {
@@ -153,42 +155,42 @@ export default function YaqutStatsPanel({ lang, ty, data }) {
     <div className="yaqut-stats-panel">
       {/* Title */}
       <div className="yaqut-sp-header">
-        <h3>{{ tr: 'Veri Profili', en: 'Data Profile', ar: '' }[lang]}</h3>
-        <span className="yaqut-sp-badge">{{ tr: 'Canlı İstatistik', en: 'Live Stats', ar: '' }[lang]}</span>
+        <h3>{t.alam.statsDataProfile}</h3>
+        <span className="yaqut-sp-badge">{t.alam.statsLive}</span>
       </div>
 
       {/* Key metrics */}
       <div className="yaqut-sp-metrics">
         <div className="yaqut-sp-metric">
           <span className="yaqut-sp-metric-num"><AnimNum target={stats.total} /></span>
-          <span className="yaqut-sp-metric-label">{{ tr: 'Giriş', en: 'Entries', ar: '' }[lang]}</span>
+          <span className="yaqut-sp-metric-label">{t.yaqut.statsEntries}</span>
         </div>
         <div className="yaqut-sp-metric">
           <span className="yaqut-sp-metric-num"><AnimNum target={stats.geocoded} /></span>
-          <span className="yaqut-sp-metric-label">{{ tr: 'Konumlu', en: 'Geocoded', ar: '' }[lang]}</span>
+          <span className="yaqut-sp-metric-label">{t.yaqut.statsGeocoded}</span>
         </div>
         <div className="yaqut-sp-metric">
           <span className="yaqut-sp-metric-num"><AnimNum target={stats.withDia} /></span>
-          <span className="yaqut-sp-metric-label">{{ tr: 'DİA', en: 'DIA', ar: '' }[lang]}</span>
+          <span className="yaqut-sp-metric-label">{t.yaqut.statsDia}</span>
         </div>
         <div className="yaqut-sp-metric">
           <span className="yaqut-sp-metric-num"><AnimNum target={stats.totalXrefPersons} /></span>
-          <span className="yaqut-sp-metric-label">{{ tr: 'Kişi Bağ.', en: 'Person Links', ar: '' }[lang]}</span>
+          <span className="yaqut-sp-metric-label">{t.yaqut.statsPersonLinks}</span>
         </div>
         <div className="yaqut-sp-metric">
           <span className="yaqut-sp-metric-num"><AnimNum target={stats.withEvents} /></span>
-          <span className="yaqut-sp-metric-label">{{ tr: 'Olaylı', en: 'With Events', ar: '' }[lang]}</span>
+          <span className="yaqut-sp-metric-label">{t.yaqut.statsWithEvents}</span>
         </div>
         <div className="yaqut-sp-metric">
           <span className="yaqut-sp-metric-num"><AnimNum target={stats.withPoetry} /></span>
-          <span className="yaqut-sp-metric-label">{{ tr: 'Şiirli', en: 'With Poetry', ar: '' }[lang]}</span>
+          <span className="yaqut-sp-metric-label">{t.yaqut.statsWithPoetry}</span>
         </div>
       </div>
 
       {/* Letter sparkline */}
       <div className="yaqut-sp-section">
         <div className="yaqut-sp-section-head">
-          <span>{{ tr: 'Harf Dağılımı', en: 'Letter Distribution', ar: '' }[lang]}</span>
+          <span>{t.yaqut.statsLetterDist}</span>
           <span className="yaqut-sp-range">أ – ي</span>
         </div>
         <Sparkline values={letterSpark} color="#1a6b5a" width={240} height={44} />
@@ -197,7 +199,7 @@ export default function YaqutStatsPanel({ lang, ty, data }) {
       {/* Geo type donut */}
       <div className="yaqut-sp-section">
         <div className="yaqut-sp-section-head">
-          <span>{{ tr: 'Coğrafi Tip', en: 'Geo Types', ar: '' }[lang]}</span>
+          <span>{t.yaqut.statsGeoTypes}</span>
         </div>
         <div className="yaqut-sp-donut-row">
           <MiniDonut data={geoDonutData} colors={geoColors} size={90} />
@@ -216,7 +218,7 @@ export default function YaqutStatsPanel({ lang, ty, data }) {
       {/* Period donut */}
       <div className="yaqut-sp-section">
         <div className="yaqut-sp-section-head">
-          <span>{{ tr: 'Tarihî Dönem', en: 'Historical Period', ar: '' }[lang]}</span>
+          <span>{t.yaqut.statsHistPeriod}</span>
         </div>
         <div className="yaqut-sp-donut-row">
           <MiniDonut data={periodData} colors={['#66bb6a', '#ff8a65', '#ce93d8']} size={70} />
@@ -235,7 +237,7 @@ export default function YaqutStatsPanel({ lang, ty, data }) {
       {/* Top geo types */}
       <div className="yaqut-sp-section">
         <div className="yaqut-sp-section-head">
-          <span>{{ tr: 'Baskın Tipler', en: 'Top Types', ar: '' }[lang]}</span>
+          <span>{t.yaqut.statsTopTypes}</span>
         </div>
         <div className="yaqut-sp-bars">
           {topGeoTypes.map(([name, count]) => (
@@ -253,7 +255,7 @@ export default function YaqutStatsPanel({ lang, ty, data }) {
       {/* Top countries */}
       <div className="yaqut-sp-section">
         <div className="yaqut-sp-section-head">
-          <span>{{ tr: 'En Yoğun Ülkeler', en: 'Top Countries', ar: '' }[lang]}</span>
+          <span>{t.yaqut.statsTopCountries}</span>
         </div>
         <div className="yaqut-sp-bars">
           {topCountries.map(([name, count]) => (

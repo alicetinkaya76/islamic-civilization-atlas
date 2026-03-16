@@ -4,6 +4,7 @@ import { ERA_BANDS } from '../../config/eras';
 import { DISC_COLORS } from './ScholarNetwork';
 import SCHOLAR_LINKS from '../../data/scholar_links';
 import { n } from '../../data/i18n-utils';
+import T from '../../data/i18n';
 
 /* ═══════════════════════════════════════════════════════════
    ScholarTimeline v4.8.4.4 — SOFISTIKE ZAMAN ÇİZELGESİ
@@ -157,26 +158,27 @@ function buildRichTooltip(s, lang, allScholars) {
   html += `</div>`;
   // Works
   if (works.length > 0) {
-    html += `<div style="font-size:10px;color:#9ca3af;margin-bottom:2px;font-weight:600">${{ tr: 'Eserler', en: 'Works', ar: '' }[lang]}:</div>`;
+    html += `<div style="font-size:10px;color:#9ca3af;margin-bottom:2px;font-weight:600">${t.scholars.advWorks}:</div>`;
     html += `<div style="font-size:11px;color:#d1d5db;margin-bottom:6px;line-height:1.4">`;
     works.slice(0, 3).forEach(w => { html += `<span style="color:${dColor}">•</span> ${w}<br/>`; });
-    if (works.length > 3) html += `<span style="color:#6b7280">+${works.length - 3} ${{ tr: 'daha', en: 'more', ar: '' }[lang]}…</span>`;
+    if (works.length > 3) html += `<span style="color:#6b7280">+${works.length - 3} ${t.scholars.advMore}…</span>`;
     html += `</div>`;
   }
   // Teachers
   if (teacherNames.length > 0) {
-    html += `<div style="font-size:10px;color:#9ca3af;margin-bottom:2px;font-weight:600">👨‍🏫 ${{ tr: 'Hocaları', en: 'Teachers', ar: '' }[lang]}:</div>`;
+    html += `<div style="font-size:10px;color:#9ca3af;margin-bottom:2px;font-weight:600">👨‍🏫 ${t.scholars.advTeachers}:</div>`;
     html += `<div style="font-size:11px;color:#a3e635;margin-bottom:4px">${teacherNames.join(', ')}</div>`;
   }
   // Students
   if (studentNames.length > 0) {
-    html += `<div style="font-size:10px;color:#9ca3af;margin-bottom:2px;font-weight:600">🎓 ${{ tr: 'Öğrencileri', en: 'Students', ar: '' }[lang]}:</div>`;
+    html += `<div style="font-size:10px;color:#9ca3af;margin-bottom:2px;font-weight:600">🎓 ${t.scholars.advStudents}:</div>`;
     html += `<div style="font-size:11px;color:#60a5fa;margin-bottom:2px">${studentNames.join(', ')}</div>`;
   }
   return { html, dColor };
 }
 
 export default function ScholarTimeline({ scholars, links, lang, selected, onSelect, showLinks }) {
+  const t = T[lang];
   const svgRef     = useRef(null);
   const wrapRef    = useRef(null);
   const tipRef     = useRef(null);
@@ -269,7 +271,7 @@ export default function ScholarTimeline({ scholars, links, lang, selected, onSel
           const newMin = getMinScore(newK);
           const cnt = scholars.filter(s => getImportance(s) >= newMin).length;
           counterRef.current.textContent = cnt + '/' + scholars.length +
-            ' ' + ({ tr: 'âlim', en: 'scholars', ar: '' }[lang]);
+            ' ' + (${t.scholars.advScholars});
         }
         // Debounced re-render for label recalculation at every zoom level
         clearTimeout(zoomRenderTimer);
@@ -641,10 +643,10 @@ export default function ScholarTimeline({ scholars, links, lang, selected, onSel
         pointerEvents: 'auto',
       }}>
         <span ref={counterRef} style={{ fontSize: 11, color: '#6b7280', fontFamily: 'Outfit' }}>
-          {scholars.filter(s => getImportance(s) >= 3).length}/{scholars.length} {{ tr: 'âlim', en: 'scholars', ar: '' }[lang]}
+          {scholars.filter(s => getImportance(s) >= 3).length}/{scholars.length} {t.scholars.advScholars}
         </span>
         <button className="scholar-zoom-reset" onClick={resetZoom} style={{ position: 'static' }}>
-          ⟳ {{ tr: 'Sıfırla', en: 'Reset', ar: '' }[lang]}
+          ⟳ {t.scholars.advReset}
         </button>
       </div>
 
@@ -658,7 +660,7 @@ export default function ScholarTimeline({ scholars, links, lang, selected, onSel
           fontSize: 12, color: '#9ca3af', fontFamily: 'Outfit',
           pointerEvents: 'none', whiteSpace: 'nowrap', zIndex: 5,
         }}>
-          🔍 {{ tr: 'Yakınlaştır: daha fazla âlim görünür', en: 'Zoom in to reveal more scholars', ar: '' }[lang]}
+          🔍 {t.scholars.advZoomHint}
         </div>
       )}
     </div>

@@ -1,6 +1,7 @@
 import { useMemo } from 'react';
 import XREFS from '../../data/alam_xrefs.json';
 import { hn, dn } from '../../data/i18n-utils';
+import T from '../../data/i18n';
 
 /* ═══ Normalize xrefs ═══ */
 function normalizeXrefs(raw) {
@@ -35,6 +36,7 @@ function formatDate(hVal, mVal, place, ta) {
 }
 
 export default function AlamIdCard({ lang, ta, bio, detail, onClose, allData, onNavigate }) {
+  const t = T[lang];
   if (!bio) {
     return (
       <div className="alam-idcard-empty">
@@ -159,7 +161,7 @@ export default function AlamIdCard({ lang, ta, bio, detail, onClose, allData, on
         <h3 className="alam-idcard-h1">{heading1}</h3>
         <p className="alam-idcard-h2">{heading2}</p>
         <p className="alam-idcard-arabic" dir="rtl">{bio.h}</p>
-        {bio.g === 'F' && <span className="alam-idcard-gender-badge">{{ tr: 'Kadın', en: 'Female', ar: '' }[lang]}</span>}
+        {bio.g === 'F' && <span className="alam-idcard-gender-badge">{t.alam.statsFemale}</span>}
       </div>
 
       {/* Full name */}
@@ -230,33 +232,33 @@ export default function AlamIdCard({ lang, ta, bio, detail, onClose, allData, on
             🕸 {lang === "tr" ? `İlişkiler (${relations.total})` : `Relationships (${relations.total})`}
           </h4>
           <RelList
-            title={{ tr: 'Hocaları', en: 'Teachers', ar: '' }[lang]}
+            title={t.alam.idTeachers}
             items={relations.teachers}
             icon="→"
           />
           <RelList
-            title={{ tr: 'Talebeleri', en: 'Students', ar: '' }[lang]}
+            title={t.alam.idStudents}
             items={relations.students}
             icon="←"
           />
           <RelList
-            title={{ tr: 'Etkilendikleri', en: 'Influenced by', ar: '' }[lang]}
+            title={t.alam.idInfluencedBy}
             items={relations.influences}
             icon="💡"
           />
           <RelList
-            title={{ tr: 'Akranlar', en: 'Peers', ar: '' }[lang]}
+            title={t.alam.idPeers}
             items={relations.peers}
             icon="⟷"
           />
           <RelList
-            title={{ tr: 'Diğer', en: 'Other', ar: '' }[lang]}
+            title={t.alam.idOther}
             items={relations.others}
             icon="·"
           />
           {onNavigate && (
             <p style={{ fontSize: 10, color: '#546e7a', marginTop: 4 }}>
-              {{ tr: '↑ Tıkla → kişiye git', en: '↑ Click → navigate to person', ar: '' }[lang]}
+              {t.alam.idClickPerson}
             </p>
           )}
         </div>
@@ -282,7 +284,7 @@ export default function AlamIdCard({ lang, ta, bio, detail, onClose, allData, on
       {/* Multi-coordinates */}
       {multiCoords && multiCoords.length > 1 && (
         <div className="alam-idcard-places">
-          <h4 className="alam-idcard-section-title">📍 {{ tr: 'Mekânlar', en: 'Places', ar: '' }[lang]}</h4>
+          <h4 className="alam-idcard-section-title">📍 {t.alam.idPlaces}</h4>
           <div className="alam-places-list">
             {multiCoords.map((c, i) => (
               <span key={i} className="alam-place-tag">

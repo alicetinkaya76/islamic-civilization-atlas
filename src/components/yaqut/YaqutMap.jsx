@@ -1,6 +1,7 @@
 import { useEffect, useRef, useCallback, useMemo, useState, lazy, Suspense } from 'react';
 import L from 'leaflet';
 import { hn } from '../../data/i18n-utils';
+import T from '../../data/i18n';
 
 /* ═══ Lazy-load Globe (Three.js only when needed) ═══ */
 const YaqutGlobe = lazy(() => import('./YaqutGlobe'));
@@ -199,7 +200,7 @@ function FlatMap({ lang, ty, data, selectedId, selectedEntry, detailData, onSele
         {data.length.toLocaleString()} {ty.geocoded || 'koordinatlı'}
         <button className={`yaqut-heat-toggle${showHeat ? ' active' : ''}`}
           onClick={() => setShowHeat(p => !p)}
-          title={{ tr: 'Isı haritası', en: 'Heatmap', ar: '' }[lang]}>
+          title={t.yaqut.tabHeatmap}>
           🔥
         </button>
       </div>
@@ -209,6 +210,7 @@ function FlatMap({ lang, ty, data, selectedId, selectedEntry, detailData, onSele
 
 /* ═══ Main Map Component with Flat/Globe Toggle ═══ */
 export default function YaqutMap({ lang, ty, data, selectedId, selectedEntry, detailData, onSelect, filtered }) {
+  const t = T[lang];
   const [viewMode, setViewMode] = useState('flat'); // 'flat' | 'globe'
 
   return (
@@ -218,14 +220,14 @@ export default function YaqutMap({ lang, ty, data, selectedId, selectedEntry, de
         <button
           className={`yaqut-mode-btn${viewMode === 'flat' ? ' active' : ''}`}
           onClick={() => setViewMode('flat')}
-          title={{ tr: 'Düz Harita', en: 'Flat Map', ar: '' }[lang]}>
-          🗺️ {ty.flatMap || ({ tr: 'Harita', en: 'Map', ar: '' }[lang])}
+          title={t.yaqut.tabFlatMap}>
+          🗺️ {ty.flatMap || (${t.yaqut.mapLabel})}
         </button>
         <button
           className={`yaqut-mode-btn${viewMode === 'globe' ? ' active' : ''}`}
           onClick={() => setViewMode('globe')}
-          title={{ tr: '3D Küre', en: '3D Globe', ar: '' }[lang]}>
-          🌍 {ty.globe3D || ({ tr: 'Küre', en: 'Globe', ar: '' }[lang])}
+          title={t.yaqut.tab3DGlobe}>
+          🌍 {ty.globe3D || (${t.yaqut.globeLabel})}
         </button>
       </div>
 
@@ -247,7 +249,7 @@ export default function YaqutMap({ lang, ty, data, selectedId, selectedEntry, de
         <Suspense fallback={
           <div className="yaqut-globe-loading">
             <div className="yaqut-globe-loading-spinner" />
-            <span>{ty.globeLoading || ({ tr: 'Küre yükleniyor…', en: 'Loading globe…', ar: '' }[lang])}</span>
+            <span>{ty.globeLoading || (${t.yaqut.globeLoadingLabel})}</span>
           </div>
         }>
           <YaqutGlobe

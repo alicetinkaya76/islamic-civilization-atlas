@@ -8,6 +8,7 @@ import ScholarNetwork, { DISC_COLORS } from './ScholarNetwork';
 import ScholarTimeline from './ScholarTimeline';
 import { lf } from '../../hooks/useEntityLookup';
 import '../../styles/scholars.css';
+import T from '../../data/i18n';
 
 const discColor = d => DISC_COLORS[d] || '#c9a84c';
 
@@ -27,6 +28,7 @@ const DISC_EN = {
 };
 
 export default function ScholarView({ lang, t }) {
+  const t = T[lang];
   const [view, setView] = useState('network'); // 'network' | 'isnad' | 'timeline'
   const [activeDiscs, setActiveDiscs] = useState(new Set(ALL_DISCS));
   const [periodYear, setPeriodYear] = useState(2025);
@@ -207,7 +209,7 @@ export default function ScholarView({ lang, t }) {
       {view === 'isnad' && (
         <div className="isnad-chain-bar">
           <span className="isnad-chain-bar-title">
-            📿 {{ tr: 'İsnâd Zincirleri', en: 'Isnad Chains', ar: '' }[lang]}:
+            📿 {t.scholars.advIsnadChains}:
           </span>
           <div className="isnad-chain-chips">
             {ISNAD_CHAINS.map(ch => (
@@ -232,7 +234,7 @@ export default function ScholarView({ lang, t }) {
             ))}
             {activeChains.size > 0 && (
               <button className="isnad-chain-chip clear" onClick={() => setActiveChains(new Set())}>
-                ✕ {{ tr: 'Temizle', en: 'Clear', ar: '' }[lang]}
+                ✕ {t.scholars.advClear}
               </button>
             )}
           </div>
@@ -357,19 +359,19 @@ export default function ScholarView({ lang, t }) {
               {/* İsnâd Info (visible when scholar has rawi_tag) */}
               {sel.rawi_tag && (
                 <div className="scholar-detail-section isnad-info-section">
-                  <div className="scholar-detail-label">📿 {{ tr: 'İsnâd Bilgileri', en: 'Isnad Information', ar: '' }[lang]}</div>
+                  <div className="scholar-detail-label">📿 {t.scholars.advIsnadInfo}</div>
                   <div className="isnad-info-grid">
                     <div className="isnad-info-row">
-                      <span className="isnad-info-k">{{ tr: 'Tabaka', en: 'Layer', ar: '' }[lang]}</span>
+                      <span className="isnad-info-k">{t.scholars.advLayer}</span>
                       <span className="isnad-info-v">{lf(sel, 'tabaqa', lang)}{sel.tabaqa ? ` (${sel.tabaqa})` : ''}</span>
                     </div>
                     <div className="isnad-info-row">
-                      <span className="isnad-info-k">{{ tr: 'Derece', en: 'Grade', ar: '' }[lang]}</span>
+                      <span className="isnad-info-k">{t.scholars.advGrade}</span>
                       <span className="isnad-info-v">{lf(sel, 'rawi_rank', lang)}</span>
                     </div>
                     {sel.hadith_count > 0 && (
                       <div className="isnad-info-row">
-                        <span className="isnad-info-k">{{ tr: 'Rivâyet', en: 'Narrations', ar: '' }[lang]}</span>
+                        <span className="isnad-info-k">{t.scholars.advNarrationsCap}</span>
                         <span className="isnad-info-v">~{sel.hadith_count.toLocaleString()}</span>
                       </div>
                     )}
@@ -383,7 +385,7 @@ export default function ScholarView({ lang, t }) {
                     return (
                       <div className="isnad-chains-list">
                         <div className="isnad-chains-list-title">
-                          {{ tr: 'Dahil Olduğu Zincirler', en: 'Member of Chains', ar: '' }[lang]}:
+                          {t.scholars.advMemberChains}:
                         </div>
                         {memberChains.map(ch => (
                           <button key={ch.id} className="isnad-chain-mini"
@@ -469,7 +471,7 @@ export default function ScholarView({ lang, t }) {
                 <div className="scholar-dia-attribution">
                   <span className="scholar-dia-attribution-icon">📚</span>
                   <span>
-                    {{ tr: 'Biyografik veriler: TDV İslâm Ansiklopedisi (DİA)', en: 'Biographical data: TDV Encyclopedia of Islam (DİA)', ar: '' }[lang]}
+                    {t.scholars.advDiaSource}
                   </span>
                   <a href="https://islamansiklopedisi.org.tr" target="_blank" rel="noopener noreferrer"
                     className="scholar-dia-attribution-link">

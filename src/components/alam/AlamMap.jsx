@@ -1,4 +1,5 @@
 import { useEffect, useRef, useCallback, useMemo, useState } from 'react';
+import T from '../../data/i18n';
 import L from 'leaflet';
 import { hn } from '../../data/i18n-utils';
 
@@ -228,7 +229,7 @@ export default function AlamMap({ lang, ta, data, selectedId, selectedBio, detai
         {data.length.toLocaleString()} {ta.withCoords}
         <button className={`alam-heat-toggle${showHeat ? ' active' : ''}`}
           onClick={() => setShowHeat(p => !p)}
-          title={{ tr: 'Isı haritası', en: 'Heatmap', ar: '' }[lang]}>
+          title={T[lang].yaqut.tabHeatmap}>
           🔥
         </button>
       </div>

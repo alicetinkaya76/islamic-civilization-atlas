@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef, useMemo } from 'react';
 import * as d3 from 'd3';
 import { hn } from '../../data/i18n-utils';
+import T from '../../data/i18n';
 
 /* ═══ Shared chart constants ═══ */
 const MARGIN = { top: 30, right: 20, bottom: 40, left: 50 };
@@ -469,7 +470,7 @@ function MigrationArcs({ data, lang, ta }) {
       <h3 className="alam-chart-title">🌍 {ta.migrationMap}</h3>
       <div className="alam-century-selector">
         <button className={`alam-century-btn${activeCentury === 0 ? ' active' : ''}`}
-          onClick={() => setActiveCentury(0)}>{{ tr: 'Tümü', en: 'All', ar: '' }[lang]}</button>
+          onClick={() => setActiveCentury(0)}>{t.filters.all}</button>
         {CENTURY_RANGE.filter(c => c >= 7).map(c => (
           <button key={c} className={`alam-century-btn${activeCentury === c ? ' active' : ''}`}
             onClick={() => setActiveCentury(c)}>{c}</button>
@@ -565,7 +566,7 @@ function TopAuthors({ data, lang, ta }) {
 
   return (
     <div className="alam-chart-card">
-      <h3 className="alam-chart-title">✍️ {{ tr: 'En Üretken Müellifler', en: 'Most Prolific Authors', ar: '' }[lang]}</h3>
+      <h3 className="alam-chart-title">✍️ {t.alam.analyticsMostProlific}</h3>
       <svg ref={svgRef} style={{ width: '100%', height: 320 }} />
     </div>
   );
@@ -663,17 +664,17 @@ function PrintedVsManuscript({ data, lang, ta }) {
     const lg = svg.append('g').attr('transform', `translate(${MARGIN.left + 10}, 10)`);
     lg.append('rect').attr('width', 10).attr('height', 10).attr('fill', '#c9a84c').attr('opacity', 0.3).attr('rx', 1);
     lg.append('text').attr('x', 14).attr('y', 9).attr('fill', '#c4b89a').attr('font-size', 10)
-      .text({ tr: 'Toplam Eser', en: 'Total Works', ar: '' }[lang]);
+      .text(${t.alam.analyticsTotalWorks});
     const lg2 = svg.append('g').attr('transform', `translate(${MARGIN.left + 10}, 24)`);
     lg2.append('line').attr('x1', 0).attr('x2', 10).attr('y1', 5).attr('y2', 5).attr('stroke', '#4fc3f7').attr('stroke-width', 2);
     lg2.append('text').attr('x', 14).attr('y', 9).attr('fill', '#4fc3f7').attr('font-size', 10)
-      .text({ tr: 'Ort. Eser/Müellif', en: 'Avg Works/Author', ar: '' }[lang]);
+      .text(t.alam.analyticsAvgWorks);
 
   }, [chartData, lang]);
 
   return (
     <div className="alam-chart-card">
-      <h3 className="alam-chart-title">📖 {{ tr: 'Eser Üretimi & Verimlilik', en: 'Works Production & Productivity', ar: '' }[lang]}</h3>
+      <h3 className="alam-chart-title">📖 {t.alam.analyticsWorksTitle}</h3>
       <svg ref={svgRef} style={{ width: '100%', height: 250 }} />
     </div>
   );
@@ -717,6 +718,7 @@ const CHART_DESC = {
 
 /* ═══ Main Analytics Component ═══ */
 export default function AlamAnalytics({ lang, ta, data, filtered }) {
+  const t = T[lang];
   const desc = (key) => CHART_DESC[key]?.[lang] || CHART_DESC[key]?.en || CHART_DESC[key]?.tr || '';
 
   return (

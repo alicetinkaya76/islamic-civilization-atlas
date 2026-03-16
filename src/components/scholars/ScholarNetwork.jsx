@@ -3,6 +3,7 @@ import * as d3 from 'd3';
 import SCHOLAR_LINKS from '../../data/scholar_links';
 import ISNAD_CHAINS from '../../data/isnad_chains';
 import { n } from '../../data/i18n-utils';
+import T from '../../data/i18n';
 
 const DISC_COLORS = {
   'Fıkıh':                   '#16a34a',
@@ -90,6 +91,7 @@ ISNAD_CHAINS.forEach(ch => {
 export { DISC_COLORS };
 
 export default function ScholarNetwork({ scholars, links, lang, selected, onSelect, searchId, t, isnadMode, activeChains }) {
+  const t = T[lang];
   const svgRef = useRef(null);
   const wrapRef = useRef(null);
   const simRef = useRef(null);
@@ -167,7 +169,7 @@ export default function ScholarNetwork({ scholars, links, lang, selected, onSele
       svg.append('text').attr('x', W/2).attr('y', H/2)
         .attr('text-anchor','middle').attr('fill','#6b6b7b')
         .attr('font-size','14px').attr('font-family','Outfit')
-        .text((t?.scholars?.noResults) || ({ tr: 'Sonuç bulunamadı', en: 'No results found', ar: '' }[lang]));
+        .text((t?.scholars?.noResults) || (${t.scholars.advNoResults}));
       return;
     }
 
@@ -389,7 +391,7 @@ export default function ScholarNetwork({ scholars, links, lang, selected, onSele
       const dates = d.b && d.d ? `${d.b} – ${d.d > 2024 ? '?' : d.d}` : '';
       const city = d.city_tr ? ` · ${d.city_tr}` : '';
       const lc = linkCount[d.id] || 0;
-      const lcLabel = { tr: 'bağlantı', en: 'connections', ar: '' }[lang];
+      const lcLabel = ${t.scholars.advConnections};
 
       let html =
         `<div style="display:flex;align-items:center;gap:6px;margin-bottom:6px">` +
@@ -405,15 +407,15 @@ export default function ScholarNetwork({ scholars, links, lang, selected, onSele
         const tabLabel = (d[`tabaqa_${lang}`] || d.tabaqa_en || d.tabaqa_tr || '');
         const rankLabel = (d[`rawi_rank_${lang}`] || d.rawi_rank_en || d.rawi_rank_tr || '');
         html += `<div style="border-top:1px solid #374151;padding-top:6px;margin-top:4px">`;
-        html += `<div style="font-size:10px;color:#9ca3af;margin-bottom:2px">📿 ${{ tr: 'Tabaka', en: 'Layer', ar: '' }[lang]}: <span style="color:${dColor};font-weight:600">${tabLabel}${d.tabaqa ? ' ('+d.tabaqa+')' : ''}</span></div>`;
-        html += `<div style="font-size:10px;color:#9ca3af;margin-bottom:2px">⚖ ${{ tr: 'Derece', en: 'Grade', ar: '' }[lang]}: <span style="color:#d1d5db">${rankLabel}</span></div>`;
+        html += `<div style="font-size:10px;color:#9ca3af;margin-bottom:2px">📿 ${t.scholars.advLayer}: <span style="color:${dColor};font-weight:600">${tabLabel}${d.tabaqa ? ' ('+d.tabaqa+')' : ''}</span></div>`;
+        html += `<div style="font-size:10px;color:#9ca3af;margin-bottom:2px">⚖ ${t.scholars.advGrade}: <span style="color:#d1d5db">${rankLabel}</span></div>`;
         if (d.hadith_count > 0) {
-          html += `<div style="font-size:10px;color:#9ca3af">📜 ~${d.hadith_count.toLocaleString()} ${{ tr: 'rivâyet', en: 'narrations', ar: '' }[lang]}</div>`;
+          html += `<div style="font-size:10px;color:#9ca3af">📜 ~${d.hadith_count.toLocaleString()} ${t.scholars.advNarrations}</div>`;
         }
         // Chains
         const myCh = chainMembershipMap[d.id];
         if (myCh && myCh.size > 0) {
-          html += `<div style="font-size:10px;color:#9ca3af;margin-top:4px">📿 ${{ tr: 'Zincirler', en: 'Chains', ar: '' }[lang]}: `;
+          html += `<div style="font-size:10px;color:#9ca3af;margin-top:4px">📿 ${t.scholars.advChains}: `;
           const names = [];
           ISNAD_CHAINS.forEach(ch => { if (myCh.has(ch.id)) names.push(`<span style="color:${ch.color}">${(ch[`name_${lang}`] || ch.name_en || ch.name_tr).split('(')[0].trim()}</span>`); });
           html += names.join(', ') + `</div>`;

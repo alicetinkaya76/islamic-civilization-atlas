@@ -2,6 +2,7 @@ import { useState, useEffect, useRef, useMemo, useCallback } from 'react';
 import * as d3 from 'd3';
 import XREFS from '../../data/alam_xrefs.json';
 import { hn } from '../../data/i18n-utils';
+import T from '../../data/i18n';
 
 /* ═══════════════════════════════════════════════════
    İlişki Türü Renk ve Etiket Haritaları
@@ -193,7 +194,7 @@ export function CrossRefNetwork({ data, lang, onSelectPerson }) {
       );
 
     node.append('title').text(d =>
-      `${d.name} (${d.arabic})\n${{ tr: 'Vefat', en: 'Death', ar: '' }[lang]}: ${d.death || '?'}\n${d.degree} ${{ tr: 'bağlantı', en: 'connections', ar: '' }[lang]}`
+      `${d.name} (${d.arabic})\n${t.alam.advTimeMachine}: ${d.death || '?'}\n${d.degree} ${t.alam.advConnections}`
     );
 
     sim.on('tick', () => {
@@ -210,9 +211,9 @@ export function CrossRefNetwork({ data, lang, onSelectPerson }) {
   return (
     <div className="alam-adv-panel" ref={containerRef}>
       <div className="alam-adv-header">
-        <h3>🕸 {{ tr: 'Entelektüel İlişki Ağı', en: 'Intellectual Relationship Network', ar: '' }[lang]}</h3>
+        <h3>🕸 {t.alam.advNetwork}</h3>
         <span className="alam-adv-stat">
-          {graph.nodes.length} {{ tr: 'düğüm', en: 'nodes', ar: '' }[lang]} · {graph.edges.length} {{ tr: 'bağlantı', en: 'links', ar: '' }[lang]}
+          {graph.nodes.length} {t.alam.advNodes} · {graph.edges.length} {t.alam.advConnections}
         </span>
       </div>
 
@@ -237,13 +238,13 @@ export function CrossRefNetwork({ data, lang, onSelectPerson }) {
               border: `1px solid ${REL_COLOR[r] || '#4fc3f7'}`,
               fontWeight: filterRel === r ? 700 : 400,
             }}>
-            {r === 'all' ? ({ tr: 'Tümü', en: 'All', ar: '' }[lang]) : (relLabels[r] || r)}
+            {r === 'all' ? (${t.filters.all}) : (relLabels[r] || r)}
           </button>
         ))}
       </div>
 
       <p className="alam-adv-desc" style={{ marginBottom: 4 }}>
-        {{ tr: 'Hoca-talebe (mavi), etki (yeşil), eleştiri (kırmızı) ilişkileri gösterir. Kenar kalınlığı = çoklu kaynak doğrulaması. Sürükle, yakınlaştır, tıkla.', en: 'Shows teacher-student (blue), influence (green), criticism (red) relationships. Edge thickness = multi-source verification. Drag, zoom, click.', ar: '' }[lang]}
+        {t.alam.advNetworkDesc}
       </p>
 
       {/* Renk açıklaması */}
@@ -269,14 +270,14 @@ export function CrossRefNetwork({ data, lang, onSelectPerson }) {
               style={{ background: 'none', border: 'none', color: '#90a4ae', cursor: 'pointer', fontSize: 14 }}>✕</button>
           </div>
           <div style={{ fontSize: 12, color: '#90a4ae', marginTop: 4 }}>
-            {{ tr: 'Vefat', en: 'Death', ar: '' }[lang]}: {selectedNode.death || '?'}
+            {t.alam.advTimeMachine}: {selectedNode.death || '?'}
             {selectedNode.madhab && <> · {selectedNode.madhab}</>}
           </div>
           {selectedNode.profession && (
             <div style={{ fontSize: 11, color: '#c4b89a', marginTop: 2 }}>{selectedNode.profession}</div>
           )}
           <div style={{ marginTop: 6, fontWeight: 600, color: '#4fc3f7' }}>
-            {selectedNode.degree} {{ tr: 'bağlantı', en: 'connections', ar: '' }[lang]}
+            {selectedNode.degree} {t.alam.advConnections}
           </div>
           {selectedNode.diaSlug && (
             <a href={`https://islamansiklopedisi.org.tr/${selectedNode.diaSlug}`}
@@ -345,8 +346,8 @@ export function TimeMachine({ data, lang }) {
   return (
     <div className="alam-adv-panel">
       <div className="alam-adv-header">
-        <h3>⏳ {{ tr: 'Zaman Makinesi', en: 'Time Machine', ar: '' }[lang]}</h3>
-        <span className="alam-adv-stat">{alive.length} {{ tr: 'kişi hayatta', en: 'alive', ar: '' }[lang]}</span>
+        <h3>⏳ {t.alam.advTimeMachine}</h3>
+        <span className="alam-adv-stat">{alive.length} {t.alam.advAlive}</span>
       </div>
       <p className="alam-adv-desc">
         {lang === "tr"
@@ -362,18 +363,18 @@ export function TimeMachine({ data, lang }) {
         <input type="range" min={632} max={1950} step={5} value={year}
           onChange={e => { setPlaying(false); setYear(+e.target.value); }}
           className="alam-tm-slider" />
-        <span className="alam-tm-year">{year} {{ tr: 'M', en: 'CE', ar: '' }[lang]}</span>
+        <span className="alam-tm-year">{year} {t.alam.advCE}</span>
       </div>
 
       <div className="alam-tm-big-num">
         <span className="alam-tm-count">{alive.length}</span>
-        <span className="alam-tm-label">{{ tr: 'kişi hayatta', en: 'persons alive', ar: '' }[lang]}</span>
-        <span className="alam-tm-sub">{aliveGeocoded.length} {{ tr: 'konumlu', en: 'geocoded', ar: '' }[lang]}</span>
+        <span className="alam-tm-label">{t.alam.advAlive}</span>
+        <span className="alam-tm-sub">{aliveGeocoded.length} {t.alam.advGeocoded}</span>
       </div>
 
       {/* Top regions alive */}
       <div className="alam-tm-section">
-        <h4>{{ tr: 'En Yoğun Bölgeler', en: 'Top Regions', ar: '' }[lang]}</h4>
+        <h4>{t.alam.advTopRegions}</h4>
         {topCities.map(([name, count]) => (
           <div key={name} className="alam-sp-bar-row">
             <span className="alam-sp-bar-label">{name}</span>
@@ -387,7 +388,7 @@ export function TimeMachine({ data, lang }) {
 
       {/* Top professions alive */}
       <div className="alam-tm-section">
-        <h4>{{ tr: 'Baskın Meslekler', en: 'Top Professions', ar: '' }[lang]}</h4>
+        <h4>{t.alam.advTopProf}</h4>
         {topProfs.map(([name, count]) => (
           <div key={name} className="alam-sp-bar-row">
             <span className="alam-sp-bar-label">{name}</span>
@@ -463,7 +464,7 @@ export function WorkProfessionScatter({ data, lang }) {
       .attr('stroke', '#080c18')
       .attr('stroke-width', 1)
       .append('title')
-      .text(d => `${d.name}: ${d.count} ${{ tr: 'kişi', en: 'persons', ar: '' }[lang]}, ${d.avgWorks} ${{ tr: 'ort. eser', en: 'avg works', ar: '' }[lang]}, %${d.workRatio} ${{ tr: 'eserli', en: 'with works', ar: '' }[lang]}`);
+      .text(d => `${d.name}: ${d.count} ${t.alam.advPersons}, ${d.avgWorks} ${t.alam.advAvgWorks}, %${d.workRatio} ${t.alam.advWithWorks}`);
 
     g.selectAll('text')
       .data(bubbles.filter(d => d.count > 100 || d.avgWorks > 4))
@@ -484,21 +485,21 @@ export function WorkProfessionScatter({ data, lang }) {
     // Axis labels
     svg.append('text').attr('x', w / 2).attr('y', h - 8)
       .attr('text-anchor', 'middle').attr('fill', '#c4b89a').attr('font-size', 11)
-      .text({ tr: 'Kişi Sayısı', en: 'Person Count', ar: '' }[lang]);
+      .text(${t.alam.advPersonCount});
     svg.append('text').attr('x', -h / 2).attr('y', 14)
       .attr('transform', 'rotate(-90)').attr('text-anchor', 'middle')
       .attr('fill', '#c4b89a').attr('font-size', 11)
-      .text({ tr: 'Ort. Eser Sayısı', en: 'Avg. Work Count', ar: '' }[lang]);
+      .text(${t.alam.advAvgWorkCount});
 
   }, [bubbles, lang === "tr"]);
 
   return (
     <div className="alam-adv-panel">
       <div className="alam-adv-header">
-        <h3>🔬 {{ tr: 'Eser-Meslek Korelasyonu', en: 'Work-Profession Correlation', ar: '' }[lang]}</h3>
+        <h3>🔬 {t.alam.advWorkCorr}</h3>
       </div>
       <p className="alam-adv-desc">
-        {{ tr: 'Her balon bir meslek grubunu temsil eder. X ekseni = kişi sayısı, Y ekseni = ortalama eser sayısı, balon büyüklüğü = eser sahibi oranı. Kalabalık meslekler ile üretken meslekler arasındaki farkı gösterir.', en: 'Each bubble represents a profession. X = person count, Y = avg works, bubble size = % with works. Shows the difference between populous and productive professions.', ar: '' }[lang]}
+        {t.alam.advWorkCorrDesc}
       </p>
       <svg ref={svgRef} style={{ width: '100%', height: 400 }} />
     </div>
@@ -547,23 +548,23 @@ export function CenturyComparison({ data, lang }) {
       <select className="alam-cmp-select" value={century}
         onChange={e => century === centuryA ? setCenturyA(+e.target.value) : setCenturyB(+e.target.value)}
         style={{ borderColor: color, color }}>
-        {CENTURIES.map(c => <option key={c} value={c}>{c}. {{ tr: 'yüzyıl', en: 'century', ar: '' }[lang]}</option>)}
+        {CENTURIES.map(c => <option key={c} value={c}>{c}. {t.alam.advCentury}</option>)}
       </select>
-      <div className="alam-cmp-big"><strong>{profile.total}</strong> {{ tr: 'biyografi', en: 'biographies', ar: '' }[lang]}</div>
+      <div className="alam-cmp-big"><strong>{profile.total}</strong> {t.alam.advBiographies}</div>
       <div className="alam-cmp-stats">
-        <span>{profile.works} {{ tr: 'eser', en: 'works', ar: '' }[lang]}</span>
-        <span>{profile.female} {{ tr: 'kadın', en: 'female', ar: '' }[lang]}</span>
+        <span>{profile.works} {t.alam.advWorks}</span>
+        <span>{profile.female} {t.alam.advFemale}</span>
         <span>{profile.withDia} DİA</span>
       </div>
-      <h5>{{ tr: 'Meslekler', en: 'Professions', ar: '' }[lang]}</h5>
+      <h5>{t.alam.advProfessions}</h5>
       {profile.topProfs.map(([n, c]) => (
         <div key={n} className="alam-cmp-item"><span>{n}</span><strong>{c}</strong></div>
       ))}
-      <h5>{{ tr: 'Bölgeler', en: 'Regions', ar: '' }[lang]}</h5>
+      <h5>{t.alam.advRegions}</h5>
       {profile.topRegions.map(([n, c]) => (
         <div key={n} className="alam-cmp-item"><span>{n}</span><strong>{c}</strong></div>
       ))}
-      <h5>{{ tr: 'Mezhepler', en: 'Schools', ar: '' }[lang]}</h5>
+      <h5>{t.alam.advSchools}</h5>
       {profile.topMadh.map(([n, c]) => (
         <div key={n} className="alam-cmp-item"><span>{n}</span><strong>{c}</strong></div>
       ))}
@@ -573,10 +574,10 @@ export function CenturyComparison({ data, lang }) {
   return (
     <div className="alam-adv-panel">
       <div className="alam-adv-header">
-        <h3>⚖ {{ tr: 'Yüzyıl Karşılaştırması', en: 'Century Comparison', ar: '' }[lang]}</h3>
+        <h3>⚖ {t.alam.advCenturyComp}</h3>
       </div>
       <p className="alam-adv-desc">
-        {{ tr: 'İki yüzyılı yan yana karşılaştır. Meslek, bölge ve mezhep dağılımındaki değişimi gör.', en: 'Compare two centuries side by side. See shifts in profession, region and school distribution.', ar: '' }[lang]}
+        {t.alam.advCenturyCompDesc}
       </p>
       <div className="alam-cmp-grid">
         <CompareCol century={centuryA} profile={profileA} color="#4fc3f7" />

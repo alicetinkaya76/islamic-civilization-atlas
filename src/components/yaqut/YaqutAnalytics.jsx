@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef, useMemo } from 'react';
 import * as d3 from 'd3';
 import { hn } from '../../data/i18n-utils';
+import T from '../../data/i18n';
 
 /* ═══ Shared ═══ */
 const MARGIN = { top: 30, right: 20, bottom: 40, left: 50 };
@@ -59,7 +60,7 @@ function GeoTypeChart({ data, lang, ty }) {
 
   return (
     <div className="yaqut-chart-card">
-      <h3 className="yaqut-chart-title">📍 {ty.chartGeoType || ({ tr: 'Coğrafi Tip Dağılımı', en: 'Geographic Type Distribution', ar: '' }[lang])}</h3>
+      <h3 className="yaqut-chart-title">📍 {ty.chartGeoType || (${t.yaqut.chartGeoTypeDist})}</h3>
       <svg ref={svgRef} style={{ width: '100%', height: 320 }} />
     </div>
   );
@@ -104,7 +105,7 @@ function CountryChart({ data, lang, ty }) {
 
   return (
     <div className="yaqut-chart-card">
-      <h3 className="yaqut-chart-title">🌍 {ty.chartCountry || ({ tr: 'Ülke Dağılımı', en: 'Country Distribution', ar: '' }[lang])}</h3>
+      <h3 className="yaqut-chart-title">🌍 {ty.chartCountry || (${t.yaqut.chartCountryDist})}</h3>
       <svg ref={svgRef} style={{ width: '100%', height: 300 }} />
     </div>
   );
@@ -147,7 +148,7 @@ function LetterChart({ data, lang, ty }) {
 
   return (
     <div className="yaqut-chart-card">
-      <h3 className="yaqut-chart-title">🔤 {ty.chartLetter || ({ tr: 'Harf Dağılımı', en: 'Letter Distribution', ar: '' }[lang])}</h3>
+      <h3 className="yaqut-chart-title">🔤 {ty.chartLetter || (${t.yaqut.statsLetterDist})}</h3>
       <svg ref={svgRef} style={{ width: '100%', height: 260 }} />
     </div>
   );
@@ -165,7 +166,7 @@ function TagCloud({ data, lang, ty }) {
 
   return (
     <div className="yaqut-chart-card">
-      <h3 className="yaqut-chart-title">🏷 {ty.chartTags || ({ tr: 'Atlas Etiketleri', en: 'Atlas Tags', ar: '' }[lang])}</h3>
+      <h3 className="yaqut-chart-title">🏷 {ty.chartTags || (${t.yaqut.chartAtlasTags})}</h3>
       <div className="yaqut-tagcloud">
         {tagData.map(d => (
           <span key={d.tag} className="yaqut-tagcloud-item"
@@ -212,7 +213,7 @@ function CrossRefDensity({ data, lang, ty }) {
 
   return (
     <div className="yaqut-chart-card">
-      <h3 className="yaqut-chart-title">👤 {ty.chartCrossRef || ({ tr: 'En Çok Kişi Bağlanan Yerler', en: 'Top Places by Person Count', ar: '' }[lang])}</h3>
+      <h3 className="yaqut-chart-title">👤 {ty.chartCrossRef}</h3>
       <svg ref={svgRef} style={{ width: '100%', height: 380 }} />
     </div>
   );
@@ -254,7 +255,7 @@ function TimeDistribution({ data, lang, ty }) {
 
   return (
     <div className="yaqut-chart-card">
-      <h3 className="yaqut-chart-title">📅 {ty.chartTime || ({ tr: 'Hicrî Yüzyıl Dağılımı', en: 'Hijri Century Distribution', ar: '' }[lang])}</h3>
+      <h3 className="yaqut-chart-title">📅 {ty.chartTime}</h3>
       <svg ref={svgRef} style={{ width: '100%', height: 250 }} />
     </div>
   );
@@ -310,16 +311,16 @@ function DiaCoverage({ data, lang, ty }) {
     const lg = svg.append('g').attr('transform', `translate(${MARGIN.left + 10}, ${MARGIN.top - 16})`);
     lg.append('rect').attr('width', 10).attr('height', 10).attr('fill', '#d4a84b').attr('rx', 1);
     lg.append('text').attr('x', 14).attr('y', 9).attr('fill', '#d4a84b').attr('font-size', 10)
-      .text({ tr: 'DİA bağlantılı', en: 'DIA linked', ar: '' }[lang]);
+      .text(${t.yaqut.chartDiaLinked});
     const lg2 = svg.append('g').attr('transform', `translate(${MARGIN.left + 120}, ${MARGIN.top - 16})`);
     lg2.append('rect').attr('width', 10).attr('height', 10).attr('fill', '#1e2a44').attr('rx', 1);
     lg2.append('text').attr('x', 14).attr('y', 9).attr('fill', '#90a4ae').attr('font-size', 10)
-      .text({ tr: 'Bağlantısız', en: 'Not linked', ar: '' }[lang]);
+      .text(${t.yaqut.chartDiaNotLinked});
   }, [chartData, lang === "tr"]);
 
   return (
     <div className="yaqut-chart-card">
-      <h3 className="yaqut-chart-title">📖 {ty.chartDia || ({ tr: 'DİA Kapsam Oranı', en: 'DIA Coverage Rate', ar: '' }[lang])}</h3>
+      <h3 className="yaqut-chart-title">📖 {ty.chartDia || (${t.yaqut.chartDiaCoverage})}</h3>
       <svg ref={svgRef} style={{ width: '100%', height: 300 }} />
     </div>
   );
@@ -350,7 +351,7 @@ function EventPersonScatter({ data, lang, ty }) {
       .attr('cx', d => x(d.ec)).attr('cy', d => y(d.np))
       .attr('r', d => r(d.pc || 1)).attr('fill', (d, i) => color(i % 8))
       .attr('opacity', 0.7).attr('stroke', '#080c18').attr('stroke-width', 0.5)
-      .append('title').text(d => `${d.name}: ${d.np} ${{ tr: 'kişi', en: 'persons', ar: '' }[lang]}, ${d.ec} ${{ tr: 'olay', en: 'events', ar: '' }[lang]}, ${d.pc} ${{ tr: 'xref', en: 'xref', ar: '' }[lang]}`);
+      .append('title').text(d => `${d.name}: ${d.np} ${t.yaqut.chartPersons}, ${d.ec} ${t.yaqut.chartEvents}, ${d.pc} ${t.yaqut.chartXref}`);
 
     svg.selectAll('text.lbl').data(bubbles.filter(d => d.np > 3 || d.ec > 3)).join('text').attr('class', 'lbl')
       .attr('x', d => x(d.ec)).attr('y', d => y(d.np) - r(d.pc || 1) - 3)
@@ -361,15 +362,15 @@ function EventPersonScatter({ data, lang, ty }) {
     svg.append('g').attr('transform', `translate(${M.left},0)`).call(d3.axisLeft(y).ticks(6)).attr('color', '#c4b89a');
 
     svg.append('text').attr('x', w / 2).attr('y', h - 8).attr('text-anchor', 'middle')
-      .attr('fill', '#c4b89a').attr('font-size', 11).text({ tr: 'Olay Sayısı', en: 'Event Count', ar: '' }[lang]);
+      .attr('fill', '#c4b89a').attr('font-size', 11).text(${t.yaqut.chartEventCount});
     svg.append('text').attr('x', -h / 2).attr('y', 14).attr('transform', 'rotate(-90)')
       .attr('text-anchor', 'middle').attr('fill', '#c4b89a').attr('font-size', 11)
-      .text({ tr: 'Kişi Sayısı (Yâkût)', en: 'Person Count (Yāqūt)', ar: '' }[lang]);
+      .text(${t.yaqut.chartPersonCount});
   }, [bubbles, lang === "tr"]);
 
   return (
     <div className="yaqut-chart-card">
-      <h3 className="yaqut-chart-title">🔬 {ty.chartScatter || ({ tr: 'Olay–Kişi Korelasyonu', en: 'Event–Person Correlation', ar: '' }[lang])}</h3>
+      <h3 className="yaqut-chart-title">🔬 {ty.chartScatter || (${t.yaqut.chartScatter})}</h3>
       <svg ref={svgRef} style={{ width: '100%', height: 350 }} />
     </div>
   );
@@ -389,6 +390,7 @@ const DESC = {
 
 /* ═══ Main Analytics ═══ */
 export default function YaqutAnalytics({ lang, ty, data, filtered }) {
+  const t = T[lang];
   const desc = (key) => DESC[key]?.[lang] || DESC[key]?.en || DESC[key]?.tr || '';
 
   return (

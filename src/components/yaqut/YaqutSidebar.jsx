@@ -1,5 +1,6 @@
 import { useState, useCallback, useRef, useEffect } from 'react';
 import { hn } from '../../data/i18n-utils';
+import T from '../../data/i18n';
 
 /* ═══ Geo type color + icon map ═══ */
 const GEO_COLORS = {
@@ -127,6 +128,7 @@ export default function YaqutSidebar({
   selectedId, onSelect,
   topGeoTypes, allCountries, allLetters, topTags, periods,
 }) {
+  const t = T[lang];
   const [filtersOpen, setFiltersOpen] = useState(true);
   const debounceRef = useRef(null);
 
@@ -168,7 +170,7 @@ export default function YaqutSidebar({
 
       {/* Filters toggle */}
       <button className="yaqut-filters-toggle" onClick={() => setFiltersOpen(p => !p)}>
-        {filtersOpen ? '▾' : '▸'} {{ tr: 'Filtreler', en: 'Filters', ar: '' }[lang]}
+        {filtersOpen ? '▾' : '▸'} {t.yaqut.filtersTitle}
         <span className="yaqut-filter-count">{filtered.length.toLocaleString()} {ty.entries || 'giriş'}</span>
       </button>
 

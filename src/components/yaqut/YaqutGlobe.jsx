@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState, useCallback } from 'react';
 import * as THREE from 'three';
 import { hn } from '../../data/i18n-utils';
+import T from '../../data/i18n';
 
 /* ═══ Constants ═══ */
 const GLOBE_RADIUS = 5;
@@ -52,6 +53,7 @@ const EARTH_TEXTURE_URL = 'https://unpkg.com/three-globe@2.31.1/example/img/eart
 const EARTH_BUMP_URL = 'https://unpkg.com/three-globe@2.31.1/example/img/earth-topology.png';
 
 export default function YaqutGlobe({ lang, ty, data, selectedId, selectedEntry, onSelect }) {
+  const t = T[lang];
   const containerRef = useRef(null);
   const rendererRef = useRef(null);
   const sceneRef = useRef(null);
@@ -409,7 +411,7 @@ export default function YaqutGlobe({ lang, ty, data, selectedId, selectedEntry, 
 
       {/* Globe hint */}
       <div className="yaqut-globe-hint">
-        {ty.globeHint || ({ tr: '🖱 Sürükle: döndür · Tekerlek: yakınlaştır · Çift tıkla: oto-dönüş', en: '🖱 Drag: rotate · Wheel: zoom · Dbl-click: auto-rotate', ar: '' }[lang])}
+        {ty.globeHint || (${t.yaqut.globeHint})}
       </div>
 
       {/* Selected info bar */}

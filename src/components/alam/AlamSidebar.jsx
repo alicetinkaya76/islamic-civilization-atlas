@@ -1,5 +1,6 @@
 import { useState, useCallback, useRef, useEffect, useMemo } from 'react';
 import { hn } from '../../data/i18n-utils';
+import T from '../../data/i18n';
 
 /* ═══ Profession color map (consistent with scholar disc colors) ═══ */
 const PROF_COLORS = {
@@ -75,6 +76,7 @@ export default function AlamSidebar({
   selectedId, onSelect,
   topProfessions, allRegions, madhabs,
 }) {
+  const t = T[lang];
   const [filtersOpen, setFiltersOpen] = useState(true);
   const debounceRef = useRef(null);
 
@@ -118,7 +120,7 @@ export default function AlamSidebar({
 
       {/* Filters toggle */}
       <button className="alam-filters-toggle" onClick={() => setFiltersOpen(p => !p)}>
-        {filtersOpen ? '▾' : '▸'} {{ tr: 'Filtreler', en: 'Filters', ar: '' }[lang]}
+        {filtersOpen ? '▾' : '▸'} {t.alam.filtersTitle}
         <span className="alam-filter-count">{filtered.length.toLocaleString()} {ta.biographies}</span>
       </button>
 
