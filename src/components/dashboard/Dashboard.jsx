@@ -5,7 +5,7 @@ import SCHOLAR_LINKS from '../../data/scholar_links';
 import { ERA_BANDS } from '../../config/eras';
 import { ZONE_C } from '../../config/colors';
 import '../../styles/dashboard.css';
-import { f } from '../../data/i18n-utils';
+import { f, n } from '../../data/i18n-utils';
 
 /* ── CountUp animation ── */
 function CountUp({ target, duration = 1800 }) {

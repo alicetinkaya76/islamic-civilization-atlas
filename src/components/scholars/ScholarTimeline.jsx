@@ -3,6 +3,7 @@ import * as d3 from 'd3';
 import { ERA_BANDS } from '../../config/eras';
 import { DISC_COLORS } from './ScholarNetwork';
 import SCHOLAR_LINKS from '../../data/scholar_links';
+import { n } from '../../data/i18n-utils';
 
 /* ═══════════════════════════════════════════════════════════
    ScholarTimeline v4.8.4.4 — SOFISTIKE ZAMAN ÇİZELGESİ
