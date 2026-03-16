@@ -1,5 +1,5 @@
 import { useMemo, useState, useRef } from 'react';
-import YAQUT_CROSSREF from '../../data/yaqut_crossref.json';
+import useAsyncData from '../../hooks/useAsyncData.jsx';
 import { hn } from '../../data/i18n-utils';
 import T from '../../data/i18n';
 
@@ -23,6 +23,9 @@ export default function YaqutIdCard({ lang, ty, entry, detail, onClose }) {
   const [xrefPage, setXrefPage] = useState(0);
   const XREF_PER_PAGE = 15;
 
+  // Lazy-load crossref data only when this component mounts
+  const { data: YAQUT_CROSSREF } = useAsyncData('/data/yaqut_crossref.json');
+
   // Reset states when entry changes
   const prevIdRef = useRef(null);
   const entryId = entry ? entry.id : null;
@@ -34,9 +37,9 @@ export default function YaqutIdCard({ lang, ty, entry, detail, onClose }) {
 
   // Cross-ref persons — MUST be before any conditional return (React hooks rule)
   const crossRefPersons = useMemo(() => {
-    if (!entryId) return [];
+    if (!entryId || !YAQUT_CROSSREF) return [];
     return YAQUT_CROSSREF[String(entryId)] || [];
-  }, [entryId]);
+  }, [entryId, YAQUT_CROSSREF]);
 
   if (!entry) {
     return (

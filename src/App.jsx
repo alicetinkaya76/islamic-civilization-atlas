@@ -1,20 +1,24 @@
 import { useState, useRef, useCallback, useEffect, Suspense, lazy } from 'react';
 import T from './data/i18n';
 import LandingPage from './components/landing/LandingPage';
+import LazyLoader from './components/shared/LazyLoader';
+import { preloadData } from './hooks/useAsyncData.jsx';
 
-/* Admin Panel — lazy-loaded to keep main bundle small */
-const AdminPanel = lazy(() => import('./components/admin/AdminPanel'));
+/* ═══ Lazy-loaded panels — only fetched when their tab is active ═══ */
+const AdminPanel    = lazy(() => import('./components/admin/AdminPanel'));
+const AlamView      = lazy(() => import('./components/alam/AlamView'));
+const YaqutView     = lazy(() => import('./components/yaqut/YaqutView'));
+const ScholarView   = lazy(() => import('./components/scholars/ScholarView'));
+const QuizMode      = lazy(() => import('./components/QuizMode'));
+const BattleView    = lazy(() => import('./components/battles/BattleView'));
+const CausalView    = lazy(() => import('./components/causal/CausalView'));
+
+/* ═══ Eagerly loaded — needed on every page ═══ */
 import MapView from './components/map/MapView';
 import Dashboard from './components/dashboard/Dashboard';
 import TimelineView from './components/timeline/TimelineView';
-import CausalView from './components/causal/CausalView';
-import ScholarView from './components/scholars/ScholarView';
-import BattleView from './components/battles/BattleView';
-import AlamView from './components/alam/AlamView';
-import YaqutView from './components/yaqut/YaqutView';
 import Footer from './components/shared/Footer';
 import AboutModal from './components/shared/AboutModal';
-import QuizMode from './components/QuizMode';
 import GlossaryModal from './components/shared/GlossaryModal';
 import SearchBar from './components/shared/SearchBar';
 import ProgressTracker, { BadgeToast, useProgress } from './components/shared/ProgressTracker';
@@ -168,8 +172,10 @@ export default function App() {
             <button role="tab" aria-selected={tab === 'links'} className={`tab${tab === 'links' ? ' active' : ''}`} onClick={() => selectTab('links')}>{t.tabs.links}</button>
             <button role="tab" aria-selected={tab === 'scholars'} className={`tab${tab === 'scholars' ? ' active' : ''}`} onClick={() => selectTab('scholars')}>{t.tabs.scholars}</button>
             <button role="tab" aria-selected={tab === 'battles'} className={`tab${tab === 'battles' ? ' active' : ''}`} onClick={() => selectTab('battles')}>{t.tabs.battles}</button>
-            <button role="tab" aria-selected={tab === 'alam'} className={`tab${tab === 'alam' ? ' active' : ''}`} onClick={() => selectTab('alam')}>{t.tabs.alam}</button>
-            <button role="tab" aria-selected={tab === 'yaqut'} className={`tab${tab === 'yaqut' ? ' active' : ''}`} onClick={() => selectTab('yaqut')}>{t.tabs.yaqut}</button>
+            <button role="tab" aria-selected={tab === 'alam'} className={`tab${tab === 'alam' ? ' active' : ''}`} onClick={() => selectTab('alam')}
+              onMouseEnter={() => preloadData('/data/alam_lite.json')}>{t.tabs.alam}</button>
+            <button role="tab" aria-selected={tab === 'yaqut'} className={`tab${tab === 'yaqut' ? ' active' : ''}`} onClick={() => selectTab('yaqut')}
+              onMouseEnter={() => preloadData('/data/yaqut_lite.json')}>{t.tabs.yaqut}</button>
           </div>
           <button className="quiz-trigger" onClick={() => setQuizOpen(true)}
             aria-label={{ tr: 'Bilgi yarışması', en: 'Knowledge quiz', ar: 'اختبار المعرفة' }[lang]}>🎓 Quiz</button>
@@ -193,6 +199,7 @@ export default function App() {
       </header>
       {menuOpen && <div className="mobile-backdrop" onClick={() => setMenuOpen(false)} />}
       <main id="main-content" className={`main${sidebarOpen ? ' sidebar-visible' : ''}`} role="main">
+        <Suspense fallback={<LazyLoader />}>
         {tab === 'map' ? <MapView lang={lang} t={t} sidebarOpen={sidebarOpen} mapRef={mapRef} onPopupOpen={recordDiscovery} onTourComplete={handleTourComplete} onCloseSidebar={() => setSidebarOpen(false)} /> :
          tab === 'dashboard' ? <Dashboard lang={lang} t={t} onTabChange={selectTab} /> :
          tab === 'timeline' ? <TimelineView lang={lang} t={t} /> :
@@ -201,9 +208,10 @@ export default function App() {
          tab === 'alam' ? <AlamView lang={lang} t={t} /> :
          tab === 'yaqut' ? <YaqutView lang={lang} t={t} /> :
          <CausalView lang={lang} t={t} />}
+        </Suspense>
       </main>
       <Footer lang={lang} />
-      {quizOpen && <QuizMode lang={lang} onFlyTo={handleFlyTo} onClose={() => setQuizOpen(false)} />}
+      {quizOpen && <Suspense fallback={<LazyLoader />}><QuizMode lang={lang} onFlyTo={handleFlyTo} onClose={() => setQuizOpen(false)} /></Suspense>}
       <BadgeToast badge={newBadge} lang={lang} onDismiss={() => setNewBadge(null)} />
       {showOnboarding && <Onboarding lang={lang} onDone={handleOnboardingDone} />}
     </div>

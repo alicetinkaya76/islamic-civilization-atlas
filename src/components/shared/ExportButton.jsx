@@ -90,7 +90,8 @@ const EXPORTS = {
 export default function ExportButton({ lang }) {
   const [open, setOpen] = useState(false);
   const ref = useRef(null);
-  const t = T[lang];
+  const t = T[lang] || T.tr;
+  if (!t || !t.layers) return null;
 
   const EXPORT_LABELS = {
     scholars: t.layers.scholars,

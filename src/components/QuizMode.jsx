@@ -1,8 +1,8 @@
 import { useState, useEffect, useCallback, useMemo, useRef } from 'react';
 import DB from '../data/db.json';
 import T from '../data/i18n';
-import ALAM_LITE from '../data/alam_lite.json';
-import YAQUT_LITE from '../data/yaqut_lite.json';
+import useAsyncData from '../hooks/useAsyncData.jsx';
+import LazyLoader from './shared/LazyLoader';
 
 /* ══════════════════════════════════════════════════════════
    QuizMode — 10 question types, 3 difficulties, bilingual
@@ -171,8 +171,9 @@ function genEventCentury(lang, diff) {
 }
 
 /* Type 7: el-A'lâm — "Bu âlimin mesleği nedir?" */
-function genAlamProfession(lang, diff) {
-  const pool = ALAM_LITE.filter(b => b.pt && b.pe && b.md);
+function genAlamProfession(lang, diff, alamData) {
+  if (!alamData) return null;
+  const pool = alamData.filter(b => b.pt && b.pe && b.md);
   if (pool.length < 4) return null;
   const b = pick(pool)[0];
   const correctProf = lang === 'ar' ? (b.pe || b.pt) : lang === 'tr' ? b.pt : b.pe;
@@ -190,8 +191,9 @@ function genAlamProfession(lang, diff) {
 }
 
 /* Type 8: el-A'lâm — "Bu âlim hangi yüzyılda yaşadı?" */
-function genAlamCentury(lang, diff) {
-  const pool = ALAM_LITE.filter(b => b.md && b.c);
+function genAlamCentury(lang, diff, alamData) {
+  if (!alamData) return null;
+  const pool = alamData.filter(b => b.md && b.c);
   if (pool.length < 4) return null;
   const b = pick(pool)[0];
   const correct = centuryLabel(b.md, lang);
@@ -209,8 +211,9 @@ function genAlamCentury(lang, diff) {
 }
 
 /* Type 9: Yâkût — "Bu yer hangi ülkede?" */
-function genYaqutCountry(lang, diff) {
-  const pool = YAQUT_LITE.filter(e => e.ct && e.ht && e.he);
+function genYaqutCountry(lang, diff, _alam, yaqutData) {
+  if (!yaqutData) return null;
+  const pool = yaqutData.filter(e => e.ct && e.ht && e.he);
   if (pool.length < 4) return null;
   const e = pick(pool)[0];
   const correctCountry = e.ct;
@@ -228,11 +231,12 @@ function genYaqutCountry(lang, diff) {
 }
 
 /* Type 10: Yâkût — "Bu yer ne tür bir coğrafi birim?" */
-function genYaqutGeoType(lang, diff) {
+function genYaqutGeoType(lang, diff, _alam, yaqutData) {
   const GEO_TR = { city: 'Şehir', village: 'Köy', mountain: 'Dağ', river: 'Nehir', fortress: 'Kale', region: 'Bölge', town: 'Kasaba', island: 'Ada', desert: 'Çöl', well: 'Kuyu' };
   const GEO_EN = { city: 'City', village: 'Village', mountain: 'Mountain', river: 'River', fortress: 'Fortress', region: 'Region', town: 'Town', island: 'Island', desert: 'Desert', well: 'Well' };
   const validTypes = Object.keys(GEO_TR);
-  const pool = YAQUT_LITE.filter(e => validTypes.includes(e.gt) && e.ht && e.he);
+  if (!yaqutData) return null;
+  const pool = yaqutData.filter(e => validTypes.includes(e.gt) && e.ht && e.he);
   if (pool.length < 4) return null;
   const e = pick(pool)[0];
   const labels = lang === 'tr' ? GEO_TR : GEO_EN;
@@ -263,7 +267,7 @@ const GENERATORS = [
   genYaqutGeoType,
 ];
 
-function generateQuiz(lang, diff) {
+function generateQuiz(lang, diff, alamData, yaqutData) {
   const questions = [];
   const usedTypes = new Set();
   let attempts = 0;
@@ -278,7 +282,7 @@ function generateQuiz(lang, diff) {
     } else {
       genIdx = Math.floor(Math.random() * GENERATORS.length);
     }
-    const q = GENERATORS[genIdx](lang, diff);
+    const q = GENERATORS[genIdx](lang, diff, alamData, yaqutData);
     if (q) {
       questions.push(q);
       usedTypes.add(genIdx);
@@ -312,17 +316,21 @@ export default function QuizMode({ lang, onFlyTo, onClose }) {
   const [showConfetti, setShowConfetti] = useState(false);
   const timerRef = useRef(null);
 
+  // Lazy-load quiz data sources
+  const { data: alamData, loading: alamLoading } = useAsyncData('/data/alam_lite.json');
+  const { data: yaqutData, loading: yaqutLoading } = useAsyncData('/data/yaqut_lite.json');
+
   const t = useMemo(() => T[lang].quiz, [lang]);
 
   const startQuiz = useCallback(() => {
-    const qs = generateQuiz(lang, diff);
+    const qs = generateQuiz(lang, diff, alamData, yaqutData);
     setQuestions(qs);
     setQIdx(0);
     setSelected(null);
     setScore(0);
     setAnswered(false);
     setPhase('playing');
-  }, [lang, diff]);
+  }, [lang, diff, alamData, yaqutData]);
 
   const handleAnswer = useCallback((optIdx) => {
     if (answered) return;

@@ -1,5 +1,6 @@
 import { useState, useMemo, useCallback, useEffect, useRef } from 'react';
-import ALAM_LITE from '../../data/alam_lite.json';
+import useAsyncData from '../../hooks/useAsyncData.jsx';
+import LazyLoader from '../shared/LazyLoader';
 import AlamSidebar from './AlamSidebar';
 import AlamMap from './AlamMap';
 import AlamIdCard from './AlamIdCard';
@@ -9,38 +10,6 @@ import { CrossRefNetwork, TimeMachine, WorkProfessionScatter, CenturyComparison 
 import '../../styles/alam.css';
 import T from '../../data/i18n';
 
-/* ═══ Precompute lookup maps ═══ */
-const ALAM_BY_ID = {};
-ALAM_LITE.forEach(b => { ALAM_BY_ID[b.id] = b; });
-
-/* ═══ Extract unique professions (top 20) ═══ */
-function extractTopProfessions() {
-  const counts = {};
-  ALAM_LITE.forEach(b => {
-    if (b.pt) {
-      b.pt.split(', ').forEach(p => { counts[p] = (counts[p] || 0) + 1; });
-    }
-  });
-  return Object.entries(counts)
-    .sort((a, b) => b[1] - a[1])
-    .slice(0, 20)
-    .map(([k]) => k);
-}
-
-/* ═══ Extract unique regions ═══ */
-function extractRegions() {
-  const counts = {};
-  ALAM_LITE.forEach(b => {
-    if (b.rg) counts[b.rg] = (counts[b.rg] || 0) + 1;
-  });
-  return Object.entries(counts)
-    .sort((a, b) => b[1] - a[1])
-    .slice(0, 20)
-    .map(([k]) => k);
-}
-
-const TOP_PROFESSIONS = extractTopProfessions();
-const ALL_REGIONS = extractRegions();
 const MADHABS = ['Hanefî', 'Şâfiî', 'Mâlikî', 'Hanbelî', 'İmâmî', 'Zeydî', 'İbâzî'];
 
 /* ═══ Turkish + Arabic tolerant normalize ═══ */
@@ -55,18 +24,46 @@ const normalize = (s) =>
     .replace(/[\u0610-\u065f\u0670]/g, '') // Arabic diacritics
     .replace(/ة/g, 'ه').replace(/ى/g, 'ي').replace(/أ|إ|آ/g, 'ا');
 
-/* ═══ Stats ═══ */
-const STATS = {
-  total: ALAM_LITE.length,
-  geocoded: ALAM_LITE.filter(b => b.lat != null).length,
-  withDia: ALAM_LITE.filter(b => b.ds).length,
-  withWorks: ALAM_LITE.reduce((s, b) => s + (b.wc || 0), 0),
-  female: ALAM_LITE.filter(b => b.g === 'F').length,
-};
+/* ═══ Helpers — computed once data arrives ═══ */
+function extractTopProfessions(data) {
+  const counts = {};
+  data.forEach(b => {
+    if (b.pt) b.pt.split(', ').forEach(p => { counts[p] = (counts[p] || 0) + 1; });
+  });
+  return Object.entries(counts).sort((a, b) => b[1] - a[1]).slice(0, 20).map(([k]) => k);
+}
+function extractRegions(data) {
+  const counts = {};
+  data.forEach(b => { if (b.rg) counts[b.rg] = (counts[b.rg] || 0) + 1; });
+  return Object.entries(counts).sort((a, b) => b[1] - a[1]).slice(0, 20).map(([k]) => k);
+}
+function buildStats(data) {
+  return {
+    total: data.length,
+    geocoded: data.filter(b => b.lat != null).length,
+    withDia: data.filter(b => b.ds).length,
+    withWorks: data.reduce((s, b) => s + (b.wc || 0), 0),
+    female: data.filter(b => b.g === 'F').length,
+  };
+}
+function buildLookup(data) {
+  const m = {};
+  data.forEach(b => { m[b.id] = b; });
+  return m;
+}
 
 export default function AlamView({ lang, t: tProp }) {
   const t = tProp || T[lang];
   const ta = t.alam || {};
+
+  /* ═══ Async data ═══ */
+  const { data: ALAM_LITE, loading: dataLoading, error: dataError } = useAsyncData('/data/alam_lite.json');
+
+  /* ═══ Derived lookups (recomputed only when data changes) ═══ */
+  const ALAM_BY_ID = useMemo(() => ALAM_LITE ? buildLookup(ALAM_LITE) : {}, [ALAM_LITE]);
+  const TOP_PROFESSIONS = useMemo(() => ALAM_LITE ? extractTopProfessions(ALAM_LITE) : [], [ALAM_LITE]);
+  const ALL_REGIONS = useMemo(() => ALAM_LITE ? extractRegions(ALAM_LITE) : [], [ALAM_LITE]);
+  const STATS = useMemo(() => ALAM_LITE ? buildStats(ALAM_LITE) : { total: 0, geocoded: 0, withDia: 0, withWorks: 0, female: 0 }, [ALAM_LITE]);
 
   /* ═══ State ═══ */
   const [search, setSearch] = useState('');
@@ -81,6 +78,10 @@ export default function AlamView({ lang, t: tProp }) {
   const [detailData, setDetailData] = useState(null);
   const [detailCache, setDetailCache] = useState({});
   const [showMobile, setShowMobile] = useState('list'); // 'list' | 'map' | 'card'
+
+  /* ═══ Loading / error guard ═══ */
+  if (dataLoading || !ALAM_LITE) return <LazyLoader message={ta.loading || 'al-Aʿlām verileri yükleniyor'} />;
+  if (dataError) return <LazyLoader error={dataError} onRetry={() => window.location.reload()} />;
 
   /* ═══ Filter biographies ═══ */
   const filtered = useMemo(() => {
@@ -135,7 +136,7 @@ export default function AlamView({ lang, t: tProp }) {
     }
 
     return arr;
-  }, [search, periodRange, selectedRegion, selectedProfessions, selectedMadhab, selectedGender]);
+  }, [ALAM_LITE, search, periodRange, selectedRegion, selectedProfessions, selectedMadhab, selectedGender]);
 
   /* ═══ Geocoded subset for map ═══ */
   const geocoded = useMemo(() => filtered.filter(b => b.lat != null), [filtered]);
@@ -297,4 +298,4 @@ export default function AlamView({ lang, t: tProp }) {
   );
 }
 
-export { ALAM_LITE, ALAM_BY_ID, STATS, normalize as alamNormalize };
+export { normalize as alamNormalize };

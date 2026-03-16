@@ -1,6 +1,6 @@
 import { useState, useMemo, useCallback, useRef, useEffect } from 'react';
 import DB from '../../data/db.json';
-import ALAM_LITE from '../../data/alam_lite.json';
+import useAsyncData from '../../hooks/useAsyncData.jsx';
 import T from '../../data/i18n';
 import { n } from '../../hooks/useEntityLookup';
 import { f } from '../../data/i18n-utils';
@@ -32,7 +32,7 @@ const normalize = (s) =>
     .replace(/أ|إ|آ/g, 'ا');
 
 /* ═══ Build search index with multi-field support ═══ */
-function buildSearchIndex() {
+function buildSearchIndex(alamData) {
   const idx = [];
 
   DB.dynasties.forEach(d => {
@@ -162,7 +162,7 @@ function buildSearchIndex() {
   });
 
   // el-A'lâm biographies (only geocoded for map, all for search)
-  ALAM_LITE.forEach(b => {
+  (alamData || []).forEach(b => {
     const searchTr = normalize(b.ht || '');
     const searchEn = normalize(b.he || '');
     const searchAr = normalize(b.h || '');
@@ -234,7 +234,10 @@ export default function SearchBar({ lang, onFlyTo, onSelectEntity }) {
   const wrapRef = useRef(null);
   const inputRef = useRef(null);
 
-  const searchIndex = useMemo(() => buildSearchIndex(), []);
+  // Lazy-load alam data — search works immediately with DB data, alam entries arrive later
+  const { data: alamData } = useAsyncData('/data/alam_lite.json');
+
+  const searchIndex = useMemo(() => buildSearchIndex(alamData), [alamData]);
   const totalCount = searchIndex.length;
 
   useEffect(() => {
@@ -333,7 +336,11 @@ export default function SearchBar({ lang, onFlyTo, onSelectEntity }) {
     else if (e.key === 'Escape') setShowDropdown(false);
   }, [showDropdown, showRecent, results, selectedIdx, handleSelect, handleRandom]);
 
-  const t = T[lang];
+  const t = T[lang] || T.tr;
+  if (!t || !t.search) {
+    console.error('[SearchBar] T[lang] is broken. lang=', lang, 'T keys=', Object.keys(T));
+    return <div style={{color:'red'}}>SearchBar: i18n error (lang={String(lang)})</div>;
+  }
   const labels = getTypeLabels(t);
 
   return (

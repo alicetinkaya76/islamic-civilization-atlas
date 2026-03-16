@@ -8,13 +8,27 @@ export default defineConfig({
   build: {
     rollupOptions: {
       output: {
-        manualChunks: {
-          vendor: ['react', 'react-dom'],
-          leaflet: ['leaflet'],
-          d3: ['d3'],
-        }
-      }
+        manualChunks(id) {
+          // ─── Vendor chunks ───
+          if (id.includes('node_modules/react-dom')) return 'vendor-react';
+          if (id.includes('node_modules/react/'))    return 'vendor-react';
+          if (id.includes('node_modules/leaflet'))   return 'vendor-leaflet';
+          if (id.includes('node_modules/d3'))         return 'vendor-d3';
+
+          // ─── Feature chunks (lazy-loaded panels) ───
+          if (id.includes('/components/admin/'))      return 'chunk-admin';
+          if (id.includes('/components/alam/'))        return 'chunk-alam';
+          if (id.includes('/components/yaqut/'))       return 'chunk-yaqut';
+          if (id.includes('/components/scholars/'))    return 'chunk-scholars';
+          if (id.includes('/components/battles/'))     return 'chunk-battles';
+          if (id.includes('/components/causal/'))      return 'chunk-causal';
+          if (id.includes('QuizMode'))                 return 'chunk-quiz';
+
+          // ─── Data chunk (scholar_identity is big) ───
+          if (id.includes('scholar_identity'))         return 'chunk-scholar-data';
+        },
+      },
     },
-    chunkSizeWarningLimit: 4500,
-  }
+    chunkSizeWarningLimit: 1500,
+  },
 });
