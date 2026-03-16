@@ -6323,7 +6323,8 @@
       "narr_ar": "بدر هي أول معركة كبرى في تاريخ الإسلام. في عام 624 واجهت قوة مسلمة صغيرة مكونة من 313 رجلا بقيادة النبي محمد جيش قريش المؤلف من ألف مقاتل قرب آبار بدر. هذا النصر الذي تحقق رغم النقص العددي منح الجماعة المسلمة الفتية الثقة العسكرية والشرعية السياسية. النزاع الذي بدأ بتهديد قوافل قريش التجارية",
       "impact_ar": "نصر بدر قوى شرعية دولة المدينة الإسلامية وعجل انضمام القبائل العربية للإسلام ومهد الطريق لفتح مكة في غضون ست سنوات",
       "tactic_ar": "سيطر النبي محمد على آبار الماء لحرمان العدو من الماء وكان اختيار الموقع الدفاعي عاملا في موازنة النقص العددي",
-      "tactic_en": "The Prophet secured the water wells, forcing the enemy to fight at a disadvantage. Defensive positioning neutralized the numerical imbalance."
+      "tactic_en": "The Prophet secured the water wells, forcing the enemy to fight at a disadvantage. Defensive positioning neutralized the numerical imbalance.",
+      "forces_m_ar": "~313 رجلاً"
     },
     {
       "id": 2,
@@ -8192,7 +8193,7 @@
       "en": "Second Battle of Tarain",
       "yr": 1192,
       "lat": 29.45,
-      "lon": 77.0,
+      "lon": 77,
       "sig": "Kritik",
       "res": "Hint alt kıtasında İslam hakimiyetinin başlangıcı",
       "narr_tr": "1192'de Muhammed Gorî, bir yıl önce yenildiği Tarain'de Prithvirâj Çâuhân'ı kesin bir yenilgiye uğrattı. Bu zafer Delhi Sultanlığı'nın kurulmasına ve Hint alt kıtasında 600 yılı aşkın İslam hakimiyetine zemin hazırladı.",
