@@ -1,6 +1,6 @@
 /**
  * AdminSidebar — Sol menü navigasyonu
- * v5.2.0.0
+ * v5.3.1.0
  */
 import { SCHEMAS, COLLECTION_ORDER, AUX_MODULES } from './schemas/entitySchemas';
 import { useAdmin } from './AdminContext';
@@ -112,6 +112,14 @@ export default function AdminSidebar({ activeRoute, onNavigate, collapsed, onTog
         >
           <span className="admin-nav-icon">✅</span>
           {!collapsed && <span className="admin-nav-label">Doğrulama</span>}
+        </button>
+        <button
+          className={`admin-nav-item${activeRoute === 'settings' ? ' active' : ''}`}
+          onClick={() => onNavigate('settings')}
+          title="Ayarlar"
+        >
+          <span className="admin-nav-icon">⚙</span>
+          {!collapsed && <span className="admin-nav-label">Ayarlar</span>}
         </button>
       </nav>
     </aside>

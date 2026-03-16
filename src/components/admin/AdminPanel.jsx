@@ -1,9 +1,10 @@
 /**
  * AdminPanel — Ana layout: sidebar + content area + routing
- * v5.2.0.0
+ * v5.3.1.0 — GitHub save + settings
  */
 import { useState, useCallback, useMemo } from 'react';
 import { AdminProvider, useAdmin } from './AdminContext';
+import { ToastProvider } from './shared/AdminToast';
 import AdminLogin from './AdminLogin';
 import AdminSidebar from './AdminSidebar';
 import AdminHeader from './AdminHeader';
@@ -16,6 +17,7 @@ import {
 } from './editors/AuxEditors';
 import ExportManager, { ChangeLogView } from './editors/ExportManager';
 import { BulkImport, SearchReplace, ValidationReport } from './editors/AdminTools';
+import GitHubSettings from './settings/GitHubSettings';
 import { SCHEMAS, COLLECTION_ORDER } from './schemas/entitySchemas';
 import '../../styles/admin.css';
 
@@ -93,6 +95,7 @@ function AdminContent({ route }) {
   if (route === 'import') return <BulkImport />;
   if (route === 'search-replace') return <SearchReplace />;
   if (route === 'validate') return <ValidationReport />;
+  if (route === 'settings') return <GitHubSettings />;
 
   if (route.startsWith('entity/')) {
     const collection = route.replace('entity/', '');
@@ -156,7 +159,9 @@ export default function AdminPanel({ lang, onBack }) {
 
   return (
     <AdminProvider>
-      <AdminPanelInner onBack={handleBack} />
+      <ToastProvider>
+        <AdminPanelInner onBack={handleBack} />
+      </ToastProvider>
     </AdminProvider>
   );
 }
