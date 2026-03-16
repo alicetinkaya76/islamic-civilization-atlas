@@ -2,6 +2,7 @@ import { useEffect, useRef, useMemo } from 'react';
 import * as d3 from 'd3';
 import SCHOLAR_LINKS from '../../data/scholar_links';
 import ISNAD_CHAINS from '../../data/isnad_chains';
+import { n } from '../../data/i18n-utils';
 
 const DISC_COLORS = {
   'Fıkıh':                   '#16a34a',
