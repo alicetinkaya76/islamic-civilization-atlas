@@ -1,8 +1,10 @@
 import { useState } from 'react';
+import T from '../../data/i18n';
 import CitationBox from './CitationBox';
 
 export default function Footer({ lang }) {
   const [showCite, setShowCite] = useState(false);
+  const t = T[lang];
 
   return (
     <footer className="site-footer">
@@ -19,7 +21,7 @@ export default function Footer({ lang }) {
             </span>
           </div>
           <div className="footer-affil">
-            Selçuk {{ tr: 'Üniversitesi', en: 'University', ar: '' }[lang]} — Konya, {{ tr: 'Türkiye', en: 'Turkey', ar: '' }[lang]}
+            Selçuk {t.about.univ} — Konya, {t.about.country}
           </div>
         </div>
         <div className="footer-center">
@@ -27,7 +29,7 @@ export default function Footer({ lang }) {
             <img src="https://zenodo.org/badge/DOI/10.5281/zenodo.18818238.svg" alt="DOI" height="18" />
           </a>
           <button className="footer-cite-btn" onClick={() => setShowCite(p => !p)}>
-            📝 {{ tr: 'Atıf Yap', en: 'Cite', ar: '' }[lang]}
+            📝 {t.footer.cite}
           </button>
         </div>
         <div className="footer-right">

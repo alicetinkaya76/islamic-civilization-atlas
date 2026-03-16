@@ -92,8 +92,8 @@ export default function MapView({ lang, t, sidebarOpen, mapRef, onPopupOpen, onT
         <div ref={mapEl} className="map-canvas" />
         {/* Tour button */}
         <button className="tour-trigger" onClick={() => setTourActive(true)}
-          aria-label={{ tr: 'Rehberli turlar', en: 'Guided tours', ar: '' }[lang]}>
-          🗺 {{ tr: 'Turlar', en: 'Tours', ar: '' }[lang]}
+          aria-label={t.map.tourLabel}>
+          🗺 {t.map.tours}
         </button>
         {/* Tour overlay */}
         {tourActive && (
@@ -109,21 +109,21 @@ export default function MapView({ lang, t, sidebarOpen, mapRef, onPopupOpen, onT
         )}
         <div className="tbar">
           <div className="tbar-controls">
-            <button className="tbar-step" onClick={() => setYear(y => Math.max(622, y - 10))} aria-label="-10 yıl">◀</button>
+            <button className="tbar-step" onClick={() => setYear(y => Math.max(622, y - 10))} aria-label={t.map.back10}>◀</button>
             <input
               type="number"
               className="tbar-year-input"
               min={622} max={1924}
               value={year}
               onChange={e => { const v = +e.target.value; if (v >= 622 && v <= 1924) setYear(v); }}
-              aria-label={{ tr: 'Yıl gir', en: 'Enter year', ar: '' }[lang]}
+              aria-label={t.map.enterYear}
             />
-            <button className="tbar-step" onClick={() => setYear(y => Math.min(1924, y + 10))} aria-label="+10 yıl">▶</button>
+            <button className="tbar-step" onClick={() => setYear(y => Math.min(1924, y + 10))} aria-label={t.map.fwd10}>▶</button>
           </div>
           <div className="tbar-era">{eraName(year, lang)}</div>
           <input type="range" className="tbar-range" min={622} max={1924} value={year} step={1}
             onChange={e => setYear(+e.target.value)}
-            aria-label={{ tr: 'Zaman kaydırıcısı', en: 'Time slider', ar: '' }[lang]}
+            aria-label={t.map.slider}
             aria-valuemin={622} aria-valuemax={1924} aria-valuenow={year} />
           <div className="tbar-ticks">
             {['622', '750', '900', '1055', '1258', '1453', '1600', '1800', '1924'].map(y => <span key={y}>{y}</span>)}

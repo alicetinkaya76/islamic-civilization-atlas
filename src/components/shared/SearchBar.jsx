@@ -1,6 +1,7 @@
 import { useState, useMemo, useCallback, useRef, useEffect } from 'react';
 import DB from '../../data/db.json';
 import ALAM_LITE from '../../data/alam_lite.json';
+import T from '../../data/i18n';
 import { n } from '../../hooks/useEntityLookup';
 import { f } from '../../data/i18n-utils';
 
@@ -197,21 +198,24 @@ function fuzzyMatch(haystack, needle) {
   return { match: true, score: gaps + 10 };
 }
 
-/* ═══ Type labels ═══ */
-const TYPE_LABEL = {
-  tr: { dynasty: 'Hanedan', battle: 'Savaş', event: 'Olay', scholar: 'Âlim', monument: 'Eser', city: 'Şehir', ruler: 'Hükümdar', madrasa: 'Medrese', alam: "el-A'lâm" },
-  en: { dynasty: 'Dynasty', battle: 'Battle', event: 'Event', scholar: 'Scholar', monument: 'Monument', city: 'City', ruler: 'Ruler', madrasa: 'Madrasa', alam: "al-Aʿlām" }
-};
+/* ═══ Type labels — derived from t inside component ═══ */
+function getTypeLabels(t) {
+  return {
+    dynasty: t.m.dynasty, battle: t.m.battle, event: t.m.event,
+    scholar: t.m.scholar, monument: t.m.monument, city: t.m.city,
+    ruler: t.m.ruler, madrasa: t.layers.madrasas, alam: t.alam.title,
+  };
+}
 
 const CATEGORIES = [
-  { key: 'dynasty',  icon: '🏛', label_tr: 'Hanedan',  label_en: 'Dynasty' },
-  { key: 'battle',   icon: '⚔', label_tr: 'Savaş',    label_en: 'Battle' },
-  { key: 'scholar',  icon: '📚', label_tr: 'Âlim',     label_en: 'Scholar' },
-  { key: 'monument', icon: '🕌', label_tr: 'Anıt',     label_en: 'Monument' },
-  { key: 'city',     icon: '🏙', label_tr: 'Şehir',    label_en: 'City' },
-  { key: 'event',    icon: '📜', label_tr: 'Olay',     label_en: 'Event' },
-  { key: 'ruler',    icon: '👑', label_tr: 'Hükümdar', label_en: 'Ruler' },
-  { key: 'alam',     icon: '📖', label_tr: "el-A'lâm", label_en: "al-Aʿlām" },
+  { key: 'dynasty',  icon: '🏛', labelKey: 'dynasty' },
+  { key: 'battle',   icon: '⚔', labelKey: 'battle' },
+  { key: 'scholar',  icon: '📚', labelKey: 'scholar' },
+  { key: 'monument', icon: '🕌', labelKey: 'monument' },
+  { key: 'city',     icon: '🏙', labelKey: 'city' },
+  { key: 'event',    icon: '📜', labelKey: 'event' },
+  { key: 'ruler',    icon: '👑', labelKey: 'ruler' },
+  { key: 'alam',     icon: '📖', labelKey: 'alam' },
 ];
 
 const RECENT_KEY = 'atlas-recent-searches';
@@ -329,20 +333,21 @@ export default function SearchBar({ lang, onFlyTo, onSelectEntity }) {
     else if (e.key === 'Escape') setShowDropdown(false);
   }, [showDropdown, showRecent, results, selectedIdx, handleSelect, handleRandom]);
 
-  const labels = TYPE_LABEL[lang] || TYPE_LABEL.en;
+  const t = T[lang];
+  const labels = getTypeLabels(t);
 
   return (
     <div className="search-wrap" ref={wrapRef}>
       <div className="search-input-row">
         <span className="search-icon">🔍</span>
         <input ref={inputRef} type="text" className="search-input"
-          placeholder={{ tr: 'Hanedan, savaş, âlim, şehir ara…', en: 'Search dynasties, battles, scholars, cities…', ar: '' }[lang]}
+          placeholder={t.search.placeholder}
           value={query} onChange={handleChange} onKeyDown={handleKeyDown} onFocus={handleFocus}
-          aria-label={{ tr: 'Haritada ara', en: 'Search map', ar: '' }[lang]}
+          aria-label={t.search.ariaSearch}
           aria-expanded={showDropdown || showRecent} aria-autocomplete="list" role="combobox" />
         <button className="search-random-btn" onClick={handleRandom}
-          title={{ tr: 'Rastgele keşfet', en: 'Random discovery', ar: '' }[lang]}
-          aria-label={{ tr: 'Rastgele keşfet', en: 'Random discovery', ar: '' }[lang]}>🎲</button>
+          title={t.search.random}
+          aria-label={t.search.random}>🎲</button>
       </div>
 
       {/* Category filter chips */}
@@ -351,9 +356,9 @@ export default function SearchBar({ lang, onFlyTo, onSelectEntity }) {
           <button key={cat.key}
             className={`search-chip${activeCategories.has(cat.key) ? ' active' : ''}`}
             onClick={() => toggleCategory(cat.key)}
-            title={f(cat, 'label', lang)}>
+            title={labels[cat.labelKey]}>
             <span className="search-chip-icon">{cat.icon}</span>
-            <span className="search-chip-label">{f(cat, 'label', lang)}</span>
+            <span className="search-chip-label">{labels[cat.labelKey]}</span>
           </button>
         ))}
       </div>
@@ -362,9 +367,9 @@ export default function SearchBar({ lang, onFlyTo, onSelectEntity }) {
       {showRecent && recentSearches.length > 0 && (
         <ul className="search-dropdown" role="listbox">
           <li className="search-recent-header">
-            <span>{{ tr: '🕐 Son Aramalar', en: '🕐 Recent Searches', ar: '' }[lang]}</span>
+            <span>{t.search.recentTitle}</span>
             <button className="search-recent-clear" onClick={clearRecent}>
-              {{ tr: 'Temizle', en: 'Clear', ar: '' }[lang]}
+              {t.search.clear}
             </button>
           </li>
           {recentSearches.map((term, i) => (
@@ -400,7 +405,7 @@ export default function SearchBar({ lang, onFlyTo, onSelectEntity }) {
             </li>
           ))}
           <li className="search-stats">
-            {results.length} {{ tr: 'sonuç', en: 'results', ar: '' }[lang]} / {totalCount.toLocaleString()} {{ tr: 'kayıt arasında', en: 'records', ar: '' }[lang]}
+            {results.length} {t.search.results} / {totalCount.toLocaleString()} {t.search.among}
           </li>
         </ul>
       )}
