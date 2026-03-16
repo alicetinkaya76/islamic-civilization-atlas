@@ -29,8 +29,8 @@ function GeoTypeChart({ data, lang, ty }) {
     const counts = {};
     data.forEach(e => { if (e.gt) counts[e.gt] = (counts[e.gt] || 0) + 1; });
     return Object.entries(counts).sort((a, b) => b[1] - a[1]).slice(0, 15)
-      .map(([type, count]) => ({ type, label: isTr ? (GEO_TR[type] || type) : type, count }));
-  }, [data, isTr]);
+      .map(([type, count]) => ({ type, label: lang === "tr" ? (GEO_TR[type] || type) : type, count }));
+  }, [data, lang === "tr"]);
 
   useEffect(() => {
     const svg = d3.select(svgRef.current); svg.selectAll('*').remove();
@@ -182,7 +182,7 @@ function CrossRefDensity({ data, lang, ty }) {
   const svgRef = useRef(null);
   const topPlaces = useMemo(() =>
     data.filter(e => e.pc > 0).sort((a, b) => b.pc - a.pc).slice(0, 20)
-      .map(e => ({ name: hn(e, lang), count: e.pc })), [data, isTr]);
+      .map(e => ({ name: hn(e, lang), count: e.pc })), [data, lang === "tr"]);
 
   useEffect(() => {
     const svg = d3.select(svgRef.current); svg.selectAll('*').remove();
@@ -272,8 +272,8 @@ function DiaCoverage({ data, lang, ty }) {
       if (e.ds) byType[gt].dia++;
     });
     return Object.entries(byType).sort((a, b) => b[1].total - a[1].total).slice(0, 12)
-      .map(([type, v]) => ({ type, label: isTr ? (GEO_TR[type] || type) : type, dia: v.dia, noDia: v.total - v.dia, total: v.total, pct: ((v.dia / v.total) * 100).toFixed(0) }));
-  }, [data, isTr]);
+      .map(([type, v]) => ({ type, label: lang === "tr" ? (GEO_TR[type] || type) : type, dia: v.dia, noDia: v.total - v.dia, total: v.total, pct: ((v.dia / v.total) * 100).toFixed(0) }));
+  }, [data, lang === "tr"]);
 
   useEffect(() => {
     const svg = d3.select(svgRef.current); svg.selectAll('*').remove();
@@ -315,7 +315,7 @@ function DiaCoverage({ data, lang, ty }) {
     lg2.append('rect').attr('width', 10).attr('height', 10).attr('fill', '#1e2a44').attr('rx', 1);
     lg2.append('text').attr('x', 14).attr('y', 9).attr('fill', '#90a4ae').attr('font-size', 10)
       .text({ tr: 'Bağlantısız', en: 'Not linked', ar: '' }[lang]);
-  }, [chartData, isTr]);
+  }, [chartData, lang === "tr"]);
 
   return (
     <div className="yaqut-chart-card">
@@ -332,7 +332,7 @@ function EventPersonScatter({ data, lang, ty }) {
     return data.filter(e => ((e.np || 0) > 0 || (e.ec || 0) > 0) && e.ct)
       .map(e => ({ name: hn(e, lang), np: e.np || 0, ec: e.ec || 0, pc: e.pc || 0, ct: e.ct }))
       .sort((a, b) => (b.np + b.ec) - (a.np + a.ec)).slice(0, 60);
-  }, [data, isTr]);
+  }, [data, lang === "tr"]);
 
   useEffect(() => {
     const svg = d3.select(svgRef.current); svg.selectAll('*').remove();
@@ -365,7 +365,7 @@ function EventPersonScatter({ data, lang, ty }) {
     svg.append('text').attr('x', -h / 2).attr('y', 14).attr('transform', 'rotate(-90)')
       .attr('text-anchor', 'middle').attr('fill', '#c4b89a').attr('font-size', 11)
       .text({ tr: 'Kişi Sayısı (Yâkût)', en: 'Person Count (Yāqūt)', ar: '' }[lang]);
-  }, [bubbles, isTr]);
+  }, [bubbles, lang === "tr"]);
 
   return (
     <div className="yaqut-chart-card">

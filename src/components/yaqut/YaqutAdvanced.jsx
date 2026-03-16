@@ -91,7 +91,7 @@ export function PlaceGraph({ lang }) {
     });
 
     return () => sim.stop();
-  }, [graphData, isTr]);
+  }, [graphData, lang === "tr"]);
 
   return (
     <div className="yaqut-adv-panel" ref={containerRef}>
@@ -139,7 +139,7 @@ export function PersonPlaceNetwork({ data, lang }) {
         type: 'place',
         count: e.pc || 0,
       }));
-  }, [data, isTr]);
+  }, [data, lang === "tr"]);
 
   useEffect(() => {
     if (!svgRef.current || !topPlaces.length) return;
@@ -200,7 +200,7 @@ export function PersonPlaceNetwork({ data, lang }) {
       .attr('y', 4).attr('text-anchor', 'middle')
       .attr('fill', '#e8dcc8').attr('font-size', 9).attr('font-weight', 600)
       .text(d => d.count);
-  }, [topPlaces, isTr]);
+  }, [topPlaces, lang === "tr"]);
 
   return (
     <div className="yaqut-adv-panel" ref={containerRef}>

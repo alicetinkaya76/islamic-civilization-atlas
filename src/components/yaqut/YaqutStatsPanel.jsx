@@ -119,7 +119,7 @@ export default function YaqutStatsPanel({ lang, ty, data }) {
   const [fact, setFact] = useState('');
   const facts = useMemo(() => {
     const f = [];
-    if (isTr) {
+    if (lang === "tr") {
       f.push(`Toplam ${stats.total.toLocaleString()} coğrafi giriş`);
       f.push(`%${((stats.geocoded / stats.total) * 100).toFixed(1)}'i modern koordinatla eşleştirilmiş`);
       f.push(`${stats.withDia.toLocaleString()} DİA bağlantılı giriş (%${((stats.withDia / stats.total) * 100).toFixed(1)})`);
@@ -133,7 +133,7 @@ export default function YaqutStatsPanel({ lang, ty, data }) {
       f.push(`${stats.withPoetry.toLocaleString()} entries contain poetry`);
     }
     return f;
-  }, [stats, isTr]);
+  }, [stats, lang === "tr"]);
 
   useEffect(() => {
     setFact(facts[0]);

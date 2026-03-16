@@ -200,7 +200,7 @@ export default function YaqutSidebar({
                     borderColor: selectedGeoTypes.has(gt) ? (GEO_COLORS[gt] || '#90a4ae') : 'transparent'
                   }}
                   onClick={() => toggleGeoType(gt)}>
-                  {GEO_ICONS[gt] || '📍'} {isTr ? (GEO_TR[gt] || gt) : (GEO_EN[gt] || gt)}
+                  {GEO_ICONS[gt] || '📍'} {lang === 'tr' ? (GEO_TR[gt] || gt) : (GEO_EN[gt] || gt)}
                 </button>
               ))}
             </div>

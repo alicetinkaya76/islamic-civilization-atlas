@@ -46,11 +46,11 @@ export default function AlamIdCard({ lang, ta, bio, detail, onClose, allData, on
     );
   }
   const heading1 = hn(bio, lang);
-  const heading2 = isTr ? bio.he : bio.ht;
-  const fullName = detail ? (isTr ? detail.nt : detail.ne) : (hn(bio, lang));
+  const heading2 = lang === "tr" ? bio.he : bio.ht;
+  const fullName = detail ? (lang === "tr" ? detail.nt : detail.ne) : (hn(bio, lang));
   const desc = detail ? (dn(detail, lang)) : (dn(bio, lang));
-  const prof = isTr ? bio.pt : bio.pe;
-  const nisbe = detail ? (isTr ? detail.n2 : detail.ne2) : '';
+  const prof = lang === "tr" ? bio.pt : bio.pe;
+  const nisbe = detail ? (lang === "tr" ? detail.n2 : detail.ne2) : '';
   const birthPlace = detail ? detail.bp : bio.bp;
   const deathPlace = detail ? detail.dp : bio.dp;
   const kunya = detail ? detail.ku : bio.ku;
@@ -110,7 +110,7 @@ export default function AlamIdCard({ lang, ta, bio, detail, onClose, allData, on
       others: sort(others),
       total: teachers.length + students.length + influences.length + peers.length + others.length,
     };
-  }, [bio, allData, isTr]);
+  }, [bio, allData, lang === "tr"]);
 
   const RelList = ({ title, items, icon }) => {
     if (!items || items.length === 0) return null;
@@ -227,7 +227,7 @@ export default function AlamIdCard({ lang, ta, bio, detail, onClose, allData, on
       {relations && relations.total > 0 && (
         <div className="alam-idcard-works" style={{ marginTop: 8 }}>
           <h4 className="alam-idcard-section-title">
-            🕸 {isTr ? `İlişkiler (${relations.total})` : `Relationships (${relations.total})`}
+            🕸 {lang === "tr" ? `İlişkiler (${relations.total})` : `Relationships (${relations.total})`}
           </h4>
           <RelList
             title={{ tr: 'Hocaları', en: 'Teachers', ar: '' }[lang]}

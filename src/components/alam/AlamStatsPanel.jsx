@@ -102,7 +102,7 @@ export default function AlamStatsPanel({ lang, ta, data }) {
       { label: { tr: 'Erkek', en: 'Male', ar: '' }[lang], value: m },
       { label: { tr: 'Kadın', en: 'Female', ar: '' }[lang], value: f },
     ];
-  }, [data, isTr]);
+  }, [data, lang === "tr"]);
 
   /* ── Top 5 professions ── */
   const topProfs = useMemo(() => {
@@ -133,7 +133,7 @@ export default function AlamStatsPanel({ lang, ta, data }) {
   const [fact, setFact] = useState('');
   const facts = useMemo(() => {
     const f = [];
-    if (isTr) {
+    if (lang === "tr") {
       f.push(`En kalabalık yüzyıl: ${stats.peakCentury?.[0]}. yüzyıl (${stats.peakCentury?.[1]} biyografi)`);
       f.push(`Kadın biyografi oranı: %${((stats.female / stats.total) * 100).toFixed(1)}`);
       f.push(`Biyografilerin %${((stats.geocoded / stats.total) * 100).toFixed(1)}'i haritada konumlandırılmış`);
@@ -149,7 +149,7 @@ export default function AlamStatsPanel({ lang, ta, data }) {
       f.push(`Time span: ${stats.earliest}–${stats.latest} CE (${stats.latest - stats.earliest} years)`);
     }
     return f;
-  }, [stats, isTr]);
+  }, [stats, lang === "tr"]);
 
   useEffect(() => {
     setFact(facts[0]);
@@ -278,7 +278,7 @@ export default function AlamStatsPanel({ lang, ta, data }) {
         <div className="alam-sp-bars">
           {topProfs.map(([name, count]) => (
             <div key={name} className="alam-sp-bar-row">
-              <span className="alam-sp-bar-label">{isTr ? name : name}</span>
+              <span className="alam-sp-bar-label">{lang === "tr" ? name : name}</span>
               <div className="alam-sp-bar-track">
                 <div className="alam-sp-bar-fill" style={{ width: `${(count / maxProf) * 100}%` }} />
               </div>

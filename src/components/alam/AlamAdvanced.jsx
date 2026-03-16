@@ -110,7 +110,7 @@ export function CrossRefNetwork({ data, lang, onSelectPerson }) {
         name: hn(b, lang),
         arabic: b.h,
         century: b.c,
-        profession: isTr ? b.pt : b.pe,
+        profession: lang === "tr" ? b.pt : b.pe,
         degree: degree[id] || 0,
         death: b.md,
         madhab: b.mz,
@@ -119,7 +119,7 @@ export function CrossRefNetwork({ data, lang, onSelectPerson }) {
     });
 
     return { nodes, edges: validEdges };
-  }, [data, isTr, normalizedXrefs, filterRel]);
+  }, [data, lang === "tr", normalizedXrefs, filterRel]);
 
   /* İstatistikler */
   const stats = useMemo(() => {
@@ -203,9 +203,9 @@ export function CrossRefNetwork({ data, lang, onSelectPerson }) {
     });
 
     return () => sim.stop();
-  }, [graph, isTr, onSelectPerson]);
+  }, [graph, lang === "tr", onSelectPerson]);
 
-  const relLabels = isTr ? REL_LABEL_TR : REL_LABEL_EN;
+  const relLabels = lang === "tr" ? REL_LABEL_TR : REL_LABEL_EN;
 
   return (
     <div className="alam-adv-panel" ref={containerRef}>
@@ -349,7 +349,7 @@ export function TimeMachine({ data, lang }) {
         <span className="alam-adv-stat">{alive.length} {{ tr: 'kişi hayatta', en: 'alive', ar: '' }[lang]}</span>
       </div>
       <p className="alam-adv-desc">
-        {isTr
+        {lang === "tr"
           ? `${year} yılında hayatta olan tüm kişileri gösterir. Slider'ı hareket ettir veya ▶ ile otomatik ilerlet.`
           : `Shows all persons alive in ${year} CE. Move the slider or press ▶ to animate.`}
       </p>
@@ -490,7 +490,7 @@ export function WorkProfessionScatter({ data, lang }) {
       .attr('fill', '#c4b89a').attr('font-size', 11)
       .text({ tr: 'Ort. Eser Sayısı', en: 'Avg. Work Count', ar: '' }[lang]);
 
-  }, [bubbles, isTr]);
+  }, [bubbles, lang === "tr"]);
 
   return (
     <div className="alam-adv-panel">

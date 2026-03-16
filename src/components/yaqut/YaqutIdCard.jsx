@@ -47,10 +47,10 @@ export default function YaqutIdCard({ lang, ty, entry, detail, onClose }) {
     );
   }
   const heading1 = hn(entry, lang);
-  const heading2 = isTr ? entry.he : entry.ht;
+  const heading2 = lang === "tr" ? entry.he : entry.ht;
   const summary = detail
-    ? (isTr ? (detail.sft || entry.st) : (detail.sfe || entry.se))
-    : (isTr ? entry.st : entry.se);
+    ? (lang === "tr" ? (detail.sft || entry.st) : (detail.sfe || entry.se))
+    : (lang === "tr" ? entry.st : entry.se);
   const geoType = (lang === "tr" ? entry.gtt : entry.gte);
   const periodBadge = PERIOD_BADGE[entry.hp] || null;
 
@@ -208,7 +208,7 @@ export default function YaqutIdCard({ lang, ty, entry, detail, onClose }) {
                   </a>
                 </div>
                 <div className="yaqut-xref-meta">
-                  <span className="yaqut-xref-prof">{isTr ? p.pt : p.pe}</span>
+                  <span className="yaqut-xref-prof">{lang === "tr" ? p.pt : p.pe}</span>
                   {p.dh && <span className="yaqut-xref-death">ö. {p.dh} H / {p.dm}</span>}
                 </div>
               </div>
