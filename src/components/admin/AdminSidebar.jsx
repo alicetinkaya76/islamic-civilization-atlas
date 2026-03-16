@@ -114,6 +114,14 @@ export default function AdminSidebar({ activeRoute, onNavigate, collapsed, onTog
           {!collapsed && <span className="admin-nav-label">Doğrulama</span>}
         </button>
         <button
+          className={`admin-nav-item${activeRoute === 'causal-editor' ? ' active' : ''}`}
+          onClick={() => onNavigate('causal-editor')}
+          title="Nedensellik Editörü"
+        >
+          <span className="admin-nav-icon">🔀</span>
+          {!collapsed && <span className="admin-nav-label">Nedensellik Editörü</span>}
+        </button>
+        <button
           className={`admin-nav-item${activeRoute === 'settings' ? ' active' : ''}`}
           onClick={() => onNavigate('settings')}
           title="Ayarlar"

@@ -175,6 +175,89 @@ function ArrayCoordsField({ value, onChange }) {
   );
 }
 
+/* ═══ Map Coords Picker (Leaflet mini-map for lat/lon) ═══ */
+function MapCoordsPicker({ lat, lon, onChange }) {
+  const mapRef = useRef(null);
+  const mapInstanceRef = useRef(null);
+  const markerRef = useRef(null);
+  const [expanded, setExpanded] = useState(false);
+
+  useEffect(() => {
+    if (!expanded || !mapRef.current || mapInstanceRef.current) return;
+
+    const L = window.L;
+    if (!L) return;
+
+    const validLat = (lat != null && !isNaN(lat) && Math.abs(lat) <= 90) ? lat : 33;
+    const validLon = (lon != null && !isNaN(lon) && Math.abs(lon) <= 180) ? lon : 44;
+    const zoom = (lat && lon) ? 6 : 4;
+
+    const map = L.map(mapRef.current, {
+      center: [validLat, validLon],
+      zoom,
+      zoomControl: true,
+      attributionControl: false,
+    });
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 18,
+    }).addTo(map);
+
+    if (lat && lon && lat !== 0 && lon !== 0) {
+      markerRef.current = L.marker([lat, lon], { draggable: true }).addTo(map);
+      markerRef.current.on('dragend', (e) => {
+        const pos = e.target.getLatLng();
+        onChange({ lat: Math.round(pos.lat * 10000) / 10000, lon: Math.round(pos.lng * 10000) / 10000 });
+      });
+    }
+
+    map.on('click', (e) => {
+      const newLat = Math.round(e.latlng.lat * 10000) / 10000;
+      const newLon = Math.round(e.latlng.lng * 10000) / 10000;
+      if (markerRef.current) {
+        markerRef.current.setLatLng([newLat, newLon]);
+      } else {
+        markerRef.current = L.marker([newLat, newLon], { draggable: true }).addTo(map);
+        markerRef.current.on('dragend', (ev) => {
+          const pos = ev.target.getLatLng();
+          onChange({ lat: Math.round(pos.lat * 10000) / 10000, lon: Math.round(pos.lng * 10000) / 10000 });
+        });
+      }
+      onChange({ lat: newLat, lon: newLon });
+    });
+
+    mapInstanceRef.current = map;
+
+    /* Invalidate size after render */
+    setTimeout(() => map.invalidateSize(), 100);
+
+    return () => {
+      map.remove();
+      mapInstanceRef.current = null;
+      markerRef.current = null;
+    };
+  }, [expanded]); // eslint-disable-line
+
+  /* Update marker position when lat/lon change externally */
+  useEffect(() => {
+    if (!markerRef.current || !mapInstanceRef.current) return;
+    if (lat && lon && lat !== 0 && lon !== 0) {
+      markerRef.current.setLatLng([lat, lon]);
+    }
+  }, [lat, lon]);
+
+  return (
+    <div className="admin-map-picker">
+      <button className="admin-btn admin-btn-sm" type="button" onClick={() => setExpanded(p => !p)}>
+        {expanded ? '🗺 Haritayı Kapat' : '🗺 Haritada Göster'}
+      </button>
+      {expanded && (
+        <div className="admin-map-container" ref={mapRef} />
+      )}
+    </div>
+  );
+}
+
 /* ═══ Main AdminField ═══ */
 export default function AdminField({ field, item, onChange }) {
   const { type, key, label, options, step, trilingual, refCollection, nullable, rtl } = field;
@@ -210,6 +293,23 @@ export default function AdminField({ field, item, onChange }) {
         <input className="admin-input" type="number" step={step || 1} value={val ?? ''}
           onChange={e => onChange({ [key]: e.target.value === '' ? null : Number(e.target.value) })} />
       );
+      /* Show map picker after lon field */
+      if (key === 'lon') {
+        return (
+          <div className={`admin-field-group${field.required ? ' required' : ''}`}>
+            <label className="admin-label">
+              {label}
+              {field.required && <span className="admin-required">*</span>}
+            </label>
+            {input}
+            <MapCoordsPicker
+              lat={item.lat}
+              lon={item.lon}
+              onChange={({ lat: newLat, lon: newLon }) => onChange({ lat: newLat, lon: newLon })}
+            />
+          </div>
+        );
+      }
       break;
 
     case 'textarea':

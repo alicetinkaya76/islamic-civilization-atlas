@@ -1,19 +1,48 @@
 /**
- * AdminHeader — Üst bar: geri, export, GitHub save, logout
- * v5.3.1.0
+ * AdminHeader — Üst bar: undo/redo, geri, export, GitHub save, logout
+ * v5.4.0.0
  */
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import { useAdmin } from './AdminContext';
 import { useToast } from './shared/AdminToast';
 import { getGitHubToken } from './settings/GitHubSettings';
 import GitHubSaveModal from './shared/GitHubSaveModal';
 
 export default function AdminHeader({ onBack, onNavigate }) {
-  const { user, logout, isDirty, changeLog, dirtyFiles, saveToGitHub } = useAdmin();
+  const { user, logout, isDirty, changeLog, dirtyFiles, saveToGitHub, undo, redo, canUndo, canRedo } = useAdmin();
   const toast = useToast();
   const [saving, setSaving] = useState(false);
   const [modalFiles, setModalFiles] = useState(null);
   const [modalCommit, setModalCommit] = useState('');
+
+  /* Keyboard shortcuts: Ctrl/Cmd+Z = undo, Ctrl/Cmd+Shift+Z = redo */
+  useEffect(() => {
+    const handler = (e) => {
+      const isMod = e.metaKey || e.ctrlKey;
+      if (!isMod || e.key.toLowerCase() !== 'z') return;
+
+      e.preventDefault();
+      if (e.shiftKey) {
+        const cmd = redo();
+        if (cmd) toast?.addToast(`Yinelendi: ${cmd.collection} #${cmd.id || cmd.itemId || ''}`, 'info', 2000);
+      } else {
+        const cmd = undo();
+        if (cmd) toast?.addToast(`Geri alındı: ${cmd.collection} #${cmd.id || cmd.item?.id || ''}`, 'info', 2000);
+      }
+    };
+    window.addEventListener('keydown', handler);
+    return () => window.removeEventListener('keydown', handler);
+  }, [undo, redo, toast]);
+
+  const handleUndo = useCallback(() => {
+    const cmd = undo();
+    if (cmd) toast?.addToast(`Geri alındı: ${cmd.collection} #${cmd.id || cmd.item?.id || ''}`, 'info', 2000);
+  }, [undo, toast]);
+
+  const handleRedo = useCallback(() => {
+    const cmd = redo();
+    if (cmd) toast?.addToast(`Yinelendi: ${cmd.collection} #${cmd.id || cmd.itemId || ''}`, 'info', 2000);
+  }, [redo, toast]);
 
   const handleGitHubSave = useCallback(async () => {
     const token = getGitHubToken();
@@ -61,6 +90,12 @@ export default function AdminHeader({ onBack, onNavigate }) {
           )}
         </div>
         <div className="admin-header-right">
+          <button className="admin-btn admin-btn-ghost admin-undo-btn"
+            onClick={handleUndo} disabled={!canUndo}
+            title="Geri Al (⌘Z)">↩</button>
+          <button className="admin-btn admin-btn-ghost admin-redo-btn"
+            onClick={handleRedo} disabled={!canRedo}
+            title="Yinele (⌘⇧Z)">↪</button>
           <button
             className="admin-btn admin-btn-github"
             onClick={handleGitHubSave}

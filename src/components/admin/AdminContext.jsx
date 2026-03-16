@@ -2,7 +2,7 @@
  * AdminContext — Auth + Data Management + Changelog + GitHub Save
  * v5.3.1.0 — Direct GitHub save from admin panel
  */
-import { createContext, useContext, useState, useCallback, useMemo } from 'react';
+import { createContext, useContext, useState, useCallback, useMemo, useRef } from 'react';
 import DB_ORIGINAL from '../../data/db.json';
 import T_ORIGINAL from '../../data/i18n';
 import TOURS_ORIGINAL from '../../data/tours';
@@ -154,6 +154,94 @@ export function AdminProvider({ children }) {
   /* ═══ Dirty files tracking ═══ */
   const [dirtyFiles, setDirtyFiles] = useState(new Set());
 
+  /* ═══ Undo/Redo History (Command Pattern) ═══ */
+  const [history, setHistory] = useState([]);
+  const [historyIndex, setHistoryIndex] = useState(-1);
+  const isUndoRedoRef = useRef(false); // prevent recording during undo/redo
+
+  const pushHistory = useCallback((command) => {
+    if (isUndoRedoRef.current) return;
+    setHistory(prev => {
+      // Truncate any redo history beyond current index
+      const base = prev.slice(0, historyIndex + 1);
+      const next = [...base, command];
+      // Limit history to 100 items
+      if (next.length > 100) next.shift();
+      return next;
+    });
+    setHistoryIndex(prev => Math.min(prev + 1, 99));
+  }, [historyIndex]);
+
+  const canUndo = historyIndex >= 0;
+  const canRedo = historyIndex < history.length - 1;
+
+  const undo = useCallback(() => {
+    if (historyIndex < 0 || !history[historyIndex]) return null;
+    const cmd = history[historyIndex];
+    isUndoRedoRef.current = true;
+
+    if (cmd.type === 'update') {
+      setDb(prev => {
+        const next = { ...prev };
+        next[cmd.collection] = prev[cmd.collection].map(item =>
+          item.id === cmd.id ? { ...item, ...cmd.oldData } : item
+        );
+        return next;
+      });
+      markDirty('db.json');
+    } else if (cmd.type === 'add') {
+      setDb(prev => ({
+        ...prev,
+        [cmd.collection]: prev[cmd.collection].filter(item => item.id !== cmd.itemId)
+      }));
+      markDirty('db.json');
+    } else if (cmd.type === 'delete') {
+      setDb(prev => {
+        const arr = [...prev[cmd.collection]];
+        arr.splice(cmd.index, 0, cmd.item);
+        return { ...prev, [cmd.collection]: arr };
+      });
+      markDirty('db.json');
+    }
+
+    setHistoryIndex(prev => prev - 1);
+    isUndoRedoRef.current = false;
+    return cmd;
+  }, [history, historyIndex, markDirty]);
+
+  const redo = useCallback(() => {
+    if (historyIndex >= history.length - 1) return null;
+    const cmd = history[historyIndex + 1];
+    isUndoRedoRef.current = true;
+
+    if (cmd.type === 'update') {
+      setDb(prev => {
+        const next = { ...prev };
+        next[cmd.collection] = prev[cmd.collection].map(item =>
+          item.id === cmd.id ? { ...item, ...cmd.newData } : item
+        );
+        return next;
+      });
+      markDirty('db.json');
+    } else if (cmd.type === 'add') {
+      setDb(prev => ({
+        ...prev,
+        [cmd.collection]: [...prev[cmd.collection], cmd.item]
+      }));
+      markDirty('db.json');
+    } else if (cmd.type === 'delete') {
+      setDb(prev => ({
+        ...prev,
+        [cmd.collection]: prev[cmd.collection].filter(item => item.id !== cmd.item.id)
+      }));
+      markDirty('db.json');
+    }
+
+    setHistoryIndex(prev => prev + 1);
+    isUndoRedoRef.current = false;
+    return cmd;
+  }, [history, historyIndex, markDirty]);
+
   const markDirty = useCallback((fileName) => {
     setDirtyFiles(prev => {
       const next = new Set(prev);
@@ -172,6 +260,14 @@ export function AdminProvider({ children }) {
 
   /* ═══ CRUD: db.json collections ═══ */
   const updateEntity = useCallback((collection, id, updates) => {
+    /* Capture old data for undo */
+    const oldItem = db[collection]?.find(item => item.id === id);
+    if (oldItem) {
+      const oldData = {};
+      for (const k of Object.keys(updates)) oldData[k] = oldItem[k];
+      pushHistory({ type: 'update', collection, id, oldData, newData: updates });
+    }
+
     setDb(prev => {
       const next = { ...prev };
       next[collection] = prev[collection].map(item =>
@@ -183,7 +279,7 @@ export function AdminProvider({ children }) {
     Object.entries(updates).forEach(([field, val]) => {
       logChange('update', collection, id, field, '…', typeof val === 'string' ? val.slice(0, 80) : val);
     });
-  }, [logChange, markDirty]);
+  }, [db, logChange, markDirty, pushHistory]);
 
   const addEntity = useCallback((collection, newItem) => {
     let assignedId;
@@ -191,14 +287,21 @@ export function AdminProvider({ children }) {
       const maxId = Math.max(0, ...prev[collection].map(i => i.id || 0));
       assignedId = maxId + 1;
       const item = { ...newItem, id: assignedId };
+      pushHistory({ type: 'add', collection, itemId: assignedId, item });
       return { ...prev, [collection]: [...prev[collection], item] };
     });
     markDirty('db.json');
     logChange('add', collection, assignedId, '*', null, 'new');
-  }, [logChange, markDirty]);
+  }, [logChange, markDirty, pushHistory]);
 
   const deleteEntity = useCallback((collection, id) => {
     if (user?.role !== 'admin') return false;
+    /* Capture item + index for undo */
+    const arr = db[collection] || [];
+    const idx = arr.findIndex(item => item.id === id);
+    const item = idx >= 0 ? deepClone(arr[idx]) : null;
+    if (item) pushHistory({ type: 'delete', collection, item, index: idx });
+
     setDb(prev => ({
       ...prev,
       [collection]: prev[collection].filter(item => item.id !== id)
@@ -206,7 +309,7 @@ export function AdminProvider({ children }) {
     markDirty('db.json');
     logChange('delete', collection, id, '*', 'deleted', null);
     return true;
-  }, [user, logChange, markDirty]);
+  }, [user, db, logChange, markDirty, pushHistory]);
 
   /* Index-based update for collections without id (relations, diplomacy) */
   const updateEntityByIndex = useCallback((collection, index, updates) => {
@@ -404,6 +507,8 @@ export function AdminProvider({ children }) {
     db, setDb, updateEntity, addEntity, deleteEntity,
     updateEntityByIndex, addEntityRaw, deleteEntityByIndex,
     getEntityName,
+    // Undo/Redo
+    undo, redo, canUndo, canRedo,
     // Auxiliary (dirty-tracking wrappers)
     i18n, setI18n: setI18nDirty,
     tours, setTours: setToursDirty,
@@ -424,6 +529,7 @@ export function AdminProvider({ children }) {
     resetAll,
   }), [user, login, logout, db, updateEntity, addEntity, deleteEntity,
     updateEntityByIndex, addEntityRaw, deleteEntityByIndex, getEntityName,
+    undo, redo, canUndo, canRedo,
     i18n, setI18nDirty, tours, setToursDirty, eraInfo, setEraInfoDirty,
     glossary, setGlossaryDirty, scholarLinks, setScholarLinksDirty,
     scholarMeta, setScholarMetaDirty, battleMeta, setBattleMetaDirty,

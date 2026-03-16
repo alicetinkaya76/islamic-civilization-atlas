@@ -17,12 +17,19 @@ import {
 } from './editors/AuxEditors';
 import ExportManager, { ChangeLogView } from './editors/ExportManager';
 import { BulkImport, SearchReplace, ValidationReport } from './editors/AdminTools';
+import CausalEditor from './editors/CausalEditor';
 import GitHubSettings from './settings/GitHubSettings';
 import { SCHEMAS, COLLECTION_ORDER } from './schemas/entitySchemas';
 import '../../styles/admin.css';
 
 /* ═══ Dashboard / Home ═══ */
-function AdminHome() {
+import DataQualityCard from './dashboard/DataQualityCard';
+import TranslationCoverage from './dashboard/TranslationCoverage';
+import CoordinateHealth from './dashboard/CoordinateHealth';
+import RecentActivity from './dashboard/RecentActivity';
+import CollectionSummary from './dashboard/CollectionSummary';
+
+function AdminHome({ onNavigate }) {
   const { db, changeLog, i18n } = useAdmin();
 
   /* Count total items */
@@ -67,35 +74,32 @@ function AdminHome() {
         </div>
       </div>
 
-      <h3 className="admin-sub-title">Koleksiyonlar</h3>
-      <div className="admin-collection-grid">
-        {COLLECTION_ORDER.map(k => {
-          const schema = SCHEMAS[k];
-          const count = db[k]?.length || 0;
-          return (
-            <div key={k} className="admin-collection-card">
-              <span className="admin-collection-icon">{schema?.icon}</span>
-              <div>
-                <div className="admin-collection-name">{schema?.label?.tr || k}</div>
-                <div className="admin-collection-count">{count} kayıt</div>
-              </div>
-            </div>
-          );
-        })}
+      {/* Enhanced Dashboard Row */}
+      <div className="admin-dashboard-grid">
+        <DataQualityCard />
+        <TranslationCoverage />
       </div>
+      <div className="admin-dashboard-grid">
+        <CoordinateHealth onNavigate={onNavigate} />
+        <CollectionSummary onNavigate={onNavigate} />
+      </div>
+
+      {/* Recent Activity */}
+      <RecentActivity />
     </div>
   );
 }
 
 /* ═══ Content Router ═══ */
-function AdminContent({ route }) {
-  if (route === 'home') return <AdminHome />;
+function AdminContent({ route, onNavigate }) {
+  if (route === 'home') return <AdminHome onNavigate={onNavigate} />;
   if (route === 'export') return <ExportManager />;
   if (route === 'changelog') return <ChangeLogView />;
   if (route === 'import') return <BulkImport />;
   if (route === 'search-replace') return <SearchReplace />;
   if (route === 'validate') return <ValidationReport />;
   if (route === 'settings') return <GitHubSettings />;
+  if (route === 'causal-editor') return <CausalEditor onNavigate={onNavigate} />;
 
   if (route.startsWith('entity/')) {
     const collection = route.replace('entity/', '');
@@ -118,7 +122,7 @@ function AdminContent({ route }) {
     }
   }
 
-  return <AdminHome />;
+  return <AdminHome onNavigate={onNavigate} />;
 }
 
 /* ═══ Inner panel (authenticated) ═══ */
@@ -140,7 +144,7 @@ function AdminPanelInner({ onBack }) {
           onToggle={() => setSidebarCollapsed(p => !p)}
         />
         <div className="admin-content">
-          <AdminContent route={route} />
+          <AdminContent route={route} onNavigate={setRoute} />
         </div>
       </div>
     </div>
