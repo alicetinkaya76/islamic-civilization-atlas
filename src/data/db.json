@@ -13637,7 +13637,39 @@
       "city_ar": "بغداد",
       "disc_ar": "الفقه الإسلامي",
       "chain_en": "Ibrāhīm al-Nakhaʿī → Ḥammād b. Abī Sulaymān → Abū Ḥanīfa → Abū Yūsuf → Imām Muḥammad → Ottoman Legal Codes",
-      "patron_en": "Imprisoned for refusing the Abbasid Caliph al-Manṣūr's offer of judgeship."
+      "patron_en": "Imprisoned for refusing the Abbasid Caliph al-Manṣūr's offer of judgeship.",
+      "birthplace": {
+        "lat": 32.03,
+        "lon": 44.4,
+        "city_tr": "Kûfe",
+        "city_en": "Kufa"
+      },
+      "education_cities": [
+        {
+          "lat": 32.03,
+          "lon": 44.4,
+          "city_tr": "Kûfe",
+          "city_en": "Kufa"
+        },
+        {
+          "lat": 30.51,
+          "lon": 47.78,
+          "city_tr": "Basra",
+          "city_en": "Basra"
+        },
+        {
+          "lat": 21.42,
+          "lon": 39.83,
+          "city_tr": "Mekke",
+          "city_en": "Mecca"
+        },
+        {
+          "lat": 24.47,
+          "lon": 39.61,
+          "city_tr": "Medine",
+          "city_en": "Medina"
+        }
+      ]
     },
     {
       "id": 2,
@@ -13670,7 +13702,21 @@
       "city_ar": "المدينة المنورة",
       "disc_ar": "الفقه الإسلامي",
       "chain_en": "Nāfiʿ (freedman of Ibn ʿUmar) → Imām Mālik → Imām al-Shāfiʿī → North African Islamic legal tradition",
-      "patron_en": "Came into conflict with the Abbasid Caliph al-Manṣūr and was flogged; nevertheless did not retract his position."
+      "patron_en": "Came into conflict with the Abbasid Caliph al-Manṣūr and was flogged; nevertheless did not retract his position.",
+      "birthplace": {
+        "lat": 24.47,
+        "lon": 39.61,
+        "city_tr": "Medine",
+        "city_en": "Medina"
+      },
+      "education_cities": [
+        {
+          "lat": 24.47,
+          "lon": 39.61,
+          "city_tr": "Medine",
+          "city_en": "Medina"
+        }
+      ]
     },
     {
       "id": 3,
@@ -13703,7 +13749,39 @@
       "city_ar": "القاهرة",
       "disc_ar": "الفقه الإسلامي",
       "chain_en": "Imām Mālik → Imām al-Shāfiʿī → Imām Aḥmad b. Ḥanbal → Uṣūl al-fiqh tradition",
-      "patron_en": "Lived as an independent scholar; did not establish direct patronage relations with caliphs."
+      "patron_en": "Lived as an independent scholar; did not establish direct patronage relations with caliphs.",
+      "birthplace": {
+        "lat": 31.5,
+        "lon": 34.47,
+        "city_tr": "Gazze",
+        "city_en": "Gaza"
+      },
+      "education_cities": [
+        {
+          "lat": 21.42,
+          "lon": 39.83,
+          "city_tr": "Mekke",
+          "city_en": "Mecca"
+        },
+        {
+          "lat": 24.47,
+          "lon": 39.61,
+          "city_tr": "Medine",
+          "city_en": "Medina"
+        },
+        {
+          "lat": 33.31,
+          "lon": 44.37,
+          "city_tr": "Bağdat",
+          "city_en": "Baghdad"
+        },
+        {
+          "lat": 30.04,
+          "lon": 31.24,
+          "city_tr": "Kahire",
+          "city_en": "Cairo"
+        }
+      ]
     },
     {
       "id": 4,
@@ -13736,7 +13814,45 @@
       "city_ar": "بغداد",
       "disc_ar": "الفقه الإسلامي",
       "chain_en": "Imām al-Shāfiʿī → Aḥmad b. Ḥanbal → Ibn Taymiyya → Ibn ʿAbd al-Wahhāb → Modern Salafī movement",
-      "patron_en": "Resisted the Abbasid caliphs' imposition of Muʿtazilī doctrine; symbol of the independent scholar model that rejected state patronage."
+      "patron_en": "Resisted the Abbasid caliphs' imposition of Muʿtazilī doctrine; symbol of the independent scholar model that rejected state patronage.",
+      "birthplace": {
+        "lat": 33.31,
+        "lon": 44.37,
+        "city_tr": "Bağdat",
+        "city_en": "Baghdad"
+      },
+      "education_cities": [
+        {
+          "lat": 33.31,
+          "lon": 44.37,
+          "city_tr": "Bağdat",
+          "city_en": "Baghdad"
+        },
+        {
+          "lat": 32.03,
+          "lon": 44.4,
+          "city_tr": "Kûfe",
+          "city_en": "Kufa"
+        },
+        {
+          "lat": 30.51,
+          "lon": 47.78,
+          "city_tr": "Basra",
+          "city_en": "Basra"
+        },
+        {
+          "lat": 21.42,
+          "lon": 39.83,
+          "city_tr": "Mekke",
+          "city_en": "Mecca"
+        },
+        {
+          "lat": 15.37,
+          "lon": 44.19,
+          "city_tr": "San'â",
+          "city_en": "Sanaa"
+        }
+      ]
     },
     {
       "id": 5,
@@ -13769,7 +13885,57 @@
       "city_ar": "بخارى",
       "disc_ar": "علوم الحديث",
       "chain_en": "Prophet Muḥammad → Companions → Successors → al-Bukhārī → Ibn Ḥajar al-ʿAsqalānī → Modern ḥadīth science",
-      "patron_en": "Worked in the territories of the Samanid emirs; remained independent from the court and rejected political patronage."
+      "patron_en": "Worked in the territories of the Samanid emirs; remained independent from the court and rejected political patronage.",
+      "birthplace": {
+        "lat": 39.77,
+        "lon": 64.42,
+        "city_tr": "Buhara",
+        "city_en": "Bukhara"
+      },
+      "education_cities": [
+        {
+          "lat": 39.77,
+          "lon": 64.42,
+          "city_tr": "Buhara",
+          "city_en": "Bukhara"
+        },
+        {
+          "lat": 36.76,
+          "lon": 66.9,
+          "city_tr": "Belh",
+          "city_en": "Balkh"
+        },
+        {
+          "lat": 33.31,
+          "lon": 44.37,
+          "city_tr": "Bağdat",
+          "city_en": "Baghdad"
+        },
+        {
+          "lat": 21.42,
+          "lon": 39.83,
+          "city_tr": "Mekke",
+          "city_en": "Mecca"
+        },
+        {
+          "lat": 24.47,
+          "lon": 39.61,
+          "city_tr": "Medine",
+          "city_en": "Medina"
+        },
+        {
+          "lat": 30.04,
+          "lon": 31.24,
+          "city_tr": "Kahire",
+          "city_en": "Cairo"
+        },
+        {
+          "lat": 33.51,
+          "lon": 36.28,
+          "city_tr": "Şam",
+          "city_en": "Damascus"
+        }
+      ]
     },
     {
       "id": 6,
@@ -13802,7 +13968,39 @@
       "city_ar": "نيسابور",
       "disc_ar": "علوم الحديث",
       "chain_en": "al-Bukhārī → Muslim → Imam al-Nawawī (commentary) → Ṣaḥīḥayn tradition",
-      "patron_en": "Worked in the Sāmānid realm; pursued independent scholarly activity in learned circles."
+      "patron_en": "Worked in the Sāmānid realm; pursued independent scholarly activity in learned circles.",
+      "birthplace": {
+        "lat": 36.21,
+        "lon": 58.8,
+        "city_tr": "Nişâbur",
+        "city_en": "Nishapur"
+      },
+      "education_cities": [
+        {
+          "lat": 36.21,
+          "lon": 58.8,
+          "city_tr": "Nişâbur",
+          "city_en": "Nishapur"
+        },
+        {
+          "lat": 33.31,
+          "lon": 44.37,
+          "city_tr": "Bağdat",
+          "city_en": "Baghdad"
+        },
+        {
+          "lat": 21.42,
+          "lon": 39.83,
+          "city_tr": "Mekke",
+          "city_en": "Mecca"
+        },
+        {
+          "lat": 30.04,
+          "lon": 31.24,
+          "city_tr": "Kahire",
+          "city_en": "Cairo"
+        }
+      ]
     },
     {
       "id": 7,
@@ -13828,7 +14026,45 @@
       "city_ar": "بغداد",
       "disc_ar": "علوم الحديث",
       "chain_en": "Imam al-Ashʿarī → al-Juwaynī → al-Ghazālī → Fakhr al-Dīn al-Rāzī → al-Taftāzānī → Ottoman madrasa tradition",
-      "patron_en": "Appointed as professor to the Niẓāmiyya by Niẓām al-Mulk; however, left the madrasa to pursue an independent path."
+      "patron_en": "Appointed as professor to the Niẓāmiyya by Niẓām al-Mulk; however, left the madrasa to pursue an independent path.",
+      "birthplace": {
+        "lat": 36.6,
+        "lon": 58.82,
+        "city_tr": "Tûs",
+        "city_en": "Tus"
+      },
+      "education_cities": [
+        {
+          "lat": 36.21,
+          "lon": 58.8,
+          "city_tr": "Nişâbur",
+          "city_en": "Nishapur"
+        },
+        {
+          "lat": 33.31,
+          "lon": 44.37,
+          "city_tr": "Bağdat",
+          "city_en": "Baghdad"
+        },
+        {
+          "lat": 33.51,
+          "lon": 36.28,
+          "city_tr": "Şam",
+          "city_en": "Damascus"
+        },
+        {
+          "lat": 31.77,
+          "lon": 35.23,
+          "city_tr": "Kudüs",
+          "city_en": "Jerusalem"
+        },
+        {
+          "lat": 21.42,
+          "lon": 39.83,
+          "city_tr": "Mekke",
+          "city_en": "Mecca"
+        }
+      ]
     },
     {
       "id": 8,
@@ -13854,7 +14090,27 @@
       "city_ar": "بوغ",
       "disc_ar": "علوم الحديث",
       "chain_en": "Aḥmad ibn Ḥanbal → Ibn Taymiyya → Ibn Qayyim al-Jawziyya → Muḥammad ibn ʿAbd al-Wahhāb → Modern Salafism",
-      "patron_en": "Had conflictual relations with Mamlūk sultans; was imprisoned multiple times due to his ideas."
+      "patron_en": "Had conflictual relations with Mamlūk sultans; was imprisoned multiple times due to his ideas.",
+      "birthplace": {
+        "lat": 36.86,
+        "lon": 39.03,
+        "city_tr": "Harran",
+        "city_en": "Harran"
+      },
+      "education_cities": [
+        {
+          "lat": 33.51,
+          "lon": 36.28,
+          "city_tr": "Şam",
+          "city_en": "Damascus"
+        },
+        {
+          "lat": 30.04,
+          "lon": 31.24,
+          "city_tr": "Kahire",
+          "city_en": "Cairo"
+        }
+      ]
     },
     {
       "id": 9,
@@ -13880,7 +14136,21 @@
       "city_ar": "نيسابور",
       "disc_ar": "علوم الحديث",
       "chain_en": "Indian mathematicians (Brahmagupta) → al-Khwārizmī → European translations → Fibonacci → Modern mathematics",
-      "patron_en": "Abbasid Caliph al-Maʾmūn appointed al-Khwārizmī to the Bayt al-Ḥikma and directly supported his research."
+      "patron_en": "Abbasid Caliph al-Maʾmūn appointed al-Khwārizmī to the Bayt al-Ḥikma and directly supported his research.",
+      "birthplace": {
+        "lat": 41.55,
+        "lon": 60.63,
+        "city_tr": "Hârezm",
+        "city_en": "Khwarezm"
+      },
+      "education_cities": [
+        {
+          "lat": 33.31,
+          "lon": 44.37,
+          "city_tr": "Bağdat",
+          "city_en": "Baghdad"
+        }
+      ]
     },
     {
       "id": 10,
@@ -13906,7 +14176,45 @@
       "city_ar": "قزوين",
       "disc_ar": "علوم الحديث",
       "chain_en": "Aristotle → al-Kindī → al-Fārābī → Ibn Sīnā → European Scholastics (Albertus Magnus, Thomas Aquinas)",
-      "patron_en": "Worked under the patronage of Būyid emirs; frequently had to change cities to escape court intrigues."
+      "patron_en": "Worked under the patronage of Būyid emirs; frequently had to change cities to escape court intrigues.",
+      "birthplace": {
+        "lat": 39.77,
+        "lon": 64.42,
+        "city_tr": "Buhara",
+        "city_en": "Bukhara"
+      },
+      "education_cities": [
+        {
+          "lat": 39.77,
+          "lon": 64.42,
+          "city_tr": "Buhara",
+          "city_en": "Bukhara"
+        },
+        {
+          "lat": 41.55,
+          "lon": 60.63,
+          "city_tr": "Hârezm",
+          "city_en": "Khwarezm"
+        },
+        {
+          "lat": 35.6,
+          "lon": 51.44,
+          "city_tr": "Rey",
+          "city_en": "Ray"
+        },
+        {
+          "lat": 32.65,
+          "lon": 51.68,
+          "city_tr": "İsfahan",
+          "city_en": "Isfahan"
+        },
+        {
+          "lat": 34.8,
+          "lon": 48.51,
+          "city_tr": "Hemedan",
+          "city_en": "Hamadan"
+        }
+      ]
     },
     {
       "id": 11,
@@ -13932,7 +14240,33 @@
       "city_ar": "تبريز",
       "disc_ar": "التفسير",
       "chain_en": "Euclidean/Ptolemaic optical tradition → Ibn al-Haytham → Roger Bacon → Kepler → Modern optics",
-      "patron_en": "Invited to Cairo by Fatimid Caliph al-Hakim; however, his relationship with the caliph became dangerous after the failure of the Nile project."
+      "patron_en": "Invited to Cairo by Fatimid Caliph al-Hakim; however, his relationship with the caliph became dangerous after the failure of the Nile project.",
+      "birthplace": {
+        "lat": 30.51,
+        "lon": 47.78,
+        "city_tr": "Basra",
+        "city_en": "Basra"
+      },
+      "education_cities": [
+        {
+          "lat": 30.51,
+          "lon": 47.78,
+          "city_tr": "Basra",
+          "city_en": "Basra"
+        },
+        {
+          "lat": 33.31,
+          "lon": 44.37,
+          "city_tr": "Bağdat",
+          "city_en": "Baghdad"
+        },
+        {
+          "lat": 30.04,
+          "lon": 31.24,
+          "city_tr": "Kahire",
+          "city_en": "Cairo"
+        }
+      ]
     },
     {
       "id": 12,
@@ -13958,7 +14292,33 @@
       "city_ar": "بغداد",
       "disc_ar": "علم الكلام",
       "chain_en": "Indian astronomical tradition + Greek mathematics → al-Biruni → Maragheh Observatory → Ottoman astronomy",
-      "patron_en": "Ghaznavid Sultan Mahmud took him on Indian campaigns; he transformed obligatory patronage into a unique research experience."
+      "patron_en": "Ghaznavid Sultan Mahmud took him on Indian campaigns; he transformed obligatory patronage into a unique research experience.",
+      "birthplace": {
+        "lat": 41.55,
+        "lon": 60.63,
+        "city_tr": "Hârezm",
+        "city_en": "Khwarezm"
+      },
+      "education_cities": [
+        {
+          "lat": 41.55,
+          "lon": 60.63,
+          "city_tr": "Hârezm",
+          "city_en": "Khwarezm"
+        },
+        {
+          "lat": 36.84,
+          "lon": 54.44,
+          "city_tr": "Cürcân",
+          "city_en": "Gorgan"
+        },
+        {
+          "lat": 33.54,
+          "lon": 68.43,
+          "city_tr": "Gazne",
+          "city_en": "Ghazni"
+        }
+      ]
     },
     {
       "id": 13,
@@ -13984,7 +14344,27 @@
       "city_ar": "سمرقند",
       "disc_ar": "علم الكلام",
       "chain_en": "Greek alchemical tradition → Jabir ibn Hayyan → al-Razi → European alchemists → Robert Boyle → Modern chemistry",
-      "patron_en": "It is reported that he worked under the patronage of the Barmakid viziers and fell from favor with their downfall."
+      "patron_en": "It is reported that he worked under the patronage of the Barmakid viziers and fell from favor with their downfall.",
+      "birthplace": {
+        "lat": 36.6,
+        "lon": 58.82,
+        "city_tr": "Tûs",
+        "city_en": "Tus"
+      },
+      "education_cities": [
+        {
+          "lat": 32.03,
+          "lon": 44.4,
+          "city_tr": "Kûfe",
+          "city_en": "Kufa"
+        },
+        {
+          "lat": 33.31,
+          "lon": 44.37,
+          "city_tr": "Bağdat",
+          "city_en": "Baghdad"
+        }
+      ]
     },
     {
       "id": 15,
@@ -14010,7 +14390,21 @@
       "city_ar": "قرطبة",
       "disc_ar": "الفلسفة",
       "chain_en": "Banu Musa brothers → al-Jazari → European mechanical tradition → Leonardo da Vinci",
-      "patron_en": "As court engineer of the Artuqid rulers, he produced works under direct court patronage."
+      "patron_en": "As court engineer of the Artuqid rulers, he produced works under direct court patronage.",
+      "birthplace": {
+        "lat": 37.05,
+        "lon": 40.74,
+        "city_tr": "Cizre",
+        "city_en": "Cizre"
+      },
+      "education_cities": [
+        {
+          "lat": 37.91,
+          "lon": 40.24,
+          "city_tr": "Diyarbakır",
+          "city_en": "Diyarbakir"
+        }
+      ]
     },
     {
       "id": 16,
@@ -14036,7 +14430,27 @@
       "city_ar": "بخارى",
       "disc_ar": "الفلسفة",
       "chain_en": "Ptolemy's Geography → Islamic geographical tradition → al-Idrisi → European Age of Exploration cartography",
-      "patron_en": "King Roger II of Sicily invited al-Idrisi to his court, providing full support for the mapping project."
+      "patron_en": "King Roger II of Sicily invited al-Idrisi to his court, providing full support for the mapping project.",
+      "birthplace": {
+        "lat": 35.89,
+        "lon": -5.31,
+        "city_tr": "Sebte",
+        "city_en": "Ceuta"
+      },
+      "education_cities": [
+        {
+          "lat": 37.89,
+          "lon": -4.78,
+          "city_tr": "Kurtuba",
+          "city_en": "Cordoba"
+        },
+        {
+          "lat": 38.12,
+          "lon": 13.36,
+          "city_tr": "Palermo",
+          "city_en": "Palermo"
+        }
+      ]
     },
     {
       "id": 17,
@@ -14062,7 +14476,33 @@
       "city_ar": "بغداد",
       "disc_ar": "الفلسفة",
       "chain_en": "al-Khwārizmī → ʿUmar Khayyām → Sharaf al-Dīn al-Ṭūsī → Islamic algebraic tradition",
-      "patron_en": "Seljuk Sultan Malikshāh and Vizier Niẓām al-Mulk provided full support for calendar reform."
+      "patron_en": "Seljuk Sultan Malikshāh and Vizier Niẓām al-Mulk provided full support for calendar reform.",
+      "birthplace": {
+        "lat": 36.21,
+        "lon": 58.8,
+        "city_tr": "Nişâbur",
+        "city_en": "Nishapur"
+      },
+      "education_cities": [
+        {
+          "lat": 36.21,
+          "lon": 58.8,
+          "city_tr": "Nişâbur",
+          "city_en": "Nishapur"
+        },
+        {
+          "lat": 39.65,
+          "lon": 66.96,
+          "city_tr": "Semerkand",
+          "city_en": "Samarkand"
+        },
+        {
+          "lat": 32.65,
+          "lon": 51.68,
+          "city_tr": "İsfahan",
+          "city_en": "Isfahan"
+        }
+      ]
     },
     {
       "id": 18,
@@ -14088,7 +14528,45 @@
       "city_ar": "فاراب",
       "disc_ar": "الفلسفة",
       "chain_en": "Islamic historiographical tradition → Ibn Khaldūn → Kātib Çelebi → Vico, Montesquieu → Modern sociology",
-      "patron_en": "Served various Maghribi rulers; wrote his greatest work in seclusion, independent of patronage."
+      "patron_en": "Served various Maghribi rulers; wrote his greatest work in seclusion, independent of patronage.",
+      "birthplace": {
+        "lat": 36.81,
+        "lon": 10.18,
+        "city_tr": "Tunus",
+        "city_en": "Tunis"
+      },
+      "education_cities": [
+        {
+          "lat": 36.81,
+          "lon": 10.18,
+          "city_tr": "Tunus",
+          "city_en": "Tunis"
+        },
+        {
+          "lat": 34.03,
+          "lon": -5.0,
+          "city_tr": "Fâs",
+          "city_en": "Fez"
+        },
+        {
+          "lat": 37.18,
+          "lon": -3.6,
+          "city_tr": "Gırnata",
+          "city_en": "Granada"
+        },
+        {
+          "lat": 30.04,
+          "lon": 31.24,
+          "city_tr": "Kahire",
+          "city_en": "Cairo"
+        },
+        {
+          "lat": 33.51,
+          "lon": 36.28,
+          "city_tr": "Şam",
+          "city_en": "Damascus"
+        }
+      ]
     },
     {
       "id": 19,
@@ -14114,7 +14592,27 @@
       "city_ar": "قونية",
       "disc_ar": "التصوف",
       "chain_en": "Aristotle/Plato → al-Kindī → al-Fārābī → Ibn Sīnā → Ibn Rushd → European Scholastics",
-      "patron_en": "Worked under direct patronage of al-Maʾmūn and al-Muʿtaṣim; fell from favor during al-Mutawakkil's reign."
+      "patron_en": "Worked under direct patronage of al-Maʾmūn and al-Muʿtaṣim; fell from favor during al-Mutawakkil's reign.",
+      "birthplace": {
+        "lat": 32.03,
+        "lon": 44.4,
+        "city_tr": "Kûfe",
+        "city_en": "Kufa"
+      },
+      "education_cities": [
+        {
+          "lat": 32.03,
+          "lon": 44.4,
+          "city_tr": "Kûfe",
+          "city_en": "Kufa"
+        },
+        {
+          "lat": 33.31,
+          "lon": 44.37,
+          "city_tr": "Bağdat",
+          "city_en": "Baghdad"
+        }
+      ]
     },
     {
       "id": 20,
@@ -14140,7 +14638,39 @@
       "city_ar": "مرسية",
       "disc_ar": "التصوف",
       "chain_en": "Aristotle → al-Kindī → al-Fārābī → Ibn Sīnā → Ibn Rushd → Thomas Aquinas",
-      "patron_en": "Received patronage at the Aleppo court of Ḥamdānid emir Sayf al-Dawla."
+      "patron_en": "Received patronage at the Aleppo court of Ḥamdānid emir Sayf al-Dawla.",
+      "birthplace": {
+        "lat": 42.52,
+        "lon": 72.24,
+        "city_tr": "Fârâb",
+        "city_en": "Farab"
+      },
+      "education_cities": [
+        {
+          "lat": 39.77,
+          "lon": 64.42,
+          "city_tr": "Buhara",
+          "city_en": "Bukhara"
+        },
+        {
+          "lat": 33.31,
+          "lon": 44.37,
+          "city_tr": "Bağdat",
+          "city_en": "Baghdad"
+        },
+        {
+          "lat": 36.2,
+          "lon": 37.16,
+          "city_tr": "Halep",
+          "city_en": "Aleppo"
+        },
+        {
+          "lat": 33.51,
+          "lon": 36.28,
+          "city_tr": "Şam",
+          "city_en": "Damascus"
+        }
+      ]
     },
     {
       "id": 21,
@@ -14166,7 +14696,33 @@
       "city_ar": "بغداد",
       "disc_ar": "التصوف",
       "chain_en": "Aristotle → al-Fārābī → Ibn Sīnā → Ibn Rushd → Siger de Brabant → Thomas Aquinas → Western philosophy",
-      "patron_en": "Worked under patronage of Almohad sultans; al-Manṣūr exiled him under political pressure."
+      "patron_en": "Worked under patronage of Almohad sultans; al-Manṣūr exiled him under political pressure.",
+      "birthplace": {
+        "lat": 37.89,
+        "lon": -4.78,
+        "city_tr": "Kurtuba",
+        "city_en": "Cordoba"
+      },
+      "education_cities": [
+        {
+          "lat": 37.89,
+          "lon": -4.78,
+          "city_tr": "Kurtuba",
+          "city_en": "Cordoba"
+        },
+        {
+          "lat": 37.39,
+          "lon": -5.98,
+          "city_tr": "İşbîliye",
+          "city_en": "Seville"
+        },
+        {
+          "lat": 31.63,
+          "lon": -7.98,
+          "city_tr": "Merâkeş",
+          "city_en": "Marrakech"
+        }
+      ]
     },
     {
       "id": 22,
@@ -14192,7 +14748,27 @@
       "city_ar": "القاهرة",
       "disc_ar": "التصوف",
       "chain_en": "Iranian mythological tradition → Firdawsī → Niẓāmī Ganjavī → Ḥāfiẓ → Modern Iranian literature",
-      "patron_en": "Presented the Shāhnāma to Ghaznavid Sultan Maḥmūd; according to tradition, did not receive the promised reward."
+      "patron_en": "Presented the Shāhnāma to Ghaznavid Sultan Maḥmūd; according to tradition, did not receive the promised reward.",
+      "birthplace": {
+        "lat": 36.6,
+        "lon": 58.82,
+        "city_tr": "Tûs",
+        "city_en": "Tus"
+      },
+      "education_cities": [
+        {
+          "lat": 36.6,
+          "lon": 58.82,
+          "city_tr": "Tûs",
+          "city_en": "Tus"
+        },
+        {
+          "lat": 33.54,
+          "lon": 68.43,
+          "city_tr": "Gazne",
+          "city_en": "Ghazni"
+        }
+      ]
     },
     {
       "id": 24,
@@ -14218,7 +14794,21 @@
       "city_ar": "بغداد",
       "disc_ar": "الرياضيات والفلك",
       "chain_en": "Saʿdī → Ḥāfiẓ → Goethe (West-östlicher Divan) → Emerson → Modern world poetry",
-      "patron_en": "Worked under the patronage of the Muzaffarid dynasty; did not hesitate to subtly criticize his patrons in his poetry."
+      "patron_en": "Worked under the patronage of the Muzaffarid dynasty; did not hesitate to subtly criticize his patrons in his poetry.",
+      "birthplace": {
+        "lat": 29.59,
+        "lon": 52.58,
+        "city_tr": "Şîrâz",
+        "city_en": "Shiraz"
+      },
+      "education_cities": [
+        {
+          "lat": 29.59,
+          "lon": 52.58,
+          "city_tr": "Şîrâz",
+          "city_en": "Shiraz"
+        }
+      ]
     },
     {
       "id": 25,
@@ -14244,7 +14834,33 @@
       "city_ar": "القاهرة",
       "disc_ar": "الرياضيات والفلك",
       "chain_en": "Iranian wisdom tradition → Saʿdī → Ḥāfiẓ → Ottoman divan literature → Goethe",
-      "patron_en": "Worked under the patronage of the Salghurids; held a respected position in Ilkhanid-era Shiraz."
+      "patron_en": "Worked under the patronage of the Salghurids; held a respected position in Ilkhanid-era Shiraz.",
+      "birthplace": {
+        "lat": 29.59,
+        "lon": 52.58,
+        "city_tr": "Şîrâz",
+        "city_en": "Shiraz"
+      },
+      "education_cities": [
+        {
+          "lat": 33.31,
+          "lon": 44.37,
+          "city_tr": "Bağdat",
+          "city_en": "Baghdad"
+        },
+        {
+          "lat": 33.51,
+          "lon": 36.28,
+          "city_tr": "Şam",
+          "city_en": "Damascus"
+        },
+        {
+          "lat": 21.42,
+          "lon": 39.83,
+          "city_tr": "Mekke",
+          "city_en": "Mecca"
+        }
+      ]
     },
     {
       "id": 26,
@@ -14348,7 +14964,39 @@
       "city_ar": "دمشق",
       "disc_ar": "علم الكلام",
       "chain_en": "Jāhiliyya poetic tradition → al-Mutanabbī → Pinnacle of Arabic poetic canon → Modern Arabic poetry",
-      "patron_en": "Court poet of the Hamdanid emir Sayf al-Dawla; fled to Egypt when their relations deteriorated."
+      "patron_en": "Court poet of the Hamdanid emir Sayf al-Dawla; fled to Egypt when their relations deteriorated.",
+      "birthplace": {
+        "lat": 32.03,
+        "lon": 44.4,
+        "city_tr": "Kûfe",
+        "city_en": "Kufa"
+      },
+      "education_cities": [
+        {
+          "lat": 33.51,
+          "lon": 36.28,
+          "city_tr": "Şam",
+          "city_en": "Damascus"
+        },
+        {
+          "lat": 36.2,
+          "lon": 37.16,
+          "city_tr": "Halep",
+          "city_en": "Aleppo"
+        },
+        {
+          "lat": 30.04,
+          "lon": 31.24,
+          "city_tr": "Kahire",
+          "city_en": "Cairo"
+        },
+        {
+          "lat": 29.59,
+          "lon": 52.58,
+          "city_tr": "Şîrâz",
+          "city_en": "Shiraz"
+        }
+      ]
     },
     {
       "id": 32,
@@ -14374,7 +15022,21 @@
       "city_ar": "القاهرة",
       "disc_ar": "الفقه الإسلامي",
       "chain_en": "Junayd al-Baghdādī → al-Gīlānī → Qādiriyya order → Spread of Islam in West Africa and Southeast Asia",
-      "patron_en": "Gained power through popular spiritual support in Seljuk-era Baghdad."
+      "patron_en": "Gained power through popular spiritual support in Seljuk-era Baghdad.",
+      "birthplace": {
+        "lat": 37.28,
+        "lon": 49.59,
+        "city_tr": "Gîlân",
+        "city_en": "Gilan"
+      },
+      "education_cities": [
+        {
+          "lat": 33.31,
+          "lon": 44.37,
+          "city_tr": "Bağdat",
+          "city_en": "Baghdad"
+        }
+      ]
     },
     {
       "id": 34,
@@ -14400,7 +15062,39 @@
       "city_ar": "دمشق",
       "disc_ar": "التفسير",
       "chain_en": "Ibn Isḥāq → al-Ṭabarī → Ibn al-Athīr → Ibn Khaldūn → Modern Islamic historiography",
-      "patron_en": "Worked as an independent scholar in Abbasid Baghdad; produced works without direct dependence on court patronage."
+      "patron_en": "Worked as an independent scholar in Abbasid Baghdad; produced works without direct dependence on court patronage.",
+      "birthplace": {
+        "lat": 36.46,
+        "lon": 52.35,
+        "city_tr": "Taberistan",
+        "city_en": "Tabaristan"
+      },
+      "education_cities": [
+        {
+          "lat": 35.6,
+          "lon": 51.44,
+          "city_tr": "Rey",
+          "city_en": "Ray"
+        },
+        {
+          "lat": 33.31,
+          "lon": 44.37,
+          "city_tr": "Bağdat",
+          "city_en": "Baghdad"
+        },
+        {
+          "lat": 30.04,
+          "lon": 31.24,
+          "city_tr": "Kahire",
+          "city_en": "Cairo"
+        },
+        {
+          "lat": 33.51,
+          "lon": 36.28,
+          "city_tr": "Şam",
+          "city_en": "Damascus"
+        }
+      ]
     },
     {
       "id": 35,
@@ -14426,7 +15120,51 @@
       "city_ar": "جرجان",
       "disc_ar": "اللغة والأدب",
       "chain_en": "Islamic travel tradition → Ibn Baṭṭūṭa → Evliyā Çelebi → Modern travel literature",
-      "patron_en": "Had his memoirs written by order of the Marinid sultan; was guest of various rulers in different countries."
+      "patron_en": "Had his memoirs written by order of the Marinid sultan; was guest of various rulers in different countries.",
+      "birthplace": {
+        "lat": 35.77,
+        "lon": -5.8,
+        "city_tr": "Tanca",
+        "city_en": "Tangier"
+      },
+      "education_cities": [
+        {
+          "lat": 35.77,
+          "lon": -5.8,
+          "city_tr": "Tanca",
+          "city_en": "Tangier"
+        },
+        {
+          "lat": 21.42,
+          "lon": 39.83,
+          "city_tr": "Mekke",
+          "city_en": "Mecca"
+        },
+        {
+          "lat": 33.51,
+          "lon": 36.28,
+          "city_tr": "Şam",
+          "city_en": "Damascus"
+        },
+        {
+          "lat": 30.04,
+          "lon": 31.24,
+          "city_tr": "Kahire",
+          "city_en": "Cairo"
+        },
+        {
+          "lat": 28.64,
+          "lon": 77.22,
+          "city_tr": "Delhi",
+          "city_en": "Delhi"
+        },
+        {
+          "lat": 41.01,
+          "lon": 28.98,
+          "city_tr": "İstanbul",
+          "city_en": "Istanbul"
+        }
+      ]
     },
     {
       "id": 36,
@@ -14452,7 +15190,21 @@
       "city_ar": "القاهرة",
       "disc_ar": "اللغة والأدب",
       "chain_en": "Byzantine tradition (Hagia Sophia) → Mimar Sinan → Sedefkâr Mehmed Agha → Ottoman architectural heritage",
-      "patron_en": "Worked with full state support as chief royal architect under Süleyman the Magnificent, Selim II, and Murad III."
+      "patron_en": "Worked with full state support as chief royal architect under Süleyman the Magnificent, Selim II, and Murad III.",
+      "birthplace": {
+        "lat": 38.73,
+        "lon": 35.48,
+        "city_tr": "Kayseri",
+        "city_en": "Kayseri"
+      },
+      "education_cities": [
+        {
+          "lat": 41.01,
+          "lon": 28.98,
+          "city_tr": "İstanbul",
+          "city_en": "Istanbul"
+        }
+      ]
     },
     {
       "id": 37,
@@ -14530,7 +15282,27 @@
       "city_ar": "شيراز",
       "disc_ar": "اللغة والأدب",
       "chain_en": "Galen → al-Rāzī → Ibn Sīnā → European medical faculties → Modern clinical medicine",
-      "patron_en": "Served in hospitals under Abbasid and Samanid rulers."
+      "patron_en": "Served in hospitals under Abbasid and Samanid rulers.",
+      "birthplace": {
+        "lat": 35.6,
+        "lon": 51.44,
+        "city_tr": "Rey",
+        "city_en": "Ray"
+      },
+      "education_cities": [
+        {
+          "lat": 35.6,
+          "lon": 51.44,
+          "city_tr": "Rey",
+          "city_en": "Ray"
+        },
+        {
+          "lat": 33.31,
+          "lon": 44.37,
+          "city_tr": "Bağdat",
+          "city_en": "Baghdad"
+        }
+      ]
     },
     {
       "id": 40,
@@ -14582,7 +15354,39 @@
       "city_ar": "قرطبة",
       "disc_ar": "الطب",
       "chain_en": "Hadith transmission network → Ibn Mājah → Kutub al-Sitta → Islamic legal and theological tradition",
-      "patron_en": "Worked within the independent scholarly tradition of the Abbasid period; did not receive direct court patronage."
+      "patron_en": "Worked within the independent scholarly tradition of the Abbasid period; did not receive direct court patronage.",
+      "birthplace": {
+        "lat": 36.27,
+        "lon": 50.0,
+        "city_tr": "Kazvin",
+        "city_en": "Qazvin"
+      },
+      "education_cities": [
+        {
+          "lat": 33.31,
+          "lon": 44.37,
+          "city_tr": "Bağdat",
+          "city_en": "Baghdad"
+        },
+        {
+          "lat": 33.51,
+          "lon": 36.28,
+          "city_tr": "Şam",
+          "city_en": "Damascus"
+        },
+        {
+          "lat": 21.42,
+          "lon": 39.83,
+          "city_tr": "Mekke",
+          "city_en": "Mecca"
+        },
+        {
+          "lat": 30.04,
+          "lon": 31.24,
+          "city_tr": "Kahire",
+          "city_en": "Cairo"
+        }
+      ]
     },
     {
       "id": 42,
@@ -14608,7 +15412,21 @@
       "city_ar": "بغداد",
       "disc_ar": "الطب",
       "chain_en": "Abū Ḥanīfa → al-Māturīdī → al-Pazdawī, al-Nasafī → Ottoman kalām tradition → Modern Turkish Islamic understanding",
-      "patron_en": "Produced scholarship as an independent scholar within madrasa circles in Samanid territories."
+      "patron_en": "Produced scholarship as an independent scholar within madrasa circles in Samanid territories.",
+      "birthplace": {
+        "lat": 39.65,
+        "lon": 66.96,
+        "city_tr": "Semerkand",
+        "city_en": "Samarkand"
+      },
+      "education_cities": [
+        {
+          "lat": 39.65,
+          "lon": 66.96,
+          "city_tr": "Semerkand",
+          "city_en": "Samarkand"
+        }
+      ]
     },
     {
       "id": 43,
@@ -14634,7 +15452,27 @@
       "city_ar": "القاهرة",
       "disc_ar": "الجغرافيا",
       "chain_en": "Muʿtazila → al-Ashʿarī → al-Bāqillānī → al-Juwaynī → al-Ghazālī → Fakhr al-Dīn al-Rāzī → Ottoman kalām",
-      "patron_en": "Based his work on intellectual foundations as an independent scholar in Abbasid Baghdad."
+      "patron_en": "Based his work on intellectual foundations as an independent scholar in Abbasid Baghdad.",
+      "birthplace": {
+        "lat": 30.51,
+        "lon": 47.78,
+        "city_tr": "Basra",
+        "city_en": "Basra"
+      },
+      "education_cities": [
+        {
+          "lat": 30.51,
+          "lon": 47.78,
+          "city_tr": "Basra",
+          "city_en": "Basra"
+        },
+        {
+          "lat": 33.31,
+          "lon": 44.37,
+          "city_tr": "Bağdat",
+          "city_en": "Baghdad"
+        }
+      ]
     },
     {
       "id": 44,
@@ -14660,7 +15498,21 @@
       "city_ar": "مكة المكرمة",
       "disc_ar": "الجغرافيا",
       "chain_en": "Ibn Isḥāq → Ibn Hishām → al-Ṭabarī → Islamic biographical tradition",
-      "patron_en": "Worked in Egypt during the early Abbasid period."
+      "patron_en": "Worked in Egypt during the early Abbasid period.",
+      "birthplace": {
+        "lat": 30.51,
+        "lon": 47.78,
+        "city_tr": "Basra",
+        "city_en": "Basra"
+      },
+      "education_cities": [
+        {
+          "lat": 30.04,
+          "lon": 31.24,
+          "city_tr": "Kahire",
+          "city_en": "Cairo"
+        }
+      ]
     },
     {
       "id": 45,
@@ -14693,7 +15545,39 @@
       "city_ar": "القاهرة",
       "disc_ar": "علوم الحديث",
       "chain_en": "al-Bukhārī → al-Nawawī → Ibn Ḥajar al-ʿAsqalānī → al-Suyūṭī → Modern hadith science",
-      "patron_en": "Served as chief Shāfiʿī judge in Mamluk Cairo, representing the state-ulama connection."
+      "patron_en": "Served as chief Shāfiʿī judge in Mamluk Cairo, representing the state-ulama connection.",
+      "birthplace": {
+        "lat": 30.04,
+        "lon": 31.24,
+        "city_tr": "Kahire",
+        "city_en": "Cairo"
+      },
+      "education_cities": [
+        {
+          "lat": 30.04,
+          "lon": 31.24,
+          "city_tr": "Kahire",
+          "city_en": "Cairo"
+        },
+        {
+          "lat": 21.42,
+          "lon": 39.83,
+          "city_tr": "Mekke",
+          "city_en": "Mecca"
+        },
+        {
+          "lat": 33.51,
+          "lon": 36.28,
+          "city_tr": "Şam",
+          "city_en": "Damascus"
+        },
+        {
+          "lat": 31.77,
+          "lon": 35.23,
+          "city_tr": "Kudüs",
+          "city_en": "Jerusalem"
+        }
+      ]
     },
     {
       "id": 46,
@@ -14719,7 +15603,27 @@
       "city_ar": "غاليبولي",
       "disc_ar": "الجغرافيا",
       "chain_en": "Portuguese-Spanish exploration maps → Pīrī Reʾīs → Ottoman cartography → Kātip Çelebi",
-      "patron_en": "Served as a captain in the Ottoman navy; presented his maps to the attention of the sultans."
+      "patron_en": "Served as a captain in the Ottoman navy; presented his maps to the attention of the sultans.",
+      "birthplace": {
+        "lat": 40.41,
+        "lon": 26.67,
+        "city_tr": "Gelibolu",
+        "city_en": "Gallipoli"
+      },
+      "education_cities": [
+        {
+          "lat": 41.01,
+          "lon": 28.98,
+          "city_tr": "İstanbul",
+          "city_en": "Istanbul"
+        },
+        {
+          "lat": 30.04,
+          "lon": 31.24,
+          "city_tr": "Kahire",
+          "city_en": "Cairo"
+        }
+      ]
     },
     {
       "id": 47,
@@ -14745,7 +15649,21 @@
       "city_ar": "إسطنبول",
       "disc_ar": "التاريخ",
       "chain_en": "Islamic bibliographical tradition → Kātip Çelebi → Ottoman modernization thought",
-      "patron_en": "Worked in Ottoman state service, combining his bureaucratic career with scholarly production."
+      "patron_en": "Worked in Ottoman state service, combining his bureaucratic career with scholarly production.",
+      "birthplace": {
+        "lat": 41.01,
+        "lon": 28.98,
+        "city_tr": "İstanbul",
+        "city_en": "Istanbul"
+      },
+      "education_cities": [
+        {
+          "lat": 41.01,
+          "lon": 28.98,
+          "city_tr": "İstanbul",
+          "city_en": "Istanbul"
+        }
+      ]
     },
     {
       "id": 48,
@@ -14771,7 +15689,21 @@
       "city_ar": "إسطنبول",
       "disc_ar": "الجغرافيا",
       "chain_en": "Ibn Baṭṭūṭa → Evliyā Çelebi → Modern travel literature and Ottoman social history",
-      "patron_en": "Traveled in the retinue of various Ottoman pashas; also received direct support from the sultans."
+      "patron_en": "Traveled in the retinue of various Ottoman pashas; also received direct support from the sultans.",
+      "birthplace": {
+        "lat": 41.01,
+        "lon": 28.98,
+        "city_tr": "İstanbul",
+        "city_en": "Istanbul"
+      },
+      "education_cities": [
+        {
+          "lat": 41.01,
+          "lon": 28.98,
+          "city_tr": "İstanbul",
+          "city_en": "Istanbul"
+        }
+      ]
     },
     {
       "id": 49,
@@ -14797,7 +15729,27 @@
       "city_ar": "دمشق",
       "disc_ar": "الطب",
       "chain_en": "Galen → Ibn Sīnā → Ibn al-Nafīs → (possible influence) Miguel Servet → Harvey → Modern cardiology",
-      "patron_en": "Served as chief physician at the Manṣūrī Hospital in Mamluk Cairo."
+      "patron_en": "Served as chief physician at the Manṣūrī Hospital in Mamluk Cairo.",
+      "birthplace": {
+        "lat": 33.51,
+        "lon": 36.28,
+        "city_tr": "Şam",
+        "city_en": "Damascus"
+      },
+      "education_cities": [
+        {
+          "lat": 33.51,
+          "lon": 36.28,
+          "city_tr": "Şam",
+          "city_en": "Damascus"
+        },
+        {
+          "lat": 30.04,
+          "lon": 31.24,
+          "city_tr": "Kahire",
+          "city_en": "Cairo"
+        }
+      ]
     },
     {
       "id": 50,
@@ -15052,7 +16004,21 @@
       "chain_ar": "علي بن ابي طالب / الصحابة ← الحسن البصري ← سلاسل التصوف / اصول المعتزلة",
       "patron_ar": "العهد الاموي؛ واصل نشاطه العلمي رغم ضغط الحجاج بن يوسف.",
       "city_ar": "البصرة",
-      "disc_ar": "التصوف"
+      "disc_ar": "التصوف",
+      "birthplace": {
+        "lat": 24.47,
+        "lon": 39.61,
+        "city_tr": "Medine",
+        "city_en": "Medina"
+      },
+      "education_cities": [
+        {
+          "lat": 30.51,
+          "lon": 47.78,
+          "city_tr": "Basra",
+          "city_en": "Basra"
+        }
+      ]
     },
     {
       "id": 59,
@@ -15222,7 +16188,21 @@
       "chain_ar": "الخليل بن احمد ← سيبويه ← مدرسة البصرة النحوية ← تراث علم اللغة العربية",
       "patron_ar": "العهد العباسي المبكر؛ الاوساط العلمية البصرية.",
       "city_ar": "البصرة",
-      "disc_ar": "اللغة والأدب"
+      "disc_ar": "اللغة والأدب",
+      "birthplace": {
+        "lat": 29.59,
+        "lon": 52.58,
+        "city_tr": "Şîrâz",
+        "city_en": "Shiraz"
+      },
+      "education_cities": [
+        {
+          "lat": 30.51,
+          "lon": 47.78,
+          "city_tr": "Basra",
+          "city_en": "Basra"
+        }
+      ]
     },
     {
       "id": 65,
@@ -15274,7 +16254,21 @@
       "chain_ar": "تقليد الجاحظ ← ابن قتيبة ← التقليد الأدبي العباسي",
       "patron_ar": "العصر العباسي؛ قاضي الدينور.",
       "city_ar": "بغداد",
-      "disc_ar": "اللغة والأدب"
+      "disc_ar": "اللغة والأدب",
+      "birthplace": {
+        "lat": 37.66,
+        "lon": 62.16,
+        "city_tr": "Merv",
+        "city_en": "Merv"
+      },
+      "education_cities": [
+        {
+          "lat": 33.31,
+          "lon": 44.37,
+          "city_tr": "Bağdat",
+          "city_en": "Baghdad"
+        }
+      ]
     },
     {
       "id": 67,
@@ -15300,7 +16294,39 @@
       "chain_ar": "تقليد الطبري ← المسعودي ← التأريخ الإسلامي الموسوعي",
       "patron_ar": "العصر العباسي؛ رحالة وعالم مستقل.",
       "city_ar": "بغداد",
-      "disc_ar": "التاريخ"
+      "disc_ar": "التاريخ",
+      "birthplace": {
+        "lat": 33.31,
+        "lon": 44.37,
+        "city_tr": "Bağdat",
+        "city_en": "Baghdad"
+      },
+      "education_cities": [
+        {
+          "lat": 33.31,
+          "lon": 44.37,
+          "city_tr": "Bağdat",
+          "city_en": "Baghdad"
+        },
+        {
+          "lat": 32.65,
+          "lon": 51.68,
+          "city_tr": "İsfahan",
+          "city_en": "Isfahan"
+        },
+        {
+          "lat": 30.04,
+          "lon": 31.24,
+          "city_tr": "Kahire",
+          "city_en": "Cairo"
+        },
+        {
+          "lat": 33.51,
+          "lon": 36.28,
+          "city_tr": "Şam",
+          "city_en": "Damascus"
+        }
+      ]
     },
     {
       "id": 68,
@@ -15482,7 +16508,39 @@
       "chain_ar": "التقليد الأدبي الأندلسي ← ابن جبير ← ابن بطوطة ← تقليد أدب الرحلات",
       "patron_ar": "عصر الموحدين الأندلسي؛ عمل كاتبا في غرناطة.",
       "city_ar": "بلنسية",
-      "disc_ar": "الجغرافيا والرحلات"
+      "disc_ar": "الجغرافيا والرحلات",
+      "birthplace": {
+        "lat": 39.47,
+        "lon": -0.38,
+        "city_tr": "Belensiye",
+        "city_en": "Valencia"
+      },
+      "education_cities": [
+        {
+          "lat": 21.42,
+          "lon": 39.83,
+          "city_tr": "Mekke",
+          "city_en": "Mecca"
+        },
+        {
+          "lat": 33.51,
+          "lon": 36.28,
+          "city_tr": "Şam",
+          "city_en": "Damascus"
+        },
+        {
+          "lat": 30.04,
+          "lon": 31.24,
+          "city_tr": "Kahire",
+          "city_en": "Cairo"
+        },
+        {
+          "lat": 38.12,
+          "lon": 13.36,
+          "city_tr": "Palermo",
+          "city_en": "Palermo"
+        }
+      ]
     },
     {
       "id": 75,
@@ -15508,7 +16566,33 @@
       "chain_ar": "الغزالي ← فخر الدين الرازي ← البيضاوي / الإيجي ← علم الكلام الأشعري المتأخر",
       "patron_ar": "العصر الخوارزمي والغوري؛ توفي في هرات.",
       "city_ar": "الري",
-      "disc_ar": "علم الكلام"
+      "disc_ar": "علم الكلام",
+      "birthplace": {
+        "lat": 35.6,
+        "lon": 51.44,
+        "city_tr": "Rey",
+        "city_en": "Ray"
+      },
+      "education_cities": [
+        {
+          "lat": 35.6,
+          "lon": 51.44,
+          "city_tr": "Rey",
+          "city_en": "Ray"
+        },
+        {
+          "lat": 36.21,
+          "lon": 58.8,
+          "city_tr": "Nişâbur",
+          "city_en": "Nishapur"
+        },
+        {
+          "lat": 34.35,
+          "lon": 62.2,
+          "city_tr": "Herât",
+          "city_en": "Herat"
+        }
+      ]
     },
     {
       "id": 76,
@@ -15541,7 +16625,21 @@
       "chain_ar": "التقليد الشافعي ← النووي ← السيوطي / ابن حجر ← تقليد شرح الحديث",
       "patron_ar": "العصر المملوكي؛ التدريس في دار الحديث بدمشق.",
       "city_ar": "نابلس",
-      "disc_ar": "علوم الحديث"
+      "disc_ar": "علوم الحديث",
+      "birthplace": {
+        "lat": 33.37,
+        "lon": 36.35,
+        "city_tr": "Nevâ",
+        "city_en": "Nawa"
+      },
+      "education_cities": [
+        {
+          "lat": 33.51,
+          "lon": 36.28,
+          "city_tr": "Şam",
+          "city_en": "Damascus"
+        }
+      ]
     },
     {
       "id": 77,
@@ -15567,7 +16665,33 @@
       "chain_ar": "نصير الدين الطوسي ← قطب الدين الشيرازي ← تقليد علم الفلك المراغي",
       "patron_ar": "العصر الايلخاني؛ مرصد مراغة وبلاط الايلخانيين.",
       "city_ar": "شيراز",
-      "disc_ar": "الرياضيات والفلك"
+      "disc_ar": "الرياضيات والفلك",
+      "birthplace": {
+        "lat": 29.59,
+        "lon": 52.58,
+        "city_tr": "Şîrâz",
+        "city_en": "Shiraz"
+      },
+      "education_cities": [
+        {
+          "lat": 37.39,
+          "lon": 46.24,
+          "city_tr": "Merâga",
+          "city_en": "Maragha"
+        },
+        {
+          "lat": 37.87,
+          "lon": 32.48,
+          "city_tr": "Konya",
+          "city_en": "Konya"
+        },
+        {
+          "lat": 38.08,
+          "lon": 46.29,
+          "city_tr": "Tebriz",
+          "city_en": "Tabriz"
+        }
+      ]
     },
     {
       "id": 78,
@@ -15593,7 +16717,39 @@
       "chain_ar": "تقليد الجغرافيا الاسلامية ← ياقوت ← القزويني / ابن بطوطة",
       "patron_ar": "اواخر العصر العباسي؛ رحالة وعالم مستقل.",
       "city_ar": "بغداد",
-      "disc_ar": "الجغرافيا والرحلات"
+      "disc_ar": "الجغرافيا والرحلات",
+      "birthplace": {
+        "lat": 41.01,
+        "lon": 28.98,
+        "city_tr": "İstanbul",
+        "city_en": "Constantinople"
+      },
+      "education_cities": [
+        {
+          "lat": 33.31,
+          "lon": 44.37,
+          "city_tr": "Bağdat",
+          "city_en": "Baghdad"
+        },
+        {
+          "lat": 37.66,
+          "lon": 62.16,
+          "city_tr": "Merv",
+          "city_en": "Merv"
+        },
+        {
+          "lat": 41.55,
+          "lon": 60.63,
+          "city_tr": "Hârezm",
+          "city_en": "Khwarezm"
+        },
+        {
+          "lat": 36.2,
+          "lon": 37.16,
+          "city_tr": "Halep",
+          "city_en": "Aleppo"
+        }
+      ]
     },
     {
       "id": 79,
@@ -15619,7 +16775,21 @@
       "chain_ar": "التقليد الحنبلي ← ابن الجوزي ← حفيده سبط ابن الجوزي / تقليد نقد الحديث",
       "patron_ar": "اواخر العصر العباسي؛ دائرة الخليفة المستضيء المقربة ثم النفي.",
       "city_ar": "بغداد",
-      "disc_ar": "علوم الحديث"
+      "disc_ar": "علوم الحديث",
+      "birthplace": {
+        "lat": 33.31,
+        "lon": 44.37,
+        "city_tr": "Bağdat",
+        "city_en": "Baghdad"
+      },
+      "education_cities": [
+        {
+          "lat": 33.31,
+          "lon": 44.37,
+          "city_tr": "Bağdat",
+          "city_en": "Baghdad"
+        }
+      ]
     },
     {
       "id": 80,
@@ -15671,7 +16841,21 @@
       "chain_ar": "ابن تيمية ← ابن كثير ← قمة تقليد التفسير بالماثور",
       "patron_ar": "العصر المملوكي في دمشق؛ القضاء والتدريس.",
       "city_ar": "دمشق",
-      "disc_ar": "التفسير"
+      "disc_ar": "التفسير",
+      "birthplace": {
+        "lat": 32.62,
+        "lon": 36.1,
+        "city_tr": "Busrâ",
+        "city_en": "Bosra"
+      },
+      "education_cities": [
+        {
+          "lat": 33.51,
+          "lon": 36.28,
+          "city_tr": "Şam",
+          "city_en": "Damascus"
+        }
+      ]
     },
     {
       "id": 82,
@@ -15697,7 +16881,33 @@
       "chain_ar": "ابن خلدون (معاصر) ← المقريزي ← تقليد كتابة التاريخ المصري",
       "patron_ar": "العصر المملوكي في القاهرة؛ الحسبة والتدريس.",
       "city_ar": "القاهرة",
-      "disc_ar": "التاريخ"
+      "disc_ar": "التاريخ",
+      "birthplace": {
+        "lat": 30.04,
+        "lon": 31.24,
+        "city_tr": "Kahire",
+        "city_en": "Cairo"
+      },
+      "education_cities": [
+        {
+          "lat": 30.04,
+          "lon": 31.24,
+          "city_tr": "Kahire",
+          "city_en": "Cairo"
+        },
+        {
+          "lat": 33.51,
+          "lon": 36.28,
+          "city_tr": "Şam",
+          "city_en": "Damascus"
+        },
+        {
+          "lat": 21.42,
+          "lon": 39.83,
+          "city_tr": "Mekke",
+          "city_en": "Mecca"
+        }
+      ]
     },
     {
       "id": 83,
@@ -15723,7 +16933,39 @@
       "chain_ar": "الغ بك ← علي قوشجي ← تقليد الفلك والرياضيات العثماني",
       "patron_ar": "تيموري ← عثماني؛ دعوة ورعاية الفاتح محمد.",
       "city_ar": "إسطنبول",
-      "disc_ar": "الرياضيات والفلك"
+      "disc_ar": "الرياضيات والفلك",
+      "birthplace": {
+        "lat": 39.65,
+        "lon": 66.96,
+        "city_tr": "Semerkand",
+        "city_en": "Samarkand"
+      },
+      "education_cities": [
+        {
+          "lat": 39.65,
+          "lon": 66.96,
+          "city_tr": "Semerkand",
+          "city_en": "Samarkand"
+        },
+        {
+          "lat": 36.3,
+          "lon": 59.6,
+          "city_tr": "Herât",
+          "city_en": "Herat"
+        },
+        {
+          "lat": 38.08,
+          "lon": 46.29,
+          "city_tr": "Tebriz",
+          "city_en": "Tabriz"
+        },
+        {
+          "lat": 41.01,
+          "lon": 28.98,
+          "city_tr": "İstanbul",
+          "city_en": "Istanbul"
+        }
+      ]
     },
     {
       "id": 84,
@@ -15749,7 +16991,21 @@
       "chain_ar": "تقليد نصير الدين الطوسي ← الغ بك ← علي قوشجي ← علم الفلك العثماني",
       "patron_ar": "الاسرة التيمورية؛ بذاته حاكم ومؤسس مرصد.",
       "city_ar": "سمرقند",
-      "disc_ar": "الرياضيات والفلك"
+      "disc_ar": "الرياضيات والفلك",
+      "birthplace": {
+        "lat": 37.58,
+        "lon": 36.93,
+        "city_tr": "Sultaniye",
+        "city_en": "Sultaniyya"
+      },
+      "education_cities": [
+        {
+          "lat": 39.65,
+          "lon": 66.96,
+          "city_tr": "Semerkand",
+          "city_en": "Samarkand"
+        }
+      ]
     },
     {
       "id": 85,
@@ -15775,7 +17031,27 @@
       "chain_ar": "التقليد العلمي المصري/القرماني ← الملا فناري ← مؤسسة العلمية العثمانية",
       "patron_ar": "أوائل العصر العثماني؛ شغل منصب أول شيخ الإسلام في بورصة.",
       "city_ar": "بورصة",
-      "disc_ar": "علم الكلام"
+      "disc_ar": "علم الكلام",
+      "birthplace": {
+        "lat": 40.19,
+        "lon": 29.06,
+        "city_tr": "Bursa",
+        "city_en": "Bursa"
+      },
+      "education_cities": [
+        {
+          "lat": 40.19,
+          "lon": 29.06,
+          "city_tr": "Bursa",
+          "city_en": "Bursa"
+        },
+        {
+          "lat": 30.04,
+          "lon": 31.24,
+          "city_tr": "Kahire",
+          "city_en": "Cairo"
+        }
+      ]
     },
     {
       "id": 86,
@@ -15801,7 +17077,27 @@
       "chain_ar": "ابن عربي / النقشبندية ← الجامي ← تقليد الادب الصوفي الفارسي",
       "patron_ar": "هراة التيمورية؛ تحت رعاية السلطان حسين بايقرا",
       "city_ar": "هرات",
-      "disc_ar": "التصوف"
+      "disc_ar": "التصوف",
+      "birthplace": {
+        "lat": 34.35,
+        "lon": 62.2,
+        "city_tr": "Herât",
+        "city_en": "Herat"
+      },
+      "education_cities": [
+        {
+          "lat": 34.35,
+          "lon": 62.2,
+          "city_tr": "Herât",
+          "city_en": "Herat"
+        },
+        {
+          "lat": 39.65,
+          "lon": 66.96,
+          "city_tr": "Semerkand",
+          "city_en": "Samarkand"
+        }
+      ]
     },
     {
       "id": 87,
@@ -15827,7 +17123,27 @@
       "chain_ar": "تقليد النووي / ابن حجر ← السيوطي ← الموسوعية الاسلامية المتاخرة",
       "patron_ar": "العصر المملوكي المتاخر بالقاهرة؛ عالم مستقل اعتزل في اواخر حياته",
       "city_ar": "القاهرة",
-      "disc_ar": "علوم الحديث"
+      "disc_ar": "علوم الحديث",
+      "birthplace": {
+        "lat": 27.18,
+        "lon": 31.19,
+        "city_tr": "Asyût",
+        "city_en": "Asyut"
+      },
+      "education_cities": [
+        {
+          "lat": 30.04,
+          "lon": 31.24,
+          "city_tr": "Kahire",
+          "city_en": "Cairo"
+        },
+        {
+          "lat": 21.42,
+          "lon": 39.83,
+          "city_tr": "Mekke",
+          "city_en": "Mecca"
+        }
+      ]
     },
     {
       "id": 88,
@@ -15905,7 +17221,21 @@
       "chain_ar": "التقليد الحنفي العثماني ← ابو السعود ← تقليد الفتوى العثمانية",
       "patron_ar": "الدولة العثمانية؛ شيخ الاسلام في عهد السلطان سليمان القانوني",
       "city_ar": "إسطنبول",
-      "disc_ar": "الفقه الإسلامي"
+      "disc_ar": "الفقه الإسلامي",
+      "birthplace": {
+        "lat": 40.73,
+        "lon": 30.29,
+        "city_tr": "İskilip",
+        "city_en": "Iskilip"
+      },
+      "education_cities": [
+        {
+          "lat": 41.01,
+          "lon": 28.98,
+          "city_tr": "İstanbul",
+          "city_en": "Istanbul"
+        }
+      ]
     },
     {
       "id": 91,
@@ -16087,7 +17417,33 @@
       "chain_ar": "تقاليد الحديث المدنية ← الشاه ولي الله ← حركة الإصلاح الإسلامي في شبه القارة الهندية",
       "patron_ar": "فترة تراجع الإمبراطورية المغولية؛ نشاط علمي مستقل في دهلي.",
       "city_ar": "دلهي",
-      "disc_ar": "علوم الحديث"
+      "disc_ar": "علوم الحديث",
+      "birthplace": {
+        "lat": 28.64,
+        "lon": 77.22,
+        "city_tr": "Delhi",
+        "city_en": "Delhi"
+      },
+      "education_cities": [
+        {
+          "lat": 28.64,
+          "lon": 77.22,
+          "city_tr": "Delhi",
+          "city_en": "Delhi"
+        },
+        {
+          "lat": 21.42,
+          "lon": 39.83,
+          "city_tr": "Mekke",
+          "city_en": "Mecca"
+        },
+        {
+          "lat": 24.47,
+          "lon": 39.61,
+          "city_tr": "Medine",
+          "city_en": "Medina"
+        }
+      ]
     },
     {
       "id": 98,
@@ -16139,7 +17495,21 @@
       "chain_ar": "التقاليد العثمانية في التاريخ والفقه ← أحمد جودت باشا ← المجلة وتراث التنظيمات",
       "patron_ar": "عهد التنظيمات العثمانية؛ رجل دولة وعضو في الطبقة العلمية.",
       "city_ar": "إسطنبول",
-      "disc_ar": "التاريخ"
+      "disc_ar": "التاريخ",
+      "birthplace": {
+        "lat": 43.25,
+        "lon": 28.49,
+        "city_tr": "Lofça",
+        "city_en": "Lovech"
+      },
+      "education_cities": [
+        {
+          "lat": 41.01,
+          "lon": 28.98,
+          "city_tr": "İstanbul",
+          "city_en": "Istanbul"
+        }
+      ]
     },
     {
       "id": 100,
@@ -16165,7 +17535,27 @@
       "chain_ar": "الأفغاني ← محمد عبده ← رشيد رضا ← حركة الإصلاح الإسلامي الحديثة",
       "patron_ar": "الخديوية المصرية في عهد الاحتلال البريطاني؛ مفتي مصر.",
       "city_ar": "القاهرة",
-      "disc_ar": "علم الكلام"
+      "disc_ar": "علم الكلام",
+      "birthplace": {
+        "lat": 30.87,
+        "lon": 31.02,
+        "city_tr": "Tanta",
+        "city_en": "Tanta"
+      },
+      "education_cities": [
+        {
+          "lat": 30.04,
+          "lon": 31.24,
+          "city_tr": "Kahire",
+          "city_en": "Cairo"
+        },
+        {
+          "lat": 48.86,
+          "lon": 2.35,
+          "city_tr": "Paris",
+          "city_en": "Paris"
+        }
+      ]
     },
     {
       "id": 101,
@@ -16217,7 +17607,39 @@
       "chain_ar": "الأفغاني ← محمد عبده ← رشيد رضا ← الفكر الإسلامي الحديث",
       "patron_ar": "بلدان إسلامية مختلفة؛ علاقات مع البلاطات العثمانية والمصرية والإيرانية.",
       "city_ar": "القاهرة",
-      "disc_ar": "الفكر الإسلامي الحديث"
+      "disc_ar": "الفكر الإسلامي الحديث",
+      "birthplace": {
+        "lat": 34.52,
+        "lon": 69.17,
+        "city_tr": "Kâbil",
+        "city_en": "Kabul"
+      },
+      "education_cities": [
+        {
+          "lat": 34.52,
+          "lon": 69.17,
+          "city_tr": "Kâbil",
+          "city_en": "Kabul"
+        },
+        {
+          "lat": 28.64,
+          "lon": 77.22,
+          "city_tr": "Delhi",
+          "city_en": "Delhi"
+        },
+        {
+          "lat": 30.04,
+          "lon": 31.24,
+          "city_tr": "Kahire",
+          "city_en": "Cairo"
+        },
+        {
+          "lat": 41.01,
+          "lon": 28.98,
+          "city_tr": "İstanbul",
+          "city_en": "Istanbul"
+        }
+      ]
     },
     {
       "id": 103,
@@ -16243,7 +17665,33 @@
       "chain_ar": "مولانا جلال الدين والفلسفة الغربية ← إقبال ← الفكر الإسلامي في شبه القارة الهندية",
       "patron_ar": "الهند البريطانية؛ شاعر وفيلسوف وسياسي.",
       "city_ar": "لاهور",
-      "disc_ar": "الفكر الإسلامي الحديث"
+      "disc_ar": "الفكر الإسلامي الحديث",
+      "birthplace": {
+        "lat": 32.16,
+        "lon": 74.19,
+        "city_tr": "Siyalkot",
+        "city_en": "Sialkot"
+      },
+      "education_cities": [
+        {
+          "lat": 31.55,
+          "lon": 74.35,
+          "city_tr": "Lahor",
+          "city_en": "Lahore"
+        },
+        {
+          "lat": 51.51,
+          "lon": -0.13,
+          "city_tr": "Londra",
+          "city_en": "London"
+        },
+        {
+          "lat": 48.58,
+          "lon": 7.75,
+          "city_tr": "Heidelberg",
+          "city_en": "Heidelberg"
+        }
+      ]
     },
     {
       "id": 104,
@@ -16373,7 +17821,27 @@
       "chain_ar": "تراث الإخوان / خط الإصلاح عبده-رضا ← القرضاوي ← سلطة الفتوى الإسلامية العالمية",
       "patron_ar": "قطر؛ رئاسة تلفزيون الجزيرة والاتحاد العالمي لعلماء المسلمين.",
       "city_ar": "الدوحة",
-      "disc_ar": "الفكر الإسلامي الحديث"
+      "disc_ar": "الفكر الإسلامي الحديث",
+      "birthplace": {
+        "lat": 30.98,
+        "lon": 31.13,
+        "city_tr": "Saft Turâb",
+        "city_en": "Saft Turab"
+      },
+      "education_cities": [
+        {
+          "lat": 30.04,
+          "lon": 31.24,
+          "city_tr": "Kahire",
+          "city_en": "Cairo"
+        },
+        {
+          "lat": 25.29,
+          "lon": 51.53,
+          "city_tr": "Doha",
+          "city_en": "Doha"
+        }
+      ]
     },
     {
       "id": 109,
@@ -17060,7 +18528,21 @@
       "chain_ar": "محمد الباقر ← جعفر الصادق ← ابو حنيفة والامام مالك (على الرواية) ← الفقه الجعفري",
       "patron_ar": "فترة الانتقال الاموي العباسي، حلقة العلم في المدينة",
       "city_ar": "المدينة المنورة",
-      "disc_ar": "الفقه الإسلامي"
+      "disc_ar": "الفقه الإسلامي",
+      "birthplace": {
+        "lat": 24.47,
+        "lon": 39.61,
+        "city_tr": "Medine",
+        "city_en": "Medina"
+      },
+      "education_cities": [
+        {
+          "lat": 24.47,
+          "lon": 39.61,
+          "city_tr": "Medine",
+          "city_en": "Medina"
+        }
+      ]
     },
     {
       "id": 133,
@@ -17164,7 +18646,21 @@
       "chain_ar": "الحسن البصري (تقليد الزهد) ← رابعة ← تصوف الحب الإلهي ← بايزيد البسطامي",
       "patron_ar": "العصر العباسي؛ الحياة النسكية في البصرة.",
       "city_ar": "البصرة",
-      "disc_ar": "التصوف"
+      "disc_ar": "التصوف",
+      "birthplace": {
+        "lat": 30.51,
+        "lon": 47.78,
+        "city_tr": "Basra",
+        "city_en": "Basra"
+      },
+      "education_cities": [
+        {
+          "lat": 30.51,
+          "lon": 47.78,
+          "city_tr": "Basra",
+          "city_en": "Basra"
+        }
+      ]
     },
     {
       "id": 137,
@@ -17289,7 +18785,33 @@
       "chain_ar": "البخاري ← الترمذي ← تقليد الكتب الستة",
       "patron_ar": "العصر العباسي؛ خراسان وما وراء النهر.",
       "city_ar": "ترمذ",
-      "disc_ar": "علوم الحديث"
+      "disc_ar": "علوم الحديث",
+      "birthplace": {
+        "lat": 37.22,
+        "lon": 67.28,
+        "city_tr": "Tirmiz",
+        "city_en": "Termez"
+      },
+      "education_cities": [
+        {
+          "lat": 39.77,
+          "lon": 64.42,
+          "city_tr": "Buhara",
+          "city_en": "Bukhara"
+        },
+        {
+          "lat": 36.21,
+          "lon": 58.8,
+          "city_tr": "Nişâbur",
+          "city_en": "Nishapur"
+        },
+        {
+          "lat": 21.42,
+          "lon": 39.83,
+          "city_tr": "Mekke",
+          "city_en": "Mecca"
+        }
+      ]
     },
     {
       "id": 141,
@@ -17322,7 +18844,39 @@
       "chain_ar": "أحمد بن حنبل ← أبو داود ← تقليد الكتب الستة",
       "patron_ar": "العصر العباسي؛ البصرة.",
       "city_ar": "البصرة",
-      "disc_ar": "علوم الحديث"
+      "disc_ar": "علوم الحديث",
+      "birthplace": {
+        "lat": 31.0,
+        "lon": 61.5,
+        "city_tr": "Sicistan",
+        "city_en": "Sistan"
+      },
+      "education_cities": [
+        {
+          "lat": 33.31,
+          "lon": 44.37,
+          "city_tr": "Bağdat",
+          "city_en": "Baghdad"
+        },
+        {
+          "lat": 30.51,
+          "lon": 47.78,
+          "city_tr": "Basra",
+          "city_en": "Basra"
+        },
+        {
+          "lat": 33.51,
+          "lon": 36.28,
+          "city_tr": "Şam",
+          "city_en": "Damascus"
+        },
+        {
+          "lat": 21.42,
+          "lon": 39.83,
+          "city_tr": "Mekke",
+          "city_en": "Mecca"
+        }
+      ]
     },
     {
       "id": 142,
@@ -17355,7 +18909,39 @@
       "chain_ar": "تقليد الحديث الخراساني ← النسائي ← الكتب الستة",
       "patron_ar": "العصر العباسي؛ مصر والشام.",
       "city_ar": "نسا",
-      "disc_ar": "علوم الحديث"
+      "disc_ar": "علوم الحديث",
+      "birthplace": {
+        "lat": 36.65,
+        "lon": 57.07,
+        "city_tr": "Nesâ",
+        "city_en": "Nasa"
+      },
+      "education_cities": [
+        {
+          "lat": 36.21,
+          "lon": 58.8,
+          "city_tr": "Nişâbur",
+          "city_en": "Nishapur"
+        },
+        {
+          "lat": 33.31,
+          "lon": 44.37,
+          "city_tr": "Bağdat",
+          "city_en": "Baghdad"
+        },
+        {
+          "lat": 30.04,
+          "lon": 31.24,
+          "city_tr": "Kahire",
+          "city_en": "Cairo"
+        },
+        {
+          "lat": 33.51,
+          "lon": 36.28,
+          "city_tr": "Şam",
+          "city_en": "Damascus"
+        }
+      ]
     },
     {
       "id": 143,
@@ -17745,7 +19331,27 @@
       "chain_ar": "تقليد المذهب الظاهري ← ابن حزم ← المدرسة الفقهية الاندلسية",
       "patron_ar": "عصر ملوك الطوائف الأندلسي؛ قرطبة، ميورقة، لبلة.",
       "city_ar": "قرطبة",
-      "disc_ar": "الفقه الإسلامي"
+      "disc_ar": "الفقه الإسلامي",
+      "birthplace": {
+        "lat": 37.89,
+        "lon": -4.78,
+        "city_tr": "Kurtuba",
+        "city_en": "Cordoba"
+      },
+      "education_cities": [
+        {
+          "lat": 37.89,
+          "lon": -4.78,
+          "city_tr": "Kurtuba",
+          "city_en": "Cordoba"
+        },
+        {
+          "lat": 36.75,
+          "lon": 5.07,
+          "city_tr": "Becâye",
+          "city_en": "Bijaya"
+        }
+      ]
     },
     {
       "id": 158,
@@ -17927,7 +19533,27 @@
       "chain_ar": "التقليد النصري الغرناطي ← ابن الخطيب ← تاريخ الاندلس المتاخر",
       "patron_ar": "سلاطين بني نصر في غرناطة؛ الوزارة.",
       "city_ar": "غرناطة",
-      "disc_ar": "التاريخ"
+      "disc_ar": "التاريخ",
+      "birthplace": {
+        "lat": 37.18,
+        "lon": -3.6,
+        "city_tr": "Gırnata",
+        "city_en": "Granada"
+      },
+      "education_cities": [
+        {
+          "lat": 37.18,
+          "lon": -3.6,
+          "city_tr": "Gırnata",
+          "city_en": "Granada"
+        },
+        {
+          "lat": 34.03,
+          "lon": -5.0,
+          "city_tr": "Fâs",
+          "city_en": "Fez"
+        }
+      ]
     },
     {
       "id": 165,
@@ -18629,7 +20255,27 @@
       "chain_ar": "تقليد الأدب العثماني ← محمد عاكف ← نشيد الاستقلال، الصفحات",
       "patron_ar": "أواخر العهد العثماني والجمهورية؛ طلب نشيد الاستقلال من المجلس الوطني.",
       "city_ar": "إسطنبول",
-      "disc_ar": "اللغة والأدب"
+      "disc_ar": "اللغة والأدب",
+      "birthplace": {
+        "lat": 41.01,
+        "lon": 28.98,
+        "city_tr": "İstanbul",
+        "city_en": "Istanbul"
+      },
+      "education_cities": [
+        {
+          "lat": 41.01,
+          "lon": 28.98,
+          "city_tr": "İstanbul",
+          "city_en": "Istanbul"
+        },
+        {
+          "lat": 30.04,
+          "lon": 31.24,
+          "city_tr": "Kahire",
+          "city_en": "Cairo"
+        }
+      ]
     },
     {
       "id": 193,
@@ -18811,7 +20457,21 @@
       "chain_ar": "نظام الدين اولياء (المرشد) ← امير خسرو ← الادب الهندي الفارسي، تقليد القوالي",
       "patron_ar": "سلطنة دهلي؛ رعاية سلاطين متعددين.",
       "city_ar": "دلهي",
-      "disc_ar": "اللغة والأدب"
+      "disc_ar": "اللغة والأدب",
+      "birthplace": {
+        "lat": 28.0,
+        "lon": 79.4,
+        "city_tr": "Etâh",
+        "city_en": "Etah"
+      },
+      "education_cities": [
+        {
+          "lat": 28.64,
+          "lon": 77.22,
+          "city_tr": "Delhi",
+          "city_en": "Delhi"
+        }
+      ]
     },
     {
       "id": 200,
@@ -18863,7 +20523,27 @@
       "chain_ar": "النقشبندية ← باقي بالله ← السرهندي ← الفرع المجددي ← الانتشار العالمي",
       "patron_ar": "الدولة البابرية؛ عهدا اكبر وجهانگير.",
       "city_ar": "سرهند",
-      "disc_ar": "التصوف"
+      "disc_ar": "التصوف",
+      "birthplace": {
+        "lat": 30.65,
+        "lon": 76.39,
+        "city_tr": "Sirhind",
+        "city_en": "Sirhind"
+      },
+      "education_cities": [
+        {
+          "lat": 28.64,
+          "lon": 77.22,
+          "city_tr": "Delhi",
+          "city_en": "Delhi"
+        },
+        {
+          "lat": 27.18,
+          "lon": 78.02,
+          "city_tr": "Agra",
+          "city_en": "Agra"
+        }
+      ]
     },
     {
       "id": 202,
@@ -19071,7 +20751,27 @@
       "chain_ar": "تقليد تنبكتو المالكي ← احمد بابا ← نيل الابتهاج",
       "patron_ar": "امبراطورية سونغاي والسعديون؛ تنبكتو",
       "city_ar": "تمبكتو",
-      "disc_ar": "التاريخ"
+      "disc_ar": "التاريخ",
+      "birthplace": {
+        "lat": 16.77,
+        "lon": -3.01,
+        "city_tr": "Timbuktu",
+        "city_en": "Timbuktu"
+      },
+      "education_cities": [
+        {
+          "lat": 16.77,
+          "lon": -3.01,
+          "city_tr": "Timbuktu",
+          "city_en": "Timbuktu"
+        },
+        {
+          "lat": 31.63,
+          "lon": -7.98,
+          "city_tr": "Merâkeş",
+          "city_en": "Marrakech"
+        }
+      ]
     },
     {
       "id": 210,
@@ -19149,7 +20849,21 @@
       "chain_ar": "تقليد غرب افريقيا المالكي القادري ← عثمان دان فوديو ← خلافة صوكوتو",
       "patron_ar": "مؤسس خلافة صوكوتو",
       "city_ar": "سوكوتو",
-      "disc_ar": "علم الكلام"
+      "disc_ar": "علم الكلام",
+      "birthplace": {
+        "lat": 13.06,
+        "lon": 5.24,
+        "city_tr": "Gobir",
+        "city_en": "Gobir"
+      },
+      "education_cities": [
+        {
+          "lat": 12.0,
+          "lon": 8.52,
+          "city_tr": "Kano",
+          "city_en": "Kano"
+        }
+      ]
     },
     {
       "id": 213,
@@ -19201,7 +20915,27 @@
       "chain_ar": "تقليد بطليموس ← البتاني ← الترجمات اللاتينية ← كوبرنيكوس (تأثير)",
       "patron_ar": "العصر العباسي؛ الرقة",
       "city_ar": "الرقة",
-      "disc_ar": "الرياضيات والفلك"
+      "disc_ar": "الرياضيات والفلك",
+      "birthplace": {
+        "lat": 36.86,
+        "lon": 39.03,
+        "city_tr": "Harran",
+        "city_en": "Harran"
+      },
+      "education_cities": [
+        {
+          "lat": 35.95,
+          "lon": 39.02,
+          "city_tr": "Rakka",
+          "city_en": "Raqqa"
+        },
+        {
+          "lat": 33.31,
+          "lon": 44.37,
+          "city_tr": "Bağdat",
+          "city_en": "Baghdad"
+        }
+      ]
     },
     {
       "id": 215,
@@ -19357,7 +21091,21 @@
       "chain_ar": "يوسف الهمداني ← احمد يسوي ← اليسوية ← تصوف الاتراك في الاناضول واسيا الوسطى",
       "patron_ar": "عهد القراخانيين؛ مجمع تيمور (بعد وفاته).",
       "city_ar": "ياسي (تركستان)",
-      "disc_ar": "التصوف"
+      "disc_ar": "التصوف",
+      "birthplace": {
+        "lat": 43.3,
+        "lon": 68.25,
+        "city_tr": "Türkistan",
+        "city_en": "Turkistan"
+      },
+      "education_cities": [
+        {
+          "lat": 39.77,
+          "lon": 64.42,
+          "city_tr": "Buhara",
+          "city_en": "Bukhara"
+        }
+      ]
     },
     {
       "id": 221,
@@ -19435,7 +21183,21 @@
       "chain_ar": "التقليد الرياضي الاسلامي ← الكاشي ← مرصد سمرقند ← اولوغ بك",
       "patron_ar": "الحاكم التيموري اولوغ بك؛ مرصد سمرقند.",
       "city_ar": "سمرقند",
-      "disc_ar": "الرياضيات والفلك"
+      "disc_ar": "الرياضيات والفلك",
+      "birthplace": {
+        "lat": 33.99,
+        "lon": 51.44,
+        "city_tr": "Kâşân",
+        "city_en": "Kashan"
+      },
+      "education_cities": [
+        {
+          "lat": 39.65,
+          "lon": 66.96,
+          "city_tr": "Semerkand",
+          "city_en": "Samarkand"
+        }
+      ]
     },
     {
       "id": 224,
@@ -19513,7 +21275,21 @@
       "chain_ar": "تقليد المثنوي الفارسي ← نظامي ← الخمسة ← أمير خسرو، جامي، نوائي",
       "patron_ar": "أتابكة السلاجقة؛ كنجة.",
       "city_ar": "كنجة",
-      "disc_ar": "اللغة والأدب"
+      "disc_ar": "اللغة والأدب",
+      "birthplace": {
+        "lat": 40.68,
+        "lon": 46.36,
+        "city_tr": "Gence",
+        "city_en": "Ganja"
+      },
+      "education_cities": [
+        {
+          "lat": 40.68,
+          "lon": 46.36,
+          "city_tr": "Gence",
+          "city_en": "Ganja"
+        }
+      ]
     },
     {
       "id": 227,
@@ -19565,7 +21341,27 @@
       "chain_ar": "تقليد نيسابور الصوفي ← عطار ← منطق الطير ← مولانا (التأثير)",
       "patron_ar": "عهد الخوارزميين؛ نيسابور.",
       "city_ar": "نيسابور",
-      "disc_ar": "التصوف"
+      "disc_ar": "التصوف",
+      "birthplace": {
+        "lat": 36.21,
+        "lon": 58.8,
+        "city_tr": "Nişâbur",
+        "city_en": "Nishapur"
+      },
+      "education_cities": [
+        {
+          "lat": 36.21,
+          "lon": 58.8,
+          "city_tr": "Nişâbur",
+          "city_en": "Nishapur"
+        },
+        {
+          "lat": 21.42,
+          "lon": 39.83,
+          "city_tr": "Mekke",
+          "city_en": "Mecca"
+        }
+      ]
     },
     {
       "id": 229,
@@ -19877,7 +21673,27 @@
       "chain_ar": "مدرسة البصرة اللغوية ← الجاحظ ← تقليد النثر الأدبي العربي",
       "patron_ar": "العصر العباسي؛ البصرة وبغداد.",
       "city_ar": "البصرة",
-      "disc_ar": "اللغة والأدب"
+      "disc_ar": "اللغة والأدب",
+      "birthplace": {
+        "lat": 30.51,
+        "lon": 47.78,
+        "city_tr": "Basra",
+        "city_en": "Basra"
+      },
+      "education_cities": [
+        {
+          "lat": 30.51,
+          "lon": 47.78,
+          "city_tr": "Basra",
+          "city_en": "Basra"
+        },
+        {
+          "lat": 33.31,
+          "lon": 44.37,
+          "city_tr": "Bağdat",
+          "city_en": "Baghdad"
+        }
+      ]
     },
     {
       "id": 245,
@@ -20109,7 +21925,27 @@
       "city_ar": "دمشق",
       "disc_ar": "الفقه الإسلامي",
       "chain_en": "",
-      "patron_en": ""
+      "patron_en": "",
+      "birthplace": {
+        "lat": 33.51,
+        "lon": 36.28,
+        "city_tr": "Şam",
+        "city_en": "Damascus"
+      },
+      "education_cities": [
+        {
+          "lat": 33.51,
+          "lon": 36.28,
+          "city_tr": "Şam",
+          "city_en": "Damascus"
+        },
+        {
+          "lat": 30.04,
+          "lon": 31.24,
+          "city_tr": "Kahire",
+          "city_en": "Cairo"
+        }
+      ]
     },
     {
       "id": 254,
@@ -20133,7 +21969,33 @@
       "city_ar": "دمشق",
       "disc_ar": "الحديث",
       "chain_en": "",
-      "patron_en": ""
+      "patron_en": "",
+      "birthplace": {
+        "lat": 33.51,
+        "lon": 36.28,
+        "city_tr": "Şam",
+        "city_en": "Damascus"
+      },
+      "education_cities": [
+        {
+          "lat": 33.51,
+          "lon": 36.28,
+          "city_tr": "Şam",
+          "city_en": "Damascus"
+        },
+        {
+          "lat": 30.04,
+          "lon": 31.24,
+          "city_tr": "Kahire",
+          "city_en": "Cairo"
+        },
+        {
+          "lat": 21.42,
+          "lon": 39.83,
+          "city_tr": "Mekke",
+          "city_en": "Mecca"
+        }
+      ]
     },
     {
       "id": 255,
@@ -20857,7 +22719,21 @@
       "city_ar": "بغداد",
       "disc_ar": "تصوف",
       "chain_en": "",
-      "patron_en": ""
+      "patron_en": "",
+      "birthplace": {
+        "lat": 33.31,
+        "lon": 44.37,
+        "city_tr": "Bağdat",
+        "city_en": "Baghdad"
+      },
+      "education_cities": [
+        {
+          "lat": 33.31,
+          "lon": 44.37,
+          "city_tr": "Bağdat",
+          "city_en": "Baghdad"
+        }
+      ]
     },
     {
       "id": 287,
@@ -20882,7 +22758,21 @@
       "city_ar": "بغداد",
       "disc_ar": "طب",
       "chain_en": "",
-      "patron_en": ""
+      "patron_en": "",
+      "birthplace": {
+        "lat": 36.08,
+        "lon": 44.02,
+        "city_tr": "Hîra",
+        "city_en": "Hira"
+      },
+      "education_cities": [
+        {
+          "lat": 33.31,
+          "lon": 44.37,
+          "city_tr": "Bağdat",
+          "city_en": "Baghdad"
+        }
+      ]
     },
     {
       "id": 288,
@@ -20907,7 +22797,21 @@
       "city_ar": "قرطبة",
       "disc_ar": "طب",
       "chain_en": "",
-      "patron_en": ""
+      "patron_en": "",
+      "birthplace": {
+        "lat": 37.89,
+        "lon": -4.78,
+        "city_tr": "Kurtuba",
+        "city_en": "Cordoba"
+      },
+      "education_cities": [
+        {
+          "lat": 37.89,
+          "lon": -4.78,
+          "city_tr": "Kurtuba",
+          "city_en": "Cordoba"
+        }
+      ]
     },
     {
       "id": 289,
@@ -22445,7 +24349,51 @@
       "rawi_rank_tr": null,
       "rawi_rank_en": null,
       "hadith_count": null,
-      "rawi_tag": null
+      "rawi_tag": null,
+      "birthplace": {
+        "lat": 37.39,
+        "lon": -5.98,
+        "city_tr": "İşbîliye",
+        "city_en": "Seville"
+      },
+      "education_cities": [
+        {
+          "lat": 37.39,
+          "lon": -5.98,
+          "city_tr": "İşbîliye",
+          "city_en": "Seville"
+        },
+        {
+          "lat": 34.03,
+          "lon": -5.0,
+          "city_tr": "Fâs",
+          "city_en": "Fez"
+        },
+        {
+          "lat": 36.81,
+          "lon": 10.18,
+          "city_tr": "Tunus",
+          "city_en": "Tunis"
+        },
+        {
+          "lat": 21.42,
+          "lon": 39.83,
+          "city_tr": "Mekke",
+          "city_en": "Mecca"
+        },
+        {
+          "lat": 37.87,
+          "lon": 32.48,
+          "city_tr": "Konya",
+          "city_en": "Konya"
+        },
+        {
+          "lat": 33.51,
+          "lon": 36.28,
+          "city_tr": "Şam",
+          "city_en": "Damascus"
+        }
+      ]
     },
     {
       "id": 339,
@@ -23237,7 +25185,33 @@
       "rawi_rank_tr": null,
       "rawi_rank_en": null,
       "hadith_count": null,
-      "rawi_tag": null
+      "rawi_tag": null,
+      "birthplace": {
+        "lat": 36.6,
+        "lon": 58.82,
+        "city_tr": "Tûs",
+        "city_en": "Tus"
+      },
+      "education_cities": [
+        {
+          "lat": 36.21,
+          "lon": 58.8,
+          "city_tr": "Nişâbur",
+          "city_en": "Nishapur"
+        },
+        {
+          "lat": 33.31,
+          "lon": 44.37,
+          "city_tr": "Bağdat",
+          "city_en": "Baghdad"
+        },
+        {
+          "lat": 37.39,
+          "lon": 46.24,
+          "city_tr": "Merâga",
+          "city_en": "Maragha"
+        }
+      ]
     },
     {
       "id": 363,
@@ -24293,7 +26267,21 @@
       "rawi_rank_tr": null,
       "rawi_rank_en": null,
       "hadith_count": null,
-      "rawi_tag": null
+      "rawi_tag": null,
+      "birthplace": {
+        "lat": 39.65,
+        "lon": 30.4,
+        "city_tr": "Eskişehir",
+        "city_en": "Eskisehir"
+      },
+      "education_cities": [
+        {
+          "lat": 37.87,
+          "lon": 32.48,
+          "city_tr": "Konya",
+          "city_en": "Konya"
+        }
+      ]
     },
     {
       "id": 395,

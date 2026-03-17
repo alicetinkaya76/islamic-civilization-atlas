@@ -1,0 +1,147 @@
+/* ═══════════════════════════════════════════════════
+ * SESSION 14 — ScholarMigrationMap styles
+ * ═══════════════════════════════════════════════════ */
+
+.smm-controls {
+  position: absolute;
+  bottom: 80px;
+  right: 12px;
+  z-index: 1000;
+  background: rgba(18, 18, 24, 0.92);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  padding: 12px 14px;
+  min-width: 210px;
+  max-width: 260px;
+  color: #e2ddd5;
+  font-size: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+
+.smm-title {
+  font-weight: 700;
+  font-size: 13px;
+  margin-bottom: 8px;
+  color: #c9a84c;
+  letter-spacing: 0.3px;
+}
+
+.smm-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.smm-label {
+  font-size: 11px;
+  color: #a89b8c;
+  min-width: 48px;
+  flex-shrink: 0;
+}
+
+.smm-select {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #c8c0b4;
+  padding: 3px 6px;
+  border-radius: 4px;
+  font-size: 11px;
+  flex: 1;
+  min-width: 0;
+}
+.smm-select option { background: #1a1a24; }
+
+.smm-play-row {
+  margin-top: 4px;
+  padding-top: 6px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.smm-play-btn {
+  background: rgba(74, 222, 128, 0.15);
+  border: 1px solid rgba(74, 222, 128, 0.3);
+  color: #4ade80;
+  padding: 4px 10px;
+  border-radius: 5px;
+  font-size: 11px;
+  cursor: pointer;
+  transition: all 0.15s;
+  white-space: nowrap;
+}
+.smm-play-btn:hover { background: rgba(74, 222, 128, 0.25); }
+.smm-play-btn.active {
+  background: rgba(248, 113, 113, 0.15);
+  border-color: rgba(248, 113, 113, 0.3);
+  color: #f87171;
+}
+
+.smm-speed {
+  width: 50px;
+  -webkit-appearance: none;
+  appearance: none;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+  outline: none;
+}
+.smm-speed::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 12px; height: 12px;
+  border-radius: 50%;
+  background: #c9a84c;
+  cursor: pointer;
+}
+
+.smm-now {
+  background: rgba(201, 168, 76, 0.12);
+  border: 1px solid rgba(201, 168, 76, 0.25);
+  border-radius: 6px;
+  padding: 6px 8px;
+  margin: 6px 0;
+  font-weight: 600;
+  font-size: 12px;
+  color: #c9a84c;
+  text-align: center;
+}
+.smm-now-dates {
+  font-weight: 400;
+  font-size: 10px;
+  color: #8a8070;
+  margin-left: 4px;
+}
+
+.smm-legend {
+  display: flex;
+  gap: 10px;
+  margin-top: 6px;
+  padding-top: 6px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  font-size: 10px;
+  color: #8a8070;
+}
+
+.smm-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin-right: 3px;
+  vertical-align: middle;
+}
+
+.smm-count {
+  margin-top: 4px;
+  font-size: 10px;
+  color: #6a6050;
+}
+
+/* Mobile */
+@media (max-width: 640px) {
+  .smm-controls {
+    bottom: 70px;
+    right: 8px;
+    min-width: 180px;
+  }
+}

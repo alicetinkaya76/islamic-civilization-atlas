@@ -12,6 +12,7 @@ import MapLegend from '../shared/MapLegend';
 import YearInfoPanel from './YearInfoPanel';
 import HeatmapLayer from './HeatmapLayer';
 import YearExplorer from './YearExplorer';
+import ScholarMigrationMap from './ScholarMigrationMap';
 
 export default function MapView({ lang, t, sidebarOpen, mapRef, onPopupOpen, onTourComplete, onCloseSidebar }) {
   const mapEl = useRef(null);
@@ -24,6 +25,7 @@ export default function MapView({ lang, t, sidebarOpen, mapRef, onPopupOpen, onT
   const [tourActive, setTourActive] = useState(false);
   const [heatmapVisible, setHeatmapVisible] = useState(false);
   const [yearExplorerOpen, setYearExplorerOpen] = useState(false);
+  const [migrationVisible, setMigrationVisible] = useState(false);
 
   const { layers, toggleLayer } = useLayers();
   const { filters, setFilter } = useMapFilters();
@@ -127,9 +129,30 @@ export default function MapView({ lang, t, sidebarOpen, mapRef, onPopupOpen, onT
           📅 {lang === 'ar' ? 'ماذا حدث؟' : lang === 'en' ? 'This Year' : 'Bu Yıl'}
         </button>
 
+        {/* ── Scholar Migration toggle ── */}
+        <button
+          className="migration-toggle"
+          onClick={() => setMigrationVisible(p => !p)}
+          style={{
+            position: 'absolute', top: 12, right: 280, zIndex: 1000,
+            background: migrationVisible ? 'rgba(74,222,128,0.2)' : 'rgba(18,18,24,0.85)',
+            border: `1px solid ${migrationVisible ? 'rgba(74,222,128,0.4)' : 'rgba(255,255,255,0.1)'}`,
+            color: migrationVisible ? '#4ade80' : '#a89b8c',
+            padding: '6px 10px', borderRadius: 8, cursor: 'pointer', fontSize: 12,
+            backdropFilter: 'blur(6px)', transition: 'all 0.2s',
+          }}
+        >
+          🧭 {lang === 'ar' ? 'هجرة العلماء' : lang === 'en' ? 'Migration' : 'Göç'}
+        </button>
+
         {/* ── Heatmap canvas layer ── */}
         {heatmapVisible && (
           <HeatmapLayer map={mapObj.current} lang={lang} visible={heatmapVisible} />
+        )}
+
+        {/* ── Scholar Migration layer ── */}
+        {migrationVisible && (
+          <ScholarMigrationMap map={mapObj.current} lang={lang} visible={migrationVisible} />
         )}
 
         {/* ── Year Explorer modal ── */}

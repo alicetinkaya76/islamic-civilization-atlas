@@ -14,6 +14,7 @@ import './styles/quiz.css';
 import './styles/features.css';
 import './styles/rtl.css';
 import './styles/session13.css';
+import './styles/session14.css';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
