@@ -10,6 +10,8 @@ import { renderLayers } from './LayerManager';
 import TourMode from '../shared/TourMode';
 import MapLegend from '../shared/MapLegend';
 import YearInfoPanel from './YearInfoPanel';
+import HeatmapLayer from './HeatmapLayer';
+import YearExplorer from './YearExplorer';
 
 export default function MapView({ lang, t, sidebarOpen, mapRef, onPopupOpen, onTourComplete, onCloseSidebar }) {
   const mapEl = useRef(null);
@@ -20,6 +22,8 @@ export default function MapView({ lang, t, sidebarOpen, mapRef, onPopupOpen, onT
   const playRef = useRef(false);
   const [activeCount, setActiveCount] = useState(0);
   const [tourActive, setTourActive] = useState(false);
+  const [heatmapVisible, setHeatmapVisible] = useState(false);
+  const [yearExplorerOpen, setYearExplorerOpen] = useState(false);
 
   const { layers, toggleLayer } = useLayers();
   const { filters, setFilter } = useMapFilters();
@@ -90,6 +94,56 @@ export default function MapView({ lang, t, sidebarOpen, mapRef, onPopupOpen, onT
       />
       <div className="map-area">
         <div ref={mapEl} className="map-canvas" />
+
+        {/* ── Heatmap toggle ── */}
+        <button
+          className="heatmap-toggle"
+          onClick={() => setHeatmapVisible(p => !p)}
+          style={{
+            position: 'absolute', top: 12, right: 60, zIndex: 1000,
+            background: heatmapVisible ? 'rgba(201,168,76,0.25)' : 'rgba(18,18,24,0.85)',
+            border: `1px solid ${heatmapVisible ? 'rgba(201,168,76,0.5)' : 'rgba(255,255,255,0.1)'}`,
+            color: heatmapVisible ? '#c9a84c' : '#a89b8c',
+            padding: '6px 10px', borderRadius: 8, cursor: 'pointer', fontSize: 12,
+            backdropFilter: 'blur(6px)', transition: 'all 0.2s',
+          }}
+        >
+          🔥 {lang === 'ar' ? 'خريطة الكثافة' : lang === 'en' ? 'Heatmap' : 'Yoğunluk'}
+        </button>
+
+        {/* ── Year Explorer trigger ── */}
+        <button
+          className="year-explorer-trigger"
+          onClick={() => setYearExplorerOpen(true)}
+          style={{
+            position: 'absolute', top: 12, right: 170, zIndex: 1000,
+            background: 'rgba(18,18,24,0.85)',
+            border: '1px solid rgba(255,255,255,0.1)',
+            color: '#a89b8c', padding: '6px 10px', borderRadius: 8,
+            cursor: 'pointer', fontSize: 12,
+            backdropFilter: 'blur(6px)', transition: 'all 0.2s',
+          }}
+        >
+          📅 {lang === 'ar' ? 'ماذا حدث؟' : lang === 'en' ? 'This Year' : 'Bu Yıl'}
+        </button>
+
+        {/* ── Heatmap canvas layer ── */}
+        {heatmapVisible && (
+          <HeatmapLayer map={mapObj.current} lang={lang} visible={heatmapVisible} />
+        )}
+
+        {/* ── Year Explorer modal ── */}
+        {yearExplorerOpen && (
+          <YearExplorer
+            lang={lang}
+            onFlyTo={({ lat, lon, zoom }) => {
+              setYearExplorerOpen(false);
+              if (mapObj.current) mapObj.current.flyTo([lat, lon], zoom || 6, { duration: 1.2 });
+            }}
+            onClose={() => setYearExplorerOpen(false)}
+          />
+        )}
+
         {/* Tour button */}
         <button className="tour-trigger" onClick={() => setTourActive(true)}
           aria-label={t.map.tourLabel}>

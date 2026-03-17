@@ -1,0 +1,304 @@
+/* ═══════════════════════════════════════════════════
+ * SESSION 13 — HeatmapLayer + YearExplorer styles
+ * ═══════════════════════════════════════════════════ */
+
+/* ─── HEATMAP CONTROLS ─── */
+.heatmap-controls {
+  position: absolute;
+  bottom: 80px;
+  left: 12px;
+  z-index: 1000;
+  background: rgba(18, 18, 24, 0.92);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  padding: 12px 14px;
+  min-width: 200px;
+  color: #e2ddd5;
+  font-size: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+
+.hm-title {
+  font-weight: 700;
+  font-size: 13px;
+  margin-bottom: 8px;
+  color: #c9a84c;
+  letter-spacing: 0.3px;
+}
+
+.hm-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.hm-label {
+  font-size: 11px;
+  color: #a89b8c;
+  min-width: 52px;
+}
+
+.hm-btns {
+  display: flex;
+  gap: 3px;
+}
+
+.hm-btn {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #c8c0b4;
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-size: 11px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.hm-btn:hover { background: rgba(255, 255, 255, 0.12); }
+.hm-btn.active {
+  background: rgba(201, 168, 76, 0.25);
+  border-color: #c9a84c;
+  color: #c9a84c;
+}
+
+.hm-select {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #c8c0b4;
+  padding: 3px 6px;
+  border-radius: 4px;
+  font-size: 11px;
+  flex: 1;
+}
+.hm-select option { background: #1a1a24; }
+
+.hm-count {
+  margin-top: 6px;
+  padding-top: 6px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  font-size: 11px;
+  color: #8a8070;
+}
+
+/* ─── YEAR EXPLORER ─── */
+.ye-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  background: rgba(10, 10, 16, 0.85);
+  backdrop-filter: blur(6px);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 24px 16px;
+  overflow-y: auto;
+}
+
+.ye-container {
+  width: 100%;
+  max-width: 720px;
+  background: rgba(22, 22, 30, 0.97);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 14px;
+  padding: 24px;
+  color: #e2ddd5;
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.5);
+}
+
+.ye-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 16px;
+}
+
+.ye-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #c9a84c;
+  margin: 0 0 4px 0;
+}
+
+.ye-subtitle {
+  font-size: 13px;
+  color: #8a8070;
+  margin: 0;
+}
+
+.ye-close {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #a89b8c;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s;
+  flex-shrink: 0;
+}
+.ye-close:hover {
+  background: rgba(248, 113, 113, 0.2);
+  border-color: rgba(248, 113, 113, 0.4);
+  color: #f87171;
+}
+
+/* Year controls */
+.ye-controls {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 10px;
+  padding: 14px 16px;
+  margin-bottom: 16px;
+}
+
+.ye-year-input {
+  display: block;
+  width: 120px;
+  margin: 0 auto 10px;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(201, 168, 76, 0.3);
+  color: #c9a84c;
+  font-size: 28px;
+  font-weight: 700;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-variant-numeric: tabular-nums;
+}
+.ye-year-input:focus {
+  outline: none;
+  border-color: #c9a84c;
+  box-shadow: 0 0 8px rgba(201, 168, 76, 0.3);
+}
+
+.ye-slider {
+  width: 100%;
+  margin: 0;
+  -webkit-appearance: none;
+  appearance: none;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+  outline: none;
+}
+.ye-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #c9a84c;
+  cursor: pointer;
+  box-shadow: 0 0 6px rgba(201, 168, 76, 0.5);
+}
+
+.ye-ticks {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 6px;
+  font-size: 10px;
+  color: #6a6050;
+}
+.ye-ticks span {
+  cursor: pointer;
+  transition: color 0.15s;
+  padding: 2px 4px;
+  border-radius: 3px;
+}
+.ye-ticks span:hover,
+.ye-ticks span.active {
+  color: #c9a84c;
+  background: rgba(201, 168, 76, 0.1);
+}
+
+/* Results */
+.ye-results {
+  max-height: 50vh;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+.ye-results::-webkit-scrollbar { width: 4px; }
+.ye-results::-webkit-scrollbar-thumb { background: rgba(201, 168, 76, 0.3); border-radius: 2px; }
+
+.ye-empty {
+  text-align: center;
+  padding: 40px 16px;
+  color: #6a6050;
+  font-size: 14px;
+}
+
+.ye-section {
+  margin-bottom: 14px;
+}
+
+.ye-section-header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 0;
+  font-weight: 600;
+  font-size: 13px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  margin-bottom: 6px;
+}
+
+.ye-section-icon { font-size: 15px; }
+.ye-section-count { font-weight: 400; font-size: 11px; opacity: 0.6; }
+
+.ye-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.ye-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-left: 3px solid #c9a84c;
+  border-radius: 6px;
+  padding: 8px 10px;
+  transition: background 0.15s;
+}
+.ye-card:hover {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.ye-card-name {
+  font-weight: 600;
+  font-size: 13px;
+  color: #e2ddd5;
+}
+
+.ye-card-detail {
+  font-size: 11px;
+  color: #8a8070;
+  margin-top: 2px;
+  line-height: 1.4;
+}
+
+.ye-card-map {
+  background: none;
+  border: none;
+  color: #60a5fa;
+  font-size: 11px;
+  cursor: pointer;
+  padding: 2px 0;
+  margin-top: 4px;
+}
+.ye-card-map:hover { color: #93c5fd; text-decoration: underline; }
+
+/* RTL adjustments */
+[dir="rtl"] .ye-card { border-left: none; border-right: 3px solid #c9a84c; }
+[dir="rtl"] .ye-results { padding-right: 0; padding-left: 4px; }
+
+/* Mobile responsive */
+@media (max-width: 640px) {
+  .ye-container { padding: 16px; }
+  .ye-title { font-size: 18px; }
+  .ye-year-input { font-size: 24px; }
+  .heatmap-controls { bottom: 70px; left: 8px; min-width: 170px; }
+}
