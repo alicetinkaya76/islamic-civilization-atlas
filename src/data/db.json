@@ -32449,7 +32449,93 @@
       "pe": 1500,
       "goods_tr": "İpek;baharat;porselen;altın;kâğıt",
       "goods_en": "Silk;spices;porcelain;gold;paper",
-      "wp": [],
+      "wp": [
+        {
+          "lat": 34.26,
+          "lon": 108.94,
+          "n": "Chang'an (Xi'an)"
+        },
+        {
+          "lat": 36.62,
+          "lon": 101.77,
+          "n": "Xining"
+        },
+        {
+          "lat": 40.14,
+          "lon": 94.66,
+          "n": "Dunhuang"
+        },
+        {
+          "lat": 42.95,
+          "lon": 89.18,
+          "n": "Turfan"
+        },
+        {
+          "lat": 39.47,
+          "lon": 76.01,
+          "n": "Kâşgar (Kashgar)"
+        },
+        {
+          "lat": 42.85,
+          "lon": 68.3,
+          "n": "Otrar"
+        },
+        {
+          "lat": 41.3,
+          "lon": 69.28,
+          "n": "Taşkent (Tashkent)"
+        },
+        {
+          "lat": 39.65,
+          "lon": 66.96,
+          "n": "Semerkand (Samarkand)"
+        },
+        {
+          "lat": 39.77,
+          "lon": 64.42,
+          "n": "Buhara (Bukhara)"
+        },
+        {
+          "lat": 37.66,
+          "lon": 62.16,
+          "n": "Merv"
+        },
+        {
+          "lat": 36.21,
+          "lon": 58.8,
+          "n": "Nişâbur (Nishapur)"
+        },
+        {
+          "lat": 35.6,
+          "lon": 51.44,
+          "n": "Rey (Rayy)"
+        },
+        {
+          "lat": 34.8,
+          "lon": 48.51,
+          "n": "Hemedan (Hamadan)"
+        },
+        {
+          "lat": 33.31,
+          "lon": 44.37,
+          "n": "Bağdat (Baghdad)"
+        },
+        {
+          "lat": 36.2,
+          "lon": 37.16,
+          "n": "Halep (Aleppo)"
+        },
+        {
+          "lat": 36.8,
+          "lon": 36.16,
+          "n": "Antakya (Antioch)"
+        },
+        {
+          "lat": 41.01,
+          "lon": 28.98,
+          "n": "Konstantiniyye (Istanbul)"
+        }
+      ],
       "narr_tr": "Kuzey İpek Yolu, Çin'den Akdeniz'e uzanan dünyanın en eski ve en efsanevi ticaret güzergâhıdır. Semerkant, Buhara ve Bağdat gibi İslam şehirleri bu yolun kilit kavşak noktalarıydı. Türk ve İranlı tüccarlar Çin ipeğini, baharatını ve porselenini Batı'ya taşırken, Batı'dan cam, yünlü kumaş ve değerli ",
       "narr_en": "The Northern Silk Road was the world's oldest and most legendary trade route stretching from China to the Mediterranean. Islamic cities like Samarkand, Bukhara and Baghdad were key junction points. Turkic and Iranian merchants carried Chinese silk, spices and porcelain westward while glass, woolens ",
       "econ_tr": "İslam dünyasının ticaret gelirleri ve gümrük vergileri devlet bütçelerinin temelini oluşturdu. Sâmânî gümüş dirhemleri Viking İskandinavya'sına kadar ulaştı.",
@@ -32470,7 +32556,73 @@
       "pe": 1500,
       "goods_tr": "Baharat;porselen;ipek;buhur;kereste",
       "goods_en": "Spices;porcelain;silk;frankincense;timber",
-      "wp": [],
+      "wp": [
+        {
+          "lat": 23.13,
+          "lon": 113.26,
+          "n": "Guangzhou (Canton)"
+        },
+        {
+          "lat": 10.04,
+          "lon": 105.78,
+          "n": "Óc Eo (Vietnam)"
+        },
+        {
+          "lat": 1.35,
+          "lon": 103.82,
+          "n": "Singapura"
+        },
+        {
+          "lat": 3.14,
+          "lon": 101.69,
+          "n": "Malacca"
+        },
+        {
+          "lat": 6.93,
+          "lon": 79.84,
+          "n": "Colombo (Serendib)"
+        },
+        {
+          "lat": 9.97,
+          "lon": 76.24,
+          "n": "Kollam (Quilon)"
+        },
+        {
+          "lat": 21.49,
+          "lon": 39.19,
+          "n": "Cidde (Jeddah)"
+        },
+        {
+          "lat": 12.79,
+          "lon": 45.02,
+          "n": "Aden"
+        },
+        {
+          "lat": 23.59,
+          "lon": 58.38,
+          "n": "Muskat (Muscat)"
+        },
+        {
+          "lat": 27.67,
+          "lon": 52.33,
+          "n": "Sîrâf"
+        },
+        {
+          "lat": 30.51,
+          "lon": 47.78,
+          "n": "Basra"
+        },
+        {
+          "lat": 30.04,
+          "lon": 31.24,
+          "n": "Kahire (Cairo)"
+        },
+        {
+          "lat": 31.2,
+          "lon": 29.92,
+          "n": "İskenderiye (Alexandria)"
+        }
+      ],
       "narr_tr": "Deniz İpek Yolu, Güney Çin'den Basra Körfezi'ne uzanan ve Hint Okyanusu'nu kullanan deniz ticaret ağıydı. Arap ve Fars denizcileri muson rüzgârlarını ustaca kullanarak Çin, Güneydoğu Asya ve Hindistan'a düzenli seferler düzenliyordu. Sîrâf ve Basra limanları bu ticaretin İslam dünyasındaki ana termi",
       "narr_en": "The Maritime Silk Road was a sea trade network stretching from southern China to the Persian Gulf using the Indian Ocean. Arab and Persian sailors masterfully utilized monsoon winds for regular voyages to China, Southeast Asia and India. Siraf and Basra ports were the main Islamic terminals, while M",
       "econ_tr": "Basra ve Sîrâf limanları Abbâsî hazinesine devasa gümrük gelirleri sağladı. Çin porseleni ve ipek İslam dünyasında lüks tüketim malı haline geldi.",
@@ -32491,7 +32643,78 @@
       "pe": 1600,
       "goods_tr": "Karanfil;tarçın;karabiber;zencefil;muskat",
       "goods_en": "Cloves;cinnamon;pepper;ginger;nutmeg",
-      "wp": [],
+      "wp": [
+        {
+          "lat": -6.12,
+          "lon": 106.15,
+          "n": "Sunda Boğazı"
+        },
+        {
+          "lat": 3.14,
+          "lon": 101.69,
+          "n": "Malacca"
+        },
+        {
+          "lat": 9.97,
+          "lon": 76.24,
+          "n": "Calicut (Kozhikode)"
+        },
+        {
+          "lat": 15.42,
+          "lon": 73.76,
+          "n": "Goa"
+        },
+        {
+          "lat": 23.02,
+          "lon": 72.57,
+          "n": "Cambay (Khambhat)"
+        },
+        {
+          "lat": 23.59,
+          "lon": 58.38,
+          "n": "Muskat (Muscat)"
+        },
+        {
+          "lat": 25.35,
+          "lon": 55.39,
+          "n": "Hormuz / Ras al-Khaimah"
+        },
+        {
+          "lat": 30.51,
+          "lon": 47.78,
+          "n": "Basra"
+        },
+        {
+          "lat": 12.79,
+          "lon": 45.02,
+          "n": "Aden"
+        },
+        {
+          "lat": 21.49,
+          "lon": 39.19,
+          "n": "Cidde (Jeddah)"
+        },
+        {
+          "lat": 30.04,
+          "lon": 31.24,
+          "n": "Kahire (Cairo)"
+        },
+        {
+          "lat": 31.2,
+          "lon": 29.92,
+          "n": "İskenderiye (Alexandria)"
+        },
+        {
+          "lat": 41.9,
+          "lon": 12.5,
+          "n": "Roma (Rome)"
+        },
+        {
+          "lat": 45.44,
+          "lon": 12.32,
+          "n": "Venedik (Venice)"
+        }
+      ],
       "narr_tr": "Baharat Yolu, Molük Adaları ve Hindistan'ın baharatlarını Akdeniz dünyasına taşıyan ve İslam tüccarlarının asırlardır kontrol ettiği son derece kârlı güzergâhtı. Karanfil, tarçın, karabiber ve muskat gibi baharatlar ağırlıklarınca altın değerindeydi. Yemen'deki Aden limanı ve Mısır'daki İskenderiye ",
       "narr_en": "The Spice Route carried spices from the Moluccas and India to the Mediterranean world, controlled by Muslim merchants for centuries. Spices like cloves, cinnamon, pepper and nutmeg were worth their weight in gold. Aden in Yemen and Alexandria in Egypt were key transit points; the Mamluks earned enor",
       "econ_tr": "Baharat ticareti Memlûk ve Resûlî ekonomilerinin temel gelir kaynağıydı. Portekizlilerin 1498'de Ümit Burnu'nu dolaşması bu tekeli kırdı.",
@@ -32512,7 +32735,58 @@
       "pe": 1600,
       "goods_tr": "Altın;tuz;köle;fildişi;devekuşu tüyü",
       "goods_en": "Gold;salt;slaves;ivory;ostrich feathers",
-      "wp": [],
+      "wp": [
+        {
+          "lat": 16.77,
+          "lon": -3.01,
+          "n": "Timbuktu"
+        },
+        {
+          "lat": 14.08,
+          "lon": -1.52,
+          "n": "Cenne (Djenné)"
+        },
+        {
+          "lat": 16.27,
+          "lon": -0.05,
+          "n": "Gao"
+        },
+        {
+          "lat": 22.67,
+          "lon": 3.33,
+          "n": "Agadez bölgesi"
+        },
+        {
+          "lat": 27.05,
+          "lon": 2.88,
+          "n": "In Salah"
+        },
+        {
+          "lat": 32.49,
+          "lon": 3.67,
+          "n": "Ghardaia"
+        },
+        {
+          "lat": 31.43,
+          "lon": -4.27,
+          "n": "Sicilmâse (Sijilmasa)"
+        },
+        {
+          "lat": 34.03,
+          "lon": -5.0,
+          "n": "Fâs (Fez)"
+        },
+        {
+          "lat": 36.75,
+          "lon": 3.06,
+          "n": "Cezâyir (Algiers)"
+        },
+        {
+          "lat": 36.81,
+          "lon": 10.18,
+          "n": "Tunus (Tunis)"
+        }
+      ],
       "narr_tr": "Trans-Sahra Batı Yolu, Sahra altı Afrika'nın altınını ve kaynaklarını Kuzey Afrika ve Akdeniz'e taşıyan ticaret hattıydı. Deve kervanları Timbuktu'dan hareketle çöl geçişinde Sijilmasa veya Fez'e ulaşıyordu. Güneye tuz ve mamul mal, kuzeye altın ve fildişi akıyordu. Mali İmparatoru Mansa Musa'nın 13",
       "narr_en": "The Western Trans-Saharan Route carried sub-Saharan Africa's gold and resources to North Africa and the Mediterranean. Camel caravans departed Timbuktu crossing the desert to reach Sijilmasa or Fez. Salt and manufactured goods flowed south, gold and ivory north. Mali Emperor Mansa Musa's 1324 pilgri",
       "econ_tr": "Batı Afrika altını Kuzey Afrika ve Avrupa ekonomilerini besledi. Fâtımî ve Memlûk altın dinarları bu kaynağa bağlıydı.",
@@ -32533,7 +32807,58 @@
       "pe": 1800,
       "goods_tr": "Köle;fildişi;altın;tuz;deri",
       "goods_en": "Slaves;ivory;gold;salt;leather",
-      "wp": [],
+      "wp": [
+        {
+          "lat": 11.5,
+          "lon": 3.9,
+          "n": "Kano"
+        },
+        {
+          "lat": 13.51,
+          "lon": 2.11,
+          "n": "Niamey bölgesi"
+        },
+        {
+          "lat": 16.27,
+          "lon": -0.05,
+          "n": "Gao"
+        },
+        {
+          "lat": 23.79,
+          "lon": 8.13,
+          "n": "Tamanrasset"
+        },
+        {
+          "lat": 30.05,
+          "lon": 2.88,
+          "n": "El-Goléa"
+        },
+        {
+          "lat": 32.49,
+          "lon": 3.67,
+          "n": "Ghardaia"
+        },
+        {
+          "lat": 36.75,
+          "lon": 3.06,
+          "n": "Cezâyir (Algiers)"
+        },
+        {
+          "lat": 36.81,
+          "lon": 10.18,
+          "n": "Tunus (Tunis)"
+        },
+        {
+          "lat": 32.9,
+          "lon": 13.18,
+          "n": "Trablusgarb (Tripoli)"
+        },
+        {
+          "lat": 30.04,
+          "lon": 31.24,
+          "n": "Kahire (Cairo)"
+        }
+      ],
       "narr_tr": "Trans-Sahra Orta Yolu, Çad Gölü bölgesindeki Kenem-Bornu'yu Fezzan üzerinden Trablus ve Kahire'ye bağlıyordu. Köle, fildişi ve altın ticareti bu güzergâhın temelini oluşturuyordu. Fezzan'daki vahaları kontrol eden güçler ticaretin kapı bekçileri konumundaydı. Bu yol aynı zamanda İslam'ın Çad Gölü bö",
       "narr_en": "The Central Trans-Saharan Route connected Kanem-Bornu in the Lake Chad region to Tripoli and Cairo via Fezzan. Trade in slaves, ivory, and gold formed the backbone of this route. Powers controlling Fezzan's oases served as gatekeepers of trade. This route was also the main channel for Islam's spread",
       "econ_tr": "Kenem-Bornu ekonomisinin ana gelir kaynağı; Trablus limanından Akdeniz'e açılan ticaret.",
@@ -32554,7 +32879,53 @@
       "pe": 1908,
       "goods_tr": "Hacılar;hediyeler;ticaret malları",
       "goods_en": "Pilgrims;gifts;trade goods",
-      "wp": [],
+      "wp": [
+        {
+          "lat": 33.51,
+          "lon": 36.28,
+          "n": "Dımaşk (Damascus)"
+        },
+        {
+          "lat": 32.62,
+          "lon": 36.1,
+          "n": "Busrâ (Bosra)"
+        },
+        {
+          "lat": 31.84,
+          "lon": 36.27,
+          "n": "Zerka"
+        },
+        {
+          "lat": 30.33,
+          "lon": 35.99,
+          "n": "Ma'ân"
+        },
+        {
+          "lat": 28.38,
+          "lon": 36.56,
+          "n": "Tebük (Tabuk)"
+        },
+        {
+          "lat": 27.52,
+          "lon": 36.58,
+          "n": "Medâin Salih (al-Ula)"
+        },
+        {
+          "lat": 26.37,
+          "lon": 36.89,
+          "n": "Hayber yakını"
+        },
+        {
+          "lat": 24.47,
+          "lon": 39.61,
+          "n": "Medîne (Medina)"
+        },
+        {
+          "lat": 21.42,
+          "lon": 39.83,
+          "n": "Mekke (Mecca)"
+        }
+      ],
       "narr_tr": "Şam-Mekke Hac Yolu, yıllık olarak binlerce hacının kutsal topraklara ulaşmak için kullandığı İslam dünyasının en önemli güzergâhlarından biriydi. Emîrü'l-hac (hac komutanı) yönetimindeki devasa kervanlar, hac mevsiminde Şam'dan hareketle Hicaz'a doğru ilerlerdi. Osmanlı'nın 1908'de tamamladığı Hicaz",
       "narr_en": "The Damascus-Mecca Hajj Route was one of the most important routes in the Islamic world, used annually by thousands of pilgrims to reach the holy lands. Massive caravans led by an amir al-hajj departed Damascus for the Hijaz during the pilgrimage season. The Ottoman Hejaz Railway completed in 1908 m",
       "econ_tr": "Hac kervanları yerel ekonomilere canlandırıcı etki yapıyordu; güzergâh üzerindeki şehirler konaklama, yiyecek ve su hizmeti sağlıyordu.",
@@ -32575,7 +32946,48 @@
       "pe": 1900,
       "goods_tr": "Hacılar;hediyeler;Mısır tekstili",
       "goods_en": "Pilgrims;gifts;Egyptian textiles",
-      "wp": [],
+      "wp": [
+        {
+          "lat": 30.04,
+          "lon": 31.24,
+          "n": "Kahire (Cairo)"
+        },
+        {
+          "lat": 29.97,
+          "lon": 32.53,
+          "n": "Süveyş (Suez)"
+        },
+        {
+          "lat": 28.49,
+          "lon": 33.99,
+          "n": "Eyle (Aqaba)"
+        },
+        {
+          "lat": 27.73,
+          "lon": 35.45,
+          "n": "Yenbû sahili"
+        },
+        {
+          "lat": 24.47,
+          "lon": 39.61,
+          "n": "Medîne (Medina)"
+        },
+        {
+          "lat": 21.42,
+          "lon": 39.83,
+          "n": "Mekke (Mecca)"
+        },
+        {
+          "lat": 21.43,
+          "lon": 39.91,
+          "n": "Minâ"
+        },
+        {
+          "lat": 21.35,
+          "lon": 39.98,
+          "n": "Arafat"
+        }
+      ],
       "narr_tr": "Mısır-Mekke Hac Yolu, Kahire'den hareketle Sina Yarımadası veya Kızıldeniz kıyısı üzerinden Mekke'ye ulaşan güzergâhtı. Memlûk ve Osmanlı dönemlerinde Mısır, İslam dünyasının en kalabalık hac kervanlarını organize ediyordu. Kısvetu'l-Kâbe (Kâbe örtüsü) her yıl Kahire'de dokunarak törenle Mekke'ye gö",
       "narr_en": "The Egypt-Mecca Hajj Route ran from Cairo via the Sinai Peninsula or Red Sea coast to Mecca. During Mamluk and Ottoman periods, Egypt organized the largest hajj caravans in the Islamic world. The Kiswa (Kaaba covering) was woven in Cairo each year and ceremonially sent to Mecca — a concrete demonstr",
       "econ_tr": "Memlûk hazinesi hac kervanının güvenlik ve lojistik giderlerini karşılayarak siyasi meşruiyet satın alıyordu.",
@@ -32596,7 +33008,68 @@
       "pe": 1500,
       "goods_tr": "Altın;fildişi;köle;baharat;porselen",
       "goods_en": "Gold;ivory;slaves;spices;porcelain",
-      "wp": [],
+      "wp": [
+        {
+          "lat": 12.79,
+          "lon": 45.02,
+          "n": "Aden"
+        },
+        {
+          "lat": 11.59,
+          "lon": 43.15,
+          "n": "Cibuti (Djibouti)"
+        },
+        {
+          "lat": 11.35,
+          "lon": 43.48,
+          "n": "Zeyla'"
+        },
+        {
+          "lat": 2.05,
+          "lon": 45.32,
+          "n": "Mogadişu (Mogadishu)"
+        },
+        {
+          "lat": -1.27,
+          "lon": 36.82,
+          "n": "Mombasa yakını"
+        },
+        {
+          "lat": -4.05,
+          "lon": 39.67,
+          "n": "Mombasa"
+        },
+        {
+          "lat": -6.16,
+          "lon": 39.19,
+          "n": "Zengibar (Zanzibar)"
+        },
+        {
+          "lat": -8.96,
+          "lon": 39.52,
+          "n": "Kilva (Kilwa)"
+        },
+        {
+          "lat": -11.35,
+          "lon": 40.35,
+          "n": "Komor adaları yakını"
+        },
+        {
+          "lat": -15.03,
+          "lon": 40.73,
+          "n": "Mozambik adası"
+        },
+        {
+          "lat": -12.26,
+          "lon": 44.29,
+          "n": "Komor (Comoros)"
+        },
+        {
+          "lat": 23.59,
+          "lon": 58.38,
+          "n": "Muskat (Muscat)"
+        }
+      ],
       "narr_tr": "Doğu Afrika Sahil Ticareti, Mogadişu'dan Mozambik'e uzanan Svahili sahil şehirleri ağının deniz ticaretini kapsıyordu. Kilwa, Mombasa, Zengibar ve Pate gibi şehir devletleri Hint Okyanusu ticaret ağının Afrika ayağını oluşturuyordu. Altın, fildişi ve köle ihraç edilirken Çin porseleni, Hint tekstili",
       "narr_en": "East African Coastal Trade encompassed the maritime trade of the Swahili coastal city-state network stretching from Mogadishu to Mozambique. City-states like Kilwa, Mombasa, Zanzibar and Pate formed the African leg of the Indian Ocean trade network. Gold, ivory and slaves were exported while Chinese",
       "econ_tr": "Kilwa'nın altın ticareti şehri dönemin en zengin Doğu Afrika yerleşimine dönüştürdü.",
@@ -32617,7 +33090,63 @@
       "pe": 1500,
       "goods_tr": "İpek;kereste;at;meyve;madencilik ürünleri",
       "goods_en": "Silk;timber;horses;fruit;mining products",
-      "wp": [],
+      "wp": [
+        {
+          "lat": 33.31,
+          "lon": 44.37,
+          "n": "Bağdat (Baghdad)"
+        },
+        {
+          "lat": 34.37,
+          "lon": 45.39,
+          "n": "Hulvân"
+        },
+        {
+          "lat": 34.8,
+          "lon": 48.51,
+          "n": "Hemedan (Hamadan)"
+        },
+        {
+          "lat": 35.6,
+          "lon": 51.44,
+          "n": "Rey (Rayy)"
+        },
+        {
+          "lat": 35.57,
+          "lon": 53.4,
+          "n": "Semnân"
+        },
+        {
+          "lat": 36.17,
+          "lon": 54.35,
+          "n": "Damgân"
+        },
+        {
+          "lat": 36.21,
+          "lon": 58.8,
+          "n": "Nişâbur (Nishapur)"
+        },
+        {
+          "lat": 36.6,
+          "lon": 58.82,
+          "n": "Tûs"
+        },
+        {
+          "lat": 37.66,
+          "lon": 62.16,
+          "n": "Merv"
+        },
+        {
+          "lat": 39.77,
+          "lon": 64.42,
+          "n": "Buhara (Bukhara)"
+        },
+        {
+          "lat": 39.65,
+          "lon": 66.96,
+          "n": "Semerkand (Samarkand)"
+        }
+      ],
       "narr_tr": "Horasan Yolu, Bağdat'tan Semerkant'a uzanan Abbâsî İmparatorluğu'nun ana arteriydi. Bu güzergâh üzerinden Horasan orduları Bağdat'a gelerek Abbâsî devrimini gerçekleştirmişti. Ticaret dışında askeri harekât, posta (berîd) sistemi ve ilim adamlarının seyahatleri için de kullanılıyordu. Nîşâbûr, Merv ",
       "narr_en": "The Khorasan Road was the main artery of the Abbasid Empire stretching from Baghdad to Samarkand. The Khorasan armies traveled this route to Baghdad to carry out the Abbasid revolution. Beyond trade, it served military operations, the postal (barid) system, and scholarly travel. Great cultural cente",
       "econ_tr": "İpek, at, meyve ve madencilik ürünleri ticareti; Abbâsî vergi gelirlerinin önemli kaynağı.",
@@ -32638,7 +33167,73 @@
       "pe": 1500,
       "goods_tr": "Baharat;porselen;ipek;kereste;değerli taşlar",
       "goods_en": "Spices;porcelain;silk;timber;gems",
-      "wp": [],
+      "wp": [
+        {
+          "lat": 30.51,
+          "lon": 47.78,
+          "n": "Basra"
+        },
+        {
+          "lat": 27.67,
+          "lon": 52.33,
+          "n": "Sîrâf"
+        },
+        {
+          "lat": 25.35,
+          "lon": 55.39,
+          "n": "Hormuz bölgesi"
+        },
+        {
+          "lat": 23.59,
+          "lon": 58.38,
+          "n": "Muskat (Muscat)"
+        },
+        {
+          "lat": 12.79,
+          "lon": 45.02,
+          "n": "Aden"
+        },
+        {
+          "lat": 2.05,
+          "lon": 45.32,
+          "n": "Mogadişu"
+        },
+        {
+          "lat": -6.16,
+          "lon": 39.19,
+          "n": "Zengibar (Zanzibar)"
+        },
+        {
+          "lat": 24.75,
+          "lon": 67.58,
+          "n": "Deybul (Sind)"
+        },
+        {
+          "lat": 23.02,
+          "lon": 72.57,
+          "n": "Cambay"
+        },
+        {
+          "lat": 9.97,
+          "lon": 76.24,
+          "n": "Calicut"
+        },
+        {
+          "lat": 6.93,
+          "lon": 79.84,
+          "n": "Serendib (Sri Lanka)"
+        },
+        {
+          "lat": 3.14,
+          "lon": 101.69,
+          "n": "Malacca"
+        },
+        {
+          "lat": 23.13,
+          "lon": 113.26,
+          "n": "Guangzhou (Canton)"
+        }
+      ],
       "narr_tr": "Hint Okyanusu Ticaret Ağı, Basra Körfezi'nden Çin denizlerine kadar uzanan ve İslam tüccarlarının asırlardır domine ettiği devasa deniz ticaret sistemidir. Muson rüzgârlarının mevsimsel döngüsü — yaz aylarında kuzeydoğu, kış aylarında güneybatı — bu ticaretin doğal motoruydu. Müslüman tüccarlar bu r",
       "narr_en": "The Indian Ocean Trade Network was a vast maritime trade system stretching from the Persian Gulf to Chinese seas, dominated by Muslim merchants for centuries. The seasonal cycle of monsoon winds — northeast in summer, southwest in winter — was the natural engine of this trade. Muslim merchants could",
       "econ_tr": "İslam dünyasının küresel ticaret üzerindeki hâkimiyetinin temeli; baharat, ipek ve porselen ticareti devasa servetler yarattı.",
@@ -32659,7 +33254,53 @@
       "pe": 1400,
       "goods_tr": "Altın;tuz;bakır",
       "goods_en": "Gold;salt;copper",
-      "wp": [],
+      "wp": [
+        {
+          "lat": 8.1,
+          "lon": -1.22,
+          "n": "Gana (Ghana Empire bölgesi)"
+        },
+        {
+          "lat": 14.08,
+          "lon": -1.52,
+          "n": "Cenne (Djenné)"
+        },
+        {
+          "lat": 16.77,
+          "lon": -3.01,
+          "n": "Timbuktu"
+        },
+        {
+          "lat": 16.27,
+          "lon": -0.05,
+          "n": "Gao"
+        },
+        {
+          "lat": 13.51,
+          "lon": 7.99,
+          "n": "Kano yakını"
+        },
+        {
+          "lat": 15.45,
+          "lon": 13.38,
+          "n": "Çad Gölü bölgesi"
+        },
+        {
+          "lat": 21.86,
+          "lon": 31.62,
+          "n": "Vadi Halfa"
+        },
+        {
+          "lat": 24.09,
+          "lon": 32.9,
+          "n": "Asvân (Aswan)"
+        },
+        {
+          "lat": 30.04,
+          "lon": 31.24,
+          "n": "Kahire (Cairo)"
+        }
+      ],
       "narr_tr": "Altın Yolu, Batı Afrika'nın (özellikle Wangara/Bambouk bölgesi) altın madenlerinden Mısır'a uzanan uzun mesafeli ticaret güzergâhıydı. Timbuktu bu yolun en önemli kavşak noktasıydı. Gana ve Mali imparatorlukları bu altın kaynakları üzerindeki kontrollerini siyasi güce dönüştürdü. Fâtımî ve Memlûk di",
       "narr_en": "The Gold Road was a long-distance trade route stretching from West Africa's gold mines (particularly the Wangara/Bambouk region) to Egypt. Timbuktu was the most important junction on this road. The Ghana and Mali empires converted their control over these gold sources into political power. Most gold",
       "econ_tr": "Batı Afrika altını Akdeniz ekonomisinin temel para arzını sağladı; Avrupa'nın da dolaylı altın kaynağıydı.",
@@ -32680,7 +33321,53 @@
       "pe": 1600,
       "goods_tr": "İpek;baharat;at;yün;halı",
       "goods_en": "Silk;spices;horses;wool;carpets",
-      "wp": [],
+      "wp": [
+        {
+          "lat": 41.01,
+          "lon": 28.98,
+          "n": "Konstantiniyye (Istanbul)"
+        },
+        {
+          "lat": 41.0,
+          "lon": 39.72,
+          "n": "Trabzon (Trebizond)"
+        },
+        {
+          "lat": 41.69,
+          "lon": 44.8,
+          "n": "Tiflis (Tbilisi)"
+        },
+        {
+          "lat": 40.18,
+          "lon": 44.51,
+          "n": "Erivan (Yerevan)"
+        },
+        {
+          "lat": 38.08,
+          "lon": 46.29,
+          "n": "Tebriz (Tabriz)"
+        },
+        {
+          "lat": 36.27,
+          "lon": 50.0,
+          "n": "Kazvin (Qazvin)"
+        },
+        {
+          "lat": 35.6,
+          "lon": 51.44,
+          "n": "Rey (Rayy)"
+        },
+        {
+          "lat": 32.65,
+          "lon": 51.68,
+          "n": "İsfahan (Isfahan)"
+        },
+        {
+          "lat": 29.59,
+          "lon": 52.58,
+          "n": "Şîrâz (Shiraz)"
+        }
+      ],
       "narr_tr": "Karadeniz-İran İpek Yolu, Trabzon limanından İran içlerine (Tebriz ve İsfahan) uzanan alternatif ticaret güzergâhıydı. İlhanlı döneminde Tebriz dünyanın en büyük ticaret merkezlerinden birine dönüştü ve bu yol ana bağlantısıydı. Safevî döneminde İran ipeği Avrupa'ya büyük ölçüde bu güzergâhla ihraç ",
       "narr_en": "The Black Sea-Iran Silk Route was an alternative trade route stretching from the port of Trebizond to the Iranian interior (Tabriz and Isfahan). During the Ilkhanid period Tabriz became one of the world's largest trade centers and this route was its main connection. During the Safavid era Iranian si",
       "econ_tr": "Tebriz'in İlhanlı dönemindeki yükselişi bu güzergâhın canlılığıyla doğrudan bağlantılı; Safevî ipek ihracatı devlet gelirlerinin temeliydi.",
@@ -32701,7 +33388,48 @@
       "pe": 1600,
       "goods_tr": "Baharat;kahve;buhur;parfüm",
       "goods_en": "Spices;coffee;frankincense;perfume",
-      "wp": [],
+      "wp": [
+        {
+          "lat": 29.97,
+          "lon": 32.53,
+          "n": "Süveyş (Suez)"
+        },
+        {
+          "lat": 26.55,
+          "lon": 34.2,
+          "n": "Aydhâb"
+        },
+        {
+          "lat": 21.49,
+          "lon": 39.19,
+          "n": "Cidde (Jeddah)"
+        },
+        {
+          "lat": 19.62,
+          "lon": 37.22,
+          "n": "Süvâkin"
+        },
+        {
+          "lat": 15.34,
+          "lon": 38.93,
+          "n": "Massawa"
+        },
+        {
+          "lat": 15.6,
+          "lon": 42.94,
+          "n": "el-Hudayde"
+        },
+        {
+          "lat": 13.01,
+          "lon": 43.34,
+          "n": "Bâbülmendeb"
+        },
+        {
+          "lat": 12.79,
+          "lon": 45.02,
+          "n": "Aden"
+        }
+      ],
       "narr_tr": "Kızıldeniz-Aden Yolu, Hint Okyanusu'ndan gelen baharatı ve Arap buhurunu Mısır ve Akdeniz'e bağlayan stratejik deniz güzergâhıydı. Aden limanı Bâbülmendeb Boğazı'nın kontrolünü elinde tutarak bu ticaretin kapı bekçisi konumundaydı. Resûlî Yemen Sultanlığı ve ardından Memlûkler bu ticaretten devasa g",
       "narr_en": "The Red Sea-Aden Route was the strategic maritime route connecting Indian Ocean spices and Arabian frankincense to Egypt and the Mediterranean. The port of Aden, controlling the Bab el-Mandeb Strait, served as gatekeeper of this trade. The Rasulid Yemen Sultanate and later the Mamluks earned enormou",
       "econ_tr": "Aden gümrük gelirleri Resûlî ve Memlûk devlet bütçelerinin en önemli kalemlerindendi.",
@@ -32722,7 +33450,58 @@
       "pe": 1250,
       "goods_tr": "Kürk;bal;balmumu;köle;kehribar",
       "goods_en": "Fur;honey;wax;slaves;amber",
-      "wp": [],
+      "wp": [
+        {
+          "lat": 55.75,
+          "lon": 37.62,
+          "n": "Moskova yakını (Rus toprakları)"
+        },
+        {
+          "lat": 54.32,
+          "lon": 48.39,
+          "n": "Bulghar (Volga Bulgaria)"
+        },
+        {
+          "lat": 49.14,
+          "lon": 47.17,
+          "n": "İtil (Atil - Hazar başkenti)"
+        },
+        {
+          "lat": 46.35,
+          "lon": 48.04,
+          "n": "Aşağı Volga"
+        },
+        {
+          "lat": 43.32,
+          "lon": 45.69,
+          "n": "Derbent yakını"
+        },
+        {
+          "lat": 42.06,
+          "lon": 47.42,
+          "n": "Derbent"
+        },
+        {
+          "lat": 40.41,
+          "lon": 49.87,
+          "n": "Bakü (Baku)"
+        },
+        {
+          "lat": 38.08,
+          "lon": 46.29,
+          "n": "Tebriz (Tabriz)"
+        },
+        {
+          "lat": 35.6,
+          "lon": 51.44,
+          "n": "Rey (Rayy)"
+        },
+        {
+          "lat": 33.31,
+          "lon": 44.37,
+          "n": "Bağdat (Baghdad)"
+        }
+      ],
       "narr_tr": "Volga-Hazar Yolu, İdil (Volga) Nehri boyunca Bulgar'dan Hazar Denizi üzerinden Bağdat ve Rey'e uzanan kuzey-güney ticaret güzergâhıydı. Kuzeyden kürk, bal, balmumu, kehribar ve köle gelirken, güneyden İslam gümüş sikkeleri, ipek ve baharat gidiyordu. İbn Fadlân'ın 921 seyahatnamesi bu yolun canlı bi",
       "narr_en": "The Volga-Caspian Route was a north-south trade route stretching from Bulgar along the Volga River through the Caspian Sea to Baghdad and Ray. Furs, honey, wax, amber and slaves came from the north while Islamic silver coins, silk and spices went north. Ibn Fadlan's 921 travelogue is a vivid witness",
       "econ_tr": "Abbâsî gümüş dirhemleri İskandinav Viking dünyasına kadar ulaşarak 'İslam gümüşü' Kuzey Avrupa ekonomisini etkiledi.",
@@ -32743,7 +33522,68 @@
       "pe": 1500,
       "goods_tr": "Baharat;tekstil;at;değerli taşlar",
       "goods_en": "Spices;textiles;horses;gems",
-      "wp": [],
+      "wp": [
+        {
+          "lat": 24.75,
+          "lon": 67.58,
+          "n": "Deybul (Sind)"
+        },
+        {
+          "lat": 24.85,
+          "lon": 67.01,
+          "n": "Tatta"
+        },
+        {
+          "lat": 23.02,
+          "lon": 72.57,
+          "n": "Cambay (Khambhat)"
+        },
+        {
+          "lat": 22.29,
+          "lon": 70.78,
+          "n": "Somnath"
+        },
+        {
+          "lat": 21.77,
+          "lon": 72.13,
+          "n": "Bharuch"
+        },
+        {
+          "lat": 19.08,
+          "lon": 72.88,
+          "n": "Mumbai yakını"
+        },
+        {
+          "lat": 15.42,
+          "lon": 73.76,
+          "n": "Goa"
+        },
+        {
+          "lat": 11.93,
+          "lon": 75.37,
+          "n": "Malabar sahili"
+        },
+        {
+          "lat": 9.97,
+          "lon": 76.24,
+          "n": "Calicut (Kozhikode)"
+        },
+        {
+          "lat": 23.59,
+          "lon": 58.38,
+          "n": "Muskat (Muscat)"
+        },
+        {
+          "lat": 25.35,
+          "lon": 55.39,
+          "n": "Hormuz bölgesi"
+        },
+        {
+          "lat": 30.51,
+          "lon": 47.78,
+          "n": "Basra"
+        }
+      ],
       "narr_tr": "Sind-Gücerat Deniz Yolu, Arap tüccarların Güney Asya'ya giriş kapısıydı. Sind'deki Deybül limanı ve Gücerat'taki Kanbay (Cambay) limanı bu ticaretin iki ana terminaliydi. Baharatlar, tekstil, at ve değerli taşlar ticareti yapılıyordu. Bu güzergâh aynı zamanda İslam'ın Güney Asya'ya ilk yayılma kanal",
       "narr_en": "The Sind-Gujarat Maritime Route was the entry point for Arab merchants into South Asia. The port of Daybul in Sind and Cambay in Gujarat were the two main terminals. Spices, textiles, horses and gems were traded. This route was also the first channel of Islam's spread to South Asia — Arab merchants ",
       "econ_tr": "At ticareti Güney Asya'nın askeri ekonomisinde kritik rol oynadı; Arap atları Hint sultanları için stratejik mal.",
