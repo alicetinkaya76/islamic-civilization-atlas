@@ -98,10 +98,8 @@ function YaqutViewInner({ lang, t }) {
   const [detailCache, setDetailCache] = useState({});
   const [showMobile, setShowMobile] = useState('list');
 
-  if (dataLoading || !YAQUT_LITE) return <LazyLoader message={ty.loading || "Muʿcem el-Büldân verileri yükleniyor"} />;
-  if (dataError) return <LazyLoader error={dataError} onRetry={() => window.location.reload()} />;
-
   const filtered = useMemo(() => {
+    if (!YAQUT_LITE) return [];
     let arr = YAQUT_LITE;
     if (selectedGeoTypes.size > 0) arr = arr.filter(e => selectedGeoTypes.has(e.gt));
     if (selectedCountry) arr = arr.filter(e => e.ct === selectedCountry);
@@ -147,6 +145,9 @@ function YaqutViewInner({ lang, t }) {
   }, [loadDetail]);
 
   const selectedEntry = selectedId ? YAQUT_BY_ID[selectedId] : null;
+
+  if (dataLoading || !YAQUT_LITE) return <LazyLoader message={ty.loading || "Muʿcem el-Büldân verileri yükleniyor"} />;
+  if (dataError) return <LazyLoader error={dataError} onRetry={() => window.location.reload()} />;
 
   return (
     <div className="yaqut-view">
