@@ -1,6 +1,6 @@
 import { useState, useMemo, useCallback, useEffect, Component } from 'react';
 import useAsyncData from '../../hooks/useAsyncData.jsx';
-import LazyLoader from '../shared/LazyLoader';
+import SkeletonLoader from '../shared/SkeletonLoader';
 import YaqutSidebar from './YaqutSidebar';
 import YaqutMap from './YaqutMap';
 import YaqutIdCard from './YaqutIdCard';
@@ -148,8 +148,13 @@ function YaqutViewInner({ lang, t }) {
 
   const selectedEntry = selectedId ? YAQUT_BY_ID[selectedId] : null;
 
-  if (dataLoading || !YAQUT_LITE) return <LazyLoader message={ty.loading || "Muʿcem el-Büldân verileri yükleniyor"} />;
-  if (dataError) return <LazyLoader error={dataError} onRetry={() => window.location.reload()} />;
+  if (dataLoading || !YAQUT_LITE) return <SkeletonLoader variant="list" rows={10} message={ty.loading || "Muʿcem el-Büldân verileri yükleniyor"} />;
+  if (dataError) return (
+    <div className="skeleton-loader" style={{ textAlign: 'center', padding: 40 }}>
+      <p style={{ color: '#ef5350', fontSize: 13 }}>{String(dataError.message || dataError)}</p>
+      <button onClick={() => window.location.reload()} style={{ marginTop: 12, padding: '8px 20px', background: '#1a6b5a', color: '#fff', border: 'none', borderRadius: 6, cursor: 'pointer' }}>Tekrar dene / Retry</button>
+    </div>
+  );
 
   return (
     <div className="yaqut-view">
