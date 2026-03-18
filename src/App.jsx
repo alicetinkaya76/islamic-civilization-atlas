@@ -13,6 +13,7 @@ const ScholarView   = lazy(() => import('./components/scholars/ScholarView'));
 const QuizMode      = lazy(() => import('./components/QuizMode'));
 const BattleView    = lazy(() => import('./components/battles/BattleView'));
 const CausalView    = lazy(() => import('./components/causal/CausalView'));
+const DiaView       = lazy(() => import('./components/dia/DiaView'));
 
 /* ═══ Eagerly loaded — needed on every page ═══ */
 import MapView from './components/map/MapView';
@@ -26,7 +27,7 @@ import ProgressTracker, { BadgeToast, useProgress } from './components/shared/Pr
 import Onboarding from './components/shared/Onboarding';
 import ExportButton from './components/shared/ExportButton';
 
-const VALID_TABS = ['map', 'dashboard', 'timeline', 'links', 'scholars', 'battles', 'alam', 'yaqut', 'admin'];
+const VALID_TABS = ['map', 'dashboard', 'timeline', 'links', 'scholars', 'battles', 'alam', 'yaqut', 'dia', 'admin'];
 
 /* ═══ Entity types that can be deep-linked ═══ */
 const ENTITY_TYPES = ['dynasty', 'battle', 'scholar', 'monument', 'city', 'waqf', 'event', 'ruler', 'madrasa'];
@@ -223,6 +224,8 @@ export default function App() {
               onMouseEnter={() => preloadData('/data/alam_lite.json')}>{t.tabs.alam}</button>
             <button role="tab" aria-selected={tab === 'yaqut'} className={`tab${tab === 'yaqut' ? ' active' : ''}`} onClick={() => selectTab('yaqut')}
               onMouseEnter={() => preloadData('/data/yaqut_lite.json')}>{t.tabs.yaqut}</button>
+            <button role="tab" aria-selected={tab === 'dia'} className={`tab${tab === 'dia' ? ' active' : ''}`} onClick={() => selectTab('dia')}
+              onMouseEnter={() => preloadData('/data/dia_lite.json')}>{t.tabs.dia}</button>
           </div>
           <button className="quiz-trigger" onClick={() => setQuizOpen(true)}
             aria-label={{ tr: 'Bilgi yarışması', en: 'Knowledge quiz', ar: 'اختبار المعرفة' }[lang]}>🎓 Quiz</button>
@@ -254,6 +257,7 @@ export default function App() {
          tab === 'battles' ? <BattleView lang={lang} t={t} /> :
          tab === 'alam' ? <AlamView lang={lang} t={t} /> :
          tab === 'yaqut' ? <YaqutView lang={lang} t={t} /> :
+         tab === 'dia' ? <DiaView lang={lang} t={t} /> :
          <CausalView lang={lang} t={t} />}
         </Suspense>
       </main>

@@ -2,6 +2,28 @@
 
 All notable changes to the Islamic Dynasties Atlas are documented in this file.
 
+## [6.2.0] - 2026-03-18
+
+### Added
+- **DİA Map View**: Leaflet map with 3,803 geocoded scholars (44.6% coverage) from 200+ historical Islamic cities; grid-based clustering, importance-scaled markers, field/madhhab color coding, fly-to on selection
+- **Improved Cross-Reference**: 759 → 1,400 el-A'lâm ↔ DİA matches using 3-phase matching (slug + exact name + Levenshtein >0.80 with ±3yr)
+- **dia_geo.json**: 222 KB geocoding data from comprehensive Islamic historical gazetteer (200+ cities)
+
+### Changed
+- DiaView: 4 sub-views (List → Map → Network → Analytics)
+- Package version → 6.2.0
+
+## [6.1.0] - 2026-03-18
+
+### Added
+- **DİA Scholar Tab (#dia)**: 8,528 biographies from TDV İslam Ansiklopedisi with search, filtering, virtual scroll
+- **Teacher-Student Network**: Canvas-based D3 force graph with 8,127 T-S + 3,390 contemporary edges
+- **DİA Analytics**: 6 D3 charts (century, field, madhhab, importance, heatmap, centrality)
+- **DİA Biography Card**: Works (44,611), travel chains (4,241 scholars), relations, DİA link
+- **el-A'lâm ↔ DİA Cross-Reference**: Bidirectional navigation between tabs
+- **5 Data Files**: dia_lite.json, dia_relations.json, dia_works.json, dia_travel.json, dia_alam_xref.json
+- **3-Language Support**: Full TR/EN/AR localization
+
 ## [6.0.0] - 2026-03-18
 
 ### Added

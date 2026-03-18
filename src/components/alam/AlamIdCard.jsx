@@ -303,6 +303,14 @@ export default function AlamIdCard({ lang, ta, bio, detail, onClose, allData, on
         </a>
       )}
 
+      {/* Navigate to DİA tab internally */}
+      {bio.ds && (
+        <button className="alam-dia-link" style={{ background:'#1a3a2a', border:'1px solid #1a6b5a44', cursor:'pointer', marginTop:4 }}
+          onClick={() => { window.location.hash = `dia/${bio.ds}`; }}>
+          📚 {ta.diaBrowse || "DİA Sekmesinde Aç"}
+        </button>
+      )}
+
       {/* Source footer */}
       <div className="alam-idcard-source">{ta.source}</div>
     </div>
