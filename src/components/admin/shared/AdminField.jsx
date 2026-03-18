@@ -1,7 +1,7 @@
 /**
  * AdminField — Tekil alan bileşeni
  * text, number, textarea, richtext, select, multi-select,
- * boolean, color, readonly, ref, ref-multi, array-coords, trilingual
+ * boolean, color, readonly, ref, ref-multi, array-coords, waypoints, trilingual
  * v5.2.0.0
  */
 import { useState, useRef, useEffect, useCallback } from 'react';
@@ -148,7 +148,7 @@ function TrilingualField({ fieldKey, item, onChange, type }) {
   );
 }
 
-/* ═══ Array Coords Editor ═══ */
+/* ═══ Array Coords Editor (for simple [[lat, lon], ...] format) ═══ */
 function ArrayCoordsField({ value, onChange }) {
   const arr = Array.isArray(value) ? value : [];
   const updatePoint = (idx, coord, val) => {
@@ -171,6 +171,62 @@ function ArrayCoordsField({ value, onChange }) {
         </div>
       ))}
       <button className="admin-btn admin-btn-sm" onClick={addPoint}>+ Nokta Ekle</button>
+    </div>
+  );
+}
+
+/* ═══ Waypoint Editor (for [{lat, lon, n}, ...] format — routes) ═══ */
+function WaypointField({ value, onChange }) {
+  const arr = Array.isArray(value) ? value : [];
+  const [collapsed, setCollapsed] = useState(arr.length > 10);
+
+  const updateWp = (idx, field, val) => {
+    const next = arr.map((wp, i) => i === idx ? { ...wp, [field]: val } : wp);
+    onChange(next);
+  };
+  const addWp = () => onChange([...arr, { lat: 0, lon: 0, n: '' }]);
+  const removeWp = (idx) => onChange(arr.filter((_, i) => i !== idx));
+  const moveWp = (idx, dir) => {
+    if ((dir === -1 && idx === 0) || (dir === 1 && idx === arr.length - 1)) return;
+    const next = [...arr];
+    const tmp = next[idx];
+    next[idx] = next[idx + dir];
+    next[idx + dir] = tmp;
+    onChange(next);
+  };
+
+  const displayed = collapsed ? arr.slice(0, 5) : arr;
+
+  return (
+    <div className="admin-coords-list">
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 6 }}>
+        <span style={{ fontSize: 11, color: '#a89b8c' }}>{arr.length} waypoint</span>
+        {arr.length > 10 && (
+          <button className="admin-btn admin-btn-sm admin-btn-ghost" onClick={() => setCollapsed(p => !p)}>
+            {collapsed ? `Tümünü göster (${arr.length})` : 'Daralt'}
+          </button>
+        )}
+      </div>
+      {displayed.map((wp, i) => (
+        <div key={i} className="admin-coords-row" style={{ flexWrap: 'wrap', gap: 4 }}>
+          <span className="admin-coords-idx" style={{ minWidth: 24 }}>{i + 1}</span>
+          <input type="text" className="admin-input admin-input-sm" style={{ flex: '2 1 120px', minWidth: 80 }}
+            value={wp.n || ''} onChange={e => updateWp(i, 'n', e.target.value)} placeholder="İsim" />
+          <input type="number" className="admin-input admin-input-sm" style={{ flex: '1 1 70px', minWidth: 60 }}
+            step="0.01" value={wp.lat ?? 0} onChange={e => updateWp(i, 'lat', parseFloat(e.target.value) || 0)} placeholder="lat" />
+          <input type="number" className="admin-input admin-input-sm" style={{ flex: '1 1 70px', minWidth: 60 }}
+            step="0.01" value={wp.lon ?? 0} onChange={e => updateWp(i, 'lon', parseFloat(e.target.value) || 0)} placeholder="lon" />
+          <button className="admin-btn-icon" onClick={() => moveWp(i, -1)} title="Yukarı" style={{ opacity: i === 0 ? 0.3 : 1 }}>↑</button>
+          <button className="admin-btn-icon" onClick={() => moveWp(i, 1)} title="Aşağı" style={{ opacity: i === arr.length - 1 ? 0.3 : 1 }}>↓</button>
+          <button className="admin-btn-icon danger" onClick={() => removeWp(i)} title="Sil">×</button>
+        </div>
+      ))}
+      {collapsed && arr.length > 5 && (
+        <div style={{ textAlign: 'center', padding: '4px 0', fontSize: 11, color: '#7a6f63' }}>
+          ...ve {arr.length - 5} waypoint daha
+        </div>
+      )}
+      <button className="admin-btn admin-btn-sm" onClick={addWp}>+ Waypoint Ekle</button>
     </div>
   );
 }
@@ -369,6 +425,10 @@ export default function AdminField({ field, item, onChange }) {
 
     case 'array-coords':
       input = <ArrayCoordsField value={val} onChange={v => onChange({ [key]: v })} />;
+      break;
+
+    case 'waypoints':
+      input = <WaypointField value={val} onChange={v => onChange({ [key]: v })} />;
       break;
 
     default:
