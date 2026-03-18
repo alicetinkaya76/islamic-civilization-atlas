@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, useMemo, useCallback } from 'react';
+import { useState, useEffect, useRef, useMemo } from 'react';
 import * as d3 from 'd3';
 import { FIELD_COLORS } from './DiaSidebar';
 
@@ -11,11 +11,14 @@ function getCentury(year) { return year ? Math.ceil(year / 100) : null; }
 
 export default function DiaNetwork({ lang, td, data, relations, lookup, filtered, onSelect, selectedId }) {
   const canvasRef = useRef(null);
-  const simRef = useRef(null);
   const tooltipRef = useRef(null);
   const nodesRef = useRef([]);
   const linksRef = useRef([]);
   const transformRef = useRef(d3.zoomIdentity);
+  const hoveredRef = useRef(null);
+  const selectedRef = useRef(selectedId);
+  const colorByRef = useRef('field');
+  const renderRef = useRef(null);
 
   const [threshold, setThreshold] = useState(50);
   const [colorBy, setColorBy] = useState('field');
@@ -23,124 +26,45 @@ export default function DiaNetwork({ lang, td, data, relations, lookup, filtered
   const [viewMode, setViewMode] = useState('force');
   const [filterField, setFilterField] = useState('');
   const [filterMadhab, setFilterMadhab] = useState('');
-  const [hoveredNode, setHoveredNode] = useState(null);
+
+  /* Sync refs without restarting sim */
+  useEffect(() => { selectedRef.current = selectedId; renderRef.current?.(); }, [selectedId]);
+  useEffect(() => { colorByRef.current = colorBy; renderRef.current?.(); }, [colorBy]);
 
   const graphData = useMemo(() => {
     if (!relations || !data) return { nodes: [], links: [] };
     const qualifiedIds = new Set();
     data.forEach(b => { if ((b.is || 0) >= threshold) qualifiedIds.add(b.id); });
-
     const links = [];
     const nodeIds = new Set();
-
     relations.ts.forEach(([teacher, student, count]) => {
       if (!qualifiedIds.has(teacher) || !qualifiedIds.has(student)) return;
       if (filterField) {
-        const tBio = lookup[teacher], sBio = lookup[student];
-        if (!tBio?.fl?.includes(filterField) && !sBio?.fl?.includes(filterField)) return;
+        const tB = lookup[teacher], sB = lookup[student];
+        if (!tB?.fl?.includes(filterField) && !sB?.fl?.includes(filterField)) return;
       }
-      if (filterMadhab) {
-        if (lookup[teacher]?.mz !== filterMadhab && lookup[student]?.mz !== filterMadhab) return;
-      }
+      if (filterMadhab && lookup[teacher]?.mz !== filterMadhab && lookup[student]?.mz !== filterMadhab) return;
       links.push({ source: teacher, target: student, type: 'ts', count });
       nodeIds.add(teacher); nodeIds.add(student);
     });
-
     if (showContemporary) {
       relations.co.forEach(([a, b, count]) => {
         if (qualifiedIds.has(a) && qualifiedIds.has(b) && nodeIds.has(a) && nodeIds.has(b))
           links.push({ source: a, target: b, type: 'co', count });
       });
     }
-
-    const nodes = [...nodeIds].map(id => {
-      const bio = lookup[id];
-      return { id, title: bio?.t || id, importance: bio?.is || 30,
-        field: bio?.fl?.[0] || '', madhab: bio?.mz || '',
-        dc: bio?.dc || null, century: getCentury(bio?.dc) };
-    });
-    return { nodes, links };
+    return {
+      nodes: [...nodeIds].map(id => {
+        const bio = lookup[id];
+        return { id, title: bio?.t || id, importance: bio?.is || 30,
+          field: bio?.fl?.[0] || '', madhab: bio?.mz || '',
+          dc: bio?.dc || null, century: getCentury(bio?.dc) };
+      }),
+      links,
+    };
   }, [relations, data, lookup, threshold, showContemporary, filterField, filterMadhab]);
 
-  const getNodeColor = useCallback((d) => {
-    if (d.id === selectedId) return '#fff';
-    if (colorBy === 'madhab') return MADHAB_COLORS[d.madhab] || '#546e7a';
-    if (colorBy === 'century') {
-      if (!d.century) return '#546e7a';
-      return d3.interpolateViridis((d.century - 7) / 14);
-    }
-    return FIELD_COLORS[d.field] || '#c9a84c';
-  }, [colorBy, selectedId]);
-
-  const render = useCallback(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const ctx = canvas.getContext('2d');
-    const w = canvas.width, h = canvas.height;
-    const dpr = window.devicePixelRatio || 1;
-    const transform = transformRef.current;
-    const nodes = nodesRef.current, links = linksRef.current;
-
-    ctx.clearRect(0, 0, w, h);
-    ctx.save();
-    ctx.translate(transform.x * dpr, transform.y * dpr);
-    ctx.scale(transform.k * dpr, transform.k * dpr);
-
-    links.forEach(l => {
-      if (!l.source.x || !l.target.x) return;
-      ctx.beginPath();
-      ctx.moveTo(l.source.x, l.source.y);
-      ctx.lineTo(l.target.x, l.target.y);
-      if (l.type === 'co') {
-        ctx.setLineDash([3, 3]);
-        ctx.strokeStyle = 'rgba(150,150,150,0.15)';
-        ctx.lineWidth = 0.5;
-      } else {
-        ctx.setLineDash([]);
-        ctx.strokeStyle = 'rgba(180,170,140,0.25)';
-        ctx.lineWidth = 0.8;
-      }
-      ctx.stroke();
-      ctx.setLineDash([]);
-
-      if (l.type === 'ts') {
-        const dx = l.target.x - l.source.x, dy = l.target.y - l.source.y;
-        const dist = Math.sqrt(dx * dx + dy * dy);
-        if (dist > 0) {
-          const r = Math.max(3, Math.sqrt(l.target.importance || 30) * 0.7) + 2;
-          const ax = l.target.x - (dx / dist) * r, ay = l.target.y - (dy / dist) * r;
-          const angle = Math.atan2(dy, dx), al = 4;
-          ctx.beginPath();
-          ctx.moveTo(ax, ay);
-          ctx.lineTo(ax - al * Math.cos(angle - 0.4), ay - al * Math.sin(angle - 0.4));
-          ctx.lineTo(ax - al * Math.cos(angle + 0.4), ay - al * Math.sin(angle + 0.4));
-          ctx.closePath();
-          ctx.fillStyle = 'rgba(180,170,140,0.4)';
-          ctx.fill();
-        }
-      }
-    });
-
-    nodes.forEach(d => {
-      if (d.x == null) return;
-      const r = Math.max(3, Math.sqrt(d.importance || 30) * 0.7);
-      ctx.beginPath();
-      ctx.arc(d.x, d.y, r, 0, Math.PI * 2);
-      ctx.fillStyle = getNodeColor(d);
-      ctx.fill();
-      if (d.id === selectedId || d.id === hoveredNode) {
-        ctx.strokeStyle = '#fff'; ctx.lineWidth = 2; ctx.stroke();
-      }
-      if (d.importance > 70 || d.id === selectedId || d.id === hoveredNode) {
-        ctx.font = '9px sans-serif';
-        ctx.fillStyle = '#e0d8c8';
-        ctx.textAlign = 'center';
-        ctx.fillText(d.title, d.x, d.y - r - 3);
-      }
-    });
-    ctx.restore();
-  }, [getNodeColor, selectedId, hoveredNode]);
-
+  /* ═══ Simulation — only restarts on graphData/viewMode change ═══ */
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas || !graphData.nodes.length) return;
@@ -154,6 +78,69 @@ export default function DiaNetwork({ lang, td, data, relations, lookup, filtered
     const links = graphData.links.map(d => ({ ...d }));
     nodesRef.current = nodes; linksRef.current = links;
 
+    /* ── Pure render: reads refs, zero React state ── */
+    function render() {
+      const ctx = canvas.getContext('2d');
+      const transform = transformRef.current;
+      const hovered = hoveredRef.current;
+      const selected = selectedRef.current;
+      const cby = colorByRef.current;
+
+      const getColor = (d) => {
+        if (d.id === selected) return '#fff';
+        if (cby === 'madhab') return MADHAB_COLORS[d.madhab] || '#546e7a';
+        if (cby === 'century') return d.century ? d3.interpolateViridis((d.century - 7) / 14) : '#546e7a';
+        return FIELD_COLORS[d.field] || '#c9a84c';
+      };
+
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.save();
+      ctx.translate(transform.x * dpr, transform.y * dpr);
+      ctx.scale(transform.k * dpr, transform.k * dpr);
+
+      linksRef.current.forEach(l => {
+        if (!l.source.x || !l.target.x) return;
+        ctx.beginPath();
+        ctx.moveTo(l.source.x, l.source.y);
+        ctx.lineTo(l.target.x, l.target.y);
+        if (l.type === 'co') {
+          ctx.setLineDash([3, 3]); ctx.strokeStyle = 'rgba(150,150,150,0.15)'; ctx.lineWidth = 0.5;
+        } else {
+          ctx.setLineDash([]); ctx.strokeStyle = 'rgba(180,170,140,0.25)'; ctx.lineWidth = 0.8;
+        }
+        ctx.stroke(); ctx.setLineDash([]);
+        if (l.type === 'ts') {
+          const dx = l.target.x - l.source.x, dy = l.target.y - l.source.y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist > 0) {
+            const r = Math.max(3, Math.sqrt(l.target.importance || 30) * 0.7) + 2;
+            const ax = l.target.x - (dx / dist) * r, ay = l.target.y - (dy / dist) * r;
+            const angle = Math.atan2(dy, dx), al = 4;
+            ctx.beginPath(); ctx.moveTo(ax, ay);
+            ctx.lineTo(ax - al * Math.cos(angle - 0.4), ay - al * Math.sin(angle - 0.4));
+            ctx.lineTo(ax - al * Math.cos(angle + 0.4), ay - al * Math.sin(angle + 0.4));
+            ctx.closePath(); ctx.fillStyle = 'rgba(180,170,140,0.4)'; ctx.fill();
+          }
+        }
+      });
+
+      nodesRef.current.forEach(d => {
+        if (d.x == null) return;
+        const r = Math.max(3, Math.sqrt(d.importance || 30) * 0.7);
+        ctx.beginPath(); ctx.arc(d.x, d.y, r, 0, Math.PI * 2);
+        ctx.fillStyle = getColor(d); ctx.fill();
+        if (d.id === selected || d.id === hovered) {
+          ctx.strokeStyle = '#fff'; ctx.lineWidth = 2; ctx.stroke();
+        }
+        if (d.importance > 70 || d.id === selected || d.id === hovered) {
+          ctx.font = '9px sans-serif'; ctx.fillStyle = '#e0d8c8'; ctx.textAlign = 'center';
+          ctx.fillText(d.title, d.x, d.y - r - 3);
+        }
+      });
+      ctx.restore();
+    }
+    renderRef.current = render;
+
     const sim = d3.forceSimulation(nodes)
       .force('link', d3.forceLink(links).id(d => d.id).distance(40).strength(0.3))
       .force('charge', d3.forceManyBody().strength(-30).distanceMax(200))
@@ -163,16 +150,18 @@ export default function DiaNetwork({ lang, td, data, relations, lookup, filtered
       .on('tick', render);
 
     if (viewMode === 'timeline') {
-      const centuryScale = d3.scaleLinear().domain([7, 21]).range([80, w - 80]);
-      sim.force('x', d3.forceX(d => centuryScale(d.century || 12)).strength(0.5)).force('center', null);
+      const cs = d3.scaleLinear().domain([7, 21]).range([80, w - 80]);
+      sim.force('x', d3.forceX(d => cs(d.century || 12)).strength(0.5)).force('center', null);
     }
-    simRef.current = sim;
 
-    d3.select(canvas).call(d3.zoom().scaleExtent([0.3, 5]).on('zoom', (event) => {
-      transformRef.current = event.transform; render();
-    }));
+    /* Zoom */
+    d3.select(canvas).call(
+      d3.zoom().scaleExtent([0.3, 5]).on('zoom', (event) => {
+        transformRef.current = event.transform; render();
+      })
+    );
 
-    let dragNode = null;
+    /* Hit test */
     const findNode = (x, y) => {
       const t = transformRef.current;
       const mx = (x - t.x) / t.k, my = (y - t.y) / t.k;
@@ -186,17 +175,21 @@ export default function DiaNetwork({ lang, td, data, relations, lookup, filtered
       return closest;
     };
 
-    const onMouseDown = (e) => {
+    /* Events — pure DOM, no setState */
+    let dragNode = null;
+    const onDown = (e) => {
       const node = findNode(e.offsetX, e.offsetY);
       if (node) { dragNode = node; sim.alphaTarget(0.3).restart(); node.fx = node.x; node.fy = node.y; }
     };
-    const onMouseMove = (e) => {
+    const onMove = (e) => {
       if (dragNode) {
         const t = transformRef.current;
-        dragNode.fx = (e.offsetX - t.x) / t.k; dragNode.fy = (e.offsetY - t.y) / t.k;
+        dragNode.fx = (e.offsetX - t.x) / t.k;
+        dragNode.fy = (e.offsetY - t.y) / t.k;
       } else {
         const node = findNode(e.offsetX, e.offsetY);
-        setHoveredNode(node?.id || null);
+        const prev = hoveredRef.current;
+        hoveredRef.current = node?.id || null;
         canvas.style.cursor = node ? 'pointer' : 'grab';
         if (tooltipRef.current) {
           if (node) {
@@ -204,30 +197,35 @@ export default function DiaNetwork({ lang, td, data, relations, lookup, filtered
             tooltipRef.current.style.left = e.offsetX + 12 + 'px';
             tooltipRef.current.style.top = e.offsetY - 10 + 'px';
             tooltipRef.current.innerHTML = `<strong>${node.title}</strong>${node.dc ? `<br>ö. ${node.dc}` : ''}${node.field ? `<br>${node.field}` : ''}`;
-          } else tooltipRef.current.style.display = 'none';
+          } else {
+            tooltipRef.current.style.display = 'none';
+          }
         }
+        if (prev !== hoveredRef.current) render();
       }
     };
-    const onMouseUp = () => {
+    const onUp = () => {
       if (dragNode) { sim.alphaTarget(0); dragNode.fx = null; dragNode.fy = null; dragNode = null; }
     };
-    const onClick = (e) => { const node = findNode(e.offsetX, e.offsetY); if (node) onSelect(node.id); };
+    const onClick = (e) => {
+      if (dragNode) return;
+      const node = findNode(e.offsetX, e.offsetY);
+      if (node) onSelect(node.id);
+    };
 
-    canvas.addEventListener('mousedown', onMouseDown);
-    canvas.addEventListener('mousemove', onMouseMove);
-    canvas.addEventListener('mouseup', onMouseUp);
+    canvas.addEventListener('mousedown', onDown);
+    canvas.addEventListener('mousemove', onMove);
+    canvas.addEventListener('mouseup', onUp);
     canvas.addEventListener('click', onClick);
 
     return () => {
-      sim.stop();
-      canvas.removeEventListener('mousedown', onMouseDown);
-      canvas.removeEventListener('mousemove', onMouseMove);
-      canvas.removeEventListener('mouseup', onMouseUp);
+      sim.stop(); renderRef.current = null;
+      canvas.removeEventListener('mousedown', onDown);
+      canvas.removeEventListener('mousemove', onMove);
+      canvas.removeEventListener('mouseup', onUp);
       canvas.removeEventListener('click', onClick);
     };
-  }, [graphData, viewMode, render, onSelect]);
-
-  useEffect(() => { render(); }, [render, colorBy, selectedId, hoveredNode]);
+  }, [graphData, viewMode, onSelect]);
 
   return (
     <div className="dia-network">
