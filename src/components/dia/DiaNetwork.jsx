@@ -26,6 +26,7 @@ export default function DiaNetwork({ lang, td, data, relations, lookup, filtered
   const [viewMode, setViewMode] = useState('force');
   const [filterField, setFilterField] = useState('');
   const [filterMadhab, setFilterMadhab] = useState('');
+  const [mobileControlsOpen, setMobileControlsOpen] = useState(false);
 
   /* Sync refs without restarting sim */
   useEffect(() => { selectedRef.current = selectedId; renderRef.current?.(); }, [selectedId]);
@@ -229,7 +230,12 @@ export default function DiaNetwork({ lang, td, data, relations, lookup, filtered
 
   return (
     <div className="dia-network">
-      <div className="dia-network-controls">
+      <button className="dia-network-controls-toggle" onClick={() => setMobileControlsOpen(p => !p)}
+        aria-expanded={mobileControlsOpen} aria-label={td.settings || 'Ayarlar'}>
+        ⚙ {td.settings || 'Ayarlar'} ({graphData.nodes.length} {td.nodes || 'düğüm'})
+        <span className={`toggle-arrow${mobileControlsOpen ? ' open' : ''}`}>▾</span>
+      </button>
+      <div className={`dia-network-controls${mobileControlsOpen ? '' : ' mobile-collapsed'}`}>
         <div className="dia-network-control-group">
           <label>{td.thresholdLabel || 'Önem Eşiği'}: <strong>{threshold}</strong></label>
           <input type="range" min={30} max={80} value={threshold} onChange={e => setThreshold(+e.target.value)} />

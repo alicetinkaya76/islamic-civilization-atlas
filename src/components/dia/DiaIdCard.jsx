@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import { useMemo, useState } from 'react';
 import { FIELD_COLORS } from './DiaSidebar';
 
 function fmtDate(h, m, place) {
@@ -26,6 +26,7 @@ export default function DiaIdCard({ lang, td, bio, works, relations, lookup, tra
   const scholarWorks = useMemo(() => works?.[bio.id] || [], [works, bio.id]);
 
   const scholarTravel = useMemo(() => travel?.[bio.id] || [], [travel, bio.id]);
+  const [worksExpanded, setWorksExpanded] = useState(false);
 
   const { teachers, students, contemporaries } = useMemo(() => {
     if (!relations) return { teachers: [], students: [], contemporaries: [] };
@@ -126,11 +127,14 @@ export default function DiaIdCard({ lang, td, bio, works, relations, lookup, tra
         </div>
       )}
 
-      {/* Works */}
+      {/* Works — collapsible on mobile */}
       {scholarWorks.length > 0 && (
         <div className="dia-idcard-section">
-          <div className="dia-idcard-label">📚 {td.works || 'Eserleri'} ({scholarWorks.length})</div>
-          <ul className="dia-works-list">
+          <button className="dia-idcard-label dia-works-toggle" onClick={() => setWorksExpanded(p => !p)}
+            aria-expanded={worksExpanded}>
+            📚 {td.works || 'Eserleri'} ({scholarWorks.length}) {worksExpanded ? '▾' : '▸'}
+          </button>
+          <ul className={`dia-works-list ${worksExpanded ? 'expanded' : 'collapsed'}`}>
             {scholarWorks.slice(0, 20).map((w, i) => <li key={i} className="dia-work-item">{w}</li>)}
             {scholarWorks.length > 20 && <li className="dia-work-more">+{scholarWorks.length - 20} {td.more || 'daha'}</li>}
           </ul>

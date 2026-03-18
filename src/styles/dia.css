@@ -102,6 +102,9 @@
 
 /* Works */
 .dia-works-list { list-style:none; padding:0; margin:0; }
+.dia-works-toggle { cursor:pointer; border:none; background:none; width:100%; text-align:left; padding:0; }
+.dia-works-list.collapsed { max-height:none; } /* Desktop: always visible */
+.dia-works-list.expanded { max-height:none; }
 .dia-work-item { font-size:11px; color:#a0c4b5; padding:2px 0; border-bottom:1px solid #1a6b5a11; }
 .dia-work-item::before { content:'📄 '; font-size:9px; }
 .dia-work-more { font-size:10px; color:#6b8f82; font-style:italic; padding:2px 0; }
@@ -128,6 +131,7 @@
 
 /* Network */
 .dia-network { display:flex; flex-direction:column; height:100%; }
+.dia-network-controls-toggle { display:none; }
 .dia-network-controls { display:flex; flex-wrap:wrap; gap:10px; padding:8px 12px; background:#0d2b22; border-bottom:1px solid #1a6b5a33; align-items:center; }
 .dia-network-control-group { display:flex; align-items:center; gap:4px; font-size:11px; color:#8fac9f; }
 .dia-network-control-group label { white-space:nowrap; }

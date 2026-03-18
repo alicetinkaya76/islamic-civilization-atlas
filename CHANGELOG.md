@@ -2,6 +2,37 @@
 
 All notable changes to the Islamic Dynasties Atlas are documented in this file.
 
+## [6.3.0] - 2026-03-18
+
+### Added
+- **Bottom Tab Bar** (GÖREV 1): Fixed bottom navigation for mobile (≤768px) with 4 primary tabs (Harita, Pano, A'lâm, DİA) + "More" menu; replaces hamburger drawer on phones
+- **Reusable BottomSheet** component: Drag-to-dismiss, ESC close, backdrop blur, body scroll lock, safe-area support
+- **DİA Network mobile controls** (GÖREV 2C): Collapsible settings panel with toggle button on mobile
+- **DİA IdCard collapsible works** (GÖREV 2F): Works list toggleable on mobile to reduce scroll length
+- **AboutModal external trigger**: Can now be opened programmatically from Bottom Tab Bar "More" sheet
+
+### Changed
+- **DİA header** (GÖREV 2A): Compact layout on mobile — stats hidden, subtitle hidden, title smaller
+- **DİA subView toggle** (GÖREV 2B): Horizontal scroll pills with snap on mobile
+- **DİA sidebar/filters** (GÖREV 2E): Full-width overlay on mobile, larger touch targets for chips
+- **DİA relations** (GÖREV 2F): Horizontal scroll for teacher/student/contemporary chips
+- **DİA analytics** (GÖREV 2D): Single-column grid on mobile, 200px minimum chart height
+- **Alam/Yaqut mobile** (GÖREV 4): Consistent compact headers, horizontal scroll toggles, full-width sidebars
+- **Map mobile** (GÖREV 3): Larger sidebar toggle (40px), thicker range slider (10px), bigger play button (48px), 90vw popup width
+- **Touch targets** (GÖREV 5A): All interactive elements ≥36-44px on touch devices (chips, buttons, selects, close buttons)
+- **Scroll behavior** (GÖREV 5B): `overscroll-behavior: contain` on all scrollable panels
+- **Font minimums** (GÖREV 5C): Body text ≥11-14px on mobile (was 8-10px in places)
+- **Landscape mode** (GÖREV 5E): Side-by-side layout for DIA/Alam at landscape orientation
+- **Footer**: Hidden on mobile (bottom tab bar occupies that space)
+- **Hamburger menu**: Replaced by bottom tab bar on ≤768px
+- Package version → 6.3.0
+
+### Technical
+- New files: `BottomSheet.jsx`, `BottomTabBar.jsx`
+- Modified: `App.jsx`, `DiaView.jsx`, `DiaNetwork.jsx`, `DiaIdCard.jsx`, `AboutModal.jsx`, `mobile.css`, `dia.css`
+- All changes scoped to `@media` queries — desktop experience unchanged
+- Safe-area (notch) support on all bottom-anchored elements
+
 ## [6.2.0] - 2026-03-18
 
 ### Added

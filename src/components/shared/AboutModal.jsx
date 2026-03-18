@@ -1,9 +1,13 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import T from '../../data/i18n';
 
-export default function AboutModal({ lang, onResetOnboarding, onResetLanding }) {
+export default function AboutModal({ lang, onResetOnboarding, onResetLanding, externalOpen, onExternalClose }) {
   const [open, setOpen] = useState(false);
   const t = T[lang];
+
+  useEffect(() => {
+    if (externalOpen) { setOpen(true); onExternalClose?.(); }
+  }, [externalOpen, onExternalClose]);
 
   return (
     <>

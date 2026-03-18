@@ -3,6 +3,7 @@ import T from './data/i18n';
 import LandingPage from './components/landing/LandingPage';
 import LazyLoader from './components/shared/LazyLoader';
 import MetaTags from './components/shared/MetaTags';
+import BottomTabBar from './components/shared/BottomTabBar';
 import { preloadData } from './hooks/useAsyncData.jsx';
 
 /* ═══ Lazy-loaded panels — only fetched when their tab is active ═══ */
@@ -81,8 +82,17 @@ export default function App() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [quizOpen, setQuizOpen] = useState(false);
   const [showOnboarding, setShowOnboarding] = useState(false);
+  const [aboutOpen, setAboutOpen] = useState(false);
   const mapRef = useRef(null);
   const t = T[lang];
+
+  /* ═══ Mobile detection (≤768px) ═══ */
+  const [isMobile, setIsMobile] = useState(() => typeof window !== 'undefined' && window.innerWidth <= 768);
+  useEffect(() => {
+    const onResize = () => setIsMobile(window.innerWidth <= 768);
+    window.addEventListener('resize', onResize);
+    return () => window.removeEventListener('resize', onResize);
+  }, []);
 
   const { progress, recordDiscovery, resetProgress, newBadge, setNewBadge } = useProgress();
 
@@ -232,7 +242,8 @@ export default function App() {
           <GlossaryModal lang={lang} />
           <ProgressTracker lang={lang} progress={progress} onReset={resetProgress} />
           <ExportButton lang={lang} />
-          <AboutModal lang={lang} onResetOnboarding={resetOnboarding} onResetLanding={resetLanding} />
+          <AboutModal lang={lang} onResetOnboarding={resetOnboarding} onResetLanding={resetLanding}
+          externalOpen={aboutOpen} onExternalClose={() => setAboutOpen(false)} />
           <button className="admin-trigger" onClick={() => selectTab('admin')}
             title="Admin Panel" style={{ background:'none',border:'none',cursor:'pointer',fontSize:14,color:'#a89b8c',padding:'4px 8px',borderRadius:4 }}>⚙</button>
           <div className="lang-switcher">
@@ -262,6 +273,16 @@ export default function App() {
         </Suspense>
       </main>
       <Footer lang={lang} />
+      {isMobile && (
+        <BottomTabBar
+          tab={tab}
+          onSelect={selectTab}
+          lang={lang}
+          onQuiz={() => setQuizOpen(true)}
+          onAbout={() => setAboutOpen(true)}
+          onLang={setLang}
+        />
+      )}
       {quizOpen && <Suspense fallback={<LazyLoader />}><QuizMode lang={lang} onFlyTo={handleFlyTo} onClose={() => setQuizOpen(false)} /></Suspense>}
       <BadgeToast badge={newBadge} lang={lang} onDismiss={() => setNewBadge(null)} />
       {showOnboarding && <Onboarding lang={lang} onDone={handleOnboardingDone} />}
