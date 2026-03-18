@@ -64,10 +64,9 @@ export default function DiaView({ lang, t: tProp }) {
   const [showMobile, setShowMobile] = useState('list');
   const [mapColorBy, setMapColorBy] = useState('field');
 
-  if (dataLoading || !DIA_LITE) return <LazyLoader message={td.loading || 'DİA verileri yükleniyor'} />;
-  if (dataError) return <LazyLoader error={dataError} onRetry={() => window.location.reload()} />;
-
+  /* ═══ ALL hooks MUST be above conditional return ═══ */
   const filtered = useMemo(() => {
+    if (!DIA_LITE) return [];
     let arr = DIA_LITE;
     const [cMin, cMax] = centuryRange;
     arr = arr.filter(b => { const c = getCentury(b.dc); return !c || (c >= cMin && c <= cMax); });
@@ -86,18 +85,6 @@ export default function DiaView({ lang, t: tProp }) {
 
   const handleSelect = useCallback((id) => { setSelectedId(id); setShowMobile('card'); }, []);
 
-  /* Deep link: #dia/slug */
-  const handleDeepLink = useCallback(() => {
-    const hash = window.location.hash;
-    if (hash.startsWith('#dia/')) {
-      const slug = hash.replace('#dia/', '').split('?')[0];
-      if (DIA_BY_ID[slug]) setSelectedId(slug);
-    }
-  }, [DIA_BY_ID]);
-  useMemo(() => { handleDeepLink(); }, [handleDeepLink]);
-
-  const selectedBio = selectedId ? DIA_BY_ID[selectedId] : null;
-
   const degreeMap = useMemo(() => {
     if (!DIA_REL) return {};
     const deg = {};
@@ -105,10 +92,15 @@ export default function DiaView({ lang, t: tProp }) {
     return deg;
   }, [DIA_REL]);
 
-  /* Navigate to el-A'lâm tab */
   const navigateToAlam = useCallback((alamId) => {
     window.location.hash = `alam?id=${alamId}`;
   }, []);
+
+  const selectedBio = selectedId ? DIA_BY_ID[selectedId] : null;
+
+  /* ═══ Loading / error guard — AFTER all hooks ═══ */
+  if (dataLoading || !DIA_LITE) return <LazyLoader message={td.loading || 'DİA verileri yükleniyor'} />;
+  if (dataError) return <LazyLoader error={dataError} onRetry={() => window.location.reload()} />;
 
   return (
     <div className="dia-view">
