@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import { useMemo, useState } from 'react';
 import XREFS from '../../data/alam_xrefs.json';
 import { hn, dn } from '../../data/i18n-utils';
 import T from '../../data/i18n';
@@ -37,6 +37,10 @@ function formatDate(hVal, mVal, place, ta) {
 
 export default function AlamIdCard({ lang, ta, bio, detail, onClose, allData, onNavigate }) {
   const t = T[lang];
+  const [worksExpanded, setWorksExpanded] = useState(false);
+  const [relExpanded, setRelExpanded] = useState(true);
+  const [placesExpanded, setPlacesExpanded] = useState(false);
+
   if (!bio) {
     return (
       <div className="alam-idcard-empty">
@@ -225,12 +229,15 @@ export default function AlamIdCard({ lang, ta, bio, detail, onClose, allData, on
         </div>
       )}
 
-      {/* İlişkiler bölümü */}
+      {/* İlişkiler bölümü — collapsible */}
       {relations && relations.total > 0 && (
         <div className="alam-idcard-works" style={{ marginTop: 8 }}>
-          <h4 className="alam-idcard-section-title">
+          <button className="alam-section-toggle" onClick={() => setRelExpanded(p => !p)}
+            aria-expanded={relExpanded}>
             🕸 {lang === "tr" ? `İlişkiler (${relations.total})` : `Relationships (${relations.total})`}
-          </h4>
+            <span className="alam-toggle-arrow">{relExpanded ? '▾' : '▸'}</span>
+          </button>
+          <div className={`alam-collapsible${relExpanded ? ' expanded' : ' collapsed'}`}>
           <RelList
             title={t.alam.idTeachers}
             items={relations.teachers}
@@ -261,14 +268,19 @@ export default function AlamIdCard({ lang, ta, bio, detail, onClose, allData, on
               {t.alam.idClickPerson}
             </p>
           )}
+          </div>
         </div>
       )}
 
-      {/* Works */}
+      {/* Works — collapsible */}
       {works && works.length > 0 && (
         <div className="alam-idcard-works">
-          <h4 className="alam-idcard-section-title">📚 {ta.works} ({works.length})</h4>
-          <ul className="alam-works-list">
+          <button className="alam-section-toggle" onClick={() => setWorksExpanded(p => !p)}
+            aria-expanded={worksExpanded}>
+            📚 {ta.works} ({works.length})
+            <span className="alam-toggle-arrow">{worksExpanded ? '▾' : '▸'}</span>
+          </button>
+          <ul className={`alam-works-list alam-collapsible${worksExpanded ? ' expanded' : ' collapsed'}`}>
             {works.map((w, i) => (
               <li key={i} className="alam-work-item" dir="rtl">
                 <span className="alam-work-name">{w.n}</span>
@@ -281,11 +293,15 @@ export default function AlamIdCard({ lang, ta, bio, detail, onClose, allData, on
         </div>
       )}
 
-      {/* Multi-coordinates */}
+      {/* Multi-coordinates — collapsible */}
       {multiCoords && multiCoords.length > 1 && (
         <div className="alam-idcard-places">
-          <h4 className="alam-idcard-section-title">📍 {t.alam.idPlaces}</h4>
-          <div className="alam-places-list">
+          <button className="alam-section-toggle" onClick={() => setPlacesExpanded(p => !p)}
+            aria-expanded={placesExpanded}>
+            📍 {t.alam.idPlaces}
+            <span className="alam-toggle-arrow">{placesExpanded ? '▾' : '▸'}</span>
+          </button>
+          <div className={`alam-places-list alam-collapsible${placesExpanded ? ' expanded' : ''}`}>
             {multiCoords.map((c, i) => (
               <span key={i} className="alam-place-tag">
                 {c.p || `${c.lat}, ${c.lon}`}

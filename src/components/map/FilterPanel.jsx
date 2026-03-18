@@ -8,14 +8,15 @@ LAYER_KEYS.forEach(k => {
   META[k] = { c: LYR_COL[k], n: DB[dataKey]?.length || 0 };
 });
 
-export default function FilterPanel({ lang, t, layers, toggleLayer, filters, setFilter, uniques, activeCount, year, sidebarOpen, onCloseMobile }) {
+export default function FilterPanel({ lang, t, layers, toggleLayer, filters, setFilter, uniques, activeCount, year, sidebarOpen, onCloseMobile, inBottomSheet }) {
   return (
-    <div className={`map-panel${sidebarOpen ? ' mobile-visible' : ''}`} role="complementary" aria-label={{ tr: 'Harita kontrolleri', en: 'Map controls', ar: '' }[lang]}>
-      {/* Mobile close button */}
-      <button className="map-panel-close" onClick={onCloseMobile} aria-label={{ tr: 'Paneli kapat', en: 'Close panel', ar: '' }[lang]}>✕</button>
+    <div className={`map-panel${sidebarOpen ? ' mobile-visible' : ''}${inBottomSheet ? ' in-bottom-sheet' : ''}`} role="complementary" aria-label={{ tr: 'Harita kontrolleri', en: 'Map controls', ar: '' }[lang]}>
+      {/* Mobile close button — hide when in bottom sheet */}
+      {!inBottomSheet && <button className="map-panel-close" onClick={onCloseMobile} aria-label={{ tr: 'Paneli kapat', en: 'Close panel', ar: '' }[lang]}>✕</button>}
       {/* Layers */}
       <div className="ps">
         <div className="ps-h">{{ tr: 'Katmanlar', en: 'Layers', ar: '' }[lang]}</div>
+        <div className={inBottomSheet ? 'lyr-grid' : ''}>
         {LAYER_KEYS.map(k => (
           <div key={k} className="lyr" onClick={() => toggleLayer(k)}>
             <div className={`lyr-cb${layers[k] ? ' on' : ''}`}>{layers[k] ? '✓' : ''}</div>
@@ -24,6 +25,7 @@ export default function FilterPanel({ lang, t, layers, toggleLayer, filters, set
             <span className="lyr-n">{META[k].n}</span>
           </div>
         ))}
+        </div>
       </div>
       {/* Filters */}
       <div className="ps">

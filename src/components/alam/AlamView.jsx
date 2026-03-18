@@ -1,6 +1,6 @@
 import { useState, useMemo, useCallback, useEffect, useRef } from 'react';
 import useAsyncData from '../../hooks/useAsyncData.jsx';
-import LazyLoader from '../shared/LazyLoader';
+import SkeletonLoader from '../shared/SkeletonLoader';
 import AlamSidebar from './AlamSidebar';
 import AlamMap from './AlamMap';
 import AlamIdCard from './AlamIdCard';
@@ -80,8 +80,13 @@ export default function AlamView({ lang, t: tProp }) {
   const [showMobile, setShowMobile] = useState('list'); // 'list' | 'map' | 'card'
 
   /* ═══ Loading / error guard ═══ */
-  if (dataLoading || !ALAM_LITE) return <LazyLoader message={ta.loading || 'al-Aʿlām verileri yükleniyor'} />;
-  if (dataError) return <LazyLoader error={dataError} onRetry={() => window.location.reload()} />;
+  if (dataLoading || !ALAM_LITE) return <SkeletonLoader variant="list" rows={10} message={ta.loading || 'al-Aʿlām verileri yükleniyor'} />;
+  if (dataError) return (
+    <div className="skeleton-loader" style={{ textAlign: 'center', padding: 40 }}>
+      <p style={{ color: '#ef5350', fontSize: 13 }}>{String(dataError.message || dataError)}</p>
+      <button onClick={() => window.location.reload()} style={{ marginTop: 12, padding: '8px 20px', background: '#1a6b5a', color: '#fff', border: 'none', borderRadius: 6, cursor: 'pointer' }}>Tekrar dene / Retry</button>
+    </div>
+  );
 
   /* ═══ Filter biographies ═══ */
   const filtered = useMemo(() => {

@@ -21,6 +21,9 @@ export default function YaqutIdCard({ lang, ty, entry, detail, onClose }) {
   const t = T[lang];
   const [showFullText, setShowFullText] = useState(false);
   const [xrefPage, setXrefPage] = useState(0);
+  const [eventsExpanded, setEventsExpanded] = useState(false);
+  const [personsExpanded, setPersonsExpanded] = useState(false);
+  const [xrefExpanded, setXrefExpanded] = useState(true);
   const XREF_PER_PAGE = 15;
 
   // Lazy-load crossref data only when this component mounts
@@ -162,46 +165,61 @@ export default function YaqutIdCard({ lang, ty, entry, detail, onClose }) {
         </div>
       )}
 
-      {/* Historical Events */}
+      {/* Historical Events — collapsible */}
       {detail && detail.ev && detail.ev.length > 0 && (
         <div className="yaqut-idcard-section">
-          <h4 className="yaqut-idcard-section-title">📅 {ty.events || 'Tarihî Olaylar'} ({detail.ev.length})</h4>
-          <div className="yaqut-events-list">
-            {detail.ev.map((ev, i) => (
-              <div key={i} className="yaqut-event-item">
-                {ev.y && <span className="yaqut-event-year">{ev.y} H</span>}
-                <span className="yaqut-event-desc">{ev.d}</span>
-              </div>
-            ))}
+          <button className="yaqut-section-toggle" onClick={() => setEventsExpanded(p => !p)}
+            aria-expanded={eventsExpanded}>
+            📅 {ty.events || 'Tarihî Olaylar'} ({detail.ev.length})
+            <span className="yaqut-toggle-arrow">{eventsExpanded ? '▾' : '▸'}</span>
+          </button>
+          <div className={`yaqut-collapsible${eventsExpanded ? ' expanded' : ' collapsed'}`}>
+            <div className="yaqut-events-list">
+              {detail.ev.map((ev, i) => (
+                <div key={i} className="yaqut-event-item">
+                  {ev.y && <span className="yaqut-event-year">{ev.y} H</span>}
+                  <span className="yaqut-event-desc">{ev.d}</span>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       )}
 
-      {/* Notable Persons (from Yaqut) */}
+      {/* Notable Persons (from Yaqut) — collapsible */}
       {detail && detail.np && detail.np.length > 0 && (
         <div className="yaqut-idcard-section">
-          <h4 className="yaqut-idcard-section-title">👤 {ty.notablePersons || 'Önemli Kişiler (Yâkût)'} ({detail.np.length})</h4>
-          <div className="yaqut-persons-list">
-            {detail.np.map((p, i) => (
-              <div key={i} className="yaqut-person-item">
-                <span className="yaqut-person-name" dir="rtl">{p.na}</span>
-                {p.nt && <span className="yaqut-person-tr">{p.nt}</span>}
-                <div className="yaqut-person-meta">
-                  {p.r && <span className="yaqut-person-role">{p.r}</span>}
-                  {p.d && <span className="yaqut-person-death">ö. {p.d} H</span>}
+          <button className="yaqut-section-toggle" onClick={() => setPersonsExpanded(p => !p)}
+            aria-expanded={personsExpanded}>
+            👤 {ty.notablePersons || 'Önemli Kişiler (Yâkût)'} ({detail.np.length})
+            <span className="yaqut-toggle-arrow">{personsExpanded ? '▾' : '▸'}</span>
+          </button>
+          <div className={`yaqut-collapsible${personsExpanded ? ' expanded' : ' collapsed'}`}>
+            <div className="yaqut-persons-list">
+              {detail.np.map((p, i) => (
+                <div key={i} className="yaqut-person-item">
+                  <span className="yaqut-person-name" dir="rtl">{p.na}</span>
+                  {p.nt && <span className="yaqut-person-tr">{p.nt}</span>}
+                  <div className="yaqut-person-meta">
+                    {p.r && <span className="yaqut-person-role">{p.r}</span>}
+                    {p.d && <span className="yaqut-person-death">ö. {p.d} H</span>}
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       )}
 
-      {/* Cross-ref persons (from al-A'lam / Zirikli) */}
+      {/* Cross-ref persons (from al-A'lam / Zirikli) — collapsible */}
       {xrefTotal > 0 && (
         <div className="yaqut-idcard-section yaqut-xref-section">
-          <h4 className="yaqut-idcard-section-title">
+          <button className="yaqut-section-toggle" onClick={() => setXrefExpanded(p => !p)}
+            aria-expanded={xrefExpanded}>
             📖 {ty.crossRefPersons} ({xrefTotal})
-          </h4>
+            <span className="yaqut-toggle-arrow">{xrefExpanded ? '▾' : '▸'}</span>
+          </button>
+          <div className={`yaqut-collapsible${xrefExpanded ? ' expanded' : ' collapsed'}`}>
           <div className="yaqut-xref-list">
             {xrefSlice.map((p, i) => (
               <div key={i} className="yaqut-xref-item">
@@ -226,6 +244,7 @@ export default function YaqutIdCard({ lang, ty, entry, detail, onClose }) {
               <button disabled={xrefPage >= xrefPages - 1} onClick={() => setXrefPage(p => p + 1)}>→</button>
             </div>
           )}
+          </div>
         </div>
       )}
 

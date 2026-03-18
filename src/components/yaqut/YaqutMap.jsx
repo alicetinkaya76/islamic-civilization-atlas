@@ -213,6 +213,7 @@ function FlatMap({ lang, ty, data, selectedId, selectedEntry, detailData, onSele
 export default function YaqutMap({ lang, ty, data, selectedId, selectedEntry, detailData, onSelect, filtered }) {
   const t = T[lang];
   const [viewMode, setViewMode] = useState('flat'); // 'flat' | 'globe'
+  const isMobile = typeof window !== 'undefined' && window.innerWidth <= 768;
 
   return (
     <div className="yaqut-map-wrapper">
@@ -225,10 +226,14 @@ export default function YaqutMap({ lang, ty, data, selectedId, selectedEntry, de
           🗺️ {ty.flatMap || t.yaqut.mapLabel}
         </button>
         <button
-          className={`yaqut-mode-btn${viewMode === 'globe' ? ' active' : ''}`}
-          onClick={() => setViewMode('globe')}
-          title={t.yaqut.tab3DGlobe}>
+          className={`yaqut-mode-btn${viewMode === 'globe' ? ' active' : ''}${isMobile ? ' disabled' : ''}`}
+          onClick={() => { if (!isMobile) setViewMode('globe'); }}
+          disabled={isMobile}
+          title={isMobile
+            ? (lang === 'tr' ? '3D küre masaüstünde kullanılabilir' : '3D globe available on desktop')
+            : t.yaqut.tab3DGlobe}>
           🌍 {ty.globe3D || t.yaqut.globeLabel}
+          {isMobile && <span className="yaqut-mode-badge-desktop">💻</span>}
         </button>
       </div>
 

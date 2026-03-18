@@ -2,6 +2,32 @@
 
 All notable changes to the Islamic Dynasties Atlas are documented in this file.
 
+## [6.4.0] - 2026-03-18
+
+### Added
+- **Map Filter Bottom Sheet** (GÖREV 3B): Map filter panel opens as a draggable bottom sheet on mobile instead of a left-drawer sidebar; FAB (floating action button) on map for triggering
+- **FilterPanel 2-column grid**: Layer toggles displayed in 2-column grid inside bottom sheet for easier touch access
+- **Skeleton Loader** (GÖREV 5D): New `SkeletonLoader` component with shimmer animation in 4 variants (list, card, chart, map); replaces spinner-only LazyLoader in AlamView and YaqutView
+- **Swipe Tab Navigation** (GÖREV 7): Horizontal swipe gesture on main content area to navigate between tabs on mobile; `useSwipeGesture` hook with configurable threshold and vertical drift limit
+- **Collapsible IdCard sections** (GÖREV 4): AlamIdCard relations/works/places and YaqutIdCard events/persons/cross-refs now have toggle buttons to expand/collapse, reducing scroll length on mobile
+
+### Changed
+- **Alam Analytics mobile** (GÖREV 4): Horizontal scroll for analytics sub-tabs, single-column layout, sidebar hidden on mobile
+- **Yaqut Analytics mobile** (GÖREV 4): Same horizontal scroll tabs pattern, single-column analytics
+- **Yaqut Globe disabled on mobile** (GÖREV 8): 3D globe view (Three.js) disabled on ≤768px with visual indicator; forces flat map for performance
+- **Alam/Yaqut IdCard touch targets**: Close buttons 40px, section toggles 44px min-height
+- **D3 chart optimization** (GÖREV 8): SVG max-height 280px on mobile, reduced stroke/node sizes for force graphs
+- **Popup close button** (GÖREV 3C): Enlarged to 36px on mobile for easier dismissal
+- Package version → 6.4.0
+
+### Technical
+- `useSwipeGesture.js` — new hook: touch event-based horizontal swipe detection with threshold/maxVertical config
+- `SkeletonLoader.jsx` — new component: 4 variant skeleton placeholders with CSS shimmer animation
+- `BottomSheet` reused in MapView for filter panel
+- `FilterPanel.jsx` — new `inBottomSheet` prop for adaptive rendering
+- `mobile.css` — ~250 lines added (total ~950 lines)
+- No new dependencies
+
 ## [6.3.0] - 2026-03-18
 
 ### Added

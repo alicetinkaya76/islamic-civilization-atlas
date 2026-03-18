@@ -5,6 +5,7 @@ import LazyLoader from './components/shared/LazyLoader';
 import MetaTags from './components/shared/MetaTags';
 import BottomTabBar from './components/shared/BottomTabBar';
 import { preloadData } from './hooks/useAsyncData.jsx';
+import useSwipeGesture from './hooks/useSwipeGesture';
 
 /* ═══ Lazy-loaded panels — only fetched when their tab is active ═══ */
 const AdminPanel    = lazy(() => import('./components/admin/AdminPanel'));
@@ -29,6 +30,9 @@ import Onboarding from './components/shared/Onboarding';
 import ExportButton from './components/shared/ExportButton';
 
 const VALID_TABS = ['map', 'dashboard', 'timeline', 'links', 'scholars', 'battles', 'alam', 'yaqut', 'dia', 'admin'];
+
+/* Tab order for swipe navigation (excludes admin) */
+const SWIPE_TAB_ORDER = ['map', 'dashboard', 'alam', 'dia', 'timeline', 'links', 'scholars', 'battles', 'yaqut'];
 
 /* ═══ Entity types that can be deep-linked ═══ */
 const ENTITY_TYPES = ['dynasty', 'battle', 'scholar', 'monument', 'city', 'waqf', 'event', 'ruler', 'madrasa'];
@@ -93,6 +97,24 @@ export default function App() {
     window.addEventListener('resize', onResize);
     return () => window.removeEventListener('resize', onResize);
   }, []);
+
+  /* ═══ Swipe gesture for tab navigation (mobile only) ═══ */
+  const swipeToTab = useCallback((direction) => {
+    const idx = SWIPE_TAB_ORDER.indexOf(tab);
+    if (idx === -1) return;
+    const next = direction === 'left'
+      ? SWIPE_TAB_ORDER[Math.min(idx + 1, SWIPE_TAB_ORDER.length - 1)]
+      : SWIPE_TAB_ORDER[Math.max(idx - 1, 0)];
+    if (next !== tab) selectTab(next);
+  }, [tab]);
+
+  const { ref: swipeRef } = useSwipeGesture({
+    onSwipeLeft: () => swipeToTab('left'),
+    onSwipeRight: () => swipeToTab('right'),
+    threshold: 70,
+    maxVertical: 60,
+    enabled: isMobile,
+  });
 
   const { progress, recordDiscovery, resetProgress, newBadge, setNewBadge } = useProgress();
 
@@ -259,7 +281,7 @@ export default function App() {
         </nav>
       </header>
       {menuOpen && <div className="mobile-backdrop" onClick={() => setMenuOpen(false)} />}
-      <main id="main-content" className={`main${sidebarOpen ? ' sidebar-visible' : ''}`} role="main">
+      <main id="main-content" ref={swipeRef} className={`main${sidebarOpen ? ' sidebar-visible' : ''}`} role="main">
         <Suspense fallback={<LazyLoader />}>
         {tab === 'map' ? <MapView lang={lang} t={t} sidebarOpen={sidebarOpen} mapRef={mapRef} onPopupOpen={recordDiscovery} onTourComplete={handleTourComplete} onCloseSidebar={() => setSidebarOpen(false)} entityRoute={entityRoute} onEntityRouteConsumed={clearEntityRoute} /> :
          tab === 'dashboard' ? <Dashboard lang={lang} t={t} onTabChange={selectTab} /> :

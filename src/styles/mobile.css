@@ -698,3 +698,431 @@
   .bottom-tab-bar { display: none !important; }
   .main { display: block !important; padding-bottom: 0 !important; }
 }
+
+/* ═══════════════════════════════════════════
+   SESSION 21 — MOBILE IMPROVEMENTS v6.4.0
+   ═══════════════════════════════════════════ */
+
+/* ─── GÖREV 3B: Map Filter FAB + Bottom Sheet ─── */
+.map-filter-fab {
+  display: none;
+  position: absolute;
+  bottom: 80px;
+  left: 12px;
+  z-index: 900;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--bg2, #0f1629);
+  border: 2px solid var(--gold, #c9a84c);
+  color: var(--gold, #c9a84c);
+  font-size: 20px;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(8px);
+  transition: all 0.2s;
+  -webkit-tap-highlight-color: transparent;
+}
+.map-filter-fab:active {
+  transform: scale(0.92);
+  background: rgba(201, 168, 76, 0.15);
+}
+
+@media (max-width: 768px) {
+  .map-filter-fab { display: flex; align-items: center; justify-content: center; }
+
+  /* Hide old sidebar-toggle when FAB is active */
+  .sidebar-toggle { display: none !important; }
+
+  /* Hide the desktop sidebar panel on mobile — it's in the bottom sheet now */
+  .map-panel:not(.in-bottom-sheet) { display: none !important; }
+
+  /* Bottom sheet filter panel: reset positioning */
+  .map-panel.in-bottom-sheet {
+    position: static;
+    width: 100%;
+    height: auto;
+    max-height: none;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    overflow: visible;
+    padding: 0;
+  }
+  .map-panel.in-bottom-sheet .map-panel-close { display: none; }
+
+  /* 2-column grid for layer toggles in bottom sheet */
+  .map-panel.in-bottom-sheet .lyr-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px;
+  }
+  .map-panel.in-bottom-sheet .lyr {
+    min-height: 40px;
+    padding: 6px 8px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.04);
+  }
+  .map-panel.in-bottom-sheet .flt-s {
+    min-height: 40px;
+    font-size: 14px;
+    border-radius: 8px;
+  }
+  .map-panel.in-bottom-sheet .ps { margin-bottom: 12px; }
+  .map-panel.in-bottom-sheet .ps-h { font-size: 13px; margin-bottom: 6px; }
+
+  /* Filter sheet max-height */
+  .map-filter-sheet.btm-sheet { max-height: 75vh; }
+}
+
+/* ─── GÖREV 3C: Popup Swipe-to-Close (CSS-driven) ─── */
+@media (max-width: 768px) {
+  .leaflet-popup-content-wrapper {
+    transition: transform 0.2s ease, opacity 0.2s ease;
+  }
+  .leaflet-popup-close-button {
+    width: 36px !important;
+    height: 36px !important;
+    font-size: 24px !important;
+    padding: 6px !important;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+/* ─── GÖREV 4: Alam/Yaqut Collapsible Sections ─── */
+
+/* Shared section toggle button style */
+.alam-section-toggle,
+.yaqut-section-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 8px 4px;
+  background: none;
+  border: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  color: var(--gold, #c9a84c);
+  font-size: 13px;
+  font-weight: 600;
+  font-family: var(--font-display, 'Georgia', serif);
+  cursor: pointer;
+  text-align: left;
+  -webkit-tap-highlight-color: transparent;
+}
+.alam-section-toggle:active,
+.yaqut-section-toggle:active {
+  opacity: 0.7;
+}
+.alam-toggle-arrow,
+.yaqut-toggle-arrow {
+  font-size: 11px;
+  color: var(--cream2, #c4b89a);
+  transition: transform 0.2s;
+}
+
+/* Collapsible content wrapper */
+.alam-collapsible,
+.yaqut-collapsible {
+  transition: max-height 0.3s ease, opacity 0.2s ease;
+  overflow: hidden;
+}
+.alam-collapsible.collapsed,
+.yaqut-collapsible.collapsed {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+}
+.alam-collapsible.expanded,
+.yaqut-collapsible.expanded {
+  max-height: 2000px;
+  opacity: 1;
+}
+
+/* ─── GÖREV 4: Alam Analytics Tab Mobile ─── */
+@media (max-width: 768px) {
+  .alam-analytics-tabs {
+    display: flex;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+    gap: 4px;
+    padding: 4px 8px;
+    white-space: nowrap;
+  }
+  .alam-analytics-tabs button {
+    scroll-snap-align: start;
+    flex-shrink: 0;
+    min-height: 36px;
+    font-size: 11px;
+    padding: 6px 12px;
+  }
+  .alam-analytics-row {
+    flex-direction: column;
+  }
+  .alam-analytics-main {
+    width: 100%;
+    min-height: 300px;
+  }
+  .alam-analytics-sidebar {
+    display: none;
+  }
+
+  /* Yaqut Analytics same pattern */
+  .yaqut-analytics-tabs {
+    display: flex;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+    gap: 4px;
+    padding: 4px 8px;
+    white-space: nowrap;
+  }
+  .yaqut-analytics-tabs button {
+    scroll-snap-align: start;
+    flex-shrink: 0;
+    min-height: 36px;
+    font-size: 11px;
+    padding: 6px 12px;
+  }
+  .yaqut-analytics-row {
+    flex-direction: column;
+  }
+  .yaqut-analytics-main {
+    width: 100%;
+    min-height: 300px;
+  }
+  .yaqut-analytics-sidebar {
+    display: none;
+  }
+}
+
+/* ─── GÖREV 4: Alam/Yaqut IdCard mobile improvements ─── */
+@media (max-width: 768px) {
+  .alam-idcard, .yaqut-idcard {
+    padding: 12px;
+  }
+  .alam-idcard-close, .yaqut-idcard-close {
+    min-width: 40px;
+    min-height: 40px;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .alam-idcard-h1, .yaqut-idcard-h1 { font-size: 16px; }
+  .alam-idcard-row, .yaqut-idcard-row { font-size: 13px; }
+  .alam-idcard-label, .yaqut-idcard-label { font-size: 11px; }
+  .alam-idcard-desc p, .yaqut-idcard-desc p { font-size: 13px; line-height: 1.5; }
+  .alam-dia-link, .yaqut-badge-dia {
+    min-height: 40px;
+    display: inline-flex;
+    align-items: center;
+    font-size: 13px;
+  }
+
+  /* Section toggles touch targets */
+  .alam-section-toggle,
+  .yaqut-section-toggle {
+    min-height: 44px;
+    padding: 10px 4px;
+  }
+}
+
+/* ─── GÖREV 4: Yaqut Globe disabled badge on mobile ─── */
+.yaqut-mode-btn.disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+.yaqut-mode-badge-desktop {
+  font-size: 10px;
+  margin-left: 4px;
+}
+
+/* ─── GÖREV 5D: Skeleton Loader ─── */
+.skeleton-loader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 320px;
+  padding: 24px 16px;
+  gap: 12px;
+}
+
+/* Shimmer animation */
+.skeleton-shimmer {
+  background: linear-gradient(
+    90deg,
+    rgba(196, 184, 154, 0.06) 0%,
+    rgba(196, 184, 154, 0.12) 40%,
+    rgba(196, 184, 154, 0.06) 80%
+  );
+  background-size: 200% 100%;
+  animation: skeleton-shimmer 1.5s ease-in-out infinite;
+  border-radius: 6px;
+}
+@keyframes skeleton-shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* List variant */
+.skeleton-list-placeholder {
+  width: 100%;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.skeleton-list-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 12px;
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 8px;
+}
+.skeleton-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.skeleton-list-lines {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.skeleton-line {
+  height: 12px;
+}
+.skeleton-line-sm {
+  height: 9px;
+}
+
+/* Card variant */
+.skeleton-card-placeholder {
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 16px;
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 10px;
+}
+.skeleton-card-header {
+  height: 20px;
+  width: 60%;
+}
+.skeleton-card-line {
+  height: 11px;
+}
+.skeleton-card-badges {
+  display: flex;
+  gap: 8px;
+}
+
+/* Chart variant */
+.skeleton-chart-placeholder {
+  width: 100%;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.skeleton-chart-title {
+  height: 16px;
+  width: 40%;
+}
+.skeleton-chart-bars {
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+  height: 160px;
+}
+.skeleton-bar {
+  flex: 1;
+  border-radius: 4px 4px 0 0;
+}
+
+/* Map variant */
+.skeleton-map-placeholder {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.skeleton-map-rect {
+  width: 100%;
+  height: 200px;
+  border-radius: 8px;
+}
+.skeleton-map-controls {
+  display: flex;
+  gap: 8px;
+}
+
+/* Pill (reusable) */
+.skeleton-pill {
+  height: 28px;
+  border-radius: 14px;
+}
+
+/* Message */
+.skeleton-message {
+  font-size: 13px;
+  color: var(--cream2, #a89b8c);
+  margin-top: 8px;
+  animation: skeleton-pulse 1.5s ease-in-out infinite;
+}
+@keyframes skeleton-pulse {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+
+/* Mobile fullscreen skeleton */
+@media (max-width: 768px) {
+  .skeleton-loader {
+    min-height: calc(100vh - 120px);
+    padding: 20px 12px;
+  }
+  .skeleton-chart-bars { height: 120px; }
+  .skeleton-map-rect { height: 160px; }
+}
+
+/* ─── GÖREV 7: Swipe Tab Transition ─── */
+@media (max-width: 768px) {
+  .main {
+    transition: opacity 0.15s ease;
+  }
+}
+
+/* ─── GÖREV 8: Performance — Image lazy loading hint ─── */
+.alam-list-item img,
+.yaqut-list-item img,
+.dia-list-item img {
+  content-visibility: auto;
+}
+
+/* D3 chart simplification on mobile */
+@media (max-width: 768px) {
+  .alam-analytics svg,
+  .yaqut-analytics svg,
+  .dia-analytics svg {
+    max-height: 280px;
+  }
+  /* Reduce D3 force graph complexity visually */
+  .alam-analytics .link,
+  .yaqut-analytics .link {
+    stroke-width: 0.5 !important;
+  }
+  .alam-analytics .node circle,
+  .yaqut-analytics .node circle {
+    r: 3 !important;
+  }
+}

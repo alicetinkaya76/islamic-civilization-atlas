@@ -13,6 +13,7 @@ import YearInfoPanel from './YearInfoPanel';
 import HeatmapLayer from './HeatmapLayer';
 import YearExplorer from './YearExplorer';
 import ScholarMigrationMap from './ScholarMigrationMap';
+import BottomSheet from '../shared/BottomSheet';
 import DB from '../../data/db.json';
 
 /* Map from singular entity type → db.json collection key */
@@ -34,6 +35,9 @@ export default function MapView({ lang, t, sidebarOpen, mapRef, onPopupOpen, onT
   const [heatmapVisible, setHeatmapVisible] = useState(false);
   const [yearExplorerOpen, setYearExplorerOpen] = useState(false);
   const [migrationVisible, setMigrationVisible] = useState(false);
+  const [filterSheetOpen, setFilterSheetOpen] = useState(false);
+
+  const isMobile = typeof window !== 'undefined' && window.innerWidth <= 768;
 
   const { layers, toggleLayer } = useLayers();
   const { filters, setFilter } = useMapFilters();
@@ -131,15 +135,48 @@ export default function MapView({ lang, t, sidebarOpen, mapRef, onPopupOpen, onT
 
   return (
     <div className="map-layout">
-      <FilterPanel
-        lang={lang} t={t}
-        layers={layers} toggleLayer={toggleLayer}
-        filters={filters} setFilter={setFilter}
-        uniques={uniques}
-        activeCount={activeCount} year={year}
-        sidebarOpen={sidebarOpen}
-        onCloseMobile={onCloseSidebar}
-      />
+      {/* Desktop: sidebar filter panel */}
+      {!isMobile && (
+        <FilterPanel
+          lang={lang} t={t}
+          layers={layers} toggleLayer={toggleLayer}
+          filters={filters} setFilter={setFilter}
+          uniques={uniques}
+          activeCount={activeCount} year={year}
+          sidebarOpen={sidebarOpen}
+          onCloseMobile={onCloseSidebar}
+        />
+      )}
+
+      {/* Mobile: FAB + BottomSheet filter */}
+      {isMobile && (
+        <>
+          <button
+            className="map-filter-fab"
+            onClick={() => setFilterSheetOpen(true)}
+            aria-label={{ tr: 'Filtreler', en: 'Filters', ar: 'المرشحات' }[lang]}
+          >
+            ☰
+          </button>
+          <BottomSheet
+            open={filterSheetOpen}
+            onClose={() => setFilterSheetOpen(false)}
+            title={{ tr: 'Harita Kontrolleri', en: 'Map Controls', ar: 'أدوات التحكم' }[lang]}
+            className="map-filter-sheet"
+          >
+            <FilterPanel
+              lang={lang} t={t}
+              layers={layers} toggleLayer={toggleLayer}
+              filters={filters} setFilter={setFilter}
+              uniques={uniques}
+              activeCount={activeCount} year={year}
+              sidebarOpen={true}
+              onCloseMobile={() => setFilterSheetOpen(false)}
+              inBottomSheet
+            />
+          </BottomSheet>
+        </>
+      )}
       <div className="map-area">
         <div ref={mapEl} className="map-canvas" />
 
