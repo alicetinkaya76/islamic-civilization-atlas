@@ -13,8 +13,16 @@ import YearInfoPanel from './YearInfoPanel';
 import HeatmapLayer from './HeatmapLayer';
 import YearExplorer from './YearExplorer';
 import ScholarMigrationMap from './ScholarMigrationMap';
+import DB from '../../data/db.json';
 
-export default function MapView({ lang, t, sidebarOpen, mapRef, onPopupOpen, onTourComplete, onCloseSidebar }) {
+/* Map from singular entity type → db.json collection key */
+const ENTITY_COLLECTION = {
+  dynasty: 'dynasties', battle: 'battles', scholar: 'scholars',
+  monument: 'monuments', city: 'cities', waqf: 'waqfs',
+  event: 'events', ruler: 'rulers', madrasa: 'madrasas',
+};
+
+export default function MapView({ lang, t, sidebarOpen, mapRef, onPopupOpen, onTourComplete, onCloseSidebar, entityRoute, onEntityRouteConsumed }) {
   const mapEl = useRef(null);
   const mapObj = useRef(null);
   const lgRef = useRef({});
@@ -82,6 +90,44 @@ export default function MapView({ lang, t, sidebarOpen, mapRef, onPopupOpen, onT
     });
     setActiveCount(cnt);
   }, [year, layers, filters, lang, t, analyticsMap, causalIdx, onPopupOpen]);
+
+  /* ── Entity deep link handler ── */
+  useEffect(() => {
+    if (!entityRoute || !mapObj.current) return;
+    const { type, id } = entityRoute;
+
+    // Year deep link → open YearExplorer
+    if (type === 'year') {
+      const yr = typeof id === 'number' ? id : parseInt(id, 10);
+      if (!isNaN(yr) && yr >= 622 && yr <= 1924) {
+        setYear(yr);
+        setYearExplorerOpen(true);
+      }
+      onEntityRouteConsumed?.();
+      return;
+    }
+
+    // Entity deep link → fly to entity location
+    const colKey = ENTITY_COLLECTION[type];
+    if (!colKey || !DB[colKey]) { onEntityRouteConsumed?.(); return; }
+    const numId = typeof id === 'number' ? id : parseInt(id, 10);
+    const entity = DB[colKey].find(e => e.id === numId);
+    if (entity && entity.lat != null && entity.lon != null) {
+      const map = mapObj.current;
+      try { map.flyTo([entity.lat, entity.lon], 8, { duration: 1.5 }); } catch {}
+      // Open a popup with entity name
+      const name = entity.tr || entity.n || entity.en || `#${entity.id}`;
+      setTimeout(() => {
+        try {
+          L.popup({ closeOnClick: true, autoPan: true })
+            .setLatLng([entity.lat, entity.lon])
+            .setContent(`<div style="font-size:14px;font-weight:600">${name}</div><div style="font-size:11px;color:#a89b8c">${type} #${numId}</div>`)
+            .openOn(map);
+        } catch {}
+      }, 1600);
+    }
+    onEntityRouteConsumed?.();
+  }, [entityRoute, onEntityRouteConsumed]);
 
   return (
     <div className="map-layout">

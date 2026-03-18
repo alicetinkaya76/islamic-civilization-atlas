@@ -2,6 +2,7 @@ import { useState, useRef, useCallback, useEffect, Suspense, lazy } from 'react'
 import T from './data/i18n';
 import LandingPage from './components/landing/LandingPage';
 import LazyLoader from './components/shared/LazyLoader';
+import MetaTags from './components/shared/MetaTags';
 import { preloadData } from './hooks/useAsyncData.jsx';
 
 /* ═══ Lazy-loaded panels — only fetched when their tab is active ═══ */
@@ -27,15 +28,42 @@ import ExportButton from './components/shared/ExportButton';
 
 const VALID_TABS = ['map', 'dashboard', 'timeline', 'links', 'scholars', 'battles', 'alam', 'yaqut', 'admin'];
 
-/* Parse hash → { tab, params } */
+/* ═══ Entity types that can be deep-linked ═══ */
+const ENTITY_TYPES = ['dynasty', 'battle', 'scholar', 'monument', 'city', 'waqf', 'event', 'ruler', 'madrasa'];
+
+/* Parse hash → { tab, params, entityRoute? }
+   Supports:
+     #map, #scholars, #alam?search=xyz          — tab routes
+     #dynasty/42, #scholar/10, #year/1258       — entity deep links
+*/
 function parseHash() {
   const h = window.location.hash.replace('#', '');
   if (!h) return null;
   const [path, qs] = h.split('?');
-  const tab = path.split('/')[0];
+  const segments = path.split('/');
+  const first = segments[0];
   const params = {};
   if (qs) qs.split('&').forEach(p => { const [k, v] = p.split('='); if (k) params[decodeURIComponent(k)] = decodeURIComponent(v || ''); });
-  return VALID_TABS.includes(tab) ? { tab, params } : null;
+
+  // Tab route
+  if (VALID_TABS.includes(first)) {
+    return { tab: first, params, entityRoute: null };
+  }
+
+  // Year deep link: #year/1258
+  if (first === 'year' && segments[1]) {
+    return { tab: 'map', params, entityRoute: { type: 'year', id: parseInt(segments[1], 10) } };
+  }
+
+  // Entity deep link: #dynasty/42, #scholar/10 etc.
+  if (ENTITY_TYPES.includes(first) && segments[1]) {
+    const id = parseInt(segments[1], 10);
+    if (!isNaN(id)) {
+      return { tab: 'map', params, entityRoute: { type: first, id } };
+    }
+  }
+
+  return null;
 }
 
 /* Check if landing should show */
@@ -47,6 +75,7 @@ export default function App() {
   const [lang, setLang] = useState('tr');
   const [showLanding, setShowLanding] = useState(shouldShowLanding);
   const [tab, setTab] = useState(() => { const h = parseHash(); return h ? h.tab : 'map'; });
+  const [entityRoute, setEntityRoute] = useState(() => { const h = parseHash(); return h?.entityRoute || null; });
   const [menuOpen, setMenuOpen] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [quizOpen, setQuizOpen] = useState(false);
@@ -56,19 +85,30 @@ export default function App() {
 
   const { progress, recordDiscovery, resetProgress, newBadge, setNewBadge } = useProgress();
 
-  /* ═══ Deeplink: hash → tab sync ═══ */
+  /* ═══ Deeplink: hash → tab + entity sync ═══ */
   useEffect(() => {
     const handler = () => {
       const h = parseHash();
-      if (h && h.tab !== tab) setTab(h.tab);
+      if (!h) return;
+      if (h.tab !== tab) setTab(h.tab);
+      setEntityRoute(h.entityRoute || null);
     };
     window.addEventListener('hashchange', handler);
     return () => window.removeEventListener('hashchange', handler);
   }, [tab]);
 
+  /* ═══ On initial load, skip landing if deep link present ═══ */
+  useEffect(() => {
+    if (entityRoute && showLanding) {
+      setShowLanding(false);
+      try { localStorage.setItem('atlas-visited', '1'); } catch {}
+    }
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+
   const selectTab = (v) => {
     setTab(v);
     setMenuOpen(false);
+    setEntityRoute(null);
     try { window.history.replaceState(null, '', '#' + v); } catch {}
   };
 
@@ -119,10 +159,16 @@ export default function App() {
     setShowLanding(false);
   }, []);
 
+  /* Clear entity route after consumption */
+  const clearEntityRoute = useCallback(() => {
+    setEntityRoute(null);
+  }, []);
+
   /* Admin Panel — full screen overlay */
   if (tab === 'admin') {
     return (
       <Suspense fallback={<div style={{ display:'flex',alignItems:'center',justifyContent:'center',height:'100vh',background:'#0f1419',color:'#c9a84c',fontSize:18 }}>Yükleniyor...</div>}>
+        <MetaTags tab="admin" entityRoute={null} lang={lang} />
         <AdminPanel lang={lang} onBack={() => selectTab('map')} />
       </Suspense>
     );
@@ -135,6 +181,7 @@ export default function App() {
 
   return (
     <div className="app" dir={lang === 'ar' ? 'rtl' : 'ltr'} lang={lang}>
+      <MetaTags tab={tab} entityRoute={entityRoute} lang={lang} />
       <a href="#main-content" className="skip-link">
         {{ tr: 'İçeriğe geç', en: 'Skip to content', ar: 'انتقل إلى المحتوى' }[lang]}
       </a>
@@ -200,7 +247,7 @@ export default function App() {
       {menuOpen && <div className="mobile-backdrop" onClick={() => setMenuOpen(false)} />}
       <main id="main-content" className={`main${sidebarOpen ? ' sidebar-visible' : ''}`} role="main">
         <Suspense fallback={<LazyLoader />}>
-        {tab === 'map' ? <MapView lang={lang} t={t} sidebarOpen={sidebarOpen} mapRef={mapRef} onPopupOpen={recordDiscovery} onTourComplete={handleTourComplete} onCloseSidebar={() => setSidebarOpen(false)} /> :
+        {tab === 'map' ? <MapView lang={lang} t={t} sidebarOpen={sidebarOpen} mapRef={mapRef} onPopupOpen={recordDiscovery} onTourComplete={handleTourComplete} onCloseSidebar={() => setSidebarOpen(false)} entityRoute={entityRoute} onEntityRouteConsumed={clearEntityRoute} /> :
          tab === 'dashboard' ? <Dashboard lang={lang} t={t} onTabChange={selectTab} /> :
          tab === 'timeline' ? <TimelineView lang={lang} t={t} /> :
          tab === 'scholars' ? <ScholarView lang={lang} t={t} /> :

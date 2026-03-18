@@ -316,11 +316,11 @@ function DiaCoverage({ data, lang, ty }) {
     const lg = svg.append('g').attr('transform', `translate(${MARGIN.left + 10}, ${MARGIN.top - 16})`);
     lg.append('rect').attr('width', 10).attr('height', 10).attr('fill', '#d4a84b').attr('rx', 1);
     lg.append('text').attr('x', 14).attr('y', 9).attr('fill', '#d4a84b').attr('font-size', 10)
-      .textt.yaqut.chartDiaLinked;
+      .text(t.yaqut?.chartDiaLinked || 'DİA Linked');
     const lg2 = svg.append('g').attr('transform', `translate(${MARGIN.left + 120}, ${MARGIN.top - 16})`);
     lg2.append('rect').attr('width', 10).attr('height', 10).attr('fill', '#1e2a44').attr('rx', 1);
     lg2.append('text').attr('x', 14).attr('y', 9).attr('fill', '#90a4ae').attr('font-size', 10)
-      .textt.yaqut.chartDiaNotLinked;
+      .text(t.yaqut?.chartDiaNotLinked || 'Not Linked');
   }, [chartData, lang === "tr"]);
 
   return (
@@ -368,10 +368,10 @@ function EventPersonScatter({ data, lang, ty }) {
     svg.append('g').attr('transform', `translate(${M.left},0)`).call(d3.axisLeft(y).ticks(6)).attr('color', '#c4b89a');
 
     svg.append('text').attr('x', w / 2).attr('y', h - 8).attr('text-anchor', 'middle')
-      .attr('fill', '#c4b89a').attr('font-size', 11).textt.yaqut.chartEventCount;
+      .attr('fill', '#c4b89a').attr('font-size', 11).text(t.yaqut?.chartEventCount || 'Event Count');
     svg.append('text').attr('x', -h / 2).attr('y', 14).attr('transform', 'rotate(-90)')
       .attr('text-anchor', 'middle').attr('fill', '#c4b89a').attr('font-size', 11)
-      .textt.yaqut.chartPersonCount;
+      .text(t.yaqut?.chartPersonCount || 'Person Count');
   }, [bubbles, lang === "tr"]);
 
   return (

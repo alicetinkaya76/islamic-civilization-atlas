@@ -37,6 +37,16 @@ export default function CoordinateHealth({ onNavigate }) {
     return results;
   }, [db]);
 
+  /* Routes waypoint coverage */
+  const routeStats = useMemo(() => {
+    const routes = db.routes;
+    if (!Array.isArray(routes)) return { total: 0, withWp: 0, totalWp: 0 };
+    const total = routes.length;
+    const withWp = routes.filter(r => Array.isArray(r.wp) && r.wp.length > 0).length;
+    const totalWp = routes.reduce((s, r) => s + (Array.isArray(r.wp) ? r.wp.length : 0), 0);
+    return { total, withWp, totalWp };
+  }, [db]);
+
   const missing = issues.filter(i => i.type === 'missing');
   const invalid = issues.filter(i => i.type === 'invalid');
   const filtered = filter === 'all' ? issues : issues.filter(i => i.type === filter);
@@ -62,6 +72,12 @@ export default function CoordinateHealth({ onNavigate }) {
             {invalid.length}
           </span>
           <span className="admin-ch-stat-label">Geçersiz</span>
+        </div>
+        <div className="admin-ch-stat" title="Ticaret yolları waypoint doluluk oranı">
+          <span className="admin-ch-stat-val" style={{ color: 'var(--admin-accent)' }}>
+            {routeStats.total > 0 ? Math.round((routeStats.withWp / routeStats.total) * 100) : 0}%
+          </span>
+          <span className="admin-ch-stat-label">Rota WP ({routeStats.totalWp})</span>
         </div>
       </div>
 

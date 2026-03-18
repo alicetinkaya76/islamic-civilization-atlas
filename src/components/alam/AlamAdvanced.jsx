@@ -488,11 +488,11 @@ export function WorkProfessionScatter({ data, lang }) {
     // Axis labels
     svg.append('text').attr('x', w / 2).attr('y', h - 8)
       .attr('text-anchor', 'middle').attr('fill', '#c4b89a').attr('font-size', 11)
-      .textt.alam.advPersonCount;
+      .text(t.alam?.advPersonCount || 'Person Count');
     svg.append('text').attr('x', -h / 2).attr('y', 14)
       .attr('transform', 'rotate(-90)').attr('text-anchor', 'middle')
       .attr('fill', '#c4b89a').attr('font-size', 11)
-      .textt.alam.advAvgWorkCount;
+      .text(t.alam?.advAvgWorkCount || 'Avg. Work Count');
 
   }, [bubbles, lang === "tr"]);
 

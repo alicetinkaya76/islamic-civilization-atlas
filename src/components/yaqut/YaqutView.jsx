@@ -17,13 +17,15 @@ class YaqutErrorBoundary extends Component {
   componentDidCatch(error, info) { console.error('YaqutView error:', error, info); }
   render() {
     if (this.state.hasError) {
+      const tl = T[this.props.lang] || T.tr;
+      const ty = tl.yaqut || {};
       return (
         <div style={{ padding: 40, textAlign: 'center', color: '#c4b89a' }}>
-          <h3>⚠️ {T[this.props.lang].yaqut.errorOccurred}</h3>
+          <h3>⚠️ {ty.errorOccurred || 'Bir hata oluştu'}</h3>
           <p style={{ color: '#ef5350', fontSize: 12, fontFamily: 'monospace' }}>{String(this.state.error)}</p>
           <button onClick={() => this.setState({ hasError: false, error: null })}
             style={{ marginTop: 16, padding: '8px 16px', background: '#1a6b5a', color: '#fff', border: 'none', borderRadius: 6, cursor: 'pointer' }}>
-            {T[this.props.lang].yaqut.retry}
+            {ty.retry || 'Tekrar Dene'}
           </button>
         </div>
       );

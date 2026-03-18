@@ -173,7 +173,7 @@ export function PersonPlaceNetwork({ data, lang }) {
     svg.append('text')
       .attr('x', cx).attr('y', cy + 4)
       .attr('text-anchor', 'middle').attr('fill', '#c4b89a').attr('font-size', 10)
-      .textt.yaqut.advPlaces;
+      .text(t.yaqut?.advPlaces || 'Places');
 
     // Draw connections
     nodes.forEach(n => {
