@@ -153,6 +153,23 @@
 .dia-legend-line.solid { background:rgba(180,170,140,.5); }
 .dia-legend-line.dashed { background:repeating-linear-gradient(90deg,rgba(150,150,150,.4) 0 3px,transparent 3px 6px); }
 
+/* Ego badge */
+.dia-network-ego-badge {
+  position:absolute; top:8px; left:8px; z-index:10;
+  background:rgba(13,43,34,0.9); color:#d4af37; padding:4px 10px; border-radius:6px;
+  font-size:11px; border:1px solid #1a6b5a44; backdrop-filter:blur(6px); pointer-events:none;
+}
+[data-theme="light"] .dia-network-ego-badge { background:rgba(255,255,255,0.9); color:#5a3e1b; border-color:#1a6b5a33; }
+.dia-network-checks-row { display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
+
+/* Sankey */
+.dia-sankey { display:flex; flex-direction:column; height:100%; }
+.dia-sankey-controls { display:flex; flex-wrap:wrap; gap:10px; padding:8px 12px; background:#0d2b22; border-bottom:1px solid #1a6b5a33; align-items:center; }
+.dia-sankey-canvas-wrap { flex:1; position:relative; overflow:hidden; background:#0a1510; }
+.dia-sankey-svg { width:100%; height:100%; display:block; }
+[data-theme="light"] .dia-sankey-controls { background:#f0f8f4; border-color:#1a6b5a22; }
+[data-theme="light"] .dia-sankey-canvas-wrap { background:#f5f8f6; }
+
 /* Analytics */
 .dia-analytics { flex:1; overflow-y:auto; padding:12px; }
 .dia-analytics-grid { display:flex; flex-direction:column; gap:16px; }

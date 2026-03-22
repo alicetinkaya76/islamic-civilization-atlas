@@ -2,6 +2,21 @@
 
 All notable changes to the Islamic Dynasties Atlas are documented in this file.
 
+## [6.5.2.1] - 2026-03-22 — Session 25
+
+### Added
+- **DİA Network: Ego-Network Mode**: Toggle "Ego Ağı" checkbox, select a scholar → only their 1-hop or 2-hop neighborhood is shown. Ego badge shows scholar name + node count. Labels auto-show for small ego graphs (<60 nodes).
+- **DİA Network: Community Detection**: Label propagation algorithm detects communities in real-time. New "Topluluk" color option with 12 distinguishable colors. Tooltip shows community ID on hover.
+- **DİA Network: Geographic Layout**: New "Coğrafi" view mode pins geo-located scholars (60% coverage, 2,081 of 3,463 nodes) to lat/lon coordinates. Un-geolocated nodes drift to center. Faint grid lines for orientation. Drag disabled in geo mode to preserve positions.
+- **DİA Sankey Diagram**: New 🔀 "Akış" subView — field-to-field teacher→student flow visualization. D3 SVG Sankey with bezier paths, hover highlights, tooltip showing flow counts. Min-flow threshold slider. 150 unique field pairs, dominated by fıkıh→fıkıh (1,015), hadis→fıkıh (387), fıkıh→hadis (378).
+- **DiaSankey.jsx**: Custom Sankey layout (no d3-sankey dependency). Source/target node bars, bezier link paths, theme-aware rendering.
+
+### Changed
+- `DiaNetwork.jsx`: Major rewrite — added `detectCommunities()` (label propagation), `getEgoNeighbors()` (N-hop BFS), geo layout mode with coordinate pinning. New props: `geoData`. New state: `egoMode`, `egoHops`, `colorBy: 'community'`, `viewMode: 'geo'`.
+- `DiaView.jsx`: Added `DiaSankey` lazy import. 5 subViews: Liste/Harita/Ağ/Akış/Analitik. Passes `geoData` prop to DiaNetwork.
+- `dia.css`: Added ego badge, checks-row, sankey container/controls/SVG styles with light theme overrides (~25 lines).
+- `package.json`: Version → 6.5.2.1.
+
 ## [6.5.2.0] - 2026-03-22 — Session 24
 
 ### Added

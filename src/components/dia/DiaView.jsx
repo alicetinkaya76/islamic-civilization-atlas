@@ -10,6 +10,7 @@ import T from '../../data/i18n';
 const DiaNetwork = lazy(() => import('./DiaNetwork'));
 const DiaAnalytics = lazy(() => import('./DiaAnalytics'));
 const DiaMap = lazy(() => import('./DiaMap'));
+const DiaSankey = lazy(() => import('./DiaSankey'));
 
 const FIELDS_LIST = [
   'fıkıh','hadis','tefsir','kelâm','tasavvuf','edebiyat','tarih',
@@ -120,6 +121,7 @@ export default function DiaView({ lang, t: tProp }) {
           <button className={`dia-view-btn${subView === 'list' ? ' active' : ''}`} onClick={() => setSubView('list')}>📋 {td.listView || 'Liste'}</button>
           <button className={`dia-view-btn${subView === 'map' ? ' active' : ''}`} onClick={() => setSubView('map')}>🗺 {td.mapView || 'Harita'}</button>
           <button className={`dia-view-btn${subView === 'network' ? ' active' : ''}`} onClick={() => setSubView('network')}>🕸 {td.networkView || 'Ağ'}</button>
+          <button className={`dia-view-btn${subView === 'sankey' ? ' active' : ''}`} onClick={() => setSubView('sankey')}>🔀 {td.sankeyView || 'Akış'}</button>
           <button className={`dia-view-btn${subView === 'analytics' ? ' active' : ''}`} onClick={() => setSubView('analytics')}>📊 {td.analyticsView || 'Analitik'}</button>
         </div>
       </div>
@@ -127,7 +129,7 @@ export default function DiaView({ lang, t: tProp }) {
       <div className="dia-mobile-toggle">
         <button className={showMobile === 'list' ? 'active' : ''} onClick={() => setShowMobile('list')}>☰ {td.tabList || 'Liste'}</button>
         <button className={showMobile === 'main' ? 'active' : ''} onClick={() => setShowMobile('main')}>
-          {subView === 'network' ? '🕸' : subView === 'analytics' ? '📊' : '📋'}
+          {subView === 'network' ? '🕸' : subView === 'analytics' ? '📊' : subView === 'sankey' ? '🔀' : '📋'}
         </button>
         {selectedBio && <button className={showMobile === 'card' ? 'active' : ''} onClick={() => setShowMobile('card')}>📋 {td.tabDetail || 'Detay'}</button>}
       </div>
@@ -155,7 +157,11 @@ export default function DiaView({ lang, t: tProp }) {
             </Suspense>
           ) : subView === 'network' ? (
             <Suspense fallback={<LazyLoader message={td.loadingNetwork || 'Ağ yükleniyor'} />}>
-              <DiaNetwork lang={lang} td={td} data={DIA_LITE} relations={DIA_REL} lookup={DIA_BY_ID} filtered={filtered} onSelect={handleSelect} selectedId={selectedId} />
+              <DiaNetwork lang={lang} td={td} data={DIA_LITE} relations={DIA_REL} lookup={DIA_BY_ID} filtered={filtered} onSelect={handleSelect} selectedId={selectedId} geoData={DIA_GEO} />
+            </Suspense>
+          ) : subView === 'sankey' ? (
+            <Suspense fallback={<LazyLoader message={td.loadingSankey || 'Akış diyagramı yükleniyor'} />}>
+              <DiaSankey lang={lang} td={td} data={DIA_LITE} relations={DIA_REL} lookup={DIA_BY_ID} />
             </Suspense>
           ) : (
             <Suspense fallback={<LazyLoader message={td.loadingAnalytics || 'Analitik yükleniyor'} />}>
