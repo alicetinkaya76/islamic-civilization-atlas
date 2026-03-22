@@ -832,6 +832,85 @@
   .ei1-idcard-title { font-size: 18px; }
 }
 
+/* ─── EI-1 Map ─── */
+.ei1-map-container { flex:1; position:relative; display:flex; flex-direction:column; }
+.ei1-map-leaflet { flex:1; min-height:300px; background:#100d08; z-index:1; }
+.ei1-map-leaflet .leaflet-control-zoom a { background:#1c1508; color:#c9a84c; border-color:#8c5a2844; }
+.ei1-map-leaflet .leaflet-control-zoom a:hover { background:#8c5a28; color:#fff; }
+.ei1-map-info {
+  position:absolute; bottom:8px; left:8px; z-index:1000;
+  background:rgba(16,13,8,0.85); color:#c9a84c; padding:4px 10px; border-radius:6px;
+  font-size:12px; border:1px solid #8c5a2844; backdrop-filter:blur(6px);
+}
+.ei1-map-marker { background:none !important; border:none !important; }
+.ei1-map-cluster { background:none !important; border:none !important; }
+.ei1-map-tooltip {
+  background:#1c1508 !important; color:#c4b89a !important;
+  border:1px solid #8c5a2844 !important; border-radius:6px !important;
+  font-size:12px !important; padding:6px 10px !important;
+  box-shadow:0 2px 8px rgba(0,0,0,0.4) !important;
+}
+.ei1-map-tooltip::before { border-top-color:#8c5a2844 !important; }
+
+/* Light theme overrides for EI-1 map */
+[data-theme="light"] .ei1-map-leaflet { background:#f0ebe0; }
+[data-theme="light"] .ei1-map-leaflet .leaflet-control-zoom a { background:#fff; color:#5a3e1b; border-color:#c9a84c44; }
+[data-theme="light"] .ei1-map-leaflet .leaflet-control-zoom a:hover { background:#c9a84c; color:#fff; }
+[data-theme="light"] .ei1-map-info { background:rgba(255,255,255,0.9); color:#5a3e1b; border-color:#c9a84c44; }
+[data-theme="light"] .ei1-map-tooltip { background:#fff !important; color:#3a2a10 !important; border-color:#c9a84c44 !important; }
+[data-theme="light"] .ei1-map-tooltip::before { border-top-color:#c9a84c44 !important; }
+
+/* ─── EI-1 Network ─── */
+.ei1-network { display:flex; flex-direction:column; height:100%; }
+.ei1-network-controls-toggle { display:none; }
+.ei1-network-controls { display:flex; flex-wrap:wrap; gap:10px; padding:8px 12px; background:#1c1508; border-bottom:1px solid #8c5a2833; align-items:center; }
+.ei1-network-control-group { display:flex; align-items:center; gap:4px; font-size:11px; color:#a89070; }
+.ei1-network-control-group label { white-space:nowrap; }
+.ei1-network-control-group input[type="range"] { width:80px; accent-color:#c9a84c; }
+.ei1-network-count { font-size:10px; color:#7a6a50; margin-left:4px; }
+.ei1-select-sm { background:#0d0a05; color:#c4b89a; border:1px solid #8c5a2833; border-radius:4px; font-size:11px; padding:2px 6px; }
+.ei1-network-checks { display:flex; gap:10px; }
+.ei1-network-check { font-size:11px; color:#a89070; cursor:pointer; display:flex; align-items:center; gap:4px; }
+.ei1-network-check input { accent-color:#c9a84c; }
+.ei1-network-canvas-wrap { flex:1; position:relative; overflow:hidden; background:#100d08; }
+.ei1-network-canvas { width:100%; height:100%; display:block; }
+.ei1-network-empty { display:flex; align-items:center; justify-content:center; height:100%; color:#7a6a50; font-size:14px; padding:20px; text-align:center; }
+.ei1-network-tooltip { position:absolute; padding:6px 10px; border-radius:6px; background:#1c1508; color:#c4b89a; font-size:11px; pointer-events:none; z-index:10; border:1px solid #8c5a2844; box-shadow:0 2px 8px rgba(0,0,0,.3); line-height:1.4; }
+.ei1-network-timeline-axis { position:absolute; bottom:8px; left:80px; right:80px; display:flex; justify-content:space-between; pointer-events:none; }
+.ei1-timeline-label { font-size:9px; color:#7a6a50; }
+.ei1-network-legend { display:flex; flex-wrap:wrap; gap:8px; padding:6px 12px; background:#1c1508; border-top:1px solid #8c5a2833; font-size:10px; color:#a89070; }
+.ei1-legend-item { display:flex; align-items:center; gap:3px; }
+.ei1-legend-dot { width:8px; height:8px; border-radius:50%; flex-shrink:0; }
+.ei1-legend-line { display:inline-block; width:16px; height:0; border-top:2px solid #c9a84c; vertical-align:middle; }
+.ei1-legend-line.dashed { border-top-style:dashed; border-color:#4db6ac; }
+.ei1-legend-line.arrow { border-color:#c4b89a; position:relative; }
+.ei1-legend-line.arrow::after { content:'▸'; position:absolute; right:-4px; top:-8px; font-size:10px; color:#c4b89a; }
+
+/* Light theme overrides for EI-1 network */
+[data-theme="light"] .ei1-network-controls { background:#f5f0e4; border-color:#c9a84c33; }
+[data-theme="light"] .ei1-network-control-group { color:#5a3e1b; }
+[data-theme="light"] .ei1-network-count { color:#8a7a5a; }
+[data-theme="light"] .ei1-select-sm { background:#fff; color:#3a2a10; border-color:#c9a84c33; }
+[data-theme="light"] .ei1-network-check { color:#5a3e1b; }
+[data-theme="light"] .ei1-network-canvas-wrap { background:#f0ebe0; }
+[data-theme="light"] .ei1-network-tooltip { background:#fff; color:#3a2a10; border-color:#c9a84c44; }
+[data-theme="light"] .ei1-network-legend { background:#f5f0e4; border-color:#c9a84c33; color:#5a3e1b; }
+[data-theme="light"] .ei1-network-empty { color:#8a7a5a; }
+
+/* ─── Network mobile ─── */
+@media (max-width: 768px) {
+  .ei1-network-controls-toggle {
+    display:flex; align-items:center; gap:6px; padding:8px 12px;
+    background:#1c1508; border:none; border-bottom:1px solid #8c5a2833;
+    color:#c9a84c; font-size:12px; width:100%; cursor:pointer; font-weight:600;
+  }
+  [data-theme="light"] .ei1-network-controls-toggle { background:#f5f0e4; color:#5a3e1b; border-color:#c9a84c33; }
+  .ei1-network-controls.mobile-collapsed { display:none; }
+  .ei1-network-controls { flex-direction:column; align-items:flex-start; }
+  .toggle-arrow { transition:transform .2s; }
+  .toggle-arrow.open { transform:rotate(180deg); }
+}
+
 /* ─── Small phones ─── */
 @media (max-width: 480px) {
   .ei1-header { padding: 8px 10px 6px; }

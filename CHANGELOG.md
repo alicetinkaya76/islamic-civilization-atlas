@@ -2,6 +2,21 @@
 
 All notable changes to the Islamic Dynasties Atlas are documented in this file.
 
+## [6.5.2.0] - 2026-03-22 — Session 24
+
+### Added
+- **EI-1 Map View**: Geocoded 474 birth/death place entries (427 unique scholars) from Brill EI-1 biographies. Leaflet cluster map with field-colored markers, theme-aware tiles, fly-to-selected, tooltips with place names. `Ei1Map.jsx` component following DiaMap pattern.
+- **EI-1 Network View**: D3 force-directed graph with 4,864 edges across 1,095 nodes. Three edge types: Same Author (4,418 — Brill contributors like Cl. Huart, W. Barthold connecting their articles), Same Place (378 — geographic co-location of scholars), Cross-Reference/Teacher-Student (68 — resolved from headword fuzzy matching). `Ei1Network.jsx` with canvas rendering, drag, zoom, tooltip, theme-aware colors.
+- **ei1_geo.json**: 474 geocoded entries with coordinates, place source (bp/dp), and place name. Comprehensive gazetteer covering ~390 historical Islamic places with Brill romanization variants.
+- **Enhanced ei1_relations.json**: Rebuilt from 195 sparse cross-refs to 4,864 unique edges. Fuzzy-matched 69 xrefs (from 10 resolved), generated author-network and geo-co-location edges.
+- **EI-1 Network CSS**: Full dark/light theme styling for controls, canvas, tooltip, legend, mobile responsive with collapsible controls panel.
+- **EI-1 Map CSS**: Dark/light theme map styling, zoom controls, info badge, cluster/marker/tooltip styles.
+
+### Changed
+- `Ei1View.jsx`: Added Map (🗺) and Network (🕸) subView buttons. Lazy-loads `Ei1Map` and `Ei1Network`. Loads `ei1_geo.json` via `useAsyncData`. Mobile toggle updated for new view icons.
+- `ei1.css`: Added ~100 lines for map container, markers, clusters, tooltips, network controls, canvas, legend, with light theme overrides and mobile breakpoints.
+- `package.json`: Version → 6.5.2.0.
+
 ## [6.5.1.0] - 2026-03-22 — Session 23
 
 ### Added

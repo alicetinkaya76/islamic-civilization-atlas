@@ -26,15 +26,18 @@ export default function Ei1IdCard({ lang, te, bio, works, relations, lookup, onC
   }, [works, bio]);
 
   const xrefs = useMemo(() => {
-    if (!bio || !relations?.xref) return [];
-    return relations.xref
-      .filter(([src]) => src === bio.id)
-      .map(([, tid, rel, extName]) => ({
-        id: tid,
-        name: tid >= 0 && lookup[tid] ? lookup[tid].t : extName || '?',
-        rel,
-        isInternal: tid >= 0 && !!lookup[tid],
-      }));
+    if (!bio || !relations?.edges) return [];
+    return relations.edges
+      .filter(([src, tgt, type]) => (src === bio.id || tgt === bio.id) && type !== 'SAME_AUTHOR' && type !== 'SAME_PLACE')
+      .map(([src, tgt, type]) => {
+        const otherId = src === bio.id ? tgt : src;
+        return {
+          id: otherId,
+          name: lookup[otherId] ? lookup[otherId].t : `#${otherId}`,
+          rel: type,
+          isInternal: !!lookup[otherId],
+        };
+      });
   }, [relations, bio, lookup]);
 
   if (!bio) {

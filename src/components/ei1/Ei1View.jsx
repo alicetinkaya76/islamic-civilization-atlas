@@ -9,6 +9,8 @@ import '../../styles/ei1.css';
 import T from '../../data/i18n';
 
 const Ei1Analytics = lazy(() => import('./Ei1Analytics'));
+const Ei1Map = lazy(() => import('./Ei1Map'));
+const Ei1Network = lazy(() => import('./Ei1Network'));
 
 function buildLookup(data) { const m = {}; data.forEach(b => { m[b.id] = b; }); return m; }
 function buildStats(data) {
@@ -30,6 +32,7 @@ export default function Ei1View({ lang, t: tProp }) {
   const { data: EI1_LITE, loading, error } = useAsyncData('/data/ei1_lite.json');
   const { data: EI1_WORKS } = useAsyncData('/data/ei1_works.json');
   const { data: EI1_REL } = useAsyncData('/data/ei1_relations.json');
+  const { data: EI1_GEO } = useAsyncData('/data/ei1_geo.json');
 
   const EI1_BY_ID = useMemo(() => EI1_LITE ? buildLookup(EI1_LITE) : {}, [EI1_LITE]);
   const STATS = useMemo(() => EI1_LITE ? buildStats(EI1_LITE) : {
@@ -45,6 +48,7 @@ export default function Ei1View({ lang, t: tProp }) {
   const [subView, setSubView] = useState('list');
   const [showMobile, setShowMobile] = useState('list');
   const [onlyBio, setOnlyBio] = useState(false);
+  const [mapColorBy, setMapColorBy] = useState('field');
 
   const filtered = useMemo(() => {
     if (!EI1_LITE) return [];
@@ -101,6 +105,12 @@ export default function Ei1View({ lang, t: tProp }) {
           <button className={`ei1-view-btn${subView === 'list' ? ' active' : ''}`} onClick={() => setSubView('list')}>
             📋 {te.listView || 'Liste'}
           </button>
+          <button className={`ei1-view-btn${subView === 'map' ? ' active' : ''}`} onClick={() => setSubView('map')}>
+            🗺 {te.mapView || 'Map'}
+          </button>
+          <button className={`ei1-view-btn${subView === 'network' ? ' active' : ''}`} onClick={() => setSubView('network')}>
+            🕸 {te.networkView || 'Network'}
+          </button>
           <button className={`ei1-view-btn${subView === 'analytics' ? ' active' : ''}`} onClick={() => setSubView('analytics')}>
             📊 {te.analyticsView || 'Analitik'}
           </button>
@@ -113,7 +123,7 @@ export default function Ei1View({ lang, t: tProp }) {
           ☰ {te.tabList || 'Liste'}
         </button>
         <button className={showMobile === 'main' ? 'active' : ''} onClick={() => setShowMobile('main')}>
-          {subView === 'analytics' ? '📊' : '📋'}
+          {subView === 'analytics' ? '📊' : subView === 'map' ? '🗺' : subView === 'network' ? '🕸' : '📋'}
         </button>
         {selectedBio && (
           <button className={showMobile === 'card' ? 'active' : ''} onClick={() => setShowMobile('card')}>
@@ -138,6 +148,14 @@ export default function Ei1View({ lang, t: tProp }) {
         <div className={`ei1-main-area${showMobile === 'main' ? ' mobile-visible' : ''}`}>
           {subView === 'list' ? (
             <Ei1StatsPanel lang={lang} te={te} data={EI1_LITE} filtered={filtered} stats={STATS} />
+          ) : subView === 'map' ? (
+            <Suspense fallback={<LazyLoader message={te.loadingMap || 'Loading map'} />}>
+              <Ei1Map lang={lang} te={te} data={EI1_LITE} geoData={EI1_GEO} lookup={EI1_BY_ID} filtered={filtered} onSelect={handleSelect} selectedId={selectedId} colorBy={mapColorBy} />
+            </Suspense>
+          ) : subView === 'network' ? (
+            <Suspense fallback={<LazyLoader message={te.loadingNetwork || 'Loading network'} />}>
+              <Ei1Network lang={lang} te={te} data={EI1_LITE} relations={EI1_REL} lookup={EI1_BY_ID} filtered={filtered} onSelect={handleSelect} selectedId={selectedId} />
+            </Suspense>
           ) : (
             <Suspense fallback={<LazyLoader message={te.loadingAnalytics || 'Analitik yükleniyor'} />}>
               <Ei1Analytics lang={lang} te={te} data={EI1_LITE} filtered={filtered} />
