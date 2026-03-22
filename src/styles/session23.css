@@ -1,0 +1,472 @@
+/* ═══════════════════════════════════════════════════
+   Session 23 — Header Redesign + Light Theme Polish
+   v6.5.1.0
+   ═══════════════════════════════════════════════════ */
+
+/* ───────────────────────────────────────────────────
+   B1: HEADER NAVIGATION — Grouped Dropdowns
+   ─────────────────────────────────────────────────── */
+
+/* Hide old flat .tabs on desktop (session23 replaces with grouped nav) */
+.header-nav-grouped { display: flex; align-items: center; gap: 4px; }
+
+/* Direct tab buttons (Map, Dashboard) */
+.header-nav-grouped .tab { white-space: nowrap; }
+
+/* Dropdown trigger */
+.nav-dropdown {
+  position: relative;
+  display: inline-flex;
+}
+
+.nav-dropdown-trigger {
+  display: flex; align-items: center; gap: 4px;
+  background: transparent; border: 1px solid var(--border);
+  color: var(--cream2); padding: 6px 12px; border-radius: 6px;
+  cursor: pointer; font-family: var(--font-body);
+  font-size: 13px; font-weight: 500; transition: all .2s;
+  white-space: nowrap;
+}
+.nav-dropdown-trigger:hover,
+.nav-dropdown-trigger.has-active {
+  border-color: var(--gold); color: var(--gold);
+}
+.nav-dropdown-trigger.has-active {
+  background: var(--gold-10);
+}
+
+.nav-dropdown-arrow {
+  font-size: 8px; transition: transform .2s;
+  margin-left: 2px;
+}
+.nav-dropdown.open .nav-dropdown-arrow { transform: rotate(180deg); }
+
+/* Dropdown panel */
+.nav-dropdown-panel {
+  position: absolute; top: calc(100% + 6px); left: 50%;
+  transform: translateX(-50%);
+  min-width: 180px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 6px;
+  box-shadow: 0 8px 32px var(--shadow), 0 0 0 1px rgba(var(--gold-rgb), 0.06);
+  z-index: 2000;
+  opacity: 0; pointer-events: none;
+  transform: translateX(-50%) translateY(-4px);
+  transition: opacity .18s ease, transform .18s ease;
+}
+.nav-dropdown.open .nav-dropdown-panel {
+  opacity: 1; pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
+}
+
+.nav-dropdown-item {
+  display: flex; align-items: center; gap: 8px;
+  width: 100%; padding: 8px 12px; border-radius: 6px;
+  background: none; border: none; color: var(--text2);
+  font-family: var(--font-body); font-size: 13px;
+  cursor: pointer; transition: all .15s; text-align: left;
+}
+.nav-dropdown-item:hover {
+  background: var(--hover); color: var(--text);
+}
+.nav-dropdown-item.active {
+  background: var(--gold-10); color: var(--gold);
+}
+.nav-dropdown-item-icon {
+  font-size: 15px; width: 22px; text-align: center; flex-shrink: 0;
+}
+.nav-dropdown-item-label { flex: 1; }
+.nav-dropdown-item-badge {
+  font-size: 10px; color: var(--text2); opacity: 0.6;
+}
+
+/* ───────────────────────────────────────────────────
+   B2: LANGUAGE DROPDOWN (compact)
+   ─────────────────────────────────────────────────── */
+.lang-dropdown {
+  position: relative;
+  display: inline-flex;
+}
+.lang-dropdown-trigger {
+  display: flex; align-items: center; gap: 4px;
+  background: var(--bg3); border: 1px solid var(--border);
+  color: var(--cream2); padding: 5px 10px; border-radius: 6px;
+  cursor: pointer; font-family: var(--font-body);
+  font-size: 12px; transition: all .2s;
+  white-space: nowrap;
+}
+.lang-dropdown-trigger:hover { border-color: var(--gold); color: var(--gold); }
+
+.lang-dropdown-panel {
+  position: absolute; top: calc(100% + 4px); right: 0;
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 8px; padding: 4px; min-width: 100px;
+  box-shadow: 0 6px 24px var(--shadow);
+  z-index: 2000;
+  opacity: 0; pointer-events: none;
+  transform: translateY(-4px);
+  transition: opacity .15s ease, transform .15s ease;
+}
+.lang-dropdown.open .lang-dropdown-panel {
+  opacity: 1; pointer-events: auto;
+  transform: translateY(0);
+}
+.lang-dropdown-option {
+  display: flex; align-items: center; gap: 6px;
+  width: 100%; padding: 6px 10px; border-radius: 5px;
+  background: none; border: none; color: var(--text2);
+  font-family: var(--font-body); font-size: 12px;
+  cursor: pointer; transition: all .12s; text-align: left;
+}
+.lang-dropdown-option:hover { background: var(--hover); color: var(--text); }
+.lang-dropdown-option.active { color: var(--gold); font-weight: 600; }
+
+/* ───────────────────────────────────────────────────
+   B1 contd: HEADER UTILITIES (right cluster)
+   ─────────────────────────────────────────────────── */
+.header-utils {
+  display: flex; align-items: center; gap: 6px;
+}
+
+/* Compact icon buttons for quiz, glossary etc. */
+.header-icon-btn {
+  background: none; border: 1px solid transparent;
+  color: var(--cream2); padding: 4px 6px; border-radius: 6px;
+  cursor: pointer; font-size: 14px; transition: all .2s;
+  display: flex; align-items: center; justify-content: center;
+  min-width: 30px; min-height: 30px;
+}
+.header-icon-btn:hover {
+  border-color: var(--gold); color: var(--gold);
+  background: var(--gold-10);
+}
+.header-icon-btn[title]::after { content: none; }
+
+/* ───────────────────────────────────────────────────
+   B3: THEME-AWARE MAP — tile transition overlay
+   ─────────────────────────────────────────────────── */
+.leaflet-tile-pane {
+  transition: filter 0.4s ease;
+}
+/* Leaflet popup light theme */
+[data-theme="light"] .leaflet-popup-content-wrapper {
+  background: var(--card) !important;
+  color: var(--text) !important;
+  border: 1px solid var(--border);
+  box-shadow: 0 4px 20px var(--shadow) !important;
+}
+[data-theme="light"] .leaflet-popup-tip {
+  background: var(--card) !important;
+  border: 1px solid var(--border);
+}
+[data-theme="light"] .p-title { color: var(--gold); }
+[data-theme="light"] .p-k { color: var(--text2); }
+[data-theme="light"] .p-v { color: var(--text); }
+[data-theme="light"] .p-desc { color: var(--text2); }
+[data-theme="light"] .p-narr {
+  background: linear-gradient(135deg, rgba(var(--bg3-rgb), 0.4), rgba(var(--bg4-rgb), 0.25));
+  color: var(--text);
+}
+[data-theme="light"] .p-key { background: rgba(var(--gold-rgb), 0.06); color: var(--text); }
+[data-theme="light"] .p-ctx { color: var(--text2); }
+[data-theme="light"] .p-ctx b { color: var(--text); }
+[data-theme="light"] .p-ruler-row { border-bottom-color: rgba(var(--border-rgb), 0.2); }
+[data-theme="light"] .p-ruler-row:hover { background: rgba(var(--gold-rgb), 0.04); }
+[data-theme="light"] .p-ruler-name { color: var(--text); }
+[data-theme="light"] .p-ruler-reign { color: var(--text2); }
+[data-theme="light"] .p-vis {
+  background: linear-gradient(135deg, rgba(var(--info-rgb), 0.06), rgba(var(--info-rgb), 0.03));
+  color: var(--info);
+}
+
+/* ───────────────────────────────────────────────────
+   B4: LIGHT THEME — D3 Force Graph
+   ─────────────────────────────────────────────────── */
+[data-theme="light"] .dia-network-canvas {
+  background: var(--bg) !important;
+}
+[data-theme="light"] .dia-network-tooltip {
+  background: var(--card) !important;
+  color: var(--text) !important;
+  border-color: var(--border) !important;
+  box-shadow: 0 4px 16px var(--shadow) !important;
+}
+[data-theme="light"] .dia-network-controls {
+  background: var(--card);
+  border-color: var(--border);
+}
+[data-theme="light"] .dia-network-legend {
+  background: rgba(var(--card-rgb), 0.9);
+  color: var(--text2);
+}
+[data-theme="light"] .dia-legend-item { color: var(--text2); }
+[data-theme="light"] .dia-network-empty { color: var(--text2); }
+
+/* Scholar network (ScholarNetwork uses same patterns) */
+[data-theme="light"] .scholar-network canvas {
+  background: var(--bg) !important;
+}
+
+/* ───────────────────────────────────────────────────
+   B4: LIGHT THEME — Admin Panel
+   ─────────────────────────────────────────────────── */
+[data-theme="light"] .admin-panel {
+  background: var(--bg);
+  color: var(--text);
+}
+[data-theme="light"] .admin-sidebar {
+  background: var(--bg2);
+  border-color: var(--border);
+}
+[data-theme="light"] .admin-sidebar-item {
+  color: var(--text2);
+}
+[data-theme="light"] .admin-sidebar-item:hover,
+[data-theme="light"] .admin-sidebar-item.active {
+  background: var(--gold-10);
+  color: var(--gold);
+}
+[data-theme="light"] .admin-header {
+  background: var(--bg2);
+  border-color: var(--border);
+  color: var(--text);
+}
+[data-theme="light"] .admin-card {
+  background: var(--card);
+  border-color: var(--border);
+  color: var(--text);
+}
+[data-theme="light"] .admin-input,
+[data-theme="light"] .admin-select,
+[data-theme="light"] .admin-textarea {
+  background: var(--bg2);
+  border-color: var(--border);
+  color: var(--text);
+}
+[data-theme="light"] .admin-table th {
+  background: var(--bg3);
+  color: var(--text2);
+}
+[data-theme="light"] .admin-table td {
+  border-color: var(--border);
+  color: var(--text);
+}
+
+/* ───────────────────────────────────────────────────
+   B4: LIGHT THEME — Map Controls & Filter Panel
+   ─────────────────────────────────────────────────── */
+[data-theme="light"] .map-panel {
+  background: var(--bg2);
+  border-color: var(--border);
+}
+[data-theme="light"] .ps-h { color: var(--gold); border-color: var(--border); }
+
+/* Range sliders */
+[data-theme="light"] input[type="range"] {
+  accent-color: rgb(var(--gold-rgb));
+}
+[data-theme="light"] input[type="range"]::-webkit-slider-runnable-track {
+  background: var(--bg3);
+}
+[data-theme="light"] input[type="range"]::-webkit-slider-thumb {
+  background: var(--gold);
+}
+
+/* Checkboxes */
+[data-theme="light"] input[type="checkbox"] {
+  accent-color: rgb(var(--gold-rgb));
+}
+
+/* Select elements */
+[data-theme="light"] select {
+  background: var(--card);
+  border-color: var(--border);
+  color: var(--text);
+}
+
+/* ───────────────────────────────────────────────────
+   B4: LIGHT THEME — Dashboard
+   ─────────────────────────────────────────────────── */
+[data-theme="light"] .dash-card {
+  background: var(--card);
+  border-color: var(--border);
+  color: var(--text);
+}
+[data-theme="light"] .dash-h { color: var(--gold); }
+[data-theme="light"] .dash-stat-value { color: var(--text); }
+[data-theme="light"] .dash-stat-label { color: var(--text2); }
+
+/* ───────────────────────────────────────────────────
+   B4: LIGHT THEME — Footer
+   ─────────────────────────────────────────────────── */
+[data-theme="light"] .footer {
+  background: var(--bg2);
+  border-color: var(--border);
+  color: var(--text2);
+}
+[data-theme="light"] .footer a { color: var(--gold); }
+
+/* ───────────────────────────────────────────────────
+   B4: LIGHT THEME — Alam, Yaqut, DIA, EI-1 panels
+   ─────────────────────────────────────────────────── */
+[data-theme="light"] .alam-sidebar,
+[data-theme="light"] .yaqut-sidebar,
+[data-theme="light"] .dia-sidebar,
+[data-theme="light"] .ei1-sidebar {
+  background: var(--bg2);
+  border-color: var(--border);
+}
+[data-theme="light"] .alam-id-card,
+[data-theme="light"] .yaqut-id-card,
+[data-theme="light"] .dia-id-card,
+[data-theme="light"] .ei1-id-card {
+  background: var(--card);
+  border-color: var(--border);
+}
+
+/* ───────────────────────────────────────────────────
+   B4: LIGHT THEME — Battle View
+   ─────────────────────────────────────────────────── */
+[data-theme="light"] .battle-card {
+  background: var(--card);
+  border-color: var(--border);
+  color: var(--text);
+}
+[data-theme="light"] .battle-sidebar {
+  background: var(--bg2);
+  border-color: var(--border);
+}
+
+/* ───────────────────────────────────────────────────
+   B4: LIGHT THEME — Timeline
+   ─────────────────────────────────────────────────── */
+[data-theme="light"] .tl-era {
+  border-color: var(--border);
+}
+[data-theme="light"] .tl-era-title { color: var(--gold); }
+[data-theme="light"] .tl-event { color: var(--text); }
+[data-theme="light"] .tl-event-date { color: var(--text2); }
+
+/* ───────────────────────────────────────────────────
+   B4: LIGHT THEME — Causal links
+   ─────────────────────────────────────────────────── */
+[data-theme="light"] .causal-card {
+  background: var(--card);
+  border-color: var(--border);
+  color: var(--text);
+}
+
+/* ───────────────────────────────────────────────────
+   B4: LIGHT THEME — Search bar
+   ─────────────────────────────────────────────────── */
+[data-theme="light"] .search-input {
+  background: var(--card);
+  border-color: var(--border);
+  color: var(--text);
+}
+[data-theme="light"] .search-dropdown {
+  background: var(--card);
+  border-color: var(--border);
+  box-shadow: 0 6px 24px var(--shadow);
+}
+[data-theme="light"] .search-result-name { color: var(--text); }
+[data-theme="light"] .search-result-type { color: var(--text2); }
+[data-theme="light"] .search-result:hover { background: var(--hover); }
+
+/* ───────────────────────────────────────────────────
+   B4: LIGHT THEME — Quiz, Modal, Onboarding
+   ─────────────────────────────────────────────────── */
+[data-theme="light"] .quiz-panel {
+  background: var(--bg);
+  color: var(--text);
+}
+[data-theme="light"] .modal-overlay { background: rgba(var(--bg-rgb), 0.5); }
+[data-theme="light"] .modal-content,
+[data-theme="light"] .about-content,
+[data-theme="light"] .glossary-content {
+  background: var(--card);
+  border-color: var(--border);
+  color: var(--text);
+}
+
+/* ───────────────────────────────────────────────────
+   B4: LIGHT THEME — Stats panels (Alam/DIA/EI-1)
+   ─────────────────────────────────────────────────── */
+[data-theme="light"] .alam-stat-card,
+[data-theme="light"] .dia-stat-card,
+[data-theme="light"] .ei1-stat-card {
+  background: var(--card);
+  border-color: var(--border);
+  color: var(--text);
+}
+[data-theme="light"] .alam-stat-value,
+[data-theme="light"] .dia-stat-value,
+[data-theme="light"] .ei1-stat-value {
+  color: var(--gold);
+}
+
+/* ───────────────────────────────────────────────────
+   B4: LIGHT THEME — BottomSheet
+   ─────────────────────────────────────────────────── */
+[data-theme="light"] .bottom-sheet-overlay { background: rgba(var(--bg-rgb), 0.4); }
+[data-theme="light"] .bottom-sheet-content {
+  background: var(--card);
+  color: var(--text);
+}
+[data-theme="light"] .btb-more-item { color: var(--text2); }
+[data-theme="light"] .btb-more-item:hover,
+[data-theme="light"] .btb-more-item.active { color: var(--gold); background: var(--gold-10); }
+
+/* ───────────────────────────────────────────────────
+   MOBILE: Hide new grouped nav, restore old tabs
+   ─────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  /* On tablet/phone, dropdown headers aren't needed — old .tabs still in the hamburger drawer */
+  .header-nav-grouped { display: none; }
+  .header-utils { display: none; }
+  .lang-dropdown { display: none; }
+  
+  /* Restore old elements that are inside header-right.mobile-open */
+  .header-right .tabs { display: flex !important; }
+  .header-right .lang-switcher { display: flex !important; }
+}
+
+/* Phone: bottom bar replaces everything */
+@media (max-width: 600px) {
+  .header-nav-grouped { display: none; }
+  .header-utils { display: none; }
+  .lang-dropdown { display: none; }
+}
+
+/* ───────────────────────────────────────────────────
+   Desktop: hide old .tabs (replaced by grouped nav)
+   ─────────────────────────────────────────────────── */
+@media (min-width: 769px) {
+  .header-right > .tabs { display: none; }
+  .header-right > .quiz-trigger { display: none; }
+  .header-right > .glossary-btn { display: none; }
+  .header-right > .progress-btn { display: none; }
+  .header-right > .export-btn { display: none; }
+  .header-right > .about-btn { display: none; }
+  .header-right > .admin-trigger { display: none; }
+  .header-right > .lang-switcher { display: none; }
+  .header-right > .theme-toggle { display: none; }
+}
+
+/* Leaflet zoom control light theme */
+[data-theme="light"] .leaflet-control-zoom a {
+  background: var(--card) !important;
+  color: var(--text) !important;
+  border-color: var(--border) !important;
+}
+[data-theme="light"] .leaflet-control-zoom a:hover {
+  background: var(--hover) !important;
+}
+
+/* Leaflet attribution light theme */
+[data-theme="light"] .leaflet-control-attribution {
+  background: rgba(var(--card-rgb), 0.8) !important;
+  color: var(--text2) !important;
+}

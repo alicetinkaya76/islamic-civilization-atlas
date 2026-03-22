@@ -2,6 +2,30 @@
 
 All notable changes to the Islamic Dynasties Atlas are documented in this file.
 
+## [6.5.1.0] - 2026-03-22 — Session 23
+
+### Added
+- **Header Redesign (B1)**: Replaced overcrowded 10-tab flat header with grouped dropdown navigation. Two dropdown menus: "📚 Sources" (al-Aʿlām, DİA, EI-1, Mu'cem) and "📊 Analysis" (Timeline, Causality, Scholars, Battles). Map & Dashboard remain as direct tabs. Hover-to-open with click fallback. Preloads data on hover.
+- **Language Dropdown (B2)**: Replaced 3 inline language buttons (TR/EN/AR) with compact dropdown showing current flag + code. Saves horizontal space in header.
+- **NavDropdown & LangDropdown**: Reusable dropdown components with outside-click-to-close, hover timing, and keyboard-accessible `role="menu"`.
+- **Header Utilities Cluster**: Quiz, Glossary, Progress, Export, About, ThemeToggle, Language, and Admin compacted into icon-button row (`header-utils`).
+- **Theme-aware Leaflet tiles (B3)**: CartoDB `dark_all` ↔ `light_all` tile layer swap on theme change via `themechange` CustomEvent. `tileUrlLight` added to `MAP_CONFIG`.
+- **Light theme: Leaflet popups (B4)**: Full popup restyling for light mode (`.p-title`, `.p-k`, `.p-v`, `.p-narr`, `.p-ruler-row`, `.p-vis` etc.)
+- **Light theme: D3 Force Graph (B4)**: DiaNetwork canvas render now reads `data-theme` and adjusts link colors, arrow fills, node strokes, and label colors for light mode. Listens for `themechange` to re-render.
+- **Light theme: Admin panel (B4)**: `.admin-panel`, `.admin-sidebar`, `.admin-card`, `.admin-input`, `.admin-table` all styled for light theme.
+- **Light theme: Map controls (B4)**: `.map-panel`, range sliders, checkboxes, selects, Leaflet zoom controls, attribution.
+- **Light theme: All panels (B4)**: Dashboard, Footer, Alam/Yaqut/DIA/EI-1 sidebars+cards, Battle, Timeline, Causal, Search bar, Quiz, Modals, BottomSheet, Stats panels.
+- **session23.css**: 300+ lines of light theme overrides and header redesign styles.
+
+### Changed
+- `ThemeToggle.jsx`: Now dispatches `CustomEvent('themechange')` with `{ detail: { theme } }`.
+- `layers.js`: `MAP_CONFIG` now includes `tileUrlLight` for CartoDB light tiles.
+- `MapView.jsx`: Initializes tile layer based on current theme; swaps on `themechange` via `tileLayer.setUrl()`.
+- `DiaNetwork.jsx`: Canvas render checks `data-theme` attribute for all hardcoded colors.
+- `App.jsx`: Desktop header refactored with `NavDropdown` + `LangDropdown` + `header-utils`. Old flat tabs preserved in hamburger drawer for mobile/tablet.
+- `main.jsx`: Added `session23.css` import.
+- `package.json`: Version → 6.5.1.0.
+
 ## [6.5.0] - 2026-03-21
 
 ### Added

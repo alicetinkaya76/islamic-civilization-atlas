@@ -86,9 +86,10 @@ export default function DiaNetwork({ lang, td, data, relations, lookup, filtered
       const hovered = hoveredRef.current;
       const selected = selectedRef.current;
       const cby = colorByRef.current;
+      const isLight = document.documentElement.getAttribute('data-theme') === 'light';
 
       const getColor = (d) => {
-        if (d.id === selected) return '#fff';
+        if (d.id === selected) return isLight ? '#1a1a1a' : '#fff';
         if (cby === 'madhab') return MADHAB_COLORS[d.madhab] || '#546e7a';
         if (cby === 'century') return d.century ? d3.interpolateViridis((d.century - 7) / 14) : '#546e7a';
         return FIELD_COLORS[d.field] || '#c9a84c';
@@ -105,9 +106,13 @@ export default function DiaNetwork({ lang, td, data, relations, lookup, filtered
         ctx.moveTo(l.source.x, l.source.y);
         ctx.lineTo(l.target.x, l.target.y);
         if (l.type === 'co') {
-          ctx.setLineDash([3, 3]); ctx.strokeStyle = 'rgba(150,150,150,0.15)'; ctx.lineWidth = 0.5;
+          ctx.setLineDash([3, 3]);
+          ctx.strokeStyle = isLight ? 'rgba(100,90,72,0.2)' : 'rgba(150,150,150,0.15)';
+          ctx.lineWidth = 0.5;
         } else {
-          ctx.setLineDash([]); ctx.strokeStyle = 'rgba(180,170,140,0.25)'; ctx.lineWidth = 0.8;
+          ctx.setLineDash([]);
+          ctx.strokeStyle = isLight ? 'rgba(80,72,58,0.3)' : 'rgba(180,170,140,0.25)';
+          ctx.lineWidth = 0.8;
         }
         ctx.stroke(); ctx.setLineDash([]);
         if (l.type === 'ts') {
@@ -120,7 +125,9 @@ export default function DiaNetwork({ lang, td, data, relations, lookup, filtered
             ctx.beginPath(); ctx.moveTo(ax, ay);
             ctx.lineTo(ax - al * Math.cos(angle - 0.4), ay - al * Math.sin(angle - 0.4));
             ctx.lineTo(ax - al * Math.cos(angle + 0.4), ay - al * Math.sin(angle + 0.4));
-            ctx.closePath(); ctx.fillStyle = 'rgba(180,170,140,0.4)'; ctx.fill();
+            ctx.closePath();
+            ctx.fillStyle = isLight ? 'rgba(80,72,58,0.45)' : 'rgba(180,170,140,0.4)';
+            ctx.fill();
           }
         }
       });
@@ -131,10 +138,13 @@ export default function DiaNetwork({ lang, td, data, relations, lookup, filtered
         ctx.beginPath(); ctx.arc(d.x, d.y, r, 0, Math.PI * 2);
         ctx.fillStyle = getColor(d); ctx.fill();
         if (d.id === selected || d.id === hovered) {
-          ctx.strokeStyle = '#fff'; ctx.lineWidth = 2; ctx.stroke();
+          ctx.strokeStyle = isLight ? '#1a1a1a' : '#fff';
+          ctx.lineWidth = 2; ctx.stroke();
         }
         if (d.importance > 70 || d.id === selected || d.id === hovered) {
-          ctx.font = '9px sans-serif'; ctx.fillStyle = '#e0d8c8'; ctx.textAlign = 'center';
+          ctx.font = '9px sans-serif';
+          ctx.fillStyle = isLight ? '#32281a' : '#e0d8c8';
+          ctx.textAlign = 'center';
           ctx.fillText(d.title, d.x, d.y - r - 3);
         }
       });
@@ -219,8 +229,13 @@ export default function DiaNetwork({ lang, td, data, relations, lookup, filtered
     canvas.addEventListener('mouseup', onUp);
     canvas.addEventListener('click', onClick);
 
+    /* Listen for theme changes → re-render */
+    const onTheme = () => renderRef.current?.();
+    window.addEventListener('themechange', onTheme);
+
     return () => {
       sim.stop(); renderRef.current = null;
+      window.removeEventListener('themechange', onTheme);
       canvas.removeEventListener('mousedown', onDown);
       canvas.removeEventListener('mousemove', onMove);
       canvas.removeEventListener('mouseup', onUp);

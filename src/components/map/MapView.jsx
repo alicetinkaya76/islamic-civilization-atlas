@@ -68,11 +68,24 @@ export default function MapView({ lang, t, sidebarOpen, mapRef, onPopupOpen, onT
       zoomControl: false, attributionControl: false
     });
     L.control.zoom({ position: 'topright' }).addTo(map);
-    L.tileLayer(MAP_CONFIG.tileUrl, { maxZoom: 19, attribution: '&copy; CartoDB' }).addTo(map);
+
+    /* ── Theme-aware tile layer (B3) ── */
+    const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
+    const tileUrl = currentTheme === 'light' ? MAP_CONFIG.tileUrlLight : MAP_CONFIG.tileUrl;
+    const tileLayer = L.tileLayer(tileUrl, { maxZoom: 19, attribution: '&copy; CartoDB' }).addTo(map);
+
+    /* Listen for theme changes and swap tile layer */
+    const onThemeChange = (e) => {
+      const newTheme = e.detail?.theme || 'dark';
+      const newUrl = newTheme === 'light' ? MAP_CONFIG.tileUrlLight : MAP_CONFIG.tileUrl;
+      tileLayer.setUrl(newUrl);
+    };
+    window.addEventListener('themechange', onThemeChange);
+
     mapObj.current = map;
     if (mapRef) mapRef.current = map;
     LAYER_KEYS.forEach(k => { lgRef.current[k] = L.layerGroup().addTo(map); });
-    return () => { map.remove(); mapObj.current = null; };
+    return () => { map.remove(); mapObj.current = null; window.removeEventListener('themechange', onThemeChange); };
   }, []);
 
   /* ── Play ── */

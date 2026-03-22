@@ -18,6 +18,7 @@ import './styles/session13.css';
 import './styles/session14.css';
 import './styles/ei1.css';
 import './styles/session22.css';
+import './styles/session23.css';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
