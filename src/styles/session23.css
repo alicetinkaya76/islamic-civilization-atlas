@@ -445,6 +445,7 @@
    ─────────────────────────────────────────────────── */
 @media (min-width: 769px) {
   .header-right > .tabs { display: none; }
+  .header-right > .header-search-desktop { display: none; }
   .header-right > .quiz-trigger { display: none; }
   .header-right > .glossary-btn { display: none; }
   .header-right > .progress-btn { display: none; }
@@ -453,6 +454,7 @@
   .header-right > .admin-trigger { display: none; }
   .header-right > .lang-switcher { display: none; }
   .header-right > .theme-toggle { display: none; }
+  .header-search-mobile { display: none; }
 }
 
 /* Leaflet zoom control light theme */
