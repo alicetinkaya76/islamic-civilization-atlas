@@ -41,29 +41,7 @@ export default function AlamIdCard({ lang, ta, bio, detail, onClose, allData, on
   const [relExpanded, setRelExpanded] = useState(true);
   const [placesExpanded, setPlacesExpanded] = useState(false);
 
-  if (!bio) {
-    return (
-      <div className="alam-idcard-empty">
-        <div className="alam-idcard-placeholder">
-          <span className="alam-idcard-icon">📖</span>
-          <p>{ta.noSelection}</p>
-        </div>
-      </div>
-    );
-  }
-  const heading1 = hn(bio, lang);
-  const heading2 = lang === "tr" ? bio.he : bio.ht;
-  const fullName = detail ? (lang === "tr" ? detail.nt : detail.ne) : (hn(bio, lang));
-  const desc = detail ? (dn(detail, lang)) : (dn(bio, lang));
-  const prof = lang === "tr" ? bio.pt : bio.pe;
-  const nisbe = detail ? (lang === "tr" ? detail.n2 : detail.ne2) : '';
-  const birthPlace = detail ? detail.bp : bio.bp;
-  const deathPlace = detail ? detail.dp : bio.dp;
-  const kunya = detail ? detail.ku : bio.ku;
-  const works = detail ? detail.wk : null;
-  const diaUrl = detail ? detail.dia : (bio.ds ? `https://islamansiklopedisi.org.tr/${bio.ds}` : null);
-  const multiCoords = detail ? detail.mc : null;
-
+  /* ═══ ALL hooks MUST be above conditional return ═══ */
   /* İlişkiler: bu kişinin bağlı olduğu tüm kenarları bul */
   const relations = useMemo(() => {
     if (!bio || !allData) return null;
@@ -117,6 +95,29 @@ export default function AlamIdCard({ lang, ta, bio, detail, onClose, allData, on
       total: teachers.length + students.length + influences.length + peers.length + others.length,
     };
   }, [bio, allData, lang === "tr"]);
+
+  if (!bio) {
+    return (
+      <div className="alam-idcard-empty">
+        <div className="alam-idcard-placeholder">
+          <span className="alam-idcard-icon">📖</span>
+          <p>{ta.noSelection}</p>
+        </div>
+      </div>
+    );
+  }
+  const heading1 = hn(bio, lang);
+  const heading2 = lang === "tr" ? bio.he : bio.ht;
+  const fullName = detail ? (lang === "tr" ? detail.nt : detail.ne) : (hn(bio, lang));
+  const desc = detail ? (dn(detail, lang)) : (dn(bio, lang));
+  const prof = lang === "tr" ? bio.pt : bio.pe;
+  const nisbe = detail ? (lang === "tr" ? detail.n2 : detail.ne2) : '';
+  const birthPlace = detail ? detail.bp : bio.bp;
+  const deathPlace = detail ? detail.dp : bio.dp;
+  const kunya = detail ? detail.ku : bio.ku;
+  const works = detail ? detail.wk : null;
+  const diaUrl = detail ? detail.dia : (bio.ds ? `https://islamansiklopedisi.org.tr/${bio.ds}` : null);
+  const multiCoords = detail ? detail.mc : null;
 
   const RelList = ({ title, items, icon }) => {
     if (!items || items.length === 0) return null;
