@@ -5,10 +5,11 @@ import useAsyncData from '../hooks/useAsyncData.jsx';
 import LazyLoader from './shared/LazyLoader';
 
 /* ══════════════════════════════════════════════════════════
-   QuizMode — 10 question types, 3 difficulties, bilingual
+   QuizMode — Enhanced: Timer, Streak, Categories, Scores
    ══════════════════════════════════════════════════════════ */
 
 const TOTAL_Q = 10;
+const TIMER_SEC = 15;
 
 /* ── Difficulty filters ── */
 const DIFF_DYNASTY = {
@@ -33,7 +34,6 @@ const centuryLabel = (yr, lang) => {
 };
 const name = (item, lang) => item[lang] || item.tr || item.en || '?';
 
-/* ── Generate wrong century options ── */
 function centuryDistractors(correctYr, count = 3) {
   const c = centuryOf(correctYr);
   const pool = [];
@@ -44,10 +44,10 @@ function centuryDistractors(correctYr, count = 3) {
 }
 
 /* ══════════════════════════════════════════════════════════
-   Question generators — each returns { question, options, correctIndex, flyTo }
+   Question generators — category tagged
    ══════════════════════════════════════════════════════════ */
 
-/* Type 1: "Bu hanedan hangi yüzyılda kuruldu?" */
+/* Type 1: dynasty century — cat: dynasty */
 function genDynastyCentury(lang, diff) {
   const pool = DB.dynasties.filter(DIFF_DYNASTY[diff]).filter(d => d.start);
   if (pool.length < 4) return null;
@@ -59,14 +59,13 @@ function genDynastyCentury(lang, diff) {
   const options = shuffle([correct, ...wrongs]);
   return {
     question: { tr: `"${name(d, lang)}" hangi yüzyılda kuruldu?`, en: `In which century was "${name(d, lang)}" founded?`, ar: `` }[lang],
-    options,
-    correctIndex: options.indexOf(correct),
+    options, correctIndex: options.indexOf(correct),
     flyTo: d.lat && d.lon ? { lat: d.lat, lon: d.lon, zoom: 6 } : null,
-    emoji: '🏛',
+    emoji: '🏛', cat: 'dynasty',
   };
 }
 
-/* Type 2: "Bu savaşın galibi kim?" — using battle result text */
+/* Type 2: battle outcome — cat: battle */
 function genBattleWinner(lang, diff) {
   const pool = DB.battles.filter(DIFF_BATTLE[diff]).filter(b => b.res);
   if (pool.length < 4) return null;
@@ -77,14 +76,13 @@ function genBattleWinner(lang, diff) {
   const options = shuffle([correctText, ...wrongBattles.map(w => w.res)]);
   return {
     question: { tr: `"${name(b, lang)}" (${b.yr}) — sonucu nedir?`, en: `"${name(b, lang)}" (${b.yr}) — what was the outcome?`, ar: `` }[lang],
-    options,
-    correctIndex: options.indexOf(correctText),
+    options, correctIndex: options.indexOf(correctText),
     flyTo: b.lat && b.lon ? { lat: b.lat, lon: b.lon, zoom: 7 } : null,
-    emoji: '⚔️',
+    emoji: '⚔️', cat: 'battle',
   };
 }
 
-/* Type 3: "Bu âlim hangi şehirde himaye gördü?" — via patron dynasty → city */
+/* Type 3: scholar city — cat: scholar */
 function genScholarCity(lang, diff) {
   const dynMap = {};
   DB.dynasties.forEach(d => { dynMap[d.id] = d; });
@@ -104,33 +102,31 @@ function genScholarCity(lang, diff) {
   const options = shuffle([correctCity, ...otherCities]);
   return {
     question: { tr: `"${name(s, lang)}" hangi şehirde himaye gördü?`, en: `In which city was "${name(s, lang)}" patronized?`, ar: `` }[lang],
-    options,
-    correctIndex: options.indexOf(correctCity),
+    options, correctIndex: options.indexOf(correctCity),
     flyTo: patronDyn.lat && patronDyn.lon ? { lat: patronDyn.lat, lon: patronDyn.lon, zoom: 7 } : null,
-    emoji: '📚',
+    emoji: '📚', cat: 'scholar',
   };
 }
 
-/* Type 4: "Hangisi daha önce kuruldu?" */
+/* Type 4: which earlier — cat: dynasty */
 function genWhichEarlier(lang, diff) {
   const pool = DB.dynasties.filter(DIFF_DYNASTY[diff]).filter(d => d.start);
   if (pool.length < 4) return null;
   const two = pick(pool, 2);
-  if (two[0].start === two[1].start) return null; // avoid ties
+  if (two[0].start === two[1].start) return null;
   const earlier = two[0].start < two[1].start ? two[0] : two[1];
   const nameA = name(two[0], lang);
   const nameB = name(two[1], lang);
   const options = [nameA, nameB];
   return {
     question: { tr: `Hangisi daha önce kuruldu?`, en: `Which was founded earlier?`, ar: `` }[lang],
-    options,
-    correctIndex: options.indexOf(name(earlier, lang)),
+    options, correctIndex: options.indexOf(name(earlier, lang)),
     flyTo: earlier.lat && earlier.lon ? { lat: earlier.lat, lon: earlier.lon, zoom: 5 } : null,
-    emoji: '⏳',
+    emoji: '⏳', cat: 'dynasty',
   };
 }
 
-/* Type 5: "Bu eser nerede?" — monuments → city */
+/* Type 5: monument city — cat: geography */
 function genMonumentCity(lang, diff) {
   const monuments = DB.monuments.filter(m => m.city_tr || m.city_en);
   if (monuments.length < 4) return null;
@@ -144,14 +140,13 @@ function genMonumentCity(lang, diff) {
   const options = shuffle([correctCity, ...wrongCities]);
   return {
     question: { tr: `"${name(m, lang)}" hangi şehirdedir?`, en: `In which city is "${name(m, lang)}" located?`, ar: `` }[lang],
-    options,
-    correctIndex: options.indexOf(correctCity),
+    options, correctIndex: options.indexOf(correctCity),
     flyTo: m.lat && m.lon ? { lat: m.lat, lon: m.lon, zoom: 8 } : null,
-    emoji: '🕌',
+    emoji: '🕌', cat: 'geography',
   };
 }
 
-/* Type 6: "Bu olay hangi yüzyılda oldu?" */
+/* Type 6: event century — cat: battle */
 function genEventCentury(lang, diff) {
   const pool = DB.events.filter(e => e.yr);
   if (pool.length < 4) return null;
@@ -163,14 +158,13 @@ function genEventCentury(lang, diff) {
   const options = shuffle([correct, ...wrongs]);
   return {
     question: { tr: `"${name(e, lang)}" hangi yüzyılda gerçekleşti?`, en: `In which century did "${name(e, lang)}" occur?`, ar: `` }[lang],
-    options,
-    correctIndex: options.indexOf(correct),
+    options, correctIndex: options.indexOf(correct),
     flyTo: e.lat && e.lon ? { lat: e.lat, lon: e.lon, zoom: 7 } : null,
-    emoji: '📜',
+    emoji: '📜', cat: 'battle',
   };
 }
 
-/* Type 7: el-A'lâm — "Bu âlimin mesleği nedir?" */
+/* Type 7: alam profession — cat: scholar */
 function genAlamProfession(lang, diff, alamData) {
   if (!alamData) return null;
   const pool = alamData.filter(b => b.pt && b.pe && b.md);
@@ -183,14 +177,13 @@ function genAlamProfession(lang, diff, alamData) {
   const options = shuffle([correctProf, ...others]);
   return {
     question: { tr: `"${b.ht}" (ö. ${b.md}) — mesleği nedir?`, en: `"${b.he}" (d. ${b.md}) — what was their profession?`, ar: `` }[lang],
-    options,
-    correctIndex: options.indexOf(correctProf),
+    options, correctIndex: options.indexOf(correctProf),
     flyTo: b.lat && b.lon ? { lat: b.lat, lon: b.lon, zoom: 6 } : null,
-    emoji: '📖',
+    emoji: '📖', cat: 'scholar',
   };
 }
 
-/* Type 8: el-A'lâm — "Bu âlim hangi yüzyılda yaşadı?" */
+/* Type 8: alam century — cat: scholar */
 function genAlamCentury(lang, diff, alamData) {
   if (!alamData) return null;
   const pool = alamData.filter(b => b.md && b.c);
@@ -203,14 +196,13 @@ function genAlamCentury(lang, diff, alamData) {
   const options = shuffle([correct, ...wrongs]);
   return {
     question: { tr: `"${b.ht}" hangi yüzyılda vefat etti?`, en: `In which century did "${b.he}" die?`, ar: `` }[lang],
-    options,
-    correctIndex: options.indexOf(correct),
+    options, correctIndex: options.indexOf(correct),
     flyTo: b.lat && b.lon ? { lat: b.lat, lon: b.lon, zoom: 6 } : null,
-    emoji: '📖',
+    emoji: '📖', cat: 'scholar',
   };
 }
 
-/* Type 9: Yâkût — "Bu yer hangi ülkede?" */
+/* Type 9: yaqut country — cat: geography */
 function genYaqutCountry(lang, diff, _alam, yaqutData) {
   if (!yaqutData) return null;
   const pool = yaqutData.filter(e => e.ct && e.ht && e.he);
@@ -223,14 +215,13 @@ function genYaqutCountry(lang, diff, _alam, yaqutData) {
   const options = shuffle([correctCountry, ...wrongs]);
   return {
     question: { tr: `Yâkût'a göre "${e.ht}" (${e.gtt || e.gt}) hangi ülkededir?`, en: `According to Yāqūt, in which country is "${e.he}" (${e.gte || e.gt})?`, ar: `` }[lang],
-    options,
-    correctIndex: options.indexOf(correctCountry),
+    options, correctIndex: options.indexOf(correctCountry),
     flyTo: e.lat && e.lon ? { lat: e.lat, lon: e.lon, zoom: 7 } : null,
-    emoji: '🌍',
+    emoji: '🌍', cat: 'geography',
   };
 }
 
-/* Type 10: Yâkût — "Bu yer ne tür bir coğrafi birim?" */
+/* Type 10: yaqut geo type — cat: geography */
 function genYaqutGeoType(lang, diff, _alam, yaqutData) {
   const GEO_TR = { city: 'Şehir', village: 'Köy', mountain: 'Dağ', river: 'Nehir', fortress: 'Kale', region: 'Bölge', town: 'Kasaba', island: 'Ada', desert: 'Çöl', well: 'Kuyu' };
   const GEO_EN = { city: 'City', village: 'Village', mountain: 'Mountain', river: 'River', fortress: 'Fortress', region: 'Region', town: 'Town', island: 'Island', desert: 'Desert', well: 'Well' };
@@ -247,42 +238,41 @@ function genYaqutGeoType(lang, diff, _alam, yaqutData) {
   const options = shuffle([correctLabel, ...wrongs]);
   return {
     question: { tr: `Yâkût'un sözlüğünde "${e.ht}" ne tür bir coğrafi birimdir?`, en: `In Yāqūt's dictionary, what type of geographic entity is "${e.he}"?`, ar: `` }[lang],
-    options,
-    correctIndex: options.indexOf(correctLabel),
+    options, correctIndex: options.indexOf(correctLabel),
     flyTo: e.lat && e.lon ? { lat: e.lat, lon: e.lon, zoom: 7 } : null,
-    emoji: '🌍',
+    emoji: '🌍', cat: 'geography',
   };
 }
 
-const GENERATORS = [
-  genDynastyCentury,
-  genBattleWinner,
-  genScholarCity,
-  genWhichEarlier,
-  genMonumentCity,
-  genEventCentury,
-  genAlamProfession,
-  genAlamCentury,
-  genYaqutCountry,
-  genYaqutGeoType,
+/* Category → Generator mapping */
+const CAT_MAP = {
+  dynasty:   [genDynastyCentury, genWhichEarlier],
+  battle:    [genBattleWinner, genEventCentury],
+  scholar:   [genScholarCity, genAlamProfession, genAlamCentury],
+  geography: [genMonumentCity, genYaqutCountry, genYaqutGeoType],
+};
+const ALL_GENERATORS = [
+  genDynastyCentury, genBattleWinner, genScholarCity, genWhichEarlier,
+  genMonumentCity, genEventCentury, genAlamProfession, genAlamCentury,
+  genYaqutCountry, genYaqutGeoType,
 ];
 
-function generateQuiz(lang, diff, alamData, yaqutData) {
+function generateQuiz(lang, diff, alamData, yaqutData, category) {
+  const generators = category === 'mixed' ? ALL_GENERATORS : (CAT_MAP[category] || ALL_GENERATORS);
   const questions = [];
   const usedTypes = new Set();
   let attempts = 0;
 
-  while (questions.length < TOTAL_Q && attempts < 200) {
+  while (questions.length < TOTAL_Q && attempts < 300) {
     attempts++;
-    // First ensure at least one of each type, then random
     let genIdx;
-    if (usedTypes.size < GENERATORS.length && questions.length < GENERATORS.length) {
-      const unused = [...Array(GENERATORS.length).keys()].filter(i => !usedTypes.has(i));
+    if (usedTypes.size < generators.length && questions.length < generators.length) {
+      const unused = [...Array(generators.length).keys()].filter(i => !usedTypes.has(i));
       genIdx = unused[Math.floor(Math.random() * unused.length)];
     } else {
-      genIdx = Math.floor(Math.random() * GENERATORS.length);
+      genIdx = Math.floor(Math.random() * generators.length);
     }
-    const q = GENERATORS[genIdx](lang, diff, alamData, yaqutData);
+    const q = generators[genIdx](lang, diff, alamData, yaqutData);
     if (q) {
       questions.push(q);
       usedTypes.add(genIdx);
@@ -301,6 +291,19 @@ function getScoreTitle(score, lang) {
   return q.res0;
 }
 
+/* ── High scores (in-memory) ── */
+let highScores = [];
+try {
+  const stored = localStorage.getItem('atlas-quiz-scores');
+  if (stored) highScores = JSON.parse(stored);
+} catch {}
+
+function saveScore(score, diff, category) {
+  const entry = { score, diff, category, date: new Date().toISOString().slice(0, 10) };
+  highScores = [entry, ...highScores].slice(0, 10);
+  try { localStorage.setItem('atlas-quiz-scores', JSON.stringify(highScores)); } catch {}
+}
+
 /* ══════════════════════════════════════════════════════════
    React Component
    ══════════════════════════════════════════════════════════ */
@@ -308,12 +311,18 @@ function getScoreTitle(score, lang) {
 export default function QuizMode({ lang, onFlyTo, onClose }) {
   const [phase, setPhase] = useState('menu'); // menu | playing | result
   const [diff, setDiff] = useState('medium');
+  const [category, setCategory] = useState('mixed');
   const [questions, setQuestions] = useState([]);
   const [qIdx, setQIdx] = useState(0);
   const [selected, setSelected] = useState(null);
   const [score, setScore] = useState(0);
   const [answered, setAnswered] = useState(false);
   const [showConfetti, setShowConfetti] = useState(false);
+  const [streak, setStreak] = useState(0);
+  const [maxStreak, setMaxStreak] = useState(0);
+  const [timer, setTimer] = useState(TIMER_SEC);
+  const [timerActive, setTimerActive] = useState(false);
+  const [wrongAnswers, setWrongAnswers] = useState([]);
   const timerRef = useRef(null);
 
   // Lazy-load quiz data sources
@@ -322,42 +331,82 @@ export default function QuizMode({ lang, onFlyTo, onClose }) {
 
   const t = useMemo(() => T[lang].quiz, [lang]);
 
+  const CATEGORIES = useMemo(() => [
+    { id: 'mixed', icon: '🎲', label: { tr: 'Karışık', en: 'Mixed', ar: 'متنوع' }[lang] },
+    { id: 'dynasty', icon: '🏛', label: { tr: 'Hanedan', en: 'Dynasty', ar: 'السلالات' }[lang] },
+    { id: 'battle', icon: '⚔️', label: { tr: 'Savaş', en: 'Battles', ar: 'المعارك' }[lang] },
+    { id: 'scholar', icon: '📚', label: { tr: 'Âlim', en: 'Scholars', ar: 'العلماء' }[lang] },
+    { id: 'geography', icon: '🌍', label: { tr: 'Coğrafya', en: 'Geography', ar: 'الجغرافيا' }[lang] },
+  ], [lang]);
+
+  // Timer countdown
+  useEffect(() => {
+    if (!timerActive || answered) return;
+    if (timer <= 0) {
+      // Time's up — auto answer wrong
+      setAnswered(true);
+      setTimerActive(false);
+      setStreak(0);
+      const q = questions[qIdx];
+      if (q) setWrongAnswers(w => [...w, { q: q.question, correct: q.options[q.correctIndex] }]);
+      return;
+    }
+    timerRef.current = setTimeout(() => setTimer(t => t - 1), 1000);
+    return () => clearTimeout(timerRef.current);
+  }, [timer, timerActive, answered, questions, qIdx]);
+
   const startQuiz = useCallback(() => {
-    const qs = generateQuiz(lang, diff, alamData, yaqutData);
+    const qs = generateQuiz(lang, diff, alamData, yaqutData, category);
     setQuestions(qs);
     setQIdx(0);
     setSelected(null);
     setScore(0);
     setAnswered(false);
     setPhase('playing');
-  }, [lang, diff, alamData, yaqutData]);
+    setStreak(0);
+    setMaxStreak(0);
+    setTimer(TIMER_SEC);
+    setTimerActive(true);
+    setWrongAnswers([]);
+  }, [lang, diff, alamData, yaqutData, category]);
 
   const handleAnswer = useCallback((optIdx) => {
     if (answered) return;
     setSelected(optIdx);
     setAnswered(true);
+    setTimerActive(false);
     const q = questions[qIdx];
     const isCorrect = optIdx === q.correctIndex;
     if (isCorrect) {
-      setScore(s => s + 1);
+      // Bonus for speed: +1 base, +1 if >10s left, +1 if >13s left
+      const bonus = timer >= 13 ? 3 : timer >= 10 ? 2 : 1;
+      setScore(s => s + bonus);
+      setStreak(s => {
+        const next = s + 1;
+        setMaxStreak(m => Math.max(m, next));
+        return next;
+      });
       setShowConfetti(true);
       setTimeout(() => setShowConfetti(false), 800);
+      if (q.flyTo && onFlyTo) setTimeout(() => onFlyTo(q.flyTo), 400);
+    } else {
+      setStreak(0);
+      setWrongAnswers(w => [...w, { q: q.question, correct: q.options[q.correctIndex] }]);
     }
-    // FlyTo on correct answer
-    if (isCorrect && q.flyTo && onFlyTo) {
-      setTimeout(() => onFlyTo(q.flyTo), 400);
-    }
-  }, [answered, questions, qIdx, onFlyTo]);
+  }, [answered, questions, qIdx, onFlyTo, timer]);
 
   const handleNext = useCallback(() => {
     if (qIdx + 1 >= questions.length) {
+      saveScore(score, diff, category);
       setPhase('result');
       return;
     }
     setQIdx(i => i + 1);
     setSelected(null);
     setAnswered(false);
-  }, [qIdx, questions.length]);
+    setTimer(TIMER_SEC);
+    setTimerActive(true);
+  }, [qIdx, questions.length, score, diff, category]);
 
   // Keyboard support
   useEffect(() => {
@@ -365,13 +414,9 @@ export default function QuizMode({ lang, onFlyTo, onClose }) {
       if (e.key === 'Escape') onClose();
       if (phase === 'playing' && !answered) {
         const num = parseInt(e.key);
-        if (num >= 1 && num <= questions[qIdx]?.options?.length) {
-          handleAnswer(num - 1);
-        }
+        if (num >= 1 && num <= questions[qIdx]?.options?.length) handleAnswer(num - 1);
       }
-      if (phase === 'playing' && answered && (e.key === 'Enter' || e.key === ' ')) {
-        handleNext();
-      }
+      if (phase === 'playing' && answered && (e.key === 'Enter' || e.key === ' ')) handleNext();
     };
     window.addEventListener('keydown', handler);
     return () => window.removeEventListener('keydown', handler);
@@ -391,15 +436,28 @@ export default function QuizMode({ lang, onFlyTo, onClose }) {
             <p>{t.subtitle}</p>
           </div>
 
+          {/* Category selection */}
+          <div className="quiz-cat-section">
+            <h3>{{ tr: 'Kategori', en: 'Category', ar: 'الفئة' }[lang]}</h3>
+            <div className="quiz-cat-grid">
+              {CATEGORIES.map(c => (
+                <button key={c.id}
+                  className={`quiz-cat-btn ${category === c.id ? 'active' : ''}`}
+                  onClick={() => setCategory(c.id)}>
+                  <span className="quiz-cat-icon">{c.icon}</span>
+                  <span className="quiz-cat-label">{c.label}</span>
+                </button>
+              ))}
+            </div>
+          </div>
+
           <div className="quiz-diff-section">
             <h3>{t.difficulty}</h3>
             <div className="quiz-diff-options">
               {['easy', 'medium', 'hard'].map(d => (
-                <button
-                  key={d}
+                <button key={d}
                   className={`quiz-diff-btn ${diff === d ? 'active' : ''} diff-${d}`}
-                  onClick={() => setDiff(d)}
-                >
+                  onClick={() => setDiff(d)}>
                   <span className="diff-emoji">
                     {d === 'easy' ? '🟢' : d === 'medium' ? '🟡' : '🔴'}
                   </span>
@@ -420,7 +478,13 @@ export default function QuizMode({ lang, onFlyTo, onClose }) {
 
   /* ── RESULT ── */
   if (phase === 'result') {
-    const pct = Math.round((score / TOTAL_Q) * 100);
+    const maxPossible = TOTAL_Q * 3;
+    const pct = Math.round((score / maxPossible) * 100);
+    const correctCount = TOTAL_Q - wrongAnswers.length;
+
+    const shareText = `🎓 İslam Atlası Quiz — ${correctCount}/${TOTAL_Q} (${pct}%) | ${
+      { tr: 'En uzun seri', en: 'Best streak', ar: 'أفضل سلسلة' }[lang]}: ${maxStreak} 🔥\nislamicatlas.org`;
+
     return (
       <div className="quiz-overlay" onClick={onClose}>
         <div className="quiz-panel quiz-result" onClick={e => e.stopPropagation()}>
@@ -435,16 +499,44 @@ export default function QuizMode({ lang, onFlyTo, onClose }) {
                   className="quiz-result-progress" />
               </svg>
               <div className="quiz-result-number">
-                <span className="quiz-result-score">{score}</span>
+                <span className="quiz-result-score">{correctCount}</span>
                 <span className="quiz-result-total">/{TOTAL_Q}</span>
               </div>
             </div>
-            <h2 className="quiz-result-title">{getScoreTitle(score, lang)}</h2>
-            <p className="quiz-result-pct">{pct}%</p>
+            <h2 className="quiz-result-title">{getScoreTitle(correctCount, lang)}</h2>
+            <div className="quiz-result-stats">
+              <span className="quiz-result-stat">
+                ⚡ {score} {{ tr: 'puan', en: 'pts', ar: 'نقاط' }[lang]}
+              </span>
+              <span className="quiz-result-stat">
+                🔥 {maxStreak} {{ tr: 'seri', en: 'streak', ar: 'سلسلة' }[lang]}
+              </span>
+            </div>
           </div>
+
+          {/* Wrong answers review */}
+          {wrongAnswers.length > 0 && (
+            <div className="quiz-review">
+              <h4 className="quiz-review-title">
+                {{ tr: 'Gözden Geçir', en: 'Review', ar: 'مراجعة' }[lang]}
+              </h4>
+              {wrongAnswers.slice(0, 3).map((w, i) => (
+                <div key={i} className="quiz-review-row">
+                  <span className="quiz-review-q">{w.q.length > 50 ? w.q.slice(0, 50) + '…' : w.q}</span>
+                  <span className="quiz-review-a">✓ {w.correct}</span>
+                </div>
+              ))}
+            </div>
+          )}
+
           <div className="quiz-result-actions">
             <button className="quiz-btn-primary" onClick={() => { setPhase('menu'); }}>
               {t.playAgain}
+            </button>
+            <button className="quiz-btn-secondary" onClick={() => {
+              try { navigator.clipboard.writeText(shareText); } catch {}
+            }}>
+              {{ tr: '📋 Paylaş', en: '📋 Share', ar: '📋 مشاركة' }[lang]}
             </button>
             <button className="quiz-btn-secondary" onClick={onClose}>
               {t.close}
@@ -458,6 +550,8 @@ export default function QuizMode({ lang, onFlyTo, onClose }) {
   /* ── PLAYING ── */
   if (!currentQ) return null;
   const isCorrect = selected === currentQ.correctIndex;
+  const timerPct = (timer / TIMER_SEC) * 100;
+  const timerUrgent = timer <= 5;
 
   return (
     <div className="quiz-overlay" onClick={onClose}>
@@ -472,7 +566,16 @@ export default function QuizMode({ lang, onFlyTo, onClose }) {
         {/* Header */}
         <div className="quiz-q-header">
           <span className="quiz-q-num">{t.qOf} {qIdx + 1}/{TOTAL_Q}</span>
-          <span className="quiz-q-score">{t.score}: {score}</span>
+          <div className="quiz-header-right">
+            {streak >= 2 && <span className="quiz-streak">🔥 {streak}</span>}
+            <span className="quiz-q-score">{t.score}: {score}</span>
+          </div>
+        </div>
+
+        {/* Timer */}
+        <div className={`quiz-timer ${timerUrgent ? 'urgent' : ''}`}>
+          <div className="quiz-timer-bar" style={{ width: `${timerPct}%` }} />
+          <span className="quiz-timer-text">{timer}s</span>
         </div>
 
         {/* Question */}
@@ -492,12 +595,8 @@ export default function QuizMode({ lang, onFlyTo, onClose }) {
             }
             if (i === selected && !answered) cls += ' selected';
             return (
-              <button
-                key={i}
-                className={cls}
-                onClick={() => handleAnswer(i)}
-                disabled={answered}
-              >
+              <button key={i} className={cls}
+                onClick={() => handleAnswer(i)} disabled={answered}>
                 <span className="quiz-opt-key">{i + 1}</span>
                 <span className="quiz-opt-text">{opt}</span>
                 {answered && i === currentQ.correctIndex && <span className="quiz-opt-check">✓</span>}
@@ -509,8 +608,8 @@ export default function QuizMode({ lang, onFlyTo, onClose }) {
 
         {/* Feedback */}
         {answered && (
-          <div className={`quiz-feedback ${isCorrect ? 'correct' : 'wrong'}`}>
-            <span>{isCorrect ? t.correct : t.wrong}</span>
+          <div className={`quiz-feedback ${isCorrect ? 'correct' : (selected != null ? 'wrong' : 'timeout')}`}>
+            <span>{isCorrect ? t.correct : (selected != null ? t.wrong : ({ tr: '⏰ Süre doldu!', en: '⏰ Time\'s up!', ar: '⏰ انتهى الوقت!' }[lang]))}</span>
             {!isCorrect && (
               <span className="quiz-feedback-answer">
                 {t.correctAnswer}: {currentQ.options[currentQ.correctIndex]}

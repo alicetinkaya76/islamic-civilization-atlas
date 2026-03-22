@@ -1,31 +1,43 @@
-/* ─── Map Legend ─── */
+/* ─── Map Legend — Improved v6.5.3.0 ─── */
 .map-legend {
   position: absolute;
-  bottom: 120px;
-  right: 12px;
+  bottom: 24px;
+  left: 12px;
   z-index: 1000;
   font-family: var(--font-body);
   transition: all 0.25s ease;
 }
 
 .legend-closed {
-  background: var(--bg2);
+  background: rgba(10, 20, 16, 0.88);
   border: 1px solid var(--border);
-  border-radius: 8px;
+  border-radius: 10px;
   box-shadow: 0 2px 12px rgba(0,0,0,0.4);
+  backdrop-filter: blur(8px);
 }
 
 .legend-open {
-  background: var(--bg2);
-  border: 1px solid var(--gold);
-  border-radius: 10px;
-  box-shadow: 0 4px 24px rgba(0,0,0,0.5);
-  max-height: calc(100vh - 200px);
+  background: rgba(10, 20, 16, 0.92);
+  border: 1px solid rgba(201, 168, 76, 0.3);
+  border-radius: 12px;
+  box-shadow: 0 6px 32px rgba(0,0,0,0.5), 0 0 0 1px rgba(201,168,76,0.06);
+  max-height: calc(100vh - 160px);
   overflow-y: auto;
-  width: 200px;
+  width: 230px;
+  backdrop-filter: blur(12px);
 }
 
-/* Scrollbar styling */
+/* Light theme */
+[data-theme="light"] .legend-closed {
+  background: rgba(255, 255, 255, 0.92);
+}
+[data-theme="light"] .legend-open {
+  background: rgba(255, 255, 255, 0.95);
+}
+[data-theme="light"] .legend-label { color: var(--text); }
+[data-theme="light"] .legend-count { color: var(--text2); background: rgba(0,0,0,0.06); }
+
+/* Scrollbar */
 .legend-open::-webkit-scrollbar { width: 4px; }
 .legend-open::-webkit-scrollbar-track { background: transparent; }
 .legend-open::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
@@ -33,8 +45,8 @@
 .legend-toggle {
   display: flex;
   align-items: center;
-  gap: 6px;
-  padding: 7px 12px;
+  gap: 8px;
+  padding: 8px 14px;
   background: none;
   border: none;
   color: var(--gold);
@@ -47,17 +59,24 @@
 }
 .legend-toggle:hover { color: var(--cream); }
 
+.legend-toggle-icon {
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+}
+
 .legend-toggle-label {
-  font-size: 12px;
-  letter-spacing: 0.5px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.4px;
 }
 
 .legend-body {
-  padding: 0 12px 12px;
+  padding: 0 14px 14px;
 }
 
 .legend-section {
-  margin-bottom: 10px;
+  margin-bottom: 12px;
 }
 .legend-section:last-child { margin-bottom: 0; }
 
@@ -67,23 +86,24 @@
   color: var(--gold);
   text-transform: uppercase;
   letter-spacing: 0.8px;
-  padding-bottom: 4px;
-  margin-bottom: 5px;
-  border-bottom: 1px solid var(--border);
+  padding-bottom: 5px;
+  margin-bottom: 6px;
+  border-bottom: 1px solid rgba(201, 168, 76, 0.12);
+  font-weight: 600;
 }
 
 .legend-row {
   display: flex;
   align-items: center;
-  gap: 8px;
-  padding: 2.5px 0;
+  gap: 10px;
+  padding: 3px 0;
 }
 
 .legend-swatch {
   display: inline-block;
-  width: 14px;
-  height: 14px;
-  border-radius: 3px;
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
   border: 1px solid rgba(255,255,255,0.15);
   flex-shrink: 0;
 }
@@ -92,15 +112,27 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 18px;
-  height: 18px;
+  width: 20px;
+  height: 20px;
   flex-shrink: 0;
 }
 
 .legend-label {
-  font-size: 11px;
+  font-size: 13px;
   color: var(--cream);
   white-space: nowrap;
+  flex: 1;
+}
+
+.legend-count {
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--cream2);
+  background: rgba(255,255,255,0.06);
+  padding: 1px 6px;
+  border-radius: 8px;
+  font-variant-numeric: tabular-nums;
+  flex-shrink: 0;
 }
 
 /* ─── Dynasty glow animation ─── */
@@ -112,7 +144,7 @@
   animation: dynasty-pulse 3s ease-in-out infinite;
 }
 
-/* ─── Trade route dash animation (enhanced) ─── */
+/* ─── Trade route dash animation ─── */
 @keyframes trade-dash {
   to { stroke-dashoffset: -48; }
 }
@@ -124,10 +156,11 @@
 @media (max-width: 768px) {
   .map-legend {
     bottom: 130px;
-    right: 8px;
+    left: 8px;
   }
   .legend-open {
-    width: 180px;
+    width: 200px;
     max-height: calc(100vh - 220px);
   }
+  .legend-label { font-size: 12px; }
 }

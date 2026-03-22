@@ -2,6 +2,32 @@
 
 All notable changes to the Islamic Dynasties Atlas are documented in this file.
 
+## [6.5.3.0] - 2026-03-22 — Session 26
+
+### Fixed
+- **Header Duplication (CRITICAL)**: Desktop header items were appearing twice because `header-right` (mobile drawer) remained visible. Root cause: CSS child selectors (`.header-right > .export-btn`) failed on wrapped elements (`.export-wrap > .export-btn`). Fix: single rule `header-right { display: none !important }` at `min-width: 769px`.
+
+### Removed
+- **CSV/Export Button**: Removed `ExportButton` from both `header-utils` (desktop) and `header-right` (mobile drawer). Import removed from `App.jsx`. Component file retained for potential future use.
+
+### Added
+- **Enriched About Modal**: Complete rewrite of `AboutModal.jsx` with project statistics grid (186 dynasties, 13,940 al-Aʿlām, 8,528 DİA, 7,568 EI-1, 12,954 Muʿjam), detailed data sources table, author cards with ORCID links for both Gökalp and Çetinkaya, institutional affiliations (Selçuk Üniversitesi, Kapsül Teknoloji), technology stack tags, version badge, GitHub link, CC BY-NC 4.0 license bar. New `about.css` with responsive layout (3-col stats → mobile stack). Light/dark theme support.
+- **Quiz: Timer System**: 15-second countdown per question with animated progress bar. Timer turns red + pulses at ≤5 seconds. Auto-timeout with "Time's up!" feedback. Speed bonus scoring: +3 pts (≥13s), +2 pts (≥10s), +1 pt (base).
+- **Quiz: Streak Counter**: Live streak indicator (🔥) appears at ≥2 consecutive correct answers with bounce animation. Max streak tracked and displayed in results.
+- **Quiz: Category Selection**: 5 categories in menu — Mixed (🎲), Dynasty (🏛), Battles (⚔️), Scholars (📚), Geography (🌍). Each filters question generators to relevant subset.
+- **Quiz: Enhanced Results**: Score breakdown with points + max streak. Wrong answers review section (top 3 missed questions with correct answers). Share button copies formatted score text to clipboard.
+- **Quiz: Score Persistence**: High scores saved to localStorage (top 10).
+- **Dashboard: Data Sources Comparison**: New full-width card with 4 source cards (al-Aʿlām, DİA, EI-1, Muʿjam) showing entry counts, descriptions, century scope, click-to-navigate.
+- **Dashboard: Changelog Card**: Recent 3 versions with bullet points, version badges.
+
+### Changed
+- **Map Legend Redesign**: Repositioned from bottom-right to bottom-left. Increased font size (11→13px), swatch size (14→16px). Added count badges per entity type. Semi-transparent backdrop with blur. Improved toggle icon (🗺 collapsed, ✕ expanded). Light theme support. Mobile-optimized width (200px).
+- `session23.css`: Replaced 10-line desktop hiding rules with single `header-right { display: none !important }`.
+- `quiz.css`: Added ~120 lines for timer, streak, categories, review, timeout styles.
+- `dashboard.css`: Added ~90 lines for source cards grid and changelog.
+- `legend.css`: Full rewrite with improved spacing, backdrop blur, count badges.
+- `package.json`: Version → 6.5.3.0.
+
 ## [6.5.2.1] - 2026-03-22 — Session 25
 
 ### Added

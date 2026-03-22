@@ -444,16 +444,7 @@
    Desktop: hide old .tabs (replaced by grouped nav)
    ─────────────────────────────────────────────────── */
 @media (min-width: 769px) {
-  .header-right > .tabs { display: none; }
-  .header-right > .header-search-desktop { display: none; }
-  .header-right > .quiz-trigger { display: none; }
-  .header-right > .glossary-btn { display: none; }
-  .header-right > .progress-btn { display: none; }
-  .header-right > .export-btn { display: none; }
-  .header-right > .about-btn { display: none; }
-  .header-right > .admin-trigger { display: none; }
-  .header-right > .lang-switcher { display: none; }
-  .header-right > .theme-toggle { display: none; }
+  .header-right { display: none !important; }
   .header-search-mobile { display: none; }
 }
 

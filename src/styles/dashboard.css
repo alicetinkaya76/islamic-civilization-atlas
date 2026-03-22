@@ -194,6 +194,90 @@
   background: rgba(34, 211, 238, 0.2);
 }
 
+/* ── Data Sources Grid ── */
+.dash-sources-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+.dash-source-card {
+  padding: 14px 12px;
+  background: rgba(201, 168, 76, 0.04);
+  border: 1px solid rgba(201, 168, 76, 0.1);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-align: center;
+}
+.dash-source-card:hover {
+  background: rgba(201, 168, 76, 0.1);
+  border-color: rgba(201, 168, 76, 0.3);
+  transform: translateY(-2px);
+}
+.dash-source-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin-bottom: 6px;
+}
+.dash-source-icon { font-size: 18px; }
+.dash-source-name {
+  font-size: 13px;
+  font-weight: 700;
+  color: #c9a84c;
+}
+.dash-source-count {
+  font-size: 22px;
+  font-weight: 700;
+  color: #e2e8f0;
+  font-variant-numeric: tabular-nums;
+  margin-bottom: 4px;
+}
+.dash-source-desc {
+  font-size: 10px;
+  color: #94a3b8;
+  margin-bottom: 2px;
+}
+.dash-source-scope {
+  font-size: 9px;
+  color: #64748b;
+  font-style: italic;
+}
+
+/* ── Changelog ── */
+.dash-changelog {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.dash-cl-group {
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+}
+.dash-cl-group:last-child { border-bottom: none; }
+.dash-cl-ver {
+  font-size: 12px;
+  font-weight: 700;
+  color: #c9a84c;
+  display: inline-block;
+  margin-bottom: 4px;
+  background: rgba(201, 168, 76, 0.1);
+  padding: 1px 8px;
+  border-radius: 4px;
+}
+.dash-cl-list {
+  margin: 0;
+  padding-left: 16px;
+  list-style: disc;
+}
+.dash-cl-list li {
+  font-size: 11px;
+  color: #94a3b8;
+  padding: 1px 0;
+  line-height: 1.4;
+}
+
 /* ── Responsive ── */
 @media (max-width: 1024px) {
   .dash-grid {
@@ -201,6 +285,9 @@
   }
   .dash-overview-grid {
     grid-template-columns: repeat(4, 1fr);
+  }
+  .dash-sources-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
@@ -215,7 +302,13 @@
   .dash-overview-grid {
     grid-template-columns: repeat(2, 1fr);
   }
+  .dash-sources-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
   .dash-stat-num {
     font-size: 20px;
+  }
+  .dash-source-count {
+    font-size: 18px;
   }
 }

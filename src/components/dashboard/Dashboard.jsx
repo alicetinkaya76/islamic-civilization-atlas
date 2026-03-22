@@ -291,6 +291,62 @@ export default function Dashboard({ lang, t: tProp, onTabChange }) {
           </div>
         </div>
 
+        {/* CARD: Data Sources Comparison */}
+        <div className="dash-card dash-card-wide">
+          <h3 className="dash-card-title">{{ tr: 'Veri Kaynakları', en: 'Data Sources', ar: 'مصادر البيانات' }[lang]}</h3>
+          <div className="dash-sources-grid">
+            {[
+              { icon: '📖', name: 'al-Aʿlām', count: '13,940', scope: '7–20. yy.', tab: 'alam',
+                desc: { tr: 'Ziriklî biyografi', en: 'Ziriklī biographies', ar: 'تراجم الزركلي' }[lang] },
+              { icon: '📚', name: 'DİA', count: '8,528', scope: '7–20. yy.', tab: 'dia',
+                desc: { tr: 'TDV âlim biyografileri', en: 'TDV scholar bios', ar: 'تراجم علماء TDV' }[lang] },
+              { icon: '📕', name: 'EI-1', count: '7,568', scope: '7–19. yy.', tab: 'ei1',
+                desc: { tr: 'Brill 1. baskı', en: 'Brill 1st edition', ar: 'طبعة بريل الأولى' }[lang] },
+              { icon: '🌍', name: "Muʿjam", count: '12,954', scope: '7–13. yy.', tab: 'yaqut',
+                desc: { tr: 'Yâkût coğrafya', en: 'Yāqūt geography', ar: 'جغرافيا ياقوت' }[lang] },
+            ].map(src => (
+              <div key={src.name} className="dash-source-card" onClick={() => goTab(src.tab)} role="button" tabIndex={0}>
+                <div className="dash-source-header">
+                  <span className="dash-source-icon">{src.icon}</span>
+                  <span className="dash-source-name">{src.name}</span>
+                </div>
+                <div className="dash-source-count">{src.count}</div>
+                <div className="dash-source-desc">{src.desc}</div>
+                <div className="dash-source-scope">{src.scope}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* CARD: Changelog */}
+        <div className="dash-card">
+          <h3 className="dash-card-title">{{ tr: 'Son Güncellemeler', en: 'Recent Updates', ar: 'آخر التحديثات' }[lang]}</h3>
+          <div className="dash-changelog">
+            {[
+              { ver: 'v6.5.3.0', items: [
+                { tr: 'Quiz: Zamanlayıcı, seri, kategoriler', en: 'Quiz: Timer, streak, categories' },
+                { tr: 'Lejant yeniden tasarlandı', en: 'Legend redesigned' },
+                { tr: 'Hakkında paneli zenginleştirildi', en: 'About panel enriched' },
+              ]},
+              { ver: 'v6.5.2.1', items: [
+                { tr: 'DİA Ego-ağı ve topluluk tespiti', en: 'DİA ego-network & community detection' },
+                { tr: 'DİA Sankey akış diyagramı', en: 'DİA Sankey flow diagram' },
+              ]},
+              { ver: 'v6.5.2.0', items: [
+                { tr: 'EI-1 Harita ve Ağ görünümü', en: 'EI-1 Map & Network views' },
+                { tr: 'Coğrafi layout modu', en: 'Geographic layout mode' },
+              ]},
+            ].map(cl => (
+              <div key={cl.ver} className="dash-cl-group">
+                <span className="dash-cl-ver">{cl.ver}</span>
+                <ul className="dash-cl-list">
+                  {cl.items.map((it, i) => <li key={i}>{it[lang] || it.en}</li>)}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </div>
+
         {/* CARD 2: Era Distribution */}
         <div className="dash-card">
           <h3 className="dash-card-title">{td.eraDistribution || 'Era Distribution'}</h3>

@@ -29,7 +29,7 @@ import GlossaryModal from './components/shared/GlossaryModal';
 import SearchBar from './components/shared/SearchBar';
 import ProgressTracker, { BadgeToast, useProgress } from './components/shared/ProgressTracker';
 import Onboarding from './components/shared/Onboarding';
-import ExportButton from './components/shared/ExportButton';
+
 
 /* ═══ NavDropdown — grouped tab selector with hover+click ═══ */
 function NavDropdown({ label, items, activeTab, onSelect }) {
@@ -357,7 +357,6 @@ export default function App() {
           <button className="header-icon-btn" onClick={() => setQuizOpen(true)} title="Quiz">🎓</button>
           <GlossaryModal lang={lang} />
           <ProgressTracker lang={lang} progress={progress} onReset={resetProgress} />
-          <ExportButton lang={lang} />
           <AboutModal lang={lang} onResetOnboarding={resetOnboarding} onResetLanding={resetLanding}
             externalOpen={aboutOpen} onExternalClose={() => setAboutOpen(false)} />
           <ThemeToggle compact />
@@ -391,7 +390,6 @@ export default function App() {
             aria-label={{ tr: 'Bilgi yarışması', en: 'Knowledge quiz', ar: 'اختبار المعرفة' }[lang]}>🎓 Quiz</button>
           <GlossaryModal lang={lang} />
           <ProgressTracker lang={lang} progress={progress} onReset={resetProgress} />
-          <ExportButton lang={lang} />
           <AboutModal lang={lang} onResetOnboarding={resetOnboarding} onResetLanding={resetLanding}
           externalOpen={aboutOpen} onExternalClose={() => setAboutOpen(false)} />
           <ThemeToggle />
