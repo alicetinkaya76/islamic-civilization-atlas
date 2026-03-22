@@ -140,7 +140,7 @@ export default function AboutModal({ lang, onResetOnboarding, onResetLanding, ex
               <div className="about-version">
                 <h3 className="about-section-title">{L.version}</h3>
                 <div className="about-version-info">
-                  <span className="about-ver-badge">v6.5.3.0</span>
+                  <span className="about-ver-badge">v6.5.3.1</span>
                   <a href="https://github.com/alicetinkaya76/islamic-civilization-atlas" target="_blank" rel="noopener noreferrer" className="about-github-link">
                     GitHub ↗
                   </a>

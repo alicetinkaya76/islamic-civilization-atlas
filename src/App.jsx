@@ -364,48 +364,50 @@ export default function App() {
           <button className="header-icon-btn" onClick={() => selectTab('admin')} title="Admin">⚙</button>
         </div>
 
-        {/* ═══ Mobile/Tablet: Hamburger Drawer (unchanged) ═══ */}
-        <nav className={`header-right${menuOpen ? ' mobile-open' : ''}`} role="navigation"
-          aria-label={{ tr: 'Mobil navigasyon', en: 'Mobile navigation', ar: 'التنقل المتنقل' }[lang]}>
-          <div className="header-search-desktop">
-            <SearchBar lang={lang} onFlyTo={handleFlyTo} onSelectEntity={handleSearchSelect} />
-          </div>
-          <div className="tabs" role="tablist" aria-label={{ tr: 'Görünüm seçimi', en: 'View selection', ar: 'اختيار العرض' }[lang]}>
-            <button role="tab" aria-selected={tab === 'map'} className={`tab${tab === 'map' ? ' active' : ''}`} onClick={() => selectTab('map')}>{t.tabs.map}</button>
-            <button role="tab" aria-selected={tab === 'dashboard'} className={`tab${tab === 'dashboard' ? ' active' : ''}`} onClick={() => selectTab('dashboard')}>{t.tabs.dashboard}</button>
-            <button role="tab" aria-selected={tab === 'timeline'} className={`tab${tab === 'timeline' ? ' active' : ''}`} onClick={() => selectTab('timeline')}>{t.tabs.timeline}</button>
-            <button role="tab" aria-selected={tab === 'links'} className={`tab${tab === 'links' ? ' active' : ''}`} onClick={() => selectTab('links')}>{t.tabs.links}</button>
-            <button role="tab" aria-selected={tab === 'scholars'} className={`tab${tab === 'scholars' ? ' active' : ''}`} onClick={() => selectTab('scholars')}>{t.tabs.scholars}</button>
-            <button role="tab" aria-selected={tab === 'battles'} className={`tab${tab === 'battles' ? ' active' : ''}`} onClick={() => selectTab('battles')}>{t.tabs.battles}</button>
-            <button role="tab" aria-selected={tab === 'alam'} className={`tab${tab === 'alam' ? ' active' : ''}`} onClick={() => selectTab('alam')}
-              onMouseEnter={() => preloadData('/data/alam_lite.json')}>{t.tabs.alam}</button>
-            <button role="tab" aria-selected={tab === 'yaqut'} className={`tab${tab === 'yaqut' ? ' active' : ''}`} onClick={() => selectTab('yaqut')}
-              onMouseEnter={() => preloadData('/data/yaqut_lite.json')}>{t.tabs.yaqut}</button>
-            <button role="tab" aria-selected={tab === 'dia'} className={`tab${tab === 'dia' ? ' active' : ''}`} onClick={() => selectTab('dia')}
-              onMouseEnter={() => preloadData('/data/dia_lite.json')}>{t.tabs.dia}</button>
-            <button role="tab" aria-selected={tab === 'ei1'} className={`tab${tab === 'ei1' ? ' active' : ''}`} onClick={() => selectTab('ei1')}
-              onMouseEnter={() => preloadData('/data/ei1_lite.json')}>{t.tabs.ei1}</button>
-          </div>
-          <button className="quiz-trigger" onClick={() => setQuizOpen(true)}
-            aria-label={{ tr: 'Bilgi yarışması', en: 'Knowledge quiz', ar: 'اختبار المعرفة' }[lang]}>🎓 Quiz</button>
-          <GlossaryModal lang={lang} />
-          <ProgressTracker lang={lang} progress={progress} onReset={resetProgress} />
-          <AboutModal lang={lang} onResetOnboarding={resetOnboarding} onResetLanding={resetLanding}
-          externalOpen={aboutOpen} onExternalClose={() => setAboutOpen(false)} />
-          <ThemeToggle />
-          <button className="admin-trigger" onClick={() => selectTab('admin')}
-            title="Admin Panel" style={{ background:'none',border:'none',cursor:'pointer',fontSize:14,color:'#a89b8c',padding:'4px 8px',borderRadius:4 }}>⚙</button>
-          <div className="lang-switcher">
-            {['tr', 'en', 'ar'].map(l => (
-              <button key={l}
-                className={`lang-btn${lang === l ? ' active' : ''}`}
-                onClick={() => setLang(l)}
-                aria-label={l === 'ar' ? 'العربية' : l === 'en' ? 'English' : 'Türkçe'}>
-                {{ tr: '🇹🇷 TR', en: '🇬🇧 EN', ar: '🇸🇦 AR' }[l]}
-              </button>
-            ))}
-          </div>
-        </nav>
+        {/* ═══ Mobile/Tablet: Hamburger Drawer (ONLY rendered on mobile) ═══ */}
+        {isMobile && (
+          <nav className={`header-right${menuOpen ? ' mobile-open' : ''}`} role="navigation"
+            aria-label={{ tr: 'Mobil navigasyon', en: 'Mobile navigation', ar: 'التنقل المتنقل' }[lang]}>
+            <div className="header-search-desktop">
+              <SearchBar lang={lang} onFlyTo={handleFlyTo} onSelectEntity={handleSearchSelect} />
+            </div>
+            <div className="tabs" role="tablist" aria-label={{ tr: 'Görünüm seçimi', en: 'View selection', ar: 'اختيار العرض' }[lang]}>
+              <button role="tab" aria-selected={tab === 'map'} className={`tab${tab === 'map' ? ' active' : ''}`} onClick={() => selectTab('map')}>{t.tabs.map}</button>
+              <button role="tab" aria-selected={tab === 'dashboard'} className={`tab${tab === 'dashboard' ? ' active' : ''}`} onClick={() => selectTab('dashboard')}>{t.tabs.dashboard}</button>
+              <button role="tab" aria-selected={tab === 'timeline'} className={`tab${tab === 'timeline' ? ' active' : ''}`} onClick={() => selectTab('timeline')}>{t.tabs.timeline}</button>
+              <button role="tab" aria-selected={tab === 'links'} className={`tab${tab === 'links' ? ' active' : ''}`} onClick={() => selectTab('links')}>{t.tabs.links}</button>
+              <button role="tab" aria-selected={tab === 'scholars'} className={`tab${tab === 'scholars' ? ' active' : ''}`} onClick={() => selectTab('scholars')}>{t.tabs.scholars}</button>
+              <button role="tab" aria-selected={tab === 'battles'} className={`tab${tab === 'battles' ? ' active' : ''}`} onClick={() => selectTab('battles')}>{t.tabs.battles}</button>
+              <button role="tab" aria-selected={tab === 'alam'} className={`tab${tab === 'alam' ? ' active' : ''}`} onClick={() => selectTab('alam')}
+                onMouseEnter={() => preloadData('/data/alam_lite.json')}>{t.tabs.alam}</button>
+              <button role="tab" aria-selected={tab === 'yaqut'} className={`tab${tab === 'yaqut' ? ' active' : ''}`} onClick={() => selectTab('yaqut')}
+                onMouseEnter={() => preloadData('/data/yaqut_lite.json')}>{t.tabs.yaqut}</button>
+              <button role="tab" aria-selected={tab === 'dia'} className={`tab${tab === 'dia' ? ' active' : ''}`} onClick={() => selectTab('dia')}
+                onMouseEnter={() => preloadData('/data/dia_lite.json')}>{t.tabs.dia}</button>
+              <button role="tab" aria-selected={tab === 'ei1'} className={`tab${tab === 'ei1' ? ' active' : ''}`} onClick={() => selectTab('ei1')}
+                onMouseEnter={() => preloadData('/data/ei1_lite.json')}>{t.tabs.ei1}</button>
+            </div>
+            <button className="quiz-trigger" onClick={() => setQuizOpen(true)}
+              aria-label={{ tr: 'Bilgi yarışması', en: 'Knowledge quiz', ar: 'اختبار المعرفة' }[lang]}>🎓 Quiz</button>
+            <GlossaryModal lang={lang} />
+            <ProgressTracker lang={lang} progress={progress} onReset={resetProgress} />
+            <AboutModal lang={lang} onResetOnboarding={resetOnboarding} onResetLanding={resetLanding}
+            externalOpen={aboutOpen} onExternalClose={() => setAboutOpen(false)} />
+            <ThemeToggle />
+            <button className="admin-trigger" onClick={() => selectTab('admin')}
+              title="Admin Panel" style={{ background:'none',border:'none',cursor:'pointer',fontSize:14,color:'#a89b8c',padding:'4px 8px',borderRadius:4 }}>⚙</button>
+            <div className="lang-switcher">
+              {['tr', 'en', 'ar'].map(l => (
+                <button key={l}
+                  className={`lang-btn${lang === l ? ' active' : ''}`}
+                  onClick={() => setLang(l)}
+                  aria-label={l === 'ar' ? 'العربية' : l === 'en' ? 'English' : 'Türkçe'}>
+                  {{ tr: '🇹🇷 TR', en: '🇬🇧 EN', ar: '🇸🇦 AR' }[l]}
+                </button>
+              ))}
+            </div>
+          </nav>
+        )}
       </header>
       {menuOpen && <div className="mobile-backdrop" onClick={() => setMenuOpen(false)} />}
       <main id="main-content" ref={swipeRef} className={`main${sidebarOpen ? ' sidebar-visible' : ''}`} role="main">

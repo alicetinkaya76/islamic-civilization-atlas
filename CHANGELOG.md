@@ -2,6 +2,16 @@
 
 All notable changes to the Islamic Dynasties Atlas are documented in this file.
 
+## [6.5.3.1] - 2026-03-23 — Session 26 Hotfix
+
+### Fixed
+- **Header Duplication (FINAL FIX)**: CSS `!important` rule was insufficient because competing rules in `base.css` (line 31: `header-right { display: flex }`) and `mobile.css` (line 475: resets `header-right` to `position: static`) overrode the hiding. Root cause: CSS specificity wars across 5+ stylesheets. **Solution**: Moved to React conditional rendering — `header-right` is now wrapped in `{isMobile && (...)}` so it is never added to the DOM on desktop (>768px). This eliminates duplication regardless of CSS specificity.
+
+### Changed
+- `App.jsx`: `header-right` nav block wrapped with `{isMobile && (...)}` guard.
+- `AboutModal.jsx`: Version badge → v6.5.3.1.
+- `package.json`: Version → 6.5.3.1.
+
 ## [6.5.3.0] - 2026-03-22 — Session 26
 
 ### Fixed
