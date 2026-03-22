@@ -16,6 +16,10 @@ export default function ThemeToggle({ compact = false }) {
     root.classList.add('theme-transitioning');
     root.setAttribute('data-theme', theme);
     try { localStorage.setItem('atlas-theme', theme); } catch {}
+
+    // Dispatch custom event so MapView can swap tile layers
+    window.dispatchEvent(new CustomEvent('themechange', { detail: { theme } }));
+
     const timer = setTimeout(() => root.classList.remove('theme-transitioning'), 400);
     return () => clearTimeout(timer);
   }, [theme]);

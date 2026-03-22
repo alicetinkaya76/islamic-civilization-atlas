@@ -19,4 +19,5 @@ export const MAP_CONFIG = {
   minZoom: 3,
   maxZoom: 10,
   tileUrl: 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',
+  tileUrlLight: 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',
 };

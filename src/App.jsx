@@ -31,6 +31,83 @@ import ProgressTracker, { BadgeToast, useProgress } from './components/shared/Pr
 import Onboarding from './components/shared/Onboarding';
 import ExportButton from './components/shared/ExportButton';
 
+/* ═══ NavDropdown — grouped tab selector with hover+click ═══ */
+function NavDropdown({ label, items, activeTab, onSelect }) {
+  const [open, setOpen] = useState(false);
+  const ref = useRef(null);
+  const timer = useRef(null);
+  const hasActive = items.some(i => i.id === activeTab);
+
+  useEffect(() => {
+    const onClick = (e) => { if (ref.current && !ref.current.contains(e.target)) setOpen(false); };
+    document.addEventListener('mousedown', onClick);
+    return () => document.removeEventListener('mousedown', onClick);
+  }, []);
+
+  const onEnter = () => { clearTimeout(timer.current); setOpen(true); };
+  const onLeave = () => { timer.current = setTimeout(() => setOpen(false), 200); };
+
+  return (
+    <div className={`nav-dropdown${open ? ' open' : ''}`} ref={ref}
+      onMouseEnter={onEnter} onMouseLeave={onLeave}>
+      <button className={`nav-dropdown-trigger${hasActive ? ' has-active' : ''}`}
+        onClick={() => setOpen(p => !p)} aria-expanded={open} aria-haspopup="true">
+        {label} <span className="nav-dropdown-arrow">▾</span>
+      </button>
+      <div className="nav-dropdown-panel" role="menu">
+        {items.map(item => (
+          <button key={item.id}
+            className={`nav-dropdown-item${activeTab === item.id ? ' active' : ''}`}
+            role="menuitem"
+            onClick={() => { onSelect(item.id); setOpen(false); }}
+            onMouseEnter={() => item.preload && preloadData(item.preload)}>
+            <span className="nav-dropdown-item-icon">{item.icon}</span>
+            <span className="nav-dropdown-item-label">{item.label}</span>
+            {item.badge && <span className="nav-dropdown-item-badge">{item.badge}</span>}
+          </button>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+/* ═══ LangDropdown — compact language selector ═══ */
+const LANG_OPTIONS = [
+  { code: 'tr', flag: '🇹🇷', label: 'Türkçe',  short: 'TR' },
+  { code: 'en', flag: '🇬🇧', label: 'English', short: 'EN' },
+  { code: 'ar', flag: '🇸🇦', label: 'العربية', short: 'AR' },
+];
+function LangDropdown({ lang, setLang }) {
+  const [open, setOpen] = useState(false);
+  const ref = useRef(null);
+  const current = LANG_OPTIONS.find(l => l.code === lang) || LANG_OPTIONS[0];
+
+  useEffect(() => {
+    const onClick = (e) => { if (ref.current && !ref.current.contains(e.target)) setOpen(false); };
+    document.addEventListener('mousedown', onClick);
+    return () => document.removeEventListener('mousedown', onClick);
+  }, []);
+
+  return (
+    <div className={`lang-dropdown${open ? ' open' : ''}`} ref={ref}>
+      <button className="lang-dropdown-trigger" onClick={() => setOpen(p => !p)}
+        aria-expanded={open} aria-haspopup="true">
+        {current.flag} {current.short} <span className="nav-dropdown-arrow">▾</span>
+      </button>
+      <div className="lang-dropdown-panel" role="menu">
+        {LANG_OPTIONS.map(l => (
+          <button key={l.code}
+            className={`lang-dropdown-option${lang === l.code ? ' active' : ''}`}
+            role="menuitem"
+            onClick={() => { setLang(l.code); setOpen(false); }}>
+            {l.flag} {l.label}
+          </button>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 const VALID_TABS = ['map', 'dashboard', 'timeline', 'links', 'scholars', 'battles', 'alam', 'yaqut', 'dia', 'ei1', 'admin'];
 
 /* Tab order for swipe navigation (excludes admin) */
@@ -242,8 +319,55 @@ export default function App() {
         <div className="header-search-mobile">
           <SearchBar lang={lang} onFlyTo={handleFlyTo} onSelectEntity={handleSearchSelect} />
         </div>
-        <nav className={`header-right${menuOpen ? ' mobile-open' : ''}`} role="navigation"
+
+        {/* ═══ Desktop: Grouped Navigation ═══ */}
+        <nav className="header-nav-grouped" role="navigation"
           aria-label={{ tr: 'Ana navigasyon', en: 'Main navigation', ar: 'التنقل الرئيسي' }[lang]}>
+          <button className={`tab${tab === 'map' ? ' active' : ''}`} onClick={() => selectTab('map')}>{t.tabs.map}</button>
+          <button className={`tab${tab === 'dashboard' ? ' active' : ''}`} onClick={() => selectTab('dashboard')}>{t.tabs.dashboard}</button>
+          <NavDropdown
+            label={{ tr: '📚 Kaynaklar', en: '📚 Sources', ar: '📚 المصادر' }[lang]}
+            items={[
+              { id: 'alam', icon: '📖', label: t.tabs.alam, badge: '13.9K', preload: '/data/alam_lite.json' },
+              { id: 'dia',  icon: '📚', label: t.tabs.dia,  badge: '8.5K',  preload: '/data/dia_lite.json' },
+              { id: 'ei1',  icon: '📕', label: t.tabs.ei1,  badge: '7.6K',  preload: '/data/ei1_lite.json' },
+              { id: 'yaqut',icon: '🌍', label: t.tabs.yaqut, badge: '13K',  preload: '/data/yaqut_lite.json' },
+            ]}
+            activeTab={tab}
+            onSelect={selectTab}
+          />
+          <NavDropdown
+            label={{ tr: '📊 Analiz', en: '📊 Analysis', ar: '📊 التحليل' }[lang]}
+            items={[
+              { id: 'timeline', icon: '📅', label: t.tabs.timeline },
+              { id: 'links',    icon: '🔗', label: t.tabs.links },
+              { id: 'scholars', icon: '🎓', label: t.tabs.scholars },
+              { id: 'battles',  icon: '⚔️', label: t.tabs.battles },
+            ]}
+            activeTab={tab}
+            onSelect={selectTab}
+          />
+          <div className="header-search-desktop">
+            <SearchBar lang={lang} onFlyTo={handleFlyTo} onSelectEntity={handleSearchSelect} />
+          </div>
+        </nav>
+
+        {/* ═══ Desktop: Utility buttons ═══ */}
+        <div className="header-utils">
+          <button className="header-icon-btn" onClick={() => setQuizOpen(true)} title="Quiz">🎓</button>
+          <GlossaryModal lang={lang} />
+          <ProgressTracker lang={lang} progress={progress} onReset={resetProgress} />
+          <ExportButton lang={lang} />
+          <AboutModal lang={lang} onResetOnboarding={resetOnboarding} onResetLanding={resetLanding}
+            externalOpen={aboutOpen} onExternalClose={() => setAboutOpen(false)} />
+          <ThemeToggle compact />
+          <LangDropdown lang={lang} setLang={setLang} />
+          <button className="header-icon-btn" onClick={() => selectTab('admin')} title="Admin">⚙</button>
+        </div>
+
+        {/* ═══ Mobile/Tablet: Hamburger Drawer (unchanged) ═══ */}
+        <nav className={`header-right${menuOpen ? ' mobile-open' : ''}`} role="navigation"
+          aria-label={{ tr: 'Mobil navigasyon', en: 'Mobile navigation', ar: 'التنقل المتنقل' }[lang]}>
           <div className="header-search-desktop">
             <SearchBar lang={lang} onFlyTo={handleFlyTo} onSelectEntity={handleSearchSelect} />
           </div>
