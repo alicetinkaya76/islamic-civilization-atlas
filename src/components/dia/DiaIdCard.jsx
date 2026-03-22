@@ -12,24 +12,21 @@ function fmtDate(h, m, place) {
 const ACTION_ICONS = { travel_to: '→', stayed_at: '⊙', born_at: '🌱', died_at: '🕊' };
 
 export default function DiaIdCard({ lang, td, bio, works, relations, lookup, travel, xref, onClose, onNavigate, onNavigateAlam }) {
-  if (!bio) {
-    return (
-      <div className="dia-idcard-empty">
-        <div className="dia-idcard-placeholder">
-          <span className="dia-idcard-icon">📚</span>
-          <p>{td.noSelection || 'Bir âlim seçin'}</p>
-        </div>
-      </div>
-    );
-  }
-
-  const scholarWorks = useMemo(() => works?.[bio.id] || [], [works, bio.id]);
-
-  const scholarTravel = useMemo(() => travel?.[bio.id] || [], [travel, bio.id]);
+  /* ═══ ALL hooks MUST be above conditional return ═══ */
   const [worksExpanded, setWorksExpanded] = useState(false);
 
+  const scholarWorks = useMemo(() => {
+    if (!bio || !works) return [];
+    return works[bio.id] || [];
+  }, [works, bio]);
+
+  const scholarTravel = useMemo(() => {
+    if (!bio || !travel) return [];
+    return travel[bio.id] || [];
+  }, [travel, bio]);
+
   const { teachers, students, contemporaries } = useMemo(() => {
-    if (!relations) return { teachers: [], students: [], contemporaries: [] };
+    if (!bio || !relations) return { teachers: [], students: [], contemporaries: [] };
     const ts = [], st = [], co = [];
     relations.ts.forEach(([teacher, student, count]) => {
       if (student === bio.id && lookup[teacher]) ts.push({ ...lookup[teacher], _mc: count });
@@ -44,13 +41,23 @@ export default function DiaIdCard({ lang, td, bio, works, relations, lookup, tra
       students: st.sort((a, b) => (b._mc || 0) - (a._mc || 0)),
       contemporaries: co.sort((a, b) => (b._mc || 0) - (a._mc || 0)),
     };
-  }, [relations, bio.id, lookup]);
+  }, [relations, bio, lookup]);
 
-  /* el-A'lâm cross-reference */
   const alamIds = useMemo(() => {
-    if (!xref) return [];
+    if (!bio || !xref) return [];
     return xref.dia_to_alam?.[bio.id] || [];
-  }, [xref, bio.id]);
+  }, [xref, bio]);
+
+  if (!bio) {
+    return (
+      <div className="dia-idcard-empty">
+        <div className="dia-idcard-placeholder">
+          <span className="dia-idcard-icon">📚</span>
+          <p>{td.noSelection || 'Bir âlim seçin'}</p>
+        </div>
+      </div>
+    );
+  }
 
   const diaUrl = `https://islamansiklopedisi.org.tr/${bio.dia || bio.id}`;
   const handleShare = () => {

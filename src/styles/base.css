@@ -1,16 +1,9 @@
 /* ═══════════════════════════════════════════════════
    İslam Medeniyeti Atlası — Base Theme
+   Colors defined in theme.css (Dark/Light system)
    ═══════════════════════════════════════════════════ */
 
 :root {
-  --bg: #080c18;
-  --bg2: #0f1629;
-  --bg3: #161d33;
-  --gold: #c9a84c;
-  --gold2: #e8c65a;
-  --cream: #e8dcc8;
-  --cream2: #c4b89a;
-  --border: #1e2a44;
   --font-display: 'Amiri', serif;
   --font-body: 'Outfit', sans-serif;
 }

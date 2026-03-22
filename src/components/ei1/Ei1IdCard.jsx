@@ -19,6 +19,24 @@ export default function Ei1IdCard({ lang, te, bio, works, relations, lookup, onC
   const [worksExpanded, setWorksExpanded] = useState(false);
   const [xrefExpanded, setXrefExpanded] = useState(false);
 
+  /* ═══ ALL hooks MUST be above conditional return ═══ */
+  const scholarWorks = useMemo(() => {
+    if (!bio || !works) return [];
+    return works[String(bio.id)] || [];
+  }, [works, bio]);
+
+  const xrefs = useMemo(() => {
+    if (!bio || !relations?.xref) return [];
+    return relations.xref
+      .filter(([src]) => src === bio.id)
+      .map(([, tid, rel, extName]) => ({
+        id: tid,
+        name: tid >= 0 && lookup[tid] ? lookup[tid].t : extName || '?',
+        rel,
+        isInternal: tid >= 0 && !!lookup[tid],
+      }));
+  }, [relations, bio, lookup]);
+
   if (!bio) {
     return (
       <div className="ei1-idcard-empty">
@@ -30,21 +48,6 @@ export default function Ei1IdCard({ lang, te, bio, works, relations, lookup, onC
       </div>
     );
   }
-
-  const scholarWorks = useMemo(() => works?.[String(bio.id)] || [], [works, bio.id]);
-
-  /* Cross-references from relations */
-  const xrefs = useMemo(() => {
-    if (!relations?.xref) return [];
-    return relations.xref
-      .filter(([src]) => src === bio.id)
-      .map(([, tid, rel, extName]) => ({
-        id: tid,
-        name: tid >= 0 && lookup[tid] ? lookup[tid].t : extName || '?',
-        rel,
-        isInternal: tid >= 0 && !!lookup[tid],
-      }));
-  }, [relations, bio.id, lookup]);
 
   const handleShare = () => {
     const url = `${window.location.origin}${window.location.pathname}#ei1/${bio.id}`;
