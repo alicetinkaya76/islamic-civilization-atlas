@@ -6,6 +6,7 @@ import MetaTags from './components/shared/MetaTags';
 import BottomTabBar from './components/shared/BottomTabBar';
 import { preloadData } from './hooks/useAsyncData.jsx';
 import useSwipeGesture from './hooks/useSwipeGesture';
+import ThemeToggle from './components/shared/ThemeToggle';
 
 /* ═══ Lazy-loaded panels — only fetched when their tab is active ═══ */
 const AdminPanel    = lazy(() => import('./components/admin/AdminPanel'));
@@ -16,6 +17,7 @@ const QuizMode      = lazy(() => import('./components/QuizMode'));
 const BattleView    = lazy(() => import('./components/battles/BattleView'));
 const CausalView    = lazy(() => import('./components/causal/CausalView'));
 const DiaView       = lazy(() => import('./components/dia/DiaView'));
+const Ei1View       = lazy(() => import('./components/ei1/Ei1View'));
 
 /* ═══ Eagerly loaded — needed on every page ═══ */
 import MapView from './components/map/MapView';
@@ -29,10 +31,10 @@ import ProgressTracker, { BadgeToast, useProgress } from './components/shared/Pr
 import Onboarding from './components/shared/Onboarding';
 import ExportButton from './components/shared/ExportButton';
 
-const VALID_TABS = ['map', 'dashboard', 'timeline', 'links', 'scholars', 'battles', 'alam', 'yaqut', 'dia', 'admin'];
+const VALID_TABS = ['map', 'dashboard', 'timeline', 'links', 'scholars', 'battles', 'alam', 'yaqut', 'dia', 'ei1', 'admin'];
 
 /* Tab order for swipe navigation (excludes admin) */
-const SWIPE_TAB_ORDER = ['map', 'dashboard', 'alam', 'dia', 'timeline', 'links', 'scholars', 'battles', 'yaqut'];
+const SWIPE_TAB_ORDER = ['map', 'dashboard', 'alam', 'dia', 'ei1', 'timeline', 'links', 'scholars', 'battles', 'yaqut'];
 
 /* ═══ Entity types that can be deep-linked ═══ */
 const ENTITY_TYPES = ['dynasty', 'battle', 'scholar', 'monument', 'city', 'waqf', 'event', 'ruler', 'madrasa'];
@@ -258,6 +260,8 @@ export default function App() {
               onMouseEnter={() => preloadData('/data/yaqut_lite.json')}>{t.tabs.yaqut}</button>
             <button role="tab" aria-selected={tab === 'dia'} className={`tab${tab === 'dia' ? ' active' : ''}`} onClick={() => selectTab('dia')}
               onMouseEnter={() => preloadData('/data/dia_lite.json')}>{t.tabs.dia}</button>
+            <button role="tab" aria-selected={tab === 'ei1'} className={`tab${tab === 'ei1' ? ' active' : ''}`} onClick={() => selectTab('ei1')}
+              onMouseEnter={() => preloadData('/data/ei1_lite.json')}>{t.tabs.ei1}</button>
           </div>
           <button className="quiz-trigger" onClick={() => setQuizOpen(true)}
             aria-label={{ tr: 'Bilgi yarışması', en: 'Knowledge quiz', ar: 'اختبار المعرفة' }[lang]}>🎓 Quiz</button>
@@ -266,6 +270,7 @@ export default function App() {
           <ExportButton lang={lang} />
           <AboutModal lang={lang} onResetOnboarding={resetOnboarding} onResetLanding={resetLanding}
           externalOpen={aboutOpen} onExternalClose={() => setAboutOpen(false)} />
+          <ThemeToggle />
           <button className="admin-trigger" onClick={() => selectTab('admin')}
             title="Admin Panel" style={{ background:'none',border:'none',cursor:'pointer',fontSize:14,color:'#a89b8c',padding:'4px 8px',borderRadius:4 }}>⚙</button>
           <div className="lang-switcher">
@@ -291,6 +296,7 @@ export default function App() {
          tab === 'alam' ? <AlamView lang={lang} t={t} /> :
          tab === 'yaqut' ? <YaqutView lang={lang} t={t} /> :
          tab === 'dia' ? <DiaView lang={lang} t={t} /> :
+         tab === 'ei1' ? <Ei1View lang={lang} t={t} /> :
          <CausalView lang={lang} t={t} />}
         </Suspense>
       </main>

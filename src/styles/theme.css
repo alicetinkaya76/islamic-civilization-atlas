@@ -1,0 +1,283 @@
+/* ═══════════════════════════════════════════════════
+   İslam Medeniyeti Atlası — Dark/Light Theme System
+   RGB CSS Variables + Tailwind-compatible alpha
+   ═══════════════════════════════════════════════════ */
+
+/* ─── Dark theme (default) ─── */
+:root, [data-theme="dark"] {
+  --bg-rgb: 8, 12, 24;
+  --bg2-rgb: 15, 22, 41;
+  --bg3-rgb: 22, 29, 51;
+  --bg4-rgb: 30, 38, 62;
+  --gold-rgb: 201, 168, 76;
+  --gold2-rgb: 232, 198, 90;
+  --cream-rgb: 232, 220, 200;
+  --cream2-rgb: 196, 184, 154;
+  --border-rgb: 30, 42, 68;
+  --text-rgb: 232, 220, 200;
+  --text2-rgb: 160, 150, 130;
+  --card-rgb: 18, 26, 46;
+  --hover-rgb: 26, 34, 56;
+  --danger-rgb: 239, 83, 80;
+  --success-rgb: 102, 187, 106;
+  --info-rgb: 79, 195, 247;
+  --shadow-alpha: 0.5;
+  --glass-alpha: 0.12;
+  --overlay-alpha: 0.7;
+
+  /* Composed vars (backwards-compatible) */
+  --bg: rgb(var(--bg-rgb));
+  --bg2: rgb(var(--bg2-rgb));
+  --bg3: rgb(var(--bg3-rgb));
+  --bg4: rgb(var(--bg4-rgb));
+  --gold: rgb(var(--gold-rgb));
+  --gold2: rgb(var(--gold2-rgb));
+  --cream: rgb(var(--cream-rgb));
+  --cream2: rgb(var(--cream2-rgb));
+  --border: rgb(var(--border-rgb));
+  --text: rgb(var(--text-rgb));
+  --text2: rgb(var(--text2-rgb));
+  --card: rgb(var(--card-rgb));
+  --hover: rgb(var(--hover-rgb));
+  --danger: rgb(var(--danger-rgb));
+  --success: rgb(var(--success-rgb));
+  --info: rgb(var(--info-rgb));
+
+  /* Alpha shortcuts */
+  --gold-10: rgba(var(--gold-rgb), 0.10);
+  --gold-15: rgba(var(--gold-rgb), 0.15);
+  --gold-20: rgba(var(--gold-rgb), 0.20);
+  --gold-25: rgba(var(--gold-rgb), 0.25);
+  --gold-40: rgba(var(--gold-rgb), 0.40);
+  --bg-80: rgba(var(--bg-rgb), 0.80);
+  --bg-90: rgba(var(--bg-rgb), 0.90);
+  --border-50: rgba(var(--border-rgb), 0.50);
+  --shadow: rgba(0, 0, 0, var(--shadow-alpha));
+  --glass: rgba(var(--bg3-rgb), var(--glass-alpha));
+  --overlay: rgba(var(--bg-rgb), var(--overlay-alpha));
+
+  /* Input/control surfaces */
+  --input-bg: rgb(var(--bg2-rgb));
+  --input-border: rgb(var(--border-rgb));
+  --input-text: rgb(var(--cream-rgb));
+  --input-placeholder: rgba(var(--cream2-rgb), 0.5);
+
+  /* Scrollbar */
+  --scrollbar-track: rgb(var(--bg-rgb));
+  --scrollbar-thumb: rgb(var(--border-rgb));
+
+  /* Chart / data-viz surfaces */
+  --chart-grid: rgba(var(--border-rgb), 0.3);
+  --chart-text: rgba(var(--cream2-rgb), 0.7);
+}
+
+/* ─── Light theme ─── */
+[data-theme="light"] {
+  --bg-rgb: 248, 245, 240;
+  --bg2-rgb: 240, 236, 228;
+  --bg3-rgb: 232, 226, 216;
+  --bg4-rgb: 222, 216, 204;
+  --gold-rgb: 158, 120, 38;
+  --gold2-rgb: 180, 140, 48;
+  --cream-rgb: 32, 28, 22;
+  --cream2-rgb: 80, 72, 58;
+  --border-rgb: 210, 200, 182;
+  --text-rgb: 32, 28, 22;
+  --text2-rgb: 100, 90, 72;
+  --card-rgb: 255, 252, 247;
+  --hover-rgb: 245, 240, 230;
+  --danger-rgb: 211, 47, 47;
+  --success-rgb: 56, 142, 60;
+  --info-rgb: 25, 118, 210;
+  --shadow-alpha: 0.12;
+  --glass-alpha: 0.06;
+  --overlay-alpha: 0.4;
+
+  /* Recompose */
+  --bg: rgb(var(--bg-rgb));
+  --bg2: rgb(var(--bg2-rgb));
+  --bg3: rgb(var(--bg3-rgb));
+  --bg4: rgb(var(--bg4-rgb));
+  --gold: rgb(var(--gold-rgb));
+  --gold2: rgb(var(--gold2-rgb));
+  --cream: rgb(var(--cream-rgb));
+  --cream2: rgb(var(--cream2-rgb));
+  --border: rgb(var(--border-rgb));
+  --text: rgb(var(--text-rgb));
+  --text2: rgb(var(--text2-rgb));
+  --card: rgb(var(--card-rgb));
+  --hover: rgb(var(--hover-rgb));
+  --danger: rgb(var(--danger-rgb));
+  --success: rgb(var(--success-rgb));
+  --info: rgb(var(--info-rgb));
+
+  --gold-10: rgba(var(--gold-rgb), 0.08);
+  --gold-15: rgba(var(--gold-rgb), 0.12);
+  --gold-20: rgba(var(--gold-rgb), 0.18);
+  --gold-25: rgba(var(--gold-rgb), 0.22);
+  --gold-40: rgba(var(--gold-rgb), 0.35);
+  --bg-80: rgba(var(--bg-rgb), 0.85);
+  --bg-90: rgba(var(--bg-rgb), 0.92);
+  --border-50: rgba(var(--border-rgb), 0.40);
+  --shadow: rgba(0, 0, 0, var(--shadow-alpha));
+  --glass: rgba(var(--bg3-rgb), var(--glass-alpha));
+  --overlay: rgba(var(--bg-rgb), var(--overlay-alpha));
+
+  --input-bg: rgb(var(--card-rgb));
+  --input-border: rgb(var(--border-rgb));
+  --input-text: rgb(var(--text-rgb));
+  --input-placeholder: rgba(var(--text2-rgb), 0.5);
+
+  --scrollbar-track: rgb(var(--bg2-rgb));
+  --scrollbar-thumb: rgb(var(--border-rgb));
+
+  --chart-grid: rgba(var(--border-rgb), 0.25);
+  --chart-text: rgba(var(--text2-rgb), 0.6);
+}
+
+/* ─── Light theme overrides for specific components ─── */
+[data-theme="light"] body {
+  background: var(--bg);
+  color: var(--text);
+}
+
+[data-theme="light"] .header {
+  background: linear-gradient(180deg, var(--bg2), var(--bg));
+  border-bottom-color: var(--border);
+  box-shadow: 0 1px 4px var(--shadow);
+}
+
+[data-theme="light"] .logo {
+  background: radial-gradient(circle, rgba(var(--gold-rgb), 0.15), transparent);
+  border-color: var(--gold);
+}
+
+[data-theme="light"] .tab {
+  background: transparent;
+  border-color: var(--border);
+  color: var(--text2);
+}
+[data-theme="light"] .tab:hover { border-color: var(--gold); color: var(--gold); }
+[data-theme="light"] .tab.active {
+  background: rgba(var(--gold-rgb), 0.10);
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+[data-theme="light"] .lang-btn {
+  background: var(--card);
+  border-color: var(--border);
+  color: var(--text2);
+}
+[data-theme="light"] .lang-btn.active {
+  background: rgba(var(--gold-rgb), 0.12);
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+[data-theme="light"] .tt {
+  background: var(--card);
+  border-color: var(--gold);
+  color: var(--text);
+  box-shadow: 0 4px 20px var(--shadow);
+}
+
+[data-theme="light"] ::-webkit-scrollbar-track { background: var(--scrollbar-track); }
+[data-theme="light"] ::-webkit-scrollbar-thumb { background: var(--scrollbar-thumb); }
+[data-theme="light"] ::-webkit-scrollbar-thumb:hover { background: var(--gold); }
+
+/* ─── Theme toggle switch ─── */
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  background: var(--bg3);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+.theme-toggle:hover {
+  border-color: var(--gold);
+  background: var(--hover);
+}
+.theme-toggle:active { transform: scale(0.97); }
+
+.theme-toggle-track {
+  position: relative;
+  width: 36px;
+  height: 20px;
+  border-radius: 10px;
+  background: rgba(var(--border-rgb), 0.6);
+  transition: background 0.3s ease;
+  flex-shrink: 0;
+}
+[data-theme="light"] .theme-toggle-track {
+  background: rgba(var(--gold-rgb), 0.25);
+}
+
+.theme-toggle-thumb {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--gold);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+              box-shadow 0.3s ease;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 9px;
+  line-height: 1;
+}
+[data-theme="light"] .theme-toggle-thumb {
+  transform: translateX(16px);
+  box-shadow: 0 1px 4px rgba(0,0,0,0.15);
+}
+
+.theme-toggle-label {
+  font-size: 11px;
+  color: var(--cream2);
+  font-weight: 500;
+  letter-spacing: 0.3px;
+}
+
+/* ─── Smooth theme transition ─── */
+.theme-transitioning,
+.theme-transitioning *,
+.theme-transitioning *::before,
+.theme-transitioning *::after {
+  transition-duration: 0.35s !important;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+/* ─── Bottom tab bar theme ─── */
+[data-theme="light"] .bottom-tab-bar {
+  background: rgba(var(--card-rgb), 0.95);
+  border-top-color: var(--border);
+}
+[data-theme="light"] .btb-item { color: var(--text2); }
+[data-theme="light"] .btb-item.active { color: var(--gold); }
+
+/* ─── Mobile-specific light-theme fixes ─── */
+[data-theme="light"] .mobile-backdrop {
+  background: rgba(var(--bg-rgb), 0.4);
+}
+[data-theme="light"] .header-right.mobile-open {
+  background: var(--bg);
+}
+
+/* ─── Print: force light ─── */
+@media print {
+  :root {
+    --bg-rgb: 255, 255, 255;
+    --text-rgb: 0, 0, 0;
+    --gold-rgb: 120, 90, 20;
+  }
+}

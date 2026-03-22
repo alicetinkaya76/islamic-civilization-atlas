@@ -9,6 +9,7 @@ const PRIMARY_TABS = [
 ];
 
 const SECONDARY_TABS = [
+  { id: 'ei1',      icon: '📕', tr: 'EI-1',            en: 'EI-1',      ar: 'دائرة المعارف' },
   { id: 'timeline', icon: '📅', tr: 'Zaman Çizelgesi', en: 'Timeline',  ar: 'الجدول الزمني' },
   { id: 'links',    icon: '🔗', tr: 'Nedensellik',     en: 'Causality', ar: 'السببية' },
   { id: 'scholars', icon: '🎓', tr: 'Âlimler',         en: 'Scholars',  ar: 'العلماء' },
