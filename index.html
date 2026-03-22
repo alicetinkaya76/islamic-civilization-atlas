@@ -1,8 +1,12 @@
 <!DOCTYPE html>
-<html lang="tr" dir="ltr">
+<html lang="tr" dir="ltr" data-theme="dark">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script>
+    // Restore theme immediately to prevent flash of wrong theme
+    try { const t = localStorage.getItem('atlas-theme'); if (t) document.documentElement.setAttribute('data-theme', t); } catch(e) {}
+  </script>
 
   <!-- Primary Meta -->
   <title>Müslüman Hanedanlar Atlası — Islamic Dynasties Atlas</title>

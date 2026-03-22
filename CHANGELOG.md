@@ -2,6 +2,38 @@
 
 All notable changes to the Islamic Dynasties Atlas are documented in this file.
 
+## [6.5.0] - 2026-03-21
+
+### Added
+- **Dark/Light Theme System**: Full RGB CSS variable architecture (`--bg-rgb`, `--gold-rgb` etc.) with Tailwind-compatible alpha shortcuts. `data-theme="dark|light"` on `<html>`. Inline script in `index.html` prevents FOUC.
+- **ThemeToggle Component**: Animated toggle switch with moon/sun icons, localStorage persistence, smooth 350ms cross-fade via `.theme-transitioning` class. Compact mode for mobile menu.
+- **Brill EI-1 Panel** (`#ei1` tab): Full Encyclopaedia of Islam First Edition panel mirroring DIA architecture:
+  - `Ei1View` — main orchestrator with lazy-loaded analytics
+  - `Ei1Sidebar` — virtual-scrolled list (7,568 entries), search, field/type/century/confidence filters, bio-only toggle
+  - `Ei1IdCard` — detail card with article type badge, dates, fields, madhab, dynasty/region, EI¹ author, confidence meter, works, cross-references
+  - `Ei1StatsPanel` — 4 summary cards, century distribution mini-chart, article type breakdown, top fields, top EI¹ authors
+  - `Ei1Analytics` — 5 interactive canvas charts (century, fields, volumes, authors, types) with theme-aware colors
+  - `ei1Constants.js` — field colors, normalization, century calculation
+- **EI-1 Data Files**: `ei1_lite.json` (7,568 entries, 1.4MB), `ei1_works.json` (306 scholars, 450 works), `ei1_relations.json` (195 cross-references)
+- **i18n**: Full TR/EN/AR translations for EI-1 panel (28 keys per language)
+- **Mobile Tab Bar**: EI-1 added to secondary tabs in BottomTabBar
+
+### Changed
+- **Light theme compatibility**: 50+ `[data-theme="light"]` selectors covering DIA, Alam, Yaqut, Dashboard, Timeline, Quiz, Causal, Scholars, Battles, Map sidebar, SearchBar, Footer, Modals, Landing
+- **Bottom Tab Bar polish**: Glass-morphism backdrop, active indicator dot animation, refined press feedback
+- **Mobile UX**: Haptic-feel `scale(0.97)` press states, glass blur on slide-in menu and bottom sheet, safe-area-inset padding for notched phones, `prefers-reduced-motion` support
+- **Theme-aware inputs**: Custom range slider and checkbox styling using `var(--gold)`, scrollbar colors via CSS variables
+- Package version → 6.5.0
+
+### Technical
+- `theme.css` — 200+ lines: dark/light palettes with RGB triplets, alpha shortcuts, composed vars
+- `session22.css` — 300+ lines: light theme overrides for all panels, polished mobile interactions
+- `ei1.css` — 500+ lines: full responsive panel styles with mobile breakpoints
+- 6 new JSX components + 1 JS constants module in `src/components/ei1/`
+- `ThemeToggle.jsx` in `src/components/shared/`
+- 3 new JSON data files in `public/data/`
+- No new dependencies
+
 ## [6.4.0] - 2026-03-18
 
 ### Added
