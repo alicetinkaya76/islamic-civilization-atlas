@@ -2,6 +2,38 @@
 
 All notable changes to the Islamic Dynasties Atlas are documented in this file.
 
+## [6.6.0.0] - 2026-03-23 — Session 27: DİA AI Asistan
+
+### Added
+- **AI Chat Panel**: Floating 🤖 button (bottom-right) opens a slide-out chat panel for natural-language queries about Islamic history. Fully client-side RAG pipeline: MiniSearch full-text search → context assembly → Groq LLM (llama-3.3-70b-versatile). Zero server cost.
+- **DİA HTML Parser** (`scripts/prepare_dia_chunks.py`): Converts 8,528 DİA HTML articles into ~500-word JSON chunks with metadata (title, Arabic name, death date, description, authors, sections). Handles multi-section articles (e.g., Gazzâlî: 6 sections, 41K words).
+- **MiniSearch Index Builder** (`scripts/build_search_index.js`): Pre-builds a client-side full-text search index from chunks. Turkish/Arabic-aware tokenization, fuzzy matching, prefix search.
+- **Groq API Client** (`src/components/ai/groqClient.js`): Direct client-side fetch to Groq free tier (1,000 req/day). Structured JSON output with answer, sources, and map actions.
+- **Prompt Builder** (`src/components/ai/promptBuilder.js`): Assembles system prompt + retrieved context. Trilingual (TR/EN/AR). Client-side irrelevance filter skips API for off-topic queries.
+- **Search Engine** (`src/components/ai/searchEngine.js`): MiniSearch wrapper with lazy-loading (data fetched only when chat opens). Deduplication by article+section.
+- **useAIChat Hook** (`src/components/ai/useAIChat.js`): Full state management — messages, loading, quota (20/day per user via localStorage), engine init, error handling, map action dispatch.
+- **AIChatPanel** (`src/components/ai/AIChatPanel.jsx`): Floating button with pulse animation, slide-out panel, typing indicator, suggestion chips (6 per language), source cards with DİA links.
+- **AIChatMessage** (`src/components/ai/AIChatMessage.jsx`): User/assistant message bubbles with collapsible source citations.
+- **AIChatSuggestions** (`src/components/ai/AIChatSuggestions.jsx`): Example question chips — 6 TR, 6 EN, 5 AR.
+- **AI Config** (`src/config/ai.js`): Obfuscated API key, model selection, rate limits, feature flags.
+- **ai-chat.css**: Full styling — dark/light theme, RTL support, mobile full-screen, desktop side panel, typing animation.
+
+### Changed
+- `App.jsx`: Added lazy-loaded `AIChatPanel` component with `handleFlyTo` prop.
+- `package.json`: Added `minisearch` dependency, version → 6.6.0.0.
+
+### Architecture
+```
+User Question → [1] Client Irrelevance Filter → [2] MiniSearch (browser)
+→ [3] Context Assembly (top 5 chunks, ~2000 tokens) → [4] Groq API
+→ [5] JSON Response (answer + sources + map actions) → [6] UI Render
+```
+
+### Cost: $0/month
+- Groq API: Free tier (1,000 req/day)
+- GitHub Pages: Free
+- MiniSearch: Client-side npm package
+
 ## [6.5.3.1] - 2026-03-23 — Session 26 Hotfix
 
 ### Fixed

@@ -1,0 +1,24 @@
+{
+  "name": "islamic-dynasties-atlas",
+  "version": "6.6.0.0",
+  "description": "Bosworth's Islamic Dynasties + al-Zirikli's al-A'lam + Yaqut's Mu'jam al-Buldan + DIA + Brill EI-1 + DİA AI Assistant — 186 dynasties, 13,940 biographies, 12,954 geographic entries, 7,568 EI-1 articles, AI-powered RAG search, 632–1924 CE",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "d3": "^7.8.5",
+    "leaflet": "^1.9.4",
+    "minisearch": "^7.2.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "three": "^0.128.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.2.1",
+    "vite": "^5.1.0"
+  }
+}

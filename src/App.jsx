@@ -18,6 +18,7 @@ const BattleView    = lazy(() => import('./components/battles/BattleView'));
 const CausalView    = lazy(() => import('./components/causal/CausalView'));
 const DiaView       = lazy(() => import('./components/dia/DiaView'));
 const Ei1View       = lazy(() => import('./components/ei1/Ei1View'));
+const AIChatPanel   = lazy(() => import('./components/ai/AIChatPanel'));
 
 /* ═══ Eagerly loaded — needed on every page ═══ */
 import MapView from './components/map/MapView';
@@ -437,6 +438,7 @@ export default function App() {
       )}
       {quizOpen && <Suspense fallback={<LazyLoader />}><QuizMode lang={lang} onFlyTo={handleFlyTo} onClose={() => setQuizOpen(false)} /></Suspense>}
       <BadgeToast badge={newBadge} lang={lang} onDismiss={() => setNewBadge(null)} />
+      <Suspense fallback={null}><AIChatPanel lang={lang} onFlyTo={handleFlyTo} /></Suspense>
       {showOnboarding && <Onboarding lang={lang} onDone={handleOnboardingDone} />}
     </div>
   );
