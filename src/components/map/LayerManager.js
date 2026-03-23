@@ -60,11 +60,18 @@ function hasRange(yr) { return yr && (yr[0] !== FULL_RANGE[0] || yr[1] !== FULL_
 
 /**
  * Renders all map layers based on current state.
+ *
+ * When yearRange is active (not 622–1924), it REPLACES the single-year
+ * visibility logic. Entities are shown if they fall within the range,
+ * regardless of the main timeline slider position.
+ *
  * Returns the active dynasty count.
  */
 export function renderLayers({ lg, layers, filters, year, yearRange, lang, t, analyticsMap, causalIdx, onPopupOpen }) {
   const yr = yearRange || FULL_RANGE;
   const rangeActive = hasRange(yr);
+  /* When range is active, use midpoint for opacity/styling calculations */
+  const effectiveYear = rangeActive ? Math.round((yr[0] + yr[1]) / 2) : year;
 
   const dynOk = d => {
     if (filters.religion && d.rel !== filters.religion) return false;
@@ -113,9 +120,16 @@ export function renderLayers({ lg, layers, filters, year, yearRange, lang, t, an
   if (layers.dynasties) {
     DB.dynasties.forEach(d => {
       const bbox = dynBbox(d);
-      if (!bbox || d.start > year || d.end < year || !dynOk(d)) return;
-      // Year range: dynasty must overlap with range
-      if (rangeActive && (d.end < yr[0] || d.start > yr[1])) return;
+      if (!bbox || !dynOk(d)) return;
+
+      /* Visibility: range mode uses range, normal mode uses single year */
+      if (rangeActive) {
+        // Dynasty must overlap with selected range
+        if (d.end < yr[0] || d.start > yr[1]) return;
+      } else {
+        if (d.start > year || d.end < year) return;
+      }
+
       cnt++;
       const col = REL_C[d.rel] || ZONE_C[d.zone] || '#c9a84c';
       const op = (IMP_OP[d.imp] || 0.18) * 1.2;
@@ -134,12 +148,10 @@ export function renderLayers({ lg, layers, filters, year, yearRange, lang, t, an
       // Capital dot with glow
       if (d.lat && d.lon) {
         const r = d.imp === 'Kritik' ? 10 : d.imp === 'Yüksek' ? 8 : 6;
-        // Glow ring
         L.circleMarker([d.lat, d.lon], {
           radius: r + 4, fillColor: col, fillOpacity: 0.2, color: col, weight: 0, stroke: false,
           className: 'dynasty-glow'
         }).addTo(lg.dynasties);
-        // Main dot
         L.circleMarker([d.lat, d.lon], {
           radius: r, fillColor: col, fillOpacity: 0.95, color: '#080c18', weight: 1.8
         }).bindTooltip(n(d, lang), { direction: 'top', offset: [0, -8] }).addTo(lg.dynasties);
@@ -147,95 +159,125 @@ export function renderLayers({ lg, layers, filters, year, yearRange, lang, t, an
     });
   }
 
-  // ── Battles ── (crossed swords SVG, 22px)
+  // ── Battles ──
   lg.battles.clearLayers();
   if (layers.battles) {
     DB.battles.forEach(b => {
       if (!b.lat || !b.yr) return;
-      // Year range filter
-      if (rangeActive && (b.yr < yr[0] || b.yr > yr[1])) return;
-      const past = b.yr <= year, near = Math.abs(b.yr - year) < 50;
-      if (!past && !near) return;
-      const op = past ? (near ? 0.95 : 0.55) : 0.25;
-      const icon = battleIcon(op, past);
-      const m = L.marker([b.lat, b.lon], { icon }).bindPopup(buildBattlePopup(b, lang, t, causalIdx), popOpt(360)).addTo(lg.battles);
-      popupTrack(m, 'battle', b.id);
+
+      if (rangeActive) {
+        // Range mode: show if battle year falls within range
+        if (b.yr < yr[0] || b.yr > yr[1]) return;
+        const icon = battleIcon(0.9, true);
+        const m = L.marker([b.lat, b.lon], { icon }).bindPopup(buildBattlePopup(b, lang, t, causalIdx), popOpt(360)).addTo(lg.battles);
+        popupTrack(m, 'battle', b.id);
+      } else {
+        // Normal mode: year-based visibility with opacity
+        const past = b.yr <= year, near = Math.abs(b.yr - year) < 50;
+        if (!past && !near) return;
+        const op = past ? (near ? 0.95 : 0.55) : 0.25;
+        const icon = battleIcon(op, past);
+        const m = L.marker([b.lat, b.lon], { icon }).bindPopup(buildBattlePopup(b, lang, t, causalIdx), popOpt(360)).addTo(lg.battles);
+        popupTrack(m, 'battle', b.id);
+      }
     });
   }
 
-  // ── Events ── (rounded square, 20px)
+  // ── Events ──
   lg.events.clearLayers();
   if (layers.events) {
     DB.events.forEach(e => {
       if (!e.lat || !e.yr) return;
-      // Year range filter
-      if (rangeActive && (e.yr < yr[0] || e.yr > yr[1])) return;
-      const past = e.yr <= year;
-      if (!past && e.yr > year + 80) return;
-      const op = past ? 0.85 : 0.2;
-      const icon = eventIcon(op, past);
-      const em = L.marker([e.lat, e.lon], { icon }).bindPopup(buildEventPopup(e, lang, t, causalIdx), popOpt(360)).addTo(lg.events);
-      popupTrack(em, 'event', e.id);
+
+      if (rangeActive) {
+        if (e.yr < yr[0] || e.yr > yr[1]) return;
+        const icon = eventIcon(0.85, true);
+        const em = L.marker([e.lat, e.lon], { icon }).bindPopup(buildEventPopup(e, lang, t, causalIdx), popOpt(360)).addTo(lg.events);
+        popupTrack(em, 'event', e.id);
+      } else {
+        const past = e.yr <= year;
+        if (!past && e.yr > year + 80) return;
+        const op = past ? 0.85 : 0.2;
+        const icon = eventIcon(op, past);
+        const em = L.marker([e.lat, e.lon], { icon }).bindPopup(buildEventPopup(e, lang, t, causalIdx), popOpt(360)).addTo(lg.events);
+        popupTrack(em, 'event', e.id);
+      }
     });
   }
 
-  // ── Scholars ── (12px circle + white halo)
+  // ── Scholars ──
   lg.scholars.clearLayers();
   if (layers.scholars) {
     DB.scholars.forEach(s => {
       if (!s.lat) return;
-      // Year range filter: scholar lived within range
+
       if (rangeActive) {
+        // Show if scholar's lifespan overlaps the range
         const sb = s.b || 0, sd = s.d || 9999;
         if (sd < yr[0] || sb > yr[1]) return;
+        const r = 10, fop = 0.8;
+        L.circleMarker([s.lat, s.lon], {
+          radius: r + 3, fillColor: '#fff', fillOpacity: 0.25,
+          color: '#fff', weight: 0, stroke: false
+        }).addTo(lg.scholars);
+        L.circleMarker([s.lat, s.lon], {
+          radius: r, fillColor: '#34d399', fillOpacity: fop,
+          color: '#fff', weight: 1.5
+        }).bindPopup(buildScholarPopup(s, lang, t, causalIdx), popOpt(360)).addTo(lg.scholars);
+        const sLayers = lg.scholars.getLayers();
+        if (sLayers.length) popupTrack(sLayers[sLayers.length - 1], 'scholar', s.id);
+      } else {
+        const alive = s.b && s.d && s.b <= year && s.d >= year;
+        const past = s.d && s.d < year;
+        if (!alive && !past && s.b && s.b > year) return;
+        const r = alive ? 12 : 7;
+        const fop = alive ? 0.95 : 0.4;
+        L.circleMarker([s.lat, s.lon], {
+          radius: r + 3, fillColor: '#fff', fillOpacity: alive ? 0.35 : 0.12,
+          color: '#fff', weight: 0, stroke: false
+        }).addTo(lg.scholars);
+        L.circleMarker([s.lat, s.lon], {
+          radius: r, fillColor: '#34d399',
+          fillOpacity: fop, color: alive ? '#fff' : '#0f1629',
+          weight: alive ? 2.2 : 1
+        }).bindPopup(buildScholarPopup(s, lang, t, causalIdx), popOpt(360)).addTo(lg.scholars);
+        const sLayers = lg.scholars.getLayers();
+        if (sLayers.length) popupTrack(sLayers[sLayers.length - 1], 'scholar', s.id);
       }
-      const alive = s.b && s.d && s.b <= year && s.d >= year;
-      const past = s.d && s.d < year;
-      if (!alive && !past && s.b && s.b > year) return;
-
-      const r = alive ? 12 : 7;
-      const fop = alive ? 0.95 : 0.4;
-      // White halo
-      L.circleMarker([s.lat, s.lon], {
-        radius: r + 3, fillColor: '#fff', fillOpacity: alive ? 0.35 : 0.12,
-        color: '#fff', weight: 0, stroke: false
-      }).addTo(lg.scholars);
-      // Main circle
-      L.circleMarker([s.lat, s.lon], {
-        radius: r, fillColor: '#34d399',
-        fillOpacity: fop, color: alive ? '#fff' : '#0f1629',
-        weight: alive ? 2.2 : 1
-      }).bindPopup(buildScholarPopup(s, lang, t, causalIdx), popOpt(360)).addTo(lg.scholars);
-      /* Track last added scholar marker */
-      const sLayers = lg.scholars.getLayers();
-      if (sLayers.length) popupTrack(sLayers[sLayers.length - 1], 'scholar', s.id);
     });
   }
 
-  // ── Monuments ── (24px up-arrow triangle, gold)
+  // ── Monuments ──
   lg.monuments.clearLayers();
   if (layers.monuments) {
     DB.monuments.forEach(m => {
-      if (!m.lat || !m.yr || m.yr > year + 50) return;
-      // Year range filter
-      if (rangeActive && (m.yr < yr[0] || m.yr > yr[1])) return;
-      const built = m.yr <= year;
-      const op = built ? 0.9 : 0.3;
-      const icon = monumentIcon(op, built, m.unesco);
-      const mm = L.marker([m.lat, m.lon], { icon }).bindPopup(buildMonumentPopup(m, lang, t, causalIdx), popOpt(360)).addTo(lg.monuments);
-      popupTrack(mm, 'monument', m.id);
+      if (!m.lat || !m.yr) return;
+
+      if (rangeActive) {
+        if (m.yr < yr[0] || m.yr > yr[1]) return;
+        const icon = monumentIcon(0.9, true, m.unesco);
+        const mm = L.marker([m.lat, m.lon], { icon }).bindPopup(buildMonumentPopup(m, lang, t, causalIdx), popOpt(360)).addTo(lg.monuments);
+        popupTrack(mm, 'monument', m.id);
+      } else {
+        if (m.yr > year + 50) return;
+        const built = m.yr <= year;
+        const op = built ? 0.9 : 0.3;
+        const icon = monumentIcon(op, built, m.unesco);
+        const mm = L.marker([m.lat, m.lon], { icon }).bindPopup(buildMonumentPopup(m, lang, t, causalIdx), popOpt(360)).addTo(lg.monuments);
+        popupTrack(mm, 'monument', m.id);
+      }
     });
   }
 
-  // ── Cities ── (14px filled circle, orange)
+  // ── Cities ──
   lg.cities.clearLayers();
   if (layers.cities) {
     const best = {};
     DB.cities.forEach(c => {
       if (!c.lat) return;
-      // Year range filter
       if (rangeActive && c.yr && (c.yr < yr[0] || c.yr > yr[1])) return;
-      if (!best[c.id] || Math.abs(c.yr - year) < Math.abs(best[c.id].yr - year)) best[c.id] = c;
+      const refYear = rangeActive ? effectiveYear : year;
+      if (!best[c.id] || Math.abs(c.yr - refYear) < Math.abs(best[c.id].yr - refYear)) best[c.id] = c;
     });
     Object.values(best).forEach(c => {
       const r = c.pop ? Math.max(7, Math.min(20, Math.sqrt(c.pop / 12000))) : 7;
@@ -247,19 +289,21 @@ export function renderLayers({ lg, layers, filters, year, yearRange, lang, t, an
     });
   }
 
-  // ── Trade Routes ── (weight 5, prominent dash animation)
+  // ── Trade Routes ──
   lg.routes.clearLayers();
   if (layers.routes) {
     DB.routes.forEach(r => {
       if (!r.wp || r.wp.length < 2) return;
-      const active = (!r.ps || r.ps <= year) && (!r.pe || r.pe >= year);
-      // Year range filter for routes
+      const rs = r.ps || 622, re = r.pe || 1924;
+
       if (rangeActive) {
-        const rs = r.ps || 622, re = r.pe || 1924;
         if (re < yr[0] || rs > yr[1]) return;
       }
+
+      const refYear = rangeActive ? effectiveYear : year;
+      const active = (!r.ps || r.ps <= refYear) && (!r.pe || r.pe >= refYear);
       const isSea = r.type_tr === 'Deniz';
-      // Glow under-line for active routes
+
       if (active) {
         L.polyline(r.wp, {
           color: '#c9a84c', weight: 9, opacity: 0.15, lineCap: 'round', lineJoin: 'round',
@@ -282,15 +326,18 @@ export function renderLayers({ lg, layers, filters, year, yearRange, lang, t, an
   if (layers.rulers) {
     (DB.rulers || []).forEach(r => {
       if (!r.lat || !r.lon || !r.rs) return;
-      // Year range filter
+      const re = r.re || 9999;
+
       if (rangeActive) {
-        const re = r.re || 9999;
         if (re < yr[0] || r.rs > yr[1]) return;
+      } else {
+        const future = r.rs > year;
+        if (future && r.rs > year + 50) return;
       }
-      const ruling = r.rs <= year && (r.re || 9999) >= year;
-      const past = (r.re || 9999) < year;
-      const future = r.rs > year;
-      if (future && r.rs > year + 50) return;
+
+      const refYear = rangeActive ? effectiveYear : year;
+      const ruling = r.rs <= refYear && (r.re || 9999) >= refYear;
+      const past = (r.re || 9999) < refYear;
 
       const col = ruling ? '#e879f9' : past ? '#9333ea' : '#581c87';
       const op = ruling ? 0.95 : past ? 0.4 : 0.2;
@@ -317,12 +364,17 @@ export function renderLayers({ lg, layers, filters, year, yearRange, lang, t, an
     (DB.scholars || []).forEach(s => { scholarsById[s.id] = s; });
     (DB.madrasas || []).forEach(m => {
       if (!m.lat || !m.lon) return;
-      // Year range filter
-      if (rangeActive && (m.founded > yr[1] || (m.closed && m.closed < yr[0]))) return;
-      const active = m.founded <= year && (!m.closed || m.closed >= year);
-      const past = m.closed && m.closed < year;
-      const future = m.founded > year;
-      if (future && m.founded > year + 50) return;
+
+      if (rangeActive) {
+        if (m.founded > yr[1] || (m.closed && m.closed < yr[0])) return;
+      } else {
+        const future = m.founded > year;
+        if (future && m.founded > year + 50) return;
+      }
+
+      const refYear = rangeActive ? effectiveYear : year;
+      const active = m.founded <= refYear && (!m.closed || m.closed >= refYear);
+      const past = m.closed && m.closed < refYear;
 
       const op = active ? 0.95 : past ? 0.4 : 0.2;
       const col = active ? '#22d3ee' : past ? '#0e7490' : '#164e63';

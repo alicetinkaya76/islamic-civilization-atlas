@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { LYR_COL } from '../../config/colors';
 import { LAYER_KEYS } from '../../config/layers';
 import DB from '../../data/db.json';
@@ -18,6 +19,40 @@ const SOLO_TR = { tr: 'Sadece', en: 'Only', ar: 'فقط' };
 const TIME_TR = { tr: 'Zaman Aralığı', en: 'Time Range', ar: 'النطاق الزمني' };
 const RESET_TR = { tr: 'Sıfırla', en: 'Reset', ar: 'إعادة' };
 
+/** Number input that allows free typing, validates on blur/Enter */
+function YearInput({ value, min, max, onChange }) {
+  const [draft, setDraft] = useState(String(value));
+  const [focused, setFocused] = useState(false);
+
+  const commit = () => {
+    const v = parseInt(draft, 10);
+    if (!isNaN(v) && v >= min && v <= max) {
+      onChange(v);
+    } else {
+      setDraft(String(value)); // revert
+    }
+  };
+
+  // Sync draft when parent value changes (e.g. slider drag)
+  if (!focused && String(value) !== draft) {
+    // only update if not currently editing
+    setTimeout(() => { if (!focused) setDraft(String(value)); }, 0);
+  }
+
+  return (
+    <input
+      type="text"
+      inputMode="numeric"
+      className="yr-num"
+      value={focused ? draft : String(value)}
+      onFocus={() => { setFocused(true); setDraft(String(value)); }}
+      onBlur={() => { setFocused(false); commit(); }}
+      onChange={e => setDraft(e.target.value)}
+      onKeyDown={e => { if (e.key === 'Enter') { commit(); e.target.blur(); } }}
+    />
+  );
+}
+
 export default function FilterPanel({
   lang, t, layers, toggleLayer, soloLayer, showAllLayers, isSolo,
   filters, setFilter, resetFilters, uniques,
@@ -28,7 +63,6 @@ export default function FilterPanel({
   return (
     <div className={`map-panel${sidebarOpen ? ' mobile-visible' : ''}${inBottomSheet ? ' in-bottom-sheet' : ''}`}
       role="complementary" aria-label={CTRL_TR[lang]}>
-      {/* Mobile close button — hide when in bottom sheet */}
       {!inBottomSheet && <button className="map-panel-close" onClick={onCloseMobile} aria-label={CLOSE_TR[lang]}>✕</button>}
 
       {/* ── Layers ── */}
@@ -113,15 +147,9 @@ export default function FilterPanel({
               />
             </div>
             <div className="yr-range-inputs">
-              <input type="number" className="yr-num" min={622} max={1924}
-                value={yearRange[0]}
-                onChange={e => { const v = +e.target.value; if (v >= 622 && v <= yearRange[1]) setMin(v); }}
-              />
+              <YearInput value={yearRange[0]} min={622} max={yearRange[1]} onChange={setMin} />
               <span className="yr-range-dash">–</span>
-              <input type="number" className="yr-num" min={622} max={1924}
-                value={yearRange[1]}
-                onChange={e => { const v = +e.target.value; if (v >= yearRange[0] && v <= 1924) setMax(v); }}
-              />
+              <YearInput value={yearRange[1]} min={yearRange[0]} max={1924} onChange={setMax} />
             </div>
           </div>
         </div>
