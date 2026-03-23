@@ -157,3 +157,14 @@ export function buildIrrelevantResponse(lang = 'tr') {
     actions: [],
   };
 }
+
+// ─── Language Detection ────────────────────────────────────────────
+export function detectLang(text) {
+  const t = text.trim();
+  // Arabic script
+  if (/[\u0600-\u06FF]{3,}/.test(t)) return 'ar';
+  // Latin script with English patterns
+  if (/^(who|what|where|when|how|tell|explain|describe|which|why|is|are|was|were|did|do|does)\b/i.test(t)) return 'en';
+  if (/\b(the|and|of|in|is|was|were|about|from)\b/i.test(t)) return 'en';
+  return 'tr';
+}

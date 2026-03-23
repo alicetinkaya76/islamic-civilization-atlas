@@ -118,3 +118,17 @@ export function getArticleChunks(slug) {
 
 export function isLoaded() { return _engine !== null; }
 export function isLoading() { return _loading; }
+
+// ─── Arabic → Latin Transliteration for Search ─────────────────────
+const AR_MAP = {
+  'ا':'a','أ':'a','إ':'a','آ':'a','ب':'b','ت':'t','ث':'s','ج':'c',
+  'ح':'h','خ':'h','د':'d','ذ':'z','ر':'r','ز':'z','س':'s','ش':'s',
+  'ص':'s','ض':'d','ط':'t','ظ':'z','ع':'a','غ':'g','ف':'f','ق':'k',
+  'ك':'k','ل':'l','م':'m','ن':'n','ه':'h','و':'v','ي':'y','ى':'a',
+  'ة':'e','ئ':'i','ؤ':'u'
+};
+
+export function transliterateArabic(text) {
+  return text.replace(/[\u0600-\u06FF]/g, ch => AR_MAP[ch] || '');
+}
+

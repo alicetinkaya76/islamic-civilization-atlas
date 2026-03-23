@@ -7,8 +7,8 @@
 
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { askGroq } from './groqClient';
-import { loadSearchEngine, search, isLoaded } from './searchEngine';
-import { buildPrompt, isIrrelevant, buildIrrelevantResponse } from './promptBuilder';
+import { loadSearchEngine, search, isLoaded, transliterateArabic } from './searchEngine';
+import { buildPrompt, isIrrelevant, buildIrrelevantResponse, detectLang } from './promptBuilder';
 import { DAILY_LIMIT, AI_ENABLED, ENABLE_MAP_ACTIONS } from '../../config/ai';
 
 const QUOTA_KEY = 'ia-ai-quota';
@@ -106,11 +106,13 @@ export function useAIChat({ lang, onFlyTo, onHighlight, onFilter }) {
       // 1. Search chunks
       let results = [];
       if (engineRef.current) {
-        results = search(engineRef.current, trimmed, 8);
+        const searchQuery = /[\u0600-\u06FF]/.test(trimmed) ? transliterateArabic(trimmed) + " " + trimmed : trimmed;
+        results = search(engineRef.current, searchQuery, 8);
       }
 
       // 2. Build prompt with context
-      const prompt = buildPrompt(trimmed, results, lang);
+      const queryLang = detectLang(trimmed);
+      const prompt = buildPrompt(trimmed, results, queryLang);
 
       // 3. Call Groq API
       const parsed = await askGroq(prompt);
