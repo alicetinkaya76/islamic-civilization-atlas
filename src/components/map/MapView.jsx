@@ -36,6 +36,7 @@ export default function MapView({ lang, t, sidebarOpen, mapRef, onPopupOpen, onT
   const [yearExplorerOpen, setYearExplorerOpen] = useState(false);
   const [migrationVisible, setMigrationVisible] = useState(false);
   const [filterSheetOpen, setFilterSheetOpen] = useState(false);
+  const [mapReady, setMapReady] = useState(false);
 
   const isMobile = typeof window !== 'undefined' && window.innerWidth <= 768;
 
@@ -86,8 +87,20 @@ export default function MapView({ lang, t, sidebarOpen, mapRef, onPopupOpen, onT
     mapObj.current = map;
     if (mapRef) mapRef.current = map;
     LAYER_KEYS.forEach(k => { lgRef.current[k] = L.layerGroup().addTo(map); });
+    setMapReady(true);
     return () => { map.remove(); mapObj.current = null; window.removeEventListener('themechange', onThemeChange); };
   }, []);
+
+  /* ── Listen for layer solo events from SearchBar category chips (H3) ── */
+  useEffect(() => {
+    const handler = (e) => {
+      const { layer } = e.detail || {};
+      if (layer) soloLayer(layer);
+      else showAllLayers();
+    };
+    window.addEventListener('atlas:layersolo', handler);
+    return () => window.removeEventListener('atlas:layersolo', handler);
+  }, [soloLayer, showAllLayers]);
 
   /* ── Play ── */
   useEffect(() => {
@@ -147,13 +160,19 @@ export default function MapView({ lang, t, sidebarOpen, mapRef, onPopupOpen, onT
     onEntityRouteConsumed?.();
   }, [entityRoute, onEntityRouteConsumed]);
 
+  /* ── Effective year: midpoint when range active, else slider year ── */
+  const FULL_RANGE_MIN = 622, FULL_RANGE_MAX = 1924;
+  const rangeActive = yearRange && (yearRange[0] !== FULL_RANGE_MIN || yearRange[1] !== FULL_RANGE_MAX);
+  const effectiveYear = rangeActive ? Math.round((yearRange[0] + yearRange[1]) / 2) : year;
+
   /* ── Shared FilterPanel props ── */
   const filterProps = {
     lang, t,
     layers, toggleLayer, soloLayer, showAllLayers, isSolo,
     filters, setFilter, resetFilters,
-    uniques, activeCount, year,
+    uniques, activeCount, year: effectiveYear,
     yearRange, setMin, setMax, resetRange,
+    rangeActive,
   };
 
   return (

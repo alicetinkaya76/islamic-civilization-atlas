@@ -9,6 +9,7 @@ import { n, lf } from '../../hooks/useEntityLookup';
  */
 export default function YearInfoPanel({ year, lang, onFlyTo }) {
   const [info, setInfo] = useState(null);
+  const [collapsed, setCollapsed] = useState(true);
   const debounceRef = useRef(null);
 
   /* Pre-index data for fast lookup */
@@ -79,7 +80,40 @@ export default function YearInfoPanel({ year, lang, onFlyTo }) {
   const livingTop = info.living.slice(0, 3).map(s => n(s, lang)).join(', ');
 
   return (
-    <div className="yip">
+    <div className={`yip${collapsed ? ' yip-collapsed' : ''}`}>
+      {/* Collapse/expand toggle */}
+      <button
+        className="yip-toggle"
+        onClick={() => setCollapsed(p => !p)}
+        aria-label={collapsed ? 'Expand info' : 'Collapse info'}
+        style={{
+          position: 'absolute', top: 2, right: 4, background: 'none',
+          border: 'none', color: '#a89b8c', cursor: 'pointer', fontSize: 12,
+          padding: '2px 6px', borderRadius: 4, zIndex: 2, lineHeight: 1,
+        }}
+      >
+        {collapsed ? '▼' : '▲'}
+      </button>
+
+      {collapsed ? (
+        /* Collapsed: single summary line */
+        <div
+          className="yip-row yip-row--dyn"
+          onClick={() => setCollapsed(false)}
+          role="button" tabIndex={0}
+          style={{ cursor: 'pointer' }}
+        >
+          <span className="yip-icon">🏛</span>
+          <span className="yip-count">{info.activeCount}</span>
+          <span className="yip-label" style={{ opacity: 0.7 }}>
+            {{ tr: 'aktif hanedan', en: 'dynasties', ar: 'أسرة' }[lang]}
+          </span>
+          <span className="yip-detail" style={{ fontSize: 9, opacity: 0.5 }}>
+            {{ tr: '▼ detay', en: '▼ details', ar: '▼ تفاصيل' }[lang]}
+          </span>
+        </div>
+      ) : (
+        <>
       {/* Row 1: Active dynasties */}
       <div
         className="yip-row yip-row--dyn"
@@ -152,6 +186,8 @@ export default function YearInfoPanel({ year, lang, onFlyTo }) {
           <span className="yip-count">{info.lastMonument.yr}</span>
           <span className="yip-detail yip-detail--name">{n(info.lastMonument, lang)}</span>
         </div>
+      )}
+        </>
       )}
     </div>
   );

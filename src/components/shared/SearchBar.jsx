@@ -218,6 +218,13 @@ const CATEGORIES = [
   { key: 'alam',     icon: '📖', labelKey: 'alam' },
 ];
 
+/* Map from search category key → map layer key */
+const CAT_TO_LAYER = {
+  dynasty: 'dynasties', battle: 'battles', scholar: 'scholars',
+  monument: 'monuments', city: 'cities', event: 'events',
+  ruler: 'rulers', madrasa: 'madrasas', alam: null,
+};
+
 const RECENT_KEY = 'atlas-recent-searches';
 function loadRecent() { try { return JSON.parse(localStorage.getItem(RECENT_KEY)) || []; } catch { return []; } }
 function saveRecent(a) { try { localStorage.setItem(RECENT_KEY, JSON.stringify(a)); } catch {} }
@@ -256,6 +263,17 @@ export default function SearchBar({ lang, onFlyTo, onSelectEntity }) {
       const next = new Set(prev);
       if (next.has(key)) next.delete(key); else next.add(key);
       if (next.size === 0) CATEGORIES.forEach(c => next.add(c.key));
+
+      // When exactly one category is active, solo the corresponding map layer
+      if (next.size === 1) {
+        const soloKey = [...next][0];
+        const layerKey = CAT_TO_LAYER[soloKey];
+        if (layerKey) window.dispatchEvent(new CustomEvent('atlas:layersolo', { detail: { layer: layerKey } }));
+      } else if (next.size === CATEGORIES.length) {
+        // All selected → reset layers
+        window.dispatchEvent(new CustomEvent('atlas:layersolo', { detail: { layer: null } }));
+      }
+
       return next;
     });
   }, []);

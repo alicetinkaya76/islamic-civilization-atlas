@@ -238,6 +238,18 @@ export default function App() {
     if (item && item.type) recordDiscovery(item.type, item.obj?.id || item.name_tr);
   }, [recordDiscovery]);
 
+  /* ── When SearchBar category chips solo a layer, switch to map tab (H3) ── */
+  useEffect(() => {
+    const handler = () => {
+      if (tab !== 'map') {
+        setTab('map');
+        try { window.history.replaceState(null, '', '#map'); } catch {}
+      }
+    };
+    window.addEventListener('atlas:layersolo', handler);
+    return () => window.removeEventListener('atlas:layersolo', handler);
+  }, [tab]);
+
   /* Tour complete → badge */
   const handleTourComplete = useCallback((tourId) => {
     recordDiscovery('tour', tourId);

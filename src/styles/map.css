@@ -173,6 +173,10 @@
 
 /* ─── Responsive: see mobile.css ─── */
 
+/* ─── YearInfoPanel collapse toggle (H4) ─── */
+.yip { position: relative; }
+.yip-collapsed .yip-row { padding-right: 24px; }
+
 /* ─── Year Controls ─── */
 .tbar-controls { display: flex; align-items: center; gap: 6px; justify-content: center; }
 .tbar-step {

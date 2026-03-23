@@ -274,7 +274,7 @@ export default function Dashboard({ lang, t: tProp, onTabChange }) {
   }, [onTabChange]);
 
   return (
-    <div className="dashboard">
+    <div className="dashboard" style={{ overflowY: 'auto', maxHeight: 'calc(100vh - 64px)', paddingBottom: 40 }}>
       <div className="dash-grid">
 
         {/* CARD 1: Overview */}

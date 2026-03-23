@@ -58,7 +58,7 @@ export default function FilterPanel({
   filters, setFilter, resetFilters, uniques,
   activeCount, year,
   yearRange, setMin, setMax, resetRange,
-  sidebarOpen, onCloseMobile, inBottomSheet
+  sidebarOpen, onCloseMobile, inBottomSheet, rangeActive
 }) {
   return (
     <div className={`map-panel${sidebarOpen ? ' mobile-visible' : ''}${inBottomSheet ? ' in-bottom-sheet' : ''}`}
@@ -158,7 +158,12 @@ export default function FilterPanel({
       {/* ── Status ── */}
       <div className="ps">
         <div className="ps-h">{S_TR[lang]}</div>
-        <div className="st"><span className="st-l">{t.m.year}</span><span className="st-v">{year}</span></div>
+        <div className="st">
+          <span className="st-l">{t.m.year}</span>
+          <span className="st-v">
+            {rangeActive ? `≈${year} (${yearRange[0]}–${yearRange[1]})` : year}
+          </span>
+        </div>
         <div className="st"><span className="st-l">{t.m.active}</span><span className="st-v">{activeCount}</span></div>
         <div className="st"><span className="st-l">🔗</span><span className="st-v">{DB.causal?.length || 0}</span></div>
       </div>
