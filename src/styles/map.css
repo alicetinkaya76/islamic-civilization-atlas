@@ -13,23 +13,45 @@
   font-family: var(--font-display); font-size: 14px; color: var(--gold);
   margin-bottom: 8px; padding-bottom: 4px;
   border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: space-between;
 }
+
+/* "Show All" / "Reset" button in section headers */
+.lyr-show-all {
+  background: none; border: 1px solid var(--border); color: var(--cream2);
+  font-size: 10px; padding: 1px 6px; border-radius: 3px; cursor: pointer;
+  transition: all .15s; font-family: var(--font-body);
+}
+.lyr-show-all:hover { border-color: var(--gold); color: var(--gold); }
 
 /* Layer toggles */
 .lyr {
   display: flex; align-items: center; gap: 8px; padding: 5px 4px;
   cursor: pointer; border-radius: 4px; font-size: 12px;
-  transition: background .15s;
+  transition: background .15s, opacity .15s;
 }
 .lyr:hover { background: #ffffff08; }
+.lyr.lyr-off { opacity: 0.5; }
 .lyr-cb {
   width: 16px; height: 16px; border: 1px solid var(--border);
   border-radius: 3px; display: flex; align-items: center; justify-content: center;
   font-size: 10px; color: var(--gold); transition: all .15s;
+  flex-shrink: 0;
 }
 .lyr-cb.on { background: var(--gold); color: var(--bg); border-color: var(--gold); }
-.lyr-dot { width: 8px; height: 8px; border-radius: 50%; }
-.lyr-n { margin-left: auto; color: var(--cream2); font-size: 10px; opacity: 0.6; }
+.lyr-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+.lyr-label { flex: 1; cursor: pointer; }
+.lyr-n { margin-left: auto; color: var(--cream2); font-size: 10px; opacity: 0.6; flex-shrink: 0; }
+
+/* Solo button */
+.lyr-solo {
+  background: none; border: 1px solid transparent; color: var(--cream2);
+  font-size: 10px; padding: 0 3px; border-radius: 3px; cursor: pointer;
+  opacity: 0; transition: all .15s; flex-shrink: 0; line-height: 1;
+}
+.lyr:hover .lyr-solo { opacity: 0.6; }
+.lyr-solo:hover { opacity: 1 !important; border-color: var(--gold); color: var(--gold); }
+.lyr-solo.active { opacity: 1; color: var(--gold); border-color: var(--gold); background: rgba(201,168,76,0.15); }
 
 /* Filters */
 .flt { margin-bottom: 8px; }
@@ -45,6 +67,59 @@
 .st { display: flex; justify-content: space-between; padding: 3px 0; font-size: 11px; }
 .st-l { color: var(--cream2); }
 .st-v { color: var(--gold); font-weight: 600; }
+
+/* ─── Year Range Filter ─── */
+.yr-range { padding: 4px 0; }
+.yr-range-labels {
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 13px; font-family: var(--font-display); margin-bottom: 6px;
+}
+.yr-range-labels span:first-child,
+.yr-range-labels span:last-child { color: var(--gold); font-weight: 600; }
+.yr-range-span { font-size: 10px; color: var(--cream2); opacity: 0.7; }
+
+.yr-range-sliders {
+  position: relative; height: 24px; margin-bottom: 4px;
+}
+.yr-range-input {
+  position: absolute; top: 0; left: 0; width: 100%;
+  -webkit-appearance: none; appearance: none;
+  background: transparent; pointer-events: none; height: 24px;
+}
+.yr-range-input::-webkit-slider-thumb {
+  -webkit-appearance: none; width: 16px; height: 16px;
+  background: var(--gold); border-radius: 50%; cursor: pointer;
+  pointer-events: auto; box-shadow: 0 0 8px #c9a84c66;
+  border: 2px solid var(--bg);
+}
+.yr-range-input::-moz-range-thumb {
+  width: 16px; height: 16px;
+  background: var(--gold); border-radius: 50%; cursor: pointer;
+  pointer-events: auto; box-shadow: 0 0 8px #c9a84c66;
+  border: 2px solid var(--bg);
+}
+.yr-range-input::-webkit-slider-runnable-track {
+  height: 4px; background: var(--border); border-radius: 2px;
+}
+.yr-range-input::-moz-range-track {
+  height: 4px; background: var(--border); border-radius: 2px;
+}
+/* Hide track for max slider (overlaps min) */
+.yr-range-max::-webkit-slider-runnable-track { background: transparent; }
+.yr-range-max::-moz-range-track { background: transparent; }
+
+.yr-range-inputs {
+  display: flex; align-items: center; gap: 6px; justify-content: center;
+}
+.yr-num {
+  width: 56px; text-align: center; background: var(--bg);
+  border: 1px solid var(--border); color: var(--cream); border-radius: 4px;
+  padding: 2px 4px; font-size: 12px; font-family: var(--font-display);
+}
+.yr-num:focus { outline: none; border-color: var(--gold); }
+.yr-num::-webkit-outer-spin-button,
+.yr-num::-webkit-inner-spin-button { -webkit-appearance: none; }
+.yr-range-dash { color: var(--cream2); font-size: 14px; }
 
 /* ─── Map Canvas ─── */
 .map-area { flex: 1; position: relative; }

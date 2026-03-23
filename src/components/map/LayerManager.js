@@ -54,11 +54,18 @@ function monumentIcon(op, built, unesco) {
   });
 }
 
+/* ── Year range helper ── */
+const FULL_RANGE = [622, 1924];
+function hasRange(yr) { return yr && (yr[0] !== FULL_RANGE[0] || yr[1] !== FULL_RANGE[1]); }
+
 /**
  * Renders all map layers based on current state.
  * Returns the active dynasty count.
  */
-export function renderLayers({ lg, layers, filters, year, lang, t, analyticsMap, causalIdx, onPopupOpen }) {
+export function renderLayers({ lg, layers, filters, year, yearRange, lang, t, analyticsMap, causalIdx, onPopupOpen }) {
+  const yr = yearRange || FULL_RANGE;
+  const rangeActive = hasRange(yr);
+
   const dynOk = d => {
     if (filters.religion && d.rel !== filters.religion) return false;
     if (filters.ethnic && d.eth !== filters.ethnic) return false;
@@ -107,6 +114,8 @@ export function renderLayers({ lg, layers, filters, year, lang, t, analyticsMap,
     DB.dynasties.forEach(d => {
       const bbox = dynBbox(d);
       if (!bbox || d.start > year || d.end < year || !dynOk(d)) return;
+      // Year range: dynasty must overlap with range
+      if (rangeActive && (d.end < yr[0] || d.start > yr[1])) return;
       cnt++;
       const col = REL_C[d.rel] || ZONE_C[d.zone] || '#c9a84c';
       const op = (IMP_OP[d.imp] || 0.18) * 1.2;
@@ -143,6 +152,8 @@ export function renderLayers({ lg, layers, filters, year, lang, t, analyticsMap,
   if (layers.battles) {
     DB.battles.forEach(b => {
       if (!b.lat || !b.yr) return;
+      // Year range filter
+      if (rangeActive && (b.yr < yr[0] || b.yr > yr[1])) return;
       const past = b.yr <= year, near = Math.abs(b.yr - year) < 50;
       if (!past && !near) return;
       const op = past ? (near ? 0.95 : 0.55) : 0.25;
@@ -157,6 +168,8 @@ export function renderLayers({ lg, layers, filters, year, lang, t, analyticsMap,
   if (layers.events) {
     DB.events.forEach(e => {
       if (!e.lat || !e.yr) return;
+      // Year range filter
+      if (rangeActive && (e.yr < yr[0] || e.yr > yr[1])) return;
       const past = e.yr <= year;
       if (!past && e.yr > year + 80) return;
       const op = past ? 0.85 : 0.2;
@@ -171,6 +184,11 @@ export function renderLayers({ lg, layers, filters, year, lang, t, analyticsMap,
   if (layers.scholars) {
     DB.scholars.forEach(s => {
       if (!s.lat) return;
+      // Year range filter: scholar lived within range
+      if (rangeActive) {
+        const sb = s.b || 0, sd = s.d || 9999;
+        if (sd < yr[0] || sb > yr[1]) return;
+      }
       const alive = s.b && s.d && s.b <= year && s.d >= year;
       const past = s.d && s.d < year;
       if (!alive && !past && s.b && s.b > year) return;
@@ -199,6 +217,8 @@ export function renderLayers({ lg, layers, filters, year, lang, t, analyticsMap,
   if (layers.monuments) {
     DB.monuments.forEach(m => {
       if (!m.lat || !m.yr || m.yr > year + 50) return;
+      // Year range filter
+      if (rangeActive && (m.yr < yr[0] || m.yr > yr[1])) return;
       const built = m.yr <= year;
       const op = built ? 0.9 : 0.3;
       const icon = monumentIcon(op, built, m.unesco);
@@ -213,6 +233,8 @@ export function renderLayers({ lg, layers, filters, year, lang, t, analyticsMap,
     const best = {};
     DB.cities.forEach(c => {
       if (!c.lat) return;
+      // Year range filter
+      if (rangeActive && c.yr && (c.yr < yr[0] || c.yr > yr[1])) return;
       if (!best[c.id] || Math.abs(c.yr - year) < Math.abs(best[c.id].yr - year)) best[c.id] = c;
     });
     Object.values(best).forEach(c => {
@@ -231,6 +253,11 @@ export function renderLayers({ lg, layers, filters, year, lang, t, analyticsMap,
     DB.routes.forEach(r => {
       if (!r.wp || r.wp.length < 2) return;
       const active = (!r.ps || r.ps <= year) && (!r.pe || r.pe >= year);
+      // Year range filter for routes
+      if (rangeActive) {
+        const rs = r.ps || 622, re = r.pe || 1924;
+        if (re < yr[0] || rs > yr[1]) return;
+      }
       const isSea = r.type_tr === 'Deniz';
       // Glow under-line for active routes
       if (active) {
@@ -255,6 +282,11 @@ export function renderLayers({ lg, layers, filters, year, lang, t, analyticsMap,
   if (layers.rulers) {
     (DB.rulers || []).forEach(r => {
       if (!r.lat || !r.lon || !r.rs) return;
+      // Year range filter
+      if (rangeActive) {
+        const re = r.re || 9999;
+        if (re < yr[0] || r.rs > yr[1]) return;
+      }
       const ruling = r.rs <= year && (r.re || 9999) >= year;
       const past = (r.re || 9999) < year;
       const future = r.rs > year;
@@ -285,6 +317,8 @@ export function renderLayers({ lg, layers, filters, year, lang, t, analyticsMap,
     (DB.scholars || []).forEach(s => { scholarsById[s.id] = s; });
     (DB.madrasas || []).forEach(m => {
       if (!m.lat || !m.lon) return;
+      // Year range filter
+      if (rangeActive && (m.founded > yr[1] || (m.closed && m.closed < yr[0]))) return;
       const active = m.founded <= year && (!m.closed || m.closed >= year);
       const past = m.closed && m.closed < year;
       const future = m.founded > year;

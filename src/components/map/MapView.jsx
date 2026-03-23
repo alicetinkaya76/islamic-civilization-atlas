@@ -4,7 +4,7 @@ import { MAP_CONFIG, LAYER_KEYS } from '../../config/layers';
 import { eraName } from '../../config/eras';
 import { useAnalyticsMap, useFilterUniques } from '../../hooks/useEntityLookup';
 import { useCausalIndex } from '../../hooks/useCausalLinks';
-import { useLayers, useMapFilters } from '../../hooks/useFilters';
+import { useLayers, useMapFilters, useYearRange } from '../../hooks/useFilters';
 import FilterPanel from './FilterPanel';
 import { renderLayers } from './LayerManager';
 import TourMode from '../shared/TourMode';
@@ -39,8 +39,9 @@ export default function MapView({ lang, t, sidebarOpen, mapRef, onPopupOpen, onT
 
   const isMobile = typeof window !== 'undefined' && window.innerWidth <= 768;
 
-  const { layers, toggleLayer } = useLayers();
-  const { filters, setFilter } = useMapFilters();
+  const { layers, toggleLayer, soloLayer, showAllLayers, isSolo } = useLayers();
+  const { filters, setFilter, resetFilters } = useMapFilters();
+  const { yearRange, setMin, setMax, resetRange } = useYearRange();
   const analyticsMap = useAnalyticsMap();
   const causalIdx = useCausalIndex();
   const uniques = useFilterUniques();
@@ -103,10 +104,10 @@ export default function MapView({ lang, t, sidebarOpen, mapRef, onPopupOpen, onT
   useEffect(() => {
     if (!mapObj.current) return;
     const cnt = renderLayers({
-      lg: lgRef.current, layers, filters, year, lang, t, analyticsMap, causalIdx, onPopupOpen
+      lg: lgRef.current, layers, filters, year, yearRange, lang, t, analyticsMap, causalIdx, onPopupOpen
     });
     setActiveCount(cnt);
-  }, [year, layers, filters, lang, t, analyticsMap, causalIdx, onPopupOpen]);
+  }, [year, layers, filters, yearRange, lang, t, analyticsMap, causalIdx, onPopupOpen]);
 
   /* ── Entity deep link handler ── */
   useEffect(() => {
@@ -146,16 +147,21 @@ export default function MapView({ lang, t, sidebarOpen, mapRef, onPopupOpen, onT
     onEntityRouteConsumed?.();
   }, [entityRoute, onEntityRouteConsumed]);
 
+  /* ── Shared FilterPanel props ── */
+  const filterProps = {
+    lang, t,
+    layers, toggleLayer, soloLayer, showAllLayers, isSolo,
+    filters, setFilter, resetFilters,
+    uniques, activeCount, year,
+    yearRange, setMin, setMax, resetRange,
+  };
+
   return (
     <div className="map-layout">
       {/* Desktop: sidebar filter panel */}
       {!isMobile && (
         <FilterPanel
-          lang={lang} t={t}
-          layers={layers} toggleLayer={toggleLayer}
-          filters={filters} setFilter={setFilter}
-          uniques={uniques}
-          activeCount={activeCount} year={year}
+          {...filterProps}
           sidebarOpen={sidebarOpen}
           onCloseMobile={onCloseSidebar}
         />
@@ -178,11 +184,7 @@ export default function MapView({ lang, t, sidebarOpen, mapRef, onPopupOpen, onT
             className="map-filter-sheet"
           >
             <FilterPanel
-              lang={lang} t={t}
-              layers={layers} toggleLayer={toggleLayer}
-              filters={filters} setFilter={setFilter}
-              uniques={uniques}
-              activeCount={activeCount} year={year}
+              {...filterProps}
               sidebarOpen={true}
               onCloseMobile={() => setFilterSheetOpen(false)}
               inBottomSheet

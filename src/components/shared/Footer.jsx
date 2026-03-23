@@ -25,8 +25,8 @@ export default function Footer({ lang }) {
           </div>
         </div>
         <div className="footer-center">
-          <a className="footer-doi" href="https://doi.org/10.5281/zenodo.18818238" target="_blank" rel="noopener noreferrer">
-            <img src="https://zenodo.org/badge/DOI/10.5281/zenodo.18818238.svg" alt="DOI" height="18" />
+          <a className="footer-doi" href="https://doi.org/10.5281/zenodo.19183845" target="_blank" rel="noopener noreferrer">
+            <img src="https://zenodo.org/badge/DOI/10.5281/zenodo.19183845.svg" alt="DOI" height="18" />
           </a>
           <button className="footer-cite-btn" onClick={() => setShowCite(p => !p)}>
             📝 {t.footer.cite}
@@ -34,7 +34,7 @@ export default function Footer({ lang }) {
         </div>
         <div className="footer-right">
           <span className="footer-copy">© 2026 · CC BY-SA 4.0</span>
-          <span style={{ fontSize: 10, color: '#4b5563', marginLeft: 6 }}>v4.9.0.1</span>
+          <span style={{ fontSize: 10, color: '#4b5563', marginLeft: 6 }}>v6.7.0.0</span>
           <a className="footer-gh" href="https://github.com/alicetinkaya76/islamic-civilization-atlas" target="_blank" rel="noopener noreferrer">
             GitHub
           </a>
