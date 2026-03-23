@@ -33,8 +33,8 @@ const relBadge = (rel, t) => {
 /** Context row helper */
 const ctxRow = (icon, label, val) => val ? `<div class="p-ctx"><span class="p-ctx-i">${icon}</span><b>${label}:</b> ${val}</div>` : '';
 
-/** Popup options */
-export const popOpt = (mw = 380) => ({ maxWidth: mw, maxHeight: 460, className: 'p-rich' });
+/** Popup options — wider for better readability */
+export const popOpt = (mw = 420) => ({ maxWidth: mw, maxHeight: 480, className: 'p-rich' });
 
 /* ── Dynasty Popup ── */
 export function buildDynastyPopup(d, lang, t, analyticsMap, causalIdx) {
