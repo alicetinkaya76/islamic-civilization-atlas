@@ -156,7 +156,7 @@ export default function TimelineView({ lang, t }) {
         .on('mouseenter', (ev) => {
           const an = analyticsMap[d.id];
           const narr = lf(d, 'narr', lang) || '';
-          const narrSnip = narr.length > 300 ? narr.slice(0, 300) + '…' : narr;
+          const narrSnip = narr;
           setTooltip({
             x: ev.pageX, y: ev.pageY,
             html: `<b>${n(d, lang)}</b><br/>${d.start}–${d.end} · ${d.zone}<br/>${d.rel || '—'} · ${d.gov || '—'}${an ? '<br/>Power: ' + an.pi : ''}${narrSnip ? '<br/><span style="color:#c4b89a;font-size:10px">' + narrSnip + '</span>' : ''}`
@@ -240,7 +240,7 @@ export default function TimelineView({ lang, t }) {
           .attr('cursor', 'pointer')
           .on('mouseenter', ev => {
             const narr = lf(b, 'narr', lang) || '';
-            const narrSnip = narr.length > 300 ? narr.slice(0, 300) + '…' : narr;
+            const narrSnip = narr;
             setTooltip({
               x: ev.pageX, y: ev.pageY,
               html: `<b>⚔ ${n(b, lang)}</b><br/>${b.yr} · ${t.imp[b.sig] || b.sig}${b.res ? '<br/>' + b.res : ''}${narrSnip ? '<br/><span style="color:#c4b89a;font-size:10px">' + narrSnip + '</span>' : ''}`
@@ -261,7 +261,7 @@ export default function TimelineView({ lang, t }) {
           .attr('cursor', 'pointer')
           .on('mouseenter', ev => {
             const narr = lf(e, 'narr', lang) || '';
-            const narrSnip = narr.length > 300 ? narr.slice(0, 300) + '…' : narr;
+            const narrSnip = narr;
             setTooltip({
               x: ev.pageX, y: ev.pageY,
               html: `<b>📜 ${n(e, lang)}</b><br/>${e.yr} · ${t.imp[e.sig] || e.sig}${narrSnip ? '<br/><span style="color:#c4b89a;font-size:10px">' + narrSnip + '</span>' : ''}`
@@ -286,7 +286,7 @@ export default function TimelineView({ lang, t }) {
           .attr('cursor', 'pointer')
           .on('mouseenter', ev => {
             const narr = lf(s, 'narr', lang) || '';
-            const narrSnip = narr.length > 300 ? narr.slice(0, 300) + '…' : narr;
+            const narrSnip = narr;
             setTooltip({
               x: ev.pageX, y: ev.pageY,
               html: `<b>📚 ${n(s, lang)}</b><br/>${s.b}–${s.d} · ${s.field}<br/>${lf(s, 'work', lang)}${narrSnip ? '<br/><span style="color:#c4b89a;font-size:10px">' + narrSnip + '</span>' : ''}`
