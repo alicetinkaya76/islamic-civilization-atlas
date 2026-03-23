@@ -123,3 +123,26 @@ button:focus-visible, .tab:focus-visible, select:focus-visible, input:focus-visi
 /* ─── Trade Route Animation ─── */
 @keyframes tradeFlow { to { stroke-dashoffset: -30; } }
 .trade-anim { animation: tradeFlow 2s linear infinite; }
+/* ═══════════════════════════════════════════════════════════════════
+   Session 29 Patches — append to base.css
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* ─── B1: Force-hide .header-right on desktop ────────────────────
+   The mobile hamburger drawer (.header-right) should NEVER appear
+   on desktop (>768px). Desktop uses .header-nav-grouped + .header-utils.
+   This CSS ensures it stays hidden even if JS isMobile check lags. */
+
+@media (min-width: 769px) {
+  .header-right {
+    display: none !important;
+  }
+}
+
+/* ─── B4: Legend z-index fix ─────────────────────────────────────
+   Legend was disappearing behind other layers at certain zooms.
+   Ensure it stays above map tiles and overlays. */
+
+.map-legend {
+  z-index: 1000 !important;
+  pointer-events: auto;
+}

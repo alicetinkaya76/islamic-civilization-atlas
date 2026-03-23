@@ -1,10 +1,10 @@
 /**
  * AIChatPanel — Floating AI Chat Button + Panel
  * ===============================================
- * - Floating button in bottom-right (above BottomTabBar on mobile)
- * - Slide-out panel with chat messages
- * - Lazy-loads search engine on first open
- * - Responsive: full-screen on mobile, side panel on desktop
+ * v2 — Session 29:
+ *   A5: Chat history persistence + "New Chat" button
+ *   A6: Fallback notice in header when quota exhausted
+ *   B6: Mobile FAB collision fix (CSS)
  */
 
 import { useState, useRef, useEffect, useCallback } from 'react';
@@ -17,6 +17,7 @@ import '../../styles/ai-chat.css';
 export default function AIChatPanel({ lang, onFlyTo }) {
   const [open, setOpen] = useState(false);
   const [input, setInput] = useState('');
+  const [showHistory, setShowHistory] = useState(false);
   const messagesEndRef = useRef(null);
   const inputRef = useRef(null);
 
@@ -26,8 +27,11 @@ export default function AIChatPanel({ lang, onFlyTo }) {
     remaining,
     engineReady,
     engineError,
+    chatHistory,
     sendMessage,
     clearChat,
+    newChat,
+    loadChat,
     initEngine,
   } = useAIChat({ lang, onFlyTo });
 
@@ -35,7 +39,6 @@ export default function AIChatPanel({ lang, onFlyTo }) {
   useEffect(() => {
     if (open) {
       initEngine();
-      // Focus input after panel opens
       setTimeout(() => inputRef.current?.focus(), 300);
     }
   }, [open, initEngine]);
@@ -63,6 +66,16 @@ export default function AIChatPanel({ lang, onFlyTo }) {
     sendMessage(text);
   }, [sendMessage]);
 
+  const handleNewChat = useCallback(() => {
+    newChat();
+    setShowHistory(false);
+  }, [newChat]);
+
+  const handleLoadChat = useCallback((chatId) => {
+    loadChat(chatId);
+    setShowHistory(false);
+  }, [loadChat]);
+
   // ─── Close on Escape ──────────────────────────────────────────
   useEffect(() => {
     const onKey = (e) => { if (e.key === 'Escape') setOpen(false); };
@@ -78,30 +91,42 @@ export default function AIChatPanel({ lang, onFlyTo }) {
       placeholder: 'İslam tarihi hakkında sorun...',
       send: 'Gönder',
       loading: 'Düşünüyor...',
-      remaining: `${remaining} soru kaldı`,
+      remaining: remaining > 0 ? `${remaining} soru kaldı` : 'Limit doldu',
       clear: 'Temizle',
+      newChat: 'Yeni Sohbet',
+      history: 'Geçmiş',
       engineLoading: 'Arama motoru yükleniyor...',
       engineError: 'Arama motoru yüklenemedi. Tekrar deneyin.',
+      noHistory: 'Henüz sohbet yok',
+      fallbackMode: '⚡ Offline mod — sadece arama sonuçları',
     },
     en: {
       title: 'DİA AI Assistant',
       placeholder: 'Ask about Islamic history...',
       send: 'Send',
       loading: 'Thinking...',
-      remaining: `${remaining} questions left`,
+      remaining: remaining > 0 ? `${remaining} questions left` : 'Limit reached',
       clear: 'Clear',
+      newChat: 'New Chat',
+      history: 'History',
       engineLoading: 'Loading search engine...',
       engineError: 'Search engine failed to load. Try again.',
+      noHistory: 'No chat history yet',
+      fallbackMode: '⚡ Offline mode — search results only',
     },
     ar: {
       title: 'مساعد DİA الذكي',
       placeholder: 'اسأل عن التاريخ الإسلامي...',
       send: 'إرسال',
       loading: 'يفكر...',
-      remaining: `${remaining} أسئلة متبقية`,
+      remaining: remaining > 0 ? `${remaining} أسئلة متبقية` : 'تم الوصول إلى الحد',
       clear: 'مسح',
+      newChat: 'محادثة جديدة',
+      history: 'السجل',
       engineLoading: 'جاري تحميل محرك البحث...',
       engineError: 'فشل تحميل محرك البحث.',
+      noHistory: 'لا يوجد سجل محادثات',
+      fallbackMode: '⚡ وضع غير متصل — نتائج البحث فقط',
     },
   }[lang] || {};
 
@@ -140,13 +165,51 @@ export default function AIChatPanel({ lang, onFlyTo }) {
             <span className="ai-panel-badge">beta</span>
           </div>
           <div className="ai-panel-actions">
-            <span className="ai-remaining">{t.remaining}</span>
+            <span className={`ai-remaining${remaining <= 0 ? ' ai-remaining-zero' : ''}`}>
+              {t.remaining}
+            </span>
+            {/* New Chat button */}
+            <button className="ai-new-btn" onClick={handleNewChat} title={t.newChat}>＋</button>
+            {/* History toggle */}
+            {chatHistory.length > 0 && (
+              <button className="ai-history-btn" onClick={() => setShowHistory(s => !s)} title={t.history}>📋</button>
+            )}
             {messages.length > 0 && (
               <button className="ai-clear-btn" onClick={clearChat} title={t.clear}>🗑</button>
             )}
             <button className="ai-close-btn" onClick={() => setOpen(false)} aria-label="Close">✕</button>
           </div>
         </div>
+
+        {/* Fallback mode notice (A6) */}
+        {remaining <= 0 && (
+          <div className="ai-fallback-banner">{t.fallbackMode}</div>
+        )}
+
+        {/* Chat History Dropdown (A5) */}
+        {showHistory && (
+          <div className="ai-history-panel">
+            <div className="ai-history-title">{t.history}</div>
+            {chatHistory.length === 0 ? (
+              <div className="ai-history-empty">{t.noHistory}</div>
+            ) : (
+              <ul className="ai-history-list">
+                {[...chatHistory].reverse().map(chat => {
+                  const firstMsg = chat.messages.find(m => m.role === 'user');
+                  const preview = firstMsg ? firstMsg.text.slice(0, 60) : '...';
+                  return (
+                    <li key={chat.id}>
+                      <button className="ai-history-item" onClick={() => handleLoadChat(chat.id)}>
+                        <span className="ai-history-date">{chat.date}</span>
+                        <span className="ai-history-preview">{preview}{preview.length >= 60 ? '...' : ''}</span>
+                      </button>
+                    </li>
+                  );
+                })}
+              </ul>
+            )}
+          </div>
+        )}
 
         {/* Messages */}
         <div className="ai-panel-messages">
@@ -200,13 +263,13 @@ export default function AIChatPanel({ lang, onFlyTo }) {
             onKeyDown={handleKeyDown}
             placeholder={t.placeholder}
             rows={1}
-            disabled={loading || remaining <= 0}
+            disabled={loading}
             dir={lang === 'ar' ? 'rtl' : 'ltr'}
           />
           <button
             className="ai-send-btn"
             onClick={handleSend}
-            disabled={!input.trim() || loading || remaining <= 0}
+            disabled={!input.trim() || loading}
             aria-label={t.send}
           >
             {loading ? '⏳' : '➤'}

@@ -329,10 +329,10 @@ export default function App() {
           <NavDropdown
             label={{ tr: '📚 Kaynaklar', en: '📚 Sources', ar: '📚 المصادر' }[lang]}
             items={[
-              { id: 'alam', icon: '📖', label: t.tabs.alam, badge: '13.9K', preload: '/data/alam_lite.json' },
-              { id: 'dia',  icon: '📚', label: t.tabs.dia,  badge: '8.5K',  preload: '/data/dia_lite.json' },
-              { id: 'ei1',  icon: '📕', label: t.tabs.ei1,  badge: '7.6K',  preload: '/data/ei1_lite.json' },
-              { id: 'yaqut',icon: '🌍', label: t.tabs.yaqut, badge: '13K',  preload: '/data/yaqut_lite.json' },
+              { id: 'alam', label: t.tabs.alam, badge: '13.9K', preload: '/data/alam_lite.json' },
+              { id: 'dia',  label: t.tabs.dia,  badge: '8.5K',  preload: '/data/dia_lite.json' },
+              { id: 'ei1',  label: t.tabs.ei1,  badge: '7.6K',  preload: '/data/ei1_lite.json' },
+              { id: 'yaqut', label: t.tabs.yaqut, badge: '13K',  preload: '/data/yaqut_lite.json' },
             ]}
             activeTab={tab}
             onSelect={selectTab}
@@ -340,10 +340,10 @@ export default function App() {
           <NavDropdown
             label={{ tr: '📊 Analiz', en: '📊 Analysis', ar: '📊 التحليل' }[lang]}
             items={[
-              { id: 'timeline', icon: '📅', label: t.tabs.timeline },
-              { id: 'links',    icon: '🔗', label: t.tabs.links },
-              { id: 'scholars', icon: '🎓', label: t.tabs.scholars },
-              { id: 'battles',  icon: '⚔️', label: t.tabs.battles },
+              { id: 'timeline', label: t.tabs.timeline },
+              { id: 'links',    label: t.tabs.links },
+              { id: 'scholars', label: t.tabs.scholars },
+              { id: 'battles',  label: t.tabs.battles },
             ]}
             activeTab={tab}
             onSelect={selectTab}

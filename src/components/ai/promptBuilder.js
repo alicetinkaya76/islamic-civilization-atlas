@@ -2,6 +2,7 @@
  * Prompt Builder
  * ==============
  * Assembles system prompt + retrieved context for Groq API.
+ * v2 — Session 29: better prompts, context ranking, original work names
  */
 
 import { MAX_CONTEXT_TOKENS } from '../../config/ai';
@@ -14,10 +15,12 @@ const SYSTEM_PROMPTS = {
 KURALLAR:
 1. SADECE <context> içindeki bilgilere dayanarak cevap ver
 2. Bağlamda olmayan bilgiyi UYDURMA — "Bu bilgi veritabanımda yok" de
-3. DETAYLI cevap ver: kişinin hayatı, eserleri, etkileri, önemli olaylar dahil et. En az 3-4 cümle yaz.
+3. DETAYLI cevap ver: kişinin hayatı, eserleri, etkileri, önemli olaylar dahil et. En az 4-5 cümle yaz.
 4. Önemli tarihleri (doğum-ölüm, hicrî/miladi), yerleri ve eserleri mutlaka belirt.
-5. İslam tarihi dışındaki sorulara cevap verme
-6. Cevabını Türkçe ver
+5. Eser adlarını orijinal Arapça/Osmanlıca formda ver (örn: "Kitâbü'l-Hayevân", "el-Muḳaddime", "İḥyâʾü ʿulûmi'd-dîn"). Transliterasyon kullan, Latin harfli çevirme yapma.
+6. İslam tarihi dışındaki sorulara cevap verme
+7. Cevabını Türkçe ver
+8. Bağlamda birden fazla kişi/konu varsa hepsinden bahset, sadece ilkiyle yetinme.
 
 CEVAP FORMATI (sadece JSON):
 {
@@ -39,10 +42,12 @@ Alakasız soru ise:
 RULES:
 1. Answer ONLY from <context> information
 2. Do NOT invent — say "This information is not in my database"
-3. Give DETAILED answers: include life, works, influence, key events. At least 3-4 sentences.
+3. Give DETAILED answers: include life, works, influence, key events. At least 4-5 sentences.
 4. Always mention important dates (birth-death, hijri/CE), places, and works.
-5. Do not answer non-Islamic-history questions
-6. Answer in English
+5. Give work titles in their original Arabic/Ottoman form (e.g. "Kitāb al-Ḥayawān", "al-Muqaddima", "Iḥyāʾ ʿulūm al-dīn"). Use transliteration, not translation.
+6. Do not answer non-Islamic-history questions
+7. Answer in English
+8. If context contains multiple persons/topics, cover all of them, not just the first.
 
 RESPONSE FORMAT (JSON only):
 {
@@ -64,9 +69,11 @@ Irrelevant question:
 القواعد:
 1. أجب فقط من معلومات <context>
 2. لا تختلق — قل "هذه المعلومة غير موجودة في قاعدة بياناتي"
-3. أجب بالتفصيل: 3-4 جمل على الأقل مع التواريخ والأماكن والأعمال
-4. لا تجب على أسئلة خارج التاريخ الإسلامي
-5. أجب بالعربية
+3. أجب بالتفصيل: 4-5 جمل على الأقل مع التواريخ والأماكن والأعمال
+4. اذكر أسماء الكتب بصيغتها العربية الأصلية
+5. لا تجب على أسئلة خارج التاريخ الإسلامي
+6. أجب بالعربية
+7. إذا كان السياق يتضمن عدة أشخاص/مواضيع، اذكرهم جميعاً
 
 صيغة الرد (JSON فقط):
 {
@@ -95,7 +102,7 @@ export function isIrrelevant(query) {
   return IRRELEVANT_PATTERNS.some(p => p.test(q));
 }
 
-// ─── Context Builder ───────────────────────────────────────────────
+// ─── Context Builder (with ranking labels) ─────────────────────────
 
 function estimateTokens(text) {
   return Math.ceil(text.split(/\s+/).length / 0.75);
@@ -108,8 +115,11 @@ function buildContext(results) {
   let tokenCount = 0;
   const budget = MAX_CONTEXT_TOKENS;
 
-  for (const chunk of results) {
-    const entry = `\n---\n📖 ${chunk.n} [slug:${chunk.s}]${chunk.sec ? ` — ${chunk.sec}` : ''} ${chunk.d || ''}\n${chunk.t}\n`;
+  for (let i = 0; i < results.length; i++) {
+    const chunk = results[i];
+    const rank = i + 1;
+    const relevance = rank <= 2 ? '⭐ EN ALAKALI' : rank <= 4 ? '📌 ALAKALI' : '📎 EK';
+    const entry = `\n---\n[${relevance} #${rank}] 📖 ${chunk.n} [slug:${chunk.s}]${chunk.sec ? ` — ${chunk.sec}` : ''} ${chunk.d || ''}\n${chunk.t}\n`;
     const entryTokens = estimateTokens(entry);
 
     if (tokenCount + entryTokens > budget) {
@@ -156,6 +166,46 @@ export function buildIrrelevantResponse(lang = 'tr') {
     relevant: false,
     actions: [],
   };
+}
+
+// ─── Fallback Response (when Groq quota exhausted) ─────────────────
+
+export function buildFallbackResponse(searchResults, lang = 'tr') {
+  if (!searchResults.length) {
+    const noResult = {
+      tr: 'Arama sonucu bulunamadı. Farklı bir anahtar kelime deneyin.',
+      en: 'No search results found. Try different keywords.',
+      ar: 'لم يتم العثور على نتائج. حاول كلمات مفتاحية مختلفة.',
+    };
+    return { answer: noResult[lang] || noResult.tr, sources: [], relevant: false, actions: [] };
+  }
+
+  const header = {
+    tr: '⚡ **AI yanıt limiti doldu.** İşte ilgili DİA maddeleri:\n\n',
+    en: '⚡ **AI response limit reached.** Here are related DİA articles:\n\n',
+    ar: '⚡ **تم الوصول إلى حد الاستجابة.** إليك المقالات ذات الصلة:\n\n',
+  };
+
+  const footer = {
+    tr: '\n\n_AI cevabı için yarın tekrar deneyin._',
+    en: '\n\n_Try again tomorrow for AI-powered answers._',
+    ar: '\n\n_حاول مرة أخرى غداً للحصول على إجابات AI._',
+  };
+
+  let answer = header[lang] || header.tr;
+  const sources = [];
+
+  for (const chunk of searchResults.slice(0, 5)) {
+    const preview = (chunk.t || '').slice(0, 200).replace(/\n/g, ' ').trim();
+    answer += `**${chunk.n}**${chunk.sec ? ` — ${chunk.sec}` : ''}\n${preview}...\n\n`;
+    if (chunk.s && !sources.find(s => s.slug === chunk.s)) {
+      sources.push({ name: chunk.n, slug: chunk.s });
+    }
+  }
+
+  answer += (footer[lang] || footer.tr);
+
+  return { answer, sources, relevant: true, actions: [] };
 }
 
 // ─── Language Detection ────────────────────────────────────────────

@@ -1126,3 +1126,20 @@
     r: 3 !important;
   }
 }
+
+/* ─── B1 fix: .header-right is ONLY for mobile hamburger drawer ─── */
+.header-right {
+  display: none !important;
+}
+@media (max-width: 768px) {
+  .header-right {
+    display: flex !important;
+    position: fixed;
+    top: 0;
+    right: -280px;
+    transition: right 0.3s ease;
+  }
+  .header-right.mobile-open {
+    right: 0 !important;
+  }
+}
