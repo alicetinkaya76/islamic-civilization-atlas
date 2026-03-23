@@ -125,7 +125,6 @@ export default function AboutModal({ lang, onResetOnboarding, onResetLanding, ex
               <h3 className="about-section-title">{L.affiliations}</h3>
               <div className="about-affiliations">
                 <span className="about-affil-badge">🎓 Selçuk Üniversitesi</span>
-                <span className="about-affil-badge">💡 Kapsül Teknoloji Platformu</span>
               </div>
             </div>
 

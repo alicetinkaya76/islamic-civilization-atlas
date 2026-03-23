@@ -159,7 +159,7 @@ export default function TimelineView({ lang, t }) {
           const narrSnip = narr;
           setTooltip({
             x: ev.pageX, y: ev.pageY,
-            html: `<b>${n(d, lang)}</b><br/>${d.start}–${d.end} · ${d.zone}<br/>${d.rel || '—'} · ${d.gov || '—'}${an ? '<br/>Power: ' + an.pi : ''}${narrSnip ? '<br/><span style="color:#c4b89a;font-size:10px">' + narrSnip + '</span>' : ''}`
+            html: `<b>${n(d, lang)}</b><br/>${d.start}–${d.end} · ${d.zone}<br/>${d.rel || '—'} · ${d.gov || '—'}${an ? '<br/>Power: ' + an.pi : ''}${narrSnip ? '<br/><span style="color:#c4b89a;font-size:12.5px">' + narrSnip + '</span>' : ''}`
           });
         })
         .on('mouseleave', () => setTooltip(null));
@@ -243,7 +243,7 @@ export default function TimelineView({ lang, t }) {
             const narrSnip = narr;
             setTooltip({
               x: ev.pageX, y: ev.pageY,
-              html: `<b>⚔ ${n(b, lang)}</b><br/>${b.yr} · ${t.imp[b.sig] || b.sig}${b.res ? '<br/>' + b.res : ''}${narrSnip ? '<br/><span style="color:#c4b89a;font-size:10px">' + narrSnip + '</span>' : ''}`
+              html: `<b>⚔ ${n(b, lang)}</b><br/>${b.yr} · ${t.imp[b.sig] || b.sig}${b.res ? '<br/>' + b.res : ''}${narrSnip ? '<br/><span style="color:#c4b89a;font-size:12.5px">' + narrSnip + '</span>' : ''}`
             });
           })
           .on('mouseleave', () => setTooltip(null));
@@ -264,7 +264,7 @@ export default function TimelineView({ lang, t }) {
             const narrSnip = narr;
             setTooltip({
               x: ev.pageX, y: ev.pageY,
-              html: `<b>📜 ${n(e, lang)}</b><br/>${e.yr} · ${t.imp[e.sig] || e.sig}${narrSnip ? '<br/><span style="color:#c4b89a;font-size:10px">' + narrSnip + '</span>' : ''}`
+              html: `<b>📜 ${n(e, lang)}</b><br/>${e.yr} · ${t.imp[e.sig] || e.sig}${narrSnip ? '<br/><span style="color:#c4b89a;font-size:12.5px">' + narrSnip + '</span>' : ''}`
             });
           })
           .on('mouseleave', () => setTooltip(null));
@@ -289,7 +289,7 @@ export default function TimelineView({ lang, t }) {
             const narrSnip = narr;
             setTooltip({
               x: ev.pageX, y: ev.pageY,
-              html: `<b>📚 ${n(s, lang)}</b><br/>${s.b}–${s.d} · ${s.field}<br/>${lf(s, 'work', lang)}${narrSnip ? '<br/><span style="color:#c4b89a;font-size:10px">' + narrSnip + '</span>' : ''}`
+              html: `<b>📚 ${n(s, lang)}</b><br/>${s.b}–${s.d} · ${s.field}<br/>${lf(s, 'work', lang)}${narrSnip ? '<br/><span style="color:#c4b89a;font-size:12.5px">' + narrSnip + '</span>' : ''}`
             });
           })
           .on('mouseleave', () => setTooltip(null));
@@ -321,7 +321,7 @@ export default function TimelineView({ lang, t }) {
             if (r.lst) badges.push('◆ Last');
             setTooltip({
               x: ev.pageX, y: ev.pageY,
-              html: `<b>👑 ${r.n}</b><br/>${r.rs}–${r.re || '?'} · ${r.role || ''}${r.dur ? '<br/>Duration: ' + r.dur + ' yr' : ''}${badges.length ? '<br/>' + badges.join(' · ') : ''}<br/><span style="color:#c4b89a;font-size:10px">${dynNameMap[r.did] || ''}</span>`
+              html: `<b>👑 ${r.n}</b><br/>${r.rs}–${r.re || '?'} · ${r.role || ''}${r.dur ? '<br/>Duration: ' + r.dur + ' yr' : ''}${badges.length ? '<br/>' + badges.join(' · ') : ''}<br/><span style="color:#c4b89a;font-size:12.5px">${dynNameMap[r.did] || ''}</span>`
             });
           })
           .on('mouseleave', () => setTooltip(null));

@@ -229,9 +229,9 @@ body {
 .tt {
   position: fixed; z-index: 9999;
   background: var(--bg3); border: 1px solid var(--gold);
-  border-radius: 8px; padding: 8px 12px;
-  font-size: 11px; color: var(--cream); line-height: 1.5;
-  pointer-events: none; max-width: 320px;
+  border-radius: 8px; padding: 12px 16px;
+  font-size: 13px; color: var(--cream); line-height: 1.7;
+  pointer-events: none; max-width: 440px;
   box-shadow: 0 4px 20px rgba(0,0,0,.6);
 }
 .tt b { color: var(--gold); font-family: var(--font-display); }
