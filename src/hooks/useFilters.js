@@ -16,7 +16,7 @@ export function useLayers() {
   }, []);
 
   /** Show all layers (reset to defaults) */
-  const showAllLayers = useCallback(() => setLayers(DEFAULT_LAYERS), []);
+  const showAllLayers = useCallback(() => { const all = {}; LAYER_KEYS.forEach(k => { all[k] = true; }); setLayers(all); }, []);
 
   /** Check if exactly one layer is visible (solo mode active) */
   const isSolo = LAYER_KEYS.filter(k => layers[k]).length === 1;

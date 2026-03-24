@@ -7,8 +7,9 @@ const row = (label, val) => val ? `<div><b>${label}:</b> ${val}</div>` : '';
 
 /** Narrative block */
 const narrBlock = (obj, lang) => {
+  const ttsLang = { tr: "tr-TR", en: "en-US", ar: "ar-SA" }[lang] || "tr-TR";
   const txt = lf(obj, 'narr', lang);
-  return txt ? `<div class="p-narr">${txt}</div>` : '';
+  return txt ? `<div class="p-narr">${txt}<button class="p-tts" onclick="(() => { const u=new SpeechSynthesisUtterance(this.parentElement.textContent.replace('🔊','')); u.lang='${ttsLang}'; u.rate=0.9; speechSynthesis.cancel(); speechSynthesis.speak(u); })()" title="Dinle">🔊</button></div>` : '';
 };
 
 /** Causal links section in popup */
