@@ -9,7 +9,9 @@ const row = (label, val) => val ? `<div><b>${label}:</b> ${val}</div>` : '';
 const narrBlock = (obj, lang) => {
   const txt = lf(obj, 'narr', lang);
   if (!txt) return '';
-  const ttsBtn = lang === 'en' ? `<button class="p-tts" onclick="(() => { const u=new SpeechSynthesisUtterance(this.parentElement.textContent.replace('🔊','').trim()); u.lang='en-US'; u.rate=0.85; const v=speechSynthesis.getVoices().find(v=>v.lang==='en-US'); if(v)u.voice=v; speechSynthesis.cancel(); speechSynthesis.speak(u); })()" title="Listen">🔊</button>` : '';
+  const tl = { tr: 'tr-TR', en: 'en-US', ar: 'ar-SA' }[lang] || 'tr-TR';
+  const title = { tr: 'Dinle', en: 'Listen', ar: 'استمع' }[lang] || 'Dinle';
+  const ttsBtn = `<button class="p-tts" onclick="(() => { const t=this.parentElement.textContent.replace('🔊','').trim(); const u=new SpeechSynthesisUtterance(t); u.lang='${tl}'; u.rate=0.88; u.pitch=1.05; const vv=speechSynthesis.getVoices(); const best=vv.find(v=>v.lang==='${tl}'&&v.name.match(/Samantha|Karen|Daniel|Google|Natural|Yelda|Majed/))||vv.find(v=>v.lang==='${tl}'&&!v.localService)||vv.find(v=>v.lang.startsWith('${tl}'.slice(0,2))); if(best)u.voice=best; speechSynthesis.cancel(); speechSynthesis.speak(u); })()" title="${title}">🔊</button>`;
   return `<div class="p-narr">${txt}${ttsBtn}</div>`;
 };
 
