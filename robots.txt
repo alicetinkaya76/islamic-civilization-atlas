@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://islamic-civilization-atlas.vercel.app/sitemap.xml

@@ -1,0 +1,12 @@
+node_modules
+dist
+.DS_Store
+# ─── Append these lines to your existing .gitignore ───
+
+# Environment variables (API keys)
+.env
+.env.local
+.env.*.local
+
+# CSV files removed from public/data (B2)
+public/data/*.csv
