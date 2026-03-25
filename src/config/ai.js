@@ -22,9 +22,10 @@ export const GROQ_URL = 'https://api.groq.com/openai/v1/chat/completions';
 export const DAILY_LIMIT = 20;          // per-user (localStorage)
 export const MAX_CONTEXT_TOKENS = 4000; // max tokens sent as context
 export const MAX_RESPONSE_TOKENS = 1500; // ← was 1024, increased for detailed answers
-export const TEMPERATURE = 0.3;
+export const TEMPERATURE = 0.30;
 
 // ─── Feature Flags ─────────────────────────────────────────────────
 export const AI_ENABLED = true;         // master switch
 export const SHOW_SOURCES = true;       // show DİA source cards
 export const ENABLE_MAP_ACTIONS = true; // allow flyTo, highlight, filter
+// v6.8.1

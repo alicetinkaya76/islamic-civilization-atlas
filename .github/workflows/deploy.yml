@@ -19,6 +19,8 @@ jobs:
           node-version: 20
       - run: npm ci
       - run: npm run build
+        env:
+          VITE_GROQ_KEY: ${{ secrets.VITE_GROQ_KEY }}
       - uses: actions/configure-pages@v4
       - uses: actions/upload-pages-artifact@v3
         with:
