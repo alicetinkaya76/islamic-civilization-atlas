@@ -1060,8 +1060,8 @@ const T = {
     },
   },
   ar: {
-    title: 'أطلس الأسر الإسلامية الحاكمة',
-    sub: 'قاعدة بيانات بوسورث • 186 أسرة حاكمة • 632–1924',
+    title: 'أطلس التاريخ الإسلامي',
+    sub: '',
     tabs: { map: '🗺 خريطة', dashboard: '📊 لوحة', timeline: '📅 الجدول الزمني', links: '🔗 السببية', scholars: '🎓 العلماء', battles: '⚔ المعارك', alam: '📖 الأعلام', yaqut: "🌍 معجم البلدان", dia: '📚 موسوعة', ei1: '📕 دائرة المعارف' },
     layers: {
       dynasties: 'الأسر الحاكمة', battles: 'المعارك', events: 'الأحداث',
@@ -1495,7 +1495,7 @@ const T = {
     },
     landing: {
       explore: 'استكشف',
-      subtitle: '632–1924 · قاعدة بيانات بوسورث',
+      subtitle: '632–1924',
       dynasties: 'أسرة حاكمة', scholars: 'عالِم', battles: 'معركة',
       rulers: 'حاكم', monuments: 'مَعلم', cities: 'مدينة',
       chains: 'سلسلة إسناد', madrasas: 'مدرسة',
