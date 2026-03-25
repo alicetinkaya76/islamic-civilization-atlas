@@ -45,12 +45,13 @@ export default function DiaView({ lang, t: tProp }) {
   const t = tProp || T[lang];
   const td = t.dia || {};
 
+  const isMobile = typeof window !== 'undefined' && window.innerWidth <= 768;
   const { data: DIA_LITE, loading: dataLoading, error: dataError } = useAsyncData('/data/dia_lite.json');
-  const { data: DIA_REL } = useAsyncData('/data/dia_relations.json');
-  const { data: DIA_WORKS } = useAsyncData('/data/dia_works.json');
-  const { data: DIA_TRAVEL } = useAsyncData('/data/dia_travel.json');
-  const { data: DIA_XREF } = useAsyncData('/data/dia_alam_xref.json');
-  const { data: DIA_GEO } = useAsyncData('/data/dia_geo.json');
+  const { data: DIA_REL } = useAsyncData(isMobile ? null : '/data/dia_relations.json');
+  const { data: DIA_WORKS } = useAsyncData(isMobile ? null : '/data/dia_works.json');
+  const { data: DIA_TRAVEL } = useAsyncData(isMobile ? null : '/data/dia_travel.json');
+  const { data: DIA_XREF } = useAsyncData(isMobile ? null : '/data/dia_alam_xref.json');
+  const { data: DIA_GEO } = useAsyncData(isMobile ? null : '/data/dia_geo.json');
 
   const DIA_BY_ID = useMemo(() => DIA_LITE ? buildLookup(DIA_LITE) : {}, [DIA_LITE]);
   const STATS = useMemo(() => DIA_LITE ? buildStats(DIA_LITE) : { total:0, withDate:0, withMadhab:0, withFields:0, totalWorks:0 }, [DIA_LITE]);

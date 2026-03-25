@@ -1143,3 +1143,15 @@
     right: 0 !important;
   }
 }
+
+/* ── Samsung Android horizontal overflow fix ── */
+@media (max-width: 768px) {
+  html, body, .app {
+    overflow-x: hidden !important;
+    max-width: 100vw !important;
+  }
+  .header-right:not(.mobile-open) {
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+}
