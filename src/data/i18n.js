@@ -1,8 +1,8 @@
 const T = {
   tr: {
-    title: 'Müslüman Hanedanlar Atlası',
-    sub: 'Bosworth Veri Tabanı • 186 Hanedan • 632–1924',
-    tabs: { map: '🗺 Harita', dashboard: '📊 Pano', timeline: '📅 Zaman Çizelgesi', links: '🔗 Nedensellik', scholars: '🎓 Âlimler', battles: '⚔ Savaşlar', alam: '📖 el-A\'lâm', yaqut: "🌍 Mu'cem", dia: '📚 DİA', ei1: '📕 EI-1' },
+    title: 'İslam Tarihi Atlası',
+    sub: '186 Hanedan • 632–1924',
+    tabs: { map: '🗺 Harita', dashboard: '📊 Pano', timeline: '📅 Zaman Çizelgesi', links: '🔗 Nedensellik', scholars: '🎓 Âlimler', battles: '⚔ Savaşlar', alam: '📖 el-A\'lâm', yaqut: "🌍 Mu'cemü'l-Büldân", dia: '📚 DİA', ei1: '📕 EI-1' },
     layers: {
       dynasties: 'Hanedanlar', battles: 'Savaşlar', events: 'Olaylar',
       scholars: 'Âlimler', monuments: 'Mimari Eserler', cities: 'Şehirler',
@@ -435,7 +435,7 @@ const T = {
     },
     landing: {
       explore: 'Keşfet',
-      subtitle: '632–1924 · Bosworth Veri Tabanı',
+      subtitle: '632–1924 · İslam Tarihi',
       dynasties: 'Hanedan', scholars: 'Âlim', battles: 'Savaş',
       rulers: 'Hükümdar', monuments: 'Eser', cities: 'Şehir',
       chains: 'İsnâd Zinciri', madrasas: 'Medrese',
@@ -530,9 +530,9 @@ const T = {
     },
   },
   en: {
-    title: 'Islamic Dynasties Atlas',
-    sub: 'Bosworth Database • 186 Dynasties • 632–1924',
-    tabs: { map: '🗺 Map', dashboard: '📊 Dashboard', timeline: '📅 Timeline', links: '🔗 Causality', scholars: '🎓 Scholars', battles: '⚔ Battles', alam: '📖 al-Aʿlām', yaqut: "🌍 Mu'jam", dia: '📚 DİA', ei1: '📕 EI-1' },
+    title: 'Atlas of Islamic History',
+    sub: '186 Dynasties • 632–1924',
+    tabs: { map: '🗺 Map', dashboard: '📊 Dashboard', timeline: '📅 Timeline', links: '🔗 Causality', scholars: '🎓 Scholars', battles: '⚔ Battles', alam: '📖 al-Aʿlām', yaqut: "🌍 Muʿjam al-Buldān", dia: '📚 DİA', ei1: '📕 EI-1' },
     layers: {
       dynasties: 'Dynasties', battles: 'Battles', events: 'Events',
       scholars: 'Scholars', monuments: 'Monuments', cities: 'Cities',
@@ -965,7 +965,7 @@ const T = {
     },
     landing: {
       explore: 'Explore',
-      subtitle: '632–1924 · Bosworth Database',
+      subtitle: '632–1924 · Islamic History',
       dynasties: 'Dynasties', scholars: 'Scholars', battles: 'Battles',
       rulers: 'Rulers', monuments: 'Monuments', cities: 'Cities',
       chains: 'Isnad Chains', madrasas: 'Madrasas',
@@ -1062,7 +1062,7 @@ const T = {
   ar: {
     title: 'أطلس الأسر الإسلامية الحاكمة',
     sub: 'قاعدة بيانات بوسورث • 186 أسرة حاكمة • 632–1924',
-    tabs: { map: '🗺 خريطة', dashboard: '📊 لوحة', timeline: '📅 الجدول الزمني', links: '🔗 السببية', scholars: '🎓 العلماء', battles: '⚔ المعارك', alam: '📖 الأعلام', yaqut: "🌍 معجم", dia: '📚 موسوعة', ei1: '📕 دائرة المعارف' },
+    tabs: { map: '🗺 خريطة', dashboard: '📊 لوحة', timeline: '📅 الجدول الزمني', links: '🔗 السببية', scholars: '🎓 العلماء', battles: '⚔ المعارك', alam: '📖 الأعلام', yaqut: "🌍 معجم البلدان", dia: '📚 موسوعة', ei1: '📕 دائرة المعارف' },
     layers: {
       dynasties: 'الأسر الحاكمة', battles: 'المعارك', events: 'الأحداث',
       scholars: 'العلماء', monuments: 'المعالم المعمارية', cities: 'المدن',
