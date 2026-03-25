@@ -1,7 +1,7 @@
 const T = {
   tr: {
     title: 'İslam Tarihi Atlası',
-    sub: '186 Hanedan • 632–1924',
+    sub: '',
     tabs: { map: '🗺 Harita', dashboard: '📊 Pano', timeline: '📅 Zaman Çizelgesi', links: '🔗 Nedensellik', scholars: '🎓 Âlimler', battles: '⚔ Savaşlar', alam: '📖 el-A\'lâm', yaqut: "🌍 Mu'cemü'l-Büldân", dia: '📚 DİA', ei1: '📕 EI-1' },
     layers: {
       dynasties: 'Hanedanlar', battles: 'Savaşlar', events: 'Olaylar',
@@ -531,7 +531,7 @@ const T = {
   },
   en: {
     title: 'Atlas of Islamic History',
-    sub: '186 Dynasties • 632–1924',
+    sub: '',
     tabs: { map: '🗺 Map', dashboard: '📊 Dashboard', timeline: '📅 Timeline', links: '🔗 Causality', scholars: '🎓 Scholars', battles: '⚔ Battles', alam: '📖 al-Aʿlām', yaqut: "🌍 Muʿjam al-Buldān", dia: '📚 DİA', ei1: '📕 EI-1' },
     layers: {
       dynasties: 'Dynasties', battles: 'Battles', events: 'Events',
