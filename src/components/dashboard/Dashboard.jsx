@@ -150,6 +150,7 @@ export default function Dashboard({ lang, t: tProp, onTabChange }) {
     { key: 'routes', icon: '🛤', count: DB.routes?.length || 0, label: t.layers.routes, tab: 'map' },
     { key: 'madrasas', icon: '🎓', count: DB.madrasas?.length || 0, label: t.layers.madrasas, tab: 'map' },
     { key: 'alam', icon: '📖', count: 13940, label: t.landing.alamBio, tab: 'alam' },
+    { key: 'darpislam', icon: '🪙', count: 3458, label: { tr: 'Darphane', en: 'Mints' }[lang], tab: 'darpislam' },
   ], [lang]);
 
   /* Era distribution */
@@ -304,6 +305,7 @@ export default function Dashboard({ lang, t: tProp, onTabChange }) {
                 desc: { tr: 'Brill 1. baskı', en: 'Brill 1st edition', ar: 'طبعة بريل الأولى' }[lang] },
               { icon: '🌍', name: "Muʿjam", count: '12,954', scope: '7–13. yy.', tab: 'yaqut',
                 desc: { tr: 'Yâkût coğrafya', en: 'Yāqūt geography', ar: 'جغرافيا ياقوت' }[lang] },
+              { icon: '🪙', name: 'DarpIslam', count: '3,458', scope: 'H. 1–399', tab: 'darpislam', desc: { tr: 'İslam darphaneleri', en: 'Islamic mints' }[lang] },
             ].map(src => (
               <div key={src.name} className="dash-source-card" onClick={() => goTab(src.tab)} role="button" tabIndex={0}>
                 <div className="dash-source-header">

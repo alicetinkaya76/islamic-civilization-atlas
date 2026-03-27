@@ -19,6 +19,7 @@ const CausalView    = lazy(() => import('./components/causal/CausalView'));
 const DiaView       = lazy(() => import('./components/dia/DiaView'));
 const Ei1View       = lazy(() => import('./components/ei1/Ei1View'));
 const AIChatPanel   = lazy(() => import('./components/ai/AIChatPanel'));
+const DarpView     = lazy(() => import('./components/darpislam/DarpView'));
 
 /* ═══ Eagerly loaded — needed on every page ═══ */
 import MapView from './components/map/MapView';
@@ -345,6 +346,7 @@ export default function App() {
               { id: 'dia',  label: t.tabs.dia,  badge: '8.5K',  preload: '/data/dia_lite.json' },
               { id: 'ei1',  label: t.tabs.ei1,  badge: '7.6K',  preload: '/data/ei1_lite.json' },
               { id: 'yaqut', label: t.tabs.yaqut, badge: '13K',  preload: '/data/yaqut_lite.json' },
+              { id: 'darpislam', label: t.tabs.darpislam, badge: '3.5K', preload: '/data/darpislam_lite.json' },
             ]}
             activeTab={tab}
             onSelect={selectTab}
@@ -399,6 +401,8 @@ export default function App() {
                 onMouseEnter={() => preloadData('/data/dia_lite.json')}>{t.tabs.dia}</button>
               <button role="tab" aria-selected={tab === 'ei1'} className={`tab${tab === 'ei1' ? ' active' : ''}`} onClick={() => selectTab('ei1')}
                 onMouseEnter={() => preloadData('/data/ei1_lite.json')}>{t.tabs.ei1}</button>
+              <button role="tab" aria-selected={tab === 'darpislam'} className={`tab${tab === 'darpislam' ? ' active' : ''}`} onClick={() => selectTab('darpislam')}
+                onMouseEnter={() => preloadData('/data/darpislam_lite.json')}>{t.tabs.darpislam}</button>
             </div>
             <button className="quiz-trigger" onClick={() => setQuizOpen(true)}
               aria-label={{ tr: 'Bilgi yarışması', en: 'Knowledge quiz', ar: 'اختبار المعرفة' }[lang]}>🎓 Quiz</button>
@@ -434,6 +438,7 @@ export default function App() {
          tab === 'yaqut' ? <YaqutView lang={lang} t={t} /> :
          tab === 'dia' ? <DiaView lang={lang} t={t} /> :
          tab === 'ei1' ? <Ei1View lang={lang} t={t} /> :
+         tab === 'darpislam' ? <DarpView lang={lang} t={t} /> :
          <CausalView lang={lang} t={t} />}
         </Suspense>
       </main>
