@@ -152,6 +152,7 @@ export default function Dashboard({ lang, t: tProp, onTabChange }) {
     { key: 'alam', icon: '📖', count: 13940, label: t.landing.alamBio, tab: 'alam' },
     { key: 'darpislam', icon: '🪙', count: 3458, label: { tr: 'Darphane', en: 'Mints' }[lang], tab: 'darpislam' },
     { key: 'khitat', icon: '🏛️', count: 801, label: { tr: 'Yapı (el-Hıṭaṭ)', en: 'Structures (al-Khiṭaṭ)' }[lang], tab: 'khitat' },
+    { key: 'cityatlas', icon: '🏙️', count: 219, label: { tr: 'Yapı (Konya)', en: 'Monuments (Konya)' }[lang], tab: 'cityatlas' },
   ], [lang]);
 
   /* Era distribution */
@@ -308,6 +309,7 @@ export default function Dashboard({ lang, t: tProp, onTabChange }) {
                 desc: { tr: 'Yâkût coğrafya', en: 'Yāqūt geography', ar: 'جغرافيا ياقوت' }[lang] },
               { icon: '🪙', name: 'DarpIslam', count: '3,458', scope: 'H. 1–399', tab: 'darpislam', desc: { tr: 'İslam darphaneleri', en: 'Islamic mints' }[lang] },
               { icon: '🏛️', name: 'el-Hıṭaṭ', count: '801', scope: 'Kâhire', tab: 'khitat', desc: { tr: 'Makrîzî Kâhire topografyası', en: 'Maqrīzī Cairo topography' }[lang] },
+              { icon: '🏙️', name: 'Konya Atlası', count: '219', scope: 'Konya', tab: 'cityatlas', desc: { tr: 'Konyalı mimari envanteri', en: 'Konyalı architectural inventory' }[lang] },
             ].map(src => (
               <div key={src.name} className="dash-source-card" onClick={() => goTab(src.tab)} role="button" tabIndex={0}>
                 <div className="dash-source-header">
