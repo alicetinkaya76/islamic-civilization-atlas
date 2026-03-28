@@ -21,6 +21,7 @@ const Ei1View       = lazy(() => import('./components/ei1/Ei1View'));
 const AIChatPanel   = lazy(() => import('./components/ai/AIChatPanel'));
 const DarpView     = lazy(() => import('./components/darpislam/DarpView'));
 const RihlaView    = lazy(() => import('./components/rihla/RihlaView'));
+const KhitatView  = lazy(() => import('./components/khitat/KhitatView'));
 
 /* ═══ Eagerly loaded — needed on every page ═══ */
 import MapView from './components/map/MapView';
@@ -111,7 +112,7 @@ function LangDropdown({ lang, setLang }) {
   );
 }
 
-const VALID_TABS = ['map', 'dashboard', 'timeline', 'links', 'scholars', 'battles', 'alam', 'yaqut', 'dia', 'ei1', 'rihla', 'admin'];
+const VALID_TABS = ['map', 'dashboard', 'timeline', 'links', 'scholars', 'battles', 'alam', 'yaqut', 'dia', 'ei1', 'rihla', 'khitat', 'admin'];
 
 /* Tab order for swipe navigation (excludes admin) */
 const SWIPE_TAB_ORDER = ['map', 'dashboard', 'alam', 'dia', 'ei1', 'timeline', 'links', 'scholars', 'battles', 'rihla', 'yaqut'];
@@ -348,6 +349,7 @@ export default function App() {
               { id: 'ei1',  label: t.tabs.ei1,  badge: '7.6K',  preload: '/data/ei1_lite.json' },
               { id: 'yaqut', label: t.tabs.yaqut, badge: '13K',  preload: '/data/yaqut_lite.json' },
               { id: 'rihla', label: t.tabs.rihla || 'İbn Battûta', badge: '317', preload: '/data/ibn_battuta_atlas_layer.json' },
+              { id: 'khitat', label: t.tabs.khitat || '🏛️ el-Hıṭaṭ', badge: '801', preload: '/data/maqrizi_khitat_atlas_layer.json' },
               { id: 'darpislam', label: t.tabs.darpislam, badge: '3.5K', preload: '/data/darpislam_lite.json' },
             ]}
             activeTab={tab}
@@ -444,6 +446,7 @@ export default function App() {
          tab === 'ei1' ? <Ei1View lang={lang} t={t} /> :
          tab === 'darpislam' ? <DarpView lang={lang} t={t} /> :
          tab === 'rihla' ? <RihlaView lang={lang} t={t} /> :
+         tab === 'khitat' ? <KhitatView lang={lang} t={t} /> :
          <CausalView lang={lang} t={t} />}
         </Suspense>
       </main>

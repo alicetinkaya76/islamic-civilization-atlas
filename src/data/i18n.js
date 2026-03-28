@@ -2,7 +2,7 @@ const T = {
   tr: {
     title: 'İslam Tarihi Atlası',
     sub: '',
-    tabs: { map: '🗺 Harita', dashboard: '📊 Pano', timeline: '📅 Zaman Çizelgesi', links: '🔗 Nedensellik', scholars: '🎓 Âlimler', battles: '⚔ Savaşlar', alam: '📖 el-A\'lâm', yaqut: "🌍 Mu'cemü'l-Büldân", dia: '📚 DİA', ei1: '📕 EI-1', darpislam: '🪙 Darphaneler', rihla: '🧭 İbn Battûta' },
+    tabs: { map: '🗺 Harita', dashboard: '📊 Pano', timeline: '📅 Zaman Çizelgesi', links: '🔗 Nedensellik', scholars: '🎓 Âlimler', battles: '⚔ Savaşlar', alam: '📖 el-A\'lâm', yaqut: "🌍 Mu'cemü'l-Büldân", dia: '📚 DİA', ei1: '📕 EI-1', darpislam: '🪙 Darphaneler', rihla: '🧭 İbn Battûta', khitat: '🏛️ el-Hıṭaṭ' },
     layers: {
       dynasties: 'Hanedanlar', battles: 'Savaşlar', events: 'Olaylar',
       scholars: 'Âlimler', monuments: 'Mimari Eserler', cities: 'Şehirler',
@@ -148,6 +148,7 @@ const T = {
       period: 'Dönem', count: 'savaş',
       typeLand: 'Kara', typeNaval: 'Deniz', typeSiege: 'Kuşatma', typeCivil: 'İç Çatışma',
     },
+    khitat: { title: 'el-Hıṭaṭ', sub: 'Makrîzî — Kâhire Topografyası', loading: 'el-Hıṭaṭ verileri yükleniyor…', search: 'Yapı ara…', filters: 'Filtreler', structures: 'yapı', categories: 'Kategoriler', geocoded: 'konumlu', dated: 'tarihli', session: 'Oturum', dateRange: 'Tarih Aralığı (Hicrî)', status: 'Durum', all: 'Tümü', extant: 'Mevcut', demolished: 'Yıkılmış', unknown: 'Bilinmiyor', founder: 'Kurucu', dynasty: 'Hanedan', zone: 'Bölge', coords: 'Koordinat', confidence: 'Güven Seviyesi', high: 'Yüksek', approximate: 'Yaklaşık', low: 'Düşük', excerpt: 'el-Hıṭaṭ Alıntısı', sourceLine: 'Kaynak Satır', founded: 'Kuruluş', noSelection: 'Bir yapı seçin', mapView: 'Harita', statsView: 'İstatistik', tabList: 'Liste', tabDetail: 'Detay', sortBy: 'Sıralama', byDate: 'Tarih', byCat: 'Kategori', byName: 'İsim', noResults: 'Sonuç bulunamadı', categoryDist: 'Kategori Dağılımı', dynastyDist: 'Hanedan Dağılımı', centuryDist: 'Yüzyıl Dağılımı', sessionSummary: 'Oturum Özeti', totalStructures: 'Toplam Yapı', geocodingRate: 'Geocoding Oranı', source: 'Takiyyüddin el-Makrîzî, el-Mevâʿiẓ ve&#39;l-İʿtibâr (el-Hıṭaṭ), OpenITI #0845Maqrizi.Mawaciz' },
     alam: {
       title: "el-A'lâm Veritabanı",
       sub: "Ziriklî Biyografik Ansiklopedi — 13.940 Biyografi",
@@ -532,7 +533,7 @@ const T = {
   en: {
     title: 'Atlas of Islamic History',
     sub: '',
-    tabs: { map: '🗺 Map', dashboard: '📊 Dashboard', timeline: '📅 Timeline', links: '🔗 Causality', scholars: '🎓 Scholars', battles: '⚔ Battles', alam: '📖 al-Aʿlām', yaqut: "🌍 Muʿjam al-Buldān", dia: '📚 DİA', ei1: '📕 EI-1', darpislam: '🪙 Mints', rihla: '🧭 Ibn Battuta' },
+    tabs: { map: '🗺 Map', dashboard: '📊 Dashboard', timeline: '📅 Timeline', links: '🔗 Causality', scholars: '🎓 Scholars', battles: '⚔ Battles', alam: '📖 al-Aʿlām', yaqut: "🌍 Muʿjam al-Buldān", dia: '📚 DİA', ei1: '📕 EI-1', darpislam: '🪙 Mints', rihla: '🧭 Ibn Battuta', khitat: '🏛️ al-Khiṭaṭ' },
     layers: {
       dynasties: 'Dynasties', battles: 'Battles', events: 'Events',
       scholars: 'Scholars', monuments: 'Monuments', cities: 'Cities',
@@ -678,6 +679,7 @@ const T = {
       period: 'Period', count: 'battles',
       typeLand: 'Land', typeNaval: 'Naval', typeSiege: 'Siege', typeCivil: 'Civil War',
     },
+    khitat: { title: 'el-Hıṭaṭ', sub: 'Makrîzî — Kâhire Topografyası', loading: 'el-Hıṭaṭ verileri yükleniyor…', search: 'Yapı ara…', filters: 'Filtreler', structures: 'yapı', categories: 'Kategoriler', geocoded: 'konumlu', dated: 'tarihli', session: 'Oturum', dateRange: 'Tarih Aralığı (Hicrî)', status: 'Durum', all: 'Tümü', extant: 'Mevcut', demolished: 'Yıkılmış', unknown: 'Bilinmiyor', founder: 'Kurucu', dynasty: 'Hanedan', zone: 'Bölge', coords: 'Koordinat', confidence: 'Güven Seviyesi', high: 'Yüksek', approximate: 'Yaklaşık', low: 'Düşük', excerpt: 'el-Hıṭaṭ Alıntısı', sourceLine: 'Kaynak Satır', founded: 'Kuruluş', noSelection: 'Bir yapı seçin', mapView: 'Harita', statsView: 'İstatistik', tabList: 'Liste', tabDetail: 'Detay', sortBy: 'Sıralama', byDate: 'Tarih', byCat: 'Kategori', byName: 'İsim', noResults: 'Sonuç bulunamadı', categoryDist: 'Kategori Dağılımı', dynastyDist: 'Hanedan Dağılımı', centuryDist: 'Yüzyıl Dağılımı', sessionSummary: 'Oturum Özeti', totalStructures: 'Toplam Yapı', geocodingRate: 'Geocoding Oranı', source: 'Takiyyüddin el-Makrîzî, el-Mevâʿiẓ ve&#39;l-İʿtibâr (el-Hıṭaṭ), OpenITI #0845Maqrizi.Mawaciz' },
     alam: {
       title: "al-Aʿlām Database",
       sub: "Zirikli Biographical Encyclopaedia — 13,940 Biographies",
@@ -1062,7 +1064,7 @@ const T = {
   ar: {
     title: 'أطلس التاريخ الإسلامي',
     sub: '',
-    tabs: { map: '🗺 خريطة', dashboard: '📊 لوحة', timeline: '📅 الجدول الزمني', links: '🔗 السببية', scholars: '🎓 العلماء', battles: '⚔ المعارك', alam: '📖 الأعلام', yaqut: "🌍 معجم البلدان", dia: '📚 موسوعة', ei1: '📕 دائرة المعارف', darpislam: '🪙 دور السك', rihla: '🧭 ابن بطوطة' },
+    tabs: { map: '🗺 خريطة', dashboard: '📊 لوحة', timeline: '📅 الجدول الزمني', links: '🔗 السببية', scholars: '🎓 العلماء', battles: '⚔ المعارك', alam: '📖 الأعلام', yaqut: "🌍 معجم البلدان", dia: '📚 موسوعة', ei1: '📕 دائرة المعارف', darpislam: '🪙 دور السك', rihla: '🧭 ابن بطوطة', khitat: '🏛️ الخطط' },
     layers: {
       dynasties: 'الأسر الحاكمة', battles: 'المعارك', events: 'الأحداث',
       scholars: 'العلماء', monuments: 'المعالم المعمارية', cities: 'المدن',
@@ -1208,6 +1210,7 @@ const T = {
       period: 'الفترة', count: 'معارك',
       typeLand: 'برّية', typeNaval: 'بحرية', typeSiege: 'حصار', typeCivil: 'نزاع داخلي',
     },
+    khitat: { title: 'el-Hıṭaṭ', sub: 'Makrîzî — Kâhire Topografyası', loading: 'el-Hıṭaṭ verileri yükleniyor…', search: 'Yapı ara…', filters: 'Filtreler', structures: 'yapı', categories: 'Kategoriler', geocoded: 'konumlu', dated: 'tarihli', session: 'Oturum', dateRange: 'Tarih Aralığı (Hicrî)', status: 'Durum', all: 'Tümü', extant: 'Mevcut', demolished: 'Yıkılmış', unknown: 'Bilinmiyor', founder: 'Kurucu', dynasty: 'Hanedan', zone: 'Bölge', coords: 'Koordinat', confidence: 'Güven Seviyesi', high: 'Yüksek', approximate: 'Yaklaşık', low: 'Düşük', excerpt: 'el-Hıṭaṭ Alıntısı', sourceLine: 'Kaynak Satır', founded: 'Kuruluş', noSelection: 'Bir yapı seçin', mapView: 'Harita', statsView: 'İstatistik', tabList: 'Liste', tabDetail: 'Detay', sortBy: 'Sıralama', byDate: 'Tarih', byCat: 'Kategori', byName: 'İsim', noResults: 'Sonuç bulunamadı', categoryDist: 'Kategori Dağılımı', dynastyDist: 'Hanedan Dağılımı', centuryDist: 'Yüzyıl Dağılımı', sessionSummary: 'Oturum Özeti', totalStructures: 'Toplam Yapı', geocodingRate: 'Geocoding Oranı', source: 'Takiyyüddin el-Makrîzî, el-Mevâʿiẓ ve&#39;l-İʿtibâr (el-Hıṭaṭ), OpenITI #0845Maqrizi.Mawaciz' },
     alam: {
       title: "قاعدة بيانات الأعلام",
       sub: "الزركلي — الأعلام — 13,940 ترجمة",

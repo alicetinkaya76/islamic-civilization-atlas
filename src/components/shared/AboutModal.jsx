@@ -9,6 +9,7 @@ const STATS = [
   { icon: '📕', key: 'ei1', count: '7,568' },
   { icon: '🌍', key: 'yaqut', count: '12,954' },
   { icon: '🪙', key: 'darpislam', count: '3,458' },
+  { icon: '🏛️', key: 'khitat', count: '801' },
 ];
 
 const SOURCES = [
@@ -35,19 +36,19 @@ export default function AboutModal({ lang, onResetOnboarding, onResetLanding, ex
       stats: 'Proje İstatistikleri', sources: 'Veri Kaynakları', tech: 'Teknoloji',
       version: 'Versiyon', authors: 'Yazarlar', license: 'Lisans',
       dynasties: 'Hanedan', alam: 'el-Aʿlâm', dia: 'DİA Biyografi',
-      ei1: 'EI-1 Makale', yaqut: 'Muʿcem Kaydı', darpislam: 'Darphane', affiliations: 'Kurumsal Bağlantılar',
+      ei1: 'EI-1 Makale', yaqut: 'Muʿcem Kaydı', darpislam: 'Darphane', khitat: 'Yapı (el-Hıṭaṭ)', affiliations: 'Kurumsal Bağlantılar',
     },
     en: {
       stats: 'Project Statistics', sources: 'Data Sources', tech: 'Technology',
       version: 'Version', authors: 'Authors', license: 'License',
       dynasties: 'Dynasties', alam: 'al-Aʿlām', dia: 'DİA Biographies',
-      ei1: 'EI-1 Articles', yaqut: 'Muʿjam Entries', darpislam: 'Mints', affiliations: 'Affiliations',
+      ei1: 'EI-1 Articles', yaqut: 'Muʿjam Entries', darpislam: 'Mints', khitat: 'Structures (al-Khiṭaṭ)', affiliations: 'Affiliations',
     },
     ar: {
       stats: 'إحصائيات المشروع', sources: 'مصادر البيانات', tech: 'التقنية',
       version: 'الإصدار', authors: 'المؤلفون', license: 'الرخصة',
       dynasties: 'السلالات', alam: 'الأعلام', dia: 'تراجم DİA',
-      ei1: 'مقالات EI-1', yaqut: 'معجم البلدان', darpislam: 'دور السك', affiliations: 'الانتماءات',
+      ei1: 'مقالات EI-1', yaqut: 'معجم البلدان', darpislam: 'دور السك', khitat: 'الخطط', affiliations: 'الانتماءات',
     },
   };
   const L = labels[lang] || labels.en;
