@@ -38,6 +38,16 @@ export default function CityAtlasSidebar({
     { value: 'belirsiz', label: t('Belirsiz', 'Unknown', 'غير محدد') },
   ];
 
+  // ── Date display helper ──
+  const getDateStr = (r) => {
+    const miladi = r.dates?.founding_miladi;
+    const hijri  = r.dates?.founding_hijri;
+    if (miladi && hijri) return `${miladi} M. (H.${hijri})`;
+    if (miladi) return `${miladi} M.`;
+    if (hijri) return `H.${hijri}`;
+    return '';
+  };
+
   return (
     <aside className="ca-sidebar">
       {/* Search */}
@@ -130,6 +140,7 @@ export default function CityAtlasSidebar({
         <ul className="ca-list">
           {filtered.map((r) => {
             const catCfg = city.categories[r.category] || {};
+            const dateStr = getDateStr(r);
             return (
               <li
                 key={r.id}
@@ -143,8 +154,7 @@ export default function CityAtlasSidebar({
                   <span className="ca-list-name">{getName(r)}</span>
                   <span className="ca-list-meta">
                     {getCat(r)}
-                    {r.dates?.founding_miladi ? ` · ${r.dates.founding_miladi}` : ''}
-                    {r.dates?.founding_hijri ? ` (H.${r.dates.founding_hijri})` : ''}
+                    {dateStr && ` · ${dateStr}`}
                   </span>
                 </div>
               </li>

@@ -5,9 +5,17 @@ export default function CityAtlasMap({ records, city, lang, getName, getCat, sel
   const containerRef = useRef(null);
   const mapRef = useRef(null);
   const markersRef = useRef(null);
+  const cityIdRef = useRef(null);
 
-  // ── Initialize map ──
+  // ── Initialize / reinitialize map when city changes ──
   useEffect(() => {
+    // If city changed, destroy old map
+    if (mapRef.current && cityIdRef.current !== city.id) {
+      mapRef.current.remove();
+      mapRef.current = null;
+      markersRef.current = null;
+    }
+
     if (mapRef.current) return;
 
     const map = L.map(containerRef.current, {
@@ -28,12 +36,14 @@ export default function CityAtlasMap({ records, city, lang, getName, getCat, sel
 
     mapRef.current = map;
     markersRef.current = L.layerGroup().addTo(map);
+    cityIdRef.current = city.id;
 
     return () => {
       map.remove();
       mapRef.current = null;
+      markersRef.current = null;
     };
-  }, []);
+  }, [city.id]);
 
   // ── Render markers ──
   useEffect(() => {
@@ -60,17 +70,21 @@ export default function CityAtlasMap({ records, city, lang, getName, getCat, sel
 
       const name = getName(r);
       const cat = getCat(r);
-      const date = r.dates?.founding_miladi ? `<br/><span style="opacity:0.6">${r.dates.founding_miladi}</span>` : '';
+      const dateStr = r.dates?.founding_miladi
+        ? `<br/><span style="opacity:0.6">${r.dates.founding_miladi} M.</span>`
+        : r.dates?.founding_hijri
+          ? `<br/><span style="opacity:0.6">H. ${r.dates.founding_hijri}</span>`
+          : '';
 
       marker.bindTooltip(
-        `<strong>${name}</strong><br/><em>${cat}</em>${date}`,
+        `<strong>${name}</strong><br/><em>${cat}</em>${dateStr}`,
         { direction: 'top', offset: [0, -8], className: '' }
       );
 
       marker.on('click', () => onSelect(r));
       markers.addLayer(marker);
     });
-  }, [records, selected, lang]);
+  }, [records, selected, lang, city.id]);
 
   // ── Fly to selected ──
   useEffect(() => {
@@ -94,7 +108,7 @@ export default function CityAtlasMap({ records, city, lang, getName, getCat, sel
       const bounds = L.latLngBounds(points);
       mapRef.current.fitBounds(bounds, { padding: [30, 30], maxZoom: 16 });
     }
-  }, [records.length]);
+  }, [records.length, city.id]);
 
   return <div ref={containerRef} className="ca-map" />;
 }

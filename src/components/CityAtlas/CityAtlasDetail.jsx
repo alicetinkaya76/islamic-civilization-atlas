@@ -37,12 +37,22 @@ export default function CityAtlasDetail({ record: r, city, lang, getName, getCat
           {/* Trilingual names */}
           {lang === 'tr' && r.name_en && (
             <div style={{ fontSize: '0.72rem', opacity: 0.4, marginTop: 1 }}>
-              {r.name_en} · {r.name_ar}
+              {r.name_en}{r.name_ar ? ` · ${r.name_ar}` : ''}
+            </div>
+          )}
+          {lang === 'en' && r.name_ar && (
+            <div style={{ fontSize: '0.72rem', opacity: 0.4, marginTop: 1 }}>
+              {r.name_ar}{r.name_tr !== r.name_en ? ` · ${r.name_tr}` : ''}
             </div>
           )}
           <div className="ca-detail-badges">
             <span className="ca-badge" style={{ background: catCfg.color }}>{getCat(r)}</span>
-            <span className="ca-badge" style={{ background: perCfg.color }}>
+            {r.subcategory && r.subcategory !== r.category && (
+              <span className="ca-badge" style={{ background: 'rgba(255,255,255,0.1)' }}>
+                {r.subcategory}
+              </span>
+            )}
+            <span className="ca-badge" style={{ background: perCfg.color || '#616161' }}>
               {perCfg[`label_${lang}`] || perCfg.label_en || r.period}
             </span>
             <span className={`ca-badge ${st.cls}`}>{st.label}</span>
@@ -57,9 +67,9 @@ export default function CityAtlasDetail({ record: r, city, lang, getName, getCat
           <section className="ca-detail-section">
             <h3>{t('Tarih', 'Date', 'التاريخ')}</h3>
             <p>
-              {r.dates.founding_hijri && `H. ${r.dates.founding_hijri}`}
-              {r.dates.founding_hijri && r.dates.founding_miladi && ' / '}
-              {r.dates.founding_miladi && `${r.dates.founding_miladi} M.`}
+              {r.dates.founding_hijri != null && `H. ${r.dates.founding_hijri}`}
+              {r.dates.founding_hijri != null && r.dates.founding_miladi != null && ' / '}
+              {r.dates.founding_miladi != null && `${r.dates.founding_miladi} M.`}
               {r.dates.founding_approximate && ` (${t('tahmini', 'approx.', 'تقريبي')})`}
             </p>
             {r.dates.date_source && (
@@ -82,6 +92,14 @@ export default function CityAtlasDetail({ record: r, city, lang, getName, getCat
           </section>
         )}
 
+        {/* ── Hanedan (Cairo) ── */}
+        {r.dynasty && (r.dynasty.tr || r.dynasty.en) && (
+          <section className="ca-detail-section">
+            <h3>{t('Hanedan', 'Dynasty', 'الدولة')}</h3>
+            <p>{lang === 'en' ? r.dynasty.en : r.dynasty.tr || r.dynasty.en}</p>
+          </section>
+        )}
+
         {/* ── Bâni / Patron ── */}
         {r.patron?.name && (
           <section className="ca-detail-section">
@@ -98,7 +116,7 @@ export default function CityAtlasDetail({ record: r, city, lang, getName, getCat
         )}
 
         {/* ── Konum ── */}
-        {(r.location?.description_tr || r.location?.mahalle) && (
+        {(r.location?.description_tr || r.location?.mahalle || r.location?.lat) && (
           <section className="ca-detail-section">
             <h3>{t('Konum', 'Location', 'الموقع')}</h3>
             {r.location.mahalle && (
@@ -112,10 +130,10 @@ export default function CityAtlasDetail({ record: r, city, lang, getName, getCat
                 {t('Yakın', 'Near', 'بالقرب من')}: {r.location.nearby_landmarks.join(', ')}
               </p>
             )}
-            {r.location.geocoding_confidence && (
+            {r.location.lat != null && (
               <p style={{ fontSize: '0.65rem', color: '#555' }}>
                 📍 {r.location.lat?.toFixed(4)}, {r.location.lng?.toFixed(4)}
-                {' '}({r.location.geocoding_confidence})
+                {r.location.geocoding_confidence && ` (${r.location.geocoding_confidence})`}
               </p>
             )}
           </section>
@@ -196,6 +214,21 @@ export default function CityAtlasDetail({ record: r, city, lang, getName, getCat
           </section>
         )}
 
+        {/* ── Makrîzî Metni (Cairo) ── */}
+        {r.source_excerpt_ar && (
+          <section className="ca-detail-section">
+            <h3>{t('Kaynak Metin', 'Source Text', 'النص المصدر')}</h3>
+            <div className="ca-source-excerpt">
+              {r.source_excerpt_ar}
+            </div>
+            {r.source_line && (
+              <p className="ca-source-ref">
+                📄 {city.source} · {t('Satır', 'Line', 'السطر')} {r.source_line}
+              </p>
+            )}
+          </section>
+        )}
+
         {/* ── Çapraz Referanslar ── */}
         {r.cross_references?.length > 0 && (
           <section className="ca-detail-section">
@@ -208,7 +241,7 @@ export default function CityAtlasDetail({ record: r, city, lang, getName, getCat
           </section>
         )}
 
-        {/* ── Konyalı Notları ── */}
+        {/* ── Konyalı Notları (Konya) ── */}
         {r.konyali_notes && (
           <section className="ca-detail-section">
             <h3>{t('Konyalı Notları', 'Konyalı Notes', 'ملاحظات القونوي')}</h3>
