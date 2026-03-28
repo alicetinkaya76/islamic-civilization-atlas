@@ -351,7 +351,7 @@ export default function App() {
               { id: 'yaqut', label: t.tabs.yaqut, badge: '13K',  preload: '/data/yaqut_lite.json' },
               { id: 'rihla', label: t.tabs.rihla || 'İbn Battûta', badge: '317', preload: '/data/ibn_battuta_atlas_layer.json' },
               { id: 'khitat', label: t.tabs.khitat || '🏛️ el-Hıṭaṭ', badge: '801', preload: '/data/maqrizi_khitat_atlas_layer.json' },
-              { id: 'cityatlas', label: t.tabs.cityatlas || '🏙️ Konya Atlası', badge: '219', preload: '/data/city-atlas/konya.json' },
+              { id: 'cityatlas', label: t.tabs.cityatlas || '🏙️ Şehir Atlası', badge: '1,020', preload: '/data/city-atlas/konya.json' },
               { id: 'darpislam', label: t.tabs.darpislam, badge: '3.5K', preload: '/data/darpislam_lite.json' },
             ]}
             activeTab={tab}

@@ -68,6 +68,57 @@
   background: rgba(255,215,0,0.05);
 }
 
+/* ── CITY PICKER TABS ── */
+.ca-city-tabs {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 4px;
+}
+.ca-city-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 12px;
+  border-radius: 8px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  color: #999;
+  font-size: 0.82rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: inherit;
+}
+.ca-city-tab:hover {
+  background: rgba(255,255,255,0.07);
+  border-color: var(--city-color, rgba(255,215,0,0.3));
+  color: #ccc;
+}
+.ca-city-tab.active {
+  background: rgba(255, 215, 0, 0.08);
+  border-color: rgba(255, 215, 0, 0.35);
+  color: #FFD700;
+  font-weight: 600;
+}
+.ca-city-tab-icon {
+  font-size: 1rem;
+  line-height: 1;
+}
+.ca-city-tab-name {
+  white-space: nowrap;
+}
+.ca-city-tab-badge {
+  font-size: 0.65rem;
+  opacity: 0.5;
+  font-variant-numeric: tabular-nums;
+  background: rgba(255,255,255,0.06);
+  padding: 1px 5px;
+  border-radius: 6px;
+}
+.ca-city-tab.active .ca-city-tab-badge {
+  background: rgba(255,215,0,0.12);
+  opacity: 0.7;
+}
+
 /* ── BODY ── */
 .ca-body {
   flex: 1;
@@ -362,6 +413,24 @@
   margin-top: 6px !important;
 }
 
+/* ── SOURCE EXCERPT (Makrîzî etc.) ── */
+.ca-source-excerpt {
+  font-family: 'Amiri', 'Noto Naskh Arabic', 'Traditional Arabic', serif;
+  font-size: 0.95rem;
+  line-height: 2;
+  color: #e0d8c8;
+  direction: rtl;
+  text-align: right;
+  background: rgba(255,255,255,0.02);
+  padding: 12px 14px;
+  border-radius: 8px;
+  border-right: 3px solid rgba(255, 215, 0, 0.3);
+  max-height: 300px;
+  overflow-y: auto;
+}
+.ca-source-excerpt::-webkit-scrollbar { width: 3px; }
+.ca-source-excerpt::-webkit-scrollbar-thumb { background: rgba(255,215,0,0.15); border-radius: 2px; }
+
 /* ── INSCRIPTIONS ── */
 .ca-inscription {
   background: rgba(255,255,255,0.025);
@@ -467,6 +536,10 @@
   border-right: none;
   border-left: 3px solid rgba(255, 215, 0, 0.4);
 }
+[dir="rtl"] .ca-source-excerpt {
+  border-right: none;
+  border-left: 3px solid rgba(255, 215, 0, 0.3);
+}
 [dir="rtl"] .ca-search-input { padding: 9px 12px 9px 34px; }
 [dir="rtl"] .ca-search-clear { right: auto; left: 8px; }
 [dir="rtl"] @keyframes ca-slideIn {
@@ -481,6 +554,14 @@
 @media (max-width: 768px) {
   .ca-header { padding: 8px 12px; }
   .ca-header h1 { font-size: 1rem; }
+
+  .ca-city-tabs { gap: 3px; }
+  .ca-city-tab {
+    padding: 4px 8px;
+    font-size: 0.75rem;
+  }
+  .ca-city-tab-icon { font-size: 0.85rem; }
+  .ca-city-tab-badge { font-size: 0.6rem; padding: 1px 4px; }
 
   .ca-body { flex-direction: column; }
 
@@ -519,6 +600,8 @@
   [dir="rtl"] .ca-legend { left: 10px; right: auto; }
 
   .ca-activate-btn { bottom: 60px; font-size: 0.8rem; padding: 8px 16px; }
+
+  .ca-source-excerpt { max-height: 200px; font-size: 0.88rem; }
 }
 
 /* ================================================================

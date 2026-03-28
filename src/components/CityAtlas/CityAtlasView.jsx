@@ -7,7 +7,8 @@ import CityAtlasLegend from './CityAtlasLegend';
 import './cityAtlas.css';
 
 export default function CityAtlasView({ lang: propLang, onClose }) {
-  const resolvedCityId = 'konya';
+  // ── City selection ──
+  const [selectedCityId, setSelectedCityId] = useState(CITY_ATLAS_REGISTRY[0].id);
 
   // ── Language: prop → localStorage → default 'tr' ──
   const [lang, setLang] = useState(
@@ -26,12 +27,12 @@ export default function CityAtlasView({ lang: propLang, onClose }) {
     search: '',
   });
 
-  const city = CITY_ATLAS_REGISTRY.find((c) => c.id === resolvedCityId);
+  const city = CITY_ATLAS_REGISTRY.find((c) => c.id === selectedCityId);
 
-  // ── Load data ──
+  // ── Load data when city changes ──
   useEffect(() => {
     if (!city) {
-      setError(`City "${resolvedCityId}" not found in registry`);
+      setError(`City "${selectedCityId}" not found in registry`);
       setLoading(false);
       return;
     }
@@ -47,7 +48,9 @@ export default function CityAtlasView({ lang: propLang, onClose }) {
         return res.json();
       })
       .then((d) => {
-        setData(d);
+        // Handle both flat array and {records:[...]} formats
+        const records = Array.isArray(d) ? d : (d.records || []);
+        setData(records);
         setLoading(false);
       })
       .catch((e) => {
@@ -55,7 +58,7 @@ export default function CityAtlasView({ lang: propLang, onClose }) {
         setError(e.message);
         setLoading(false);
       });
-  }, [resolvedCityId]);
+  }, [selectedCityId]);
 
   // ── Filter logic ──
   const filtered = useMemo(() => {
@@ -77,7 +80,8 @@ export default function CityAtlasView({ lang: propLang, onClose }) {
         const q = filters.search.toLowerCase();
         const searchable = [
           r.name_tr, r.name_en, r.name_ar, r.name_original,
-          r.konyali_notes, r.location?.mahalle, r.location?.description_tr,
+          r.konyali_notes, r.source_excerpt_ar,
+          r.location?.mahalle, r.location?.description_tr,
           r.patron?.name, ...(r.alternative_names || []),
         ]
           .filter(Boolean)
@@ -95,10 +99,13 @@ export default function CityAtlasView({ lang: propLang, onClose }) {
     lang === 'ar' ? (r.name_ar || r.name_tr) :
     r.name_tr;
 
-  const getCat = (r) =>
-    lang === 'en' ? (r.category_en || r.category) :
-    lang === 'ar' ? (r.category_ar || r.category) :
-    (r.category_tr || r.category);
+  const getCat = (r) => {
+    const cfg = city?.categories?.[r.category];
+    if (cfg) return cfg[`label_${lang}`] || cfg.label_en || r.category;
+    return lang === 'en' ? (r.category_en || r.category) :
+           lang === 'ar' ? (r.category_ar || r.category) :
+           (r.category_tr || r.category);
+  };
 
   // ── Active categories (for legend) ──
   const activeCats = useMemo(() => {
@@ -112,6 +119,13 @@ export default function CityAtlasView({ lang: propLang, onClose }) {
     const next = lang === 'tr' ? 'en' : lang === 'en' ? 'ar' : 'tr';
     setLang(next);
     localStorage.setItem('atlas-lang', next);
+  };
+
+  // ── City switcher ──
+  const handleCityChange = (cityId) => {
+    if (cityId !== selectedCityId) {
+      setSelectedCityId(cityId);
+    }
   };
 
   // ── Error state ──
@@ -130,7 +144,7 @@ export default function CityAtlasView({ lang: propLang, onClose }) {
   if (loading) {
     return (
       <div className="ca-loading">
-        {city?.name_tr || 'City Atlas'}
+        {city?.icon} {lang === 'en' ? city?.name_en : lang === 'ar' ? city?.name_ar : city?.name_tr}
       </div>
     );
   }
@@ -140,9 +154,27 @@ export default function CityAtlasView({ lang: propLang, onClose }) {
       {/* ── Header ── */}
       <header className="ca-header">
         <div className="ca-header-left">
-          <h1>
-            {lang === 'en' ? city.name_en : lang === 'ar' ? city.name_ar : city.name_tr}
-          </h1>
+          {/* City Picker Tabs */}
+          {CITY_ATLAS_REGISTRY.length > 1 && (
+            <div className="ca-city-tabs">
+              {CITY_ATLAS_REGISTRY.map((c) => (
+                <button
+                  key={c.id}
+                  className={`ca-city-tab ${selectedCityId === c.id ? 'active' : ''}`}
+                  style={{ '--city-color': c.color }}
+                  onClick={() => handleCityChange(c.id)}
+                >
+                  <span className="ca-city-tab-icon">{c.icon}</span>
+                  <span className="ca-city-tab-name">
+                    {lang === 'en' ? c.name_en.replace(' City Atlas', '') :
+                     lang === 'ar' ? c.name_ar.replace('أطلس مدينة ', '') :
+                     c.name_tr.replace(' Şehir Atlası', '')}
+                  </span>
+                  <span className="ca-city-tab-badge">{c.recordCount}</span>
+                </button>
+              ))}
+            </div>
+          )}
           <span className="ca-subtitle">
             {lang === 'en' ? city.subtitle_en : lang === 'ar' ? city.subtitle_ar : city.subtitle_tr}
           </span>
