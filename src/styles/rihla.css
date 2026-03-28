@@ -1,0 +1,720 @@
+/* ═══════════════════════════════════════════════════
+   İbn Battûta Rihla Panel — RihlaView
+   Journey theme: amber / warm brown
+   ═══════════════════════════════════════════════════ */
+
+.rihla-view {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: var(--bg);
+  overflow: hidden;
+}
+
+/* ─── Header ─── */
+.rihla-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 8px 16px;
+  background: var(--bg2);
+  border-bottom: 1px solid var(--border);
+  flex-wrap: wrap;
+  min-height: 44px;
+}
+
+.rihla-header-info { display: flex; align-items: baseline; gap: 12px; }
+.rihla-title {
+  font-family: var(--font-display);
+  font-size: 17px;
+  color: #c4893a;
+  font-weight: 700;
+  margin: 0;
+}
+.rihla-subtitle {
+  font-size: 11px;
+  color: var(--cream2);
+}
+
+.rihla-header-stats {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  color: var(--cream2);
+}
+.rihla-stat strong { color: #d4a84b; }
+.rihla-stat-sep { opacity: 0.4; }
+
+/* ─── Body: 3-column layout ─── */
+.rihla-body {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+/* ─── Left sidebar ─── */
+.rihla-sidebar {
+  width: 320px;
+  min-width: 280px;
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  background: var(--bg);
+  overflow: hidden;
+}
+
+.rihla-sidebar-inner {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* ─── Search ─── */
+.rihla-search-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--border);
+}
+.rihla-search-icon { font-size: 14px; opacity: 0.5; }
+.rihla-search-input {
+  flex: 1;
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 6px 10px;
+  font-size: 13px;
+  color: var(--text);
+  outline: none;
+}
+.rihla-search-input:focus { border-color: #c4893a; }
+.rihla-search-input::placeholder { color: var(--cream2); opacity: 0.6; }
+
+/* ─── Filters ─── */
+.rihla-filters-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 6px 12px;
+  background: none;
+  border: none;
+  border-bottom: 1px solid var(--border);
+  color: var(--text);
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.rihla-filter-count { font-weight: 400; color: #c4893a; }
+
+.rihla-filters {
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--border);
+  max-height: 340px;
+  overflow-y: auto;
+}
+.rihla-filter-group { margin-bottom: 8px; }
+.rihla-filter-label {
+  display: block;
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--cream2);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 4px;
+}
+
+/* Voyage chips */
+.rihla-voyage-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+.rihla-voyage-chip {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 8px;
+  border: 1px solid transparent;
+  border-radius: 12px;
+  background: var(--bg2);
+  font-size: 11px;
+  color: var(--cream2);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.rihla-voyage-chip.active {
+  background: rgba(212, 168, 75, 0.12);
+  font-weight: 600;
+}
+.rihla-voyage-chip:hover { background: rgba(212, 168, 75, 0.08); }
+.rihla-vc-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* Significance buttons */
+.rihla-sig-row { display: flex; gap: 4px; flex-wrap: wrap; }
+.rihla-sig-btn {
+  padding: 3px 10px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--bg2);
+  font-size: 11px;
+  color: var(--cream2);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.rihla-sig-btn.active {
+  background: rgba(212, 168, 75, 0.15);
+  border-color: #c4893a;
+  font-weight: 600;
+}
+
+/* Country select */
+.rihla-select {
+  width: 100%;
+  padding: 5px 8px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--bg2);
+  color: var(--text);
+  font-size: 12px;
+}
+
+/* Topic chips */
+.rihla-topic-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+.rihla-topic-chip {
+  padding: 2px 8px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--bg2);
+  font-size: 10px;
+  color: var(--cream2);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.rihla-topic-chip.active {
+  background: rgba(196, 137, 58, 0.18);
+  border-color: #c4893a;
+  color: #d4a84b;
+  font-weight: 600;
+}
+.rihla-topic-chip:hover { background: rgba(196, 137, 58, 0.1); }
+
+/* ─── List ─── */
+.rihla-list-header {
+  padding: 4px 12px;
+  font-size: 11px;
+  color: var(--cream2);
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+}
+.rihla-no-results { color: #ef5350; margin-top: 4px; }
+
+.rihla-list-container {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.rihla-list-item {
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--border);
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.rihla-list-item:hover { background: rgba(212, 168, 75, 0.06); }
+.rihla-list-item.selected { background: rgba(196, 137, 58, 0.15); border-left: 3px solid #c4893a; }
+
+.rihla-list-top {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.rihla-list-voyage-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.rihla-list-icon { font-size: 13px; }
+.rihla-list-name {
+  flex: 1;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.rihla-list-sig { font-size: 8px; flex-shrink: 0; }
+
+.rihla-list-arabic {
+  font-family: 'Amiri', serif;
+  font-size: 13px;
+  color: var(--cream2);
+  margin: 1px 0 0 20px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.rihla-list-meta {
+  font-size: 10px;
+  color: var(--cream2);
+  opacity: 0.7;
+  margin-left: 20px;
+  margin-top: 1px;
+}
+
+/* ─── Map area ─── */
+.rihla-map-area {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+}
+
+.rihla-map-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.rihla-map-container {
+  width: 100%;
+  height: 100%;
+}
+
+/* Map controls */
+.rihla-map-controls {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 1000;
+  display: flex;
+  gap: 4px;
+}
+.rihla-map-ctrl {
+  width: 32px;
+  height: 32px;
+  border: none;
+  border-radius: 6px;
+  background: rgba(30, 30, 30, 0.85);
+  color: #ccc;
+  font-size: 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s;
+}
+.rihla-map-ctrl.active { background: rgba(196, 137, 58, 0.3); color: #d4a84b; }
+.rihla-map-ctrl:hover { background: rgba(196, 137, 58, 0.2); }
+
+/* Legend */
+.rihla-legend {
+  position: absolute;
+  bottom: 30px;
+  left: 10px;
+  z-index: 1000;
+  background: rgba(20, 20, 20, 0.88);
+  border-radius: 8px;
+  padding: 8px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  max-height: 180px;
+  overflow-y: auto;
+}
+.rihla-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 10px;
+  color: #ccc;
+}
+.rihla-legend-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* Map stats overlay */
+.rihla-map-stats {
+  position: absolute;
+  top: 10px;
+  right: 50px;
+  z-index: 1000;
+  background: rgba(20, 20, 20, 0.85);
+  border-radius: 6px;
+  padding: 4px 10px;
+  font-size: 11px;
+  color: #ccc;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.rihla-map-voyage-badge {
+  border: 1px solid;
+  border-radius: 8px;
+  padding: 1px 6px;
+  font-size: 10px;
+  font-weight: 600;
+}
+
+/* Tooltip */
+.rihla-tooltip {
+  background: rgba(20, 20, 20, 0.92) !important;
+  border: 1px solid rgba(196, 137, 58, 0.3) !important;
+  border-radius: 8px !important;
+  color: #e8dcc8 !important;
+  font-size: 12px !important;
+  padding: 6px 10px !important;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.4) !important;
+}
+.rihla-tooltip::before { border-top-color: rgba(20, 20, 20, 0.92) !important; }
+.rihla-route-tooltip {
+  background: rgba(20, 20, 20, 0.92) !important;
+  border: 1px solid rgba(196, 137, 58, 0.3) !important;
+  border-radius: 8px !important;
+  color: #e8dcc8 !important;
+  font-size: 12px !important;
+}
+
+/* Label markers */
+.rihla-label {
+  background: none !important;
+  border: none !important;
+  box-shadow: none !important;
+  font-size: 10px;
+  font-weight: 600;
+  white-space: nowrap;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.8);
+}
+
+/* ─── Card area ─── */
+.rihla-card-area {
+  width: 340px;
+  min-width: 300px;
+  border-left: 1px solid var(--border);
+  overflow-y: auto;
+  background: var(--bg);
+}
+
+/* Empty state */
+.rihla-idcard-empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: 40px;
+}
+.rihla-idcard-placeholder {
+  text-align: center;
+  color: var(--cream2);
+  opacity: 0.6;
+}
+.rihla-idcard-icon { font-size: 48px; display: block; margin-bottom: 12px; }
+
+/* ─── ID Card ─── */
+.rihla-idcard {
+  padding: 16px;
+  position: relative;
+}
+.rihla-idcard-close {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: none;
+  border: none;
+  color: var(--cream2);
+  font-size: 16px;
+  cursor: pointer;
+  opacity: 0.6;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+.rihla-idcard-close:hover { opacity: 1; background: rgba(255,255,255,0.05); }
+
+.rihla-idcard-header { margin-bottom: 12px; }
+.rihla-idcard-h1 {
+  font-family: var(--font-display);
+  font-size: 18px;
+  color: #c4893a;
+  font-weight: 700;
+  margin: 0 0 2px;
+}
+.rihla-idcard-h2 {
+  font-size: 13px;
+  color: var(--cream2);
+  margin: 0;
+}
+.rihla-idcard-arabic {
+  font-family: 'Amiri', serif;
+  font-size: 16px;
+  color: #d4a84b;
+  margin: 4px 0 0;
+}
+
+/* Badges */
+.rihla-idcard-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+.rihla-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 8px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  font-size: 10px;
+  font-weight: 600;
+}
+.rihla-badge-voyage { background: rgba(196, 137, 58, 0.08); }
+.rihla-badge-type { color: var(--cream2); }
+.rihla-badge-warn { border-color: #ff8a65; color: #ff8a65; }
+
+/* Fields */
+.rihla-idcard-fields {
+  margin-bottom: 12px;
+  background: var(--bg2);
+  border-radius: 8px;
+  padding: 8px 12px;
+}
+.rihla-idcard-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 3px 0;
+  font-size: 12px;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+.rihla-idcard-row:last-child { border: none; }
+.rihla-idcard-label { color: var(--cream2); opacity: 0.7; }
+.rihla-idcard-value { color: var(--text); font-weight: 500; text-align: right; }
+
+/* Description */
+.rihla-idcard-desc {
+  margin-bottom: 12px;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--text);
+}
+
+/* Observations */
+.rihla-obs-text {
+  font-size: 12px;
+  color: var(--cream2);
+  font-style: italic;
+  line-height: 1.4;
+  margin: 0;
+}
+
+/* Tags */
+.rihla-idcard-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-bottom: 12px;
+}
+.rihla-tag-badge {
+  display: inline-block;
+  padding: 2px 7px;
+  border: 1px solid rgba(196, 137, 58, 0.2);
+  border-radius: 8px;
+  font-size: 10px;
+  color: #c4893a;
+  background: rgba(196, 137, 58, 0.06);
+}
+
+/* Sections */
+.rihla-idcard-section {
+  margin-bottom: 12px;
+}
+.rihla-idcard-section-title {
+  font-size: 12px;
+  font-weight: 600;
+  color: #c4893a;
+  margin: 0 0 6px;
+}
+
+.rihla-section-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 6px 0;
+  background: none;
+  border: none;
+  border-bottom: 1px solid var(--border);
+  color: #c4893a;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.rihla-toggle-arrow { font-size: 10px; opacity: 0.6; }
+
+.rihla-collapsible { overflow: hidden; transition: max-height 0.25s ease; }
+.rihla-collapsible.expanded { max-height: 2000px; }
+.rihla-collapsible.collapsed { max-height: 0; }
+
+/* People list */
+.rihla-people-list { padding: 6px 0; }
+.rihla-person-item {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.03);
+  font-size: 12px;
+}
+.rihla-person-name {
+  font-family: 'Amiri', serif;
+  font-size: 14px;
+  color: #d4a84b;
+}
+.rihla-person-en { color: var(--cream2); }
+.rihla-person-role {
+  font-size: 10px;
+  color: var(--cream2);
+  opacity: 0.7;
+  font-style: italic;
+}
+
+/* Quote */
+.rihla-quote {
+  padding: 10px 12px;
+  margin: 8px 0;
+  border-radius: 6px;
+  font-size: 13px;
+  line-height: 1.6;
+  background: rgba(196, 137, 58, 0.06);
+  border-left: 3px solid #c4893a;
+}
+.rihla-quote-ar {
+  font-family: 'Amiri', serif;
+  font-size: 15px;
+  direction: rtl;
+  border-left: none;
+  border-right: 3px solid #c4893a;
+}
+.rihla-quote-tr { color: var(--cream2); }
+
+/* Cross-references */
+.rihla-xref-list { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
+.rihla-xref-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 10px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  font-size: 11px;
+  color: var(--cream2);
+  text-decoration: none;
+}
+.rihla-xref-yakut { border-color: #1a6b5a; color: #2e8b7a; }
+.rihla-xref-dynasty { border-color: #d4a84b; color: #d4a84b; cursor: pointer; }
+.rihla-xref-dynasty:hover { background: rgba(212, 168, 75, 0.1); }
+
+/* Confidence */
+.rihla-idcard-confidence {
+  font-size: 10px;
+  color: var(--cream2);
+  opacity: 0.6;
+  margin-top: 8px;
+}
+.rihla-src-ref { opacity: 0.5; }
+
+/* Source footer */
+.rihla-idcard-source,
+.rihla-source {
+  font-size: 10px;
+  color: var(--cream2);
+  opacity: 0.4;
+  text-align: center;
+  padding: 8px;
+  border-top: 1px solid var(--border);
+  margin-top: 8px;
+}
+
+/* ─── Mobile toggle ─── */
+.rihla-mobile-toggle {
+  display: none;
+  padding: 6px 12px;
+  gap: 6px;
+  background: var(--bg2);
+  border-bottom: 1px solid var(--border);
+}
+.rihla-mobile-toggle button {
+  flex: 1;
+  padding: 6px 0;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--bg);
+  color: var(--cream2);
+  font-size: 12px;
+  cursor: pointer;
+}
+.rihla-mobile-toggle button.active {
+  background: rgba(196, 137, 58, 0.15);
+  border-color: #c4893a;
+  color: #d4a84b;
+  font-weight: 600;
+}
+
+/* ═══ Responsive ═══ */
+@media (max-width: 900px) {
+  .rihla-mobile-toggle { display: flex; }
+  .rihla-body { position: relative; }
+
+  .rihla-sidebar,
+  .rihla-map-area,
+  .rihla-card-area {
+    position: absolute;
+    inset: 0;
+    width: 100% !important;
+    min-width: 0 !important;
+    border: none !important;
+    display: none;
+  }
+  .rihla-sidebar.mobile-visible,
+  .rihla-map-area.mobile-visible,
+  .rihla-card-area.mobile-visible { display: flex; }
+
+  .rihla-header { flex-direction: column; align-items: flex-start; gap: 4px; }
+  .rihla-header-stats { font-size: 10px; }
+
+  .rihla-legend { bottom: 10px; max-height: 120px; font-size: 9px; }
+}
+
+/* ═══ Light theme overrides ═══ */
+[data-theme="light"] .rihla-tooltip,
+[data-theme="light"] .rihla-route-tooltip {
+  background: rgba(255, 255, 255, 0.95) !important;
+  border-color: rgba(196, 137, 58, 0.3) !important;
+  color: #333 !important;
+}
+[data-theme="light"] .rihla-map-ctrl {
+  background: rgba(255, 255, 255, 0.9);
+  color: #555;
+}
+[data-theme="light"] .rihla-map-ctrl.active { background: rgba(196, 137, 58, 0.2); color: #8b5e3c; }
+[data-theme="light"] .rihla-legend { background: rgba(255, 255, 255, 0.92); }
+[data-theme="light"] .rihla-legend-item { color: #555; }
+[data-theme="light"] .rihla-map-stats { background: rgba(255, 255, 255, 0.9); color: #555; }

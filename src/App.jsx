@@ -20,6 +20,7 @@ const DiaView       = lazy(() => import('./components/dia/DiaView'));
 const Ei1View       = lazy(() => import('./components/ei1/Ei1View'));
 const AIChatPanel   = lazy(() => import('./components/ai/AIChatPanel'));
 const DarpView     = lazy(() => import('./components/darpislam/DarpView'));
+const RihlaView    = lazy(() => import('./components/rihla/RihlaView'));
 
 /* ═══ Eagerly loaded — needed on every page ═══ */
 import MapView from './components/map/MapView';
@@ -110,10 +111,10 @@ function LangDropdown({ lang, setLang }) {
   );
 }
 
-const VALID_TABS = ['map', 'dashboard', 'timeline', 'links', 'scholars', 'battles', 'alam', 'yaqut', 'dia', 'ei1', 'admin'];
+const VALID_TABS = ['map', 'dashboard', 'timeline', 'links', 'scholars', 'battles', 'alam', 'yaqut', 'dia', 'ei1', 'rihla', 'admin'];
 
 /* Tab order for swipe navigation (excludes admin) */
-const SWIPE_TAB_ORDER = ['map', 'dashboard', 'alam', 'dia', 'ei1', 'timeline', 'links', 'scholars', 'battles', 'yaqut'];
+const SWIPE_TAB_ORDER = ['map', 'dashboard', 'alam', 'dia', 'ei1', 'timeline', 'links', 'scholars', 'battles', 'rihla', 'yaqut'];
 
 /* ═══ Entity types that can be deep-linked ═══ */
 const ENTITY_TYPES = ['dynasty', 'battle', 'scholar', 'monument', 'city', 'waqf', 'event', 'ruler', 'madrasa'];
@@ -346,6 +347,7 @@ export default function App() {
               { id: 'dia',  label: t.tabs.dia,  badge: '8.5K',  preload: '/data/dia_lite.json' },
               { id: 'ei1',  label: t.tabs.ei1,  badge: '7.6K',  preload: '/data/ei1_lite.json' },
               { id: 'yaqut', label: t.tabs.yaqut, badge: '13K',  preload: '/data/yaqut_lite.json' },
+              { id: 'rihla', label: t.tabs.rihla || 'İbn Battûta', badge: '317', preload: '/data/ibn_battuta_atlas_layer.json' },
               { id: 'darpislam', label: t.tabs.darpislam, badge: '3.5K', preload: '/data/darpislam_lite.json' },
             ]}
             activeTab={tab}
@@ -403,6 +405,8 @@ export default function App() {
                 onMouseEnter={() => preloadData('/data/ei1_lite.json')}>{t.tabs.ei1}</button>
               <button role="tab" aria-selected={tab === 'darpislam'} className={`tab${tab === 'darpislam' ? ' active' : ''}`} onClick={() => selectTab('darpislam')}
                 onMouseEnter={() => preloadData('/data/darpislam_lite.json')}>{t.tabs.darpislam}</button>
+              <button role="tab" aria-selected={tab === 'rihla'} className={`tab${tab === 'rihla' ? ' active' : ''}`} onClick={() => selectTab('rihla')}
+                onMouseEnter={() => preloadData('/data/ibn_battuta_atlas_layer.json')}>{t.tabs.rihla || 'İbn Battûta'}</button>
             </div>
             <button className="quiz-trigger" onClick={() => setQuizOpen(true)}
               aria-label={{ tr: 'Bilgi yarışması', en: 'Knowledge quiz', ar: 'اختبار المعرفة' }[lang]}>🎓 Quiz</button>
@@ -439,6 +443,7 @@ export default function App() {
          tab === 'dia' ? <DiaView lang={lang} t={t} /> :
          tab === 'ei1' ? <Ei1View lang={lang} t={t} /> :
          tab === 'darpislam' ? <DarpView lang={lang} t={t} /> :
+         tab === 'rihla' ? <RihlaView lang={lang} t={t} /> :
          <CausalView lang={lang} t={t} />}
         </Suspense>
       </main>
