@@ -106,7 +106,7 @@ export default function CityAtlasDetail({ record: r, city, lang, getName, getCat
                 <strong>{t('Mahalle', 'Quarter', 'محلة')}:</strong> {mlNested(r.location, "mahalle") || r.location.mahalle}
               </p>
             )}
-            {r.location.description_tr && <p>{mlNested(r.location, "description_tr") || r.location.description_tr}</p>}
+            {r.location.description_tr && <p>{(lang === "en" ? r.location.description_en : lang === "ar" ? r.location.description_ar : null) || r.location.description_tr}</p>}
             {r.location.nearby_landmarks?.length > 0 && (
               <p style={{ fontSize: '0.72rem', color: '#888' }}>
                 {t('Yakın', 'Near', 'بالقرب من')}: {r.location.nearby_landmarks.join(', ')}
