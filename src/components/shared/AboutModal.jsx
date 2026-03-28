@@ -10,6 +10,7 @@ const STATS = [
   { icon: '🌍', key: 'yaqut', count: '12,954' },
   { icon: '🪙', key: 'darpislam', count: '3,458' },
   { icon: '🏛️', key: 'khitat', count: '801' },
+  { icon: '🏙️', key: 'cityatlas', count: '219' },
 ];
 
 const SOURCES = [
@@ -19,6 +20,9 @@ const SOURCES = [
   { name: 'Brill', work: 'Encyclopaedia of Islam, 1st ed.', detail: '7,568 entries' },
   { name: 'Diler / Nomisma / al-Thurayya', work: 'DarpIslam', detail: '3,458 mints, 10,733 emissions' },
   { name: 'Yāqūt al-Ḥamawī', work: "Muʿjam al-Buldān", detail: '12,954 geographic entries' },
+  { name: 'İbn Battûta', work: 'er-Riḥle', detail: '317 stops, 7 voyages, 45 countries' },
+  { name: 'Taqī al-Dīn al-Maqrīzī', work: 'al-Mawāʿiẓ wa-l-Iʿtibār (al-Khiṭaṭ)', detail: '801 structures, medieval Cairo' },
+  { name: 'İbrahim Hakkı Konyalı', work: 'Âbideleri ve Kitâbeleriyle Konya Tarihi', detail: '219 monuments, Seljuk–Ottoman Konya' },
 ];
 
 const TECH = ['React', 'Vite', 'Leaflet', 'D3.js', 'Three.js'];
@@ -36,19 +40,19 @@ export default function AboutModal({ lang, onResetOnboarding, onResetLanding, ex
       stats: 'Proje İstatistikleri', sources: 'Veri Kaynakları', tech: 'Teknoloji',
       version: 'Versiyon', authors: 'Yazarlar', license: 'Lisans',
       dynasties: 'Hanedan', alam: 'el-Aʿlâm', dia: 'DİA Biyografi',
-      ei1: 'EI-1 Makale', yaqut: 'Muʿcem Kaydı', darpislam: 'Darphane', khitat: 'Yapı (el-Hıṭaṭ)', affiliations: 'Kurumsal Bağlantılar',
+      ei1: 'EI-1 Makale', yaqut: 'Muʿcem Kaydı', darpislam: 'Darphane', khitat: 'Yapı (el-Hıṭaṭ)', cityatlas: 'Yapı (Konya)', affiliations: 'Kurumsal Bağlantılar',
     },
     en: {
       stats: 'Project Statistics', sources: 'Data Sources', tech: 'Technology',
       version: 'Version', authors: 'Authors', license: 'License',
       dynasties: 'Dynasties', alam: 'al-Aʿlām', dia: 'DİA Biographies',
-      ei1: 'EI-1 Articles', yaqut: 'Muʿjam Entries', darpislam: 'Mints', khitat: 'Structures (al-Khiṭaṭ)', affiliations: 'Affiliations',
+      ei1: 'EI-1 Articles', yaqut: 'Muʿjam Entries', darpislam: 'Mints', khitat: 'Structures (al-Khiṭaṭ)', cityatlas: 'Monuments (Konya)', affiliations: 'Affiliations',
     },
     ar: {
       stats: 'إحصائيات المشروع', sources: 'مصادر البيانات', tech: 'التقنية',
       version: 'الإصدار', authors: 'المؤلفون', license: 'الرخصة',
       dynasties: 'السلالات', alam: 'الأعلام', dia: 'تراجم DİA',
-      ei1: 'مقالات EI-1', yaqut: 'معجم البلدان', darpislam: 'دور السك', khitat: 'الخطط', affiliations: 'الانتماءات',
+      ei1: 'مقالات EI-1', yaqut: 'معجم البلدان', darpislam: 'دور السك', khitat: 'الخطط', cityatlas: 'آثار قونية', affiliations: 'الانتماءات',
     },
   };
   const L = labels[lang] || labels.en;
