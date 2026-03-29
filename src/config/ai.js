@@ -25,7 +25,7 @@ export const MAX_RESPONSE_TOKENS = 1500; // ← was 1024, increased for detailed
 export const TEMPERATURE = 0.30;
 
 // ─── Feature Flags ─────────────────────────────────────────────────
-export const AI_ENABLED = true;         // master switch
+export const AI_ENABLED = false;         // master switch
 export const SHOW_SOURCES = true;       // show DİA source cards
 export const ENABLE_MAP_ACTIONS = true; // allow flyTo, highlight, filter
 // v6.8.1
