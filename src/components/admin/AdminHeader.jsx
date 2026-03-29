@@ -79,8 +79,15 @@ export default function AdminHeader({ onBack, onNavigate }) {
     <>
       <header className="admin-header">
         <div className="admin-header-left">
-          <button className="admin-btn admin-btn-ghost" onClick={onBack} title="Atlasa Dön">
-            ← Atlas
+          <button className="admin-btn admin-btn-back" onClick={onBack} title="Atlasa Dön"
+            style={{
+              background: 'rgba(201,168,76,0.15)', border: '1px solid #c9a84c',
+              color: '#c9a84c', padding: '6px 16px', borderRadius: 6,
+              cursor: 'pointer', fontSize: 14, fontWeight: 600,
+              display: 'flex', alignItems: 'center', gap: 6,
+              transition: 'all 0.2s', minHeight: 36,
+            }}>
+            ← Atlas'a Dön
           </button>
           <span className="admin-header-title">Admin Panel</span>
           {isDirty && (

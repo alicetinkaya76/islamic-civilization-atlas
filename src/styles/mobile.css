@@ -133,6 +133,9 @@
 
   /* P10: Footer compact */
   .footer-inner { flex-direction: column; align-items: flex-start; gap: 6px; padding: 8px 12px; }
+  /* Hide ORCID full ID on mobile, keep icon */
+  .footer-orcid-id { display: none; }
+  .footer-orcid-badge { padding: 2px 5px; }
 
   /* P5: Battle view mobile */
   .battle-view { flex-direction: column; }

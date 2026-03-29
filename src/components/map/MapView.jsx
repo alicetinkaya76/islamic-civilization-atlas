@@ -88,6 +88,12 @@ export default function MapView({ lang, t, sidebarOpen, mapRef, onPopupOpen, onT
     if (mapRef) mapRef.current = map;
     LAYER_KEYS.forEach(k => { lgRef.current[k] = L.layerGroup().addTo(map); });
     setMapReady(true);
+
+    /* ═══ Bug 6: Cancel TTS when any popup closes ═══ */
+    map.on('popupclose', () => {
+      try { window.speechSynthesis?.cancel(); } catch {}
+    });
+
     return () => { map.remove(); mapObj.current = null; window.removeEventListener('themechange', onThemeChange); };
   }, []);
 

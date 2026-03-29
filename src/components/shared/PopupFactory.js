@@ -10,8 +10,27 @@ const narrBlock = (obj, lang) => {
   const txt = lf(obj, 'narr', lang);
   if (!txt) return '';
   const tl = { tr: 'tr-TR', en: 'en-US', ar: 'ar-SA' }[lang] || 'tr-TR';
-  const title = { tr: 'Dinle', en: 'Listen', ar: 'استمع' }[lang] || 'Dinle';
-  const ttsBtn = `<button class="p-tts" onclick="(() => { const t=this.parentElement.textContent.replace('🔊','').trim(); const u=new SpeechSynthesisUtterance(t); u.lang='${tl}'; u.rate=0.88; u.pitch=1.05; const vv=speechSynthesis.getVoices(); const best=vv.find(v=>v.lang==='${tl}'&&v.name.match(/Samantha|Karen|Daniel|Google|Natural|Yelda|Majed/))||vv.find(v=>v.lang==='${tl}'&&!v.localService)||vv.find(v=>v.lang.startsWith('${tl}'.slice(0,2))); if(best)u.voice=best; speechSynthesis.cancel(); speechSynthesis.speak(u); })()" title="${title}">🔊</button>`;
+  const title = { tr: 'Dinle / Durdur', en: 'Listen / Stop', ar: 'استمع / توقف' }[lang] || 'Dinle / Durdur';
+  const ttsBtn = `<button class="p-tts" onclick="(() => {
+    if(window.speechSynthesis.speaking){
+      window.speechSynthesis.cancel();
+      this.textContent='🔊';
+      this.title='${title}';
+      return;
+    }
+    const t=this.parentElement.textContent.replace(/[🔊⏹]/g,'').trim();
+    const u=new SpeechSynthesisUtterance(t);
+    u.lang='${tl}'; u.rate=0.88; u.pitch=1.05;
+    const vv=speechSynthesis.getVoices();
+    const best=vv.find(v=>v.lang==='${tl}'&&v.name.match(/Samantha|Karen|Daniel|Google|Natural|Yelda|Majed/))||vv.find(v=>v.lang==='${tl}'&&!v.localService)||vv.find(v=>v.lang.startsWith('${tl}'.slice(0,2)));
+    if(best)u.voice=best;
+    const btn=this;
+    btn.textContent='⏹';
+    u.onend=()=>{btn.textContent='🔊';};
+    u.onerror=()=>{btn.textContent='🔊';};
+    speechSynthesis.cancel();
+    speechSynthesis.speak(u);
+  })()" title="${title}">🔊</button>`;
   return `<div class="p-narr">${txt}${ttsBtn}</div>`;
 };
 

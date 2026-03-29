@@ -11,12 +11,19 @@ export default function Footer({ lang }) {
       <div className="footer-inner">
         <div className="footer-authors">
           <div className="footer-names">
-            <span className="footer-author">Dr. Hüseyin Gökalp</span>
+            <span className="footer-author">
+              Dr. Hüseyin Gökalp
+              <a href="https://orcid.org/0000-0001-6796-5765" target="_blank" rel="noopener noreferrer" className="footer-orcid-badge" title="ORCID: 0000-0001-6796-5765">
+                <img src="https://orcid.org/sites/default/files/images/orcid_16x16.png" alt="ORCID" width="14" height="14" />
+                <span className="footer-orcid-id">0000-0001-6796-5765</span>
+              </a>
+            </span>
             <span className="footer-sep">&</span>
             <span className="footer-author">
               Dr. Ali Çetinkaya
-              <a href="https://orcid.org/0000-0002-7747-6854" target="_blank" rel="noopener noreferrer" className="footer-orcid" title="ORCID">
-                <img src="https://orcid.org/sites/default/files/images/orcid_16x16.png" alt="ORCID" width="12" height="12" />
+              <a href="https://orcid.org/0000-0002-7747-6854" target="_blank" rel="noopener noreferrer" className="footer-orcid-badge" title="ORCID: 0000-0002-7747-6854">
+                <img src="https://orcid.org/sites/default/files/images/orcid_16x16.png" alt="ORCID" width="14" height="14" />
+                <span className="footer-orcid-id">0000-0002-7747-6854</span>
               </a>
             </span>
           </div>
@@ -34,7 +41,7 @@ export default function Footer({ lang }) {
         </div>
         <div className="footer-right">
           <span className="footer-copy">© 2026 · CC BY-SA 4.0</span>
-          <span style={{ fontSize: 10, color: '#4b5563', marginLeft: 6 }}>v6.7.0.0</span>
+          <span style={{ fontSize: 10, color: '#4b5563', marginLeft: 6 }}>v7.2.0.0</span>
           <a className="footer-gh" href="https://github.com/alicetinkaya76/islamic-civilization-atlas" target="_blank" rel="noopener noreferrer">
             GitHub
           </a>

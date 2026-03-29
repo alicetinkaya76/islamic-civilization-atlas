@@ -1,4 +1,4 @@
-/* ─── Map Legend — Improved v6.5.3.0 ─── */
+/* ─── Map Legend — Improved v7.2.0 ─── */
 .map-legend {
   position: absolute;
   bottom: 24px;
@@ -9,11 +9,17 @@
 }
 
 .legend-closed {
-  background: rgba(10, 20, 16, 0.88);
-  border: 1px solid var(--border);
+  background: rgba(10, 20, 16, 0.92);
+  border: 1.5px solid rgba(201, 168, 76, 0.5);
   border-radius: 10px;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.4);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.4), 0 0 8px rgba(201,168,76,0.15);
   backdrop-filter: blur(8px);
+  animation: legend-glow 3s ease-in-out infinite;
+}
+
+@keyframes legend-glow {
+  0%, 100% { box-shadow: 0 2px 12px rgba(0,0,0,0.4), 0 0 6px rgba(201,168,76,0.1); }
+  50% { box-shadow: 0 2px 12px rgba(0,0,0,0.4), 0 0 14px rgba(201,168,76,0.25); }
 }
 
 .legend-open {
@@ -25,6 +31,21 @@
   overflow-y: auto;
   width: 230px;
   backdrop-filter: blur(12px);
+  animation: none;
+}
+
+.legend-open .legend-toggle-hint { display: none; }
+
+.legend-toggle-hint {
+  font-size: 10px;
+  color: var(--cream2);
+  margin-left: auto;
+  animation: legend-bounce 2s ease-in-out infinite;
+}
+
+@keyframes legend-bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-3px); }
 }
 
 /* Light theme */

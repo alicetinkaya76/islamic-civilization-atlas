@@ -15,6 +15,24 @@
 .footer-sep { color: var(--cream2); font-size: 11px; }
 .footer-orcid { display: inline-flex; align-items: center; margin-left: 4px; vertical-align: middle; }
 .footer-orcid img { vertical-align: middle; }
+
+/* ═══ ORCID Badge — Prominent v7.2 ═══ */
+.footer-orcid-badge {
+  display: inline-flex; align-items: center; gap: 4px;
+  margin-left: 6px; vertical-align: middle;
+  background: rgba(166, 206, 57, 0.12);
+  border: 1px solid rgba(166, 206, 57, 0.3);
+  padding: 2px 8px 2px 5px; border-radius: 12px;
+  text-decoration: none; transition: all 0.2s;
+  font-size: 10px; color: #a6ce39;
+  line-height: 1;
+}
+.footer-orcid-badge:hover {
+  background: rgba(166, 206, 57, 0.22);
+  border-color: rgba(166, 206, 57, 0.5);
+}
+.footer-orcid-badge img { vertical-align: middle; flex-shrink: 0; }
+.footer-orcid-id { font-family: 'Courier New', monospace; font-size: 9px; letter-spacing: 0.3px; }
 .footer-affil { font-size: 10px; color: var(--cream2); }
 
 .footer-center { display: flex; align-items: center; gap: 12px; }

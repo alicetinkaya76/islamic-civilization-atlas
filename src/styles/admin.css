@@ -900,5 +900,22 @@
   .admin-dashboard-grid { grid-template-columns: 1fr; }
   .admin-causal-form-grid { grid-template-columns: 1fr; }
   .admin-causal-item-main { font-size: 11px; }
-  .admin-header-right { flex-wrap: wrap; }
+  .admin-header { flex-wrap: wrap; gap: 8px; padding: 8px 12px; }
+  .admin-header-left { width: 100%; justify-content: flex-start; }
+  .admin-header-right { width: 100%; flex-wrap: wrap; gap: 6px; justify-content: flex-end; }
+  /* Make back button prominent on mobile */
+  .admin-btn-back {
+    padding: 10px 20px !important;
+    font-size: 15px !important;
+    min-height: 44px !important;
+  }
+  .admin-header-title { font-size: 14px; }
+  .admin-btn-github { font-size: 12px; padding: 6px 12px; }
+  .admin-btn-outline { font-size: 12px; padding: 6px 10px; }
+  /* Login screen back button */
+  .admin-login-back {
+    min-height: 44px !important;
+    padding: 12px 24px !important;
+    font-size: 15px !important;
+  }
 }

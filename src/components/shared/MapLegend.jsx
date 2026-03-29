@@ -106,6 +106,7 @@ export default function MapLegend({ lang }) {
         aria-label={t.legend.title} aria-expanded={open}>
         <span className="legend-toggle-icon">{open ? '✕' : '🗺'}</span>
         <span className="legend-toggle-label">{t.legend.title}</span>
+        {!open && <span className="legend-toggle-hint">▲</span>}
       </button>
 
       {open && (

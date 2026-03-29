@@ -11,8 +11,8 @@ import { GROQ_KEY, GROQ_MODEL, GROQ_URL, MAX_RESPONSE_TOKENS, TEMPERATURE } from
 export async function askGroq(messages) {
   // Check API key availability
   if (!GROQ_KEY) {
-    console.error('[AI] GROQ_KEY not set. Add VITE_GROQ_KEY to .env file.');
-    throw new Error('AUTH_ERROR');
+    console.warn('[AI] GROQ_KEY not set. AI features are disabled in this deployment.');
+    throw new Error('AI_UNAVAILABLE');
   }
 
   console.log("[AI] PROMPT →", JSON.stringify(messages, null, 2));

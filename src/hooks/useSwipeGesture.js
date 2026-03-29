@@ -24,27 +24,37 @@ export default function useSwipeGesture({
   const swiping = useRef(false);
 
   const onTouchStart = useCallback((e) => {
-    if (!enabled) return;
-    const touch = e.touches[0];
-    startX.current = touch.clientX;
-    startY.current = touch.clientY;
-    swiping.current = true;
+    try {
+      if (!enabled) return;
+      const touch = e.touches?.[0];
+      if (!touch) return;
+      startX.current = touch.clientX;
+      startY.current = touch.clientY;
+      swiping.current = true;
+    } catch (err) {
+      console.warn('[Swipe] touchstart error:', err);
+    }
   }, [enabled]);
 
   const onTouchEnd = useCallback((e) => {
-    if (!enabled || !swiping.current) return;
-    swiping.current = false;
-    const touch = e.changedTouches[0];
-    const dx = touch.clientX - startX.current;
-    const dy = Math.abs(touch.clientY - startY.current);
+    try {
+      if (!enabled || !swiping.current) return;
+      swiping.current = false;
+      const touch = e.changedTouches?.[0];
+      if (!touch) return;
+      const dx = touch.clientX - startX.current;
+      const dy = Math.abs(touch.clientY - startY.current);
 
-    if (dy > maxVertical) return; // too vertical — ignore
-    if (Math.abs(dx) < threshold) return; // too short
+      if (dy > maxVertical) return; // too vertical — ignore
+      if (Math.abs(dx) < threshold) return; // too short
 
-    if (dx < 0) {
-      onSwipeLeft?.();
-    } else {
-      onSwipeRight?.();
+      if (dx < 0) {
+        onSwipeLeft?.();
+      } else {
+        onSwipeRight?.();
+      }
+    } catch (err) {
+      console.warn('[Swipe] touchend error:', err);
     }
   }, [enabled, threshold, maxVertical, onSwipeLeft, onSwipeRight]);
 

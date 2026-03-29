@@ -9,7 +9,13 @@ import useSwipeGesture from './hooks/useSwipeGesture';
 import ThemeToggle from './components/shared/ThemeToggle';
 
 /* ═══ Lazy-loaded panels — only fetched when their tab is active ═══ */
-const AdminPanel    = lazy(() => import('./components/admin/AdminPanel'));
+const AdminPanel    = lazy(() => import('./components/admin/AdminPanel').catch(() => ({
+  default: () => <div style={{ display:'flex',alignItems:'center',justifyContent:'center',height:'100vh',background:'#0f1419',color:'#c9a84c',fontSize:16,padding:20,textAlign:'center',flexDirection:'column',gap:12 }}>
+    <div style={{fontSize:36}}>⚠️</div>
+    <div>Admin paneli yüklenemedi. Lütfen sayfayı yenileyin.</div>
+    <button onClick={() => window.location.hash = '#map'} style={{background:'#c9a84c',color:'#0f1419',border:'none',padding:'10px 24px',borderRadius:6,cursor:'pointer',fontWeight:600}}>← Atlas'a Dön</button>
+  </div>
+})));
 const AlamView      = lazy(() => import('./components/alam/AlamView'));
 const YaqutView     = lazy(() => import('./components/yaqut/YaqutView'));
 const ScholarView   = lazy(() => import('./components/scholars/ScholarView'));
