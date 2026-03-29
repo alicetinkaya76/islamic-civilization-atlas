@@ -43,6 +43,8 @@
   gap: 6px;
   font-size: 11px;
   color: var(--cream2);
+  flex-shrink: 0;
+  flex-wrap: wrap;
 }
 .yaqut-stat strong { color: #2e8b7a; }
 .yaqut-stat-sep { opacity: 0.4; }
@@ -540,6 +542,15 @@
   color: var(--cream);
   line-height: 1.5;
   margin: 0;
+}
+.yaqut-desc-truncated {
+  display: block;
+  font-size: 10px;
+  color: var(--cream2);
+  opacity: 0.6;
+  margin-top: 4px;
+  font-style: italic;
+  text-align: right;
 }
 
 /* Tags */
@@ -1178,5 +1189,7 @@
   .yaqut-analytics-sidebar { width: 100%; min-width: 0; border-left: none; border-top: 1px solid var(--border); }
   .yaqut-analytics-grid { grid-template-columns: 1fr; }
   .yaqut-header { padding: 6px 10px; }
-  .yaqut-header-stats { display: none; }
+  .yaqut-header-stats { font-size: 10px; gap: 4px; }
+  .yaqut-header-info { gap: 6px; }
+  .yaqut-subtitle { display: none; }
 }

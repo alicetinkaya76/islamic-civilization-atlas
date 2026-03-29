@@ -137,6 +137,11 @@ export default function YaqutIdCard({ lang, ty, entry, detail, onClose }) {
       {summary && (
         <div className="yaqut-idcard-desc">
           <p>{summary}</p>
+          {!detail && (summary.endsWith('…') || summary.endsWith('...')) && (
+            <span className="yaqut-desc-truncated">
+              {lang === 'tr' ? '… metin kaynakta devam eder' : '… text continues in source'}
+            </span>
+          )}
         </div>
       )}
 

@@ -91,7 +91,11 @@ export default function DarpIdCard({ mint, detail, loading, lang, onClose, isMob
           {mint.dynasty_count > 0 && (
             <div className="darp-quick-item">
               <span className="darp-quick-label">{t('Hanedanlar', 'Dynasties')}</span>
-              <span className="darp-quick-value">{mint.dynasty_count}</span>
+              <span className="darp-quick-value">
+                {mint.dynasties && mint.dynasties.length > 0
+                  ? mint.dynasties.slice(0, 3).join(', ') + (mint.dynasties.length > 3 ? ` +${mint.dynasties.length - 3}` : '')
+                  : mint.dynasty_count}
+              </span>
             </div>
           )}
         </div>

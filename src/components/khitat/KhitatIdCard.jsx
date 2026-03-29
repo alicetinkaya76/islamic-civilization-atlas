@@ -94,8 +94,15 @@ export default function KhitatIdCard({ lang, tk, structure, catMeta, onClose }) 
       {/* Excerpt */}
       {s.ex && (
         <div className="khitat-idcard-excerpt">
-          <div className="khitat-idcard-excerpt-label">{tk.excerpt || 'el-Hıṭaṭ Alıntısı'}</div>
+          <div className="khitat-idcard-excerpt-label">
+            📜 {lang === 'en' ? 'Source: al-Khiṭaṭ (Arabic original)' : 'Kaynak: el-Hıṭaṭ (Arapça aslı)'}
+          </div>
           <p className="khitat-idcard-excerpt-text" dir="rtl">{s.ex}</p>
+          {(s.ex.endsWith('...') || s.ex.endsWith('…') || s.ex.endsWith('ال') || s.ex.length > 480) && (
+            <div className="khitat-excerpt-truncated">
+              {lang === 'en' ? '… excerpt continues in source' : '… metin kaynakta devam eder'}
+            </div>
+          )}
         </div>
       )}
 

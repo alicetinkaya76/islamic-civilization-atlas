@@ -446,7 +446,7 @@ export default function App() {
          tab === 'yaqut' ? <YaqutView lang={lang} t={t} /> :
          tab === 'dia' ? <DiaView lang={lang} t={t} /> :
          tab === 'ei1' ? <Ei1View lang={lang} t={t} /> :
-         tab === 'darpislam' ? <DarpView lang={lang} t={t} /> :
+         tab === 'darpislam' ? <DarpView lang={lang} t={t} isMobile={isMobile} /> :
          tab === 'rihla' ? <RihlaView lang={lang} t={t} /> :
          tab === 'khitat' ? <KhitatView lang={lang} t={t} /> :
          tab === 'cityatlas' ? <CityAtlasView lang={lang} /> :

@@ -8,8 +8,8 @@
   display: flex;
   flex-direction: column;
   height: 100%;
-  background: var(--bg-primary, #f8f6f0);
-  color: var(--text-primary, #2c2c2c);
+  background: var(--bg, #f8f6f0);
+  color: var(--text, #2c2c2c);
 }
 
 .darp-header {
@@ -85,8 +85,8 @@
 /* ── Sidebar ── */
 .darp-sidebar {
   width: 340px;
-  background: var(--bg-sidebar, #fff);
-  border-right: 1px solid var(--border-color, #e0dcd4);
+  background: var(--bg2, #fff);
+  border-right: 1px solid var(--border, #e0dcd4);
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -113,25 +113,25 @@
   border: none;
   font-size: 1.2rem;
   cursor: pointer;
-  color: #666;
+  color: var(--cream2, #666);
   z-index: 21;
 }
 
 /* Search */
 .darp-search-box {
   padding: 10px 12px;
-  border-bottom: 1px solid var(--border-color, #e0dcd4);
+  border-bottom: 1px solid var(--border, #e0dcd4);
   position: relative;
 }
 
 .darp-search-input {
   width: 100%;
   padding: 8px 30px 8px 10px;
-  border: 1px solid var(--border-color, #d0ccc4);
+  border: 1px solid var(--border, #d0ccc4);
   border-radius: 6px;
   font-size: 0.85rem;
   background: var(--bg-input, #faf9f6);
-  color: var(--text-primary, #2c2c2c);
+  color: var(--cream, #2c2c2c);
   box-sizing: border-box;
 }
 .darp-search-input:focus {
@@ -158,7 +158,7 @@
   align-items: center;
   justify-content: space-between;
   padding: 6px 12px;
-  border-bottom: 1px solid var(--border-color, #e0dcd4);
+  border-bottom: 1px solid var(--border, #e0dcd4);
 }
 
 .darp-filter-toggle {
@@ -166,7 +166,7 @@
   border: none;
   cursor: pointer;
   font-size: 0.8rem;
-  color: var(--text-secondary, #666);
+  color: var(--cream2, #666);
   display: flex;
   align-items: center;
   gap: 4px;
@@ -184,15 +184,15 @@
 .darp-sort-select {
   font-size: 0.78rem;
   padding: 3px 6px;
-  border: 1px solid var(--border-color, #d0ccc4);
+  border: 1px solid var(--border, #d0ccc4);
   border-radius: 4px;
   background: var(--bg-input, #faf9f6);
-  color: var(--text-primary, #333);
+  color: var(--cream, #333);
 }
 
 .darp-filters {
   padding: 10px 12px;
-  border-bottom: 1px solid var(--border-color, #e0dcd4);
+  border-bottom: 1px solid var(--border, #e0dcd4);
   display: flex;
   flex-direction: column;
   gap: 6px;
@@ -202,10 +202,10 @@
 .darp-filters select {
   font-size: 0.8rem;
   padding: 5px 8px;
-  border: 1px solid var(--border-color, #d0ccc4);
+  border: 1px solid var(--border, #d0ccc4);
   border-radius: 5px;
   background: #fff;
-  color: var(--text-primary, #333);
+  color: var(--cream, #333);
 }
 
 .darp-filter-row {
@@ -216,7 +216,7 @@
 }
 .darp-filter-row label {
   white-space: nowrap;
-  color: var(--text-secondary, #666);
+  color: var(--cream2, #666);
   min-width: 100px;
 }
 
@@ -229,7 +229,7 @@
 .darp-filter-num {
   width: 70px;
   padding: 4px 6px;
-  border: 1px solid var(--border-color, #d0ccc4);
+  border: 1px solid var(--border, #d0ccc4);
   border-radius: 4px;
   font-size: 0.8rem;
 }
@@ -257,11 +257,11 @@
 .darp-list-item {
   padding: 8px 12px;
   cursor: pointer;
-  border-bottom: 1px solid var(--border-light, #f0ece4);
+  border-bottom: 1px solid var(--border, #f0ece4);
   transition: background 0.15s;
 }
 .darp-list-item:hover {
-  background: var(--bg-hover, #f5f0e8);
+  background: var(--hover, #f5f0e8);
 }
 .darp-list-item.selected {
   background: rgba(212,165,116,0.15);
@@ -276,12 +276,12 @@
 .darp-item-name {
   font-size: 0.88rem;
   font-weight: 600;
-  color: var(--text-primary, #2c2c2c);
+  color: var(--cream, #2c2c2c);
 }
 .darp-item-arabic {
   font-family: 'Amiri', serif;
   font-size: 0.85rem;
-  color: var(--text-secondary, #888);
+  color: var(--cream2, #888);
   direction: rtl;
 }
 
@@ -291,7 +291,7 @@
   gap: 8px;
   margin-top: 2px;
   font-size: 0.75rem;
-  color: var(--text-secondary, #888);
+  color: var(--cream2, #888);
 }
 
 .darp-item-emissions {
@@ -313,7 +313,7 @@
 
 .darp-item-years {
   font-size: 0.72rem;
-  color: var(--text-muted, #aaa);
+  color: var(--cream2, #aaa);
   margin-top: 1px;
 }
 .darp-item-ce {
@@ -324,7 +324,7 @@
 .darp-empty {
   text-align: center;
   padding: 30px;
-  color: var(--text-secondary, #999);
+  color: var(--cream2, #999);
   font-size: 0.85rem;
 }
 
@@ -350,13 +350,14 @@
   position: absolute;
   bottom: 20px;
   left: 10px;
-  background: rgba(255,255,255,0.92);
+  background: rgba(var(--bg-rgb), 0.92);
   border-radius: 8px;
   padding: 8px 12px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.15);
   font-size: 0.75rem;
   z-index: 5;
   backdrop-filter: blur(4px);
+  color: var(--cream, #333);
 }
 
 .darp-legend-title {
@@ -376,14 +377,14 @@
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  border: 1px solid #ccc;
+  border: 1px solid var(--border, #ccc);
   flex-shrink: 0;
 }
 
 .darp-legend-note {
   margin-top: 4px;
   font-size: 0.68rem;
-  color: #888;
+  color: var(--cream2, #888);
   font-style: italic;
 }
 
@@ -395,8 +396,8 @@
   width: 400px;
   max-width: 100%;
   height: 100%;
-  background: var(--bg-sidebar, #fff);
-  border-left: 1px solid var(--border-color, #e0dcd4);
+  background: var(--bg2, #fff);
+  border-left: 1px solid var(--border, #e0dcd4);
   display: flex;
   flex-direction: column;
   z-index: 10;
@@ -504,7 +505,7 @@
 /* Tabs */
 .darp-idcard-tabs {
   display: flex;
-  border-bottom: 2px solid var(--border-color, #e0dcd4);
+  border-bottom: 2px solid var(--border, #e0dcd4);
   background: var(--bg-tabs, #faf9f6);
   flex-shrink: 0;
   overflow-x: auto;
@@ -517,13 +518,13 @@
   background: transparent;
   cursor: pointer;
   font-size: 0.75rem;
-  color: var(--text-secondary, #888);
+  color: var(--cream2, #888);
   border-bottom: 2px solid transparent;
   transition: all 0.2s;
   white-space: nowrap;
   min-width: 0;
 }
-.darp-tab:hover { color: var(--text-primary, #333); }
+.darp-tab:hover { color: var(--cream, #333); }
 .darp-tab.active {
   color: #d4a574;
   border-bottom-color: #d4a574;
@@ -559,14 +560,14 @@
 .darp-section h4 {
   font-size: 0.85rem;
   margin: 0 0 6px;
-  color: var(--text-primary, #333);
+  color: var(--cream, #333);
 }
 
 .darp-yakut-text {
   font-size: 0.82rem;
   line-height: 1.55;
-  color: var(--text-secondary, #555);
-  background: var(--bg-quote, #faf8f3);
+  color: var(--cream2, #555);
+  background: var(--bg3, #faf8f3);
   padding: 10px;
   border-radius: 6px;
   border-left: 3px solid #d4a574;
@@ -584,15 +585,15 @@
   align-items: center;
   font-size: 0.78rem;
   padding: 4px 8px;
-  background: var(--bg-hover, #faf9f6);
+  background: var(--hover, #faf9f6);
   border-radius: 4px;
 }
 .darp-battle-name { font-weight: 500; }
-.darp-battle-meta { color: var(--text-muted, #999); font-size: 0.72rem; }
+.darp-battle-meta { color: var(--cream2, #999); font-size: 0.72rem; }
 
 /* Meta rows */
 .darp-meta-section {
-  background: var(--bg-hover, #faf9f6);
+  background: var(--hover, #faf9f6);
   border-radius: 6px;
   padding: 8px 10px;
 }
@@ -601,7 +602,7 @@
   justify-content: space-between;
   font-size: 0.78rem;
   padding: 3px 0;
-  border-bottom: 1px solid var(--border-light, #f0ece4);
+  border-bottom: 1px solid var(--border, #f0ece4);
 }
 .darp-meta-row:last-child { border-bottom: none; }
 
@@ -614,12 +615,12 @@
 .darp-timeline-bar {
   margin-bottom: 12px;
   padding: 8px;
-  background: var(--bg-hover, #faf9f6);
+  background: var(--hover, #faf9f6);
   border-radius: 6px;
 }
 .darp-timeline-label {
   font-size: 0.72rem;
-  color: var(--text-muted, #999);
+  color: var(--cream2, #999);
   margin-bottom: 4px;
 }
 .darp-timeline-track {
@@ -645,11 +646,11 @@
   font-size: 0.82rem;
   margin: 0 0 6px;
   padding-bottom: 4px;
-  border-bottom: 1px solid var(--border-light, #e8e4dc);
+  border-bottom: 1px solid var(--border, #e8e4dc);
 }
 .darp-emission-dynasty span {
   font-weight: 400;
-  color: var(--text-muted, #aaa);
+  color: var(--cream2, #aaa);
   font-size: 0.75rem;
 }
 
@@ -660,15 +661,15 @@
 }
 .darp-emission-item {
   padding: 6px 8px;
-  background: var(--bg-hover, #faf9f6);
+  background: var(--hover, #faf9f6);
   border-radius: 5px;
   font-size: 0.78rem;
 }
 .darp-em-year {
   font-weight: 600;
-  color: var(--text-primary, #333);
+  color: var(--cream, #333);
 }
-.darp-em-year small { font-weight: 400; color: var(--text-muted, #999); }
+.darp-em-year small { font-weight: 400; color: var(--cream2, #999); }
 .darp-em-metal {
   display: flex;
   align-items: center;
@@ -686,7 +687,7 @@
 .darp-em-ruler {
   margin-top: 3px;
   font-size: 0.75rem;
-  color: var(--text-secondary, #666);
+  color: var(--cream2, #666);
 }
 .darp-em-ruler-ar {
   font-family: 'Amiri', serif;
@@ -696,7 +697,7 @@
 .darp-em-ruler-name { font-weight: 500; }
 .darp-em-ruler-title { opacity: 0.7; margin-left: 4px; }
 .darp-em-reign { opacity: 0.6; margin-left: 3px; }
-.darp-em-ref { font-size: 0.7rem; color: var(--text-muted, #aaa); margin-top: 2px; }
+.darp-em-ref { font-size: 0.7rem; color: var(--cream2, #aaa); margin-top: 2px; }
 
 /* Dynasties tab */
 .darp-dynasty-list {
@@ -706,7 +707,7 @@
 }
 .darp-dynasty-card {
   padding: 10px;
-  background: var(--bg-hover, #faf9f6);
+  background: var(--hover, #faf9f6);
   border-radius: 6px;
   border-left: 3px solid #8b6914;
 }
@@ -716,7 +717,7 @@
 }
 .darp-dynasty-details {
   font-size: 0.78rem;
-  color: var(--text-secondary, #666);
+  color: var(--cream2, #666);
 }
 .darp-dyn-row {
   margin: 2px 0;
@@ -726,7 +727,7 @@
 .darp-ref-list {
   font-size: 0.78rem;
   padding-left: 18px;
-  color: var(--text-secondary, #666);
+  color: var(--cream2, #666);
 }
 .darp-ext-link {
   font-size: 0.78rem;
@@ -739,7 +740,7 @@
   gap: 4px;
 }
 .darp-source-tag {
-  background: var(--bg-hover, #f0ece4);
+  background: var(--hover, #f0ece4);
   padding: 2px 8px;
   border-radius: 4px;
   font-size: 0.75rem;
@@ -751,7 +752,7 @@
   position: absolute;
   bottom: 20px;
   right: 10px;
-  background: rgba(255,255,255,0.92);
+  background: rgba(var(--bg-rgb), 0.92);
   backdrop-filter: blur(6px);
   border-radius: 10px;
   padding: 12px 14px;
@@ -759,6 +760,7 @@
   z-index: 5;
   max-width: 300px;
   font-size: 0.78rem;
+  color: var(--cream, #333);
 }
 
 .darp-stats-grid {
@@ -771,7 +773,7 @@
 .darp-stat-card {
   text-align: center;
   padding: 6px;
-  background: var(--bg-hover, #faf9f6);
+  background: var(--hover, #faf9f6);
   border-radius: 6px;
 }
 .darp-stat-card.darp-stat-primary {
@@ -811,7 +813,7 @@
   font-size: 0.72rem;
   font-weight: 600;
   margin-bottom: 4px;
-  color: var(--text-secondary, #666);
+  color: var(--cream2, #666);
 }
 .darp-region-bar {
   display: flex;
@@ -871,16 +873,16 @@
   display: flex;
   gap: 4px;
   padding: 8px 12px;
-  background: var(--bg-sidebar, #fff);
-  border-bottom: 1px solid var(--border-color, #e0dcd4);
+  background: var(--bg2, #fff);
+  border-bottom: 1px solid var(--border, #e0dcd4);
   overflow-x: auto;
   flex-shrink: 0;
 }
 
 .darp-analytics-nav .darp-analytics-btn {
-  background: var(--bg-hover, #f5f0e8);
-  border: 1px solid var(--border-color, #e0dcd4);
-  color: var(--text-primary, #555);
+  background: var(--hover, #f5f0e8);
+  border: 1px solid var(--border, #e0dcd4);
+  color: var(--cream, #555);
   padding: 5px 10px;
   border-radius: 6px;
   cursor: pointer;
@@ -914,7 +916,7 @@
 .darp-loading {
   text-align: center;
   padding: 30px;
-  color: var(--text-muted, #999);
+  color: var(--cream2, #999);
 }
 
 /* ── Responsive ── */
@@ -932,25 +934,25 @@
 }
 
 /* ── Dark mode support ── */
-[data-theme="dark"] .darp-sidebar,
-[data-theme="dark"] .darp-idcard-body,
-[data-theme="dark"] .darp-analytics-body {
-  background: #1e1e2e;
-  color: #e0ddd5;
-}
 [data-theme="dark"] .darp-search-input,
 [data-theme="dark"] .darp-filters select {
-  background: #2a2a3e;
-  color: #e0ddd5;
-  border-color: #444;
+  background: var(--bg3);
+  color: var(--cream);
+  border-color: var(--border);
 }
 [data-theme="dark"] .darp-list-item:hover {
   background: rgba(212,165,116,0.1);
 }
-[data-theme="dark"] .darp-stats-panel,
-[data-theme="dark"] .darp-map-legend {
-  background: rgba(30,30,46,0.92);
-  color: #e0ddd5;
+[data-theme="dark"] .darp-stats-panel {
+  background: rgba(var(--bg-rgb), 0.92);
+  color: var(--cream);
+}
+[data-theme="dark"] .darp-idcard-body {
+  background: var(--bg2);
+  color: var(--cream);
+}
+[data-theme="dark"] .darp-sidebar-close {
+  color: var(--cream);
 }
 /* ── Quality Toggle (append to darpislam.css) ── */
 

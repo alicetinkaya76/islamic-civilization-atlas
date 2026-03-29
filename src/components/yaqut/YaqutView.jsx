@@ -129,6 +129,15 @@ function YaqutViewInner({ lang, t }) {
     return arr;
   }, [YAQUT_LITE, search, selectedGeoTypes, selectedCountry, selectedLetter, selectedPeriod, selectedTags, crossRefRange]);
 
+  // Auto-select when search narrows to single geocoded result
+  useEffect(() => {
+    if (!search || search.length < 2) return;
+    const geocodedResults = filtered.filter(e => e.lat != null);
+    if (geocodedResults.length === 1 && geocodedResults[0].id !== selectedId) {
+      handleSelect(geocodedResults[0].id);
+    }
+  }, [filtered, search]);
+
   const geocoded = useMemo(() => filtered.filter(e => e.lat != null), [filtered]);
 
   const loadDetail = useCallback(async (id) => {

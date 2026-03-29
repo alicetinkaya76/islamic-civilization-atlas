@@ -66,7 +66,9 @@ export default function DarpMap({ mints, selectedMint, onSelect, center, zoom, l
     mapInstance.current.setView(center, zoom, { animate: true });
   }, [center, zoom]);
 
-  // Render markers
+  const selectedRef = useRef(null);
+
+  // Render markers (only when mints or lang change, NOT on selection)
   useEffect(() => {
     if (!mapInstance.current || !markersRef.current) return;
     markersRef.current.clearLayers();
@@ -75,16 +77,15 @@ export default function DarpMap({ mints, selectedMint, onSelect, center, zoom, l
       if (!mint.lat || !mint.lng) return;
       const color = getMintColor(mint);
       const radius = getMintRadius(mint);
-      const isSelected = selectedMint?.id === mint.id;
       const isTier3 = mint.tier === 3;
 
       const marker = L.circleMarker([mint.lat, mint.lng], {
-        radius: isSelected ? radius + 3 : (isTier3 ? 3 : radius),
+        radius: isTier3 ? 3 : radius,
         fillColor: isTier3 ? '#666' : color,
-        color: isSelected ? '#e63946' : (isTier3 ? '#555' : '#333'),
-        weight: isSelected ? 3 : 1,
+        color: isTier3 ? '#555' : '#333',
+        weight: 1,
         opacity: isTier3 ? 0.4 : 0.9,
-        fillOpacity: isSelected ? 0.95 : (isTier3 ? 0.25 : 0.7),
+        fillOpacity: isTier3 ? 0.25 : 0.7,
       });
 
       // Tooltip
@@ -110,7 +111,33 @@ export default function DarpMap({ mints, selectedMint, onSelect, center, zoom, l
       marker.on('click', () => onSelect(mint));
       markersRef.current.addLayer(marker);
     });
-  }, [mints, selectedMint, lang]);
+  }, [mints, lang]);
+
+  // Highlight selected mint (separate from marker render)
+  useEffect(() => {
+    if (!mapInstance.current) return;
+
+    // Remove previous highlight
+    if (selectedRef.current) {
+      mapInstance.current.removeLayer(selectedRef.current);
+      selectedRef.current = null;
+    }
+
+    if (!selectedMint?.lat || !selectedMint?.lng) return;
+
+    const color = getMintColor(selectedMint);
+    const radius = getMintRadius(selectedMint);
+    const ring = L.circleMarker([selectedMint.lat, selectedMint.lng], {
+      radius: radius + 4,
+      fillColor: color,
+      color: '#e63946',
+      weight: 3,
+      opacity: 1,
+      fillOpacity: 0.95,
+    });
+    ring.addTo(mapInstance.current);
+    selectedRef.current = ring;
+  }, [selectedMint]);
 
   // Legend
   const legendItems = useMemo(() => [
