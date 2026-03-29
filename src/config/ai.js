@@ -25,7 +25,7 @@ export const MAX_RESPONSE_TOKENS = 1500; // ← was 1024, increased for detailed
 export const TEMPERATURE = 0.30;
 
 // ─── Feature Flags ─────────────────────────────────────────────────
-export const AI_ENABLED = !!(GROQ_KEY);  // only enable if API key is configured
+export const AI_ENABLED = false;  // only enable if API key is configured
 export const SHOW_SOURCES = true;       // show DİA source cards
 export const ENABLE_MAP_ACTIONS = true; // allow flyTo, highlight, filter
 // v7.2.0
