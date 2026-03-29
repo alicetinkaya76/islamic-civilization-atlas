@@ -13,9 +13,9 @@ export default function Footer({ lang }) {
           <div className="footer-names">
             <span className="footer-author">
               Dr. Hüseyin Gökalp
-              <a href="https://orcid.org/0000-0001-6796-5765" target="_blank" rel="noopener noreferrer" className="footer-orcid-badge" title="ORCID: 0000-0001-6796-5765">
+              <a href="https://orcid.org/0000-0002-7954-083X" target="_blank" rel="noopener noreferrer" className="footer-orcid-badge" title="ORCID: 0000-0002-7954-083X">
                 <img src="https://orcid.org/sites/default/files/images/orcid_16x16.png" alt="ORCID" width="14" height="14" />
-                <span className="footer-orcid-id">0000-0001-6796-5765</span>
+                <span className="footer-orcid-id">0000-0002-7954-083X</span>
               </a>
             </span>
             <span className="footer-sep">&</span>

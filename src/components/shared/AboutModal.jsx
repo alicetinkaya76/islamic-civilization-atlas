@@ -109,7 +109,7 @@ export default function AboutModal({ lang, onResetOnboarding, onResetLanding, ex
                 <div className="about-author-card">
                   <div className="about-author-name">
                     Dr. Hüseyin Gökalp
-                    <a href="https://orcid.org/0000-0001-6796-5765" target="_blank" rel="noopener noreferrer" className="about-orcid" title="ORCID">
+                    <a href="https://orcid.org/0000-0002-7954-083X" target="_blank" rel="noopener noreferrer" className="about-orcid" title="ORCID">
                       <img src="https://orcid.org/sites/default/files/images/orcid_16x16.png" alt="ORCID" width="14" height="14" />
                     </a>
                   </div>
