@@ -28,6 +28,7 @@ const AIChatPanel   = lazy(() => import('./components/ai/AIChatPanel'));
 const DarpView     = lazy(() => import('./components/darpislam/DarpView'));
 const RihlaView    = lazy(() => import('./components/rihla/RihlaView'));
 const KhitatView  = lazy(() => import('./components/khitat/KhitatView'));
+const LeStrangeView = lazy(() => import('./components/lestrange/LeStrangeView'));
 const CityAtlasView = lazy(() => import('./components/CityAtlas/CityAtlasView'));
 
 /* ═══ Eagerly loaded — needed on every page ═══ */
@@ -119,7 +120,7 @@ function LangDropdown({ lang, setLang }) {
   );
 }
 
-const VALID_TABS = ['cityatlas', 'map', 'dashboard', 'timeline', 'links', 'scholars', 'battles', 'alam', 'yaqut', 'dia', 'ei1', 'rihla', 'khitat', 'admin'];
+const VALID_TABS = ['cityatlas', 'map', 'dashboard', 'timeline', 'links', 'scholars', 'battles', 'alam', 'yaqut', 'dia', 'ei1', 'rihla', 'khitat', 'lestrange', 'admin'];
 
 /* Tab order for swipe navigation (excludes admin) */
 const SWIPE_TAB_ORDER = ['map', 'dashboard', 'alam', 'dia', 'ei1', 'timeline', 'links', 'scholars', 'battles', 'rihla', 'yaqut'];
@@ -357,6 +358,7 @@ export default function App() {
               { id: 'yaqut', label: t.tabs.yaqut, badge: '13K',  preload: '/data/yaqut_lite.json' },
               { id: 'rihla', label: t.tabs.rihla || 'İbn Battûta', badge: '317', preload: '/data/ibn_battuta_atlas_layer.json' },
               { id: 'khitat', label: t.tabs.khitat || '🏛️ el-Hıṭaṭ', badge: '801', preload: '/data/maqrizi_khitat_atlas_layer.json' },
+              { id: 'lestrange', label: t.tabs.lestrange || '🗺️ Le Strange', badge: '434', preload: '/data/le_strange_eastern_caliphate.json' },
               { id: 'cityatlas', label: t.tabs.cityatlas || '🏙️ Şehir Atlası', badge: '1,020', preload: '/data/city-atlas/konya.json' },
               { id: 'darpislam', label: t.tabs.darpislam, badge: '3.5K', preload: '/data/darpislam_lite.json' },
             ]}
@@ -417,6 +419,8 @@ export default function App() {
                 onMouseEnter={() => preloadData('/data/darpislam_lite.json')}>{t.tabs.darpislam}</button>
               <button role="tab" aria-selected={tab === 'rihla'} className={`tab${tab === 'rihla' ? ' active' : ''}`} onClick={() => selectTab('rihla')}
                 onMouseEnter={() => preloadData('/data/ibn_battuta_atlas_layer.json')}>{t.tabs.rihla || 'İbn Battûta'}</button>
+              <button role="tab" aria-selected={tab === 'lestrange'} className={`tab${tab === 'lestrange' ? ' active' : ''}`} onClick={() => selectTab('lestrange')}
+                onMouseEnter={() => preloadData('/data/le_strange_eastern_caliphate.json')}>{t.tabs.lestrange || '🗺️ Le Strange'}</button>
             </div>
             <button className="quiz-trigger" onClick={() => setQuizOpen(true)}
               aria-label={{ tr: 'Bilgi yarışması', en: 'Knowledge quiz', ar: 'اختبار المعرفة' }[lang]}>🎓 Quiz</button>
@@ -455,6 +459,7 @@ export default function App() {
          tab === 'darpislam' ? <DarpView lang={lang} t={t} isMobile={isMobile} /> :
          tab === 'rihla' ? <RihlaView lang={lang} t={t} /> :
          tab === 'khitat' ? <KhitatView lang={lang} t={t} /> :
+         tab === 'lestrange' ? <LeStrangeView lang={lang} t={t} /> :
          tab === 'cityatlas' ? <CityAtlasView lang={lang} /> :
          <CausalView lang={lang} t={t} />}
         </Suspense>
