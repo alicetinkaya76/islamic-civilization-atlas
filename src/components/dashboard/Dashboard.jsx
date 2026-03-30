@@ -153,6 +153,7 @@ export default function Dashboard({ lang, t: tProp, onTabChange }) {
     { key: 'darpislam', icon: '🪙', count: 3458, label: { tr: 'Darphane', en: 'Mints' }[lang], tab: 'darpislam' },
     { key: 'khitat', icon: '🏛️', count: 801, label: { tr: 'Yapı (el-Hıṭaṭ)', en: 'Structures (al-Khiṭaṭ)' }[lang], tab: 'khitat' },
     { key: 'cityatlas', icon: '🏙️', count: 219, label: { tr: 'Yapı (Konya)', en: 'Monuments (Konya)' }[lang], tab: 'cityatlas' },
+    { key: 'lestrange', icon: '🗺️', count: 434, label: { tr: 'Coğrafi Kayıt (Le Strange)', en: 'Geographic Records (Le Strange)' }[lang], tab: 'lestrange' },
   ], [lang]);
 
   /* Era distribution */
@@ -310,6 +311,7 @@ export default function Dashboard({ lang, t: tProp, onTabChange }) {
               { icon: '🪙', name: 'DarpIslam', count: '3,458', scope: 'H. 1–399', tab: 'darpislam', desc: { tr: 'İslam darphaneleri', en: 'Islamic mints' }[lang] },
               { icon: '🏛️', name: 'el-Hıṭaṭ', count: '801', scope: 'Kâhire', tab: 'khitat', desc: { tr: 'Makrîzî Kâhire topografyası', en: 'Maqrīzī Cairo topography' }[lang] },
               { icon: '🏙️', name: 'Konya Atlası', count: '219', scope: 'Konya', tab: 'cityatlas', desc: { tr: 'Konyalı mimari envanteri', en: 'Konyalı architectural inventory' }[lang] },
+              { icon: '🗺️', name: 'Le Strange', count: '434', scope: '7–15. yy.', tab: 'lestrange', desc: { tr: 'Doğu Hilâfet coğrafyası', en: 'Eastern Caliphate geography' }[lang] },
             ].map(src => (
               <div key={src.name} className="dash-source-card" onClick={() => goTab(src.tab)} role="button" tabIndex={0}>
                 <div className="dash-source-header">
@@ -329,6 +331,10 @@ export default function Dashboard({ lang, t: tProp, onTabChange }) {
           <h3 className="dash-card-title">{{ tr: 'Son Güncellemeler', en: 'Recent Updates', ar: 'آخر التحديثات' }[lang]}</h3>
           <div className="dash-changelog">
             {[
+              { ver: 'v7.3.0.0', items: [
+                { tr: 'Le Strange: 434 coğrafi kayıt, 34 eyalet', en: 'Le Strange: 434 geographic records, 34 provinces' },
+                { tr: 'Çapraz referans: Yâkūt/EI/DİA bağlantıları', en: 'Cross-references: Yāqūt/EI/DİA links' },
+              ]},
               { ver: 'v6.5.3.0', items: [
                 { tr: 'Quiz: Zamanlayıcı, seri, kategoriler', en: 'Quiz: Timer, streak, categories' },
                 { tr: 'Lejant yeniden tasarlandı', en: 'Legend redesigned' },

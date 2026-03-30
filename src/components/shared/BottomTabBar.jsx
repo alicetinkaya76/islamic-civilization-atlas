@@ -15,6 +15,7 @@ const SECONDARY_TABS = [
   { id: 'scholars', icon: '🎓', tr: 'Âlimler',         en: 'Scholars',  ar: 'العلماء' },
   { id: 'battles',  icon: '⚔️', tr: 'Savaşlar',        en: 'Battles',   ar: 'المعارك' },
   { id: 'yaqut',    icon: '🌍', tr: "Mu'cem",          en: "Mu'jam",    ar: 'معجم' },
+  { id: 'lestrange', icon: '🗺️', tr: 'Le Strange',     en: 'Le Strange', ar: 'لي سترينج' },
 ];
 
 const MORE_LABEL = { tr: 'Daha', en: 'More', ar: 'المزيد' };

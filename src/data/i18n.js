@@ -2,7 +2,7 @@ const T = {
   tr: {
     title: 'İslam Tarihi Atlası',
     sub: '',
-    tabs: { map: '🗺 Harita', dashboard: '📊 Pano', timeline: '📅 Zaman Çizelgesi', links: '🔗 Nedensellik', scholars: '🎓 Âlimler', battles: '⚔ Savaşlar', alam: '📖 el-A\'lâm', yaqut: "🌍 Mu'cemü'l-Büldân", dia: '📚 DİA', ei1: '📕 EI-1', darpislam: '🪙 Darphaneler', rihla: '🧭 İbn Battûta', khitat: '🏛️ el-Hıṭaṭ' },
+    tabs: { map: '🗺 Harita', dashboard: '📊 Pano', timeline: '📅 Zaman Çizelgesi', links: '🔗 Nedensellik', scholars: '🎓 Âlimler', battles: '⚔ Savaşlar', alam: '📖 el-A\'lâm', yaqut: "🌍 Mu'cemü'l-Büldân", dia: '📚 DİA', ei1: '📕 EI-1', darpislam: '🪙 Darphaneler', rihla: '🧭 İbn Battûta', khitat: '🏛️ el-Hıṭaṭ', lestrange: '🗺️ Le Strange' },
     layers: {
       dynasties: 'Hanedanlar', battles: 'Savaşlar', events: 'Olaylar',
       scholars: 'Âlimler', monuments: 'Mimari Eserler', cities: 'Şehirler',
@@ -420,10 +420,10 @@ const T = {
       copy: 'Kopyala', copied: 'Kopyalandı!',
     },
     about: {
-      btn: 'Hakkında', title: 'Hakkında', close: 'Kapat',
+      btn: 'Hakkında', title: 'İslam Tarihi Atlası', close: 'Kapat',
       authors: 'Yazarlar', data: 'Veri Kaynağı',
       license: 'Lisans: CC BY-SA 4.0',
-      desc1: 'Müslüman Hanedanlar Atlası, C. Edmund Bosworth\'un "The New Islamic Dynasties" başvuru eserinden derlenen kapsamlı bir interaktif tarih atlasıdır.',
+      desc1: 'İslam tarihinin siyasi, ilmî ve coğrafi mirasını birincil kaynaklardan derlenen verilerle sunan kapsamlı bir interaktif dijital atlastır.',
       desc2: 'Proje, 632–1924 CE dönemindeki 186 İslam hanedanlığını, 830 hükümdarı, 50 savaşı, 50 olayı, 49 âlimi, 40 mimari eseri, 15 ticaret yolunu, 30 diplomatik ilişkiyi ve 69 önemli şehri kapsamaktadır.',
       desc3: 'Veri seti, 12 interaktif CSV tablosu ve 200 nedensellik bağlantısı içerir. Tüm veriler iki dilli (Türkçe/İngilizce) olarak sunulmaktadır.',
       dataDesc: 'Bosworth, C. E. (2004). The New Islamic Dynasties. Edinburgh University Press.',
@@ -533,7 +533,7 @@ const T = {
   en: {
     title: 'Atlas of Islamic History',
     sub: '',
-    tabs: { map: '🗺 Map', dashboard: '📊 Dashboard', timeline: '📅 Timeline', links: '🔗 Causality', scholars: '🎓 Scholars', battles: '⚔ Battles', alam: '📖 al-Aʿlām', yaqut: "🌍 Muʿjam al-Buldān", dia: '📚 DİA', ei1: '📕 EI-1', darpislam: '🪙 Mints', rihla: '🧭 Ibn Battuta', khitat: '🏛️ al-Khiṭaṭ' },
+    tabs: { map: '🗺 Map', dashboard: '📊 Dashboard', timeline: '📅 Timeline', links: '🔗 Causality', scholars: '🎓 Scholars', battles: '⚔ Battles', alam: '📖 al-Aʿlām', yaqut: "🌍 Muʿjam al-Buldān", dia: '📚 DİA', ei1: '📕 EI-1', darpislam: '🪙 Mints', rihla: '🧭 Ibn Battuta', khitat: '🏛️ al-Khiṭaṭ', lestrange: '🗺️ Le Strange' },
     layers: {
       dynasties: 'Dynasties', battles: 'Battles', events: 'Events',
       scholars: 'Scholars', monuments: 'Monuments', cities: 'Cities',
@@ -951,10 +951,10 @@ const T = {
       copy: 'Copy', copied: 'Copied!',
     },
     about: {
-      btn: 'About', title: 'About', close: 'Close',
+      btn: 'About', title: 'Atlas of Islamic History', close: 'Close',
       authors: 'Authors', data: 'Data Source',
       license: 'License: CC BY-SA 4.0',
-      desc1: 'The Islamic Dynasties Atlas is a comprehensive interactive historical atlas compiled from C. Edmund Bosworth\'s "The New Islamic Dynasties" reference work.',
+      desc1: 'A comprehensive interactive digital atlas presenting the political, scholarly, and geographic heritage of Islamic history, compiled from primary sources.',
       desc2: 'The project covers 186 Islamic dynasties (632–1924 CE), 830 rulers, 50 battles, 50 events, 49 scholars, 40 monuments, 15 trade routes, 30 diplomatic relations, and 69 major cities.',
       desc3: 'The dataset includes 12 interlinked CSV tables and 200 causal links. All data is presented bilingually (Turkish/English).',
       dataDesc: 'Bosworth, C. E. (2004). The New Islamic Dynasties. Edinburgh University Press.',
@@ -1064,7 +1064,7 @@ const T = {
   ar: {
     title: 'أطلس التاريخ الإسلامي',
     sub: '',
-    tabs: { map: '🗺 خريطة', dashboard: '📊 لوحة', timeline: '📅 الجدول الزمني', links: '🔗 السببية', scholars: '🎓 العلماء', battles: '⚔ المعارك', alam: '📖 الأعلام', yaqut: "🌍 معجم البلدان", dia: '📚 موسوعة', ei1: '📕 دائرة المعارف', darpislam: '🪙 دور السك', rihla: '🧭 ابن بطوطة', khitat: '🏛️ الخطط' },
+    tabs: { map: '🗺 خريطة', dashboard: '📊 لوحة', timeline: '📅 الجدول الزمني', links: '🔗 السببية', scholars: '🎓 العلماء', battles: '⚔ المعارك', alam: '📖 الأعلام', yaqut: "🌍 معجم البلدان", dia: '📚 موسوعة', ei1: '📕 دائرة المعارف', darpislam: '🪙 دور السك', rihla: '🧭 ابن بطوطة', khitat: '🏛️ الخطط', lestrange: '🗺️ لي سترينج' },
     layers: {
       dynasties: 'الأسر الحاكمة', battles: 'المعارك', events: 'الأحداث',
       scholars: 'العلماء', monuments: 'المعالم المعمارية', cities: 'المدن',
@@ -1482,10 +1482,10 @@ const T = {
       copy: 'نسخ', copied: 'تم النسخ!',
     },
     about: {
-      btn: 'حول', title: 'حول', close: 'إغلاق',
+      btn: 'حول', title: 'أطلس التاريخ الإسلامي', close: 'إغلاق',
       authors: 'المؤلفون', data: 'مصدر البيانات',
       license: 'الترخيص: CC BY-SA 4.0',
-      desc1: 'أطلس السلالات الإسلامية هو أطلس تاريخي تفاعلي شامل مُجمَّع من المرجع "The New Islamic Dynasties" لـ C. Edmund Bosworth.',
+      desc1: 'أطلس رقمي تفاعلي شامل يعرض التراث السياسي والعلمي والجغرافي للتاريخ الإسلامي، مُجمَّع من مصادر أولية.',
       desc2: 'يغطي المشروع 186 سلالة إسلامية (632–1924 م)، 830 حاكمًا، 50 معركة، 50 حدثًا، 49 عالمًا، 40 معلمًا معماريًا، 15 طريقًا تجاريًا، 30 علاقة دبلوماسية، و69 مدينة رئيسية.',
       desc3: 'تتضمن قاعدة البيانات 12 جدولًا تفاعليًا و200 رابط سببي. جميع البيانات مقدمة بلغتين (التركية/الإنجليزية).',
       dataDesc: 'Bosworth, C. E. (2004). The New Islamic Dynasties. Edinburgh University Press.',

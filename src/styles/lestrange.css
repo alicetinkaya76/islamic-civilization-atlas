@@ -1,0 +1,726 @@
+/* ═══════════════════════════════════════════════════
+   Le Strange — Lands of the Eastern Caliphate
+   Geography theme: olive green / earth tones
+   ═══════════════════════════════════════════════════ */
+
+.lestrange-view {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: var(--bg);
+  overflow: hidden;
+}
+
+/* ─── Header ─── */
+.lestrange-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 8px 16px;
+  background: var(--bg2);
+  border-bottom: 1px solid var(--border);
+  flex-wrap: wrap;
+  min-height: 44px;
+}
+
+.lestrange-header-info { display: flex; align-items: baseline; gap: 12px; }
+.lestrange-title {
+  font-family: var(--font-display);
+  font-size: 17px;
+  color: #6d9e4a;
+  font-weight: 700;
+  margin: 0;
+}
+.lestrange-subtitle {
+  font-size: 11px;
+  color: var(--cream2);
+}
+
+.lestrange-header-stats {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  color: var(--cream2);
+}
+.lestrange-stat strong { color: #8fbc5e; }
+.lestrange-stat-sep { opacity: 0.4; }
+
+/* ─── Body: 3-column layout ─── */
+.lestrange-body {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+/* ─── Left sidebar ─── */
+.lestrange-sidebar {
+  width: 320px;
+  min-width: 280px;
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  background: var(--bg);
+  overflow: hidden;
+}
+
+.ls-sidebar-inner {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* ─── Search ─── */
+.ls-search-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--border);
+}
+
+.ls-search-input {
+  flex: 1;
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 6px 10px;
+  font-size: 13px;
+  color: var(--text);
+  outline: none;
+  transition: border-color 0.2s;
+}
+.ls-search-input:focus {
+  border-color: #6d9e4a;
+}
+.ls-search-input::placeholder { color: var(--cream2); opacity: 0.6; }
+
+.ls-clear-btn {
+  background: none;
+  border: none;
+  color: #999;
+  cursor: pointer;
+  font-size: 14px;
+  padding: 4px 6px;
+  border-radius: 4px;
+}
+.ls-clear-btn:hover { color: #ef5350; background: rgba(239,83,80,0.1); }
+
+/* ─── Filters ─── */
+.ls-filters {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--border);
+}
+
+.ls-filter-select {
+  width: 100%;
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  padding: 4px 8px;
+  font-size: 11px;
+  color: var(--text);
+  cursor: pointer;
+}
+.ls-filter-select:focus { border-color: #6d9e4a; outline: none; }
+
+/* ─── Sort + count ─── */
+.ls-sort-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4px 12px;
+  border-bottom: 1px solid var(--border);
+  font-size: 11px;
+  color: var(--cream2);
+}
+.ls-count strong { color: #8fbc5e; }
+
+.ls-sort-btns {
+  display: flex;
+  gap: 2px;
+}
+.ls-sort-btns button {
+  background: none;
+  border: 1px solid transparent;
+  cursor: pointer;
+  font-size: 12px;
+  padding: 2px 6px;
+  border-radius: 4px;
+  opacity: 0.5;
+  transition: all 0.2s;
+}
+.ls-sort-btns button.active {
+  opacity: 1;
+  border-color: var(--border);
+  background: var(--bg2);
+}
+.ls-sort-btns button:hover { opacity: 0.8; }
+
+/* ─── List ─── */
+.ls-list {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.ls-list-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 8px 12px;
+  background: none;
+  border: none;
+  border-bottom: 1px solid var(--border);
+  cursor: pointer;
+  text-align: left;
+  color: var(--text);
+  font-size: 13px;
+  transition: background 0.15s;
+}
+[dir="rtl"] .ls-list-item { text-align: right; }
+
+.ls-list-item:hover { background: var(--bg2); }
+.ls-list-item.selected {
+  background: rgba(109, 158, 74, 0.12);
+  border-left: 3px solid #6d9e4a;
+}
+[dir="rtl"] .ls-list-item.selected {
+  border-left: none;
+  border-right: 3px solid #6d9e4a;
+}
+
+.ls-item-icon { font-size: 16px; flex-shrink: 0; }
+.ls-item-body { flex: 1; min-width: 0; }
+.ls-item-name {
+  display: block;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.ls-item-ls-form {
+  display: block;
+  font-size: 10px;
+  color: var(--cream2);
+  opacity: 0.7;
+  font-style: italic;
+}
+
+.ls-item-meta {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-shrink: 0;
+}
+.ls-item-province-dot {
+  display: inline-block;
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.ls-item-xref-badge { font-size: 10px; opacity: 0.6; }
+
+.ls-empty {
+  padding: 24px;
+  text-align: center;
+  color: var(--cream2);
+  font-size: 13px;
+}
+
+/* ─── Center map area ─── */
+.lestrange-map-area {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+}
+
+.lestrange-map-container {
+  width: 100%; height: 100%;
+  position: relative;
+}
+.lestrange-map-inner {
+  width: 100%; height: 100%;
+}
+
+/* Map tooltip */
+.lestrange-tooltip {
+  background: rgba(15, 20, 25, 0.92) !important;
+  color: #e8dcc8 !important;
+  border: 1px solid rgba(109, 158, 74, 0.3) !important;
+  border-radius: 6px !important;
+  padding: 6px 10px !important;
+  font-size: 12px !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4) !important;
+  max-width: 240px !important;
+}
+.lestrange-tooltip .leaflet-tooltip-arrow { display: none; }
+
+/* Map counter */
+.lestrange-map-counter {
+  position: absolute;
+  bottom: 8px; left: 8px;
+  background: rgba(15, 20, 25, 0.85);
+  color: #8fbc5e;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 11px;
+  z-index: 800;
+  pointer-events: none;
+}
+
+/* Legend toggle */
+.lestrange-legend-toggle {
+  position: absolute;
+  top: 8px; left: 8px;
+  z-index: 800;
+  background: rgba(15, 20, 25, 0.85);
+  border: 1px solid rgba(109, 158, 74, 0.3);
+  color: #e8dcc8;
+  width: 32px; height: 32px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  display: flex; align-items: center; justify-content: center;
+}
+.lestrange-legend-toggle:hover { background: rgba(15, 20, 25, 0.95); }
+
+/* Legend panel */
+.lestrange-legend {
+  position: absolute;
+  top: 46px; left: 8px;
+  z-index: 800;
+  background: rgba(15, 20, 25, 0.92);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 8px 10px;
+  max-height: 300px;
+  overflow-y: auto;
+  min-width: 160px;
+}
+.lestrange-legend-title {
+  font-size: 11px;
+  font-weight: 600;
+  color: #8fbc5e;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.lestrange-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 2px 0;
+  font-size: 11px;
+  color: var(--cream2);
+}
+.lestrange-legend-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.lestrange-legend-label { flex: 1; }
+.lestrange-legend-count { opacity: 0.5; font-size: 10px; }
+
+/* ─── Right: Card area ─── */
+.lestrange-card-area {
+  width: 380px;
+  min-width: 320px;
+  border-left: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  background: var(--bg);
+  overflow: hidden;
+}
+
+/* Card empty state */
+.ls-card-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: var(--cream2);
+  font-size: 13px;
+  gap: 8px;
+}
+.ls-card-empty-icon { font-size: 40px; opacity: 0.3; }
+
+/* Card content */
+.ls-card {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px;
+  position: relative;
+}
+
+.ls-card-close {
+  position: absolute;
+  top: 8px; right: 8px;
+  background: none;
+  border: none;
+  color: var(--cream2);
+  cursor: pointer;
+  font-size: 16px;
+  padding: 4px 8px;
+  border-radius: 4px;
+  z-index: 2;
+}
+[dir="rtl"] .ls-card-close { right: auto; left: 8px; }
+.ls-card-close:hover { color: #ef5350; background: rgba(239,83,80,0.1); }
+
+/* Card header */
+.ls-card-header {
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid rgba(109, 158, 74, 0.3);
+}
+.ls-card-names {}
+.ls-card-name-ar {
+  font-family: 'Amiri', 'Traditional Arabic', serif;
+  font-size: 22px;
+  color: #8fbc5e;
+  line-height: 1.4;
+  direction: rtl;
+}
+.ls-card-name-primary {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text);
+  margin: 4px 0;
+}
+.ls-card-name-secondary {
+  font-size: 12px;
+  color: var(--cream2);
+}
+.ls-card-le-strange-form {
+  font-size: 12px;
+  color: var(--cream2);
+  margin-top: 4px;
+}
+.ls-card-form-label { opacity: 0.6; font-size: 10px; }
+
+.ls-card-geo-badge {
+  margin-top: 6px;
+}
+.ls-card-geo-type {
+  display: inline-block;
+  background: rgba(109, 158, 74, 0.15);
+  border: 1px solid rgba(109, 158, 74, 0.3);
+  color: #8fbc5e;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 500;
+}
+
+/* Card sections */
+.ls-card-section {
+  margin-bottom: 14px;
+}
+.ls-card-section-title {
+  font-size: 11px;
+  font-weight: 600;
+  color: #6d9e4a;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 6px;
+}
+
+/* Location */
+.ls-card-location {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-bottom: 6px;
+}
+.ls-card-province-badge {
+  display: inline-block;
+  background: rgba(109, 158, 74, 0.15);
+  color: #8fbc5e;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 500;
+}
+.ls-card-district {
+  font-size: 12px;
+  color: var(--cream2);
+}
+
+.ls-card-modern {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: var(--cream2);
+  margin-bottom: 4px;
+}
+.ls-card-country-badge {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  padding: 1px 6px;
+  border-radius: 3px;
+  font-size: 10px;
+}
+
+.ls-card-coords {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+}
+.ls-card-latlon {
+  color: var(--cream2);
+  font-family: monospace;
+  font-size: 10px;
+  opacity: 0.7;
+}
+
+/* Chapter */
+.ls-card-chapter {
+  font-size: 12px;
+  color: var(--text);
+}
+.ls-card-pages {
+  color: var(--cream2);
+  font-size: 11px;
+  margin-left: 8px;
+}
+
+/* Alt names / tags */
+.ls-card-alt-names,
+.ls-card-features,
+.ls-card-tags-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+.ls-card-tag {
+  display: inline-block;
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 11px;
+  color: var(--cream2);
+}
+.ls-card-tag.feature { border-color: rgba(109, 158, 74, 0.3); color: #8fbc5e; }
+.ls-card-tag.product { border-color: rgba(196, 137, 58, 0.3); color: #c4893a; }
+.ls-card-tag.road { border-color: rgba(139, 94, 60, 0.3); color: #a87850; }
+.ls-card-tag.related { border-color: rgba(66, 165, 245, 0.3); color: #42a5f5; }
+
+/* Description */
+.ls-card-desc {
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--text);
+  margin: 0;
+}
+.ls-card-toggle {
+  background: none;
+  border: none;
+  color: #6d9e4a;
+  cursor: pointer;
+  font-size: 11px;
+  padding: 4px 0;
+  margin-top: 6px;
+}
+.ls-card-toggle:hover { text-decoration: underline; }
+.ls-card-desc-extra {
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px solid var(--border);
+}
+.ls-card-desc-lang {
+  font-size: 10px;
+  color: var(--cream2);
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+/* Period badges */
+.ls-card-periods {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-bottom: 6px;
+}
+.ls-card-period-badge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+
+.ls-card-founded {
+  font-size: 11px;
+  color: var(--cream2);
+  margin-top: 4px;
+}
+
+/* Sources cited */
+.ls-card-sources {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+.ls-card-source-badge {
+  display: inline-block;
+  background: rgba(109, 158, 74, 0.1);
+  border: 1px solid rgba(109, 158, 74, 0.25);
+  color: #8fbc5e;
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-size: 10px;
+  font-weight: 600;
+  cursor: help;
+  font-family: monospace;
+}
+.ls-card-source-badge:hover {
+  background: rgba(109, 158, 74, 0.2);
+}
+
+/* ═══ Cross-Reference Widget ═══ */
+.ls-xref-widget {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 2px solid rgba(109, 158, 74, 0.3);
+}
+.ls-xref-title {
+  font-size: 12px;
+  font-weight: 700;
+  color: #6d9e4a;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 8px;
+}
+.ls-xref-links {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.ls-xref-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px;
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  text-decoration: none;
+  color: var(--text);
+  transition: all 0.2s;
+  cursor: pointer;
+}
+.ls-xref-link:hover {
+  border-color: #6d9e4a;
+  background: rgba(109, 158, 74, 0.08);
+}
+.ls-xref-link.yaqut:hover { border-color: #c4893a; background: rgba(196, 137, 58, 0.08); }
+.ls-xref-link.ei1:hover { border-color: #ef5350; background: rgba(239, 83, 80, 0.08); }
+.ls-xref-link.atlas:hover { border-color: #42a5f5; background: rgba(66, 165, 245, 0.08); }
+.ls-xref-link.dia:hover { border-color: #ab47bc; background: rgba(171, 71, 188, 0.08); }
+
+.ls-xref-icon { font-size: 18px; flex-shrink: 0; }
+.ls-xref-info { flex: 1; min-width: 0; }
+.ls-xref-source {
+  display: block;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--cream2);
+}
+.ls-xref-detail {
+  display: block;
+  font-size: 12px;
+  color: var(--text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.ls-xref-arrow {
+  color: var(--cream2);
+  font-size: 14px;
+  opacity: 0.5;
+  flex-shrink: 0;
+}
+
+/* ─── Source footer ─── */
+.lestrange-source {
+  padding: 6px 16px;
+  font-size: 10px;
+  color: var(--cream2);
+  opacity: 0.6;
+  text-align: center;
+  border-top: 1px solid var(--border);
+}
+
+/* ─── Mobile toggle ─── */
+.lestrange-mobile-toggle {
+  display: none;
+  padding: 6px 8px;
+  gap: 4px;
+  background: var(--bg2);
+  border-bottom: 1px solid var(--border);
+}
+.lestrange-mobile-toggle button {
+  flex: 1;
+  padding: 6px;
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  color: var(--cream2);
+  cursor: pointer;
+  font-size: 12px;
+}
+.lestrange-mobile-toggle button.active {
+  background: rgba(109, 158, 74, 0.15);
+  border-color: #6d9e4a;
+  color: #8fbc5e;
+}
+
+/* ─── Responsive ─── */
+@media (max-width: 900px) {
+  .lestrange-mobile-toggle { display: flex; }
+  .lestrange-body { position: relative; }
+
+  .lestrange-sidebar,
+  .lestrange-map-area,
+  .lestrange-card-area {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    width: 100% !important;
+    min-width: 0 !important;
+    border: none !important;
+    display: none;
+  }
+  .lestrange-sidebar.mobile-visible,
+  .lestrange-map-area.mobile-visible,
+  .lestrange-card-area.mobile-visible {
+    display: flex;
+  }
+}
+
+/* ─── Light theme overrides ─── */
+[data-theme="light"] .lestrange-title { color: #4a7a30; }
+[data-theme="light"] .lestrange-stat strong { color: #4a7a30; }
+[data-theme="light"] .ls-count strong { color: #4a7a30; }
+[data-theme="light"] .ls-card-name-ar { color: #4a7a30; }
+[data-theme="light"] .ls-card-section-title { color: #4a7a30; }
+[data-theme="light"] .ls-xref-title { color: #4a7a30; }
+[data-theme="light"] .ls-card-province-badge { color: #4a7a30; background: rgba(74, 122, 48, 0.1); }
+[data-theme="light"] .ls-card-geo-type { color: #4a7a30; background: rgba(74, 122, 48, 0.1); border-color: rgba(74, 122, 48, 0.2); }
+[data-theme="light"] .lestrange-legend-toggle { background: rgba(255,255,255,0.9); color: #333; }
+[data-theme="light"] .lestrange-legend { background: rgba(255,255,255,0.95); }
+[data-theme="light"] .lestrange-map-counter { background: rgba(255,255,255,0.9); color: #4a7a30; }
+[data-theme="light"] .lestrange-tooltip { background: rgba(255,255,255,0.95) !important; color: #333 !important; border-color: rgba(74, 122, 48, 0.3) !important; }
