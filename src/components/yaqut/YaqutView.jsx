@@ -150,7 +150,7 @@ function YaqutViewInner({ lang, t, initialSearch }) {
     if (detailCache[sid]) { setDetailData(detailCache[sid]); return; }
     try {
       const base = import.meta.env.BASE_URL || '/';
-      const resp = await fetch(`${base}yaqut_detail.json`);
+      const resp = await fetch(`${base}data/yaqut_detail.json`);
       if (resp.ok) { const all = await resp.json(); setDetailCache(all); setDetailData(all[sid] || null); }
     } catch (e) { console.warn('Failed to load yaqut detail:', e); setDetailData(null); }
   }, [detailCache]);
