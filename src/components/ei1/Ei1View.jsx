@@ -1,4 +1,4 @@
-import { useState, useMemo, useCallback, lazy, Suspense } from 'react';
+import { useState, useEffect, useMemo, useCallback, lazy, Suspense } from 'react';
 import useAsyncData from '../../hooks/useAsyncData.jsx';
 import LazyLoader from '../shared/LazyLoader';
 import Ei1Sidebar from './Ei1Sidebar';
@@ -25,7 +25,7 @@ function buildStats(data) {
   };
 }
 
-export default function Ei1View({ lang, t: tProp }) {
+export default function Ei1View({ lang, t: tProp, initialSearch }) {
   const t = tProp || T[lang];
   const te = t.ei1 || {};
 
@@ -39,7 +39,7 @@ export default function Ei1View({ lang, t: tProp }) {
     total: 0, totalBio: 0, withDate: 0, withFields: 0, totalWorks: 0, volumes: 0
   }, [EI1_LITE]);
 
-  const [search, setSearch] = useState('');
+  const [search, setSearch] = useState(initialSearch || '');
   const [selectedFields, setSelectedFields] = useState(new Set());
   const [articleType, setArticleType] = useState('');
   const [centuryRange, setCenturyRange] = useState([1, 21]);
@@ -49,6 +49,11 @@ export default function Ei1View({ lang, t: tProp }) {
   const [showMobile, setShowMobile] = useState('list');
   const [onlyBio, setOnlyBio] = useState(false);
   const [mapColorBy, setMapColorBy] = useState('field');
+
+  /* Sync search from URL hash param */
+  useEffect(() => {
+    if (initialSearch) setSearch(initialSearch);
+  }, [initialSearch]);
 
   const filtered = useMemo(() => {
     if (!EI1_LITE) return [];

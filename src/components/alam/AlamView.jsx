@@ -52,7 +52,7 @@ function buildLookup(data) {
   return m;
 }
 
-export default function AlamView({ lang, t: tProp }) {
+export default function AlamView({ lang, t: tProp, initialSearch }) {
   const t = tProp || T[lang];
   const ta = t.alam || {};
 
@@ -66,7 +66,7 @@ export default function AlamView({ lang, t: tProp }) {
   const STATS = useMemo(() => ALAM_LITE ? buildStats(ALAM_LITE) : { total: 0, geocoded: 0, withDia: 0, withWorks: 0, female: 0 }, [ALAM_LITE]);
 
   /* ═══ State ═══ */
-  const [search, setSearch] = useState('');
+  const [search, setSearch] = useState(initialSearch || '');
   const [periodRange, setPeriodRange] = useState([600, 2000]);
   const [selectedRegion, setSelectedRegion] = useState('');
   const [selectedProfessions, setSelectedProfessions] = useState(new Set());
@@ -78,6 +78,11 @@ export default function AlamView({ lang, t: tProp }) {
   const [detailData, setDetailData] = useState(null);
   const [detailCache, setDetailCache] = useState({});
   const [showMobile, setShowMobile] = useState('list'); // 'list' | 'map' | 'card'
+
+  /* Sync search from URL hash param */
+  useEffect(() => {
+    if (initialSearch) setSearch(initialSearch);
+  }, [initialSearch]);
 
   /* ═══ Loading / error guard ═══ */
   if (dataLoading || !ALAM_LITE) return <SkeletonLoader variant="list" rows={10} message={ta.loading || 'al-Aʿlām verileri yükleniyor'} />;

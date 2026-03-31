@@ -174,6 +174,7 @@ export default function App() {
   const [showLanding, setShowLanding] = useState(shouldShowLanding);
   const [tab, setTab] = useState(() => { const h = parseHash(); return h ? h.tab : 'map'; });
   const [entityRoute, setEntityRoute] = useState(() => { const h = parseHash(); return h?.entityRoute || null; });
+  const [hashParams, setHashParams] = useState(() => { const h = parseHash(); return h?.params || {}; });
   const [menuOpen, setMenuOpen] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [quizOpen, setQuizOpen] = useState(false);
@@ -217,6 +218,7 @@ export default function App() {
       if (!h) return;
       if (h.tab !== tab) setTab(h.tab);
       setEntityRoute(h.entityRoute || null);
+      setHashParams(h.params || {});
     };
     window.addEventListener('hashchange', handler);
     return () => window.removeEventListener('hashchange', handler);
@@ -234,6 +236,7 @@ export default function App() {
     setTab(v);
     setMenuOpen(false);
     setEntityRoute(null);
+    setHashParams({});
     try { window.history.replaceState(null, '', '#' + v); } catch {}
   };
 
@@ -469,15 +472,15 @@ export default function App() {
          tab === 'timeline' ? <TimelineView lang={lang} t={t} /> :
          tab === 'scholars' ? <ScholarView lang={lang} t={t} /> :
          tab === 'battles' ? <BattleView lang={lang} t={t} /> :
-         tab === 'alam' ? <AlamView lang={lang} t={t} /> :
-         tab === 'yaqut' ? <YaqutView lang={lang} t={t} /> :
-         tab === 'dia' ? <DiaView lang={lang} t={t} /> :
-         tab === 'ei1' ? <Ei1View lang={lang} t={t} /> :
-         tab === 'darpislam' ? <DarpView lang={lang} t={t} isMobile={isMobile} /> :
-         tab === 'rihla' ? <RihlaView lang={lang} t={t} /> :
-         tab === 'khitat' ? <KhitatView lang={lang} t={t} /> :
-         tab === 'lestrange' ? <LeStrangeView lang={lang} t={t} /> :
-         tab === 'cityatlas' ? <CityAtlasView lang={lang} /> :         tab === 'science' ? <ScienceLayerView lang={lang} /> :
+         tab === 'alam' ? <AlamView lang={lang} t={t} initialSearch={hashParams.search} /> :
+         tab === 'yaqut' ? <YaqutView lang={lang} t={t} initialSearch={hashParams.search} /> :
+         tab === 'dia' ? <DiaView lang={lang} t={t} initialSearch={hashParams.search} /> :
+         tab === 'ei1' ? <Ei1View lang={lang} t={t} initialSearch={hashParams.search} /> :
+         tab === 'darpislam' ? <DarpView lang={lang} t={t} isMobile={isMobile} initialSearch={hashParams.search} /> :
+         tab === 'rihla' ? <RihlaView lang={lang} t={t} initialSearch={hashParams.search} /> :
+         tab === 'khitat' ? <KhitatView lang={lang} t={t} initialSearch={hashParams.search} /> :
+         tab === 'lestrange' ? <LeStrangeView lang={lang} t={t} initialSearch={hashParams.search} /> :
+         tab === 'cityatlas' ? <CityAtlasView lang={lang} initialSearch={hashParams.search} /> :         tab === 'science' ? <ScienceLayerView lang={lang} /> :
          <CausalView lang={lang} t={t} />}
         </Suspense>
       </main>

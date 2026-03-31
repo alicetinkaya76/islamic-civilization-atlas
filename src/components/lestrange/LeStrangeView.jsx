@@ -151,7 +151,7 @@ function buildStats(records) {
   };
 }
 
-function LeStrangeViewInner({ lang }) {
+function LeStrangeViewInner({ lang, initialSearch }) {
   const tr = LS_T[lang] || LS_T.tr;
   const { data: records, loading, error } = useAsyncData('/data/le_strange_eastern_caliphate.json');
 
@@ -177,15 +177,33 @@ function LeStrangeViewInner({ lang }) {
   const allProvinces = useMemo(() => {
     if (!records) return [];
     const c = {};
-    records.forEach(r => { if (r.province) c[r.province] = (c[r.province] || 0) + 1; });
-    return Object.entries(c).sort((a, b) => b[1] - a[1]).map(([k, v]) => ({ name: k, count: v }));
+    const trMap = {};
+    const arMap = {};
+    records.forEach(r => {
+      if (r.province) {
+        c[r.province] = (c[r.province] || 0) + 1;
+        if (r.province_tr && !trMap[r.province]) trMap[r.province] = r.province_tr;
+        if (r.province_ar && !arMap[r.province]) arMap[r.province] = r.province_ar;
+      }
+    });
+    return Object.entries(c).sort((a, b) => b[1] - a[1]).map(([k, v]) => ({
+      name: k, count: v, label_tr: trMap[k] || k, label_ar: arMap[k] || k
+    }));
   }, [records]);
 
   const allGeoTypes = useMemo(() => {
     if (!records) return [];
     const c = {};
-    records.forEach(r => { if (r.geo_type) c[r.geo_type] = (c[r.geo_type] || 0) + 1; });
-    return Object.entries(c).sort((a, b) => b[1] - a[1]).map(([k, v]) => ({ name: k, count: v }));
+    const trMap = {};
+    records.forEach(r => {
+      if (r.geo_type) {
+        c[r.geo_type] = (c[r.geo_type] || 0) + 1;
+        if (r.geo_type_tr && !trMap[r.geo_type]) trMap[r.geo_type] = r.geo_type_tr;
+      }
+    });
+    return Object.entries(c).sort((a, b) => b[1] - a[1]).map(([k, v]) => ({
+      name: k, count: v, label_tr: trMap[k] || k
+    }));
   }, [records]);
 
   const allChapters = useMemo(() => {
@@ -208,7 +226,7 @@ function LeStrangeViewInner({ lang }) {
   }, [records]);
 
   /* ── Filters ── */
-  const [search, setSearch] = useState('');
+  const [search, setSearch] = useState(initialSearch || '');
   const [selectedProvince, setSelectedProvince] = useState('');
   const [selectedGeoType, setSelectedGeoType] = useState('');
   const [selectedPeriod, setSelectedPeriod] = useState('');
@@ -216,6 +234,11 @@ function LeStrangeViewInner({ lang }) {
   const [selectedId, setSelectedId] = useState(null);
   const [showMobile, setShowMobile] = useState('list');
   const [sortBy, setSortBy] = useState('chapter'); // 'name' | 'chapter' | 'province'
+
+  /* Sync search from URL hash param */
+  useEffect(() => {
+    if (initialSearch) setSearch(initialSearch);
+  }, [initialSearch]);
 
   const filtered = useMemo(() => {
     let arr = records || [];

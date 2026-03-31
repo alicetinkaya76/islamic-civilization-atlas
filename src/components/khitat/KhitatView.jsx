@@ -1,4 +1,4 @@
-import { useState, useMemo, useCallback } from 'react';
+import { useState, useEffect, useMemo, useCallback } from 'react';
 import useAsyncData from '../../hooks/useAsyncData.jsx';
 import SkeletonLoader from '../shared/SkeletonLoader';
 import KhitatSidebar from './KhitatSidebar';
@@ -49,7 +49,7 @@ function getSession(cat) {
   return 0;
 }
 
-export default function KhitatView({ lang, t: tProp }) {
+export default function KhitatView({ lang, t: tProp, initialSearch }) {
   const t = tProp || T[lang];
   const tk = t.khitat || {};
 
@@ -57,7 +57,7 @@ export default function KhitatView({ lang, t: tProp }) {
   const { data: raw, loading, error } = useAsyncData('/data/maqrizi_khitat_atlas_layer.json');
 
   /* ═══ State ═══ */
-  const [search, setSearch] = useState('');
+  const [search, setSearch] = useState(initialSearch || '');
   const [selectedCats, setSelectedCats] = useState(new Set());
   const [selectedSession, setSelectedSession] = useState(0); // 0 = all
   const [selectedStatus, setSelectedStatus] = useState('');
@@ -66,6 +66,11 @@ export default function KhitatView({ lang, t: tProp }) {
   const [subView, setSubView] = useState('map'); // 'map' | 'stats'
   const [showMobile, setShowMobile] = useState('list');
   const [sortBy, setSortBy] = useState('id'); // 'id' | 'date' | 'cat' | 'name'
+
+  /* Sync search from URL hash param */
+  useEffect(() => {
+    if (initialSearch) setSearch(initialSearch);
+  }, [initialSearch]);
 
 
   const structures = raw?.structures || [];

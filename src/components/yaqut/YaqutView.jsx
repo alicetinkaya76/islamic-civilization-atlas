@@ -75,7 +75,7 @@ function buildStats(data) {
   };
 }
 
-function YaqutViewInner({ lang, t }) {
+function YaqutViewInner({ lang, t, initialSearch }) {
   const ty = t.yaqut || {};
   const { data: YAQUT_LITE, loading: dataLoading, error: dataError } = useAsyncData('/data/yaqut_lite.json');
 
@@ -86,7 +86,7 @@ function YaqutViewInner({ lang, t }) {
   const TOP_TAGS = useMemo(() => YAQUT_LITE ? extractTopTags(YAQUT_LITE) : [], [YAQUT_LITE]);
   const STATS = useMemo(() => YAQUT_LITE ? buildStats(YAQUT_LITE) : { total:0, geocoded:0, withDia:0, withPersons:0, withEvents:0 }, [YAQUT_LITE]);
 
-  const [search, setSearch] = useState('');
+  const [search, setSearch] = useState(initialSearch || '');
   const [selectedGeoTypes, setSelectedGeoTypes] = useState(new Set());
   const [selectedCountry, setSelectedCountry] = useState('');
   const [selectedLetter, setSelectedLetter] = useState('');
@@ -99,6 +99,11 @@ function YaqutViewInner({ lang, t }) {
   const [detailData, setDetailData] = useState(null);
   const [detailCache, setDetailCache] = useState({});
   const [showMobile, setShowMobile] = useState('list');
+
+  /* Sync search from URL hash param */
+  useEffect(() => {
+    if (initialSearch) setSearch(initialSearch);
+  }, [initialSearch]);
 
   const filtered = useMemo(() => {
     if (!YAQUT_LITE) return [];
@@ -145,7 +150,7 @@ function YaqutViewInner({ lang, t }) {
     if (detailCache[sid]) { setDetailData(detailCache[sid]); return; }
     try {
       const base = import.meta.env.BASE_URL || '/';
-      const resp = await fetch(`${base}yaqut_detail.json`);
+      const resp = await fetch(`${base}data/yaqut_detail.json`);
       if (resp.ok) { const all = await resp.json(); setDetailCache(all); setDetailData(all[sid] || null); }
     } catch (e) { console.warn('Failed to load yaqut detail:', e); setDetailData(null); }
   }, [detailCache]);
@@ -212,7 +217,7 @@ function YaqutViewInner({ lang, t }) {
           </div>
           <div className={`yaqut-card-area${showMobile === 'card' ? ' mobile-visible' : ''}${selectedEntry ? ' has-selection' : ''}`}>
             <YaqutIdCard lang={lang} ty={ty} entry={selectedEntry} detail={detailData}
-              onClose={() => { setSelectedId(null); setDetailData(null); }} />
+              onClose={() => { setSelectedId(null); setDetailData(null); }} onLoadDetail={loadDetail} />
           </div>
         </div>
       ) : (

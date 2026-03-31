@@ -23,7 +23,7 @@ function getMintTier(m) {
   return 3;
 }
 
-export default function DarpView({ lang = 'tr', t: parentT, isMobile = false }) {
+export default function DarpView({ lang = 'tr', t: parentT, isMobile = false, initialSearch }) {
   const [mints, setMints] = useState([]);
   const [metadata, setMetadata] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -33,7 +33,7 @@ export default function DarpView({ lang = 'tr', t: parentT, isMobile = false }) 
   const [showAnalytics, setShowAnalytics] = useState(false);
   const [qualityFilter, setQualityFilter] = useState('verified'); // 'verified' | 'all'
   const [filters, setFilters] = useState({
-    search: '',
+    search: initialSearch || '',
     region: '',
     metal: '',
     dynasty: '',
@@ -44,6 +44,11 @@ export default function DarpView({ lang = 'tr', t: parentT, isMobile = false }) 
   const [sidebarOpen, setSidebarOpen] = useState(!isMobile);
   const [mapCenter, setMapCenter] = useState([33, 45]);
   const [mapZoom, setMapZoom] = useState(4);
+
+  /* Sync search from URL hash param */
+  useEffect(() => {
+    if (initialSearch) setFilters(f => ({ ...f, search: initialSearch }));
+  }, [initialSearch]);
 
   const t = (tr, en) => lang === 'tr' ? tr : en;
 

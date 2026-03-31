@@ -6,7 +6,7 @@ import CityAtlasDetail from './CityAtlasDetail';
 import CityAtlasLegend from './CityAtlasLegend';
 import './cityAtlas.css';
 
-export default function CityAtlasView({ lang: propLang, onClose }) {
+export default function CityAtlasView({ lang: propLang, onClose, initialSearch }) {
   // ── City selection ──
   const [selectedCityId, setSelectedCityId] = useState(CITY_ATLAS_REGISTRY[0].id);
 
@@ -24,8 +24,13 @@ export default function CityAtlasView({ lang: propLang, onClose }) {
     categories: [],
     periods: [],
     status: 'all',
-    search: '',
+    search: initialSearch || '',
   });
+
+  /* Sync search from URL hash param */
+  useEffect(() => {
+    if (initialSearch) setFilters(f => ({ ...f, search: initialSearch }));
+  }, [initialSearch]);
 
   const city = CITY_ATLAS_REGISTRY.find((c) => c.id === selectedCityId);
 

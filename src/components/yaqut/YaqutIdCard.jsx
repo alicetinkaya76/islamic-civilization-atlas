@@ -17,7 +17,7 @@ const PERIOD_BADGE = {
   legendary: { tr: 'Efsanevî', en: 'Legendary', color: '#ce93d8' },
 };
 
-export default function YaqutIdCard({ lang, ty, entry, detail, onClose }) {
+export default function YaqutIdCard({ lang, ty, entry, detail, onClose, onLoadDetail }) {
   const t = T[lang];
   const [showFullText, setShowFullText] = useState(false);
   const [xrefPage, setXrefPage] = useState(0);
@@ -137,10 +137,20 @@ export default function YaqutIdCard({ lang, ty, entry, detail, onClose }) {
       {summary && (
         <div className="yaqut-idcard-desc">
           <p>{summary}</p>
-          {!detail && (summary.endsWith('…') || summary.endsWith('...')) && (
-            <span className="yaqut-desc-truncated">
-              {lang === 'tr' ? '… metin kaynakta devam eder' : '… text continues in source'}
-            </span>
+          {detail?.ft && !showFullText && (
+            <button
+              className="yaqut-desc-truncated yaqut-desc-expand-btn"
+              onClick={() => {
+                setShowFullText(true);
+                setTimeout(() => {
+                  const el = document.querySelector('.yaqut-fulltext');
+                  if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }, 300);
+              }}
+              title={lang === 'tr' ? 'Tam metni göster' : 'Show full text'}
+            >
+              {lang === 'tr' ? '📜 tam metni göster →' : '📜 show full text →'}
+            </button>
           )}
         </div>
       )}
