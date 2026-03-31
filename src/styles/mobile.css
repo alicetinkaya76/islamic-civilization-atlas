@@ -1158,3 +1158,40 @@
     pointer-events: none !important;
   }
 }
+
+/* ═══ Battle filters mobile fix (v7.5) ═══ */
+@media (max-width: 768px) {
+  .battle-filters {
+    position: sticky;
+    top: 0;
+    z-index: 5;
+    background: var(--bg2);
+    padding: 6px 8px;
+    gap: 4px;
+  }
+  .battle-filter-row {
+    gap: 3px;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .battle-filter-row::-webkit-scrollbar { display: none; }
+  .type-pill, .outcome-pill {
+    font-size: 10px;
+    padding: 2px 6px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .battle-outcome {
+    font-size: 14px;
+    min-width: 18px;
+    text-align: center;
+  }
+  .battle-year-filter {
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+  .battle-year-filter label { font-size: 10px; }
+  .battle-year-filter input[type="range"] { flex: 1; min-width: 80px; }
+}
