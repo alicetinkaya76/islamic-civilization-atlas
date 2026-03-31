@@ -10,9 +10,9 @@ function fmtDate(h, m, place) {
 }
 
 const TYPE_LABELS = {
-  biography: '👤 Biography', geography: '🌍 Geography',
-  concept: '💡 Concept', dynasty: '👑 Dynasty',
-  cross_reference: '🔗 Cross Reference', unknown: '📄 Entry',
+  en: { biography: '👤 Biography', geography: '🌍 Geography', concept: '💡 Concept', dynasty: '👑 Dynasty', cross_reference: '🔗 Cross Reference', unknown: '📄 Entry' },
+  tr: { biography: '👤 Biyografi', geography: '🌍 Coğrafya', concept: '💡 Kavram', dynasty: '👑 Hanedan', cross_reference: '🔗 Çapraz Ref.', unknown: '📄 Madde' },
+  ar: { biography: '👤 سيرة', geography: '🌍 جغرافيا', concept: '💡 مفهوم', dynasty: '👑 أسرة حاكمة', cross_reference: '🔗 إحالة', unknown: '📄 مدخل' },
 };
 
 export default function Ei1IdCard({ lang, te, bio, works, relations, lookup, onClose, onNavigate }) {
@@ -63,14 +63,14 @@ export default function Ei1IdCard({ lang, te, bio, works, relations, lookup, onC
 
       {/* Header with article type badge */}
       <div className="ei1-idcard-header">
-        <div className="ei1-idcard-type-badge">{TYPE_LABELS[bio.at] || TYPE_LABELS.unknown}</div>
+        <div className="ei1-idcard-type-badge">{(TYPE_LABELS[lang] || TYPE_LABELS.en)[bio.at] || (TYPE_LABELS[lang] || TYPE_LABELS.en).unknown}</div>
         <h3 className="ei1-idcard-title">{bio.t}</h3>
         {bio.fn && <div className="ei1-idcard-fullname">{bio.fn}</div>}
         {bio.vol && <div className="ei1-idcard-volume">Vol. {bio.vol}</div>}
       </div>
 
       {/* Description */}
-      {bio.ds && <p className="ei1-idcard-desc">{bio.ds}</p>}
+      {bio.ds && <p className="ei1-idcard-desc">{lang === 'tr' && bio.dt ? bio.dt : lang === 'ar' && bio.da ? bio.da : bio.ds}</p>}
 
       {/* Dates */}
       {(bio.bh || bio.bc || bio.dh || bio.dc) && (
@@ -96,8 +96,10 @@ export default function Ei1IdCard({ lang, te, bio, works, relations, lookup, onC
         <div className="ei1-idcard-section">
           <div className="ei1-idcard-label">{te.fieldsLabel || 'Fields'}</div>
           <div className="ei1-idcard-badges">
-            {bio.fl.map(f => (
-              <span key={f} className="ei1-badge" style={{ background: EI1_FIELD_COLORS[f] || '#546e7a' }}>{f}</span>
+            {bio.fl.map((f, idx) => (
+              <span key={f} className="ei1-badge" style={{ background: EI1_FIELD_COLORS[f] || '#546e7a' }}>
+                {lang === 'tr' && bio.ft?.[idx] ? bio.ft[idx] : lang === 'ar' && bio.fa?.[idx] ? bio.fa[idx] : f}
+              </span>
             ))}
           </div>
         </div>
