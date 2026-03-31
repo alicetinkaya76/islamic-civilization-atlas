@@ -1,0 +1,341 @@
+/* ═══════════════════════════════════════════════════════════════════
+   islamicatlas.org — Light Theme Overrides for ALL Resource Views
+   Import AFTER each view CSS (or append to bottom of each file).
+   Uses [data-theme="light"] scoping.
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* ─────────────────────────────────────────
+   §1  DİA View  (worst offender — fully hardcoded dark)
+   ───────────────────────────────────────── */
+[data-theme="light"] .dia-view { background: var(--bg); }
+[data-theme="light"] .dia-header { background: #e8f0ed; border-bottom-color: rgba(26,107,90,0.15); }
+[data-theme="light"] .dia-title { color: #1a5a4a; }
+[data-theme="light"] .dia-subtitle,
+[data-theme="light"] .dia-header-stats { color: #4a7a6a; }
+[data-theme="light"] .dia-stat strong { color: #1a5a4a; }
+[data-theme="light"] .dia-view-btn { border-color: rgba(26,107,90,0.2); color: #4a7a6a; }
+[data-theme="light"] .dia-view-btn.active,
+[data-theme="light"] .dia-view-btn:hover { background: #1a6b5a; color: #fff; border-color: #1a6b5a; }
+
+[data-theme="light"] .dia-mobile-toggle { background: #e8f0ed; border-bottom-color: rgba(26,107,90,0.15); }
+[data-theme="light"] .dia-mobile-toggle button { color: #4a7a6a; }
+[data-theme="light"] .dia-mobile-toggle button.active { background: #1a6b5a; color: #fff; }
+
+[data-theme="light"] .dia-sidebar { background: var(--card); border-right-color: rgba(26,107,90,0.12); }
+[data-theme="light"] .dia-search-input { background: var(--input-bg); border-color: rgba(26,107,90,0.2); color: var(--input-text); }
+[data-theme="light"] .dia-search-input::placeholder { color: rgba(74,122,106,0.5); }
+[data-theme="light"] .dia-search-input:focus { border-color: #1a6b5a; }
+[data-theme="light"] .dia-search-clear { color: #4a7a6a; }
+[data-theme="light"] .dia-filters-toggle { color: #4a7a6a; }
+[data-theme="light"] .dia-filter-label { color: #5a8a7a; }
+[data-theme="light"] .dia-filters { border-bottom-color: rgba(26,107,90,0.1); }
+[data-theme="light"] .dia-chip { border-color: rgba(26,107,90,0.2); color: #4a7a6a; }
+[data-theme="light"] .dia-select { background: var(--input-bg); border-color: rgba(26,107,90,0.2); color: var(--input-text); }
+[data-theme="light"] .dia-select-sm { background: var(--input-bg); border-color: rgba(26,107,90,0.2); color: var(--input-text); }
+[data-theme="light"] .dia-radio { border-color: rgba(26,107,90,0.18); color: #4a7a6a; }
+[data-theme="light"] .dia-radio.active { background: #1a6b5a; color: #fff; border-color: #1a6b5a; }
+[data-theme="light"] .dia-clear-btn { background: #fde8e6; color: #c62828; }
+
+[data-theme="light"] .dia-list-count { color: #5a8a7a; border-bottom-color: rgba(26,107,90,0.1); }
+[data-theme="light"] .dia-list-item { border-bottom-color: rgba(26,107,90,0.06); }
+[data-theme="light"] .dia-list-item:hover { background: rgba(26,107,90,0.06); }
+[data-theme="light"] .dia-list-item.selected { background: rgba(26,107,90,0.12); border-left-color: #1a6b5a; }
+[data-theme="light"] .dia-list-heading { color: #2a4a3a; }
+[data-theme="light"] .dia-list-meta { color: #5a8a7a; }
+[data-theme="light"] .dia-list-madhab { color: #3a7a6a; }
+[data-theme="light"] .dia-list-degree { color: #8a6a20; }
+
+[data-theme="light"] .dia-card-area { background: var(--card); border-left-color: rgba(26,107,90,0.12); }
+[data-theme="light"] .dia-idcard-empty { color: #7a9a8a; }
+[data-theme="light"] .dia-idcard-close { color: #7a9a8a; }
+[data-theme="light"] .dia-idcard-title { color: #1a5a4a; }
+[data-theme="light"] .dia-idcard-arabic { color: #3a5a4a; }
+[data-theme="light"] .dia-idcard-fullname { color: #5a8a7a; }
+[data-theme="light"] .dia-idcard-desc { color: #3a6a5a; border-bottom-color: rgba(26,107,90,0.1); }
+[data-theme="light"] .dia-idcard-label { color: #5a8a7a; }
+[data-theme="light"] .dia-idcard-row { color: #3a5a4a; }
+[data-theme="light"] .dia-idcard-text { color: #3a5a4a; }
+
+[data-theme="light"] .dia-badge-madhab { background: #1a6b5a; }
+[data-theme="light"] .dia-badge-aqidah { background: #546e7a; }
+
+[data-theme="light"] .dia-importance-meter { background: #d0e0da; }
+[data-theme="light"] .dia-importance-fill { background: linear-gradient(90deg, #1a6b5a, #8a6a20); }
+[data-theme="light"] .dia-importance-bar { background: linear-gradient(90deg, #1a6b5a, #8a6a20); }
+
+[data-theme="light"] .dia-travel-place { background: #dce8e4; color: #2a5a4a; }
+[data-theme="light"] .dia-travel-step { color: #3a6a5a; }
+[data-theme="light"] .dia-travel-arrow { color: #7a9a8a; }
+
+[data-theme="light"] .dia-work-item { color: #3a6a5a; border-bottom-color: rgba(26,107,90,0.06); }
+[data-theme="light"] .dia-work-more { color: #7a9a8a; }
+
+[data-theme="light"] .dia-rel-teacher { background: #dce8f4; color: #1a4a6b; }
+[data-theme="light"] .dia-rel-student { background: #dce8dc; color: #1a6b3a; }
+[data-theme="light"] .dia-rel-contemp { background: #f0e8d4; color: #6a5a2a; }
+
+[data-theme="light"] .dia-idcard-actions { border-top-color: rgba(26,107,90,0.1); }
+[data-theme="light"] .dia-btn-primary { background: #1a6b5a; color: #fff; }
+[data-theme="light"] .dia-btn-primary:hover { background: #228b6b; }
+[data-theme="light"] .dia-btn-secondary { background: #e0e8e4; color: #3a6a5a; }
+[data-theme="light"] .dia-btn-secondary:hover { background: #d0dcd6; }
+[data-theme="light"] .dia-btn-xref { background: #f5eed8; color: #7a5a10; border-color: rgba(138,106,32,0.2); }
+[data-theme="light"] .dia-btn-xref:hover { background: #ece4c8; }
+
+[data-theme="light"] .dia-network-controls { background: #e8f0ed; border-bottom-color: rgba(26,107,90,0.12); }
+[data-theme="light"] .dia-network-control-group { color: #4a7a6a; }
+[data-theme="light"] .dia-network-count { color: #7a9a8a; }
+[data-theme="light"] .dia-network-check { color: #4a7a6a; }
+[data-theme="light"] .dia-network-canvas-wrap { background: #f2f6f4; }
+[data-theme="light"] .dia-network-tooltip { background: #fff; color: #2a4a3a; border-color: rgba(26,107,90,0.15); box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+[data-theme="light"] .dia-network-legend { background: #e8f0ed; border-top-color: rgba(26,107,90,0.12); color: #4a7a6a; }
+[data-theme="light"] .dia-network-timeline-axis .dia-timeline-label { color: #7a9a8a; }
+
+[data-theme="light"] .dia-chart-card { background: var(--card); border-color: rgba(26,107,90,0.1); }
+[data-theme="light"] .dia-chart-title { color: #1a5a4a; }
+
+[data-theme="light"] .dia-stats-title { color: #1a5a4a; }
+[data-theme="light"] .dia-stat-box { background: #e8f0ed; }
+[data-theme="light"] .dia-stat-num { color: #1a5a4a; }
+[data-theme="light"] .dia-stat-label { color: #5a8a7a; }
+[data-theme="light"] .dia-stats-filtered { color: #4a7a6a; border-bottom-color: rgba(26,107,90,0.1); }
+[data-theme="light"] .dia-stats-subtitle { color: #4a7a6a; }
+[data-theme="light"] .dia-stats-bar-label { color: #3a5a4a; }
+[data-theme="light"] .dia-stats-bar { background: #d0e0da; }
+[data-theme="light"] .dia-stats-bar-val { color: #5a8a7a; }
+[data-theme="light"] .dia-stats-highlight { color: #2a4a3a; }
+
+[data-theme="light"] .dia-source { color: #7a9a8a; border-top-color: rgba(26,107,90,0.1); }
+
+[data-theme="light"] .dia-map-leaflet { background: #e8f0ed; }
+[data-theme="light"] .dia-map-leaflet .leaflet-control-zoom a { background: #fff; color: #1a5a4a; border-color: rgba(26,107,90,0.2); }
+[data-theme="light"] .dia-map-leaflet .leaflet-control-zoom a:hover { background: #1a6b5a; color: #fff; }
+[data-theme="light"] .dia-map-info { background: rgba(255,255,255,0.9); color: #3a6a5a; border-color: rgba(26,107,90,0.15); }
+[data-theme="light"] .dia-map-tooltip { background: #fff !important; color: #2a4a3a !important; border-color: rgba(26,107,90,0.15) !important; box-shadow: 0 2px 8px rgba(0,0,0,0.08) !important; }
+[data-theme="light"] .dia-map-tooltip::before { border-top-color: rgba(26,107,90,0.15) !important; }
+
+
+/* ─────────────────────────────────────────
+   §2  EI-1 View  (partially done — extend)
+   ───────────────────────────────────────── */
+[data-theme="light"] .ei1-view { background: var(--bg); }
+/* Existing map overrides kept in ei1.css */
+
+/* Network controls */
+[data-theme="light"] .ei1-network-controls { background: #f5ede0; border-bottom-color: rgba(140,90,40,0.12); }
+[data-theme="light"] .ei1-network-control-group { color: #6a5a3a; }
+[data-theme="light"] .ei1-network-count { color: #8a7a5a; }
+
+
+/* ─────────────────────────────────────────
+   §3  Yaqut View  (containers use vars — accent fix)
+   ───────────────────────────────────────── */
+[data-theme="light"] .yaqut-title { color: #0e5546; }
+[data-theme="light"] .yaqut-stat strong { color: #0e5546; }
+[data-theme="light"] .yaqut-search-input:focus { border-color: #1a6b5a; }
+[data-theme="light"] .yaqut-filter-count { color: #0e5546; }
+[data-theme="light"] .yaqut-letter-chip:hover { border-color: #1a6b5a; color: #1a6b5a; }
+[data-theme="light"] .yaqut-letter-chip.active { background: rgba(26,107,90,0.1); border-color: #1a6b5a; color: #0e5546; }
+[data-theme="light"] .yaqut-period-btn:hover { border-color: #1a6b5a; }
+[data-theme="light"] .yaqut-period-btn.active { background: rgba(26,107,90,0.1); border-color: #1a6b5a; color: #0e5546; }
+[data-theme="light"] .yaqut-tag-chip:hover { border-color: #1a6b5a; }
+[data-theme="light"] .yaqut-tag-chip.active { background: rgba(26,107,90,0.1); border-color: #1a6b5a; color: #0e5546; }
+[data-theme="light"] .yaqut-list-item.selected { background: rgba(26,107,90,0.08); border-left-color: #1a6b5a; }
+[data-theme="light"] .yaqut-list-type { color: #0e5546; }
+[data-theme="light"] .yaqut-no-results { color: #c62828; }
+[data-theme="light"] .yaqut-heat-toggle.active { background: rgba(26,107,90,0.12); border-color: #1a6b5a; }
+
+/* Yaqut stats/analytics backgrounds */
+[data-theme="light"] .yaqut-sp-bar-fill { background: #1a6b5a; }
+[data-theme="light"] .yaqut-sp-bar-fill.yaqut-sp-bar-teal { background: #4db6ac; }
+
+/* Yaqut analytics dark panels */
+[data-theme="light"] .yaqut-analytics-card,
+[data-theme="light"] .yaqut-chart-card { background: var(--card); border-color: var(--border); }
+
+
+/* ─────────────────────────────────────────
+   §4  el-A'lâm View  (containers use vars — accent fix)
+   ───────────────────────────────────────── */
+[data-theme="light"] .alam-title { color: var(--gold); }
+[data-theme="light"] .alam-work-type.printed { color: #2e7d32; }
+[data-theme="light"] .alam-work-type.manuscript { color: #a67c00; }
+
+/* Alam analytics dark panels */
+[data-theme="light"] .alam-analytics-card,
+[data-theme="light"] .alam-chart-card { background: var(--card); border-color: var(--border); }
+
+/* CrossRef badge */
+[data-theme="light"] .alam-badge-dia:hover { background: rgba(158,120,38,0.12); }
+
+
+/* ─────────────────────────────────────────
+   §5  Rihla View  (accent / map controls)
+   ───────────────────────────────────────── */
+[data-theme="light"] .rihla-title { color: #8a5a10; }
+[data-theme="light"] .rihla-stat strong { color: #8a5a10; }
+[data-theme="light"] .rihla-search-input:focus { border-color: #c4893a; }
+[data-theme="light"] .rihla-filter-count { color: #8a5a10; }
+[data-theme="light"] .rihla-voyage-chip.active { background: rgba(196,137,58,0.12); border-color: #c4893a; color: #8a5a10; }
+[data-theme="light"] .rihla-topic-chip.active { background: rgba(196,137,58,0.12); border-color: #c4893a; color: #8a5a10; }
+[data-theme="light"] .rihla-list-item.selected { background: rgba(196,137,58,0.1); border-left-color: #c4893a; }
+[data-theme="light"] .rihla-no-results { color: #c62828; }
+
+/* Rihla map controls */
+[data-theme="light"] .rihla-map-ctrl { color: var(--text2); }
+[data-theme="light"] .rihla-map-ctrl.active { background: rgba(196,137,58,0.15); color: #8a5a10; }
+
+/* Rihla ID card / popup dark panels */
+[data-theme="light"] .rihla-idcard-section-label { color: #8a5a10; }
+[data-theme="light"] .rihla-voyage-badge { color: #8a5a10; }
+
+
+/* ─────────────────────────────────────────
+   §6  Khitat View  (mostly OK — accent fix)
+   ───────────────────────────────────────── */
+[data-theme="light"] .khitat-title { color: #7a5530; }
+[data-theme="light"] .khitat-stat strong { color: #7a5530; }
+[data-theme="light"] .khitat-search-input:focus { border-color: #D4A574; }
+[data-theme="light"] .khitat-filter-count { color: #7a5530; }
+[data-theme="light"] .khitat-list-item.selected { background: rgba(212,165,116,0.1); border-left-color: #D4A574; }
+[data-theme="light"] .khitat-range { accent-color: #D4A574; }
+
+/* Khitat stat panel */
+[data-theme="light"] .khitat-stat-num { color: #7a5530; }
+[data-theme="light"] .khitat-section-label { color: #7a5530; }
+
+/* Confidence badges readability */
+[data-theme="light"] .khitat-conf-badge.high { background: rgba(76,175,80,0.1); color: #2e7d32; }
+[data-theme="light"] .khitat-conf-badge.approximate { background: rgba(255,152,0,0.1); color: #e65100; }
+[data-theme="light"] .khitat-conf-badge.low { background: rgba(239,83,80,0.1); color: #c62828; }
+[data-theme="light"] .khitat-status-badge.extant { color: #2e7d32; }
+[data-theme="light"] .khitat-status-badge.demolished { color: #c62828; }
+[data-theme="light"] .khitat-status-badge.unknown { color: #546e7a; }
+
+
+/* ─────────────────────────────────────────
+   §7  Le Strange View  (map overlays → light)
+   ───────────────────────────────────────── */
+[data-theme="light"] .lestrange-title { color: #4a7030; }
+[data-theme="light"] .lestrange-stat strong { color: #4a7030; }
+
+/* Map overlays: dark bg → light bg */
+[data-theme="light"] .lestrange-legend {
+  background: rgba(var(--bg-rgb), 0.92) !important;
+  border-color: var(--border) !important;
+}
+[data-theme="light"] .lestrange-legend-toggle {
+  background: rgba(var(--card-rgb), 0.95);
+  color: var(--text);
+}
+[data-theme="light"] .lestrange-legend-toggle:hover {
+  background: rgba(var(--card-rgb), 0.98);
+}
+[data-theme="light"] .lestrange-map-tooltip,
+[data-theme="light"] .lestrange-map-info-box {
+  background: rgba(var(--card-rgb), 0.95) !important;
+  color: var(--text) !important;
+  border-color: var(--border) !important;
+}
+
+/* Le Strange list & card */
+[data-theme="light"] .ls-list-item.selected { background: rgba(109,158,74,0.08); }
+[data-theme="light"] .ls-list-item:hover { background: rgba(109,158,74,0.04); }
+[data-theme="light"] .ls-card-close:hover { color: #c62828; background: rgba(198,40,40,0.06); }
+[data-theme="light"] .ls-card-tag.feature { border-color: rgba(74,112,48,0.25); color: #4a7030; }
+[data-theme="light"] .ls-card-tag.product { border-color: rgba(138,90,16,0.25); color: #8a5a10; }
+
+/* Le Strange search/filter */
+[data-theme="light"] .ls-filter-select:focus { border-color: #6d9e4a; }
+[data-theme="light"] .ls-count strong { color: #4a7030; }
+[data-theme="light"] .ls-clear-btn:hover { color: #c62828; background: rgba(198,40,40,0.06); }
+
+
+/* ─────────────────────────────────────────
+   §8  City Atlas View  (uses non-standard vars → map to theme vars)
+   ───────────────────────────────────────── */
+[data-theme="light"] .city-atlas { background: var(--bg); color: var(--text); }
+[data-theme="light"] .ca-header {
+  background: rgba(var(--card-rgb), 0.95);
+  border-bottom-color: rgba(var(--gold-rgb), 0.12);
+}
+[data-theme="light"] .ca-header h1 { color: var(--gold); }
+[data-theme="light"] .ca-city-tabs button { color: var(--text2); }
+[data-theme="light"] .ca-city-tabs button.active { color: var(--gold); border-bottom-color: var(--gold); }
+
+[data-theme="light"] .ca-sidebar {
+  background: rgba(var(--card-rgb), 0.98);
+  border-right-color: var(--border);
+}
+[data-theme="light"] .ca-sidebar::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.1); }
+[data-theme="light"] .ca-search input { background: var(--input-bg); border-color: var(--border); color: var(--input-text); }
+[data-theme="light"] .ca-search input:focus { border-color: var(--gold); }
+[data-theme="light"] .ca-search-clear { color: var(--text2); }
+[data-theme="light"] .ca-search-clear:hover { color: var(--gold); }
+[data-theme="light"] .ca-filter-group label { color: var(--text2); }
+
+/* Chips */
+[data-theme="light"] .ca-period-chip,
+[data-theme="light"] .ca-cat-chip {
+  background: transparent;
+  border-color: var(--border);
+  color: var(--text2);
+}
+[data-theme="light"] .ca-period-chip.active,
+[data-theme="light"] .ca-cat-chip.active {
+  color: #fff;
+}
+
+/* List items */
+[data-theme="light"] .ca-list-item { background: rgba(0,0,0,0.02); }
+[data-theme="light"] .ca-list-item:hover { background: rgba(var(--gold-rgb), 0.04); }
+[data-theme="light"] .ca-list-item.active { background: rgba(var(--gold-rgb), 0.08); }
+[data-theme="light"] .ca-list-count { color: var(--text2); }
+[data-theme="light"] .ca-item-name { color: var(--text); }
+[data-theme="light"] .ca-item-meta { color: var(--text2); }
+
+/* Detail panel */
+[data-theme="light"] .ca-detail { background: var(--card); color: var(--text); }
+[data-theme="light"] .ca-detail-header h2 { color: var(--text); }
+[data-theme="light"] .ca-close { color: var(--text2); }
+[data-theme="light"] .ca-close:hover { color: var(--gold); }
+[data-theme="light"] .ca-detail-section h3 { color: var(--gold); }
+[data-theme="light"] .ca-badge { color: #fff; }
+
+/* Status badges */
+[data-theme="light"] .ca-status-mevcut { background: rgba(76,175,80,0.12); color: #2e7d32; }
+[data-theme="light"] .ca-status-yikilmis { background: rgba(239,83,80,0.12); color: #c62828; }
+[data-theme="light"] .ca-status-harap { background: rgba(255,152,0,0.12); color: #e65100; }
+[data-theme="light"] .ca-status-belirsiz { background: rgba(158,158,158,0.12); color: #616161; }
+
+
+/* ─────────────────────────────────────────
+   §9  DarpIslam View  (header dark, body mixed)
+   ───────────────────────────────────────── */
+[data-theme="light"] .darp-header { background: #3a3a5e; }
+/* Keep header dark as intentional contrast — just fix body */
+[data-theme="light"] .darp-sidebar { background: var(--card); border-right-color: var(--border); }
+[data-theme="light"] .darp-search-input { background: var(--input-bg); border-color: var(--border); color: var(--input-text); }
+[data-theme="light"] .darp-search-input:focus { border-color: #d4a574; }
+[data-theme="light"] .darp-list-item { border-bottom-color: var(--border); }
+[data-theme="light"] .darp-list-item:hover { background: rgba(212,165,116,0.06); }
+[data-theme="light"] .darp-list-item.selected { background: rgba(212,165,116,0.12); }
+
+/* DarpIslam analytics dark panels */
+[data-theme="light"] .darp-analytics-panel,
+[data-theme="light"] .darp-chart-card { background: var(--card); border-color: var(--border); }
+
+
+/* ─────────────────────────────────────────
+   §10  Science Layer View  (if needed)
+   ───────────────────────────────────────── */
+[data-theme="light"] .science-layer-view { background: var(--bg); color: var(--text); }
+
+
+/* ─────────────────────────────────────────
+   §11  Shared — Subcategory badge on light
+   ───────────────────────────────────────── */
+[data-theme="light"] .ca-badge[style*="rgba(255,255,255,0.1)"] {
+  background: rgba(0,0,0,0.06) !important;
+  color: var(--text) !important;
+}

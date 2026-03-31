@@ -143,3 +143,54 @@
   .footer-inner { flex-direction: column; align-items: flex-start; gap: 8px; padding: 10px 14px; }
   .footer-center { width: 100%; justify-content: center; }
 }
+/* ═══ Footer toggle additions ═══ */
+
+/* Toggle bar */
+.footer-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 3px 0;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: var(--cream2);
+  transition: color 0.2s;
+}
+.footer-toggle:hover { color: var(--gold); }
+
+.footer-toggle-line {
+  flex: 1;
+  max-width: 60px;
+  height: 1px;
+  background: var(--border);
+}
+.footer-toggle-icon {
+  font-size: 8px;
+  line-height: 1;
+  opacity: 0.6;
+  transition: opacity 0.2s;
+}
+.footer-toggle:hover .footer-toggle-icon { opacity: 1; }
+
+/* Collapsed state */
+.site-footer.footer-collapsed {
+  padding: 0;
+}
+.site-footer.footer-collapsed .footer-toggle {
+  padding: 4px 0;
+}
+
+/* Smooth expand/collapse */
+.site-footer {
+  transition: padding 0.25s ease;
+}
+.footer-inner {
+  animation: footerSlideIn 0.2s ease;
+}
+@keyframes footerSlideIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}

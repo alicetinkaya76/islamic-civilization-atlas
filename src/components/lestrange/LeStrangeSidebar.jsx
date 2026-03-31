@@ -10,6 +10,27 @@ const GEO_ICONS = {
   mine: '⛏️', swamp: '🌿',
 };
 
+
+/* ═══ Period tag translations ═══ */
+const PERIOD_TR = {
+  ABBASID: 'Abbâsî', BUYID: 'Büveyhî', BYZANTINE: 'Bizans',
+  CRUSADER: 'Haçlı', GHAZNAVID: 'Gazneli', GHURID: 'Gûrî',
+  KHWARAZMSHAH: 'Hârezmşâh', MONGOL: 'Moğol', OTTOMAN: 'Osmanlı',
+  PRE_ISLAMIC: 'İslam Öncesi', SAMANID: 'Sâmânî', SELJUK: 'Selçuklu',
+  SAFAVID: 'Safevî', TIMURID: 'Timurlu', UMAYYAD: 'Emevî',
+  FATIMID: 'Fâtımî', AYYUBID: 'Eyyûbî', MAMLUK: 'Memlük',
+  ILKHANID: 'İlhanlı',
+};
+const PERIOD_AR = {
+  ABBASID: 'العبّاسي', BUYID: 'البويهي', BYZANTINE: 'البيزنطي',
+  CRUSADER: 'الصليبي', GHAZNAVID: 'الغزنوي', GHURID: 'الغوري',
+  KHWARAZMSHAH: 'الخوارزمشاهي', MONGOL: 'المغولي', OTTOMAN: 'العثماني',
+  PRE_ISLAMIC: 'قبل الإسلام', SAMANID: 'الساماني', SELJUK: 'السلجوقي',
+  SAFAVID: 'الصفوي', TIMURID: 'التيموري', UMAYYAD: 'الأموي',
+  FATIMID: 'الفاطمي', AYYUBID: 'الأيوبي', MAMLUK: 'المملوكي',
+  ILKHANID: 'الإيلخاني',
+};
+
 /* ═══ Province color dots ═══ */
 const PROVINCE_COLORS = {
   "ʿIrāq": '#e6194b', "Khurāsān": '#3cb44b', "al-Jazīra": '#ffe119',
@@ -107,7 +128,7 @@ export default function LeStrangeSidebar({
           className="ls-filter-select">
           <option value="">{tr.allProvinces} ({allProvinces.length})</option>
           {allProvinces.map(p => (
-            <option key={p.name} value={p.name}>{p.name} ({p.count})</option>
+            <option key={p.name} value={p.name}>{lang === 'ar' ? (p.label_ar || p.name) : lang === 'tr' ? (p.label_tr || p.name) : p.name} ({p.count})</option>
           ))}
         </select>
 
@@ -115,7 +136,7 @@ export default function LeStrangeSidebar({
           className="ls-filter-select">
           <option value="">{tr.allTypes} ({allGeoTypes.length})</option>
           {allGeoTypes.map(g => (
-            <option key={g.name} value={g.name}>{GEO_ICONS[g.name] || '📍'} {g.name} ({g.count})</option>
+            <option key={g.name} value={g.name}>{GEO_ICONS[g.name] || '📍'} {lang === 'tr' ? (g.label_tr || g.name) : g.name} ({g.count})</option>
           ))}
         </select>
 
@@ -123,7 +144,7 @@ export default function LeStrangeSidebar({
           className="ls-filter-select">
           <option value={0}>{tr.allChapters} ({allChapters.length})</option>
           {allChapters.map(c => (
-            <option key={c.num} value={c.num}>Ch. {c.num}: {c.title} ({c.count})</option>
+            <option key={c.num} value={c.num}>{lang === 'tr' ? 'Bl.' : lang === 'ar' ? 'ف.' : 'Ch.'} {c.num}: {c.title} ({c.count})</option>
           ))}
         </select>
 
@@ -131,7 +152,7 @@ export default function LeStrangeSidebar({
           className="ls-filter-select">
           <option value="">{tr.allPeriods} ({allPeriods.length})</option>
           {allPeriods.map(p => (
-            <option key={p.name} value={p.name}>{p.name} ({p.count})</option>
+            <option key={p.name} value={p.name}>{lang === 'ar' ? (p.label_ar || p.name) : lang === 'tr' ? (p.label_tr || p.name) : p.name} ({p.count})</option>
           ))}
         </select>
       </div>

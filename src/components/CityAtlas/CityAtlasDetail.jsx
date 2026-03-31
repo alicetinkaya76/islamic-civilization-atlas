@@ -48,7 +48,7 @@ export default function CityAtlasDetail({ record: r, city, lang, getName, getCat
           <div className="ca-detail-badges">
             <span className="ca-badge" style={{ background: catCfg.color }}>{getCat(r)}</span>
             {r.subcategory && r.subcategory !== r.category && (
-              <span className="ca-badge" style={{ background: 'rgba(255,255,255,0.1)' }}>
+              <span className="ca-badge" style={{ background: 'var(--bg3)', color: 'var(--text2)' }}>
                 {r.subcategory}
               </span>
             )}
@@ -79,11 +79,11 @@ export default function CityAtlasDetail({ record: r, city, lang, getName, getCat
             )}
             {r.dates.restoration_dates?.length > 0 && (
               <div style={{ marginTop: 4 }}>
-                <p style={{ fontSize: '0.72rem', color: '#999' }}>
+                <p style={{ fontSize: '0.72rem', color: 'var(--text2)' }}>
                   {t('Onarımlar', 'Restorations', 'الترميمات')}:
                 </p>
                 {r.dates.restoration_dates.map((rd, i) => (
-                  <p key={i} style={{ fontSize: '0.72rem', color: '#888', margin: '1px 0' }}>
+                  <p key={i} style={{ fontSize: '0.72rem', color: 'var(--text2)', margin: '1px 0' }}>
                     • {rd.hijri && `H.${rd.hijri}`} {rd.miladi && `/ ${rd.miladi}`} {rd.note && `— ${rd.note}`}
                   </p>
                 ))}
@@ -126,12 +126,12 @@ export default function CityAtlasDetail({ record: r, city, lang, getName, getCat
             )}
             {r.location.description_tr && <p>{(lang === "en" ? r.location.description_en : lang === "ar" ? r.location.description_ar : null) || r.location.description_tr}</p>}
             {r.location.nearby_landmarks?.length > 0 && (
-              <p style={{ fontSize: '0.72rem', color: '#888' }}>
+              <p style={{ fontSize: '0.72rem', color: 'var(--text2)' }}>
                 {t('Yakın', 'Near', 'بالقرب من')}: {r.location.nearby_landmarks.join(', ')}
               </p>
             )}
             {r.location.lat != null && (
-              <p style={{ fontSize: '0.65rem', color: '#555' }}>
+              <p style={{ fontSize: '0.65rem', color: 'var(--cream2)' }}>
                 📍 {r.location.lat?.toFixed(4)}, {r.location.lng?.toFixed(4)}
                 {r.location.geocoding_confidence && ` (${r.location.geocoding_confidence})`}
               </p>
@@ -187,7 +187,7 @@ export default function CityAtlasDetail({ record: r, city, lang, getName, getCat
             <h3>{t('Vakfiye', 'Endowment Deed', 'الوقفية')}</h3>
             {r.vakfiye.date_hijri && <p>H. {r.vakfiye.date_hijri}</p>}
             {r.vakfiye.archive_ref && (
-              <p style={{ fontSize: '0.75rem', color: '#999' }}>📁 {r.vakfiye.archive_ref}</p>
+              <p style={{ fontSize: '0.75rem', color: 'var(--text2)' }}>📁 {r.vakfiye.archive_ref}</p>
             )}
             {r.vakfiye.summary && <p>{mlNested(r.vakfiye, "summary") || r.vakfiye.summary}</p>}
           </section>
@@ -207,12 +207,16 @@ export default function CityAtlasDetail({ record: r, city, lang, getName, getCat
         )}
 
         {/* ── Alternatif İsimler ── */}
-        {r.alternative_names?.length > 0 && (
-          <section className="ca-detail-section">
-            <h3>{t('Diğer Adlar', 'Alternative Names', 'الأسماء البديلة')}</h3>
-            <p style={{ fontSize: '0.8rem' }}>{r.alternative_names.join(' · ')}</p>
-          </section>
-        )}
+        {(() => {
+          const altNames = r.alternative_names || r.aliases || r.other_names || r.diger_adlar || [];
+          const names = Array.isArray(altNames) ? altNames : (typeof altNames === 'string' ? altNames.split(/[,;·]/).map(s => s.trim()).filter(Boolean) : []);
+          return names.length > 0 ? (
+            <section className="ca-detail-section">
+              <h3>{t('Diğer Adlar', 'Alternative Names', 'الأسماء البديلة')}</h3>
+              <p style={{ fontSize: '0.8rem' }}>{names.join(' · ')}</p>
+            </section>
+          ) : null;
+        })()}
 
         {/* ── Makrîzî Metni (Cairo) ── */}
         {r.source_excerpt_ar && (
@@ -234,7 +238,7 @@ export default function CityAtlasDetail({ record: r, city, lang, getName, getCat
           <section className="ca-detail-section">
             <h3>{t('Kaynaklar', 'References', 'المراجع')}</h3>
             {r.cross_references.map((ref, i) => (
-              <p key={i} style={{ fontSize: '0.72rem', color: '#888' }}>
+              <p key={i} style={{ fontSize: '0.72rem', color: 'var(--text2)' }}>
                 📖 {ref.source}{ref.author && ` — ${ref.author}`}
               </p>
             ))}

@@ -19,6 +19,7 @@ import './styles/session14.css';
 import './styles/ei1.css';
 import './styles/session22.css';
 import './styles/session23.css';
+import './styles/light-overrides.css';
 
 /* ═══ Global Error Boundary — catches mobile crashes ═══ */
 class GlobalErrorBoundary extends React.Component {

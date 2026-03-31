@@ -1,4 +1,4 @@
-import { useState, useMemo, useCallback, lazy, Suspense } from 'react';
+import { useState, useMemo, useCallback, useEffect, lazy, Suspense } from 'react';
 import useAsyncData from '../../hooks/useAsyncData.jsx';
 import LazyLoader from '../shared/LazyLoader';
 import DiaSidebar from './DiaSidebar';
@@ -41,7 +41,7 @@ function buildStats(data) {
   };
 }
 
-export default function DiaView({ lang, t: tProp }) {
+export default function DiaView({ lang, t: tProp, initialSearch }) {
   const t = tProp || T[lang];
   const td = t.dia || {};
 
@@ -56,7 +56,7 @@ export default function DiaView({ lang, t: tProp }) {
   const DIA_BY_ID = useMemo(() => DIA_LITE ? buildLookup(DIA_LITE) : {}, [DIA_LITE]);
   const STATS = useMemo(() => DIA_LITE ? buildStats(DIA_LITE) : { total:0, withDate:0, withMadhab:0, withFields:0, totalWorks:0 }, [DIA_LITE]);
 
-  const [search, setSearch] = useState('');
+  const [search, setSearch] = useState(initialSearch || '');
   const [selectedFields, setSelectedFields] = useState(new Set());
   const [selectedMadhab, setSelectedMadhab] = useState('');
   const [centuryRange, setCenturyRange] = useState([7, 21]);
@@ -65,6 +65,11 @@ export default function DiaView({ lang, t: tProp }) {
   const [subView, setSubView] = useState('list');
   const [showMobile, setShowMobile] = useState('list');
   const [mapColorBy, setMapColorBy] = useState('field');
+
+  /* Sync search from URL hash param */
+  useEffect(() => {
+    if (initialSearch) setSearch(initialSearch);
+  }, [initialSearch]);
 
   /* ═══ ALL hooks MUST be above conditional return ═══ */
   const filtered = useMemo(() => {

@@ -169,7 +169,7 @@ const RIHLA_T = {
   },
 };
 
-function RihlaViewInner({ lang }) {
+function RihlaViewInner({ lang, initialSearch }) {
   const tr = RIHLA_T[lang] || RIHLA_T.tr;
   const { data: rawData, loading, error } = useAsyncData('/data/ibn_battuta_atlas_layer.json');
 
@@ -192,13 +192,18 @@ function RihlaViewInner({ lang }) {
   const stats = useMemo(() => buildStats(stops, voyages), [stops, voyages]);
 
   /* ── Filters ── */
-  const [search, setSearch] = useState('');
+  const [search, setSearch] = useState(initialSearch || '');
   const [selectedVoyage, setSelectedVoyage] = useState(0); // 0 = all
   const [selectedCountry, setSelectedCountry] = useState('');
   const [selectedSig, setSelectedSig] = useState('');
   const [selectedTopics, setSelectedTopics] = useState(new Set());
   const [selectedId, setSelectedId] = useState(null);
   const [showMobile, setShowMobile] = useState('list');
+
+  /* Sync search from URL hash param */
+  useEffect(() => {
+    if (initialSearch) setSearch(initialSearch);
+  }, [initialSearch]);
 
   const filtered = useMemo(() => {
     let arr = stops;
