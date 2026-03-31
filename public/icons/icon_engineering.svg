@@ -1,0 +1,23 @@
+<svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#f97316" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Main gear -->
+  <circle cx="20" cy="20" r="8"/>
+  <circle cx="20" cy="20" r="3"/>
+  <!-- Gear teeth -->
+  <line x1="20" y1="10" x2="20" y2="12"/>
+  <line x1="20" y1="28" x2="20" y2="30"/>
+  <line x1="10" y1="20" x2="12" y2="20"/>
+  <line x1="28" y1="20" x2="30" y2="20"/>
+  <line x1="14.3" y1="14.3" x2="15.7" y2="15.7"/>
+  <line x1="24.3" y1="24.3" x2="25.7" y2="25.7"/>
+  <line x1="14.3" y1="25.7" x2="15.7" y2="24.3"/>
+  <line x1="24.3" y1="15.7" x2="25.7" y2="14.3"/>
+  <!-- Small gear -->
+  <circle cx="34" cy="32" r="5"/>
+  <circle cx="34" cy="32" r="2"/>
+  <line x1="34" y1="26" x2="34" y2="27"/>
+  <line x1="34" y1="37" x2="34" y2="38"/>
+  <line x1="28" y1="32" x2="29" y2="32"/>
+  <line x1="39" y1="32" x2="40" y2="32"/>
+  <!-- Water drop (Jazari) -->
+  <path d="M10 36c0 0-2 3-2 5a2 2 0 0 0 4 0c0-2-2-5-2-5z" fill="#f97316" opacity="0.3"/>
+</svg>

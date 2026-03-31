@@ -1,0 +1,17 @@
+<svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#84cc16" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Compass rose outer -->
+  <circle cx="24" cy="24" r="18" opacity="0.15"/>
+  <circle cx="24" cy="24" r="14"/>
+  <!-- N-S-E-W points -->
+  <polygon points="24,7 26,20 24,17 22,20" fill="#84cc16" opacity="0.6" stroke="none"/>
+  <polygon points="24,41 26,28 24,31 22,28" opacity="0.4"/>
+  <polygon points="7,24 20,22 17,24 20,26" opacity="0.4"/>
+  <polygon points="41,24 28,22 31,24 28,26" opacity="0.4"/>
+  <!-- Diagonal lines -->
+  <line x1="14" y1="14" x2="18" y2="18" stroke-width="1"/>
+  <line x1="34" y1="14" x2="30" y2="18" stroke-width="1"/>
+  <line x1="14" y1="34" x2="18" y2="30" stroke-width="1"/>
+  <line x1="34" y1="34" x2="30" y2="30" stroke-width="1"/>
+  <!-- Center -->
+  <circle cx="24" cy="24" r="2" fill="#84cc16"/>
+</svg>

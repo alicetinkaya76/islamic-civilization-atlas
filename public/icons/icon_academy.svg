@@ -1,0 +1,17 @@
+<svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#a855f7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Dome -->
+  <path d="M8 32a16 16 0 0 1 32 0"/>
+  <!-- Columns -->
+  <line x1="12" y1="32" x2="12" y2="42"/>
+  <line x1="20" y1="32" x2="20" y2="42"/>
+  <line x1="28" y1="32" x2="28" y2="42"/>
+  <line x1="36" y1="32" x2="36" y2="42"/>
+  <!-- Base -->
+  <line x1="8" y1="42" x2="40" y2="42"/>
+  <line x1="8" y1="32" x2="40" y2="32"/>
+  <!-- Open book on dome -->
+  <path d="M24 14c-3-2-6-2-8 0v8c2-2 5-2 8 0" stroke-width="1.5"/>
+  <path d="M24 14c3-2 6-2 8 0v8c-2-2-5-2-8 0" stroke-width="1.5"/>
+  <!-- Crescent finial -->
+  <path d="M23 7a3 3 0 0 0 0 6 4 4 0 1 1 0-6z" stroke-width="1.5"/>
+</svg>

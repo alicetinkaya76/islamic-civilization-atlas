@@ -1,0 +1,16 @@
+<svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#f59e0b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Alembic top -->
+  <path d="M20 6h8v6c0 2 6 8 6 16v4H14v-4c0-8 6-14 6-16z"/>
+  <!-- Liquid level -->
+  <path d="M14 32c2-2 5 0 7-2s5 0 7-2s5 0 6 2v6H14z" opacity="0.2" fill="#f59e0b"/>
+  <!-- Spout -->
+  <path d="M36 22c4-2 6 0 8 2"/>
+  <!-- Vapor dots -->
+  <circle cx="22" cy="14" r="1" fill="#f59e0b" opacity="0.4"/>
+  <circle cx="26" cy="12" r="1" fill="#f59e0b" opacity="0.3"/>
+  <circle cx="24" cy="9" r="0.8" fill="#f59e0b" opacity="0.2"/>
+  <!-- Base -->
+  <line x1="12" y1="38" x2="36" y2="38"/>
+  <!-- Flame -->
+  <path d="M22 42c0-2 2-3 2-5s2 3 2 5" stroke-width="1.5"/>
+</svg>
