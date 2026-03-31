@@ -1,0 +1,13 @@
+<svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#a855f7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Quill pen -->
+  <path d="M8 42l4-10 20-20c2-2 5-2 6 0l0 0c2 2 2 5 0 6L18 38z"/>
+  <line x1="12" y1="32" x2="16" y2="28"/>
+  <!-- Ink drop -->
+  <circle cx="8" cy="42" r="2" fill="#a855f7" opacity="0.3"/>
+  <!-- Interleaved scripts (Arabic ↔ Latin) -->
+  <text x="30" y="14" font-size="8" fill="#a855f7" stroke="none" font-family="serif" opacity="0.5">أ</text>
+  <text x="36" y="14" font-size="7" fill="#a855f7" stroke="none" font-family="serif" opacity="0.5">A</text>
+  <!-- Arrow between -->
+  <path d="M33 16h4" stroke-width="1.5"/>
+  <polyline points="36,14 38,16 36,18" stroke-width="1" fill="none"/>
+</svg>

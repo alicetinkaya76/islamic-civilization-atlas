@@ -1,0 +1,13 @@
+<svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#c8a45e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Iwan arch -->
+  <path d="M8 42V18c0-8 16-14 16-14s16 6 16 14v24"/>
+  <!-- Inner pointed arch -->
+  <path d="M16 42V24c0-4 8-8 8-8s8 4 8 8v18"/>
+  <!-- Geometric muqarnas band -->
+  <path d="M12 20l4 3 4-3 4 3 4-3 4 3 4-3" stroke-width="1.2" opacity="0.5"/>
+  <!-- Door -->
+  <rect x="20" y="32" width="8" height="10" rx="4"/>
+  <!-- Minaret hint -->
+  <line x1="42" y1="42" x2="42" y2="10"/>
+  <circle cx="42" cy="8" r="2" fill="#c8a45e" opacity="0.3"/>
+</svg>
