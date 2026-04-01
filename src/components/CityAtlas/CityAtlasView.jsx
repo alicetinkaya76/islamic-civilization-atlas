@@ -86,6 +86,7 @@ export default function CityAtlasView({ lang: propLang, onClose, initialSearch }
         const searchable = [
           r.name_tr, r.name_en, r.name_ar, r.name_original,
           r.konyali_notes, r.source_excerpt_ar,
+          r.konyapedia_excerpt_tr, r.konyapedia_author,
           r.location?.mahalle, r.location?.description_tr,
           r.patron?.name, ...(r.alternative_names || []),
         ]

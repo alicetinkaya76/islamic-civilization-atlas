@@ -258,6 +258,54 @@ export default function CityAtlasDetail({ record: r, city, lang, getName, getCat
             )}
           </section>
         )}
+
+        {/* ── Konya Ansiklopedisi ── */}
+        {(r.konyapedia_excerpt_tr || r.konyapedia_image_url) && (
+          <section className="ca-detail-section ca-konyapedia-section">
+            <h3>{t('Konya', 'Konya', 'قونية')}</h3>
+
+            {/* Resim */}
+            {r.konyapedia_image_url && (
+              <div className="ca-kp-image-wrap">
+                <img
+                  src={r.konyapedia_image_url}
+                  alt={r.name_tr}
+                  className="ca-kp-image"
+                  loading="lazy"
+                  onError={(e) => { e.target.style.display = 'none'; }}
+                />
+                {r.konyapedia_image_caption && (
+                  <span className="ca-kp-image-caption">{r.konyapedia_image_caption}</span>
+                )}
+              </div>
+            )}
+
+            {/* Özet metin */}
+            {r.konyapedia_excerpt_tr && (
+              <p className="ca-kp-excerpt">{r.konyapedia_excerpt_tr}</p>
+            )}
+
+            {/* Yazar + Bibliyografya */}
+            {r.konyapedia_author && (
+              <p className="ca-kp-meta">✍️ {r.konyapedia_author}</p>
+            )}
+            {r.konyapedia_bibliography && (
+              <p className="ca-kp-meta" style={{ fontSize: '0.68rem' }}>
+                📚 {r.konyapedia_bibliography}
+              </p>
+            )}
+
+            {/* Kaynak linki (varsa) */}
+            {r.konyapedia_url && (
+              <p className="ca-source-ref">
+                🔗{' '}
+                <a href={r.konyapedia_url} target="_blank" rel="noopener noreferrer" className="ca-kp-link">
+                  Konyapedia
+                </a>
+              </p>
+            )}
+          </section>
+        )}
       </div>
     </div>
   );
