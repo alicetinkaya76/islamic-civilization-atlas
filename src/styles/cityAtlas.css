@@ -387,6 +387,52 @@
   direction: ltr;
 }
 
+/* ── KONYAPEDIA SECTION ── */
+.ca-konyapedia-section {
+  border-top: 1px solid rgba(139, 195, 74, 0.15);
+  padding-top: 14px;
+}
+.ca-kp-image-wrap {
+  margin: 8px 0 10px;
+  border-radius: 6px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+.ca-kp-image {
+  width: 100%;
+  height: auto;
+  max-height: 200px;
+  object-fit: cover;
+  display: block;
+}
+.ca-kp-image-caption {
+  display: block;
+  font-size: 0.65rem;
+  color: #777;
+  padding: 4px 8px 5px;
+  background: rgba(0, 0, 0, 0.3);
+  text-align: center;
+}
+.ca-kp-excerpt {
+  color: #b0b0b0 !important;
+  font-size: 0.78rem !important;
+  line-height: 1.65 !important;
+  margin: 6px 0 10px !important;
+}
+.ca-kp-meta {
+  font-size: 0.72rem !important;
+  color: #888 !important;
+  margin: 3px 0 !important;
+}
+.ca-kp-link {
+  color: #8BC34A;
+  text-decoration: none;
+  font-weight: 500;
+}
+.ca-kp-link:hover {
+  text-decoration: underline;
+}
+
 /* ================================================================
    LEGEND (optional overlay)
    ================================================================ */
@@ -466,6 +512,9 @@
 [dir="rtl"] .ca-inscription {
   border-right: none;
   border-left: 3px solid rgba(255, 215, 0, 0.4);
+}
+[dir="rtl"] .ca-kp-link {
+  direction: rtl;
 }
 [dir="rtl"] .ca-search-input { padding: 9px 12px 9px 34px; }
 [dir="rtl"] .ca-search-clear { right: auto; left: 8px; }
