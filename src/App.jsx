@@ -1,3 +1,5 @@
+import FeedbackModal from './components/shared/FeedbackModal';
+import './styles/feedback.css';
 import { useState, useRef, useCallback, useEffect, Suspense, lazy } from 'react';
 import T from './data/i18n';
 import LandingPage from './components/landing/LandingPage';
@@ -499,6 +501,7 @@ export default function App() {
       <BadgeToast badge={newBadge} lang={lang} onDismiss={() => setNewBadge(null)} />
       <Suspense fallback={null}><AIChatPanel lang={lang} onFlyTo={handleFlyTo} /></Suspense>
       {showOnboarding && <Onboarding lang={lang} onDone={handleOnboardingDone} />}
+      <FeedbackModal lang={lang} />
     </div>
   );
 }
