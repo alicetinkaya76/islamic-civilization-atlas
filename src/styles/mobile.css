@@ -119,6 +119,8 @@
   }
   .p-rulers-h { padding: 8px 0; min-height: 36px; }
   .p-ruler-row { padding: 6px 4px; min-height: 32px; }
+  .p-narr { max-height: 100px; overflow-y: auto; }
+  .p-key { max-height: 80px; overflow-y: auto; }
 
   /* P9: Tour panel compact */
   .tour-panel { width: 90%; bottom: 80px; max-height: 40vh; }
@@ -215,7 +217,10 @@
   .p-title { font-size: 13px !important; }
   .p-row { font-size: 10px; }
   .p-k { min-width: 60px; }
-  .p-narr { font-size: 10px; max-height: 60px; }
+  .p-narr { font-size: 10px; max-height: 80px; overflow-y: auto; -webkit-overflow-scrolling: touch; }
+  .p-key { font-size: 10px; max-height: 60px; overflow-y: auto; }
+  .p-ctx { font-size: 10px; overflow: hidden; text-overflow: ellipsis; }
+  .p-lnks { max-height: 60px; overflow-y: auto; }
   .leaflet-popup-close-button {
     width: 28px !important; height: 28px !important;
     font-size: 20px !important; padding: 4px !important;
