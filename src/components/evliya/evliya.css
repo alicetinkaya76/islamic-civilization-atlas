@@ -1,0 +1,1154 @@
+/* Evliyâ Çelebi Seyahatnâme — islamicatlas.org v8.0 */
+
+/* ── Voyage Colors ── */
+:root {
+  --ev-v01: #E63946;
+  --ev-v02: #457B9D;
+  --ev-v03: #2A9D8F;
+  --ev-v04: #E9C46A;
+  --ev-v05: #F4A261;
+  --ev-v06: #264653;
+  --ev-v07: #6A4C93;
+  --ev-v08: #1D3557;
+  --ev-v09: #D4A373;
+  --ev-v10: #BC6C25;
+  --ev-bg: #0a0a0f;
+  --ev-surface: #111118;
+  --ev-border: #1e1e2a;
+  --ev-text: #e0e0e0;
+  --ev-text-dim: #888;
+  --ev-text-bright: #fff;
+  --ev-accent: #2A9D8F;
+  --ev-radius: 8px;
+}
+
+/* ── Container ── */
+.evliya-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: var(--ev-bg);
+  color: var(--ev-text);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', sans-serif;
+}
+
+.evliya-loading,
+.evliya-error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  gap: 1rem;
+  font-size: 1rem;
+  color: var(--ev-text-dim);
+}
+
+.evliya-loading-spinner {
+  width: 32px;
+  height: 32px;
+  border: 3px solid var(--ev-border);
+  border-top-color: var(--ev-accent);
+  border-radius: 50%;
+  animation: ev-spin 0.8s linear infinite;
+}
+
+@keyframes ev-spin {
+  to { transform: rotate(360deg); }
+}
+
+.evliya-error button {
+  padding: 8px 16px;
+  background: var(--ev-accent);
+  color: var(--ev-text-bright);
+  border: none;
+  border-radius: var(--ev-radius);
+  cursor: pointer;
+}
+
+/* ── Main Layout ── */
+.evliya-main {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+  position: relative;
+}
+
+/* ── Sidebar ── */
+.evliya-sidebar {
+  width: 300px;
+  min-width: 300px;
+  background: var(--ev-surface);
+  border-right: 1px solid var(--ev-border);
+  overflow-y: auto;
+  padding: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  scrollbar-width: thin;
+  scrollbar-color: var(--ev-border) transparent;
+}
+
+.evliya-sidebar::-webkit-scrollbar { width: 6px; }
+.evliya-sidebar::-webkit-scrollbar-thumb { background: var(--ev-border); border-radius: 3px; }
+
+.evliya-sidebar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--ev-border);
+}
+
+.evliya-sidebar-title-row {
+  display: flex;
+  flex-direction: column;
+}
+
+.evliya-sidebar-header h3 {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--ev-text-bright);
+  letter-spacing: 0.02em;
+}
+
+.evliya-sidebar-subtitle {
+  font-size: 0.7rem;
+  color: var(--ev-text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.evliya-sidebar-close {
+  background: none;
+  border: none;
+  color: var(--ev-text-dim);
+  cursor: pointer;
+  font-size: 1.2rem;
+  min-width: 44px;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s;
+}
+.evliya-sidebar-close:hover { color: var(--ev-text-bright); }
+
+.evliya-sidebar-stats {
+  text-align: center;
+  padding: 0.5rem 0;
+}
+
+.evliya-stat-count {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--ev-text-bright);
+}
+
+.evliya-stat-label {
+  font-size: 0.85rem;
+  color: var(--ev-text-dim);
+  margin-left: 4px;
+}
+
+/* ── Action buttons ── */
+.evliya-sidebar-actions {
+  display: flex;
+  gap: 6px;
+}
+
+.evliya-btn-action {
+  flex: 1;
+  padding: 6px 10px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  border: 1px solid var(--ev-border);
+  border-radius: var(--ev-radius);
+  background: transparent;
+  color: var(--ev-text);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.evliya-btn-action:hover {
+  background: var(--ev-border);
+  color: var(--ev-text-bright);
+}
+.evliya-btn-clear {
+  color: #E63946;
+  border-color: #E6394633;
+}
+.evliya-btn-clear:hover {
+  background: #E6394622;
+}
+
+/* ── Search ── */
+.evliya-search {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid var(--ev-border);
+  border-radius: var(--ev-radius);
+  background: var(--ev-bg);
+  color: var(--ev-text);
+  font-size: 0.85rem;
+  outline: none;
+  transition: border-color 0.2s;
+  box-sizing: border-box;
+}
+.evliya-search:focus {
+  border-color: var(--ev-accent);
+}
+.evliya-search::placeholder {
+  color: #555;
+}
+
+/* ── Filter Sections ── */
+.evliya-filter-section {
+  border: 1px solid var(--ev-border);
+  border-radius: var(--ev-radius);
+  padding: 0.5rem;
+}
+
+.evliya-filter-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--ev-text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.4rem;
+}
+
+.evliya-filter-collapsible {
+  cursor: pointer;
+  user-select: none;
+}
+.evliya-filter-collapsible:hover {
+  color: var(--ev-text);
+}
+
+.evliya-btn-small {
+  padding: 2px 8px;
+  font-size: 0.7rem;
+  border: 1px solid var(--ev-border);
+  border-radius: 4px;
+  background: transparent;
+  color: var(--ev-text-dim);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.evliya-btn-small:hover {
+  background: var(--ev-border);
+  color: var(--ev-text-bright);
+}
+
+/* ── Voyage items ── */
+.evliya-voyage-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 0;
+  font-size: 0.78rem;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+.evliya-voyage-item:hover { opacity: 0.85; }
+.evliya-voyage-item input[type="checkbox"] { margin: 0; accent-color: var(--ev-accent); }
+
+.evliya-voyage-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.evliya-voyage-label {
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: var(--ev-text);
+}
+
+.evliya-voyage-years {
+  font-size: 0.7rem;
+  color: var(--ev-text-dim);
+  flex-shrink: 0;
+}
+
+/* ── Category items ── */
+.evliya-category-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 2px 0;
+  font-size: 0.78rem;
+  cursor: pointer;
+}
+.evliya-category-item input[type="checkbox"] { margin: 0; accent-color: var(--ev-accent); }
+
+.evliya-category-icon {
+  font-size: 0.85rem;
+  flex-shrink: 0;
+}
+
+.evliya-category-label {
+  flex: 1;
+  color: var(--ev-text);
+}
+
+.evliya-category-count {
+  font-size: 0.7rem;
+  color: var(--ev-text-dim);
+  background: var(--ev-bg);
+  padding: 1px 5px;
+  border-radius: 3px;
+}
+
+/* ── Xref filter items ── */
+.evliya-xref-filter-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 2px 0;
+  font-size: 0.78rem;
+  cursor: pointer;
+}
+.evliya-xref-filter-item input[type="checkbox"] { margin: 0; accent-color: var(--ev-accent); }
+.evliya-xref-filter-icon { font-size: 0.85rem; flex-shrink: 0; }
+.evliya-xref-filter-label { flex: 1; color: var(--ev-text); }
+.evliya-xref-filter-count {
+  font-size: 0.7rem;
+  color: var(--ev-text-dim);
+  background: var(--ev-bg);
+  padding: 1px 5px;
+  border-radius: 3px;
+}
+
+/* ══════════════════════════════════════
+   MAP
+   ══════════════════════════════════════ */
+
+.evliya-map-container {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+}
+
+.evliya-map {
+  width: 100%;
+  height: 100%;
+  background: var(--ev-bg);
+}
+
+/* Leaflet tooltip override */
+.evliya-tooltip {
+  background: var(--ev-surface) !important;
+  border: 1px solid var(--ev-border) !important;
+  color: var(--ev-text) !important;
+  font-size: 0.8rem !important;
+  padding: 4px 8px !important;
+  border-radius: 4px !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.5) !important;
+}
+.evliya-tooltip .leaflet-tooltip-tip {
+  border-top-color: var(--ev-border) !important;
+}
+
+/* ── Marker Cluster ── */
+.evliya-cluster-wrapper {
+  background: transparent !important;
+  border: none !important;
+}
+
+.evliya-cluster {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-weight: 700;
+  backdrop-filter: blur(4px);
+  transition: transform 0.2s;
+}
+.evliya-cluster:hover {
+  transform: scale(1.15);
+}
+
+/* ── Sidebar Toggle ── */
+.evliya-sidebar-toggle {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  z-index: 1000;
+  background: var(--ev-surface);
+  border: 1px solid var(--ev-border);
+  color: var(--ev-text);
+  font-size: 1.2rem;
+  padding: 8px 12px;
+  border-radius: var(--ev-radius);
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.evliya-sidebar-toggle:hover { background: var(--ev-border); }
+
+/* ── Map Legend ── */
+.evliya-map-legend {
+  position: absolute;
+  bottom: 20px;
+  right: 12px;
+  z-index: 1000;
+  background: var(--ev-surface);
+  border: 1px solid var(--ev-border);
+  border-radius: var(--ev-radius);
+  padding: 8px 10px;
+  max-width: 180px;
+  backdrop-filter: blur(8px);
+}
+
+.evliya-map-legend-title {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--ev-text-bright);
+  margin-bottom: 4px;
+  text-align: center;
+}
+
+.evliya-map-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.72rem;
+  padding: 2px 0;
+}
+
+.evliya-map-legend-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.evliya-map-legend-label {
+  color: var(--ev-text-dim);
+  flex: 1;
+}
+
+.evliya-map-legend-count {
+  color: var(--ev-text);
+  font-weight: 600;
+}
+
+/* ══════════════════════════════════════
+   TIMELINE
+   ══════════════════════════════════════ */
+
+.evliya-timeline-container {
+  display: flex;
+  align-items: center;
+  background: var(--ev-surface);
+  border-bottom: 1px solid var(--ev-border);
+  height: 64px;
+  flex-shrink: 0;
+}
+
+.evliya-timeline-arrow {
+  width: 32px;
+  height: 100%;
+  background: none;
+  border: none;
+  color: var(--ev-text-dim);
+  font-size: 1.5rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: color 0.2s;
+}
+.evliya-timeline-arrow:hover { color: var(--ev-text-bright); }
+
+.evliya-timeline-scroll {
+  flex: 1;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: none;
+}
+.evliya-timeline-scroll::-webkit-scrollbar { display: none; }
+
+.evliya-timeline {
+  position: relative;
+  height: 56px;
+  margin: 4px 0;
+}
+
+.evliya-timeline-axis {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 20px;
+}
+
+.evliya-timeline-tick {
+  position: absolute;
+  font-size: 0.65rem;
+  color: var(--ev-text-dim);
+  transform: translateX(-50%);
+  white-space: nowrap;
+}
+
+.evliya-timeline-bars {
+  position: absolute;
+  top: 22px;
+  left: 0;
+  width: 100%;
+  height: 30px;
+}
+
+.evliya-timeline-bar {
+  position: absolute;
+  height: 26px;
+  border-radius: 4px;
+  border: 1px solid;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  user-select: none;
+}
+
+.evliya-timeline-bar.active {
+  opacity: 1;
+  box-shadow: 0 0 8px rgba(0,0,0,0.4);
+}
+.evliya-timeline-bar.inactive {
+  opacity: 0.5;
+}
+.evliya-timeline-bar:hover {
+  transform: scaleY(1.15);
+  z-index: 5;
+}
+
+.evliya-timeline-bar-label {
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: var(--ev-text-bright);
+  text-shadow: 0 1px 3px rgba(0,0,0,0.8);
+  white-space: nowrap;
+}
+
+/* ══════════════════════════════════════
+   DETAIL PANEL
+   ══════════════════════════════════════ */
+
+.evliya-detail {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 380px;
+  max-width: 100%;
+  height: 100%;
+  background: var(--ev-surface);
+  border-left: 1px solid var(--ev-border);
+  overflow-y: auto;
+  padding: 1rem;
+  z-index: 1001;
+  animation: ev-slide-in 0.3s ease-out;
+  scrollbar-width: thin;
+  scrollbar-color: var(--ev-border) transparent;
+}
+
+@keyframes ev-slide-in {
+  from { transform: translateX(100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+.evliya-detail-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 0.75rem;
+}
+
+.evliya-detail-title {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+}
+
+.evliya-detail-icon {
+  font-size: 1.4rem;
+  flex-shrink: 0;
+}
+
+.evliya-detail-title h3 {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--ev-text-bright);
+  line-height: 1.3;
+}
+
+.evliya-detail-id {
+  font-size: 0.65rem;
+  color: var(--ev-text-dim);
+  font-family: monospace;
+}
+
+.evliya-detail-close {
+  background: none;
+  border: none;
+  color: var(--ev-text-dim);
+  font-size: 1.2rem;
+  cursor: pointer;
+  min-width: 44px;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: color 0.2s;
+}
+.evliya-detail-close:hover { color: var(--ev-text-bright); }
+
+.evliya-detail-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 0.75rem;
+}
+
+.evliya-detail-voyage {
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 3px 8px;
+  border: 1px solid;
+  border-radius: 4px;
+}
+
+.evliya-detail-voyage-years {
+  font-weight: 400;
+  opacity: 0.7;
+}
+
+.evliya-detail-category {
+  font-size: 0.75rem;
+  padding: 3px 8px;
+  background: var(--ev-bg);
+  border-radius: 4px;
+  color: var(--ev-text-dim);
+}
+
+.evliya-detail-coords {
+  font-size: 0.7rem;
+  color: var(--ev-text-dim);
+  font-family: monospace;
+  padding: 3px 8px;
+  background: var(--ev-bg);
+  border-radius: 4px;
+}
+
+/* ── İbn Battûta Banner ── */
+.evliya-ibn-battuta-banner {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  margin-bottom: 0.75rem;
+  background: linear-gradient(135deg, #E6394611, #E6394622);
+  border: 1px solid #E6394644;
+  border-radius: var(--ev-radius);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.evliya-ibn-battuta-banner:hover {
+  background: linear-gradient(135deg, #E6394622, #E6394633);
+  border-color: #E6394666;
+}
+
+.evliya-ibn-battuta-icon {
+  font-size: 1.2rem;
+}
+
+.evliya-ibn-battuta-text {
+  flex: 1;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #E63946;
+}
+
+.evliya-ibn-battuta-arrow {
+  font-size: 1rem;
+  color: #E63946;
+}
+
+/* ── Language Switcher ── */
+.evliya-detail-langs {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 0.75rem;
+}
+
+.evliya-lang-btn {
+  padding: 4px 12px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  border: 1px solid var(--ev-border);
+  border-radius: 4px;
+  background: transparent;
+  color: var(--ev-text-dim);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.evliya-lang-btn.active {
+  background: var(--ev-accent);
+  border-color: var(--ev-accent);
+  color: var(--ev-text-bright);
+}
+.evliya-lang-btn:hover:not(.active) {
+  background: var(--ev-border);
+  color: var(--ev-text);
+}
+
+/* ── Narrative ── */
+.evliya-detail-narr {
+  margin-bottom: 0.75rem;
+  padding: 0.75rem;
+  background: var(--ev-bg);
+  border-radius: var(--ev-radius);
+  border: 1px solid var(--ev-border);
+}
+
+.evliya-detail-narr p {
+  margin: 0;
+  font-size: 0.82rem;
+  line-height: 1.65;
+  color: var(--ev-text);
+}
+
+/* ── Cross-references ── */
+.evliya-detail-xref {
+  margin-bottom: 0.75rem;
+}
+
+.evliya-detail-xref h4 {
+  margin: 0 0 0.5rem 0;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--ev-text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.evliya-xref-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 8px;
+  margin-bottom: 3px;
+  background: var(--ev-bg);
+  border-radius: 4px;
+  font-size: 0.78rem;
+  transition: background 0.2s;
+}
+.evliya-xref-item:hover { background: var(--ev-border); }
+
+.evliya-xref-icon {
+  font-size: 0.85rem;
+  flex-shrink: 0;
+}
+
+.evliya-xref-label {
+  font-weight: 600;
+  color: var(--ev-accent);
+  white-space: nowrap;
+}
+
+.evliya-xref-name {
+  flex: 1;
+  color: var(--ev-text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.evliya-xref-dist {
+  font-size: 0.7rem;
+  color: var(--ev-text-dim);
+  flex-shrink: 0;
+}
+
+/* ── Original name ── */
+.evliya-detail-original {
+  padding: 6px 8px;
+  background: var(--ev-bg);
+  border-radius: 4px;
+  font-size: 0.78rem;
+  color: var(--ev-text-dim);
+}
+
+.evliya-detail-original-label {
+  font-weight: 600;
+}
+
+/* ══════════════════════════════════════
+   DASHBOARD
+   ══════════════════════════════════════ */
+
+.evliya-dashboard {
+  height: 100%;
+  overflow-y: auto;
+  background: var(--ev-bg);
+  color: var(--ev-text);
+  padding: 1.5rem;
+  scrollbar-width: thin;
+  scrollbar-color: var(--ev-border) transparent;
+}
+
+.evliya-dashboard-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.evliya-dashboard-header h2 {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--ev-text-bright);
+}
+
+/* ── KPI Cards ── */
+.evliya-dashboard-kpis {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 12px;
+  margin-bottom: 1.5rem;
+}
+
+.evliya-kpi {
+  background: var(--ev-surface);
+  border: 1px solid var(--ev-border);
+  border-radius: var(--ev-radius);
+  padding: 1rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.evliya-kpi-value {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--ev-text-bright);
+  line-height: 1;
+}
+
+.evliya-kpi-label {
+  font-size: 0.75rem;
+  color: var(--ev-text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.evliya-kpi-sub {
+  font-size: 0.7rem;
+  color: var(--ev-text-dim);
+}
+
+/* ── Dashboard Grid ── */
+.evliya-dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+  gap: 16px;
+}
+
+.evliya-dashboard-card {
+  background: var(--ev-surface);
+  border: 1px solid var(--ev-border);
+  border-radius: var(--ev-radius);
+  padding: 1rem;
+}
+
+.evliya-dashboard-card-wide {
+  grid-column: 1 / -1;
+}
+
+.evliya-dashboard-card h3 {
+  margin: 0 0 0.75rem 0;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--ev-text-bright);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+/* ── Bar Chart ── */
+.evliya-chart-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.evliya-bar-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.evliya-bar-label {
+  width: 160px;
+  min-width: 160px;
+  font-size: 0.75rem;
+  color: var(--ev-text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.evliya-bar-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.evliya-bar-track {
+  flex: 1;
+  height: 16px;
+  background: var(--ev-bg);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.evliya-bar-fill {
+  height: 100%;
+  border-radius: 3px;
+  transition: width 0.6s ease-out;
+}
+
+.evliya-bar-value {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--ev-text-dim);
+  min-width: 50px;
+  text-align: right;
+}
+
+.evliya-xref-total {
+  margin-top: 8px;
+  text-align: right;
+  font-size: 0.75rem;
+  color: var(--ev-text-dim);
+  font-weight: 600;
+}
+
+/* ── Top Xref List ── */
+.evliya-top-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.evliya-top-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 8px;
+  background: var(--ev-bg);
+  border-radius: 4px;
+  font-size: 0.78rem;
+  transition: background 0.15s;
+}
+.evliya-top-item:hover { background: var(--ev-border); }
+
+.evliya-top-rank {
+  font-weight: 700;
+  color: var(--ev-text-dim);
+  width: 28px;
+  flex-shrink: 0;
+}
+
+.evliya-top-name {
+  flex: 1;
+  color: var(--ev-text-bright);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.evliya-top-voyage {
+  font-weight: 700;
+  font-size: 0.72rem;
+  flex-shrink: 0;
+}
+
+.evliya-top-xref-dots {
+  display: flex;
+  gap: 3px;
+  flex-shrink: 0;
+}
+
+.evliya-top-xref-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.evliya-top-count {
+  font-weight: 700;
+  color: var(--ev-text-dim);
+  width: 20px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+/* ══════════════════════════════════════
+   RESPONSIVE
+   ══════════════════════════════════════ */
+
+/* ── Sidebar Backdrop (mobile) ── */
+.evliya-sidebar-backdrop {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .evliya-sidebar-backdrop {
+    display: block;
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55);
+    z-index: 1001;
+    animation: ev-fade-in 0.2s ease-out;
+  }
+
+  @keyframes ev-fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  .evliya-sidebar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 85%;
+    max-width: 320px;
+    height: 100%;
+    z-index: 1002;
+    box-shadow: 4px 0 24px rgba(0,0,0,0.5);
+    animation: ev-slide-sidebar 0.3s ease-out;
+  }
+
+  @keyframes ev-slide-sidebar {
+    from { transform: translateX(-100%); }
+    to { transform: translateX(0); }
+  }
+
+  .evliya-detail {
+    width: 100%;
+    max-height: 60%;
+    top: auto;
+    bottom: 0;
+    border-left: none;
+    border-top: 1px solid var(--ev-border);
+    animation: ev-slide-up 0.3s ease-out;
+  }
+
+  @keyframes ev-slide-up {
+    from { transform: translateY(100%); }
+    to { transform: translateY(0); }
+  }
+
+  .evliya-dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .evliya-dashboard-kpis {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .evliya-bar-label {
+    width: 100px;
+    min-width: 100px;
+  }
+}
+
+/* ══════════════════════════════════════
+   RTL SUPPORT
+   ══════════════════════════════════════ */
+
+[dir="rtl"] .evliya-sidebar {
+  border-right: none;
+  border-left: 1px solid var(--ev-border);
+}
+
+[dir="rtl"] .evliya-detail {
+  right: auto;
+  left: 0;
+  border-left: none;
+  border-right: 1px solid var(--ev-border);
+  animation: ev-slide-in-rtl 0.3s ease-out;
+}
+
+@keyframes ev-slide-in-rtl {
+  from { transform: translateX(-100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+[dir="rtl"] .evliya-sidebar-toggle {
+  left: auto;
+  right: 12px;
+}
+
+[dir="rtl"] .evliya-map-legend {
+  right: auto;
+  left: 12px;
+}
+
+[dir="rtl"] .evliya-ibn-battuta-arrow {
+  transform: scaleX(-1);
+}
+
+/* ══════════════════════════════════════
+   FOCUS VISIBLE (accessibility)
+   ══════════════════════════════════════ */
+
+.evliya-sidebar-close:focus-visible,
+.evliya-detail-close:focus-visible,
+.evliya-btn-action:focus-visible,
+.evliya-btn-small:focus-visible,
+.evliya-lang-btn:focus-visible,
+.evliya-timeline-bar:focus-visible,
+.evliya-timeline-arrow:focus-visible,
+.evliya-ibn-battuta-banner:focus-visible,
+.evliya-filter-collapsible:focus-visible {
+  outline: 2px solid var(--ev-accent);
+  outline-offset: 2px;
+}
+
+.evliya-search:focus-visible {
+  outline: none;
+  border-color: var(--ev-accent);
+  box-shadow: 0 0 0 2px rgba(42, 157, 143, 0.25);
+}
+
+@media (max-width: 768px) {
+  [dir="rtl"] .evliya-sidebar {
+    left: auto;
+    right: 0;
+    animation: ev-slide-sidebar-rtl 0.3s ease-out;
+  }
+
+  @keyframes ev-slide-sidebar-rtl {
+    from { transform: translateX(100%); }
+    to { transform: translateX(0); }
+  }
+}
