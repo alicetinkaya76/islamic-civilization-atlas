@@ -231,9 +231,11 @@ export default function SalibiyyatIdCard({
         </div>
 
         {/* ── Description ── */}
-        {castle.description_tr && (
+        {(castle.description_tr || castle.description_en || castle.description_ar) && (
           <div className="sal-idcard-desc">
-            <p>{castle.description_tr}</p>
+            <p>{lang === 'en' ? (castle.description_en || castle.description_tr)
+              : lang === 'ar' ? (castle.description_ar || castle.description_tr)
+              : castle.description_tr}</p>
           </div>
         )}
 

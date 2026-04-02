@@ -5,7 +5,12 @@ import SalibiyyatSidebar from './SalibiyyatSidebar';
 import SalibiyyatMap from './SalibiyyatMap';
 import SalibiyyatIdCard from './SalibiyyatIdCard';
 import SalibiyyatCompare from './SalibiyyatCompare';
+import SalibiyyatRoutes from './SalibiyyatRoutes';
+import SalibiyyatTimeline from './SalibiyyatTimeline';
+import SalibiyyatCastles from './SalibiyyatCastles';
+import SalibiyyatSources from './SalibiyyatSources';
 import '../../styles/salibiyyat.css';
+import '../../styles/salibiyyat-subtabs.css';
 
 /* ═══ Error Boundary ═══ */
 class SalibiyyatErrorBoundary extends Component {
@@ -97,6 +102,17 @@ const SAL_T = {
     tabDetail: 'Detay',
     crossRefBattle: 'Atlas\'ta görüntüle',
     crossRefKhitat: 'Hıtât katmanında görüntüle',
+    /* ── Sub-tab keys ── */
+    tabRoutes: 'Güzergâhlar',
+    tabTimeline2: 'Zaman Çizelgesi',
+    tabCastles: 'Kaleler',
+    tabSources2: 'Kaynaklar',
+    routes_page: { title: 'Sefer Güzergâhları', subtitle_ar: 'مسارات الحملات الصليبية', subtitle: 'I.–VIII. Haçlı Seferleri boyunca 11 farklı güzergâh.', land_route: 'Kara Yolu', sea_route: 'Deniz Yolu', stops: 'durak', leaders: 'Liderler', select_route: 'Bir güzergâh seçin' },
+    timeline: { title: 'Zaman Çizelgesi', title_ar: 'الجدول الزمني', subtitle: '1096–1466 yılları arasında {{count}} olayın kronolojik akışı.', source_filter: 'Kaynak', type_filter: 'Olay Türü', all: 'Tümü', showing: '{{count}} olay gösteriliyor', distribution: 'Dağılım', zoom_hint: 'Fare tekerleği ile yakınlaştır/uzaklaştır, sürükleyerek kaydır' },
+    castles_page: { title: 'Kaleler', subtitle: '24 önemli kale — fotoğraflar, el değiştirme kronolojisi ve üç dilli isimlerle.', all: 'Tümü' },
+    sources_page: { title: 'Kaynaklar', subtitle: 'Altı İslâm kaynağından karşılaştırmalı bakış' },
+    source_detail: { back: 'Kaynaklara dön', time_dist: 'Zaman Dağılımı (On Yıllık)', event_types: 'Olay Türleri', outcomes: 'Sonuçlar', no_outcome: 'Bu kaynak için sonuç verisi bulunmamaktadır.', geo_dist: 'Coğrafi Dağılım', events: 'Olaylar', not_found: 'Kaynak bulunamadı', records: 'kayıt', network_title: 'Olay Ağı', network_legend: 'Ağ Açıklaması', network_hub: 'Konum düğümü', network_leaf: 'Olay düğümü', network_temporal: 'Zamansal bağlantı' },
+    common: { crusade: 'Haçlı Seferi' },
   },
   en: {
     title: 'Salibiyyāt',
@@ -142,6 +158,17 @@ const SAL_T = {
     tabDetail: 'Detail',
     crossRefBattle: 'View in Atlas',
     crossRefKhitat: 'View in Ḫiṭaṭ layer',
+    /* ── Sub-tab keys ── */
+    tabRoutes: 'Routes',
+    tabTimeline2: 'Timeline',
+    tabCastles: 'Castles',
+    tabSources2: 'Sources',
+    routes_page: { title: 'Crusade Routes', subtitle_ar: 'مسارات الحملات الصليبية', subtitle: '11 routes across 79 waypoints — by land and sea.', land_route: 'Land Route', sea_route: 'Sea Route', stops: 'stops', leaders: 'Leaders', select_route: 'Select a route' },
+    timeline: { title: 'Timeline', title_ar: 'الجدول الزمني', subtitle: 'Chronological flow of {{count}} events between 1096–1466.', source_filter: 'Source', type_filter: 'Event Type', all: 'All', showing: 'Showing {{count}} events', distribution: 'Distribution', zoom_hint: 'Scroll to zoom, drag to pan' },
+    castles_page: { title: 'Castles', subtitle: '24 notable castles — photographs, ownership chronology, and trilingual names.', all: 'All' },
+    sources_page: { title: 'Sources', subtitle: 'Comparative view from six Islamic sources' },
+    source_detail: { back: 'Back to sources', time_dist: 'Time Distribution (Decades)', event_types: 'Event Types', outcomes: 'Outcomes', no_outcome: 'No outcome data for this source.', geo_dist: 'Geographic Distribution', events: 'Events', not_found: 'Source not found', records: 'records', network_title: 'Event Network', network_legend: 'Network Legend', network_hub: 'Location hub', network_leaf: 'Event node', network_temporal: 'Temporal link' },
+    common: { crusade: 'Crusade' },
   },
   ar: {
     title: 'صليبيات',
@@ -158,6 +185,17 @@ const SAL_T = {
     tabDetail: 'تفاصيل',
     crossRefBattle: 'عرض في الأطلس',
     crossRefKhitat: 'عرض في طبقة الخطط',
+    /* ── Sub-tab keys ── */
+    tabRoutes: 'المسارات',
+    tabTimeline2: 'الجدول الزمني',
+    tabCastles: 'القلاع',
+    tabSources2: 'المصادر',
+    routes_page: { title: 'مسارات الحملات الصليبية', subtitle_ar: 'مسارات الحملات الصليبية', subtitle: '11 مسارًا عبر 79 محطة — برًّا وبحرًا.', land_route: 'الطريق البري', sea_route: 'الطريق البحري', stops: 'محطة', leaders: 'القادة', select_route: 'اختر مسارًا' },
+    timeline: { title: 'الجدول الزمني', title_ar: 'الجدول الزمني', subtitle: 'التدفق الزمني للأحداث بين 1096–1466.', source_filter: 'المصدر', type_filter: 'نوع الحدث', all: 'الكل', showing: 'عرض {{count}} حدثًا', distribution: 'التوزيع', zoom_hint: 'قم بالتمرير للتكبير، واسحب للتحريك' },
+    castles_page: { title: 'القلاع', subtitle: '24 قلعة بارزة — صور وتسلسل الملكية وأسماء ثلاثية اللغة.', all: 'الكل' },
+    sources_page: { title: 'المصادر', subtitle: 'نظرة مقارنة من ستة مصادر إسلامية' },
+    source_detail: { back: 'العودة', time_dist: 'التوزيع الزمني', event_types: 'أنواع الأحداث', outcomes: 'النتائج', no_outcome: 'لا توجد بيانات نتائج.', geo_dist: 'التوزيع الجغرافي', events: 'الأحداث', not_found: 'المصدر غير موجود', records: 'سجل', network_title: 'شبكة الأحداث', network_legend: 'مفتاح الشبكة', network_hub: 'عقدة الموقع', network_leaf: 'عقدة الحدث', network_temporal: 'رابط زمني' },
+    common: { crusade: 'حملة صليبية' },
   },
 };
 
@@ -207,6 +245,45 @@ function SalibiyyatViewInner({ lang, initialSearch, onNavigate }) {
     events.forEach(e => { if (e.cluster_id) m[e.id] = e.cluster_id; });
     return m;
   }, [events]);
+
+  /* ── Sub-tab data prep ── */
+  const SRC_COLORS_MAP = useMemo(() => {
+    const m = {};
+    sources.forEach(s => { m[s.short] = s.color; });
+    return m;
+  }, [sources]);
+
+  const SRC_NAMES_MAP = useMemo(() => {
+    const m = {};
+    sources.forEach(s => { m[s.short] = s.full_tr; });
+    return m;
+  }, [sources]);
+
+  const SOURCE_ID_TO_SHORT = useMemo(() => {
+    const m = {};
+    sources.forEach(s => { m[s.id] = s.short; });
+    return m;
+  }, [sources]);
+
+  const enrichedEvents = useMemo(() =>
+    events.map(e => ({ ...e, source_short: e.s || SOURCE_ID_TO_SHORT[e.source_id] || e.source_id })),
+    [events, SOURCE_ID_TO_SHORT]
+  );
+
+  const EVENT_TYPE_LABELS = {
+    battle: 'Muharebe', siege: 'Kuşatma', conquest: 'Fetih', diplomacy: 'Diplomasi',
+    treaty: 'Antlaşma', death: 'Vefat', raid: 'Akın', military: 'Askerî',
+    event: 'Olay', naval: 'Deniz', anecdote: 'Anekdot', assassination: 'Suikast',
+    captivity: 'Esaret', encounter: 'Karşılaşma',
+    muslim_conquest: 'İslâm Fethi', muslim_capture: 'İslâm Zaptı',
+    crusader_capture: 'Haçlı Zaptı', muslim_victory: 'İslâm Zaferi',
+    muslim_defeat: 'İslâm Mağlubiyeti', crusader_defeat: 'Haçlı Mağlubiyeti',
+  };
+
+  const OUTCOME_LABELS = {
+    muslim_victory: 'İslâm Zaferi', crusader_victory: 'Haçlı Zaferi',
+    treaty: 'Antlaşma', inconclusive: 'Sonuçsuz', not_applicable: '',
+  };
 
   /* ── Filters ── */
   const [search, setSearch] = useState(initialSearch || '');
@@ -314,12 +391,20 @@ function SalibiyyatViewInner({ lang, initialSearch, onNavigate }) {
         </div>
       </div>
 
-      {/* ── Tab bar: Map / Compare ── */}
+      {/* ── Tab bar: Map / Compare / Routes / Timeline / Castles / Sources ── */}
       <div className="sal-tab-bar">
         <button className={`sal-tab-btn${activeTab === 'map' ? ' active' : ''}`}
           onClick={() => setActiveTab('map')}>🗺 {tr.tabMap}</button>
         <button className={`sal-tab-btn${activeTab === 'compare' ? ' active' : ''}`}
           onClick={() => setActiveTab('compare')}>⚖️ {tr.tabCompare}</button>
+        <button className={`sal-tab-btn${activeTab === 'routes' ? ' active' : ''}`}
+          onClick={() => setActiveTab('routes')}>🛤 {tr.tabRoutes || 'Güzergâhlar'}</button>
+        <button className={`sal-tab-btn${activeTab === 'timeline2' ? ' active' : ''}`}
+          onClick={() => setActiveTab('timeline2')}>📅 {tr.tabTimeline2 || 'Zaman Çizelgesi'}</button>
+        <button className={`sal-tab-btn${activeTab === 'castles' ? ' active' : ''}`}
+          onClick={() => setActiveTab('castles')}>🏰 {tr.tabCastles || 'Kaleler'}</button>
+        <button className={`sal-tab-btn${activeTab === 'sources2' ? ' active' : ''}`}
+          onClick={() => setActiveTab('sources2')}>📜 {tr.tabSources2 || 'Kaynaklar'}</button>
       </div>
 
       {/* ── Mobile toggle ── */}
@@ -374,7 +459,7 @@ function SalibiyyatViewInner({ lang, initialSearch, onNavigate }) {
             />
           </div>
         </div>
-      ) : (
+      ) : activeTab === 'compare' ? (
         /* ── Compare view ── */
         <SalibiyyatCompare
           lang={lang} tr={tr}
@@ -382,7 +467,31 @@ function SalibiyyatViewInner({ lang, initialSearch, onNavigate }) {
           initialClusterId={selectedId}
           onCrossRef={handleCrossRef}
         />
-      )}
+      ) : activeTab === 'routes' ? (
+        <div className="sal-subtab-wrap">
+          <SalibiyyatRoutes routes={routes} tr={tr} lang={lang} />
+        </div>
+      ) : activeTab === 'timeline2' ? (
+        <div className="sal-subtab-wrap">
+          <SalibiyyatTimeline
+            events={enrichedEvents} sources={sources}
+            srcColors={SRC_COLORS_MAP} srcNames={SRC_NAMES_MAP}
+            eventTypeLabels={EVENT_TYPE_LABELS} tr={tr}
+          />
+        </div>
+      ) : activeTab === 'castles' ? (
+        <div className="sal-subtab-wrap">
+          <SalibiyyatCastles castles={castles} tr={tr} lang={lang} />
+        </div>
+      ) : activeTab === 'sources2' ? (
+        <div className="sal-subtab-wrap">
+          <SalibiyyatSources
+            sources={sources} events={enrichedEvents}
+            eventTypeLabels={EVENT_TYPE_LABELS} outcomeLabels={OUTCOME_LABELS}
+            tr={tr}
+          />
+        </div>
+      ) : null}
 
       <div className="sal-source">{tr.sourceInfo}</div>
     </div>

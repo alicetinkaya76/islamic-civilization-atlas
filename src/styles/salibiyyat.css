@@ -945,3 +945,6 @@
   opacity: 0.5;
   margin-left: 4px;
 }
+
+/* Sub-tab styles */
+@import "./salibiyyat-subtabs.css";

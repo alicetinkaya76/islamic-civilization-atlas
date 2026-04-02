@@ -1,0 +1,377 @@
+/* ═══════════════════════════════════════════════
+   SALIBIYYAT SUB-TABS — Additional CSS
+   Append to existing salibiyyat.css
+   ═══════════════════════════════════════════════ */
+
+/* ─── Fade-in animation (replaces ScrollReveal/framer-motion) ─── */
+@keyframes salFadeIn {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.sal-fade-in {
+  animation: salFadeIn 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* ─── Container / Header ─── */
+.sal-subtab-container {
+  padding: 16px 0;
+  min-height: 400px;
+}
+.sal-subtab-header {
+  margin-bottom: 28px;
+}
+.sal-subtab-title {
+  font-size: 1.6rem;
+  color: #d4a848;
+  font-weight: 300;
+  letter-spacing: 0.04em;
+  margin: 0 0 4px;
+  font-family: 'Crimson Pro', serif;
+}
+.sal-subtab-title-ar {
+  font-family: 'Amiri', serif;
+  color: #a8843a;
+  font-size: 1.15rem;
+  margin: 0;
+}
+.sal-subtab-desc {
+  color: #8a7e6c;
+  font-size: 0.82rem;
+  margin: 10px 0 0;
+  max-width: 520px;
+  line-height: 1.5;
+}
+.sal-gold-line {
+  height: 1px;
+  margin-top: 14px;
+  background: linear-gradient(90deg, transparent, rgba(168,132,58,0.4), rgba(212,168,72,0.6), rgba(168,132,58,0.4), transparent);
+}
+.sal-section-title {
+  color: #a8843a;
+  font-size: 1.05rem;
+  font-weight: 500;
+  margin: 0 0 14px;
+  font-family: 'Crimson Pro', serif;
+}
+
+/* ─── Glass card (sal-prefixed) ─── */
+.sal-glass-card {
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+  background: linear-gradient(145deg, rgba(34,30,24,0.7), rgba(26,22,18,0.5));
+  border: 1px solid rgba(212,168,72,0.08);
+  backdrop-filter: blur(6px);
+}
+
+/* ─── Tags ─── */
+.sal-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 10px;
+  font-size: 0.72rem;
+  border-radius: 4px;
+  background: rgba(212,168,72,0.04);
+  border: 1px solid rgba(212,168,72,0.12);
+  color: #c4b8a4;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+.sal-tag:hover { border-color: rgba(212,168,72,0.25); background: rgba(212,168,72,0.08); }
+.sal-tag--btn { cursor: pointer; }
+.sal-tag--active { background: rgba(212,168,72,0.15); border-color: rgba(212,168,72,0.3); color: #d4a848; }
+.sal-filter-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.sal-filter-label {
+  display: block;
+  color: #a8843a;
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 8px;
+  font-family: 'Crimson Pro', serif;
+}
+
+/* ═══════════════════════════════════════════════
+   ROUTES TAB
+   ═══════════════════════════════════════════════ */
+.sal-routes-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+@media (max-width: 900px) { .sal-routes-grid { grid-template-columns: 1fr; } }
+
+.sal-routes-list { display: flex; flex-direction: column; gap: 10px; }
+
+.sal-route-card {
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+  background: linear-gradient(145deg, rgba(34,30,24,0.7), rgba(26,22,18,0.5));
+  border: 1px solid rgba(212,168,72,0.08);
+  padding: 18px 18px 18px 22px;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.sal-route-card:hover { border-color: rgba(212,168,72,0.2); transform: translateY(-2px); box-shadow: 0 6px 24px rgba(0,0,0,0.3); }
+.sal-route-card--active { border-color: rgba(212,168,72,0.3); background: rgba(212,168,72,0.05); }
+.sal-route-card__accent { position: absolute; top: 0; left: 0; width: 3px; height: 100%; }
+.sal-route-card__body { margin-left: 8px; }
+.sal-route-card__header { display: flex; align-items: center; gap: 12px; margin-bottom: 8px; }
+.sal-route-card__icon { font-size: 1.4rem; }
+.sal-route-card__name { color: #e8dcc8; font-weight: 500; font-size: 0.9rem; margin: 0; transition: color 0.3s; font-family: 'Crimson Pro', serif; }
+.sal-route-card:hover .sal-route-card__name { color: #d4a848; }
+.sal-route-card__subname { color: #8a7e6c; font-size: 0.7rem; margin: 2px 0 0; }
+.sal-route-card__tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 8px; }
+.sal-route-card__leaders { color: #8a7e6c; font-size: 0.7rem; margin: 0; }
+
+.sal-routes-detail { position: sticky; top: 80px; height: fit-content; }
+.sal-routes-minimap { width: 100%; height: 280px; }
+.sal-routes-detail__info { padding: 20px; }
+.sal-routes-detail__title { color: #d4a848; font-size: 1.1rem; font-weight: 500; margin: 0 0 4px; font-family: 'Crimson Pro', serif; }
+.sal-routes-detail__desc { color: #8a7e6c; font-size: 0.82rem; margin: 0 0 14px; }
+.sal-routes-detail__section-title { color: #a8843a; font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.1em; margin: 14px 0 8px; }
+.sal-routes-detail__text { color: #9e937f; font-size: 0.82rem; margin: 0 0 14px; }
+.sal-routes-detail__stops { display: flex; flex-direction: column; gap: 4px; max-height: 200px; overflow-y: auto; padding-right: 4px; }
+.sal-routes-detail__stop { display: flex; align-items: center; gap: 8px; font-size: 0.82rem; }
+.sal-routes-detail__stop-num { color: #d4a848; font-size: 0.7rem; font-weight: 600; width: 20px; text-align: right; }
+.sal-routes-detail__stop-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
+.sal-routes-detail__stop-name { color: #9e937f; }
+.sal-routes-empty { padding: 60px 40px; text-align: center; }
+.sal-routes-empty__icon { font-size: 2.5rem; margin-bottom: 12px; opacity: 0.3; }
+.sal-routes-empty p { color: #8a7e6c; font-size: 0.82rem; }
+
+/* ═══════════════════════════════════════════════
+   TIMELINE TAB
+   ═══════════════════════════════════════════════ */
+.sal-timeline-filters { padding: 16px; margin-bottom: 20px; }
+.sal-timeline-filter-group { margin-bottom: 12px; }
+.sal-timeline-count { color: #8a7e6c; font-size: 0.72rem; text-align: right; }
+.sal-timeline-hint { color: #8a7e6c; font-size: 0.65rem; font-style: italic; margin-top: 8px; }
+
+/* Distribution bar */
+.sal-timeline-distbar { padding: 16px; margin-bottom: 20px; }
+.sal-distbar { display: flex; align-items: flex-end; gap: 1px; height: 80px; }
+.sal-distbar--tall { height: 128px; }
+.sal-distbar__col { flex: 1; display: flex; flex-direction: column; align-items: center; }
+.sal-distbar__col:hover .sal-distbar__cnt { opacity: 1; }
+.sal-distbar__cnt { font-size: 0.5rem; color: #8a7e6c; opacity: 0; transition: opacity 0.2s; margin-bottom: 2px; }
+.sal-distbar__bar { width: 100%; border-radius: 2px 2px 0 0; transition: opacity 0.3s; }
+.sal-distbar__labels { display: flex; justify-content: space-between; margin-top: 4px; font-size: 0.55rem; color: #8a7e6c; }
+.sal-distbar__dec-label { font-size: 0.55rem; color: #8a7e6c; transform: rotate(-45deg); transform-origin: top left; white-space: nowrap; margin-top: 2px; }
+
+/* Canvas timeline wrapper */
+.sal-canvas-timeline-wrap { position: relative; overflow: hidden; }
+.sal-canvas-export-btn {
+  position: absolute; top: 12px; right: 12px; z-index: 10;
+  padding: 4px 10px; border-radius: 8px;
+  background: rgba(15,13,10,0.8); backdrop-filter: blur(8px);
+  border: 1px solid rgba(212,168,72,0.12);
+  color: #8a7e6c; font-size: 0.65rem; cursor: pointer;
+  transition: all 0.3s ease;
+}
+.sal-canvas-export-btn:hover { color: #d4a848; border-color: rgba(212,168,72,0.25); }
+
+/* Canvas & Network tooltips */
+.sal-canvas-tooltip {
+  position: absolute; pointer-events: none; z-index: 20;
+  background: rgba(15,13,10,0.95); border: 1px solid rgba(212,168,72,0.2);
+  border-radius: 10px; padding: 10px 14px; max-width: 220px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.5); backdrop-filter: blur(8px);
+}
+.sal-canvas-tooltip__title { color: #d4a848; font-size: 0.72rem; font-weight: 600; margin-bottom: 4px; }
+.sal-canvas-tooltip__source { display: flex; align-items: center; gap: 6px; margin-bottom: 4px; }
+.sal-canvas-tooltip__dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+.sal-canvas-tooltip__source span { color: #8a7e6c; font-size: 0.65rem; }
+.sal-canvas-tooltip__meta { color: #8a7e6c; font-size: 0.65rem; }
+
+/* ═══════════════════════════════════════════════
+   CASTLES TAB
+   ═══════════════════════════════════════════════ */
+.sal-castles-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 14px;
+}
+@media (min-width: 1200px) { .sal-castles-grid { grid-template-columns: repeat(4, 1fr); } }
+
+.sal-castle-card {
+  border-radius: 10px; overflow: hidden; cursor: pointer;
+  background: linear-gradient(145deg, rgba(34,30,24,0.7), rgba(26,22,18,0.5));
+  border: 1px solid rgba(212,168,72,0.08);
+  transition: all 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.sal-castle-card:hover { border-color: rgba(212,168,72,0.2); transform: translateY(-3px); box-shadow: 0 8px 32px rgba(0,0,0,0.4); }
+.sal-castle-card__img { aspect-ratio: 4/3; background: #1a1612; position: relative; overflow: hidden; }
+.sal-castle-card__img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.7s ease; }
+.sal-castle-card:hover .sal-castle-card__img img { transform: scale(1.1); }
+.sal-castle-card__placeholder { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 2.5rem; opacity: 0.3; }
+.sal-castle-card__badge {
+  position: absolute; top: 8px; right: 8px;
+  background: rgba(212,168,72,0.9); color: #0f0d0a;
+  font-size: 0.6rem; font-weight: 700; padding: 2px 6px; border-radius: 4px;
+}
+.sal-castle-card__info { padding: 14px; }
+.sal-castle-card__name { color: #e8dcc8; font-weight: 500; font-size: 0.82rem; margin: 0; transition: color 0.3s; font-family: 'Crimson Pro', serif; }
+.sal-castle-card:hover .sal-castle-card__name { color: #d4a848; }
+.sal-castle-card__ar { font-family: 'Amiri', serif; color: #a8843a; font-size: 0.85rem; margin-top: 2px; }
+.sal-castle-card__en { color: #8a7e6c; font-size: 0.7rem; margin: 6px 0 0; }
+
+/* ─── Modal ─── */
+.sal-modal-overlay {
+  position: fixed; inset: 0; z-index: 2000;
+  background: rgba(10,9,8,0.8); backdrop-filter: blur(12px);
+  display: flex; align-items: center; justify-content: center; padding: 16px;
+}
+.sal-modal {
+  background: #1a1612; border: 1px solid rgba(212,168,72,0.15);
+  border-radius: 14px; max-width: 640px; width: 100%;
+  max-height: 85vh; overflow-y: auto;
+}
+.sal-modal__img { aspect-ratio: 16/9; overflow: hidden; border-radius: 14px 14px 0 0; }
+.sal-modal__img img { width: 100%; height: 100%; object-fit: cover; }
+.sal-modal__body { padding: 24px; }
+.sal-modal__header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px; gap: 16px; }
+.sal-modal__title { color: #d4a848; font-size: 1.2rem; font-weight: 500; margin: 0; font-family: 'Crimson Pro', serif; }
+.sal-modal__sub { color: #8a7e6c; font-size: 0.82rem; margin: 4px 0 0; }
+.sal-modal__ar { font-family: 'Amiri', serif; color: #a8843a; font-size: 1.6rem; flex-shrink: 0; }
+.sal-modal__desc { color: #9e937f; font-size: 0.82rem; line-height: 1.65; margin-bottom: 16px; }
+.sal-modal__close-btn {
+  width: 100%; margin-top: 8px; padding: 10px;
+  background: rgba(212,168,72,0.1); border: 1px solid rgba(212,168,72,0.2);
+  border-radius: 10px; color: #d4a848; font-size: 0.82rem;
+  cursor: pointer; transition: background 0.3s;
+}
+.sal-modal__close-btn:hover { background: rgba(212,168,72,0.15); }
+
+/* ═══════════════════════════════════════════════
+   SOURCES TAB
+   ═══════════════════════════════════════════════ */
+.sal-sources-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+@media (max-width: 768px) { .sal-sources-grid { grid-template-columns: 1fr; } }
+
+.sal-source-card {
+  position: relative; border-radius: 10px; overflow: hidden;
+  background: linear-gradient(145deg, rgba(34,30,24,0.7), rgba(26,22,18,0.5));
+  border: 1px solid rgba(212,168,72,0.08); padding: 22px 22px 22px 26px;
+  cursor: pointer; height: 100%;
+  transition: all 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.sal-source-card:hover { border-color: rgba(212,168,72,0.2); transform: translateY(-2px); box-shadow: 0 8px 32px rgba(0,0,0,0.4); }
+.sal-source-card__accent { position: absolute; top: 0; left: 0; width: 3px; height: 100%; }
+.sal-source-card__accent-hover {
+  position: absolute; top: 0; left: 0; width: 3px; height: 0;
+  transition: height 0.7s ease; filter: brightness(1.5);
+}
+.sal-source-card:hover .sal-source-card__accent-hover { height: 100%; }
+.sal-source-card__body { margin-left: 8px; }
+.sal-source-card__header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 14px; gap: 16px; }
+.sal-source-card__name { color: #e8dcc8; font-weight: 600; font-size: 1.05rem; margin: 0; transition: color 0.3s; font-family: 'Crimson Pro', serif; }
+.sal-source-card:hover .sal-source-card__name { color: #d4a848; }
+.sal-source-card__sub { color: #8a7e6c; font-size: 0.7rem; margin: 2px 0 0; }
+.sal-source-card__ar-block { text-align: right; flex-shrink: 0; }
+.sal-source-card__ar-name { font-family: 'Amiri', serif; color: #d4a848; font-size: 1.6rem; line-height: 1.2; }
+.sal-source-card__ar-work { font-family: 'Amiri', serif; color: #8a7e6c; font-size: 0.85rem; margin-top: 4px; }
+.sal-source-card__work { color: #9e937f; font-size: 0.82rem; font-style: italic; margin: 0 0 12px; }
+.sal-source-card__arrow {
+  display: flex; align-items: center; gap: 4px; margin-top: 14px;
+  color: #a8843a; font-size: 0.7rem; transition: color 0.3s;
+}
+.sal-source-card:hover .sal-source-card__arrow { color: #d4a848; }
+.sal-source-card__arrow svg { transition: transform 0.3s; }
+.sal-source-card:hover .sal-source-card__arrow svg { transform: translateX(4px); }
+
+/* Source Detail */
+.sal-source-back {
+  display: inline-flex; align-items: center; gap: 6px;
+  color: #8a7e6c; font-size: 0.82rem; cursor: pointer;
+  background: none; border: none; padding: 0;
+  transition: color 0.3s; font-family: 'Crimson Pro', serif;
+}
+.sal-source-back:hover { color: #d4a848; }
+.sal-source-detail-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; }
+.sal-source-detail-work { color: #9e937f; font-style: italic; font-size: 0.82rem; margin: 8px 0 0; }
+.sal-source-detail-ar { text-align: right; flex-shrink: 0; }
+.sal-source-detail-ar__name { font-family: 'Amiri', serif; color: #d4a848; font-size: 2.2rem; line-height: 1.2; }
+.sal-source-detail-ar__work { font-family: 'Amiri', serif; color: #a8843a; font-size: 1.05rem; margin-top: 4px; }
+
+.sal-source-stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+@media (max-width: 768px) { .sal-source-stats-grid { grid-template-columns: 1fr; } }
+
+/* ─── Bar list (reusable) ─── */
+.sal-bar-list { display: flex; flex-direction: column; gap: 8px; }
+.sal-bar-list--mini { gap: 6px; }
+.sal-bar-list__row { display: flex; align-items: center; gap: 8px; }
+.sal-bar-list__label { color: #8a7e6c; font-size: 0.7rem; flex-shrink: 0; width: 100px; text-align: right; }
+.sal-bar-list--mini .sal-bar-list__label { width: 80px; }
+.sal-bar-list__track { flex: 1; height: 6px; background: rgba(42,33,24,0.5); border-radius: 3px; overflow: hidden; }
+.sal-bar-list__fill { height: 100%; border-radius: 3px; transition: width 0.7s ease; }
+.sal-bar-list__val { color: #8a7e6c; font-size: 0.7rem; width: 24px; text-align: right; }
+
+/* ─── Geo list ─── */
+.sal-geo-list { display: flex; flex-direction: column; gap: 6px; }
+.sal-geo-list__row { display: flex; justify-content: space-between; font-size: 0.72rem; }
+.sal-geo-list__row span:first-child { color: #9e937f; }
+.sal-geo-list__row span:last-child { color: #8a7e6c; }
+
+/* ─── Events list ─── */
+.sal-events-list {
+  display: flex; flex-direction: column; gap: 6px;
+  max-height: 500px; overflow-y: auto; padding-right: 8px;
+}
+.sal-event-row {
+  display: flex; align-items: center; gap: 12px;
+  padding: 10px 12px; border-radius: 8px;
+  background: linear-gradient(145deg, rgba(34,30,24,0.5), rgba(26,22,18,0.3));
+  border: 1px solid rgba(212,168,72,0.06);
+  transition: border-color 0.3s;
+}
+.sal-event-row:hover { border-color: rgba(212,168,72,0.2); }
+.sal-event-row__year { color: #d4a848; font-size: 0.72rem; font-weight: 600; width: 40px; text-align: right; flex-shrink: 0; }
+.sal-event-row__dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
+.sal-event-row__body { flex: 1; min-width: 0; }
+.sal-event-row__title { color: #9e937f; font-size: 0.82rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.sal-event-row__ar { font-family: 'Amiri', serif; color: #8a7e6c; font-size: 0.72rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-top: 2px; }
+
+/* ─── Network graph ─── */
+.sal-network-wrap { position: relative; overflow: hidden; }
+.sal-network-legend-btn {
+  position: absolute; top: 12px; right: 12px; z-index: 10;
+  width: 28px; height: 28px; border-radius: 8px;
+  background: rgba(15,13,10,0.8); backdrop-filter: blur(8px);
+  border: 1px solid rgba(212,168,72,0.12);
+  display: flex; align-items: center; justify-content: center;
+  color: #8a7e6c; font-size: 0.72rem; cursor: pointer;
+  transition: all 0.3s ease;
+}
+.sal-network-legend-btn:hover { color: #d4a848; border-color: rgba(212,168,72,0.25); }
+.sal-network-legend {
+  position: absolute; top: 46px; right: 12px; z-index: 10;
+  background: rgba(15,13,10,0.95); backdrop-filter: blur(16px);
+  border: 1px solid rgba(212,168,72,0.15); border-radius: 10px;
+  padding: 12px; box-shadow: 0 8px 24px rgba(0,0,0,0.5); max-width: 180px;
+}
+.sal-network-legend__title { color: #d4a848; font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 600; margin: 0 0 8px; }
+.sal-network-legend__items { display: flex; flex-direction: column; gap: 8px; }
+.sal-network-legend__item { display: flex; align-items: center; gap: 8px; font-size: 0.65rem; color: #8a7e6c; }
+.sal-network-legend__hub { width: 16px; height: 16px; border-radius: 50%; border: 2px solid #d4a848; flex-shrink: 0; opacity: 0.85; }
+.sal-network-legend__leaf { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+.sal-network-legend__line { width: 24px; height: 0; border-top: 1px dashed rgba(212,168,72,0.4); flex-shrink: 0; }
+.sal-network-legend__hint { color: #8a7e6c; font-size: 0.6rem; margin: 8px 0 0; padding-top: 8px; border-top: 1px solid rgba(212,168,72,0.1); font-style: italic; }
+
+/* ─── Sub-tab wrapper (for padding inside sal-view) ─── */
+.sal-subtab-wrap {
+  padding: 8px 20px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+@media (max-width: 768px) {
+  .sal-subtab-wrap { padding: 8px 12px 16px; }
+}
+
+/* ─── Scroll fix for sub-tabs ─── */
+.sal-subtab-wrap {
+  overflow-y: auto;
+  overflow-x: hidden;
+  max-height: calc(100vh - 180px);
+  padding-bottom: 40px;
+}
+.sal-subtab-container {
+  padding-bottom: 60px;
+}
