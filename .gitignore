@@ -10,3 +10,7 @@ dist
 
 # CSV files removed from public/data (B2)
 public/data/*.csv
+public/data/salibiyyat_atlas_layer_backup.json
+translate_titles.py
+salibiyyat_session_pack.zip
+public/data.zip

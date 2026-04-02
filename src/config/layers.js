@@ -1,12 +1,12 @@
 /* ═══ Layer Configuration ═══ */
 
-export const LAYER_KEYS = ['dynasties', 'battles', 'events', 'scholars', 'monuments', 'cities', 'routes', 'rulers', 'madrasas'];
+export const LAYER_KEYS = ['dynasties', 'battles', 'events', 'scholars', 'monuments', 'cities', 'routes', 'rulers', 'madrasas', 'salibiyyat'];
 
 export const FILTER_KEYS = ['religion', 'ethnic', 'government', 'period', 'zone'];
 
 export const DEFAULT_LAYERS = {
   dynasties: true, battles: true, events: true,
-  scholars: true, monuments: true, cities: true, routes: true, rulers: true, madrasas: true
+  scholars: true, monuments: true, cities: true, routes: true, rulers: true, madrasas: true, salibiyyat: true
 };
 
 export const DEFAULT_FILTERS = {

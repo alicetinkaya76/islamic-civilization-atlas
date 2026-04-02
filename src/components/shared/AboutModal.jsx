@@ -12,6 +12,7 @@ const STATS = [
   { icon: '🏛️', key: 'khitat', count: '801' },
   { icon: '🗺️', key: 'lestrange', count: '434' },
   { icon: '🏙️', key: 'cityatlas', count: '219' },
+  { icon: '⚔️', key: 'salibiyyat', count: '790' },
 ];
 
 const SOURCES = [
@@ -24,6 +25,7 @@ const SOURCES = [
   { name: 'İbn Battûta', work: 'er-Riḥle', detail: '317 stops, 7 voyages, 45 countries' },
   { name: 'Taqī al-Dīn al-Maqrīzī', work: 'al-Mawāʿiẓ wa-l-Iʿtibār (al-Khiṭaṭ)', detail: '801 structures, medieval Cairo' },
   { name: 'Guy Le Strange', work: 'The Lands of the Eastern Caliphate', detail: '434 records, 34 provinces, Cambridge 1905' },
+  { name: 'Ibn al-Athīr, al-Maqrīzī et al.', work: 'Salibiyyāt (6 Muslim Sources)', detail: '790 events, 24 castles, 1096–1438 CE' },
   { name: 'İbrahim Hakkı Konyalı', work: 'Âbideleri ve Kitâbeleriyle Konya Tarihi', detail: '219 monuments, Seljuk–Ottoman Konya' },
 ];
 
@@ -42,19 +44,19 @@ export default function AboutModal({ lang, onResetOnboarding, onResetLanding, ex
       stats: 'Proje İstatistikleri', sources: 'Veri Kaynakları', tech: 'Teknoloji',
       version: 'Versiyon', authors: 'Yazarlar', license: 'Lisans',
       dynasties: 'Hanedan', alam: 'el-Aʿlâm', dia: 'DİA Biyografi',
-      ei1: 'EI-1 Makale', yaqut: 'Muʿcem Kaydı', darpislam: 'Darphane', khitat: 'Yapı (el-Hıṭaṭ)', lestrange: 'Coğrafi Kayıt (Le Strange)', cityatlas: 'Yapı (Konya)', affiliations: 'Kurumsal Bağlantılar',
+      ei1: 'EI-1 Makale', yaqut: 'Muʿcem Kaydı', darpislam: 'Darphane', khitat: 'Yapı (el-Hıṭaṭ)', lestrange: 'Coğrafi Kayıt (Le Strange)', cityatlas: 'Yapı (Konya)', salibiyyat: 'Salibiyyât Olayı', affiliations: 'Kurumsal Bağlantılar',
     },
     en: {
       stats: 'Project Statistics', sources: 'Data Sources', tech: 'Technology',
       version: 'Version', authors: 'Authors', license: 'License',
       dynasties: 'Dynasties', alam: 'al-Aʿlām', dia: 'DİA Biographies',
-      ei1: 'EI-1 Articles', yaqut: 'Muʿjam Entries', darpislam: 'Mints', khitat: 'Structures (al-Khiṭaṭ)', lestrange: 'Geographic Records (Le Strange)', cityatlas: 'Monuments (Konya)', affiliations: 'Affiliations',
+      ei1: 'EI-1 Articles', yaqut: 'Muʿjam Entries', darpislam: 'Mints', khitat: 'Structures (al-Khiṭaṭ)', lestrange: 'Geographic Records (Le Strange)', cityatlas: 'Monuments (Konya)', salibiyyat: 'Crusade Events', affiliations: 'Affiliations',
     },
     ar: {
       stats: 'إحصائيات المشروع', sources: 'مصادر البيانات', tech: 'التقنية',
       version: 'الإصدار', authors: 'المؤلفون', license: 'الرخصة',
       dynasties: 'السلالات', alam: 'الأعلام', dia: 'تراجم DİA',
-      ei1: 'مقالات EI-1', yaqut: 'معجم البلدان', darpislam: 'دور السك', khitat: 'الخطط', lestrange: 'سجلات جغرافية (لي سترينج)', cityatlas: 'آثار قونية', affiliations: 'الانتماءات',
+      ei1: 'مقالات EI-1', yaqut: 'معجم البلدان', darpislam: 'دور السك', khitat: 'الخطط', lestrange: 'سجلات جغرافية (لي سترينج)', cityatlas: 'آثار قونية', salibiyyat: 'أحداث صليبية', affiliations: 'الانتماءات',
     },
   };
   const L = labels[lang] || labels.en;
@@ -148,12 +150,19 @@ export default function AboutModal({ lang, onResetOnboarding, onResetLanding, ex
               <div className="about-version">
                 <h3 className="about-section-title">{L.version}</h3>
                 <div className="about-version-info">
-                  <span className="about-ver-badge">v7.2.0.0</span>
+                  <span className="about-ver-badge">v7.6.0.0</span>
                   <a href="https://github.com/alicetinkaya76/islamic-civilization-atlas" target="_blank" rel="noopener noreferrer" className="about-github-link">
                     GitHub ↗
                   </a>
                 </div>
               </div>
+            </div>
+
+            {/* DOI & Citation */}
+            <div className="about-section about-doi-section">
+              <a className="about-doi-badge" href="https://doi.org/10.5281/zenodo.19183845" target="_blank" rel="noopener noreferrer">
+                <img src="https://zenodo.org/badge/DOI/10.5281/zenodo.19183845.svg" alt="DOI" height="20" />
+              </a>
             </div>
 
             {/* License */}
