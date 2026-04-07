@@ -1,0 +1,14 @@
+<svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#10b981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Bimaristan crescent arch -->
+  <path d="M10 38V22a14 14 0 0 1 28 0v16" opacity="0.15"/>
+  <!-- Arch -->
+  <path d="M14 38V24a10 10 0 0 1 20 0v14"/>
+  <!-- Cross (medical) -->
+  <line x1="24" y1="18" x2="24" y2="30"/>
+  <line x1="18" y1="24" x2="30" y2="24"/>
+  <!-- Mortar & pestle -->
+  <path d="M17 34c0 2 3 4 7 4s7-2 7-4"/>
+  <line x1="17" y1="34" x2="31" y2="34"/>
+  <!-- Pulse line -->
+  <polyline points="8,40 14,40 17,34 20,42 23,36 26,42 29,34 32,40 38,40" stroke-width="1.5"/>
+</svg>

@@ -1,0 +1,2884 @@
+{
+  "1": {
+    "yaqut": {
+      "id": 8279,
+      "h": "العراق",
+      "ht": "el-Irâk",
+      "ds": "irak"
+    },
+    "dia": {
+      "slug": "irak",
+      "url": "https://islamansiklopedisi.org.tr/irak"
+    }
+  },
+  "2": {
+    "yaqut": {
+      "id": 9074,
+      "h": "الفرات",
+      "ht": "el-Fûrat",
+      "ds": "furat"
+    },
+    "dia": {
+      "slug": "firat",
+      "url": "https://islamansiklopedisi.org.tr/firat"
+    }
+  },
+  "3": {
+    "yaqut": {
+      "id": 4726,
+      "h": "دجلة",
+      "ht": "Dicle",
+      "ds": "dicle"
+    },
+    "dia": {
+      "slug": "dicle",
+      "url": "https://islamansiklopedisi.org.tr/dicle"
+    }
+  },
+  "4": {
+    "yaqut": {
+      "id": 2027,
+      "h": "بغداد",
+      "ht": "Bağdat",
+      "ds": "bagdat"
+    },
+    "ei1": {
+      "id": 891,
+      "t": "BA GH DAD"
+    },
+    "atlas": {
+      "id": 1,
+      "tr": "Bağdat",
+      "en": "Baghdad"
+    },
+    "dia": {
+      "slug": "bagdat",
+      "url": "https://islamansiklopedisi.org.tr/bagdat"
+    }
+  },
+  "5": {
+    "yaqut": {
+      "id": 10987,
+      "h": "المدائن",
+      "ht": "Medâin",
+      "ds": "medain"
+    },
+    "dia": {
+      "slug": "medain",
+      "url": "https://islamansiklopedisi.org.tr/medain"
+    }
+  },
+  "6": {
+    "yaqut": {
+      "id": 12366,
+      "h": "واسط",
+      "ht": "Vâsît",
+      "ds": "vasit"
+    },
+    "dia": {
+      "slug": "vasit",
+      "url": "https://islamansiklopedisi.org.tr/vasit"
+    }
+  },
+  "7": {
+    "yaqut": {
+      "id": 1954,
+      "h": "البصرة",
+      "ht": "el-Basra",
+      "ds": "basra"
+    },
+    "atlas": {
+      "id": 12,
+      "tr": "Basra",
+      "en": "Basra"
+    },
+    "dia": {
+      "slug": "basra",
+      "url": "https://islamansiklopedisi.org.tr/basra"
+    }
+  },
+  "8": {
+    "yaqut": {
+      "id": 10482,
+      "h": "الكوفة",
+      "ht": "Kufe",
+      "ds": "kufe"
+    },
+    "ei1": {
+      "id": 7041,
+      "t": "al-KUFA"
+    },
+    "atlas": {
+      "id": 13,
+      "tr": "Kûfe",
+      "en": "Kufa"
+    },
+    "dia": {
+      "slug": "kufe",
+      "url": "https://islamansiklopedisi.org.tr/kufe"
+    }
+  },
+  "9": {
+    "yaqut": {
+      "id": 6219,
+      "h": "سامراء",
+      "ht": "Sâmurrâ",
+      "ds": "samarra"
+    },
+    "atlas": {
+      "id": 64,
+      "tr": "Sâmarrâ",
+      "en": "Samarra"
+    },
+    "dia": {
+      "slug": "samerra",
+      "url": "https://islamansiklopedisi.org.tr/samerra"
+    }
+  },
+  "10": {
+    "yaqut": {
+      "id": 5109,
+      "h": "دير العاقول",
+      "ht": "Dîru'l-Âkûl",
+      "ds": "diru-laakul"
+    }
+  },
+  "11": {
+    "yaqut": {
+      "id": 3036,
+      "h": "جرجرايا",
+      "ht": "Curcurayâ",
+      "ds": "curcurayya"
+    }
+  },
+  "12": {
+    "yaqut": {
+      "id": 12066,
+      "h": "النعمانية",
+      "ht": "En-Nuʿmâniyye",
+      "ds": "numaniye"
+    }
+  },
+  "13": {
+    "yaqut": {
+      "id": 9267,
+      "h": "فم الصلح",
+      "ht": "Fem es-Sulh",
+      "ds": "fem-sulh"
+    }
+  },
+  "14": {
+    "yaqut": {
+      "id": 2566,
+      "h": "تكريت",
+      "ht": "Tekrît",
+      "ds": "takrit"
+    },
+    "ei1": {
+      "id": 5494,
+      "t": "TAKRiT"
+    },
+    "dia": {
+      "slug": "tikrit",
+      "url": "https://islamansiklopedisi.org.tr/tikrit"
+    }
+  },
+  "15": {
+    "yaqut": {
+      "id": 8149,
+      "h": "عبادان",
+      "ht": "Ubâdân",
+      "ds": "ubadan"
+    },
+    "dia": {
+      "slug": "abadan",
+      "url": "https://islamansiklopedisi.org.tr/abadan"
+    }
+  },
+  "16": {
+    "yaqut": {
+      "id": 1021,
+      "h": "الأنبار",
+      "ht": "el-Enbâr",
+      "ds": "el-enbar"
+    },
+    "dia": {
+      "slug": "enbar",
+      "url": "https://islamansiklopedisi.org.tr/enbar"
+    }
+  },
+  "17": {
+    "yaqut": {
+      "id": 3879,
+      "h": "الحلة",
+      "ht": "El-Hille",
+      "ds": ""
+    },
+    "dia": {
+      "slug": "hille",
+      "url": "https://islamansiklopedisi.org.tr/hille"
+    }
+  },
+  "18": {
+    "yaqut": {
+      "id": 11943,
+      "h": "النجف",
+      "ht": "Neceef",
+      "ds": "neceef"
+    },
+    "dia": {
+      "slug": "necef",
+      "url": "https://islamansiklopedisi.org.tr/necef"
+    }
+  },
+  "19": {
+    "yaqut": {
+      "id": 10187,
+      "h": "كربلاء",
+      "ht": "Kerbela",
+      "ds": "kerbela"
+    },
+    "dia": {
+      "slug": "kerbela",
+      "url": "https://islamansiklopedisi.org.tr/kerbela"
+    }
+  },
+  "20": {
+    "dia": {
+      "slug": "nehrevan",
+      "url": "https://islamansiklopedisi.org.tr/nehrevan"
+    }
+  },
+  "21": {
+    "yaqut": {
+      "id": 12263,
+      "h": "نهر عيسى",
+      "ht": "Nehr-i ʿÎsâ",
+      "ds": "nehr-isa"
+    }
+  },
+  "22": {
+    "yaqut": {
+      "id": 2016,
+      "h": "بعقوبا",
+      "ht": "Bâkûbâ",
+      "ds": "bakuba"
+    },
+    "ei1": {
+      "id": 1012,
+      "t": "BA'KUBA"
+    }
+  },
+  "23": {
+    "yaqut": {
+      "id": 3207,
+      "h": "جلولاء",
+      "ht": "Celûlâ",
+      "ds": "celûlâ"
+    },
+    "dia": {
+      "slug": "celula",
+      "url": "https://islamansiklopedisi.org.tr/celula"
+    }
+  },
+  "24": {
+    "yaqut": {
+      "id": 4105,
+      "h": "خانقين",
+      "ht": "Hânıkîn",
+      "ds": "hanikin"
+    },
+    "dia": {
+      "slug": "hanekin",
+      "url": "https://islamansiklopedisi.org.tr/hanekin"
+    }
+  },
+  "25": {
+    "yaqut": {
+      "id": 9698,
+      "h": "قصر شيرين",
+      "ht": "Kasr Şîrîn",
+      "ds": "kasr-shirin"
+    },
+    "dia": {
+      "slug": "kasr-i-sirin",
+      "url": "https://islamansiklopedisi.org.tr/kasr-i-sirin"
+    }
+  },
+  "26": {
+    "yaqut": {
+      "id": 12779,
+      "h": "هيت",
+      "ht": "Hît",
+      "ds": "hit"
+    },
+    "dia": {
+      "slug": "hit",
+      "url": "https://islamansiklopedisi.org.tr/hit"
+    }
+  },
+  "27": {
+    "yaqut": {
+      "id": 3569,
+      "h": "الحديثة",
+      "ht": "el-Hadîse",
+      "ds": ""
+    }
+  },
+  "28": {
+    "yaqut": {
+      "id": 4054,
+      "h": "الحيرة",
+      "ht": "El-Hîre",
+      "ds": "hire"
+    },
+    "dia": {
+      "slug": "hire",
+      "url": "https://islamansiklopedisi.org.tr/hire"
+    }
+  },
+  "29": {
+    "yaqut": {
+      "id": 9362,
+      "h": "القادسية",
+      "ht": "El-Kâdisiyye",
+      "ds": "kadisiyye"
+    },
+    "dia": {
+      "slug": "kadisiye",
+      "url": "https://islamansiklopedisi.org.tr/kadisiye"
+    }
+  },
+  "30": {
+    "yaqut": {
+      "id": 8513,
+      "h": "عكبرا",
+      "ht": "Ukbera",
+      "ds": "ukbera"
+    }
+  },
+  "31": {
+    "yaqut": {
+      "id": 3605,
+      "h": "حربى",
+      "ht": "Harbâ",
+      "ds": "harba"
+    }
+  },
+  "32": {
+    "yaqut": {
+      "id": 140,
+      "h": "الأبلة",
+      "ht": "El-Ublah",
+      "ds": "ubulla"
+    },
+    "dia": {
+      "slug": "ubulla",
+      "url": "https://islamansiklopedisi.org.tr/ubulla"
+    }
+  },
+  "33": {
+    "yaqut": {
+      "id": 1272,
+      "h": "بابل",
+      "ht": "Bâbil",
+      "ds": "babil"
+    },
+    "dia": {
+      "slug": "babil",
+      "url": "https://islamansiklopedisi.org.tr/babil"
+    }
+  },
+  "34": {
+    "yaqut": {
+      "id": 10462,
+      "h": "كوثى",
+      "ht": "Kûsâ",
+      "ds": "kusa"
+    }
+  },
+  "35": {
+    "yaqut": {
+      "id": 10911,
+      "h": "المحول",
+      "ht": "el-Muhavvel",
+      "ds": "muhawwal"
+    }
+  },
+  "43": {
+    "yaqut": {
+      "id": 1971,
+      "h": "البطائح",
+      "ht": "el-Butâih",
+      "ds": ""
+    }
+  },
+  "55": {
+    "ei1": {
+      "id": 4273,
+      "t": "NIFFAR"
+    }
+  },
+  "57": {
+    "ei1": {
+      "id": 1082,
+      "t": "BARADAN"
+    }
+  },
+  "69": {
+    "yaqut": {
+      "id": 11725,
+      "h": "الموصل",
+      "ht": "el-Mûsul",
+      "ds": "musul"
+    },
+    "ei1": {
+      "id": 3815,
+      "t": "MOSUL"
+    },
+    "atlas": {
+      "id": 78,
+      "tr": "Musul",
+      "en": "Mosul"
+    },
+    "dia": {
+      "slug": "musul",
+      "url": "https://islamansiklopedisi.org.tr/musul"
+    }
+  },
+  "70": {
+    "yaqut": {
+      "id": 12325,
+      "h": "نينوى",
+      "ht": "Nînivâ",
+      "ds": "niniva"
+    },
+    "ei1": {
+      "id": 6479,
+      "t": "NINAWA"
+    }
+  },
+  "76": {
+    "yaqut": {
+      "id": 407,
+      "h": "إربل",
+      "ht": "İrbil",
+      "ds": "irbil"
+    },
+    "ei1": {
+      "id": 2258,
+      "t": "IRBIL"
+    },
+    "atlas": {
+      "id": 65,
+      "tr": "Erbil",
+      "en": "Erbil"
+    }
+  },
+  "80": {
+    "yaqut": {
+      "id": 3134,
+      "h": "الجزيرة",
+      "ht": "el-Cezîre",
+      "ds": ""
+    }
+  },
+  "81": {
+    "yaqut": {
+      "id": 3325,
+      "h": "الجودي",
+      "ht": "el-Cûdî",
+      "ds": "cudi"
+    }
+  },
+  "82": {
+    "yaqut": {
+      "id": 12038,
+      "h": "نصيبين",
+      "ht": "Nusaybîn",
+      "ds": "nusaybin"
+    },
+    "ei1": {
+      "id": 4214,
+      "t": "NASIBIN"
+    },
+    "dia": {
+      "slug": "nusaybin",
+      "url": "https://islamansiklopedisi.org.tr/nusaybin"
+    }
+  },
+  "84": {
+    "yaqut": {
+      "id": 10747,
+      "h": "ماردين",
+      "ht": "",
+      "ds": ""
+    },
+    "ei1": {
+      "id": 3533,
+      "t": "MARDIN"
+    },
+    "dia": {
+      "slug": "mardin",
+      "url": "https://islamansiklopedisi.org.tr/mardin"
+    }
+  },
+  "85": {
+    "yaqut": {
+      "id": 6677,
+      "h": "سنجار",
+      "ht": "Sincar",
+      "ds": "sincar"
+    },
+    "ei1": {
+      "id": 5217,
+      "t": "SINDJAR"
+    }
+  },
+  "86": {
+    "yaqut": {
+      "id": 3799,
+      "h": "الحضر",
+      "ht": "el-Hadr",
+      "ds": "hadr"
+    }
+  },
+  "87": {
+    "yaqut": {
+      "id": 5583,
+      "h": "الرقة",
+      "ht": "er-Rakka",
+      "ds": "rakka"
+    },
+    "dia": {
+      "slug": "rakka",
+      "url": "https://islamansiklopedisi.org.tr/rakka"
+    }
+  },
+  "89": {
+    "yaqut": {
+      "id": 3598,
+      "h": "حران",
+      "ht": "Harân",
+      "ds": ""
+    },
+    "ei1": {
+      "id": 1781,
+      "t": "HARRAN"
+    },
+    "dia": {
+      "slug": "harran",
+      "url": "https://islamansiklopedisi.org.tr/harran"
+    }
+  },
+  "96": {
+    "yaqut": {
+      "id": 8140,
+      "h": "عانة",
+      "ht": "ʿÂne",
+      "ds": "ana"
+    },
+    "ei1": {
+      "id": 571,
+      "t": "ANA"
+    }
+  },
+  "97": {
+    "yaqut": {
+      "id": 1402,
+      "h": "بالس",
+      "ht": "Bâlis",
+      "ds": "balis"
+    },
+    "ei1": {
+      "id": 1034,
+      "t": "BALIS"
+    }
+  },
+  "99": {
+    "yaqut": {
+      "id": 6650,
+      "h": "سميساط",
+      "ht": "Sümeysat",
+      "ds": "sumeysat"
+    }
+  },
+  "100": {
+    "yaqut": {
+      "id": 40,
+      "h": "آمد",
+      "ht": "Âmed",
+      "ds": "amid"
+    },
+    "dia": {
+      "slug": "amid",
+      "url": "https://islamansiklopedisi.org.tr/amid"
+    }
+  },
+  "101": {
+    "yaqut": {
+      "id": 11780,
+      "h": "ميافارقين",
+      "ht": "Miyâfârikîn",
+      "ds": "miyafarkin"
+    }
+  },
+  "102": {
+    "yaqut": {
+      "id": 447,
+      "h": "أرزن",
+      "ht": "Arzen",
+      "ds": "arzan"
+    },
+    "ei1": {
+      "id": 701,
+      "t": "ARZAN"
+    }
+  },
+  "103": {
+    "yaqut": {
+      "id": 3780,
+      "h": "حصن كيفا",
+      "ht": "Hisn Kîfâ",
+      "ds": "hisn-kifa"
+    },
+    "dia": {
+      "slug": "hisnikeyfa",
+      "url": "https://islamansiklopedisi.org.tr/hisnikeyfa"
+    }
+  },
+  "105": {
+    "yaqut": {
+      "id": 6420,
+      "h": "سروج",
+      "ht": "Suruç",
+      "ds": "suruc"
+    },
+    "ei1": {
+      "id": 4865,
+      "t": "SARUDJ"
+    }
+  },
+  "106": {
+    "yaqut": {
+      "id": 2106,
+      "h": "بلد",
+      "ht": "Belad",
+      "ds": ""
+    }
+  },
+  "107": {
+    "yaqut": {
+      "id": 4916,
+      "h": "دنيسر",
+      "ht": "Dünüsür",
+      "ds": "dunusur"
+    }
+  },
+  "108": {
+    "yaqut": {
+      "id": 4564,
+      "h": "دارا",
+      "ht": "Dârâ",
+      "ds": "dara"
+    }
+  },
+  "109": {
+    "yaqut": {
+      "id": 5520,
+      "h": "الرصافة",
+      "ht": "er-Rusâfe",
+      "ds": ""
+    }
+  },
+  "112": {
+    "dia": {
+      "slug": "malazgirt",
+      "url": "https://islamansiklopedisi.org.tr/malazgirt"
+    }
+  },
+  "113": {
+    "ei1": {
+      "id": 4036,
+      "t": "MUSH"
+    }
+  },
+  "114": {
+    "yaqut": {
+      "id": 7272,
+      "h": "شمشاط",
+      "ht": "Şimşâd",
+      "ds": "simsad"
+    }
+  },
+  "115": {
+    "yaqut": {
+      "id": 3772,
+      "h": "حصن زياد",
+      "ht": "Husnu Ziyâd",
+      "ds": "husn-ziyad"
+    }
+  },
+  "116": {
+    "yaqut": {
+      "id": 9391,
+      "h": "قاليقلا",
+      "ht": "Kâlîkala",
+      "ds": "kalikala"
+    },
+    "dia": {
+      "slug": "erzurum",
+      "url": "https://islamansiklopedisi.org.tr/erzurum"
+    }
+  },
+  "117": {
+    "yaqut": {
+      "id": 445,
+      "h": "أرزنجان",
+      "ht": "Erzincan",
+      "ds": "erzincan"
+    },
+    "ei1": {
+      "id": 1328,
+      "t": "ERZINDJAN"
+    }
+  },
+  "119": {
+    "yaqut": {
+      "id": 11533,
+      "h": "ملطية",
+      "ht": "Malâtya",
+      "ds": "malatya"
+    },
+    "ei1": {
+      "id": 3428,
+      "t": "MALATYA"
+    },
+    "dia": {
+      "slug": "malatya",
+      "url": "https://islamansiklopedisi.org.tr/malatya"
+    }
+  },
+  "120": {
+    "yaqut": {
+      "id": 5957,
+      "h": "زبطرة",
+      "ht": "Zıbatra",
+      "ds": "zibatra"
+    }
+  },
+  "121": {
+    "yaqut": {
+      "id": 3556,
+      "h": "الحدث",
+      "ht": "el-Hadîs",
+      "ds": "hadis"
+    }
+  },
+  "122": {
+    "yaqut": {
+      "id": 3784,
+      "h": "حصن منصور",
+      "ht": "Hısn Mansûr",
+      "ds": "hisn-mansur"
+    }
+  },
+  "125": {
+    "yaqut": {
+      "id": 7929,
+      "h": "طرندة",
+      "ht": "Tirende",
+      "ds": "tirende"
+    }
+  },
+  "127": {
+    "yaqut": {
+      "id": 371,
+      "h": "أذربيجان",
+      "ht": "Âzerbâycân",
+      "ds": "azerbaycan"
+    },
+    "dia": {
+      "slug": "azerbaycan",
+      "url": "https://islamansiklopedisi.org.tr/azerbaycan"
+    }
+  },
+  "128": {
+    "yaqut": {
+      "id": 1507,
+      "h": "بحيرة أرمية",
+      "ht": "Bahr-i Urmiyye",
+      "ds": "urmiye"
+    },
+    "ei1": {
+      "id": 5934,
+      "t": "URMIYA"
+    },
+    "dia": {
+      "slug": "urmiye-golu",
+      "url": "https://islamansiklopedisi.org.tr/urmiye-golu"
+    }
+  },
+  "130": {
+    "yaqut": {
+      "id": 2439,
+      "h": "تبريز",
+      "ht": "Tebriz",
+      "ds": "tabriz"
+    },
+    "ei1": {
+      "id": 5419,
+      "t": "TABRIZ"
+    },
+    "atlas": {
+      "id": 18,
+      "tr": "Tebriz",
+      "en": "Tabriz"
+    },
+    "dia": {
+      "slug": "tebriz",
+      "url": "https://islamansiklopedisi.org.tr/tebriz"
+    }
+  },
+  "133": {
+    "yaqut": {
+      "id": 11058,
+      "h": "مراغة",
+      "ht": "Merâğe",
+      "ds": "meragha"
+    },
+    "ei1": {
+      "id": 3520,
+      "t": "MARAGHA"
+    },
+    "dia": {
+      "slug": "meraga",
+      "url": "https://islamansiklopedisi.org.tr/meraga"
+    }
+  },
+  "134": {
+    "yaqut": {
+      "id": 490,
+      "h": "أرمية",
+      "ht": "Armiye",
+      "ds": "armiye"
+    },
+    "ei1": {
+      "id": 5934,
+      "t": "URMIYA"
+    },
+    "dia": {
+      "slug": "urmiye",
+      "url": "https://islamansiklopedisi.org.tr/urmiye"
+    }
+  },
+  "135": {
+    "yaqut": {
+      "id": 6563,
+      "h": "سلماس",
+      "ht": "Selmâs",
+      "ds": "selmas"
+    },
+    "ei1": {
+      "id": 4788,
+      "t": "SALMAS"
+    },
+    "dia": {
+      "slug": "selmas",
+      "url": "https://islamansiklopedisi.org.tr/selmas"
+    }
+  },
+  "136": {
+    "yaqut": {
+      "id": 4507,
+      "h": "خوي",
+      "ht": "Huvî",
+      "ds": ""
+    },
+    "dia": {
+      "slug": "hoy",
+      "url": "https://islamansiklopedisi.org.tr/hoy"
+    }
+  },
+  "137": {
+    "yaqut": {
+      "id": 11167,
+      "h": "مرند",
+      "ht": "Merenid",
+      "ds": "merenid"
+    },
+    "ei1": {
+      "id": 3525,
+      "t": "MARAND"
+    }
+  },
+  "138": {
+    "yaqut": {
+      "id": 11965,
+      "h": "نخجوان",
+      "ht": "Nahçovan",
+      "ds": "nakhchivan"
+    },
+    "dia": {
+      "slug": "nahcivan",
+      "url": "https://islamansiklopedisi.org.tr/nahcivan"
+    }
+  },
+  "139": {
+    "yaqut": {
+      "id": 434,
+      "h": "أردبيل",
+      "ht": "Erdebil",
+      "ds": "erdebil"
+    },
+    "ei1": {
+      "id": 651,
+      "t": "ARDABIL"
+    },
+    "atlas": {
+      "id": 53,
+      "tr": "Erdebil",
+      "en": "Ardabil"
+    },
+    "dia": {
+      "slug": "erdebil",
+      "url": "https://islamansiklopedisi.org.tr/erdebil"
+    }
+  },
+  "140": {
+    "dia": {
+      "slug": "seblan",
+      "url": "https://islamansiklopedisi.org.tr/seblan"
+    }
+  },
+  "142": {
+    "yaqut": {
+      "id": 5833,
+      "h": "الروم",
+      "ht": "er-Rûm",
+      "ds": "rum"
+    },
+    "ei1": {
+      "id": 4623,
+      "t": "RUM"
+    },
+    "dia": {
+      "slug": "rum",
+      "url": "https://islamansiklopedisi.org.tr/rum"
+    }
+  },
+  "143": {
+    "yaqut": {
+      "id": 11143,
+      "h": "مرعش",
+      "ht": "Murâş",
+      "ds": "murash"
+    },
+    "dia": {
+      "slug": "maras",
+      "url": "https://islamansiklopedisi.org.tr/maras"
+    }
+  },
+  "144": {
+    "dia": {
+      "slug": "aynzerba",
+      "url": "https://islamansiklopedisi.org.tr/aynzerba"
+    }
+  },
+  "145": {
+    "yaqut": {
+      "id": 12618,
+      "h": "الهارونية",
+      "ht": "el-Hârûniye",
+      "ds": "haruniye"
+    }
+  },
+  "147": {
+    "dia": {
+      "slug": "misis",
+      "url": "https://islamansiklopedisi.org.tr/misis"
+    }
+  },
+  "148": {
+    "yaqut": {
+      "id": 381,
+      "h": "أذنة",
+      "ht": "Azne",
+      "ds": "azne"
+    },
+    "ei1": {
+      "id": 206,
+      "t": "ADANA"
+    },
+    "dia": {
+      "slug": "adana",
+      "url": "https://islamansiklopedisi.org.tr/adana"
+    }
+  },
+  "149": {
+    "yaqut": {
+      "id": 3401,
+      "h": "جيحان",
+      "ht": "Ceyhan",
+      "ds": "ceyhan"
+    },
+    "dia": {
+      "slug": "ceyhan-nehri",
+      "url": "https://islamansiklopedisi.org.tr/ceyhan-nehri"
+    }
+  },
+  "150": {
+    "yaqut": {
+      "id": 6863,
+      "h": "سيحان",
+      "ht": "Sîhân",
+      "ds": "sihan"
+    },
+    "dia": {
+      "slug": "seyhan-nehri",
+      "url": "https://islamansiklopedisi.org.tr/seyhan-nehri"
+    }
+  },
+  "151": {
+    "yaqut": {
+      "id": 7906,
+      "h": "طرسوس",
+      "ht": "Tarsus",
+      "ds": "tarsus"
+    },
+    "ei1": {
+      "id": 5567,
+      "t": "TARSUS"
+    },
+    "dia": {
+      "slug": "tarsus",
+      "url": "https://islamansiklopedisi.org.tr/tarsus"
+    }
+  },
+  "153": {
+    "yaqut": {
+      "id": 10693,
+      "h": "لؤلؤة",
+      "ht": "Lüle",
+      "ds": "lüle"
+    }
+  },
+  "154": {
+    "atlas": {
+      "id": 80,
+      "tr": "Trabzon",
+      "en": "Trabzon"
+    },
+    "dia": {
+      "slug": "trabzon",
+      "url": "https://islamansiklopedisi.org.tr/trabzon"
+    }
+  },
+  "155": {
+    "yaqut": {
+      "id": 8597,
+      "h": "عمورية",
+      "ht": "Emûriye",
+      "ds": "emoriye"
+    },
+    "dia": {
+      "slug": "ammuriye",
+      "url": "https://islamansiklopedisi.org.tr/ammuriye"
+    }
+  },
+  "156": {
+    "dia": {
+      "slug": "sis",
+      "url": "https://islamansiklopedisi.org.tr/sis"
+    }
+  },
+  "157": {
+    "atlas": {
+      "id": 72,
+      "tr": "Kayseri",
+      "en": "Kayseri"
+    },
+    "dia": {
+      "slug": "kayseri",
+      "url": "https://islamansiklopedisi.org.tr/kayseri"
+    }
+  },
+  "158": {
+    "ei1": {
+      "id": 5254,
+      "t": "SIWAS"
+    },
+    "atlas": {
+      "id": 71,
+      "tr": "Sivas",
+      "en": "Sivas"
+    },
+    "dia": {
+      "slug": "sivas",
+      "url": "https://islamansiklopedisi.org.tr/sivas"
+    }
+  },
+  "159": {
+    "yaqut": {
+      "id": 10004,
+      "h": "قونية",
+      "ht": "Kunya",
+      "ds": "konya"
+    },
+    "atlas": {
+      "id": 21,
+      "tr": "Konya",
+      "en": "Konya"
+    },
+    "dia": {
+      "slug": "konya",
+      "url": "https://islamansiklopedisi.org.tr/konya"
+    }
+  },
+  "160": {
+    "yaqut": {
+      "id": 1080,
+      "h": "أنقرة",
+      "ht": "Ankara",
+      "ds": "ankara"
+    },
+    "dia": {
+      "slug": "ankara",
+      "url": "https://islamansiklopedisi.org.tr/ankara"
+    }
+  },
+  "161": {
+    "dia": {
+      "slug": "aksaray",
+      "url": "https://islamansiklopedisi.org.tr/aksaray"
+    }
+  },
+  "162": {
+    "dia": {
+      "slug": "nigde",
+      "url": "https://islamansiklopedisi.org.tr/nigde"
+    }
+  },
+  "163": {
+    "dia": {
+      "slug": "alanya",
+      "url": "https://islamansiklopedisi.org.tr/alanya"
+    }
+  },
+  "164": {
+    "yaqut": {
+      "id": 1071,
+      "h": "أنطالية",
+      "ht": "Antalya",
+      "ds": "antalya"
+    },
+    "dia": {
+      "slug": "antalya",
+      "url": "https://islamansiklopedisi.org.tr/antalya"
+    }
+  },
+  "165": {
+    "dia": {
+      "slug": "egirdir",
+      "url": "https://islamansiklopedisi.org.tr/egirdir"
+    }
+  },
+  "166": {
+    "dia": {
+      "slug": "kutahya",
+      "url": "https://islamansiklopedisi.org.tr/kutahya"
+    }
+  },
+  "167": {
+    "dia": {
+      "slug": "efes",
+      "url": "https://islamansiklopedisi.org.tr/efes"
+    }
+  },
+  "168": {
+    "atlas": {
+      "id": 79,
+      "tr": "Bursa",
+      "en": "Bursa"
+    },
+    "dia": {
+      "slug": "bursa",
+      "url": "https://islamansiklopedisi.org.tr/bursa"
+    }
+  },
+  "169": {
+    "yaqut": {
+      "id": 12320,
+      "h": "نيقية",
+      "ht": "Nikaia",
+      "ds": "nikaia"
+    },
+    "dia": {
+      "slug": "iznik",
+      "url": "https://islamansiklopedisi.org.tr/iznik"
+    }
+  },
+  "170": {
+    "dia": {
+      "slug": "sinop",
+      "url": "https://islamansiklopedisi.org.tr/sinop"
+    }
+  },
+  "171": {
+    "dia": {
+      "slug": "amasya",
+      "url": "https://islamansiklopedisi.org.tr/amasya"
+    }
+  },
+  "172": {
+    "dia": {
+      "slug": "karaman",
+      "url": "https://islamansiklopedisi.org.tr/karaman"
+    }
+  },
+  "173": {
+    "dia": {
+      "slug": "samsun",
+      "url": "https://islamansiklopedisi.org.tr/samsun"
+    }
+  },
+  "174": {
+    "yaqut": {
+      "id": 3429,
+      "h": "جيلان",
+      "ht": "Cîlân",
+      "ds": ""
+    },
+    "ei1": {
+      "id": 1590,
+      "t": "GILAN"
+    },
+    "dia": {
+      "slug": "gilan",
+      "url": "https://islamansiklopedisi.org.tr/gilan"
+    }
+  },
+  "178": {
+    "dia": {
+      "slug": "berda",
+      "url": "https://islamansiklopedisi.org.tr/berda"
+    }
+  },
+  "179": {
+    "yaqut": {
+      "id": 2380,
+      "h": "بيلقان",
+      "ht": "Bilkân",
+      "ds": "bilkan"
+    }
+  },
+  "180": {
+    "yaqut": {
+      "id": 3287,
+      "h": "جنزة",
+      "ht": "Cenze",
+      "ds": "cenze"
+    },
+    "dia": {
+      "slug": "gence",
+      "url": "https://islamansiklopedisi.org.tr/gence"
+    }
+  },
+  "181": {
+    "yaqut": {
+      "id": 7261,
+      "h": "الشماخية",
+      "ht": "eş-Şimâhiyye",
+      "ds": "simahiyye"
+    }
+  },
+  "182": {
+    "yaqut": {
+      "id": 1248,
+      "h": "باب الأبواب",
+      "ht": "Bâb-ı Ebvâb",
+      "ds": "bab-i-ebvab"
+    },
+    "dia": {
+      "slug": "derbend",
+      "url": "https://islamansiklopedisi.org.tr/derbend"
+    }
+  },
+  "183": {
+    "ei1": {
+      "id": 1011,
+      "t": "BAKU"
+    },
+    "dia": {
+      "slug": "baku",
+      "url": "https://islamansiklopedisi.org.tr/baku"
+    }
+  },
+  "184": {
+    "yaqut": {
+      "id": 2555,
+      "h": "تفليس",
+      "ht": "Tiflis",
+      "ds": "tiflis"
+    },
+    "ei1": {
+      "id": 5685,
+      "t": "TIFLIS"
+    },
+    "dia": {
+      "slug": "tiflis",
+      "url": "https://islamansiklopedisi.org.tr/tiflis"
+    }
+  },
+  "185": {
+    "yaqut": {
+      "id": 4719,
+      "h": "دبيل",
+      "ht": "Dibîl",
+      "ds": "dibil"
+    },
+    "dia": {
+      "slug": "debil",
+      "url": "https://islamansiklopedisi.org.tr/debil"
+    }
+  },
+  "186": {
+    "dia": {
+      "slug": "ahlat",
+      "url": "https://islamansiklopedisi.org.tr/ahlat"
+    }
+  },
+  "187": {
+    "yaqut": {
+      "id": 12389,
+      "h": "وان",
+      "ht": "Vân",
+      "ds": ""
+    },
+    "ei1": {
+      "id": 6050,
+      "t": "WAN"
+    },
+    "dia": {
+      "slug": "van",
+      "url": "https://islamansiklopedisi.org.tr/van"
+    }
+  },
+  "188": {
+    "yaqut": {
+      "id": 1534,
+      "h": "بدليس",
+      "ht": "Bidlis",
+      "ds": "bidlis"
+    },
+    "dia": {
+      "slug": "bitlis",
+      "url": "https://islamansiklopedisi.org.tr/bitlis"
+    }
+  },
+  "189": {
+    "yaqut": {
+      "id": 2917,
+      "h": "الجبال",
+      "ht": "El-Cibâl",
+      "ds": "cibal"
+    }
+  },
+  "190": {
+    "dia": {
+      "slug": "kirmanshah",
+      "url": "https://islamansiklopedisi.org.tr/kirmanshah"
+    }
+  },
+  "191": {
+    "ei1": {
+      "id": 1251,
+      "t": "BISUTUN"
+    },
+    "dia": {
+      "slug": "bisutun",
+      "url": "https://islamansiklopedisi.org.tr/bisutun"
+    }
+  },
+  "193": {
+    "yaqut": {
+      "id": 5206,
+      "h": "دينور",
+      "ht": "Dînûr",
+      "ds": "dinur"
+    },
+    "dia": {
+      "slug": "dinever",
+      "url": "https://islamansiklopedisi.org.tr/dinever"
+    }
+  },
+  "194": {
+    "yaqut": {
+      "id": 3874,
+      "h": "حلوان",
+      "ht": "Hiluân",
+      "ds": "hiluan"
+    },
+    "ei1": {
+      "id": 1929,
+      "t": "HULWAN"
+    },
+    "dia": {
+      "slug": "hulvan",
+      "url": "https://islamansiklopedisi.org.tr/hulvan"
+    }
+  },
+  "195": {
+    "atlas": {
+      "id": 52,
+      "tr": "Hemedan",
+      "en": "Hamadan"
+    },
+    "dia": {
+      "slug": "hemedan",
+      "url": "https://islamansiklopedisi.org.tr/hemedan"
+    }
+  },
+  "196": {
+    "yaqut": {
+      "id": 12204,
+      "h": "نهاوند",
+      "ht": "Nihâvend",
+      "ds": "nihavend"
+    },
+    "ei1": {
+      "id": 4276,
+      "t": "NIHAWAND"
+    },
+    "dia": {
+      "slug": "nihavend",
+      "url": "https://islamansiklopedisi.org.tr/nihavend"
+    }
+  },
+  "197": {
+    "ei1": {
+      "id": 2270,
+      "t": "ISFAHAN"
+    },
+    "atlas": {
+      "id": 6,
+      "tr": "İsfahan",
+      "en": "Isfahan"
+    },
+    "dia": {
+      "slug": "isfahan",
+      "url": "https://islamansiklopedisi.org.tr/isfahan"
+    }
+  },
+  "198": {
+    "atlas": {
+      "id": 77,
+      "tr": "Rey",
+      "en": "Ray"
+    },
+    "dia": {
+      "slug": "rey",
+      "url": "https://islamansiklopedisi.org.tr/rey"
+    }
+  },
+  "199": {
+    "yaqut": {
+      "id": 9612,
+      "h": "قزوين",
+      "ht": "Kuzvîn",
+      "ds": "qazvin"
+    },
+    "atlas": {
+      "id": 51,
+      "tr": "Kazvin",
+      "en": "Qazvin"
+    },
+    "dia": {
+      "slug": "kazvin",
+      "url": "https://islamansiklopedisi.org.tr/kazvin"
+    }
+  },
+  "200": {
+    "yaqut": {
+      "id": 9895,
+      "h": "قم",
+      "ht": "Kum",
+      "ds": "kum"
+    },
+    "dia": {
+      "slug": "kum",
+      "url": "https://islamansiklopedisi.org.tr/kum"
+    }
+  },
+  "201": {
+    "yaqut": {
+      "id": 10083,
+      "h": "كاشان",
+      "ht": "Kaşan",
+      "ds": "kashan"
+    },
+    "dia": {
+      "slug": "kashan",
+      "url": "https://islamansiklopedisi.org.tr/kashan"
+    }
+  },
+  "202": {
+    "yaqut": {
+      "id": 4483,
+      "h": "خوزستان",
+      "ht": "Huzistan",
+      "ds": "huzistan"
+    },
+    "dia": {
+      "slug": "huzistan",
+      "url": "https://islamansiklopedisi.org.tr/huzistan"
+    }
+  },
+  "203": {
+    "ei1": {
+      "id": 2644,
+      "t": "KARUN"
+    }
+  },
+  "204": {
+    "yaqut": {
+      "id": 1167,
+      "h": "الأهواز",
+      "ht": "El-Ahvâz",
+      "ds": "ahvaz"
+    },
+    "dia": {
+      "slug": "ahvaz",
+      "url": "https://islamansiklopedisi.org.tr/ahvaz"
+    }
+  },
+  "205": {
+    "dia": {
+      "slug": "suster",
+      "url": "https://islamansiklopedisi.org.tr/suster"
+    }
+  },
+  "207": {
+    "yaqut": {
+      "id": 8414,
+      "h": "عسكر مكرم",
+      "ht": "Asker Mükrim",
+      "ds": "asker-mukrim"
+    },
+    "ei1": {
+      "id": 741,
+      "t": "ASKAR MUKRAM"
+    }
+  },
+  "208": {
+    "dia": {
+      "slug": "gundisapur",
+      "url": "https://islamansiklopedisi.org.tr/gundisapur"
+    }
+  },
+  "209": {
+    "dia": {
+      "slug": "dezful",
+      "url": "https://islamansiklopedisi.org.tr/dezful"
+    }
+  },
+  "210": {
+    "yaqut": {
+      "id": 6777,
+      "h": "السوس",
+      "ht": "es-Sûs",
+      "ds": "sus-huzistan"
+    },
+    "dia": {
+      "slug": "sus",
+      "url": "https://islamansiklopedisi.org.tr/sus"
+    }
+  },
+  "218": {
+    "yaqut": {
+      "id": 12232,
+      "h": "نهر تيرى",
+      "ht": "Nehir Tîrî",
+      "ds": ""
+    }
+  },
+  "219": {
+    "yaqut": {
+      "id": 4932,
+      "h": "دورق",
+      "ht": "Dûrek",
+      "ds": "duraq"
+    }
+  },
+  "220": {
+    "yaqut": {
+      "id": 3786,
+      "h": "حصن مهدي",
+      "ht": "Husn-i Mehdî",
+      "ds": ""
+    }
+  },
+  "221": {
+    "yaqut": {
+      "id": 5335,
+      "h": "رامهرمز",
+      "ht": "Râmhormuz",
+      "ds": "ramhormuz"
+    },
+    "dia": {
+      "slug": "ramhurmuz",
+      "url": "https://islamansiklopedisi.org.tr/ramhurmuz"
+    }
+  },
+  "222": {
+    "yaqut": {
+      "id": 1181,
+      "h": "إيذج",
+      "ht": "İyidj",
+      "ds": "iyidj"
+    }
+  },
+  "223": {
+    "ei1": {
+      "id": 5392,
+      "t": "SUSAN"
+    }
+  },
+  "227": {
+    "yaqut": {
+      "id": 8999,
+      "h": "فارس",
+      "ht": "Fâris",
+      "ds": "faris"
+    },
+    "dia": {
+      "slug": "fars",
+      "url": "https://islamansiklopedisi.org.tr/fars"
+    }
+  },
+  "228": {
+    "yaqut": {
+      "id": 7402,
+      "h": "شيراز",
+      "ht": "Şîrâz",
+      "ds": "shiraz"
+    },
+    "atlas": {
+      "id": 25,
+      "tr": "Şîrâz",
+      "en": "Shiraz"
+    },
+    "dia": {
+      "slug": "siraz",
+      "url": "https://islamansiklopedisi.org.tr/siraz"
+    }
+  },
+  "229": {
+    "yaqut": {
+      "id": 733,
+      "h": "إصطخر",
+      "ht": "İstak-her",
+      "ds": "istakhr"
+    },
+    "ei1": {
+      "id": 2319,
+      "t": "ISTAKHR"
+    },
+    "dia": {
+      "slug": "istahr",
+      "url": "https://islamansiklopedisi.org.tr/istahr"
+    }
+  },
+  "230": {
+    "ei1": {
+      "id": 1474,
+      "t": "FIRUZ-ABAD"
+    },
+    "dia": {
+      "slug": "firuzabad",
+      "url": "https://islamansiklopedisi.org.tr/firuzabad"
+    }
+  },
+  "231": {
+    "yaqut": {
+      "id": 10078,
+      "h": "كازرون",
+      "ht": "Kâzrûn",
+      "ds": "kazrun"
+    },
+    "dia": {
+      "slug": "kazerun",
+      "url": "https://islamansiklopedisi.org.tr/kazerun"
+    }
+  },
+  "232": {
+    "yaqut": {
+      "id": 6870,
+      "h": "سيراف",
+      "ht": "Sîrâf",
+      "ds": "siraf"
+    },
+    "dia": {
+      "slug": "siraf",
+      "url": "https://islamansiklopedisi.org.tr/siraf"
+    }
+  },
+  "233": {
+    "yaqut": {
+      "id": 10524,
+      "h": "كيش",
+      "ht": "Kîş",
+      "ds": "kish"
+    },
+    "dia": {
+      "slug": "kis",
+      "url": "https://islamansiklopedisi.org.tr/kis"
+    }
+  },
+  "234": {
+    "yaqut": {
+      "id": 6919,
+      "h": "شابور",
+      "ht": "Şâbûr",
+      "ds": "sabur"
+    },
+    "dia": {
+      "slug": "bisapur",
+      "url": "https://islamansiklopedisi.org.tr/bisapur"
+    }
+  },
+  "235": {
+    "dia": {
+      "slug": "arrecan",
+      "url": "https://islamansiklopedisi.org.tr/arrecan"
+    }
+  },
+  "236": {
+    "yaqut": {
+      "id": 12869,
+      "h": "يزد",
+      "ht": "Yezd",
+      "ds": "yazd"
+    },
+    "dia": {
+      "slug": "yezd",
+      "url": "https://islamansiklopedisi.org.tr/yezd"
+    }
+  },
+  "237": {
+    "yaqut": {
+      "id": 4565,
+      "h": "دارابجرد",
+      "ht": "Dârâbcird",
+      "ds": "darabcird"
+    },
+    "dia": {
+      "slug": "darabgird",
+      "url": "https://islamansiklopedisi.org.tr/darabgird"
+    }
+  },
+  "238": {
+    "yaqut": {
+      "id": 9194,
+      "h": "فسا",
+      "ht": "Fesâ",
+      "ds": "fesa"
+    },
+    "dia": {
+      "slug": "fesa",
+      "url": "https://islamansiklopedisi.org.tr/fesa"
+    }
+  },
+  "239": {
+    "yaqut": {
+      "id": 12316,
+      "h": "نيريز",
+      "ht": "Nîrîz",
+      "ds": "niriz"
+    }
+  },
+  "240": {
+    "ei1": {
+      "id": 3218,
+      "t": "LAR"
+    }
+  },
+  "243": {
+    "yaqut": {
+      "id": 2369,
+      "h": "البيضاء",
+      "ht": "el-Beyza",
+      "ds": "beyza"
+    }
+  },
+  "244": {
+    "yaqut": {
+      "id": 112,
+      "h": "أبرقوه",
+      "ht": "Abraku'h",
+      "ds": "abraqu"
+    }
+  },
+  "246": {
+    "yaqut": {
+      "id": 11765,
+      "h": "مهروبان",
+      "ht": "Mehrobân",
+      "ds": "mehroban"
+    }
+  },
+  "248": {
+    "yaqut": {
+      "id": 10234,
+      "h": "كرمان",
+      "ht": "Kirman",
+      "ds": "kirman"
+    },
+    "dia": {
+      "slug": "kirman",
+      "url": "https://islamansiklopedisi.org.tr/kirman"
+    }
+  },
+  "249": {
+    "yaqut": {
+      "id": 6874,
+      "h": "السيرجان",
+      "ht": "Sircân",
+      "ds": "sircan"
+    },
+    "dia": {
+      "slug": "sircan",
+      "url": "https://islamansiklopedisi.org.tr/sircan"
+    }
+  },
+  "250": {
+    "yaqut": {
+      "id": 1633,
+      "h": "بردسير",
+      "ht": "Birdsîr",
+      "ds": "birdsir"
+    },
+    "dia": {
+      "slug": "kirman",
+      "url": "https://islamansiklopedisi.org.tr/kirman"
+    }
+  },
+  "251": {
+    "yaqut": {
+      "id": 10798,
+      "h": "ماهان",
+      "ht": "Mahân",
+      "ds": "mahan"
+    }
+  },
+  "252": {
+    "yaqut": {
+      "id": 2162,
+      "h": "بم",
+      "ht": "Bam",
+      "ds": "bam"
+    },
+    "dia": {
+      "slug": "bem",
+      "url": "https://islamansiklopedisi.org.tr/bem"
+    }
+  },
+  "253": {
+    "yaqut": {
+      "id": 3411,
+      "h": "جيرفت",
+      "ht": "Cîrift",
+      "ds": "cirift"
+    },
+    "dia": {
+      "slug": "ciruft",
+      "url": "https://islamansiklopedisi.org.tr/ciruft"
+    }
+  },
+  "254": {
+    "dia": {
+      "slug": "hurmuz",
+      "url": "https://islamansiklopedisi.org.tr/hurmuz"
+    }
+  },
+  "255": {
+    "yaqut": {
+      "id": 6018,
+      "h": "زرند",
+      "ht": "Zerand",
+      "ds": "zerand"
+    }
+  },
+  "263": {
+    "yaqut": {
+      "id": 11496,
+      "h": "مكران",
+      "ht": "Makrân",
+      "ds": ""
+    },
+    "ei1": {
+      "id": 3410,
+      "t": "MAKRAN"
+    },
+    "dia": {
+      "slug": "mekran",
+      "url": "https://islamansiklopedisi.org.tr/mekran"
+    }
+  },
+  "265": {
+    "yaqut": {
+      "id": 2735,
+      "h": "تيز",
+      "ht": "Tîz",
+      "ds": "tiz"
+    }
+  },
+  "269": {
+    "yaqut": {
+      "id": 6303,
+      "h": "سجستان",
+      "ht": "Sîstân",
+      "ds": "sistan"
+    },
+    "ei1": {
+      "id": 5246,
+      "t": "SISTAN"
+    },
+    "dia": {
+      "slug": "sicistan",
+      "url": "https://islamansiklopedisi.org.tr/sicistan"
+    }
+  },
+  "270": {
+    "yaqut": {
+      "id": 6016,
+      "h": "زرنج",
+      "ht": "Zerenc",
+      "ds": "zernec"
+    }
+  },
+  "273": {
+    "yaqut": {
+      "id": 9174,
+      "h": "فره",
+      "ht": "Fereh",
+      "ds": "fereh"
+    },
+    "ei1": {
+      "id": 1381,
+      "t": "FARAH"
+    }
+  },
+  "274": {
+    "yaqut": {
+      "id": 1899,
+      "h": "بست",
+      "ht": "Best",
+      "ds": "best"
+    }
+  },
+  "275": {
+    "yaqut": {
+      "id": 8855,
+      "h": "غزنة",
+      "ht": "Ğaznâ",
+      "ds": "ghazna"
+    },
+    "atlas": {
+      "id": 76,
+      "tr": "Gazne",
+      "en": "Ghazni"
+    },
+    "dia": {
+      "slug": "gazne",
+      "url": "https://islamansiklopedisi.org.tr/gazne"
+    }
+  },
+  "276": {
+    "yaqut": {
+      "id": 10060,
+      "h": "كابل",
+      "ht": "Kâbil",
+      "ds": "kabil"
+    },
+    "ei1": {
+      "id": 2386,
+      "t": "KABUL"
+    },
+    "dia": {
+      "slug": "kabil",
+      "url": "https://islamansiklopedisi.org.tr/kabil"
+    }
+  },
+  "277": {
+    "ei1": {
+      "id": 3107,
+      "t": "KUHISTAN"
+    }
+  },
+  "278": {
+    "yaqut": {
+      "id": 9402,
+      "h": "قاين",
+      "ht": "Kâyin",
+      "ds": "kayin"
+    }
+  },
+  "281": {
+    "yaqut": {
+      "id": 7868,
+      "h": "طبس",
+      "ht": "Tubs",
+      "ds": "tubs"
+    },
+    "ei1": {
+      "id": 5415,
+      "t": "TABAS"
+    }
+  },
+  "282": {
+    "yaqut": {
+      "id": 2348,
+      "h": "بيرجند",
+      "ht": "Biyrjend",
+      "ds": "biyrjend"
+    }
+  },
+  "283": {
+    "yaqut": {
+      "id": 9999,
+      "h": "قومس",
+      "ht": "Kumis",
+      "ds": "kumis"
+    }
+  },
+  "285": {
+    "yaqut": {
+      "id": 1907,
+      "h": "بسطام",
+      "ht": "Bistâm",
+      "ds": "bistam"
+    },
+    "dia": {
+      "slug": "bistam",
+      "url": "https://islamansiklopedisi.org.tr/bistam"
+    }
+  },
+  "286": {
+    "yaqut": {
+      "id": 6622,
+      "h": "سمنان",
+      "ht": "Semnân",
+      "ds": "semnan"
+    }
+  },
+  "287": {
+    "yaqut": {
+      "id": 43,
+      "h": "آمل",
+      "ht": "Âmül",
+      "ds": "amul"
+    },
+    "ei1": {
+      "id": 567,
+      "t": "AMUL"
+    }
+  },
+  "289": {
+    "yaqut": {
+      "id": 4877,
+      "h": "دماوند",
+      "ht": "Demavent",
+      "ds": "demavent"
+    }
+  },
+  "290": {
+    "yaqut": {
+      "id": 3033,
+      "h": "جرجان",
+      "ht": "Corcân",
+      "ds": "corcan"
+    },
+    "dia": {
+      "slug": "curcan",
+      "url": "https://islamansiklopedisi.org.tr/curcan"
+    }
+  },
+  "293": {
+    "ei1": {
+      "id": 1061,
+      "t": "BAMPUR"
+    }
+  },
+  "297": {
+    "yaqut": {
+      "id": 11632,
+      "h": "المنصورة",
+      "ht": "el-Mensûre",
+      "ds": "mensure"
+    }
+  },
+  "298": {
+    "yaqut": {
+      "id": 12327,
+      "h": "نيه",
+      "ht": "Nîh",
+      "ds": "nih"
+    }
+  },
+  "299": {
+    "yaqut": {
+      "id": 10230,
+      "h": "كركويه",
+      "ht": "Kirkûye",
+      "ds": "kirkuye"
+    }
+  },
+  "300": {
+    "yaqut": {
+      "id": 4463,
+      "h": "خواش",
+      "ht": "Hvâş",
+      "ds": "hvash"
+    }
+  },
+  "304": {
+    "yaqut": {
+      "id": 9930,
+      "h": "قندهار",
+      "ht": "Kandehâr",
+      "ds": "kandahar"
+    },
+    "dia": {
+      "slug": "kandahar",
+      "url": "https://islamansiklopedisi.org.tr/kandahar"
+    }
+  },
+  "305": {
+    "yaqut": {
+      "id": 2183,
+      "h": "بنجهير",
+      "ht": "Bencihir",
+      "ds": "bencihir"
+    }
+  },
+  "306": {
+    "yaqut": {
+      "id": 5938,
+      "h": "زاوه",
+      "ht": "Zâve",
+      "ds": "zawa"
+    }
+  },
+  "307": {
+    "yaqut": {
+      "id": 2228,
+      "h": "بوزجان",
+      "ht": "Büzcân",
+      "ds": "buzcan"
+    }
+  },
+  "308": {
+    "yaqut": {
+      "id": 4465,
+      "h": "خواف",
+      "ht": "Hvâf",
+      "ds": "hvaf"
+    }
+  },
+  "312": {
+    "yaqut": {
+      "id": 4459,
+      "h": "خوار",
+      "ht": "Hûvâr",
+      "ds": "huvar"
+    }
+  },
+  "313": {
+    "yaqut": {
+      "id": 9337,
+      "h": "فيروزكوه",
+      "ht": "Fîrûzküh",
+      "ds": "firuzkuh"
+    }
+  },
+  "314": {
+    "yaqut": {
+      "id": 4975,
+      "h": "دهستان",
+      "ht": "Dehistan",
+      "ds": "dehistan"
+    }
+  },
+  "316": {
+    "yaqut": {
+      "id": 4180,
+      "h": "خراسان",
+      "ht": "Horasan",
+      "ds": "horasan"
+    },
+    "dia": {
+      "slug": "horasan",
+      "url": "https://islamansiklopedisi.org.tr/horasan"
+    }
+  },
+  "317": {
+    "yaqut": {
+      "id": 12317,
+      "h": "نيسابور",
+      "ht": "Nîsâbûr",
+      "ds": "nisabur"
+    },
+    "atlas": {
+      "id": 26,
+      "tr": "Nîşâbur",
+      "en": "Nishapur"
+    },
+    "dia": {
+      "slug": "nisabur",
+      "url": "https://islamansiklopedisi.org.tr/nisabur"
+    }
+  },
+  "319": {
+    "yaqut": {
+      "id": 8019,
+      "h": "طوس",
+      "ht": "Tûs",
+      "ds": "tus"
+    },
+    "ei1": {
+      "id": 5865,
+      "t": "TUS"
+    },
+    "dia": {
+      "slug": "tus",
+      "url": "https://islamansiklopedisi.org.tr/tus"
+    }
+  },
+  "320": {
+    "dia": {
+      "slug": "meshed",
+      "url": "https://islamansiklopedisi.org.tr/meshed"
+    }
+  },
+  "321": {
+    "yaqut": {
+      "id": 2401,
+      "h": "بيهق",
+      "ht": "Beyhek",
+      "ds": "beyhek"
+    }
+  },
+  "322": {
+    "yaqut": {
+      "id": 3381,
+      "h": "جوين",
+      "ht": "Güvîn",
+      "ds": "guvin"
+    }
+  },
+  "323": {
+    "yaqut": {
+      "id": 2876,
+      "h": "جاجرم",
+      "ht": "Câcerm",
+      "ds": "cajerm"
+    }
+  },
+  "324": {
+    "ei1": {
+      "id": 2272,
+      "t": "ISFARAYIN"
+    }
+  },
+  "325": {
+    "yaqut": {
+      "id": 4136,
+      "h": "خبوشان",
+      "ht": "Habuşân",
+      "ds": "habusyan"
+    }
+  },
+  "327": {
+    "yaqut": {
+      "id": 12003,
+      "h": "نسا",
+      "ht": "Nesâ",
+      "ds": "nesa"
+    },
+    "ei1": {
+      "id": 4202,
+      "t": "NASA"
+    },
+    "dia": {
+      "slug": "nisa",
+      "url": "https://islamansiklopedisi.org.tr/nisa"
+    }
+  },
+  "328": {
+    "yaqut": {
+      "id": 175,
+      "h": "أبيورد",
+      "ht": "Ebyurd",
+      "ds": "abyurd"
+    }
+  },
+  "329": {
+    "ei1": {
+      "id": 2497,
+      "t": "KALAT"
+    }
+  },
+  "330": {
+    "yaqut": {
+      "id": 6376,
+      "h": "سرخس",
+      "ht": "Sırhaş",
+      "ds": "sirhas"
+    },
+    "dia": {
+      "slug": "serahs",
+      "url": "https://islamansiklopedisi.org.tr/serahs"
+    }
+  },
+  "331": {
+    "dia": {
+      "slug": "merv",
+      "url": "https://islamansiklopedisi.org.tr/merv"
+    }
+  },
+  "332": {
+    "yaqut": {
+      "id": 43,
+      "h": "آمل",
+      "ht": "Âmül",
+      "ds": "amul"
+    },
+    "ei1": {
+      "id": 567,
+      "t": "AMUL"
+    }
+  },
+  "334": {
+    "yaqut": {
+      "id": 11175,
+      "h": "مرو الروذ",
+      "ht": "Merv er-Rûz",
+      "ds": "merv-er-ruz"
+    }
+  },
+  "341": {
+    "yaqut": {
+      "id": 12668,
+      "h": "هراة",
+      "ht": "Herât",
+      "ds": "herat"
+    },
+    "ei1": {
+      "id": 1845,
+      "t": "HERAT"
+    },
+    "atlas": {
+      "id": 19,
+      "tr": "Herat",
+      "en": "Herat"
+    },
+    "dia": {
+      "slug": "herat",
+      "url": "https://islamansiklopedisi.org.tr/herat"
+    }
+  },
+  "343": {
+    "yaqut": {
+      "id": 2239,
+      "h": "بوشنج",
+      "ht": "Bûşinc",
+      "ds": "businc"
+    }
+  },
+  "344": {
+    "yaqut": {
+      "id": 604,
+      "h": "أسفزار",
+      "ht": "Asfezar",
+      "ds": "asfizar"
+    }
+  },
+  "347": {
+    "yaqut": {
+      "id": 8949,
+      "h": "غور",
+      "ht": "Gûr",
+      "ds": "ghur-vilayet"
+    },
+    "dia": {
+      "slug": "gur",
+      "url": "https://islamansiklopedisi.org.tr/gur"
+    }
+  },
+  "348": {
+    "yaqut": {
+      "id": 1416,
+      "h": "باميان",
+      "ht": "Bâmiyân",
+      "ds": "bamiyan"
+    },
+    "ei1": {
+      "id": 1060,
+      "t": "BAMIYAN"
+    },
+    "dia": {
+      "slug": "bamiyan",
+      "url": "https://islamansiklopedisi.org.tr/bamiyan"
+    }
+  },
+  "349": {
+    "yaqut": {
+      "id": 2102,
+      "h": "بلخ",
+      "ht": "Belhiz",
+      "ds": "balkh"
+    },
+    "atlas": {
+      "id": 47,
+      "tr": "Belh",
+      "en": "Balkh"
+    },
+    "dia": {
+      "slug": "belh",
+      "url": "https://islamansiklopedisi.org.tr/belh"
+    }
+  },
+  "351": {
+    "yaqut": {
+      "id": 7849,
+      "h": "طالقان",
+      "ht": "Tâlekân",
+      "ds": "talikan"
+    }
+  },
+  "352": {
+    "yaqut": {
+      "id": 12952,
+      "h": "اليهودية",
+      "ht": "el-Yahûdiyye",
+      "ds": "yahudiyye"
+    }
+  },
+  "354": {
+    "yaqut": {
+      "id": 6997,
+      "h": "شبرقان",
+      "ht": "Şebrukân",
+      "ds": ""
+    }
+  },
+  "356": {
+    "yaqut": {
+      "id": 7881,
+      "h": "طخارستان",
+      "ht": "Taharistan",
+      "ds": "taharistan"
+    }
+  },
+  "357": {
+    "yaqut": {
+      "id": 4391,
+      "h": "خلم",
+      "ht": "Hilm",
+      "ds": "hilm"
+    }
+  },
+  "360": {
+    "yaqut": {
+      "id": 3402,
+      "h": "جيحون",
+      "ht": "Ceyhun",
+      "ds": "ceyhun"
+    },
+    "ei1": {
+      "id": 565,
+      "t": "AMU-DARYA"
+    },
+    "dia": {
+      "slug": "ceyhun",
+      "url": "https://islamansiklopedisi.org.tr/ceyhun"
+    }
+  },
+  "361": {
+    "dia": {
+      "slug": "bedahsan",
+      "url": "https://islamansiklopedisi.org.tr/bedahsan"
+    }
+  },
+  "363": {
+    "yaqut": {
+      "id": 7565,
+      "h": "صغانيان",
+      "ht": "Soğaniyân",
+      "ds": "soganiyyan"
+    }
+  },
+  "364": {
+    "yaqut": {
+      "id": 2500,
+      "h": "ترمذ",
+      "ht": "Termez",
+      "ds": "termez"
+    },
+    "dia": {
+      "slug": "tirmiz",
+      "url": "https://islamansiklopedisi.org.tr/tirmiz"
+    }
+  },
+  "366": {
+    "yaqut": {
+      "id": 10095,
+      "h": "كالف",
+      "ht": "Kalif",
+      "ds": "kalif"
+    }
+  },
+  "367": {
+    "yaqut": {
+      "id": 4462,
+      "h": "خوارزم",
+      "ht": "Hvârezm",
+      "ds": "hvarezm"
+    },
+    "dia": {
+      "slug": "harezm",
+      "url": "https://islamansiklopedisi.org.tr/harezm"
+    }
+  },
+  "368": {
+    "yaqut": {
+      "id": 10063,
+      "h": "كاث",
+      "ht": "Kâs",
+      "ds": "kas"
+    }
+  },
+  "369": {
+    "ei1": {
+      "id": 1628,
+      "t": "GURGANDJ"
+    },
+    "dia": {
+      "slug": "urgenc",
+      "url": "https://islamansiklopedisi.org.tr/urgenc"
+    }
+  },
+  "370": {
+    "dia": {
+      "slug": "hive",
+      "url": "https://islamansiklopedisi.org.tr/hive"
+    }
+  },
+  "372": {
+    "yaqut": {
+      "id": 4785,
+      "h": "درغان",
+      "ht": "Derğan",
+      "ds": "dergan"
+    }
+  },
+  "373": {
+    "yaqut": {
+      "id": 6074,
+      "h": "زمخشر",
+      "ht": "Zemahşer",
+      "ds": "zemahser"
+    },
+    "dia": {
+      "slug": "zemahseri",
+      "url": "https://islamansiklopedisi.org.tr/zemahseri"
+    }
+  },
+  "374": {
+    "ei1": {
+      "id": 642,
+      "t": "ARAL"
+    }
+  },
+  "375": {
+    "yaqut": {
+      "id": 4281,
+      "h": "خسروجرد",
+      "ht": "Husrojourd",
+      "ds": "husrucerd"
+    }
+  },
+  "380": {
+    "yaqut": {
+      "id": 1045,
+      "h": "أندرابة",
+      "ht": "Andırâbe",
+      "ds": "andirab-e"
+    }
+  },
+  "381": {
+    "yaqut": {
+      "id": 9409,
+      "h": "قباذيان",
+      "ht": "Kubbâziyân",
+      "ds": ""
+    }
+  },
+  "382": {
+    "yaqut": {
+      "id": 7360,
+      "h": "شومان",
+      "ht": "Şûmân",
+      "ds": "suman"
+    }
+  },
+  "387": {
+    "yaqut": {
+      "id": 7566,
+      "h": "الصغد",
+      "ht": "Soğd",
+      "ds": "sogd"
+    },
+    "dia": {
+      "slug": "sogd",
+      "url": "https://islamansiklopedisi.org.tr/sogd"
+    }
+  },
+  "388": {
+    "atlas": {
+      "id": 69,
+      "tr": "Buhara",
+      "en": "Bukhara"
+    },
+    "dia": {
+      "slug": "buhara",
+      "url": "https://islamansiklopedisi.org.tr/buhara"
+    }
+  },
+  "392": {
+    "yaqut": {
+      "id": 8003,
+      "h": "طواويس",
+      "ht": "Tuvâvîs",
+      "ds": "tuvavîs"
+    }
+  },
+  "394": {
+    "yaqut": {
+      "id": 2378,
+      "h": "بيكند",
+      "ht": "Bükend",
+      "ds": "bükend"
+    },
+    "dia": {
+      "slug": "beykend",
+      "url": "https://islamansiklopedisi.org.tr/beykend"
+    }
+  },
+  "395": {
+    "yaqut": {
+      "id": 6611,
+      "h": "سمرقند",
+      "ht": "Semerkand",
+      "ds": "semerkand"
+    },
+    "atlas": {
+      "id": 5,
+      "tr": "Semerkant",
+      "en": "Samarkand"
+    },
+    "dia": {
+      "slug": "semerkant",
+      "url": "https://islamansiklopedisi.org.tr/semerkant"
+    }
+  },
+  "399": {
+    "yaqut": {
+      "id": 10278,
+      "h": "كشانية",
+      "ht": "Keşâniye",
+      "ds": "kesaniye"
+    }
+  },
+  "401": {
+    "yaqut": {
+      "id": 1457,
+      "h": "البتم",
+      "ht": "Battam",
+      "ds": "battam"
+    }
+  },
+  "402": {
+    "yaqut": {
+      "id": 10243,
+      "h": "كرمينية",
+      "ht": "Kerminiyye",
+      "ds": "kerminiyye"
+    }
+  },
+  "405": {
+    "yaqut": {
+      "id": 10288,
+      "h": "كش",
+      "ht": "Keş",
+      "ds": "kas"
+    },
+    "dia": {
+      "slug": "kis",
+      "url": "https://islamansiklopedisi.org.tr/kis"
+    }
+  },
+  "406": {
+    "yaqut": {
+      "id": 12013,
+      "h": "نسف",
+      "ht": "Nesef",
+      "ds": "nasaf"
+    },
+    "dia": {
+      "slug": "nesef",
+      "url": "https://islamansiklopedisi.org.tr/nesef"
+    }
+  },
+  "410": {
+    "yaqut": {
+      "id": 676,
+      "h": "أشروسنة",
+      "ht": "Aşruşne",
+      "ds": "asrusne"
+    },
+    "dia": {
+      "slug": "usrusene",
+      "url": "https://islamansiklopedisi.org.tr/usrusene"
+    }
+  },
+  "412": {
+    "yaqut": {
+      "id": 5935,
+      "h": "زامين",
+      "ht": "Zâmin",
+      "ds": "zamin"
+    }
+  },
+  "416": {
+    "yaqut": {
+      "id": 6865,
+      "h": "سيحون",
+      "ht": "Sîhûn",
+      "ds": "sihun"
+    },
+    "dia": {
+      "slug": "seyhun",
+      "url": "https://islamansiklopedisi.org.tr/seyhun"
+    }
+  },
+  "417": {
+    "yaqut": {
+      "id": 9139,
+      "h": "فرغانة",
+      "ht": "Ferğâne",
+      "ds": "fargana"
+    },
+    "ei1": {
+      "id": 1389,
+      "t": "FARGHANA"
+    },
+    "dia": {
+      "slug": "fergana",
+      "url": "https://islamansiklopedisi.org.tr/fergana"
+    }
+  },
+  "418": {
+    "yaqut": {
+      "id": 321,
+      "h": "أخسيكث",
+      "ht": "Ahsikent",
+      "ds": "ahsikent"
+    }
+  },
+  "419": {
+    "ei1": {
+      "id": 589,
+      "t": "ANDIDJAN"
+    },
+    "dia": {
+      "slug": "andican",
+      "url": "https://islamansiklopedisi.org.tr/andican"
+    }
+  },
+  "420": {
+    "yaqut": {
+      "id": 1136,
+      "h": "أوش",
+      "ht": "Ev[ş]",
+      "ds": "osh"
+    }
+  },
+  "422": {
+    "yaqut": {
+      "id": 4154,
+      "h": "خجندة",
+      "ht": "Hocende",
+      "ds": "hocende"
+    },
+    "dia": {
+      "slug": "hucend",
+      "url": "https://islamansiklopedisi.org.tr/hucend"
+    }
+  },
+  "423": {
+    "dia": {
+      "slug": "taskent",
+      "url": "https://islamansiklopedisi.org.tr/taskent"
+    }
+  },
+  "427": {
+    "dia": {
+      "slug": "isbicab",
+      "url": "https://islamansiklopedisi.org.tr/isbicab"
+    }
+  },
+  "428": {
+    "yaqut": {
+      "id": 8992,
+      "h": "فاراب",
+      "ht": "Farâb",
+      "ds": "farab"
+    },
+    "dia": {
+      "slug": "farab",
+      "url": "https://islamansiklopedisi.org.tr/farab"
+    }
+  },
+  "429": {
+    "dia": {
+      "slug": "yesi",
+      "url": "https://islamansiklopedisi.org.tr/yesi"
+    }
+  },
+  "431": {
+    "yaqut": {
+      "id": 3272,
+      "h": "جند",
+      "ht": "Cend",
+      "ds": "cend"
+    }
+  },
+  "432": {
+    "yaqut": {
+      "id": 7898,
+      "h": "طراز",
+      "ht": "Taraz",
+      "ds": "taraz"
+    },
+    "ei1": {
+      "id": 5545,
+      "t": "TARAZ"
+    },
+    "dia": {
+      "slug": "taraz",
+      "url": "https://islamansiklopedisi.org.tr/taraz"
+    }
+  }
+}
