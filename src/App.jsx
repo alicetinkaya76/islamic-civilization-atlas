@@ -35,6 +35,7 @@ const CityAtlasView = lazy(() => import('./components/CityAtlas/CityAtlasView'))
 const ScienceLayerView = lazy(() => import('./components/science/ScienceLayerView'));
 const SalibiyyatView = lazy(() => import('./components/salibiyyat/SalibiyyatView'));
 const EvliyaView = lazy(() => import('./components/evliya/EvliyaView'));
+const MuqaddasiView = lazy(() => import('./components/muqaddasi/MuqaddasiView'));
 
 /* ═══ Eagerly loaded — needed on every page ═══ */
 import MapView from './components/map/MapView';
@@ -125,7 +126,7 @@ function LangDropdown({ lang, setLang }) {
   );
 }
 
-const VALID_TABS = ['cityatlas', 'map', 'dashboard', 'timeline', 'links', 'scholars', 'battles', 'alam', 'yaqut', 'dia', 'ei1', 'rihla', 'khitat', 'lestrange', 'science', 'salibiyyat', 'evliya', 'admin'];
+const VALID_TABS = ['cityatlas', 'map', 'dashboard', 'timeline', 'links', 'scholars', 'battles', 'alam', 'yaqut', 'dia', 'ei1', 'rihla', 'khitat', 'lestrange', 'science', 'salibiyyat', 'evliya', 'muqaddasi', 'admin'];
 
 /* Tab order for swipe navigation (excludes admin) */
 const SWIPE_TAB_ORDER = ['map', 'dashboard', 'alam', 'dia', 'ei1', 'scholars', 'rihla', 'yaqut', 'lestrange', 'khitat', 'salibiyyat'];
@@ -385,6 +386,7 @@ export default function App() {
               { id: 'science', label: t.tabs.science || '🔬 Bilim Atlası', badge: '182', preload: '/data/science_layer.json' },
               { id: 'salibiyyat', label: t.tabs.salibiyyat || '⚔️ Salibiyyât', badge: '790', preload: '/data/salibiyyat_atlas_layer.json' },
               { id: 'evliya', label: t.tabs.evliya || '🐫 Evliyâ Çelebi', badge: '5,444', preload: '/data/evliya_atlas_layer.json' },
+              { id: 'muqaddasi', label: t.tabs.muqaddasi || '📐 Makdisî', badge: '2,049', preload: '/data/muqaddasi_atlas_layer.json' },
             ]}
             activeTab={tab}
             onSelect={selectTab}
@@ -449,6 +451,7 @@ export default function App() {
                 onMouseEnter={() => preloadData('/data/science_layer.json')}>{'🔬 ' + (t.tabs.science || 'Bilim Atlası')}</button>
               <button role="tab" aria-selected={tab === 'salibiyyat'} className={`tab${tab === 'salibiyyat' ? ' active' : ''}`} onClick={() => selectTab('salibiyyat')} onMouseEnter={() => preloadData('/data/salibiyyat_atlas_layer.json')}>{"⚔️ " + (t.tabs.salibiyyat || "Salibiyyât")}</button>
               <button role="tab" aria-selected={tab === 'evliya'} className={`tab${tab === 'evliya' ? ' active' : ''}`} onClick={() => selectTab('evliya')} onMouseEnter={() => preloadData('/data/evliya_atlas_layer.json')}>{"🐫 " + (t.tabs.evliya || "Evliyâ Çelebi")}</button>
+              <button role="tab" aria-selected={tab === 'muqaddasi'} className={`tab${tab === 'muqaddasi' ? ' active' : ''}`} onClick={() => selectTab('muqaddasi')} onMouseEnter={() => preloadData('/data/muqaddasi_atlas_layer.json')}>{"📐 " + (t.tabs.muqaddasi || "Makdisî")}</button>
             </div>
             <button className="quiz-trigger" onClick={() => setQuizOpen(true)}
               aria-label={{ tr: 'Bilgi yarışması', en: 'Knowledge quiz', ar: 'اختبار المعرفة' }[lang]}>🎓 Quiz</button>
@@ -491,6 +494,7 @@ export default function App() {
          tab === 'salibiyyat' ? <SalibiyyatView lang={lang} t={t} initialSearch={hashParams.search} /> :
          tab === 'cityatlas' ? <CityAtlasView lang={lang} initialSearch={hashParams.search} /> :         tab === 'evliya' ? <EvliyaView lang={lang} /> :
          tab === 'science' ? <ScienceLayerView lang={lang} /> :
+         tab === 'muqaddasi' ? <MuqaddasiView lang={lang} t={t} initialSearch={hashParams.search} /> :
          <CausalView lang={lang} t={t} />}
         </Suspense>
       </main>
