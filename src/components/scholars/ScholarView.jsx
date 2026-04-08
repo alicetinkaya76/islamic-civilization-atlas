@@ -423,7 +423,7 @@ export default function ScholarView({ lang, t: tProp }) {
                     {teachers.map(t2 => (
                       <button key={t2.id} className="scholar-detail-link-chip"
                         onClick={() => setSelectedId(t2.id)}>
-                        {n(t2, lang)}
+                        {lf(t2, 'name', lang)}
                       </button>
                     ))}
                   </div>
@@ -438,7 +438,7 @@ export default function ScholarView({ lang, t: tProp }) {
                     {students.map(st => (
                       <button key={st.id} className="scholar-detail-link-chip"
                         onClick={() => setSelectedId(st.id)}>
-                        {n(st, lang)}
+                        {lf(st, 'name', lang)}
                       </button>
                     ))}
                   </div>
