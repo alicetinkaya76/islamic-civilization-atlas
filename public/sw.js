@@ -1,5 +1,5 @@
 /* Islamic Civilization Atlas — Service Worker */
-const CACHE_NAME = 'ica-v5';
+const CACHE_NAME = 'ica-v6';
 const PRECACHE = [
   '/',
   '/favicon.svg',
