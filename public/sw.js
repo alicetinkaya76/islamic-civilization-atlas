@@ -1,5 +1,5 @@
 /* Islamic Civilization Atlas — Service Worker */
-const CACHE_NAME = 'ica-v6';
+const CACHE_NAME = 'ica-v7';
 const PRECACHE = [
   '/',
   '/favicon.svg',
@@ -35,19 +35,16 @@ self.addEventListener('fetch', e => {
   // Skip external (analytics, fonts CDN, tiles)
   if (url.origin !== self.location.origin) return;
 
-  // Cache-first for static assets
+  // Network-first for hashed assets (cache as fallback for offline)
   if (/\.(js|css|png|svg|json|woff2?)$/.test(url.pathname)) {
     e.respondWith(
-      caches.match(e.request).then(cached => {
-        if (cached) return cached;
-        return fetch(e.request).then(resp => {
-          if (resp.ok) {
-            const clone = resp.clone();
-            caches.open(CACHE_NAME).then(c => c.put(e.request, clone));
-          }
-          return resp;
-        });
-      })
+      fetch(e.request).then(resp => {
+        if (resp.ok) {
+          const clone = resp.clone();
+          caches.open(CACHE_NAME).then(c => c.put(e.request, clone));
+        }
+        return resp;
+      }).catch(() => caches.match(e.request))
     );
     return;
   }
