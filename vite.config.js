@@ -25,6 +25,7 @@ export default defineConfig({
           if (id.includes('/components/battles/'))     return 'chunk-battles';
           if (id.includes('/components/causal/'))      return 'chunk-causal';
           if (id.includes('/components/ai/'))          return 'chunk-ai';
+          if (id.includes('SalibiyyatView'))    return 'chunk-salibiyyat';
           if (id.includes('QuizMode'))                 return 'chunk-quiz';
 
           // ─── Data chunk (scholar_identity is big) ───
