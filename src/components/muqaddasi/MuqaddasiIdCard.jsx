@@ -55,7 +55,7 @@ export default function MuqaddasiIdCard({ place, connectedRoutes, xrefs, onClose
       )}
 
       {/* Coord source */}
-      {place.coord_source && (
+      {false && place.coord_source && (
         <div className="muq-idcard-row">
           <span className="muq-idcard-label">{tr.coordSource}</span>
           <span className="muq-idcard-value">{place.coord_source}</span>
