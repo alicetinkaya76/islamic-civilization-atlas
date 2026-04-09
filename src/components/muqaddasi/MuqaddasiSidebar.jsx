@@ -116,7 +116,7 @@ export default function MuqaddasiSidebar({
                 onClick={() => onSelect(p.id)}
               >
                 <span className="muq-list-dot" style={{ background: color }} />
-                <span className="muq-list-name" style={{ direction: 'rtl' }}>{p.name_ar}</span>
+                <span className="muq-list-name">{(lang === "en" ? p.name_en : p.name_tr) || p.name_ar}</span>
                 {p.iqlim_ar && (
                   <span className="muq-list-iqlim" style={{ color }}>
                     {lang === 'ar' ? p.iqlim_ar : (IQLIM_LABELS[p.iqlim_ar]?.[lang] || '')}

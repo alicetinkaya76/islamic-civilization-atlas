@@ -32,7 +32,7 @@ export default function MuqaddasiIdCard({ place, connectedRoutes, xrefs, onClose
       <button className="muq-idcard-close" onClick={onClose}>✕</button>
 
       {/* Title */}
-      <h3 className="muq-idcard-title" style={{ direction: 'rtl' }}>{place.name_ar}</h3>
+      <h3 className="muq-idcard-title">{(lang === "en" ? place.name_en : place.name_tr) || place.name_ar}</h3><p className="muq-idcard-arabic" dir="rtl">{place.name_ar}</p>
 
       {/* Iqlim badge */}
       {place.iqlim_ar && (
