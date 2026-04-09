@@ -26,6 +26,9 @@ export function useNameMap(lang) {
     DB.events.forEach(e => { m[`event:${e.id}`] = n(e, lang); });
     DB.scholars.forEach(s => { m[`scholar:${s.id}`] = n(s, lang); });
     DB.monuments.forEach(mon => { m[`monument:${mon.id}`] = n(mon, lang); });
+    DB.routes?.forEach(r => { m[`trade_route:${r.id}`] = n(r, lang); });
+    DB.diplomacy?.forEach(d => { m[`diplomacy:${d.id}`] = n(d, lang); });
+    DB.cities?.forEach(c => { m[`city:${c.id}`] = n(c, lang); });
     return m;
   }, [lang]);
 }

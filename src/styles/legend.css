@@ -3,7 +3,7 @@
   position: absolute;
   bottom: 24px;
   left: 12px;
-  z-index: 1000;
+  z-index: 800;
   font-family: var(--font-body);
   transition: all 0.25s ease;
 }
