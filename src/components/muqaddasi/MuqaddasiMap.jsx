@@ -116,7 +116,7 @@ export default function MuqaddasiMap({
       });
       const iqLabel = lang === 'ar' ? p.iqlim_ar : (IQLIM_LABELS[p.iqlim_ar]?.[lang] || p.iqlim_ar || '');
       marker.bindTooltip(
-        `<div style="direction:rtl;font-family:Amiri,serif"><strong>${p.name_ar}</strong>${iqLabel ? `<br/><span style="color:${color}">${iqLabel}</span>` : ''}</div>`,
+        `<div><strong>${(lang === "en" ? p.name_en : p.name_tr) || p.name_ar}</strong><br/><span style="direction:rtl;font-family:Amiri,serif;font-size:12px;color:#c4b89a">${p.name_ar}</span>${iqLabel ? `<br/><span style="color:${color}">${iqLabel}</span>` : ''}</div>`,
         { direction: 'top', offset: [0, -6] }
       );
       marker.on('click', () => onSelect(p.id));
