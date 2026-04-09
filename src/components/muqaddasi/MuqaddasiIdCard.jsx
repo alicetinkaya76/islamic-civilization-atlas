@@ -63,14 +63,14 @@ export default function MuqaddasiIdCard({ place, connectedRoutes, xrefs, onClose
       )}
 
       {/* Description */}
-      {place.desc_tr ? (
+      {((lang === "en" ? place.desc_en : place.desc_tr) || place.desc_tr) ? (
         <div className="muq-idcard-desc">
           <span className="muq-idcard-label">
             {tr.description}
-            {lang !== 'tr' && <span className="muq-lang-badge">TR</span>}
+            {lang === 'en' && <span className="muq-lang-badge">EN</span>}
           </span>
-          <p>{place.desc_tr}</p>
-          {place.desc_tr.endsWith('...') && (
+          <p>{lang === "en" ? (place.desc_en || place.desc_tr) : place.desc_tr}</p>
+          {(lang === "en" ? (place.desc_en || place.desc_tr) : place.desc_tr).endsWith('...') && (
             <span className="muq-truncated-note">
               {lang === 'tr' ? '(Metin kaynakta kırpılmıştır)' :
                lang === 'ar' ? '(النص مختصر في المصدر)' :
